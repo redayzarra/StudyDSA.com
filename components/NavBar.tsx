@@ -1,18 +1,28 @@
-import React from "react";
-import { ModeToggle } from "./ModeToggle";
-import { FaBook } from "react-icons/fa6";
 import Link from "next/link";
+import { FaBook } from "react-icons/fa6";
+import { ModeToggle } from "./ModeToggle";
+import { NavMenuLinks } from "./NavMenuItems";
 
 const NavBar = () => {
   return (
-    <div className="px-4 py-3 h-full border-b shadow-sm flex items-center bg-background justify-between">
-      <Link href={"/"}>
-        <div className="space-x-1 flex items-center">
-          <FaBook size={25} />
-          <h1 className="text-2xl font-black">StudyDSA</h1>
+    <div className="border-b shadow-sm flex items-center">
+      <div className="mx-auto max-w-7xl py-3 px-4 sm:px-6 lg:px-8 w-full">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <Link href={"/"}>
+            <div className="space-x-1 flex items-center">
+              <FaBook size={25} />
+              <h1 className="text-2xl font-black">StudyDSA</h1>
+            </div>
+          </Link>
+
+          {/* Nav Menu Links */}
+          <NavMenuLinks />
+
+          {/* Dark Mode */}
+          <ModeToggle />
         </div>
-      </Link>
-      <ModeToggle />
+      </div>
     </div>
   );
 };
