@@ -26,10 +26,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main>
-            <NavBar />
-            <Container>{children}</Container>
-          </main>
+          <NavBar />
+          <Container>
+            <main className="mt-10">{children}</main>
+          </Container>
         </ThemeProvider>
       </body>
     </html>
