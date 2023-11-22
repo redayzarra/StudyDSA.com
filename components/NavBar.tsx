@@ -7,7 +7,7 @@ import MobileSideBar from "./MobileSideBar";
 
 const NavBar = () => {
   return (
-    <div className="border-b shadow-sm fixed top-0 left-0 right-0 z-50 flex items-center bg-background/50 backdrop-blur-md">
+    <div className="shadow-md border-b fixed top-0 left-0 right-0 z-50 flex items-center bg-background/50 backdrop-blur-md">
       <div className="mx-auto max-w-7xl py-3 px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex items-center justify-between">
           {/* Mobile Sidebar */}

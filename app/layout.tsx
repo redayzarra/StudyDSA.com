@@ -28,7 +28,7 @@ export default function RootLayout({
         >
           <NavBar />
           <Container>
-            <main className="mt-10">{children}</main>
+            <main className="mt-16">{children}</main>
           </Container>
         </ThemeProvider>
       </body>
