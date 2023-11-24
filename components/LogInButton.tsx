@@ -6,7 +6,7 @@ const LogInButton = () => {
   return (
     <Link href="/sign-in">
       <Button size="sm" className="font-semibold">
-        Sign In
+        Log In
       </Button>
     </Link>
   );
