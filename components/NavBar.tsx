@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FaBook } from "react-icons/fa6";
 import { ModeToggle } from "./ModeToggle";
-import { NavMenuLinks } from "./NavMenuItems";
+import { NavMenuItems } from "./NavMenuItems";
 import { Button } from "./ui/button";
 import MobileSideBar from "./MobileSideBar";
 import LogInButton from "./LogInButton";
@@ -21,7 +21,7 @@ const NavBar = () => {
 
           {/* Nav Menu Links - Larger screens only */}
           <div className="hidden md:block">
-            <NavMenuLinks />
+            <NavMenuItems />
           </div>
 
           {/* Dark Mode and LogIn */}

@@ -1,9 +1,7 @@
 "use client";
 
-import * as React from "react";
 import Link from "next/link";
 
-import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -13,8 +11,9 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import NavListItem from "./NavListItem";
 
-const components: { title: string; href: string; description: string }[] = [
+const courses: { title: string; href: string; description: string }[] = [
   {
     title: "Alert Dialog",
     href: "/docs/primitives/alert-dialog",
@@ -52,10 +51,11 @@ const components: { title: string; href: string; description: string }[] = [
   },
 ];
 
-export function NavMenuLinks() {
+export function NavMenuItems() {
   return (
     <NavigationMenu>
       <NavigationMenuList className="space-x-1">
+        {/* Getting Started: Dropdown Menu */}
         <NavigationMenuItem>
           <NavigationMenuTrigger className="bg-transparent dark:hover:bg-accent/50">
             Getting started
@@ -64,56 +64,57 @@ export function NavMenuLinks() {
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
-                  <a
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                    href="/"
-                  >
-                    <div className="mb-2 mt-4 text-lg font-medium">
-                      StudyDSA
-                    </div>
+                  <div className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md">
+                    <p className="mb-2 mt-4 text-lg font-medium">StudyDSA</p>
                     <p className="text-sm leading-tight text-muted-foreground">
-                      Beautifully designed components built with Radix UI and
-                      Tailwind CSS.
+                      Dive into Data Structures & Algorithms! Boost your coding
+                      skills and ace interviews, no matter your skill level.
                     </p>
-                  </a>
+                  </div>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/docs" title="Introduction">
-                Re-usable components built using Radix UI and Tailwind CSS.
-              </ListItem>
-              <ListItem href="/docs/installation" title="Installation">
-                How to install dependencies and structure your app.
-              </ListItem>
-              <ListItem href="/docs/primitives/typography" title="Typography">
-                Styles for headings, paragraphs, lists...etc
-              </ListItem>
+              <NavListItem href="/introduction" title="Introduction">
+                Discover what I offer and how it can benefit your learning.
+              </NavListItem>
+              <NavListItem href="/docs/installation" title="Study Guide">
+                Your roadmap to mastering DSA: Tips, strategies, and best
+                practices for effective learning.
+              </NavListItem>
+              <NavListItem href="/docs/installation" title="Resources">
+                Explore the wealth of resources I have collected over the years
+                to study DSA.
+              </NavListItem>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
+
+        {/* Courses: Dropdown Menu */}
         <NavigationMenuItem>
           <NavigationMenuTrigger className="bg-tranparent hover:bg-accent/50">
-            Components
+            Courses
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {components.map((component) => (
-                <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
+              {courses.map((course) => (
+                <NavListItem
+                  key={course.title}
+                  title={course.title}
+                  href={course.href}
                 >
-                  {component.description}
-                </ListItem>
+                  {course.description}
+                </NavListItem>
               ))}
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
+
+        {/* Jobs */}
         <NavigationMenuItem>
           <Link href="/docs" legacyBehavior passHref>
             <NavigationMenuLink
               className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-accent/50`}
             >
-              Documentation
+              Job Listings
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
@@ -121,29 +122,3 @@ export function NavMenuLinks() {
     </NavigationMenu>
   );
 }
-
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  );
-});
-ListItem.displayName = "ListItem";
