@@ -76,11 +76,11 @@ export function NavMenuItems() {
               <NavListItem href="/introduction" title="Introduction">
                 Discover what I offer and how it can benefit your learning.
               </NavListItem>
-              <NavListItem href="/docs/installation" title="Study Guide">
+              <NavListItem href="/studyguide" title="Study Guide">
                 Your roadmap to mastering DSA: Tips, strategies, and best
                 practices for effective learning.
               </NavListItem>
-              <NavListItem href="/docs/installation" title="Resources">
+              <NavListItem href="/resources" title="Resources">
                 Explore the wealth of resources I have collected over the years
                 to study DSA.
               </NavListItem>
