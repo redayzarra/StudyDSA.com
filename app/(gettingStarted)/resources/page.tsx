@@ -2,7 +2,7 @@ import React from 'react'
 
 const ResourcesPage = () => {
   return (
-    <div>ResourcesPage</div>
+   <div>Resources Page</div> 
   )
 }
 

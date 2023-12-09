@@ -6,7 +6,7 @@ const IntroductionPage = () => {
       </h1>
       {/* Welcome paragraph */}
       <div>
-        <p className="indent-10">
+        <p className="indent-5">
           <span className="font-bold">Welcome to StudyDSA.com</span>, a personal
           project born from my own journey and experiences in preparing for job
           interviews in the tech industry. This website is not just a platform;{" "}
@@ -23,17 +23,14 @@ const IntroductionPage = () => {
       <h2 className="text-3xl font-black">Purpose</h2>
       {/* Purpose paragraph */}
       <div>
-        <p className="indent-10">
-          <span className="font-bold">StudyDSA.com</span> was born out of my
-          personal experiences and the challenges I faced while preparing for
-          job interviews in the tech industry. This platform is a reflection of
-          my journey, a collection of the lessons, strategies, and insights I've
-          accumulated.{" "}
+        <p className="indent-5">
+          This project is a reflection of my journey, a collection of the
+          lessons, strategies, and insights I've accumulated.{" "}
           <span className="font-bold">
             My goal is simple: to share what I've learned in a straightforward,
-            accessible manner
-          </span>
-          . I hope that by doing so, I can make your journey a bit easier,
+            accessible manner.
+          </span>{" "}
+          I hope that by doing so, I can make your experiences a bit easier,
           whether you're preparing for interviews or just looking to improve
           your understanding of these essential concepts.
         </p>
