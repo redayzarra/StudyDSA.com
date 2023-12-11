@@ -1,15 +1,12 @@
 "use client";
 
-import Link from "next/link";
-
 import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
+  NavigationMenuTrigger
 } from "@/components/ui/navigation-menu";
 import NavListItem from "./NavListItem";
 
@@ -106,17 +103,6 @@ export function NavMenuItems() {
               ))}
             </ul>
           </NavigationMenuContent>
-        </NavigationMenuItem>
-
-        {/* Jobs */}
-        <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink
-              className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-accent/50`}
-            >
-              Job Listings
-            </NavigationMenuLink>
-          </Link>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

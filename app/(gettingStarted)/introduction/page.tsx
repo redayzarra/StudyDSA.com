@@ -6,7 +6,7 @@ const IntroductionPage = () => {
       </h1>
       {/* Welcome paragraph */}
       <div>
-        <p className="indent-5">
+        <p className="">
           <span className="font-bold">Welcome to StudyDSA.com</span>, a personal
           project born from my own journey and experiences in preparing for job
           interviews in the tech industry. This website is not just a platform;{" "}
@@ -23,7 +23,7 @@ const IntroductionPage = () => {
       <h2 className="text-3xl font-black">Purpose</h2>
       {/* Purpose paragraph */}
       <div>
-        <p className="indent-5">
+        <p className="">
           This project is a reflection of my journey, a collection of the
           lessons, strategies, and insights I've accumulated.{" "}
           <span className="font-bold">
