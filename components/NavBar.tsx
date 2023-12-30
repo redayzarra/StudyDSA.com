@@ -1,11 +1,8 @@
-import Link from "next/link";
-import { FaBook } from "react-icons/fa6";
-import { ModeToggle } from "./ModeToggle";
-import { NavMenuItems } from "./NavMenuItems";
-import { Button } from "./ui/button";
-import MobileSideBar from "./MobileSideBar";
 import LogInButton from "./LogInButton";
 import Logo from "./Logo";
+import MobileSideBar from "./MobileSideBar";
+import { ModeToggle } from "./ModeToggle";
+import { NavMenuItems } from "./NavMenuItems";
 
 const NavBar = () => {
   return (
@@ -21,13 +18,13 @@ const NavBar = () => {
 
           {/* Nav Menu Links - Larger screens only */}
           <div className="hidden md:block">
-            <NavMenuItems />
+            {/* <NavMenuItems /> */}
           </div>
 
           {/* Dark Mode and LogIn */}
           <div className="gap-x-2 flex items-center justify-center">
             <ModeToggle />
-            <LogInButton />
+            {/* <LogInButton /> */}
           </div>
         </div>
       </div>
