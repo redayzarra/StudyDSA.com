@@ -22,7 +22,7 @@ const CardWrapper = ({
   showSocial,
 }: Props) => {
   return (
-    <Card className="w-[400px] shadow-md">
+    <Card className="w-[400px] mx-3 shadow-md">
       <CardHeader>
         <Header title="StudyDSA" label={headerLabel} />
       </CardHeader>

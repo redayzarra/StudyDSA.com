@@ -14,7 +14,9 @@ const NavBar = () => {
             <MobileSideBar />
           </div>
 
-          <Logo />
+          <div className="hidden md:flex">
+            <Logo />
+          </div>
 
           {/* Dark Mode and LogIn */}
           <div className="gap-x-2 flex items-center justify-center">
