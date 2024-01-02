@@ -103,7 +103,7 @@ const LoginForm = () => {
             />
           </div>
           <FormResult message={message} error={error} />
-          <Button type="submit" className="w-full shadow-md">
+          <Button type="submit" className="w-full shadow-md font-semibold">
             Login
           </Button>
         </form>

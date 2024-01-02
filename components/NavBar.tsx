@@ -1,3 +1,6 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import LogInButton from "./LogInButton";
 import Logo from "./Logo";
 import MobileSideBar from "./MobileSideBar";
@@ -5,6 +8,10 @@ import { ModeToggle } from "./ModeToggle";
 import LoginButton from "./auth/LoginButton";
 
 const NavBar = () => {
+  const pathname = usePathname();
+  const authRoute =
+    pathname.includes("/login") || pathname.includes("/register");
+
   return (
     <div className="shadow-md border-b fixed top-0 left-0 right-0 z-50 flex items-center bg-background/50 backdrop-blur-[8px]">
       <div className="mx-auto max-w-7xl py-3 px-4 sm:px-6 lg:px-8 w-full">
@@ -21,9 +28,11 @@ const NavBar = () => {
           {/* Dark Mode and LogIn */}
           <div className="gap-x-2 flex items-center justify-center">
             <ModeToggle />
-            <LoginButton>
-              <LogInButton />
-            </LoginButton>
+            {!authRoute && (
+              <LoginButton>
+                <LogInButton />
+              </LoginButton>
+            )}
           </div>
         </div>
       </div>
