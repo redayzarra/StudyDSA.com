@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "StudyDSA",
   description:
-    "Your gateway to mastering Data Structures & Algorithms - interactive, engaging, and suitable for all skill levels.",
+    "Start mastering Data Structures & Algorithms - interactive, engaging, and suitable for all skill levels.",
 };
 
 export default function RootLayout({
