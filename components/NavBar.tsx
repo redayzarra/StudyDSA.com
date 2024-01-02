@@ -2,7 +2,7 @@ import LogInButton from "./LogInButton";
 import Logo from "./Logo";
 import MobileSideBar from "./MobileSideBar";
 import { ModeToggle } from "./ModeToggle";
-import { NavMenuItems } from "./NavMenuItems";
+import LoginButton from "./auth/LoginButton";
 
 const NavBar = () => {
   return (
@@ -16,15 +16,12 @@ const NavBar = () => {
 
           <Logo />
 
-          {/* Nav Menu Links - Larger screens only */}
-          <div className="hidden md:block">
-            {/* <NavMenuItems /> */}
-          </div>
-
           {/* Dark Mode and LogIn */}
           <div className="gap-x-2 flex items-center justify-center">
             <ModeToggle />
-            {/* <LogInButton /> */}
+            <LoginButton>
+              <LogInButton />
+            </LoginButton>
           </div>
         </div>
       </div>
