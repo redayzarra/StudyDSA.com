@@ -29,7 +29,7 @@ export default auth((req) => {
   }
 
   if (!isLoggedIn && !isPublicRoute) {
-    return Response.redirect(new URL("/register", nextUrl));
+    return Response.redirect(new URL("/login", nextUrl));
   }
 
   return null;
