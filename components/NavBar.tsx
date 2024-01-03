@@ -1,11 +1,11 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import LogInButton from "./LogInButton";
 import Logo from "./Logo";
 import MobileSideBar from "./MobileSideBar";
 import { ModeToggle } from "./ModeToggle";
 import LoginButton from "./auth/LoginButton";
+import { Button } from "./ui/button";
 
 const NavBar = () => {
   const pathname = usePathname();
@@ -30,7 +30,9 @@ const NavBar = () => {
             <ModeToggle />
             {!authRoute && (
               <LoginButton>
-                <LogInButton />
+                <Button size="sm" className="font-semibold">
+                  Log In
+                </Button>
               </LoginButton>
             )}
           </div>

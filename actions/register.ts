@@ -2,7 +2,7 @@
 
 import { registerSchema } from "@/schemas";
 import * as z from "zod";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import db from "@/lib/db";
 import { getUserByEmail, getUserByUsername } from "@/data/user";
 
@@ -41,5 +41,5 @@ export const register = async (values: z.infer<typeof registerSchema>) => {
     },
   });
 
-  return { success: "User created!" };
+  return { success: "Confirmation email sent!" };
 };

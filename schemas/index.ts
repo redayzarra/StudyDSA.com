@@ -1,7 +1,7 @@
 import * as z from "zod";
 
 // Regular expression for a traditional username format
-const usernameRegex = /^[a-zA-Z0-9_.]+$/;
+export const usernameRegex = /^[a-zA-Z0-9_.]+$/;
 
 export const loginSchema = z.object({
   emailUsername: z
