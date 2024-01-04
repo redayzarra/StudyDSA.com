@@ -20,9 +20,9 @@ export const getUserById = async (id: string) => {
   }
 }
 
-export const getUserByUsername = async (username: string) => {
+export const getUserByUsername = async (name: string) => {
   try {
-    const user = await db.user.findUnique({where: {username}})
+    const user = await db.user.findUnique({where: {name}})
     return user;
     
   } catch (error) {

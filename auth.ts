@@ -11,7 +11,7 @@ export const {
   signOut,
 } = NextAuth({
   callbacks: {
-    async session({token, session}) {
+    async session({ token, session }) {
       if (token.sub && session.user) {
         session.user.id = token.sub;
       }
@@ -22,15 +22,15 @@ export const {
 
       return session;
     },
-    async jwt({token}) {
+    async jwt({ token }) {
       if (!token.sub) return token;
 
-      const existingUser = await getUserById(token.sub)
+      const existingUser = await getUserById(token.sub);
       if (!existingUser) return token;
 
       token.role = existingUser.role;
       return token;
-    }
+    },
   },
   adapter: PrismaAdapter(db),
   session: { strategy: "jwt" },
