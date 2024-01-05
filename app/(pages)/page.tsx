@@ -16,6 +16,9 @@ export default function Home() {
         <h1 className="text-5xl font-black text-center">
           Master Data Structures & Algorithms
         </h1>
+        <div className="">
+          TODO: Come up with landing page
+        </div>
       </div>
     </div>
   );
