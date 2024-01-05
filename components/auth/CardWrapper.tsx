@@ -24,7 +24,7 @@ const CardWrapper = ({
   return (
     <Card className="w-[400px] mx-3 shadow-md">
       <CardHeader>
-        <Header title="StudyDSA" label={headerLabel} />
+        <Header label={headerLabel} />
       </CardHeader>
       <CardContent>{children}</CardContent>
       {showSocial && (
