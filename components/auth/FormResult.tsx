@@ -12,7 +12,7 @@ const FormResult = ({ message, error }: Props) => {
   if (!message) return null;
 
   return error ? (
-    <div className="bg-destructive/25 p-3 rounded-md flex items-center gap-x-2 text-sm text-destructive dark:text-red-700">
+    <div className="bg-destructive/25 p-3 rounded-md flex items-center gap-x-2 text-sm text-destructive dark:text-red-500">
       <ExclamationTriangleIcon className="h-4 w-4" />
       <p>{message}</p>
     </div>

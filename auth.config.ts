@@ -25,8 +25,7 @@ export default {
         if (validated.success) {
           const { emailUsername, password } = validated.data;
 
-          let user; // Initialize user
-
+          let user; 
           // If the user entered an email...
           if (isEmail(emailUsername)) {
             user = await getUserByEmail(emailUsername);
