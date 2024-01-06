@@ -14,6 +14,7 @@ const SettingsPage = async () => {
 
           await signOut();
         }}
+        className="mt-5"
       >
         <Button type="submit">Sign Out</Button>
       </form>

@@ -30,7 +30,7 @@ const NavBar = () => {
             <ModeToggle />
             {!authRoute && (
               <LoginButton>
-                <Button size="sm" className="font-semibold">
+                <Button size="sm">
                   Log In
                 </Button>
               </LoginButton>

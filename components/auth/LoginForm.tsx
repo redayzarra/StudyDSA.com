@@ -3,7 +3,7 @@
 import { login } from "@/actions/login";
 import { loginSchema } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Button } from "../ui/button";
@@ -18,6 +18,7 @@ import {
 import { Input } from "../ui/input";
 import CardWrapper from "./CardWrapper";
 import FormResult from "./FormResult";
+import { useSearchParams } from "next/navigation";
 
 const LoginForm = () => {
   const form = useForm<z.infer<typeof loginSchema>>({
@@ -47,13 +48,26 @@ const LoginForm = () => {
         if (data.error) {
           setError(true);
           setMessage(data.error);
-        // Error is already false so we can store the message
+          // Error is already false so we can store the message
         } else {
           setMessage(data.success);
         }
       });
     });
   };
+
+  const searchParams = useSearchParams();
+  const urlError =
+    searchParams.get("error") === "OAuthAccountNotLinked"
+      ? "Email is being used with a different provider"
+      : "";
+
+  useEffect(() => {
+    if (urlError) {
+      setError(true);
+      setMessage(urlError);
+    }
+  }, [urlError]);
 
   return (
     <CardWrapper
@@ -103,7 +117,7 @@ const LoginForm = () => {
             />
           </div>
           <FormResult message={message} error={error} />
-          <Button type="submit" className="w-full shadow-md font-semibold">
+          <Button type="submit" className="w-full shadow-lg font-semibold">
             Login
           </Button>
         </form>

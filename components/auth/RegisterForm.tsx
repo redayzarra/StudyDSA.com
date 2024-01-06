@@ -122,7 +122,7 @@ const RegisterForm = () => {
             />
           </div>
           <FormResult message={message} error={error} />
-          <Button type="submit" className="w-full shadow-md font-semibold">
+          <Button type="submit" className="w-full shadow-lg font-semibold">
             Register
           </Button>
         </form>
