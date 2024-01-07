@@ -45,3 +45,12 @@ export const resetSchema = z.object({
       message: "Email or username is required",
     }),
 });
+
+export const newPasswordSchema = z.object({
+  password: z
+    .string()
+    .min(6, { message: "Password should be at least 6 characters" }),
+  confirmPassword: z
+    .string()
+    .min(6, { message: "Passwords do not match" }),
+});
