@@ -34,18 +34,6 @@ export const login = async (values: z.infer<typeof loginSchema>) => {
     return { error: "Please log in with Google or GitHub" };
   }
 
-  if (!user) {
-    return { error: "User does not exist" };
-  }
-
-  // Come up with better way for verfifying users.
-
-  // if (!user.emailVerified) {
-  //   const verificationToken = await generateVerificationToken(user.email!);
-
-  //   return {success: "For your safety, please confirm your email"}
-  // }
-
   try {
     await signIn("credentials", {
       emailUsername,

@@ -1,9 +1,9 @@
 "use client";
 
-import { login } from "@/actions/login";
-import { loginSchema } from "@/schemas";
+import { register } from "@/actions/register";
+import { resetSchema } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState, useTransition } from "react";
+import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Button } from "../ui/button";
@@ -18,15 +18,13 @@ import {
 import { Input } from "../ui/input";
 import CardWrapper from "./CardWrapper";
 import FormResult from "./FormResult";
-import { useSearchParams } from "next/navigation";
-import Link from "next/link";
+import { reset } from "@/actions/reset";
 
 const ResetForm = () => {
-  const form = useForm<z.infer<typeof loginSchema>>({
-    resolver: zodResolver(loginSchema),
+  const form = useForm<z.infer<typeof resetSchema>>({
+    resolver: zodResolver(resetSchema),
     defaultValues: {
       emailUsername: "",
-      password: "",
     },
   });
 
@@ -38,44 +36,30 @@ const ResetForm = () => {
   // Acts as my loading state
   const [isPending, startTransition] = useTransition();
 
-  const onSubmit = (values: z.infer<typeof loginSchema>) => {
+  const onSubmit = (values: z.infer<typeof resetSchema>) => {
     // Make sure to reinitialize the error and message as defaults
     setError(false);
     setMessage("");
 
     startTransition(() => {
-      login(values).then((data) => {
+      reset(values).then((data) => {
         // If there is an error, then mark error to be true
-        if (data.error) {
+        if (data?.error) {
           setError(true);
-          setMessage(data.error);
+          setMessage(data?.error);
           // Error is already false so we can store the message
         } else {
-          setMessage(data.success);
+          setMessage(data?.success);
         }
       });
     });
   };
 
-  const searchParams = useSearchParams();
-  const urlError =
-    searchParams.get("error") === "OAuthAccountNotLinked"
-      ? "Email is being used with a different provider"
-      : "";
-
-  useEffect(() => {
-    if (urlError) {
-      setError(true);
-      setMessage(urlError);
-    }
-  }, [urlError]);
-
   return (
     <CardWrapper
-      headerLabel="Welcome back!"
-      backButtonHref="/register"
-      backButtonLabel="Don't have an account?"
-      showSocial
+      headerLabel="Reset your password"
+      backButtonHref="/login"
+      backButtonLabel="Back to Login"
     >
       <Form {...form}>
         <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
@@ -98,36 +82,10 @@ const ResetForm = () => {
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Password</FormLabel>
-                  <FormControl>
-                    <Input
-                      disabled={isPending}
-                      {...field}
-                      placeholder="Enter your password"
-                      type="password"
-                    />
-                  </FormControl>
-                  <Button
-                    variant="link"
-                    size="sm"
-                    asChild
-                    className="px-0 font-normal text-[0.8rem] dark:text-primary text-primary-foreground"
-                  >
-                    <Link href="/reset-password">Forgot password?</Link>
-                  </Button>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
           </div>
           <FormResult message={message} error={error} />
           <Button type="submit" className="w-full shadow-lg font-semibold">
-            Login
+            Send Email
           </Button>
         </form>
       </Form>

@@ -31,3 +31,17 @@ export const registerSchema = z.object({
     })
     .min(1, { message: "Username is required" }),
 });
+
+export const resetSchema = z.object({
+  emailUsername: z
+    .union([
+      z.string().email({ message: "Invalid email or username" }),
+      z.string().regex(usernameRegex, {
+        message:
+          "Username can only contain letters, numbers, underscores, and periods.",
+      }),
+    ])
+    .refine((data) => data.length > 0, {
+      message: "Email or username is required",
+    }),
+});
