@@ -14,6 +14,7 @@ import {
 import UserAvatar from "./UserAvatar";
 import LogoutButton from "./LogoutButton";
 import LoginButton from "./LoginButton";
+import { Badge } from "../ui/badge";
 
 const UserButton = () => {
   const user = getUser();
@@ -37,19 +38,13 @@ const UserButton = () => {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            Profile
+          <DropdownMenuItem disabled>
+            Profile{" "}
+            <Badge variant="secondary" className="ml-3">
+              Coming Soon
+            </Badge>
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            Billing
-            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            Settings
-            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem>New Team</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <LogoutButton>
