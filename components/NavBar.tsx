@@ -6,6 +6,7 @@ import MobileSideBar from "./MobileSideBar";
 import { ModeToggle } from "./ModeToggle";
 import LoginButton from "./auth/LoginButton";
 import { Button } from "./ui/button";
+import LogoutButton from "./auth/LogoutButton";
 
 const NavBar = () => {
   const pathname = usePathname();
@@ -29,11 +30,14 @@ const NavBar = () => {
           <div className="gap-x-2 flex items-center justify-center">
             <ModeToggle />
             {!authRoute && (
-              <LoginButton>
-                <Button size="sm">
-                  Log In
-                </Button>
-              </LoginButton>
+              <>
+                <LoginButton>
+                  <Button size="sm">Log In</Button>
+                </LoginButton>
+                <LogoutButton>
+                  <Button size="sm">Log Out</Button>
+                </LogoutButton>
+              </>
             )}
           </div>
         </div>

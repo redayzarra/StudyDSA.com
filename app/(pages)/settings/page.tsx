@@ -1,23 +1,11 @@
 "use client";
 
-import LogoutButton from "@/components/auth/LogOutButton";
-import { Button } from "@/components/ui/button";
-import { useSession } from "next-auth/react";
+import { getUser } from "@/hooks/getUser";
 
 const SettingsPage = () => {
-  const session = useSession();
+  const user = getUser();
 
-  return (
-    <div>
-      {JSON.stringify(session)}
-
-      <LogoutButton>
-        <Button type="submit" className="mt-4">
-          Sign Out
-        </Button>
-      </LogoutButton>
-    </div>
-  );
+  return <div>{JSON.stringify(user)}</div>;
 };
 
 export default SettingsPage;
