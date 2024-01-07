@@ -11,8 +11,7 @@ const NewVerificationForm = () => {
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
 
-  // Error will determine if I should be destructive, and message
-  // will be a any message I recieve.
+  
   const [error, setError] = useState(false);
   const [message, setMessage] = useState<string | undefined>("");
 

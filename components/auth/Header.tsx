@@ -1,10 +1,4 @@
-import { Poppins } from "next/font/google";
 import Logo from "../Logo";
-
-const font = Poppins({
-  subsets: ["latin"],
-  weight: ["100", "400", "500", "600"],
-});
 
 const Header = ({ label }: { label: string }) => {
   return (

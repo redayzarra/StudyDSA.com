@@ -1,6 +1,6 @@
 "use client";
 
-import { login } from "@/actions/login";
+import { register } from "@/actions/register";
 import { registerSchema } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useTransition } from "react";
@@ -18,7 +18,6 @@ import {
 import { Input } from "../ui/input";
 import CardWrapper from "./CardWrapper";
 import FormResult from "./FormResult";
-import { register } from "@/actions/register";
 
 const RegisterForm = () => {
   const form = useForm<z.infer<typeof registerSchema>>({
