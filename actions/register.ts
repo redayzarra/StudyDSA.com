@@ -13,7 +13,7 @@ export const register = async (values: z.infer<typeof registerSchema>) => {
 
   // If we don't have a safe parse, throw an error immediately
   if (!validated.success) {
-    return { error: "Invalid information provided!" };
+    return { error: "Invalid format. Please check for typos!" };
   }
 
   // Extract the values from validated & hash the password

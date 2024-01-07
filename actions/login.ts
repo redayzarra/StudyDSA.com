@@ -7,36 +7,46 @@ import { loginSchema } from "@/schemas";
 import { AuthError } from "next-auth";
 import * as z from "zod";
 import isEmail from "./isEmail";
+import { getVerificationTokenByEmail } from "@/data/verificationToken";
+import { generateVerificationToken } from "@/lib/tokens";
 
 export const login = async (values: z.infer<typeof loginSchema>) => {
   const validated = loginSchema.safeParse(values);
 
   if (!validated.success) {
-    return { error: "Invalid information provided!" };
+    return { error: "Invalid format. Please check for typos!" };
   }
 
   const { emailUsername, password } = validated.data;
 
   let user;
-  // If the user entered an email...
   if (isEmail(emailUsername)) {
     user = await getUserByEmail(emailUsername);
-    // If the user entered a username...
+    if (!user) {
+      return { error: "Email does not exist" };
+    }
   } else {
     user = await getUserByUsername(emailUsername);
-  }
-
-  if (!user?.email) {
-    return {error: "Email does not exist."}
-  }
-
-  if (!user?.username) {
-    return {error: "Username does not exist."}
+    if (!user) {
+      return { error: "Username does not exist" };
+    }
   }
 
   if (!user?.password) {
-    return { error: "Please log in with your original provider." };
+    return { error: "Please log in with Google or GitHub" };
   }
+
+  if (!user) {
+    return { error: "User does not exist" };
+  }
+
+  // Come up with better way for verfifying users.
+  
+  // if (!user.emailVerified) {
+  //   const verificationToken = await generateVerificationToken(user.email!);
+
+  //   return {success: "For your safety, please confirm your email"}
+  // }
 
   try {
     await signIn("credentials", {
@@ -54,7 +64,7 @@ export const login = async (values: z.infer<typeof loginSchema>) => {
         case "CredentialsSignin":
           return { error: "Invalid credentials" };
         default:
-          return { error: "Something went wrong" };
+          return { error: "Something went wrong. Please try again" };
       }
     }
 

@@ -6,7 +6,7 @@ export const usernameRegex = /^[a-zA-Z0-9_.]+$/;
 export const loginSchema = z.object({
   emailUsername: z
     .union([
-      z.string().email({ message: "Invalid email" }),
+      z.string().email({ message: "Invalid email or username" }),
       z.string().regex(usernameRegex, {
         message:
           "Username can only contain letters, numbers, underscores, and periods.",
