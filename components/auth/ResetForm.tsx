@@ -21,7 +21,7 @@ import FormResult from "./FormResult";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
-const LoginForm = () => {
+const ResetForm = () => {
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -135,4 +135,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default ResetForm;

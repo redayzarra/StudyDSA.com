@@ -11,7 +11,6 @@ const NewVerificationForm = () => {
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
 
-  
   const [error, setError] = useState(false);
   const [message, setMessage] = useState<string | undefined>("");
 
@@ -46,8 +45,9 @@ const NewVerificationForm = () => {
       headerLabel="Verify your email"
       backButtonHref="/login"
       backButtonLabel="Back to Login"
+      drawAttention
     >
-      <div className="flex items-center w-full justify-center animate">
+      <div className="flex items-center w-full my-3 justify-center animate">
         {!error && <HashLoader color="#f9cb14" />}
         <FormResult message={message} error={error} />
       </div>

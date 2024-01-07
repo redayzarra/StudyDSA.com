@@ -12,6 +12,7 @@ interface Props {
   backButtonLabel: string;
   backButtonHref: string;
   showSocial?: boolean;
+  drawAttention?: boolean;
 }
 
 const CardWrapper = ({
@@ -20,6 +21,7 @@ const CardWrapper = ({
   backButtonHref,
   backButtonLabel,
   showSocial,
+  drawAttention,
 }: Props) => {
   return (
     <Card className="w-[400px] mx-3 shadow-md">
@@ -33,7 +35,11 @@ const CardWrapper = ({
         </CardFooter>
       )}
       <CardFooter>
-        <BackButton label={backButtonLabel} href={backButtonHref} />
+        <BackButton
+          drawAttention={drawAttention}
+          label={backButtonLabel}
+          href={backButtonHref}
+        />
       </CardFooter>
     </Card>
   );
