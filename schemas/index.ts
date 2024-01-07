@@ -52,5 +52,5 @@ export const newPasswordSchema = z.object({
     .min(6, { message: "Password should be at least 6 characters" }),
   confirmPassword: z
     .string()
-    .min(6, { message: "Passwords do not match" }),
+    .min(6, { message: "Password should be at least 6 characters" }),
 });

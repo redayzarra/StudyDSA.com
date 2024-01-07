@@ -7,11 +7,12 @@ import { ModeToggle } from "./ModeToggle";
 import LoginButton from "./auth/LoginButton";
 import { Button } from "./ui/button";
 import LogoutButton from "./auth/LogoutButton";
+import { authRoutes } from "@/routes";
+import UserButton from "./auth/UserButton";
 
 const NavBar = () => {
   const pathname = usePathname();
-  const authRoute =
-    pathname.includes("/login") || pathname.includes("/register");
+  const authRoute = authRoutes.includes(pathname);
 
   return (
     <div className="shadow-lg fixed top-0 left-0 right-0 z-50 flex items-center bg-background/60 backdrop-blur-[8px]">
@@ -31,12 +32,9 @@ const NavBar = () => {
             <ModeToggle />
             {!authRoute && (
               <>
-                <LoginButton>
-                  <Button size="sm">Log In</Button>
-                </LoginButton>
-                <LogoutButton>
-                  <Button size="sm">Log Out</Button>
-                </LogoutButton>
+                
+
+                <UserButton />
               </>
             )}
           </div>

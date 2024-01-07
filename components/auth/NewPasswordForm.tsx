@@ -1,6 +1,5 @@
 "use client";
 
-import { reset } from "@/actions/reset";
 import { newPasswordSchema } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useTransition } from "react";
