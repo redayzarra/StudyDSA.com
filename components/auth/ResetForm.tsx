@@ -1,6 +1,6 @@
 "use client";
 
-import { register } from "@/actions/register";
+import { reset } from "@/actions/reset";
 import { resetSchema } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useTransition } from "react";
@@ -18,7 +18,6 @@ import {
 import { Input } from "../ui/input";
 import CardWrapper from "./CardWrapper";
 import FormResult from "./FormResult";
-import { reset } from "@/actions/reset";
 
 const ResetForm = () => {
   const form = useForm<z.infer<typeof resetSchema>>({
