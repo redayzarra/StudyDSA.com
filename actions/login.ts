@@ -7,8 +7,6 @@ import { loginSchema } from "@/schemas";
 import { AuthError } from "next-auth";
 import * as z from "zod";
 import isEmail from "./isEmail";
-import { getVerificationTokenByEmail } from "@/data/verificationToken";
-import { generateVerificationToken } from "@/lib/tokens";
 
 export const login = async (values: z.infer<typeof loginSchema>) => {
   const validated = loginSchema.safeParse(values);
@@ -41,7 +39,7 @@ export const login = async (values: z.infer<typeof loginSchema>) => {
   }
 
   // Come up with better way for verfifying users.
-  
+
   // if (!user.emailVerified) {
   //   const verificationToken = await generateVerificationToken(user.email!);
 

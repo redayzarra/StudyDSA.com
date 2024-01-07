@@ -1,11 +1,11 @@
 "use server";
 
-import { registerSchema } from "@/schemas";
-import * as z from "zod";
-import bcrypt from "bcryptjs";
-import db from "@/lib/db";
 import { getUserByEmail, getUserByUsername } from "@/data/user";
+import db from "@/lib/db";
 import { generateVerificationToken } from "@/lib/tokens";
+import { registerSchema } from "@/schemas";
+import bcrypt from "bcryptjs";
+import * as z from "zod";
 
 export const register = async (values: z.infer<typeof registerSchema>) => {
   // Parse the values through our registerSchema
@@ -18,7 +18,7 @@ export const register = async (values: z.infer<typeof registerSchema>) => {
 
   // Extract the values from validated & hash the password
   const { username, email, password } = validated.data;
-  const hashedPassword = await bcrypt.hash(password, 0);
+  const hashedPassword = await bcrypt.hash(password, 12);
 
   // Confirm that the email is not taken
   const existingEmail = await getUserByEmail(email);

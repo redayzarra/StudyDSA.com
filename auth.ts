@@ -37,6 +37,10 @@ export const {
         session.user.username = token.username as string;
       }
 
+      if (token.emailVerified && session.user) {
+        session.user.emailVerified = token.emailVerified as Date;
+      }
+
       return session;
     },
     async jwt({ token }) {
@@ -47,6 +51,7 @@ export const {
 
       token.role = existingUser.role;
       token.username = existingUser.username;
+      token.emailVerified = existingUser.emailVerified;
       return token;
     },
   },
