@@ -1,5 +1,5 @@
 import { getUser } from "@/hooks/getUser";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import {
   DropdownMenu,
@@ -8,13 +8,11 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import UserAvatar from "./UserAvatar";
-import LogoutButton from "./LogoutButton";
 import LoginButton from "./LoginButton";
-import { Badge } from "../ui/badge";
+import LogoutButton from "./LogoutButton";
+import UserAvatar from "./UserAvatar";
 
 const UserButton = () => {
   const user = getUser();
@@ -40,24 +38,22 @@ const UserButton = () => {
         <DropdownMenuGroup>
           <DropdownMenuItem disabled>
             Profile{" "}
-            <Badge variant="secondary" className="ml-3">
+            <Badge variant="secondary" className="ml-14">
               Coming Soon
             </Badge>
-            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <LogoutButton>
-          <DropdownMenuItem>
-            Log out
-            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-          </DropdownMenuItem>
+          <DropdownMenuItem>Log out</DropdownMenuItem>
         </LogoutButton>
       </DropdownMenuContent>
     </DropdownMenu>
   ) : (
     <LoginButton>
-      <Button size="sm">Log In</Button>
+      <Button size="sm" className="font-semibold">
+        Log In
+      </Button>
     </LoginButton>
   );
 };
