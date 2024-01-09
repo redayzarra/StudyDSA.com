@@ -1,13 +1,10 @@
 "use client";
 
+import { authRoutes } from "@/routes";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 import MobileSideBar from "./MobileSideBar";
 import { ModeToggle } from "./ModeToggle";
-import LoginButton from "./auth/LoginButton";
-import { Button } from "./ui/button";
-import LogoutButton from "./auth/LogoutButton";
-import { authRoutes } from "@/routes";
 import UserButton from "./auth/UserButton";
 
 const NavBar = () => {
@@ -32,8 +29,6 @@ const NavBar = () => {
             <ModeToggle />
             {!authRoute && (
               <>
-                
-
                 <UserButton />
               </>
             )}
