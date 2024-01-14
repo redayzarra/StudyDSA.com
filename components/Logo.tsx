@@ -9,19 +9,31 @@ const font = Poppins({
   weight: ["400", "600"],
 });
 
-export const LogoText = () => {
+interface Props {
+  size?: "default" | "lg";
+}
+
+export const LogoText = ({ size = "default" }: Props) => {
   return (
     <div className="gap-x-1 flex items-center">
-      <FaBook size={25} />
-      <h1 className={cn("text-2xl font-[600]", font.className)}>StudyDSA</h1>
+      <FaBook size={size === "lg" ? 30 : 18} />
+      <h1
+        className={cn(
+          "font-[600]",
+          font.className,
+          size === "lg" ? "text-4xl" : "text-xl"
+        )}
+      >
+        StudyDSA
+      </h1>
     </div>
   );
 };
 
-const Logo = () => {
+const Logo = ({ size }: Props) => {
   return (
     <Link href={"/"}>
-      <LogoText />
+      <LogoText size={size} />
     </Link>
   );
 };
