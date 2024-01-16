@@ -5,6 +5,48 @@ export const dataStructures: { title: string; href: string; description: string 
     description:
       "A modal dialog that interrupts the user with important content and expects a response.",
   },
+  {
+    title: "Hashmaps & Sets",
+    href: "/docs/primitives/tooltip",
+    description:
+      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+  },
+  {
+    title: "Linked Lists",
+    href: "/docs/primitives/tooltip",
+    description:
+      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+  },
+  {
+    title: "Binary Trees",
+    href: "/docs/primitives/tooltip",
+    description:
+      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+  },
+  {
+    title: "Tries",
+    href: "/docs/primitives/tooltip",
+    description:
+      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+  },
+  {
+    title: "Heaps/Priority Queues",
+    href: "/docs/primitives/tooltip",
+    description:
+      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+  },
+  {
+    title: "Adjacency Lists",
+    href: "/docs/primitives/tooltip",
+    description:
+      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+  },
+  {
+    title: "2D Matrix",
+    href: "/docs/primitives/tooltip",
+    description:
+      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+  },
 ];
 
 export const algorithms: { title: string; href: string; description: string }[] = [
