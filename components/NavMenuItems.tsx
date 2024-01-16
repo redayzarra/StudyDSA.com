@@ -6,7 +6,7 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger
+  NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import NavListItem from "./NavListItem";
 
@@ -52,43 +52,50 @@ export function NavMenuItems() {
   return (
     <NavigationMenu>
       <NavigationMenuList className="space-x-1">
-        {/* Getting Started: Dropdown Menu */}
+        {/* Data Structures: Dropdown Menu */}
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="bg-transparent dark:hover:bg-accent/50">
-            Getting started
+          <NavigationMenuTrigger className="bg-tranparent hover:bg-accent/50">
+            Data Structures
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              <li className="row-span-3">
-                <NavigationMenuLink asChild>
-                  <div className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md">
-                    <p className="mb-2 mt-4 text-lg font-medium">StudyDSA</p>
-                    <p className="text-sm leading-tight text-muted-foreground">
-                      Dive into Data Structures & Algorithms! Boost your coding
-                      skills and ace interviews, no matter your skill level.
-                    </p>
-                  </div>
-                </NavigationMenuLink>
-              </li>
-              <NavListItem href="/introduction" title="Introduction">
-                Discover what I offer and how it can benefit your learning.
-              </NavListItem>
-              <NavListItem href="/studyguide" title="Study Guide">
-                Your roadmap to mastering DSA: Tips, strategies, and best
-                practices for effective learning.
-              </NavListItem>
-              <NavListItem href="/resources" title="Resources">
-                Explore the wealth of resources I have collected over the years
-                to study DSA.
-              </NavListItem>
+            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+              {courses.map((course) => (
+                <NavListItem
+                  key={course.title}
+                  title={course.title}
+                  href={course.href}
+                >
+                  {course.description}
+                </NavListItem>
+              ))}
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
 
-        {/* Courses: Dropdown Menu */}
+        {/* Algorithms: Dropdown Menu */}
         <NavigationMenuItem>
           <NavigationMenuTrigger className="bg-tranparent hover:bg-accent/50">
-            Courses
+            Algorithms
+          </NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+              {courses.map((course) => (
+                <NavListItem
+                  key={course.title}
+                  title={course.title}
+                  href={course.href}
+                >
+                  {course.description}
+                </NavListItem>
+              ))}
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+
+        {/* Machine Learning: Dropdown Menu */}
+        <NavigationMenuItem>
+          <NavigationMenuTrigger className="bg-tranparent hover:bg-accent/50">
+            Machine Learning
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
