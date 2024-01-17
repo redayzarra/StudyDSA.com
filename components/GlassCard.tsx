@@ -12,9 +12,9 @@ interface Props {
 const GlassCard = ({
   children,
   className,
-  backgroundColor = "bg-zinc-950",
-  gradientSize = 300,
-  gradientPower = 0.15,
+  backgroundColor = "",
+  gradientSize = 200,
+  gradientPower = 0.17,
 }: PropsWithChildren<Props>) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -44,7 +44,6 @@ const GlassCard = ({
       className={`glass-card ${className || ""} ${backgroundColor}`}
       onMouseMove={handleOnMouseMove}
     >
-      <div className="glass-card-border"></div>
       <div
         className={`glass-card-content ${backgroundColor} flex items-center justify-center`}
       >

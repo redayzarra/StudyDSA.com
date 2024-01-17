@@ -1,11 +1,13 @@
 import { FaCode } from "react-icons/fa6";
 import { Button } from "./ui/button";
 import GlassCard from "./GlassCard";
+import { dataStructures } from "@/data/navData";
+import Link from "next/link";
 
 const LandingCard = () => {
   return (
-    <div className="rounded-lg p-4 bg-gradient-to-l from-transparent via-transparent to-primary/50">
-      <div className="grid grid-cols-1 md:grid-cols-2">
+    <div className="rounded-lg p-4 bg-gradient-to-t md:bg-gradient-to-l from-transparent via-transparent to-color1">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
         {/* Left Side */}
         <div className="space-y-4">
           <h1 className="text-4xl font-bold">Data Structures</h1>
@@ -21,10 +23,13 @@ const LandingCard = () => {
         {/* Right Side */}
         <div className="">
           <div className="grid grid-cols-2 gap-2">
-            <GlassCard className="rounded-sm p-2" backgroundColor="bg-red-400">Arrays</GlassCard>
-            <GlassCard className="rounded-sm">With stuff inside</GlassCard>
-            <GlassCard className="rounded-sm">With stuff inside</GlassCard>
-            <GlassCard className="rounded-sm">With stuff inside</GlassCard>
+            {dataStructures.map((item) => (
+              <Link href={item.href}>
+                <GlassCard className="rounded-sm p-2 font-medium bg-zinc-400/20 line-clamp-1 truncate">
+                  {item.title}
+                </GlassCard>
+              </Link>
+            ))}
           </div>
         </div>
       </div>
