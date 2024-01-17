@@ -67,3 +67,53 @@ body,
 .frosty {
   background-image: url("/images/grain.svg");
 }
+
+/* Fancy Card with Gradient */
+.glass-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.glass-card:hover::before {
+  opacity: 1;
+}
+
+.glass-card:hover > .glass-card-border {
+  opacity: 1;
+}
+
+.glass-card::before {
+  background: radial-gradient(
+    var(--circle-size) circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, var(--gradient-power)),
+    transparent 40%
+  );
+  border-radius: inherit;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+  opacity: 0;
+  transition: opacity 500ms;
+  content: "";
+  z-index: 3;
+}
+
+.glass-card > .glass-card-border {
+  background: radial-gradient(
+    var(--circle-size) circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, var(--gradient-power) / 50),
+    transparent 40%
+  );
+  z-index: 1;
+}
+
+.glass-card > .glass-card-content {
+  height: calc(100% - 2px);
+  width: calc(100% - 2px);
+  border-radius: inherit;
+  margin: 1px;
+  position: relative;
+  z-index: 2;
+}

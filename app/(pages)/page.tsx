@@ -3,7 +3,7 @@ import LandingCard from "@/components/LandingCard";
 export default function Home() {
   return (
     <div>
-      <div className="">
+      <div className="space-y-14">
         {/* Title and Heading */}
         <div className="flex flex-col space-y-2 items-center justify-center">
           <h1 className="font-bold text-4xl text-center">Master Data Structures & Algorithms</h1>
