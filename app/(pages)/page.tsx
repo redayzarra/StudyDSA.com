@@ -1,16 +1,18 @@
+import LandingCard from "@/components/LandingCard";
+
 export default function Home() {
   return (
     <div>
-      <div className="flex mt-24">
-        <div className="flex flex-col space-y-2">
-          <h1 className="text-4xl font-bold">
-            Master Data Structures <br></br> and Algorithms
-          </h1>
-          <h2 className="text-muted-foreground max-w-lg">
-            Everything you need to ace your coding interviews. No more expensive
-            courses. No monthly subsciptions. No ads. No bullshit.
+      <div className="">
+        {/* Title and Heading */}
+        <div className="flex flex-col space-y-2 items-center justify-center">
+          <h1 className="font-bold text-4xl text-center">Master Data Structures & Algorithms</h1>
+          <h2 className="dark:text-muted-foreground hidden md:flex">
+            Everything you need to ace the coding interviews for free. No ads.
+            No payments. No bullshit.
           </h2>
         </div>
+        <LandingCard />
       </div>
     </div>
   );
