@@ -1,4 +1,4 @@
-import LandingCard from "@/components/LandingCard";
+import SkillTree from "@/components/SkillTree";
 
 export default function Home() {
   return (
@@ -15,7 +15,7 @@ export default function Home() {
             inventore. Asperiores, praesentium!
           </h2>
         </div>
-        <LandingCard />
+        <SkillTree />
       </div>
     </div>
   );
