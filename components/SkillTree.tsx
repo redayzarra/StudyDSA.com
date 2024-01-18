@@ -13,7 +13,7 @@ import { AiOutlineFunction } from "react-icons/ai";
 const SkillTree = () => {
   return (
     <div className="w-full rounded-md bg-slate-300/50 dark:bg-zinc-950/50 px-8 py-4">
-      <div className="grid gap-8 grid-cols-1 md:grid-cols-2">
+      <div className="grid gap-8 grid-cols-1 xm:grid-cols-2">
         <Accordion type="single" collapsible defaultValue="item-1">
           <AccordionItem value="item-1">
             <AccordionTrigger>
