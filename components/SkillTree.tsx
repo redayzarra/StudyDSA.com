@@ -1,14 +1,11 @@
-import React from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { TbBinaryTree } from "react-icons/tb";
-import { PiTreeStructure } from "react-icons/pi";
-import { Badge } from "./ui/badge";
 import { AiOutlineFunction } from "react-icons/ai";
+import { TbBinaryTree } from "react-icons/tb";
 
 const SkillTree = () => {
   return (
@@ -38,22 +35,6 @@ const SkillTree = () => {
                   <AiOutlineFunction size={30} />
                 </div>
                 <h1 className="text-xl">Algorithms</h1>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent>
-              Yes. It adheres to the WAI-ARIA design pattern.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem disabled value="machineLearning">
-            <AccordionTrigger className="hover:font-medium text-muted-foreground">
-              <div className="flex space-x-4 items-center justify-center">
-                <div className="rounded-full bg-background/50 dark:bg-foreground/10 shadow-md h-12 w-12 items-center justify-center flex flex-shrink-0">
-                  <PiTreeStructure size={30} />
-                </div>
-                <h1 className="text-xl">Machine Learning</h1>
-                <Badge variant="secondary" className="text-muted-foreground">
-                  Coming Soon
-                </Badge>
               </div>
             </AccordionTrigger>
             <AccordionContent>
