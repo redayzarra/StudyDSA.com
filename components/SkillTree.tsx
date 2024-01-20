@@ -4,12 +4,13 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { dataStructures } from "@/data/navData";
 import { AiOutlineFunction } from "react-icons/ai";
 import { TbBinaryTree } from "react-icons/tb";
 
 const SkillTree = () => {
   return (
-    <div className="w-full rounded-md bg-slate-300/50 dark:bg-zinc-950/50 px-8 py-4">
+    <div className="w-full shadow-lg rounded-md bg-slate-200/50 dark:bg-zinc-950/50 border-t-2 border-white dark:border-border px-8 py-4">
       <div className="grid gap-8 grid-cols-1 xm:grid-cols-2">
         <Accordion type="single" collapsible defaultValue="item-1">
           <AccordionItem value="item-1">
@@ -22,7 +23,11 @@ const SkillTree = () => {
               </div>
             </AccordionTrigger>
             <AccordionContent>
-              Yes. It adheres to the WAI-ARIA design pattern.
+              Lists <br />
+              Hashmaps <br />
+              Linked Lists <br />
+              Heaps <br />
+              Graphs <br />
             </AccordionContent>
           </AccordionItem>
         </Accordion>
@@ -38,7 +43,18 @@ const SkillTree = () => {
               </div>
             </AccordionTrigger>
             <AccordionContent>
-              Yes. It adheres to the WAI-ARIA design pattern.
+              <div className="">
+                <ul className="grid grid-cols-2 gap-4">
+                  {dataStructures.map((dataStructure) => (
+                    <div className="rounded-sm p-2 bg-transparent hover:bg-muted-foreground/10 dark:hover:bg-black/25 hover:cursor-pointer space-y-2">
+                      <h1 className="font-semibold">{dataStructure.title}</h1>
+                      <h2 className="line-clamp-2">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      </h2>
+                    </div>
+                  ))}
+                </ul>
+              </div>
             </AccordionContent>
           </AccordionItem>
         </Accordion>

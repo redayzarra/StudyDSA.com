@@ -4,7 +4,7 @@ import React from "react";
 
 const PagesLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="">
+    <div className="h-full w-full">
       <NavBar />
       <Container>
         <main className="mt-16">{children}</main>
