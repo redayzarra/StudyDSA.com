@@ -19,15 +19,15 @@ const SkillTree = () => {
                 <div className="rounded-full bg-background/50 dark:bg-foreground/10 shadow-md h-12 w-12 items-center justify-center flex flex-shrink-0">
                   <TbBinaryTree size={30} />
                 </div>
-                <h1 className="text-xl">Data Structures</h1>
+                <h1 className="text-xl">Arrays</h1>
               </div>
             </AccordionTrigger>
             <AccordionContent>
-              Lists <br />
-              Hashmaps <br />
-              Linked Lists <br />
-              Heaps <br />
-              Graphs <br />
+              Static Arrays <br />
+              Dynamic Arrays <br />
+              Tuples <br />
+              Strings <br />
+              Stacks <br />
             </AccordionContent>
           </AccordionItem>
         </Accordion>
