@@ -24,7 +24,7 @@ export default async function RootLayout({
     <SessionProvider session={session}>
       <html lang="en">
         <body
-          className={`${inter.className} h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-background to-muted-foreground/25 dark:from-accent dark:to-background`}
+          className={`${inter.className}`}
         >
           <ThemeProvider
             attribute="class"

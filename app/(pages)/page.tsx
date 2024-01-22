@@ -1,4 +1,5 @@
-import SkillTree from "@/components/SkillTree";
+import AlgorithmsSkills from "@/components/AlgorithmsSkills";
+import DataStructureSkills from "@/components/DataStructureSkills";
 
 export default function Home() {
   return (
@@ -10,11 +11,12 @@ export default function Home() {
             Master Data Structures & Algorithms
           </h1>
           <h2 className="dark:text-muted-foreground text-lg text-center">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br/>Dolorum
-            eveniet libero, ipsa totam laborum numquam provident.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br />
+            Dolorum eveniet libero, ipsa totam laborum numquam provident.
           </h2>
         </div>
-        <SkillTree />
+        <DataStructureSkills />
+        <AlgorithmsSkills />
       </div>
     </div>
   );

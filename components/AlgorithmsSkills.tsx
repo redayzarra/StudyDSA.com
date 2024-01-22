@@ -10,10 +10,10 @@ import { MdDataArray } from "react-icons/md";
 import { AiOutlineNodeIndex } from "react-icons/ai";
 import SkillTreeHeading from "./SkillTreeHeading";
 
-const SkillTree = () => {
+const AlgorithmsSkills = () => {
   return (
     <div className="w-full shadow-lg rounded-md bg-slate-200/50 dark:bg-zinc-950/50 border-t-2 border-white dark:border-border px-8 py-4">
-      <SkillTreeHeading>Data Structures</SkillTreeHeading>
+      <SkillTreeHeading>Algorithms</SkillTreeHeading>
       <div className="grid gap-x-8 grid-cols-1 xm:grid-cols-2">
         {/* Arrays */}
         <Accordion type="single" collapsible defaultValue="algorithms">
@@ -101,4 +101,4 @@ const SkillTree = () => {
   );
 };
 
-export default SkillTree;
+export default AlgorithmsSkills;
