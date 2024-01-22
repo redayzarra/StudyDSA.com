@@ -32,7 +32,8 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <SmoothScroll>{children}</SmoothScroll>
+            {/* <SmoothScroll>{children}</SmoothScroll> */}
+            {children}
           </ThemeProvider>
         </body>
       </html>
