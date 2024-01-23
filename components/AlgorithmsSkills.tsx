@@ -13,7 +13,7 @@ import SkillTreeCell from "./SkillTreeCell";
 
 const AlgorithmsSkills = () => {
   return (
-    <div className="w-full shadow-lg rounded-md bg-slate-200/50 dark:bg-zinc-950/50 border-t-2 border-white dark:border-border px-8 py-4">
+    <div className="w-full pb-7 shadow-lg rounded-md bg-slate-200/50 dark:bg-zinc-950/50 border-t-2 border-white dark:border-border px-8 py-4">
       <SkillTreeHeading>Algorithms</SkillTreeHeading>
       <div className="grid gap-x-8 grid-cols-1 xm:grid-cols-2">
         <Accordion type="multiple">
