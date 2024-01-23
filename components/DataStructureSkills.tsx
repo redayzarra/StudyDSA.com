@@ -11,19 +11,19 @@ import { AiOutlineNodeIndex } from "react-icons/ai";
 import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeCell from "./SkillTreeCell";
 import SkillTreeItem from "./SkillTreeItem";
+import { arraySkills } from "@/data/skillsData";
 
 const DataStructureSkills = () => {
   return (
     <div className="w-full shadow-lg rounded-md bg-slate-200/50 dark:bg-zinc-950/50 border-t-2 border-white dark:border-border px-8 py-4">
       <SkillTreeHeading>Data Structures</SkillTreeHeading>
-      
       {/* The Basics */}
       <h2 className="font-semibold mb-2">Basics</h2>
       <div className="grid gap-x-8 grid-cols-1 xm:grid-cols-2">
-          {/* First Column */}
+        {/* First Column */}
         <Accordion type="multiple">
           {/* Arrays */}
-          <SkillTreeItem items={dataStructures} name="Arrays" value="arrays">
+          <SkillTreeItem items={arraySkills} name="Arrays" value="arrays">
             <MdDataArray size={30} />
           </SkillTreeItem>
           {/* Linked Lists */}

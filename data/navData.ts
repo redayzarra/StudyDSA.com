@@ -1,12 +1,12 @@
 export const dataStructures: { title: string; href: string; description: string }[] = [
   {
-    title: "Arrays & Strings",
+    title: "Arrays",
     href: "/docs/primitives/alert-dialog",
     description:
       "A modal dialog that interrupts the user with important content and expects a response.",
   },
   {
-    title: "Hashmaps & Sets",
+    title: "Stacks",
     href: "/docs/primitives/tooltip",
     description:
       "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
@@ -18,31 +18,31 @@ export const dataStructures: { title: string; href: string; description: string 
       "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
   },
   {
-    title: "Binary Trees",
+    title: "Hashmaps & Sets",
     href: "/docs/primitives/tooltip",
     description:
       "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
   },
   {
-    title: "Tries",
+    title: "Queues",
     href: "/docs/primitives/tooltip",
     description:
       "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
   },
   {
-    title: "Heaps/Priority Queues",
+    title: "Trees",
     href: "/docs/primitives/tooltip",
     description:
       "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
   },
   {
-    title: "Adjacency Lists",
+    title: "Heaps",
     href: "/docs/primitives/tooltip",
     description:
       "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
   },
   {
-    title: "2D Matrix",
+    title: "Graphs",
     href: "/docs/primitives/tooltip",
     description:
       "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",

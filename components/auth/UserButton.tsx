@@ -45,7 +45,7 @@ const UserButton = () => {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <LogoutButton>
-          <DropdownMenuItem>Log out</DropdownMenuItem>
+          <DropdownMenuItem className="cursor-pointer">Log out</DropdownMenuItem>
         </LogoutButton>
       </DropdownMenuContent>
     </DropdownMenu>
