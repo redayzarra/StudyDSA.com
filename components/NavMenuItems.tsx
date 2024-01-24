@@ -55,7 +55,7 @@ export function NavMenuItems() {
           </NavigationMenuContent>
         </NavigationMenuItem>
 
-        {/* Machine Learning: Dropdown Menu */}
+        {/* Machine Learning: Dropdown Menu
         <NavigationMenuItem>
           <NavigationMenuTrigger className="bg-tranparent hover:bg-accent/50">
             Machine Learning
@@ -73,7 +73,7 @@ export function NavMenuItems() {
               ))}
             </ul>
           </NavigationMenuContent>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
       </NavigationMenuList>
     </NavigationMenu>
   );

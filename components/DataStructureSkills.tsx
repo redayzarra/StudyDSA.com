@@ -11,7 +11,8 @@ import { AiOutlineNodeIndex } from "react-icons/ai";
 import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeCell from "./SkillTreeCell";
 import SkillTreeItem from "./SkillTreeItem";
-import { arraySkills } from "@/data/skillsData";
+import { arraySkills, linkedSkills } from "@/data/skillsData";
+import { BiSolidCoinStack } from "react-icons/bi";
 
 const DataStructureSkills = () => {
   return (
@@ -28,15 +29,17 @@ const DataStructureSkills = () => {
           </SkillTreeItem>
           {/* Linked Lists */}
           <SkillTreeItem
-            items={dataStructures}
+            items={linkedSkills}
             name="Linked Lists"
             value="linkedLists"
           >
             <AiOutlineNodeIndex size={30} />
           </SkillTreeItem>
         </Accordion>
+
         {/* Second Column */}
         <Accordion type="multiple">
+          {/* Hashmaps */}
           <SkillTreeItem
             name="Hashmaps & Sets"
             value="hashmaps"
