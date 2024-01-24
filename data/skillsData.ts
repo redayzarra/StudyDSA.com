@@ -10,11 +10,6 @@ export const arraySkills: { title: string; href: string; description: string }[]
     description: "Here's everything you can do with arrays and their complexities",
   },
   {
-    title: "Applications",
-    href: "/",
-    description: "You should use arrays for storing the same type of things",
-  },
-  {
     title: "Pointers",
     href: "/",
     description: "They point to stuff instead of storing data",
@@ -35,6 +30,11 @@ export const arraySkills: { title: string; href: string; description: string }[]
     description: "LIFO - meaning you can quickly access the most recent one",
   },
   {
+    title: "Applications",
+    href: "/",
+    description: "You should use arrays for storing the same type of things",
+  },
+  {
     title: "Best Practices",
     href: "/",
     description: "The most efficient way to use arrays and avoid pitfalls",
@@ -50,27 +50,37 @@ export const linkedSkills: { title: string; href: string; description: string }[
   {
     title: "Operations",
     href: "/",
-    description: "Here's everything you can do with stacks and their complexities",
+    description: "Here's everything you can do with linked lists and their complexities",
   },
   {
-    title: "Applications",
-    href: "/",
-    description: "LIFO - meaning you can use them to access the most recent thing",
-  },
-  {
-    title: "Pointers",
+    title: "Implementation",
     href: "/",
     description: "They point to stuff instead of storing data",
   },
   {
-    title: "Static Arrays",
+    title: "Pointers",
     href: "/",
     description: "They're like a metal can, they can only fit a certain amount",
   },
   {
-    title: "Dynamic Arrays",
+    title: "Singly Linked List",
     href: "/",
     description: "They're basically balloons, you can keep adding to them with no worries",
+  },
+  {
+    title: "Doubly Linked List",
+    href: "/",
+    description: "They're basically balloons, you can keep adding to them with no worries",
+  },
+  {
+    title: "Circular Linked List",
+    href: "/",
+    description: "They're basically balloons, you can keep adding to them with no worries",
+  },
+  {
+    title: "Applications",
+    href: "/",
+    description: "Whenever you want to add or remove to the beginning or the end",
   },
 ]
 
