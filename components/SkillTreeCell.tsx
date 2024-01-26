@@ -20,7 +20,7 @@ const SkillTreeCell = ({
           <h2 className="line-clamp-2 text-muted-foreground">{description}</h2>
         </div>
       </Link>
-      <Checkbox className="absolute top-2 right-2" />
+      <Checkbox className="absolute top-2 right-2 rounded-full h-5 w-5" />
     </div>
   );
 };

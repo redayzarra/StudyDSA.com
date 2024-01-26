@@ -6,13 +6,14 @@ import {
 } from "@/components/ui/accordion";
 import { dataStructures } from "@/data/navData";
 import { TbBrandCitymapper } from "react-icons/tb";
-import { MdDataArray } from "react-icons/md";
+import { MdDataArray, MdDataObject } from "react-icons/md";
 import { AiOutlineNodeIndex } from "react-icons/ai";
 import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeCell from "./SkillTreeCell";
 import SkillTreeItem from "./SkillTreeItem";
 import { arraySkills, linkedSkills } from "@/data/skillsData";
-import { BiSolidCoinStack } from "react-icons/bi";
+import { MdLinearScale } from "react-icons/md";
+import { LucideBraces } from "lucide-react";
 
 const DataStructureSkills = () => {
   return (
@@ -45,7 +46,14 @@ const DataStructureSkills = () => {
             value="hashmaps"
             items={dataStructures}
           >
-            <TbBrandCitymapper size={35} />
+            <MdDataObject size={30} />
+          </SkillTreeItem>
+          <SkillTreeItem
+            name="Queues"
+            value="queues"
+            items={dataStructures}
+          >
+            <MdLinearScale size={35} />
           </SkillTreeItem>
         </Accordion>
       </div>
