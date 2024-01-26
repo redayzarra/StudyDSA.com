@@ -1,19 +1,12 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Accordion } from "@/components/ui/accordion";
 import { dataStructures } from "@/data/navData";
-import { TbBrandCitymapper } from "react-icons/tb";
-import { MdDataArray, MdDataObject } from "react-icons/md";
-import { AiOutlineNodeIndex } from "react-icons/ai";
-import SkillTreeHeading from "./SkillTreeHeading";
-import SkillTreeCell from "./SkillTreeCell";
-import SkillTreeItem from "./SkillTreeItem";
 import { arraySkills, linkedSkills } from "@/data/skillsData";
-import { MdLinearScale } from "react-icons/md";
-import { LucideBraces } from "lucide-react";
+import { AiOutlineNodeIndex } from "react-icons/ai";
+import { MdDataArray, MdDataObject, MdLinearScale } from "react-icons/md";
+import SkillTreeHeading from "./SkillTreeHeading";
+import SkillTreeItem from "./SkillTreeItem";
+import { TbBinaryTree, TbBinaryTree2, TbMountain, TbVector } from "react-icons/tb";
+import { FaArrowUpRightDots } from "react-icons/fa6";
 
 const DataStructureSkills = () => {
   return (
@@ -48,11 +41,7 @@ const DataStructureSkills = () => {
           >
             <MdDataObject size={30} />
           </SkillTreeItem>
-          <SkillTreeItem
-            name="Queues"
-            value="queues"
-            items={dataStructures}
-          >
+          <SkillTreeItem name="Queues" value="queues" items={dataStructures}>
             <MdLinearScale size={35} />
           </SkillTreeItem>
         </Accordion>
@@ -61,136 +50,63 @@ const DataStructureSkills = () => {
       {/* Intermediate Data Structrues */}
       <h2 className="font-semibold mt-10 mb-2">Intermediate</h2>
       <div className="grid gap-x-8 grid-cols-1 xm:grid-cols-2">
+        {/* First Column */}
         <Accordion type="multiple">
-          {/* First Column */}
-          <AccordionItem value="arrays">
-            <AccordionTrigger>
-              <div className="flex space-x-4 items-center justify-center">
-                <div className="rounded-full bg-background/50 dark:bg-foreground/10 shadow-md h-12 w-12 items-center justify-center flex flex-shrink-0">
-                  <MdDataArray size={30} />
-                </div>
-                <h1 className="text-xl">Arrays</h1>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent>
-              <div className="">
-                <ul className="grid grid-cols-2 gap-4">
-                  {dataStructures.map((dataStructure) => (
-                    <SkillTreeCell>{dataStructure.title}</SkillTreeCell>
-                  ))}
-                </ul>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="linkedLists">
-            <AccordionTrigger>
-              <div className="flex space-x-4 items-center justify-center">
-                <div className="rounded-full bg-background/50 dark:bg-foreground/10 shadow-md h-12 w-12 items-center justify-center flex flex-shrink-0">
-                  <AiOutlineNodeIndex size={30} />
-                </div>
-                <h1 className="text-xl">Linked Lists</h1>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent>
-              <div className="">
-                <ul className="grid grid-cols-2 gap-4">
-                  {dataStructures.map((dataStructure) => (
-                    <SkillTreeCell>{dataStructure.title}</SkillTreeCell>
-                  ))}
-                </ul>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
+          {/* Trees */}
+          <SkillTreeItem items={arraySkills} name="Trees" value="trees">
+            <TbBinaryTree size={30} />
+          </SkillTreeItem>
+          {/* Graphs */}
+          <SkillTreeItem items={linkedSkills} name="Graphs" value="graphs">
+            <TbVector size={30} />
+          </SkillTreeItem>
         </Accordion>
+
         {/* Second Column */}
         <Accordion type="multiple">
-          <AccordionItem value="algorithms">
-            <AccordionTrigger>
-              <div className="flex space-x-4 items-center justify-center">
-                <div className="rounded-full bg-background/50 dark:bg-foreground/10 shadow-md h-12 w-12 items-center justify-center flex flex-shrink-0">
-                  <TbBrandCitymapper size={35} />
-                </div>
-                <h1 className="text-xl">Hashmaps & Sets</h1>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent>
-              <div className="">
-                <ul className="grid grid-cols-2 gap-4">
-                  {dataStructures.map((dataStructure) => (
-                    <SkillTreeCell>{dataStructure.title}</SkillTreeCell>
-                  ))}
-                </ul>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
+          {/* Heaps */}
+          <SkillTreeItem name="Heaps" value="heaps" items={dataStructures}>
+            <FaArrowUpRightDots size={26} />
+          </SkillTreeItem>
+          {/* Tries */}
+          <SkillTreeItem name="Tries" value="tries" items={dataStructures}>
+            <TbBinaryTree2 size={28} />
+          </SkillTreeItem>
         </Accordion>
       </div>
 
       {/* Advanced Data Structrues */}
       <h2 className="font-semibold mt-10 mb-2">Advanced</h2>
       <div className="grid gap-x-8 grid-cols-1 xm:grid-cols-2">
+        {/* First Column */}
         <Accordion type="multiple">
-          {/* First Column */}
-          <AccordionItem value="arrays">
-            <AccordionTrigger>
-              <div className="flex space-x-4 items-center justify-center">
-                <div className="rounded-full bg-background/50 dark:bg-foreground/10 shadow-md h-12 w-12 items-center justify-center flex flex-shrink-0">
-                  <MdDataArray size={30} />
-                </div>
-                <h1 className="text-xl">Arrays</h1>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent>
-              <div className="">
-                <ul className="grid grid-cols-2 gap-4">
-                  {dataStructures.map((dataStructure) => (
-                    <SkillTreeCell>{dataStructure.title}</SkillTreeCell>
-                  ))}
-                </ul>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="linkedLists">
-            <AccordionTrigger>
-              <div className="flex space-x-4 items-center justify-center">
-                <div className="rounded-full bg-background/50 dark:bg-foreground/10 shadow-md h-12 w-12 items-center justify-center flex flex-shrink-0">
-                  <AiOutlineNodeIndex size={30} />
-                </div>
-                <h1 className="text-xl">Linked Lists</h1>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent>
-              <div className="">
-                <ul className="grid grid-cols-2 gap-4">
-                  {dataStructures.map((dataStructure) => (
-                    <SkillTreeCell>{dataStructure.title}</SkillTreeCell>
-                  ))}
-                </ul>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
+          {/* Arrays */}
+          <SkillTreeItem items={arraySkills} name="Arrays" value="arrays">
+            <MdDataArray size={30} />
+          </SkillTreeItem>
+          {/* Linked Lists */}
+          <SkillTreeItem
+            items={linkedSkills}
+            name="Linked Lists"
+            value="linkedLists"
+          >
+            <AiOutlineNodeIndex size={30} />
+          </SkillTreeItem>
         </Accordion>
+
         {/* Second Column */}
         <Accordion type="multiple">
-          <AccordionItem value="algorithms">
-            <AccordionTrigger>
-              <div className="flex space-x-4 items-center justify-center">
-                <div className="rounded-full bg-background/50 dark:bg-foreground/10 shadow-md h-12 w-12 items-center justify-center flex flex-shrink-0">
-                  <TbBrandCitymapper size={35} />
-                </div>
-                <h1 className="text-xl">Hashmaps & Sets</h1>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent>
-              <div className="">
-                <ul className="grid grid-cols-2 gap-4">
-                  {dataStructures.map((dataStructure) => (
-                    <SkillTreeCell>{dataStructure.title}</SkillTreeCell>
-                  ))}
-                </ul>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
+          {/* Hashmaps */}
+          <SkillTreeItem
+            name="Hashmaps & Sets"
+            value="hashmaps"
+            items={dataStructures}
+          >
+            <MdDataObject size={30} />
+          </SkillTreeItem>
+          <SkillTreeItem name="Queues" value="queues" items={dataStructures}>
+            <MdLinearScale size={35} />
+          </SkillTreeItem>
         </Accordion>
       </div>
     </div>
