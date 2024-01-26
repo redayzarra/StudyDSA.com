@@ -2,11 +2,11 @@ import { Accordion } from "@/components/ui/accordion";
 import { dataStructures } from "@/data/navData";
 import { arraySkills, linkedSkills } from "@/data/skillsData";
 import { AiOutlineNodeIndex } from "react-icons/ai";
+import { FaArrowUpRightDots } from "react-icons/fa6";
 import { MdDataArray, MdDataObject, MdLinearScale } from "react-icons/md";
+import { TbBinaryTree, TbBinaryTree2, TbVector } from "react-icons/tb";
 import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeItem from "./SkillTreeItem";
-import { TbBinaryTree, TbBinaryTree2, TbMountain, TbVector } from "react-icons/tb";
-import { FaArrowUpRightDots } from "react-icons/fa6";
 
 const DataStructureSkills = () => {
   return (
@@ -75,16 +75,16 @@ const DataStructureSkills = () => {
         </Accordion>
       </div>
 
-      {/* Advanced Data Structrues */}
+      {/* Advanced Data Structrues
       <h2 className="font-semibold mt-10 mb-2">Advanced</h2>
       <div className="grid gap-x-8 grid-cols-1 xm:grid-cols-2">
-        {/* First Column */}
+        First Column
         <Accordion type="multiple">
-          {/* Arrays */}
+          Arrays
           <SkillTreeItem items={arraySkills} name="Arrays" value="arrays">
             <MdDataArray size={30} />
           </SkillTreeItem>
-          {/* Linked Lists */}
+          Linked Lists
           <SkillTreeItem
             items={linkedSkills}
             name="Linked Lists"
@@ -94,9 +94,8 @@ const DataStructureSkills = () => {
           </SkillTreeItem>
         </Accordion>
 
-        {/* Second Column */}
+        Second Column
         <Accordion type="multiple">
-          {/* Hashmaps */}
           <SkillTreeItem
             name="Hashmaps & Sets"
             value="hashmaps"
@@ -108,7 +107,7 @@ const DataStructureSkills = () => {
             <MdLinearScale size={35} />
           </SkillTreeItem>
         </Accordion>
-      </div>
+      </div> */}
     </div>
   );
 };

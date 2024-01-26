@@ -35,15 +35,16 @@ enum UserRole {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String         @id @default(cuid())
   name          String?
-  username      String?   @unique
-  email         String?   @unique
+  username      String?        @unique
+  email         String?        @unique
   emailVerified DateTime?
   image         String?
   password      String?
-  role          UserRole  @default(USER)
+  role          UserRole       @default(USER)
   accounts      Account[]
+  userProgress  UserProgress[]
 }
 
 model VerificationToken {
@@ -62,4 +63,33 @@ model PasswordResetToken {
   expires DateTime
 
   @@unique([email, token])
+}
+
+model Topic {
+  id          String    @id @default(cuid())
+  name        String    @unique
+  description String
+  href        String
+  chapters    Chapter[]
+}
+
+model Chapter {
+  id          String         @id @default(cuid())
+  name        String
+  description String
+  href        String
+  topicId     String
+  topic       Topic          @relation(fields: [topicId], references: [id])
+  progress    UserProgress[]
+}
+
+model UserProgress {
+  id         Int     @id @default(autoincrement())
+  userId     String
+  chapterId  String
+  isComplete Boolean @default(false)
+  user       User    @relation(fields: [userId], references: [id])
+  chapter    Chapter @relation(fields: [chapterId], references: [id])
+
+  @@unique([userId, chapterId])
 }
