@@ -5,11 +5,6 @@ export const arraySkills: { title: string; href: string; description: string }[]
     description: "You just store stuff in a line, it's quite literally a list of stuff",
   },
   {
-    title: "Algorithms",
-    href: "/",
-    description: "These are common algorithms you need to know for arrays, stacks, and strings",
-  },
-  {
     title: "Operations",
     href: "/",
     description: "Here's everything you can do with arrays and their complexities",
@@ -35,6 +30,11 @@ export const arraySkills: { title: string; href: string; description: string }[]
     description: "LIFO - meaning you can quickly access the most recent one",
   },
   {
+    title: "Algorithms",
+    href: "/",
+    description: "These are common algorithms you need to know for arrays and stacks",
+  },
+  {
     title: "Best Practices",
     href: "/",
     description: "The most efficient way of using arrays and avoiding pitfalls",
@@ -46,11 +46,6 @@ export const linkedSkills: { title: string; href: string; description: string }[
     title: "Definition",
     href: "/",
     description: "It's like that Spider-Man meme where they are all pointing to each other",
-  },
-  {
-    title: "Algorithms",
-    href: "/",
-    description: "These are common algorithms you need to know for linked lists",
   },
   {
     title: "Operations",
@@ -78,6 +73,11 @@ export const linkedSkills: { title: string; href: string; description: string }[
     description: "Think of this as a two-way street, you can go to previous or next node",
   },
   {
+    title: "Algorithms",
+    href: "/",
+    description: "These are common algorithms you need to know for linked lists",
+  },
+  {
     title: "Best Practices",
     href: "/",
     description: "The most efficient way of using linked lists and avoiding pitfalls",
@@ -86,9 +86,14 @@ export const linkedSkills: { title: string; href: string; description: string }[
 
 export const hashmapSkills: { title: string; href: string; description: string }[] = [
   {
-    title: "Hash Function",
+    title: "Definition",
     href: "/",
-    description: "Just converts input into something unique",
+    description: "Hashmaps store unique key-value pairs and sets hate duplicates",
+  },
+  {
+    title: "Operations",
+    href: "/",
+    description: "Here's everything you can do with hashmap and sets",
   },
   {
     title: "Implementation",
@@ -96,8 +101,28 @@ export const hashmapSkills: { title: string; href: string; description: string }
     description: "They're like a metal can, they can only fit a certain amount",
   },
   {
+    title: "Hash Function",
+    href: "/",
+    description: "Just converts input into something unique",
+  },
+  {
     title: "Chaining",
     href: "/",
     description: "They're basically balloons, you can keep adding to them",
+  },
+{
+    title: "Sets",
+    href: "/",
+    description: "They hate duplicates and searching in them is really efficient",
+  },
+  {
+    title: "Algorithms",
+    href: "/",
+    description: "These are all the common algorithms for hashmaps and sets",
+  },
+  {
+    title: "Best Practices",
+    href: "/",
+    description: "The best way to use hashmaps and sets for efficiency",
   },
 ]
