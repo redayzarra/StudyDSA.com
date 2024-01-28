@@ -24,7 +24,7 @@ const CardWrapper = ({
   drawAttention,
 }: Props) => {
   return (
-    <Card className="w-[400px] mx-3 shadow-md">
+    <Card className="w-[400px] mx-3 shadow-md dark:border-t-2 dark:border-t-white/25">
       <CardHeader>
         <Header label={headerLabel} />
       </CardHeader>
