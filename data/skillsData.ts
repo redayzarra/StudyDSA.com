@@ -169,3 +169,89 @@ export const queueSkills: { title: string; href: string; description: string }[]
     description: "This is the best way to use queues for best time and memory complexity",
   },
 ]
+
+export const treeSkills: { title: string; href: string; description: string }[] = [
+  {
+    title: "Definition",
+    href: "/",
+    description: "FIFO - meaning it's first come, first served",
+  },
+  {
+    title: "Operations",
+    href: "/",
+    description: "Here's everything you can do with queues",
+  },
+  {
+    title: "Implementation",
+    href: "/",
+    description: "Think of a line at the bank, the earliest one goes first",
+  },
+  {
+    title: "Circular Queue",
+    href: "/",
+    description: "Efficiently uses space by connecting the last positition back to the first",
+  },
+  {
+    title: "Priority Queue",
+    href: "/",
+    description: "Each element has a priority meaning you can access elements based on that",
+  },
+  {
+    title: "Deque",
+    href: "/",
+    description: "Double-ended meaning you can insert and delete at the front and the rear",
+  },
+  {
+    title: "Algorithms",
+    href: "/",
+    description: "These are all the common algorithms for queues",
+  },
+  {
+    title: "Best Practices",
+    href: "/",
+    description: "This is the best way to use queues for best time and memory complexity",
+  },
+]
+
+export const graphSkills: { title: string; href: string; description: string }[] = [
+  {
+    title: "Definition",
+    href: "/",
+    description: "Graphs consist on nodes that are connected to each other with edges",
+  },
+  {
+    title: "Operations",
+    href: "/",
+    description: "Here's everything you can do with graphs based on the representation",
+  },
+  {
+    title: "Implementation",
+    href: "/",
+    description: "There are many ways to represent graphs based on the problem",
+  },
+  {
+    title: "Matrix",
+    href: "/",
+    description: "Usually represented by arrays, they basically form a rectangle of nodes",
+  },
+  {
+    title: "Adjacency Matrix",
+    href: "/",
+    description: "A matrix that always forms a square and shows relationships",
+  },
+  {
+    title: "Adjacency List",
+    href: "/",
+    description: "Each node has a list of it's neighbors, most common representation",
+  },
+  {
+    title: "Algorithms",
+    href: "/",
+    description: "These are all the common algorithms for graphs that you need to know",
+  },
+  {
+    title: "Best Practices",
+    href: "/",
+    description: "This is the best way to use graphs based on their representations",
+  },
+]
