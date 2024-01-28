@@ -110,7 +110,7 @@ export const hashmapSkills: { title: string; href: string; description: string }
     href: "/",
     description: "They're basically balloons, you can keep adding to them",
   },
-{
+  {
     title: "Sets",
     href: "/",
     description: "They hate duplicates and searching in them is really efficient",
@@ -124,5 +124,48 @@ export const hashmapSkills: { title: string; href: string; description: string }
     title: "Best Practices",
     href: "/",
     description: "The best way to use hashmaps and sets for efficiency",
+  },
+]
+
+export const queueSkills: { title: string; href: string; description: string }[] = [
+  {
+    title: "Definition",
+    href: "/",
+    description: "FIFO - meaning it's first come, first served",
+  },
+  {
+    title: "Operations",
+    href: "/",
+    description: "Here's everything you can do with queues",
+  },
+  {
+    title: "Implementation",
+    href: "/",
+    description: "Think of a line at the bank, the earliest one goes first",
+  },
+  {
+    title: "Circular Queue",
+    href: "/",
+    description: "Efficiently uses space by connecting the last positition back to the first",
+  },
+  {
+    title: "Priority Queue",
+    href: "/",
+    description: "Each element has a priority meaning you can access elements based on that",
+  },
+  {
+    title: "Deque",
+    href: "/",
+    description: "Double-ended meaning you can insert and delete at the front and the rear",
+  },
+  {
+    title: "Algorithms",
+    href: "/",
+    description: "These are all the common algorithms for queues",
+  },
+  {
+    title: "Best Practices",
+    href: "/",
+    description: "This is the best way to use queues for best time and memory complexity",
   },
 ]

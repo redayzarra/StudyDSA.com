@@ -1,6 +1,6 @@
 import { Accordion } from "@/components/ui/accordion";
 import { dataStructures } from "@/data/navData";
-import { arraySkills, hashmapSkills, linkedSkills } from "@/data/skillsData";
+import { arraySkills, hashmapSkills, linkedSkills, queueSkills } from "@/data/skillsData";
 import { AiOutlineNodeIndex } from "react-icons/ai";
 import { FaArrowUpRightDots } from "react-icons/fa6";
 import { MdDataArray, MdDataObject, MdLinearScale } from "react-icons/md";
@@ -41,7 +41,7 @@ const DataStructureSkills = () => {
           >
             <MdDataObject size={30} />
           </SkillTreeItem>
-          <SkillTreeItem name="Queues" value="queues" items={dataStructures}>
+          <SkillTreeItem name="Queues" value="queues" items={queueSkills}>
             <MdLinearScale size={35} />
           </SkillTreeItem>
         </Accordion>
