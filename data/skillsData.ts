@@ -255,3 +255,46 @@ export const graphSkills: { title: string; href: string; description: string }[]
     description: "This is the best way to use graphs based on their representations",
   },
 ]
+
+export const heapSkills: { title: string; href: string; description: string }[] = [
+  {
+    title: "Definition",
+    href: "/",
+    description: "They are basically binary trees with a specific order and structure",
+  },
+  {
+    title: "Operations",
+    href: "/",
+    description: "Here's everything you can do with heaps",
+  },
+  {
+    title: "Implementation",
+    href: "/",
+    description: "Heaps have to maintain their order and structure even if they change",
+  },
+  {
+    title: "Order & Structure",
+    href: "/",
+    description: "Looking under the hood of how heaps maintain their order and structure",
+  },
+  {
+    title: "Heapify",
+    href: "/",
+    description: "This is how an unordered array of numbers turns into a ordered heap",
+  },
+  {
+    title: "Min/Max Heap",
+    href: "/",
+    description: "Here's how you can use min and max heaps most efficiently",
+  },
+  {
+    title: "Algorithms",
+    href: "/",
+    description: "These are all the common algorithms for heaps that you need to know",
+  },
+  {
+    title: "Best Practices",
+    href: "/",
+    description: "This is the best way to use heaps for best time and space complexity",
+  },
+]

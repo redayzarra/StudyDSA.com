@@ -1,6 +1,6 @@
 import { Accordion } from "@/components/ui/accordion";
 import { dataStructures } from "@/data/navData";
-import { arraySkills, graphSkills, hashmapSkills, linkedSkills, queueSkills, treeSkills } from "@/data/skillsData";
+import { arraySkills, graphSkills, hashmapSkills, heapSkills, linkedSkills, queueSkills, treeSkills } from "@/data/skillsData";
 import { AiOutlineNodeIndex } from "react-icons/ai";
 import { FaArrowUpRightDots } from "react-icons/fa6";
 import { MdDataArray, MdDataObject, MdLinearScale } from "react-icons/md";
@@ -65,7 +65,7 @@ const DataStructureSkills = () => {
         {/* Second Column */}
         <Accordion type="multiple">
           {/* Heaps */}
-          <SkillTreeItem name="Heaps" value="heaps" items={dataStructures}>
+          <SkillTreeItem name="Heaps" value="heaps" items={heapSkills}>
             <FaArrowUpRightDots size={26} />
           </SkillTreeItem>
           {/* Tries */}
