@@ -174,42 +174,42 @@ export const treeSkills: { title: string; href: string; description: string }[] 
   {
     title: "Definition",
     href: "/",
-    description: "FIFO - meaning it's first come, first served",
+    description: "Think of them like an upside-down tree in real life, roots are at the top",
   },
   {
     title: "Operations",
     href: "/",
-    description: "Here's everything you can do with queues",
+    description: "Here's everything you can do with trees based on their representation",
   },
   {
     title: "Implementation",
     href: "/",
-    description: "Think of a line at the bank, the earliest one goes first",
+    description: "Trees have nodes that are connected to other children nodes",
   },
   {
-    title: "Circular Queue",
+    title: "Binary Tree",
     href: "/",
-    description: "Efficiently uses space by connecting the last positition back to the first",
+    description: "As the name suggests, the nodes can only have up to two children",
   },
   {
-    title: "Priority Queue",
+    title: "Binary Seach Tree",
     href: "/",
-    description: "Each element has a priority meaning you can access elements based on that",
+    description: "A binary tree where left must be smaller than root, right must be bigger",
   },
   {
-    title: "Deque",
+    title: "Segment Tree",
     href: "/",
-    description: "Double-ended meaning you can insert and delete at the front and the rear",
+    description: "These are complex binary trees that help you find the sum of a range",
   },
   {
     title: "Algorithms",
     href: "/",
-    description: "These are all the common algorithms for queues",
+    description: "These are all the common algorithms for trees that you should know",
   },
   {
     title: "Best Practices",
     href: "/",
-    description: "This is the best way to use queues for best time and memory complexity",
+    description: "This is the most efficient way to use trees",
   },
 ]
 
