@@ -298,3 +298,46 @@ export const heapSkills: { title: string; href: string; description: string }[] 
     description: "This is the best way to use heaps for best time and space complexity",
   },
 ]
+
+export const trieSkills: { title: string; href: string; description: string }[] = [
+  {
+    title: "Definition",
+    href: "/",
+    description: "They are known as prefix trees because they form words & prefixes",
+  },
+  {
+    title: "Operations",
+    href: "/",
+    description: "Here's everything you can do with tries",
+  },
+  {
+    title: "Implementation",
+    href: "/",
+    description: "Each node in the trie must store the children and if the word is reached",
+  },
+  {
+    title: "Insertion",
+    href: "/",
+    description: "To insert into a trie we essentially follow the letters and add to the gaps",
+  },
+  {
+    title: "Searching",
+    href: "/",
+    description: "You can find words by simply following the letters and checking if it's marked",
+  },
+  {
+    title: "Finding Prefixes",
+    href: "/",
+    description: "You can follow the letters as long as they satisfy the prefix",
+  },
+  {
+    title: "Algorithms",
+    href: "/",
+    description: "These are all the common algorithms for tries or prefix trees",
+  },
+  {
+    title: "Best Practices",
+    href: "/",
+    description: "This is the most efficient way of using tries",
+  },
+]
