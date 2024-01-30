@@ -15,6 +15,7 @@ import { MdDataArray, MdDataObject, MdLinearScale } from "react-icons/md";
 import { TbBinaryTree, TbBinaryTree2, TbVector } from "react-icons/tb";
 import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeItem from "./SkillTreeItem";
+import { PiGraph } from "react-icons/pi";
 
 const DataStructureSkills = () => {
   return (
@@ -66,7 +67,7 @@ const DataStructureSkills = () => {
           </SkillTreeItem>
           {/* Graphs */}
           <SkillTreeItem items={graphSkills} name="Graphs" value="graphs">
-            <TbVector size={30} />
+            <TbVector size={28} />
           </SkillTreeItem>
         </Accordion>
 
@@ -83,39 +84,45 @@ const DataStructureSkills = () => {
         </Accordion>
       </div>
 
-      {/* Advanced Data Structrues
+      {/* Advanced Data Structures */}
       <h2 className="font-semibold mt-10 mb-2">Advanced</h2>
       <div className="grid gap-x-8 grid-cols-1 xm:grid-cols-2">
-        First Column
+        {/* First Column */}
         <Accordion type="multiple">
-          Arrays
-          <SkillTreeItem items={arraySkills} name="Arrays" value="arrays">
-            <MdDataArray size={30} />
-          </SkillTreeItem>
-          Linked Lists
           <SkillTreeItem
-            items={linkedSkills}
-            name="Linked Lists"
-            value="linkedLists"
+            items={arraySkills}
+            name="Segment Trees"
+            value="segmentTrees"
           >
-            <AiOutlineNodeIndex size={30} />
+            <TbBinaryTree size={30} />
+          </SkillTreeItem>
+          <SkillTreeItem
+            items={arraySkills}
+            name="Weighted Graphs"
+            value="weightedGraphs"
+          >
+            <TbVector size={28} />
           </SkillTreeItem>
         </Accordion>
 
-        Second Column
+        {/* Second Column */}
         <Accordion type="multiple">
           <SkillTreeItem
-            name="Hashmaps & Sets"
+            name="Disjoint Sets"
             value="hashmaps"
-            items={dataStructures}
+            items={linkedSkills}
           >
-            <MdDataObject size={30} />
+            <PiGraph size={30} />
           </SkillTreeItem>
-          <SkillTreeItem name="Queues" value="queues" items={dataStructures}>
-            <MdLinearScale size={35} />
+          <SkillTreeItem
+            items={arraySkills}
+            name="Directed Acyclic Graphs"
+            value="weightedGraphs"
+          >
+            <TbVector size={28} />
           </SkillTreeItem>
         </Accordion>
-      </div> */}
+      </div>
     </div>
   );
 };

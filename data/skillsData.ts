@@ -187,6 +187,11 @@ export const treeSkills: { title: string; href: string; description: string }[] 
     description: "Trees have nodes that are connected to other children nodes",
   },
   {
+    title: "Terminology",
+    href: "/",
+    description: "These are some terms for trees that you should know to make life easier",
+  },
+  {
     title: "Binary Tree",
     href: "/",
     description: "As the name suggests, the nodes can only have up to two children",
@@ -195,11 +200,6 @@ export const treeSkills: { title: string; href: string; description: string }[] 
     title: "Binary Seach Tree",
     href: "/",
     description: "A binary tree where left must be smaller than root, right must be bigger",
-  },
-  {
-    title: "Segment Tree",
-    href: "/",
-    description: "These are complex binary trees that help you find the sum of a range",
   },
   {
     title: "Algorithms",
