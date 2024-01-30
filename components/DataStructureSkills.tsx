@@ -6,6 +6,7 @@ import {
   heapSkills,
   linkedSkills,
   queueSkills,
+  segmentSkills,
   treeSkills,
   trieSkills,
 } from "@/data/skillsData";
@@ -90,7 +91,7 @@ const DataStructureSkills = () => {
         {/* First Column */}
         <Accordion type="multiple">
           <SkillTreeItem
-            items={arraySkills}
+            items={segmentSkills}
             name="Segment Trees"
             value="segmentTrees"
           >

@@ -341,3 +341,46 @@ export const trieSkills: { title: string; href: string; description: string }[] 
     description: "This is the most efficient way of using tries",
   },
 ]
+
+export const segmentSkills: { title: string; href: string; description: string }[] = [
+  {
+    title: "Definition",
+    href: "/",
+    description: "Just divide an array into halves until you can't, then add them up",
+  },
+  {
+    title: "Operations",
+    href: "/",
+    description: "Here's everything you can do with segment trees and their complexities",
+  },
+  {
+    title: "Implementation",
+    href: "/",
+    description: "They are represented by binary trees and each node contains a lot of info",
+  },
+  {
+    title: "Building",
+    href: "/",
+    description: "Divide the array by half and put each half in the left and right children",
+  },
+  {
+    title: "Querying",
+    href: "/",
+    description: "You simply have to traverse down the tree to build the range you need",
+  },
+  {
+    title: "Updating",
+    href: "/",
+    description: "You need to find the leaf node to fetch the index of the element",
+  },
+  {
+    title: "Algorithms",
+    href: "/",
+    description: "These are all the common algorithms for segment trees",
+  },
+  {
+    title: "Best Practices",
+    href: "/",
+    description: "Lazy propogation is an optimization for range updates and more",
+  },
+]
