@@ -1,5 +1,6 @@
-import AlgorithmsSkills from "@/components/AlgorithmsSkills";
-import DataStructureSkills from "@/components/DataStructureSkills";
+import Advanced from "@/components/Advanced";
+import Basics from "@/components/Basics";
+import Intermediate from "@/components/Intermediate";
 
 export default function Home() {
   return (
@@ -15,8 +16,9 @@ export default function Home() {
             Dolorum eveniet libero, ipsa totam laborum numquam provident.
           </h2>
         </div>
-        <DataStructureSkills />
-        <AlgorithmsSkills />
+        <Basics />
+        <Intermediate />
+        <Advanced />
       </div>
     </div>
   );
