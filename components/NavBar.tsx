@@ -25,7 +25,7 @@ const NavBar = () => {
             <Logo />
           </div>
 
-          <NavMenuItems />
+          {/* <NavMenuItems /> */}
 
           {/* Dark Mode and LogIn */}
           <div className="gap-x-2 flex items-center justify-center">
