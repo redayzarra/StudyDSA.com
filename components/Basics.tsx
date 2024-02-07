@@ -18,6 +18,7 @@ import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeItem from "./SkillTreeItem";
 import { PiGraph } from "react-icons/pi";
 import AlgorithmCell from "./AlgorithmCell";
+import Algorithms from "./Algorithms";
 
 const Basics = () => {
   return (
@@ -58,7 +59,8 @@ const Basics = () => {
         </Accordion>
       </div>
 
-      <AlgorithmCell />
+      <h2 className="font-semibold mt-10 mb-4">Algorithms</h2>
+      <Algorithms />
     </div>
   );
 };
