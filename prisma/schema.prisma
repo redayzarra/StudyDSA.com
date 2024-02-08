@@ -32,16 +32,18 @@ enum UserRole {
 }
 
 model User {
-  id            String         @id @default(cuid())
-  name          String?
-  username      String?        @unique
-  email         String?        @unique
-  emailVerified DateTime?
-  image         String?
-  password      String?
-  role          UserRole       @default(USER)
-  accounts      Account[]
-  userProgress  UserProgress[]
+  id                String              @id @default(cuid())
+  name              String?
+  username          String?             @unique
+  email             String?             @unique
+  emailVerified     DateTime?
+  image             String?
+  password          String?
+  role              UserRole            @default(USER)
+  accounts          Account[]
+  userProgress      UserProgress[]
+  algorithmProgress AlgorithmProgress[]
+  topicProgress     TopicProgress[]
 }
 
 model VerificationToken {
@@ -64,11 +66,23 @@ model PasswordResetToken {
 
 // For tracking progress
 model Topic {
-  id          String    @id @default(cuid())
-  name        String    @unique
+  id          String          @id @default(cuid())
+  name        String          @unique
   description String
   href        String
   chapters    Chapter[]
+  progress    TopicProgress[]
+}
+
+model TopicProgress {
+  id         Int     @id @default(autoincrement())
+  userId     String
+  topicId    String
+  isComplete Boolean @default(false)
+  user       User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  topic      Topic   @relation(fields: [topicId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, topicId])
 }
 
 model Chapter {
@@ -77,8 +91,27 @@ model Chapter {
   description String
   href        String
   topicId     String
-  topic       Topic          @relation(fields: [topicId], references: [id])
+  topic       Topic          @relation(fields: [topicId], references: [id], onDelete: Cascade)
   progress    UserProgress[]
+}
+
+model Algorithm {
+  id          String              @id @default(cuid())
+  title       String
+  description String
+  href        String
+  progress    AlgorithmProgress[]
+}
+
+model AlgorithmProgress {
+  id          Int       @id @default(autoincrement())
+  userId      String
+  algorithmId String
+  isComplete  Boolean   @default(false)
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  algorithm   Algorithm @relation(fields: [algorithmId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, algorithmId])
 }
 
 model UserProgress {
@@ -86,8 +119,8 @@ model UserProgress {
   userId     String
   chapterId  String
   isComplete Boolean @default(false)
-  user       User    @relation(fields: [userId], references: [id])
-  chapter    Chapter @relation(fields: [chapterId], references: [id])
+  user       User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  chapter    Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
 
   @@unique([userId, chapterId])
 }
