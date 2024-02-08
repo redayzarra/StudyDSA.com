@@ -100,6 +100,7 @@ model Algorithm {
   title       String
   description String
   href        String
+  difficulty  String
   progress    AlgorithmProgress[]
 }
 
