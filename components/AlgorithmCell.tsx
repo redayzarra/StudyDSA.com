@@ -51,9 +51,10 @@ const AlgorithmCell = ({ title, description, href, algorithmId }: Props) => {
       return;
     }
 
+    setIsChecked(!isChecked); // Let's be optimistic
+
     try {
       await markAlgorithm(userId, algorithmId, !isChecked);
-      setIsChecked(!isChecked);
 
       // Error handling
     } catch (error) {
