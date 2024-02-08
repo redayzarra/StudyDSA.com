@@ -1,14 +1,43 @@
+"use client";
+
+import markAlgorithm from "@/actions/checkAlgorithm";
+import { getUserId } from "@/hooks/getUser";
 import Link from "next/link";
-import React from "react";
+import { useState } from "react";
 import { Checkbox } from "./ui/checkbox";
+import { toast } from "sonner";
 
 interface Props {
   title: string;
   description: string;
   href: string;
+  algorithmId: string;
 }
 
-const AlgorithmCell = ({ title, description, href }: Props) => {
+const AlgorithmCell = ({ title, description, href, algorithmId }: Props) => {
+  const userId = getUserId();
+
+  const [isChecked, setIsChecked] = useState(false);
+
+  const onClick = async () => {
+    // Authentication handling
+    if (!userId) {
+      toast("You need to be logged in to mark an algorithm.");
+      setIsChecked(false); // Ensure checkbox is unchecked if user is not logged in
+      return;
+    }
+
+    try {
+      await markAlgorithm(userId, algorithmId, !isChecked);
+      setIsChecked(!isChecked);
+
+      // Error handling
+    } catch (error) {
+      console.error("Failed to update algorithm completion status:", error);
+      setIsChecked(isChecked); // Revert if there was an error
+    }
+  };
+
   return (
     <div className="relative hover:-translate-y-1 transition-all">
       <Link href={href}>
@@ -19,7 +48,11 @@ const AlgorithmCell = ({ title, description, href }: Props) => {
           </h2>
         </div>
       </Link>
-      <Checkbox className="absolute top-2 right-2 h-5 w-5 rounded-full" />
+      <Checkbox
+        checked={isChecked}
+        onClick={onClick}
+        className="absolute top-2 right-2 h-5 w-5 rounded-full"
+      />
     </div>
   );
 };

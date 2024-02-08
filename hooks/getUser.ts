@@ -5,3 +5,9 @@ export const getUser = () => {
 
   return session.data?.user;
 };
+
+export const getUserId = () => {
+  const session = useSession();
+
+  return session.data?.user.id;
+}

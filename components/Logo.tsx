@@ -19,7 +19,7 @@ export const LogoText = ({ size = "default" }: Props) => {
       <FaBook size={size === "lg" ? 30 : 18} />
       <h1
         className={cn(
-          "font-[600]",
+          "font-[700]",
           font.className,
           size === "lg" ? "text-4xl" : "text-xl"
         )}
