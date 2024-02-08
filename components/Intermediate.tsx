@@ -1,22 +1,16 @@
 import { Accordion } from "@/components/ui/accordion";
+import { basicAlgorithms, intermediateAlgorithms } from "@/data/algoData";
 import {
-  arraySkills,
   graphSkills,
-  hashmapSkills,
   heapSkills,
-  linkedSkills,
-  queueSkills,
-  segmentSkills,
   treeSkills,
-  trieSkills,
+  trieSkills
 } from "@/data/skillsData";
-import { AiOutlineNodeIndex } from "react-icons/ai";
 import { FaArrowUpRightDots } from "react-icons/fa6";
-import { MdDataArray, MdDataObject, MdLinearScale } from "react-icons/md";
 import { TbBinaryTree, TbBinaryTree2, TbVector } from "react-icons/tb";
+import Algorithms from "./Algorithms";
 import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeItem from "./SkillTreeItem";
-import { PiGraph } from "react-icons/pi";
 
 const Intermediate = () => {
   return (
@@ -50,45 +44,8 @@ const Intermediate = () => {
         </Accordion>
       </div>
 
-      {/* Advanced Data Structures */}
-      <h2 className="font-semibold mt-10 mb-2">Algorithms</h2>
-      <div className="grid gap-x-8 grid-cols-1 xm:grid-cols-2">
-        {/* First Column */}
-        <Accordion type="multiple">
-          <SkillTreeItem
-            items={segmentSkills}
-            name="Segment Trees"
-            value="segmentTrees"
-          >
-            <TbBinaryTree size={30} />
-          </SkillTreeItem>
-          <SkillTreeItem
-            items={arraySkills}
-            name="Weighted Graphs"
-            value="weightedGraphs"
-          >
-            <TbVector size={28} />
-          </SkillTreeItem>
-        </Accordion>
-
-        {/* Second Column */}
-        <Accordion type="multiple">
-          <SkillTreeItem
-            name="Disjoint Sets"
-            value="hashmaps"
-            items={linkedSkills}
-          >
-            <PiGraph size={30} />
-          </SkillTreeItem>
-          <SkillTreeItem
-            items={arraySkills}
-            name="Directed Acyclic Graphs"
-            value="weightedGraphs"
-          >
-            <TbVector size={28} />
-          </SkillTreeItem>
-        </Accordion>
-      </div>
+      <h2 className="font-[650] mb-5 mt-10 text-[1.15rem]">Algorithms</h2>
+      <Algorithms items={intermediateAlgorithms} />
     </div>
   );
 };

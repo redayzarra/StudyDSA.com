@@ -7,8 +7,8 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { algorithms, dataStructures } from "@/data/navData";
 import NavListItem from "./NavListItem";
-import { algorithms, dataStructures, machineLearning } from "@/data/navData";
 
 
 export function NavMenuItems() {

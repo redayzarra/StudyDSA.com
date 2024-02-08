@@ -6,7 +6,6 @@ import Logo from "./Logo";
 import MobileSideBar from "./MobileSideBar";
 import { ModeToggle } from "./ModeToggle";
 import UserButton from "./auth/UserButton";
-import { NavMenuItems } from "./NavMenuItems";
 
 const NavBar = () => {
   const pathname = usePathname();
