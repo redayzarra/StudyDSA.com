@@ -1,17 +1,15 @@
 import { Accordion } from "@/components/ui/accordion";
-import { advancedAlgorithms, basicAlgorithms } from "@/data/algoData";
-import {
-  arraySkills,
-  linkedSkills,
-  segmentSkills
-} from "@/data/skillsData";
+import { arraySkills, linkedSkills, segmentSkills } from "@/data/skillsData";
 import { PiGraph } from "react-icons/pi";
 import { TbBinaryTree, TbVector } from "react-icons/tb";
 import Algorithms from "./Algorithms";
 import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeItem from "./SkillTreeItem";
+import getAlgorithms from "@/actions/getAlgorithms";
 
-const Advanced = () => {
+const Advanced = async () => {
+  const advancedAlgorithms = await getAlgorithms("advanced");
+
   return (
     <div className="w-full shadow-lg rounded-md bg-slate-200/50 dark:bg-zinc-950/50 border-t-2 border-white dark:border-border px-8 py-4">
       <SkillTreeHeading>Advanced</SkillTreeHeading>

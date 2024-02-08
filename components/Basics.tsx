@@ -1,5 +1,4 @@
 import { Accordion } from "@/components/ui/accordion";
-import { basicAlgorithms } from "@/data/algoData";
 import {
   arraySkills,
   hashmapSkills,
@@ -11,8 +10,11 @@ import { MdDataArray, MdDataObject, MdLinearScale } from "react-icons/md";
 import Algorithms from "./Algorithms";
 import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeItem from "./SkillTreeItem";
+import getAlgorithms from "@/actions/getAlgorithms";
 
-const Basics = () => {
+const Basics = async () => {
+  const basicAlgorithms = await getAlgorithms("basic");
+
   return (
     <div className="w-full shadow-lg rounded-md bg-slate-200/50 dark:bg-zinc-950/50 border-t-2 border-white dark:border-border px-8 py-4">
       <SkillTreeHeading>Basics</SkillTreeHeading>

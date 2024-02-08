@@ -1,18 +1,19 @@
 import { Accordion } from "@/components/ui/accordion";
-import { basicAlgorithms, intermediateAlgorithms } from "@/data/algoData";
 import {
   graphSkills,
   heapSkills,
   treeSkills,
-  trieSkills
+  trieSkills,
 } from "@/data/skillsData";
 import { FaArrowUpRightDots } from "react-icons/fa6";
 import { TbBinaryTree, TbBinaryTree2, TbVector } from "react-icons/tb";
 import Algorithms from "./Algorithms";
 import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeItem from "./SkillTreeItem";
+import getAlgorithms from "@/actions/getAlgorithms";
 
-const Intermediate = () => {
+const Intermediate = async () => {
+  const intermediateAlgorithms = await getAlgorithms("intermediate");
   return (
     <div className="w-full shadow-lg rounded-md bg-slate-200/50 dark:bg-zinc-950/50 border-t-2 border-white dark:border-border px-8 py-4">
       <SkillTreeHeading>Intermediate</SkillTreeHeading>

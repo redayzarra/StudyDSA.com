@@ -31,6 +31,12 @@ enum UserRole {
   USER
 }
 
+enum Difficulty {
+  basic
+  intermediate
+  advanced
+}
+
 model User {
   id                String              @id @default(cuid())
   name              String?
@@ -100,7 +106,7 @@ model Algorithm {
   title       String
   description String
   href        String
-  difficulty  String
+  difficulty  Difficulty
   progress    AlgorithmProgress[]
 }
 
