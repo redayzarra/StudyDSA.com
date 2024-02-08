@@ -1,11 +1,12 @@
 "use client";
 
-import markAlgorithm from "@/actions/checkAlgorithm";
+import markAlgorithm from "@/actions/markAlgorithm";
 import { getUserId } from "@/hooks/getUser";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Checkbox } from "./ui/checkbox";
 import { toast } from "sonner";
+import getAlgorithmStatus from "@/actions/getAlgorithmStatus";
 
 interface Props {
   title: string;
@@ -18,6 +19,29 @@ const AlgorithmCell = ({ title, description, href, algorithmId }: Props) => {
   const userId = getUserId();
 
   const [isChecked, setIsChecked] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const init = async () => {
+      // If the user isn't logged in, don't load
+      if (!userId) {
+        setIsLoading(false);
+        return;
+      }
+      try {
+        const status = await getAlgorithmStatus(userId, algorithmId);
+        setIsChecked(status);
+
+        // Error handling
+      } catch (error) {
+        console.error("Failed to fetch algorithm completion status:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    init();
+  }, [userId, algorithmId]);
 
   const onClick = async () => {
     // Authentication handling
