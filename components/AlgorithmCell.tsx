@@ -1,13 +1,12 @@
 "use client";
 
+import getAlgorithmStatus from "@/actions/getAlgorithmStatus";
 import markAlgorithm from "@/actions/markAlgorithm";
 import { getUserId } from "@/hooks/getUser";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Checkbox } from "./ui/checkbox";
 import { toast } from "sonner";
-import getAlgorithmStatus from "@/actions/getAlgorithmStatus";
-import Spinner from "./Spinner";
+import { Checkbox } from "./ui/checkbox";
 
 interface Props {
   title: string;
@@ -70,7 +69,7 @@ const AlgorithmCell = ({ title, description, href, algorithmId }: Props) => {
         <div
           className={`rounded-sm shadow-md transition-all p-2 border-t-2 border-white hover:cursor-pointer space-y-2 ${
             isChecked
-              ? "bg-amber-200 hover:bg-amber-300/70 dark:bg-yellow-600/90 dark:hover:bg-yellow-600 dark:border-white/30"
+              ? "bg-amber-200 dark:bg-yellow-600 dark:border-yellow-100/50"
               : "hover:bg-gray-300/70 dark:bg-muted-foreground/10 dark:hover:bg-muted-foreground/20 dark:border-white/10"
           }`}
         >
