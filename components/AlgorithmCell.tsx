@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Checkbox } from "./ui/checkbox";
 import { toast } from "sonner";
 import getAlgorithmStatus from "@/actions/getAlgorithmStatus";
+import Spinner from "./Spinner";
 
 interface Props {
   title: string;
@@ -78,6 +79,11 @@ const AlgorithmCell = ({ title, description, href, algorithmId }: Props) => {
         onClick={onClick}
         className="absolute top-2 right-2 h-5 w-5 rounded-full"
       />
+
+      {/* {isLoading ? (
+        <Spinner className="text-primary border-[3px] absolute top-2 right-2 h-5 w-5 rounded-full" />
+      ) : (
+      )} */}
     </div>
   );
 };
