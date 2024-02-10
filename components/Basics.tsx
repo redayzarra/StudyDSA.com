@@ -1,16 +1,16 @@
+import getAlgorithms from "@/actions/getAlgorithms";
 import { Accordion } from "@/components/ui/accordion";
 import {
   arraySkills,
   hashmapSkills,
-  linkedSkills,
-  queueSkills,
+  linkedListSkills,
+  queueSkills
 } from "@/data/skillsData";
 import { AiOutlineNodeIndex } from "react-icons/ai";
 import { MdDataArray, MdDataObject, MdLinearScale } from "react-icons/md";
 import Algorithms from "./Algorithms";
 import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeItem from "./SkillTreeItem";
-import getAlgorithms from "@/actions/getAlgorithms";
 
 const Basics = async () => {
   const basicAlgorithms = await getAlgorithms("basic");
@@ -29,7 +29,7 @@ const Basics = async () => {
           </SkillTreeItem>
           {/* Linked Lists */}
           <SkillTreeItem
-            items={linkedSkills}
+            items={linkedListSkills}
             name="Linked Lists"
             value="linkedLists"
           >

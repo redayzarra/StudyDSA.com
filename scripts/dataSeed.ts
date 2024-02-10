@@ -1,4 +1,4 @@
-import { arraySkills, graphSkills, hashmapSkills, heapSkills, linkedSkills, queueSkills, segmentSkills, treeSkills, trieSkills } from "@/data/skillsData";
+import { arraySkills, graphSkills, hashmapSkills, heapSkills, linkedListSkills, queueSkills, segmentTreeSkills, treeSkills, trieSkills } from "@/data/skillsData";
 
 const { PrismaClient } = require("@prisma/client");
 const database = new PrismaClient();
@@ -26,7 +26,7 @@ async function dataSeed() {
       description: "Data elements connected together via links.",
       href: "/linked-lists",
       chapters: {
-        create: linkedSkills,
+        create: linkedListSkills,
       },
     },
   });
@@ -110,7 +110,7 @@ async function dataSeed() {
       description: "A tree data structure for storing intervals or segments.",
       href: "/segment-trees",
       chapters: {
-        create: segmentSkills,
+        create: segmentTreeSkills,
       },
     },
   });

@@ -1,11 +1,11 @@
+import getAlgorithms from "@/actions/getAlgorithms";
 import { Accordion } from "@/components/ui/accordion";
-import { arraySkills, linkedSkills, segmentSkills } from "@/data/skillsData";
+import { arraySkills, disjointSetSkills, segmentTreeSkills } from "@/data/skillsData";
 import { PiGraph } from "react-icons/pi";
 import { TbBinaryTree, TbVector } from "react-icons/tb";
 import Algorithms from "./Algorithms";
 import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeItem from "./SkillTreeItem";
-import getAlgorithms from "@/actions/getAlgorithms";
 
 const Advanced = async () => {
   const advancedAlgorithms = await getAlgorithms("advanced");
@@ -19,7 +19,7 @@ const Advanced = async () => {
         {/* First Column */}
         <Accordion type="multiple">
           <SkillTreeItem
-            items={segmentSkills}
+            items={segmentTreeSkills}
             name="Segment Trees"
             value="segmentTrees"
           >
@@ -39,7 +39,7 @@ const Advanced = async () => {
           <SkillTreeItem
             name="Disjoint Sets"
             value="hashmaps"
-            items={linkedSkills}
+            items={disjointSetSkills}
           >
             <PiGraph size={30} />
           </SkillTreeItem>

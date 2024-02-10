@@ -41,7 +41,7 @@ export const arraySkills: { title: string; href: string; description: string }[]
   },
 ]
 
-export const linkedSkills: { title: string; href: string; description: string }[] = [
+export const linkedListSkills: { title: string; href: string; description: string }[] = [
   {
     title: "Definition",
     href: "/",
@@ -342,7 +342,7 @@ export const trieSkills: { title: string; href: string; description: string }[] 
   },
 ]
 
-export const segmentSkills: { title: string; href: string; description: string }[] = [
+export const segmentTreeSkills: { title: string; href: string; description: string }[] = [
   {
     title: "Definition",
     href: "/",
@@ -381,6 +381,50 @@ export const segmentSkills: { title: string; href: string; description: string }
   {
     title: "Best Practices",
     href: "/",
-    description: "Lazy propogation is an optimization for range updates and more",
+    description: "The best way to use segment trees for time complexity",
   },
 ]
+
+export const disjointSetSkills: { title: string; href: string; description: string }[] = [
+  {
+    title: "Definition",
+    href: "/",
+    description: "Think of these as separate groups of friends in highschool",
+  },
+  {
+    title: "Operations",
+    href: "/",
+    description: "All the ways to build, find, and merge these friends, without any drama",
+  },
+  {
+    title: "Implementation",
+    href: "/",
+    description: "Use a special tree where each friend points to the 'leader' of friend group",
+  },
+  {
+    title: "Network Connectivity",
+    href: "/",
+    description: "Checking if two people are in the same friend circle or strangers",
+  },
+  {
+    title: "Path Compression",
+    href: "/",
+    description: "While checking, link everyone directly to the 'big boss' to speed up future checks",
+  },
+  {
+    title: "Union by Rank",
+    href: "/",
+    description: "Keep things balanced by adding the smaller group to the bigger one",
+  },
+  {
+    title: "Algorithms",
+    href: "/",
+    description: "Here are the most common algorithms for disjoint sets",
+  },
+  {
+    title: "Best Practices",
+    href: "/",
+    description: "The most efficient way of using disjoint sets efficiently",
+  },
+]
+
