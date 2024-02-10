@@ -1,14 +1,21 @@
 import getAlgorithms from "@/actions/getAlgorithms";
 import { Accordion } from "@/components/ui/accordion";
-import { arraySkills, dagSkills, disjointSetSkills, segmentTreeSkills, weightedGraphSkills } from "@/data/skillsData";
 import { PiGraph } from "react-icons/pi";
 import { TbBinaryTree, TbVector } from "react-icons/tb";
 import Algorithms from "./Algorithms";
 import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeItem from "./SkillTreeItem";
+import getChaptersByTopic from "@/actions/getChapters";
 
 const Advanced = async () => {
+  // Fetch algorithms
   const advancedAlgorithms = await getAlgorithms("advanced");
+
+  // Fetch chapters
+  const dagChapters = await getChaptersByTopic("Directed Acyclic Graphs");
+  const weightedChapters = await getChaptersByTopic("Weighted Graphs");
+  const disjointChapters = await getChaptersByTopic("Disjoint Sets");
+  const segmentChapters = await getChaptersByTopic("Segment Trees");
 
   return (
     <div className="w-full pb-10 shadow-lg rounded-md bg-slate-200/50 dark:bg-zinc-950/50 border-t-2 border-white dark:border-border px-8 py-4">
@@ -19,14 +26,14 @@ const Advanced = async () => {
         {/* First Column */}
         <Accordion type="multiple">
           <SkillTreeItem
-            items={dagSkills}
+            items={dagChapters}
             name="Directed Acyclic Graphs"
             value="dag"
           >
             <TbVector size={28} />
           </SkillTreeItem>
           <SkillTreeItem
-            items={weightedGraphSkills}
+            items={weightedChapters}
             name="Weighted Graphs"
             value="weightedGraphs"
           >
@@ -39,12 +46,12 @@ const Advanced = async () => {
           <SkillTreeItem
             name="Disjoint Sets"
             value="disjointSet"
-            items={disjointSetSkills}
+            items={disjointChapters}
           >
             <PiGraph size={30} />
           </SkillTreeItem>
           <SkillTreeItem
-            items={segmentTreeSkills}
+            items={segmentChapters}
             name="Segment Trees"
             value="segmentTrees"
           >

@@ -1,19 +1,21 @@
 import getAlgorithms from "@/actions/getAlgorithms";
 import { Accordion } from "@/components/ui/accordion";
-import {
-  arraySkills,
-  hashmapSkills,
-  linkedListSkills,
-  queueSkills
-} from "@/data/skillsData";
 import { AiOutlineNodeIndex } from "react-icons/ai";
 import { MdDataArray, MdDataObject, MdLinearScale } from "react-icons/md";
 import Algorithms from "./Algorithms";
 import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeItem from "./SkillTreeItem";
+import getChaptersByTopic from "@/actions/getChapters";
 
 const Basics = async () => {
+  // Fetch all the algorithms
   const basicAlgorithms = await getAlgorithms("basic");
+
+  // Fetch all chapters
+  const arrayChapters = await getChaptersByTopic("Arrays");
+  const linkedListChapters = await getChaptersByTopic("Linked Lists");
+  const hashmapChapters = await getChaptersByTopic("Hashmaps");
+  const queueChapters = await getChaptersByTopic("Queues");
 
   return (
     <div className="w-full pb-10 shadow-lg rounded-md bg-slate-200/50 dark:bg-zinc-950/50 border-t-2 border-white dark:border-border px-8 py-4">
@@ -24,12 +26,12 @@ const Basics = async () => {
         {/* First Column */}
         <Accordion type="multiple">
           {/* Arrays */}
-          <SkillTreeItem items={arraySkills} name="Arrays" value="arrays">
+          <SkillTreeItem items={arrayChapters} name="Arrays" value="arrays">
             <MdDataArray size={30} />
           </SkillTreeItem>
           {/* Linked Lists */}
           <SkillTreeItem
-            items={linkedListSkills}
+            items={linkedListChapters}
             name="Linked Lists"
             value="linkedLists"
           >
@@ -43,11 +45,11 @@ const Basics = async () => {
           <SkillTreeItem
             name="Hashmaps & Sets"
             value="hashmaps"
-            items={hashmapSkills}
+            items={hashmapChapters}
           >
             <MdDataObject size={30} />
           </SkillTreeItem>
-          <SkillTreeItem name="Queues" value="queues" items={queueSkills}>
+          <SkillTreeItem name="Queues" value="queues" items={queueChapters}>
             <MdLinearScale size={35} />
           </SkillTreeItem>
         </Accordion>
