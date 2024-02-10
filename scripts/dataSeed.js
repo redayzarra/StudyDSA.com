@@ -233,14 +233,14 @@ const graphSkills = [
     description: "There are many ways to represent graphs based on the problem",
   },
   {
+    title: "Directionality",
+    href: "/",
+    description: "If graph edges are directional, they point from one node to another",
+  },
+  {
     title: "Matrix",
     href: "/",
     description: "Usually represented by arrays, they basically form a rectangle of nodes",
-  },
-  {
-    title: "Adjacency Matrix",
-    href: "/",
-    description: "A matrix that always forms a square and shows relationships",
   },
   {
     title: "Adjacency List",
