@@ -470,3 +470,46 @@ export const weightedGraphSkills: { title: string; href: string; description: st
     description: "The best way to use weighted graphs for maximum efficiency",
   },
 ]
+
+export const dagSkills: { title: string; href: string; description: string }[] = [
+  {
+    title: "Definition",
+    href: "/",
+    description: "Imagine a to-do list, where some tasks need to happen before others",
+  },
+  {
+    title: "Operations",
+    href: "/",
+    description: "Here's everything you can do with DAG's and their complexities",
+  },
+  {
+    title: "Implementation",
+    href: "/",
+    description: "You can easily implement them using adjacency lists",
+  },
+  {
+    title: "Topological Sorting",
+    href: "/",
+    description: "Similar to creating a checklist for ensuring the right order",
+  },
+  {
+    title: "Longest/Shortest Path",
+    href: "/",
+    description: "Finding the quickest or longest way from one node to another",
+  },
+  {
+    title: "Dependency Resolution",
+    href: "/",
+    description: "Figuring out which tasks must be completed before others can start",
+  },
+  {
+    title: "Algorithms",
+    href: "/",
+    description: "The most common algorithms for DAG's and their complexities",
+  },
+  {
+    title: "Best Practices",
+    href: "/",
+    description: "The best way to use DAG's in the most efficient time and space",
+  },
+]

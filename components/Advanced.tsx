@@ -1,6 +1,6 @@
 import getAlgorithms from "@/actions/getAlgorithms";
 import { Accordion } from "@/components/ui/accordion";
-import { arraySkills, disjointSetSkills, segmentTreeSkills, weightedGraphSkills } from "@/data/skillsData";
+import { arraySkills, dagSkills, disjointSetSkills, segmentTreeSkills, weightedGraphSkills } from "@/data/skillsData";
 import { PiGraph } from "react-icons/pi";
 import { TbBinaryTree, TbVector } from "react-icons/tb";
 import Algorithms from "./Algorithms";
@@ -19,11 +19,11 @@ const Advanced = async () => {
         {/* First Column */}
         <Accordion type="multiple">
           <SkillTreeItem
-            items={segmentTreeSkills}
-            name="Segment Trees"
-            value="segmentTrees"
+            items={dagSkills}
+            name="Directed Acyclic Graphs"
+            value="dag"
           >
-            <TbBinaryTree size={30} />
+            <TbVector size={28} />
           </SkillTreeItem>
           <SkillTreeItem
             items={weightedGraphSkills}
@@ -38,17 +38,17 @@ const Advanced = async () => {
         <Accordion type="multiple">
           <SkillTreeItem
             name="Disjoint Sets"
-            value="hashmaps"
+            value="disjointSet"
             items={disjointSetSkills}
           >
             <PiGraph size={30} />
           </SkillTreeItem>
           <SkillTreeItem
-            items={arraySkills}
-            name="Directed Acyclic Graphs"
-            value="weightedGraphs"
+            items={segmentTreeSkills}
+            name="Segment Trees"
+            value="segmentTrees"
           >
-            <TbVector size={28} />
+            <TbBinaryTree size={30} />
           </SkillTreeItem>
         </Accordion>
       </div>
