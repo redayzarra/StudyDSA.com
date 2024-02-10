@@ -1,7 +1,7 @@
 "use client";
 
-import getAlgorithmStatus from "@/actions/getAlgorithmStatus";
-import markAlgorithm from "@/actions/markAlgorithm";
+import getAlgorithmStatus from "@/actions/algorithms/getAlgorithmStatus";
+import markAlgorithm from "@/actions/algorithms/markAlgorithm";
 import { getUserId } from "@/hooks/getUser";
 import Link from "next/link";
 import { useEffect, useState } from "react";

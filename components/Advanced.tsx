@@ -1,11 +1,11 @@
-import getAlgorithms from "@/actions/getAlgorithms";
+import getAlgorithms from "@/actions/algorithms/getAlgorithms";
 import { Accordion } from "@/components/ui/accordion";
 import { PiGraph } from "react-icons/pi";
 import { TbBinaryTree, TbVector } from "react-icons/tb";
 import Algorithms from "./Algorithms";
 import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeItem from "./SkillTreeItem";
-import getChaptersByTopic from "@/actions/getChapters";
+import getChaptersByTopic from "@/actions/chapters/getChapters";
 
 const Advanced = async () => {
   // Fetch algorithms

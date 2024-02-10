@@ -47,7 +47,7 @@ model User {
   password          String?
   role              UserRole            @default(USER)
   accounts          Account[]
-  userProgress      UserProgress[]
+  chapterProgress   ChapterProgress[]
   algorithmProgress AlgorithmProgress[]
   topicProgress     TopicProgress[]
 }
@@ -92,13 +92,24 @@ model TopicProgress {
 }
 
 model Chapter {
-  id          String         @id @default(cuid())
+  id          String            @id @default(cuid())
   title       String
   description String
   href        String
   topicId     String
-  topic       Topic          @relation(fields: [topicId], references: [id], onDelete: Cascade)
-  progress    UserProgress[]
+  topic       Topic             @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  progress    ChapterProgress[]
+}
+
+model ChapterProgress {
+  id         Int     @id @default(autoincrement())
+  userId     String
+  chapterId  String
+  isComplete Boolean @default(false)
+  user       User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  chapter    Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, chapterId])
 }
 
 model Algorithm {
@@ -119,15 +130,4 @@ model AlgorithmProgress {
   algorithm   Algorithm @relation(fields: [algorithmId], references: [id], onDelete: Cascade)
 
   @@unique([userId, algorithmId])
-}
-
-model UserProgress {
-  id         Int     @id @default(autoincrement())
-  userId     String
-  chapterId  String
-  isComplete Boolean @default(false)
-  user       User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  chapter    Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
-
-  @@unique([userId, chapterId])
 }

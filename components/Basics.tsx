@@ -1,11 +1,11 @@
-import getAlgorithms from "@/actions/getAlgorithms";
+import getAlgorithms from "@/actions/algorithms/getAlgorithms";
 import { Accordion } from "@/components/ui/accordion";
 import { AiOutlineNodeIndex } from "react-icons/ai";
 import { MdDataArray, MdDataObject, MdLinearScale } from "react-icons/md";
 import Algorithms from "./Algorithms";
 import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeItem from "./SkillTreeItem";
-import getChaptersByTopic from "@/actions/getChapters";
+import getChaptersByTopic from "@/actions/chapters/getChapters";
 
 const Basics = async () => {
   // Fetch all the algorithms

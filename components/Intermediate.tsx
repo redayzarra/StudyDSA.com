@@ -4,8 +4,8 @@ import { TbBinaryTree, TbBinaryTree2, TbVector } from "react-icons/tb";
 import Algorithms from "./Algorithms";
 import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeItem from "./SkillTreeItem";
-import getAlgorithms from "@/actions/getAlgorithms";
-import getChaptersByTopic from "@/actions/getChapters";
+import getAlgorithms from "@/actions/algorithms/getAlgorithms";
+import getChaptersByTopic from "@/actions/chapters/getChapters";
 
 const Intermediate = async () => {
   // Fetch algorithms
