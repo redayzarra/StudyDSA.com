@@ -1,6 +1,6 @@
 import getAlgorithms from "@/actions/getAlgorithms";
 import { Accordion } from "@/components/ui/accordion";
-import { arraySkills, disjointSetSkills, segmentTreeSkills } from "@/data/skillsData";
+import { arraySkills, disjointSetSkills, segmentTreeSkills, weightedGraphSkills } from "@/data/skillsData";
 import { PiGraph } from "react-icons/pi";
 import { TbBinaryTree, TbVector } from "react-icons/tb";
 import Algorithms from "./Algorithms";
@@ -26,7 +26,7 @@ const Advanced = async () => {
             <TbBinaryTree size={30} />
           </SkillTreeItem>
           <SkillTreeItem
-            items={arraySkills}
+            items={weightedGraphSkills}
             name="Weighted Graphs"
             value="weightedGraphs"
           >

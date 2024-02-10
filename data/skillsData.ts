@@ -428,3 +428,45 @@ export const disjointSetSkills: { title: string; href: string; description: stri
   },
 ]
 
+export const weightedGraphSkills: { title: string; href: string; description: string }[] = [
+  {
+    title: "Definition",
+    href: "/",
+    description: "Imagine a city map where roads have different lengths or speed limits",
+  },
+  {
+    title: "Operations",
+    href: "/",
+    description: "Here's everything you can do with weighted graphs and their complexities",
+  },
+  {
+    title: "Implementation",
+    href: "/",
+    description: "The easiest way is to implement weighted graphs using adjacency lists",
+  },
+  {
+    title: "Shortest Path",
+    href: "/",
+    description: "Similar to finding the quickest or least congested route from work like a GPS",
+  },
+  {
+    title: "Minimum Spanning Tree",
+    href: "/",
+    description: "Least-busy network of roads that allows travel between all the city spots",
+  },
+  {
+    title: "Cycle Detection",
+    href: "/",
+    description: "Here's how to ensure that there are no cycles in the weighted graph",
+  },
+  {
+    title: "Algorithms",
+    href: "/",
+    description: "These are all the common algorithms you should know for weighted graphs",
+  },
+  {
+    title: "Best Practices",
+    href: "/",
+    description: "The best way to use weighted graphs for maximum efficiency",
+  },
+]
