@@ -1,13 +1,9 @@
 import React from "react";
 import AlgorithmCell from "./AlgorithmCell";
+import { Algorithm } from "@prisma/client";
 
 interface Props {
-  items: {
-    title: string;
-    description: string;
-    href: string;
-    id: string;
-  }[];
+  items: Algorithm[];
 }
 
 const Algorithms = ({ items }: Props) => {

@@ -5,11 +5,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "./ui/accordion";
+import { Chapter } from "@prisma/client";
 
 interface Props {
   value: string;
   name: string;
-  items: { title: string; href: string; description: string }[];
+  items: Chapter[];
 }
 
 const SkillTreeItem = ({
@@ -31,10 +32,14 @@ const SkillTreeItem = ({
       <AccordionContent>
         <div className="">
           <ul className="grid grid-cols-2 gap-4">
-            {items.map((item) => (
-              <SkillTreeCell href={item.href} description={item.description}>
-                {item.title}
-              </SkillTreeCell>
+            {items.map((item, index) => (
+              <SkillTreeCell
+                key={index}
+                title={item.title}
+                href={item.href}
+                description={item.description}
+                chapterId={item.id}
+              />
             ))}
           </ul>
         </div>

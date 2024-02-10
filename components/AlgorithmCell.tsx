@@ -46,7 +46,7 @@ const AlgorithmCell = ({ title, description, href, algorithmId }: Props) => {
   const onClick = async () => {
     // Authentication handling
     if (!userId) {
-      toast("You need to be logged in to mark an algorithm.");
+      toast("You need to be logged in to mark an algorithm");
       setIsChecked(false); // Ensure checkbox is unchecked if user is not logged in
       return;
     }
