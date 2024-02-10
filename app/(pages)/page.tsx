@@ -2,7 +2,7 @@ import Advanced from "@/components/Advanced";
 import Basics from "@/components/Basics";
 import Intermediate from "@/components/Intermediate";
 import MasterDSA from "@/components/MasterDSA";
-import Welcome from "@/components/auth/Welcome";
+import Welcome from "@/components/Welcome";
 import getUser from "@/hooks/getUser";
 
 export default function Home() {

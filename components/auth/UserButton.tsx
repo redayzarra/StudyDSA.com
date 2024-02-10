@@ -16,7 +16,7 @@ import UserAvatar from "./UserAvatar";
 
 const UserButton = () => {
   const user = getUser();
-  const userName = user?.name ?? user?.username;
+  const userName = (user?.name ?? user?.username)?.trim();
 
   return user ? (
     <DropdownMenu>
@@ -45,7 +45,9 @@ const UserButton = () => {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <LogoutButton>
-          <DropdownMenuItem className="cursor-pointer">Log out</DropdownMenuItem>
+          <DropdownMenuItem className="cursor-pointer">
+            Log out
+          </DropdownMenuItem>
         </LogoutButton>
       </DropdownMenuContent>
     </DropdownMenu>

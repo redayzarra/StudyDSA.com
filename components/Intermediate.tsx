@@ -31,7 +31,7 @@ const Intermediate = async () => {
           </SkillTreeItem>
           {/* Graphs */}
           <SkillTreeItem items={graphChapters} name="Graphs" value="graphs">
-            <TbVector size={28} />  
+            <TbVector size={28} />
           </SkillTreeItem>
         </Accordion>
 
