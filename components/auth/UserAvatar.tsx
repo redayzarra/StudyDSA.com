@@ -1,10 +1,10 @@
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { getUser } from "@/hooks/getUser";
+import getUser from "@/hooks/getUser";
 
 const UserAvatar = () => {
   const user = getUser();
-
+  
   const getInitials = (name: string) => {
     if (!name) return "";
 
