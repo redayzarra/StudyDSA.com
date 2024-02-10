@@ -1,20 +1,16 @@
 import Advanced from "@/components/Advanced";
 import Basics from "@/components/Basics";
 import Intermediate from "@/components/Intermediate";
+import MasterDSA from "@/components/MasterDSA";
+import UserProgress from "@/components/UserProgress";
 
 export default function Home() {
   return (
     <div className="mt-40">
       <div className="space-y-14">
-        {/* Title and Heading */}
-        <div className="flex flex-col space-y-2 items-center justify-center">
-          <h1 className="font-bold text-5xl text-center">
-            Master Data Structures & Algorithms
-          </h1>
-          <h2 className="dark:text-muted-foreground text-lg text-center">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br />
-            Dolorum eveniet libero, ipsa totam laborum numquam provident.
-          </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <MasterDSA />
+          <UserProgress />
         </div>
         <Basics />
         <Intermediate />

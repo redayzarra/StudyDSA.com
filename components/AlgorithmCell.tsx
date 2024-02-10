@@ -76,7 +76,7 @@ const AlgorithmCell = ({ title, description, href, algorithmId }: Props) => {
           <h1 className="font-semibold text-[0.92rem] line-clamp-1">{title}</h1>
           <h2
             className={`line-clamp-1 text-muted-foreground text-sm ${
-              isChecked && "text-gray-800 dark:text-gray-100"
+              isChecked && "text-gray-900 dark:text-gray-100"
             }`}
           >
             {description}

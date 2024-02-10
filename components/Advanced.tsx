@@ -24,7 +24,7 @@ const Advanced = async () => {
       <h2 className="font-semibold mt-10 mb-2">Data Structures</h2>
       <div className="grid gap-x-8 grid-cols-1 xm:grid-cols-2">
         {/* First Column */}
-        <Accordion type="multiple">
+        <Accordion type="single" defaultValue="dag" collapsible>
           <SkillTreeItem
             items={dagChapters}
             name="Directed Acyclic Graphs"
@@ -42,7 +42,7 @@ const Advanced = async () => {
         </Accordion>
 
         {/* Second Column */}
-        <Accordion type="multiple">
+        <Accordion type="single" defaultValue="disjointSet" collapsible>
           <SkillTreeItem
             name="Disjoint Sets"
             value="disjointSet"
