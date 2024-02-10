@@ -24,7 +24,7 @@ const Intermediate = async () => {
       <h2 className="font-semibold mt-10 mb-2">Data Structures</h2>
       <div className="grid gap-x-8 grid-cols-1 xm:grid-cols-2">
         {/* First Column */}
-        <Accordion type="multiple">
+        <Accordion type="single" defaultValue="trees">
           {/* Trees */}
           <SkillTreeItem items={treeChapters} name="Trees" value="trees">
             <TbBinaryTree size={30} />
@@ -36,7 +36,7 @@ const Intermediate = async () => {
         </Accordion>
 
         {/* Second Column */}
-        <Accordion type="multiple">
+        <Accordion type="single" defaultValue="heaps">
           {/* Heaps */}
           <SkillTreeItem name="Heaps" value="heaps" items={heapChapters}>
             <FaArrowUpRightDots size={26} />
