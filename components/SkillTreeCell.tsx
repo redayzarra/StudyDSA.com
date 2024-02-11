@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Checkbox } from "./ui/checkbox";
-import getUserId from "@/hooks/getUserId";
+import getUserId from "@/hooks/client/getUserId";
 import getChapterStatus from "@/actions/chapters/getChapterStatus";
 import { toast } from "sonner";
 import markChapter from "@/actions/chapters/markChapter";

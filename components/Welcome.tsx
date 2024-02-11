@@ -2,7 +2,7 @@
 
 import React from "react";
 import UserAvatar from "./auth/UserAvatar";
-import getUser from "@/hooks/getUser";
+import getUser from "@/hooks/client/getUser";
 import { Separator } from "./ui/separator";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";

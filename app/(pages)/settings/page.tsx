@@ -1,7 +1,7 @@
 "use client";
 
-import getUser from "@/hooks/getUser";
-import getUserId from "@/hooks/getUserId";
+import getUser from "@/hooks/client/getUser";
+import getUserId from "@/hooks/client/getUserId";
 
 const SettingsPage = () => {
   const user = getUser();

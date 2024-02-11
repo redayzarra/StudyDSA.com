@@ -2,7 +2,7 @@
 
 import getAlgorithmStatus from "@/actions/algorithms/getAlgorithmStatus";
 import markAlgorithm from "@/actions/algorithms/markAlgorithm";
-import getUserId from "@/hooks/getUserId";
+import getUserId from "@/hooks/client/getUserId";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";

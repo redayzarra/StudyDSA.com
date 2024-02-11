@@ -1,4 +1,4 @@
-import getUser from "@/hooks/getUser";
+import getUser from "@/hooks/client/getUser";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import {
