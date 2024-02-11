@@ -6,6 +6,13 @@ import {
   AccordionTrigger,
 } from "./ui/accordion";
 import { Chapter } from "@prisma/client";
+import { Poppins } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const font = Poppins({
+  subsets: ["latin"],
+  weight: ["400"],
+});
 
 interface Props {
   value: string;
@@ -26,7 +33,7 @@ const SkillTreeItem = ({
           <div className="rounded-full bg-background/50 dark:bg-foreground/10 shadow-md h-12 w-12 items-center justify-center flex flex-shrink-0">
             {children}
           </div>
-          <h1 className="text-xl">{name}</h1>
+          <h1 className={cn("text-xl", font.className)}>{name}</h1>
         </div>
       </AccordionTrigger>
       <AccordionContent>

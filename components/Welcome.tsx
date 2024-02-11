@@ -4,7 +4,6 @@ import React from "react";
 import UserAvatar from "./auth/UserAvatar";
 import getUser from "@/hooks/getUser";
 import { Separator } from "./ui/separator";
-import getFirstChapter from "@/actions/chapters/getFirstChapter";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
 import { Poppins } from "next/font/google";
@@ -12,6 +11,7 @@ import { cn } from "@/lib/utils";
 import LoginButton from "./auth/LoginButton";
 import Link from "next/link";
 import { MdMoneyOff } from "react-icons/md";
+import QuickBookmark from "./QuickBookmark";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -20,6 +20,8 @@ const font = Poppins({
 
 const Welcome = () => {
   const user = getUser();
+
+  // If the user doesn't exist, show blurry counterpart
   if (!user) {
     return (
       <div className="w-full shadow-lg rounded-md bg-slate-200/50 dark:bg-zinc-950/50 border-t-2 border-white dark:border-stone-700 p-6 relative">
@@ -67,8 +69,9 @@ const Welcome = () => {
       </div>
     );
   }
+
+  // Get the user's true name and get greeting 
   const userName = (user?.name ?? user?.username)?.trim();
-  console.log(`${userName}!`);
 
   const currentHour = new Date().getHours();
   let greeting;
@@ -80,8 +83,6 @@ const Welcome = () => {
     greeting = "Good evening";
   }
 
-  const firstChapter = getFirstChapter(user.id!);
-
   return (
     <div className="w-full shadow-lg rounded-md bg-slate-200/50 dark:bg-zinc-950/50 border-t-2 border-white dark:border-stone-700 p-6">
       <div className="flex items-center space-x-4">
@@ -90,13 +91,8 @@ const Welcome = () => {
           {greeting}, {userName}!
         </h1>
       </div>
-      <Separator className="my-4 self-stretch" />
-      <h2 className="text-muted-foreground">
-        Your bookmark is on:{" "}
-        <a href="#segmentTrees" className="text-primary font-bold underline">
-          Basics
-        </a>
-      </h2>
+      <Separator className="my-4 self-stretch bg-black/10 dark:bg-border" />
+      <QuickBookmark />
     </div>
   );
 };

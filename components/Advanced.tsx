@@ -21,7 +21,7 @@ const Advanced = async () => {
     <div className="w-full pb-10 shadow-lg rounded-md bg-slate-200/50 dark:bg-zinc-950/50 border-t-2 border-white dark:border-stone-700 px-8 py-4">
       <SkillTreeHeading>Advanced</SkillTreeHeading>
       {/* Advanced Data Structures */}
-      <h2 className="font-semibold mt-10 mb-2">Data Structures</h2>
+      <h2 className="font-[650] mb-2 text-[1.15rem]">Data Structures</h2>
       <div className="grid gap-x-8 grid-cols-1 xm:grid-cols-2">
         {/* First Column */}
         <Accordion type="single" defaultValue="dag" collapsible>
