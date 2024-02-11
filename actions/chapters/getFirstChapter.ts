@@ -1,10 +1,8 @@
-"use server";
-
 import db from "@/lib/db";
 
 const getFirstChapter = async (userId: string) => {
   try {
-    const firstChapter = await db.chapterProgress.findFirst({
+    const firstChapterProgress = await db.chapterProgress.findFirst({
     where: {
       userId: userId,
       isComplete: false
@@ -14,16 +12,16 @@ const getFirstChapter = async (userId: string) => {
         id: 'asc'
       }
     },
-    select: {
-      chapter: {
-        select: {
-          href: true
-        }
-      }
+    include: {
+      chapter: true
     }
   });
 
-  return firstChapter;
+  if (firstChapterProgress) {
+      return firstChapterProgress.chapter;
+    } else {
+      return null; // Return null if no incomplete chapter is found
+  }
 
   // Error handling
   } catch (error) {

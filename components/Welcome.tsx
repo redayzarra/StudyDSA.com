@@ -70,7 +70,7 @@ const Welcome = () => {
     );
   }
 
-  // Get the user's true name and get greeting 
+  // Get the user's true name and get greeting
   const userName = (user?.name ?? user?.username)?.trim();
 
   const currentHour = new Date().getHours();
@@ -92,7 +92,7 @@ const Welcome = () => {
         </h1>
       </div>
       <Separator className="my-4 self-stretch bg-black/10 dark:bg-border" />
-      <QuickBookmark />
+      {/* <QuickBookmark userId={user.id!} /> */}
     </div>
   );
 };
