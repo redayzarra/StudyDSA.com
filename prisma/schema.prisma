@@ -50,6 +50,7 @@ model User {
   chapterProgress   ChapterProgress[]
   algorithmProgress AlgorithmProgress[]
   topicProgress     TopicProgress[]
+  bookmark          Bookmark[]
 }
 
 model VerificationToken {
@@ -99,6 +100,7 @@ model Chapter {
   topicId     String
   topic       Topic             @relation(fields: [topicId], references: [id], onDelete: Cascade)
   progress    ChapterProgress[]
+  bookmark    Bookmark[]
 }
 
 model ChapterProgress {
@@ -130,4 +132,15 @@ model AlgorithmProgress {
   algorithm   Algorithm @relation(fields: [algorithmId], references: [id], onDelete: Cascade)
 
   @@unique([userId, algorithmId])
+}
+
+model Bookmark {
+  id        String  @id @default(cuid())
+  userId    String
+  chapterId String
+  href      String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  chapter   Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, chapterId])
 }

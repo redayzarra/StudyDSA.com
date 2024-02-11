@@ -1,12 +1,11 @@
-import React from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { cn } from "@/lib/utils";
-import { MdMoneyOff } from "react-icons/md";
-import LoginButton from "./auth/LoginButton";
-import { Button } from "./ui/button";
-import { Separator } from "./ui/separator";
+import { LucideSmile } from "lucide-react";
 import { Poppins } from "next/font/google";
 import Link from "next/link";
+import LoginButton from "./auth/LoginButton";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Button } from "./ui/button";
+import { Separator } from "./ui/separator";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -36,7 +35,8 @@ const BlurryWelcome = () => {
           Log in to access all features!
         </h1>
         <h2 className="text-muted-foreground pb-5 flex space-x-1 items-center">
-          It's easy and free <MdMoneyOff />
+          <p>It's easy and free</p>
+          <LucideSmile size={20} />
         </h2>
         <div className="flex space-x-4">
           <LoginButton>
