@@ -1,18 +1,25 @@
-import { auth } from "@/auth";
 import Advanced from "@/components/Advanced";
 import Basics from "@/components/Basics";
+import BlurryWelcome from "@/components/BlurryWelcome";
 import Intermediate from "@/components/Intermediate";
 import MasterDSA from "@/components/MasterDSA";
 import Welcome from "@/components/Welcome";
+import getUser from "@/hooks/server/getUser";
 
 export default async function Home() {
-  const session = await auth();
+  const user = await getUser();
+  const userName = (user?.name ?? user?.username)?.trim();
+
   return (
     <div className="mt-40">
       <div className="space-y-14">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <MasterDSA />
-          <Welcome />
+          {user ? (
+            <Welcome user={user} userName={userName!} />
+          ) : (
+            <BlurryWelcome />
+          )}
         </div>
         <Basics />
         <Intermediate />

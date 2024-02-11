@@ -1,10 +1,13 @@
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import getUser from "@/hooks/client/getUser";
+import { User } from "next-auth";
 
-const UserAvatar = () => {
-  const user = getUser();
+interface Props {
+  user: User
+  userName: string
+}
 
+const UserAvatar = ({user, userName}: Props) => {
   const getInitials = (name: string) => {
     if (!name) return "";
 
@@ -16,7 +19,6 @@ const UserAvatar = () => {
     }
   };
 
-  const userName = user?.name ?? user?.username;
   const userInitials = getInitials(userName!);
 
   return (

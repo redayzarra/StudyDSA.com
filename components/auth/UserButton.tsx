@@ -1,3 +1,5 @@
+"use client";
+
 import getUser from "@/hooks/client/getUser";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
@@ -22,7 +24,7 @@ const UserButton = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-10 w-10 rounded-full">
-          <UserAvatar />
+          <UserAvatar user={user} userName={userName!} />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end" forceMount>
