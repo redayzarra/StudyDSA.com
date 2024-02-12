@@ -26,7 +26,7 @@ const markAlgorithm = async (userId: string, algorithmId: string, isComplete: bo
     // Error handling
   } catch (error) {
     console.error("Failed to toggle algorithm completion:", error);
-    throw error; // Or handle it as needed
+    throw error; 
   }
 }
 
