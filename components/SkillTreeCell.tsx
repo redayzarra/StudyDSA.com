@@ -7,6 +7,7 @@ import getUserId from "@/hooks/client/getUserId";
 import getChapterStatus from "@/actions/chapters/getChapterStatus";
 import { toast } from "sonner";
 import markChapter from "@/actions/chapters/markChapter";
+import { useRouter } from "next/navigation";
 
 interface Props {
   title: string;
@@ -20,6 +21,7 @@ const SkillTreeCell = ({ title, href, description, chapterId }: Props) => {
 
   const [isChecked, setIsChecked] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     const init = async () => {

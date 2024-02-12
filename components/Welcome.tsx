@@ -3,7 +3,7 @@ import UserAvatar from "./auth/UserAvatar";
 import { Separator } from "./ui/separator";
 import QuickBookmark from "./QuickBookmark";
 import Progress from "./Progress";
-import getDataProgress from "@/actions/chapters/getChapterProgress";
+import getTopicProgress from "@/actions/topics/getTopicProgress";
 import getAlgoProgress from "@/actions/algorithms/getAlgoProgress";
 
 interface Props {
@@ -22,7 +22,7 @@ const Welcome = async ({ user, userName }: Props) => {
     greeting = "Good evening";
   }
 
-  const [dataCompleted, dataTotal] = await getDataProgress(user.id!)
+  const [dataCompleted, dataTotal] = await getTopicProgress(user.id!)
   const [algoCompleted, algoTotal] = await getAlgoProgress(user.id!)
 
   return (

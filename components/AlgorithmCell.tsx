@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Checkbox } from "./ui/checkbox";
+import { useRouter } from "next/navigation";
 
 interface Props {
   title: string;
@@ -20,6 +21,7 @@ const AlgorithmCell = ({ title, description, href, algorithmId }: Props) => {
 
   const [isChecked, setIsChecked] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     const init = async () => {
