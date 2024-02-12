@@ -9,14 +9,15 @@ const font = Poppins({
 
 const MasterDSA = () => {
   return (
-    <div className="flex flex-col space-y-2">
+    <div className="flex flex-col justify-between">
       <h1 className={cn("font-bold text-4xl", font.className)}>
         Master Data Structures <br /> and Algorithms
       </h1>
       <h2 className="dark:text-muted-foreground text-lg">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum
-        eveniet libero, ipsa totam laborum numquam provident.
+        Let's make the tough stuff easy. Get straightforward, free resources to
+        tackle data structures and algorithms.
       </h2>
+      <p className="italic">"Where complexity meets clarity."</p>
     </div>
   );
 };
