@@ -21,7 +21,7 @@ const TableSection = ({
       type="single"
       className="mr-2"
       collapsible
-      defaultValue={heading ? "Data Structures" : ""}
+      defaultValue={heading}
     >
       <AccordionItem value={heading}>
         <AccordionTrigger>{heading}</AccordionTrigger>
@@ -38,7 +38,7 @@ const TableItems = ({ items }: { items: Topic[] }) => {
         <a
           key={item.id}
           href={item.href}
-          className="hover:underline text-sm dark:text-muted-foreground"
+          className="hover:underline text-sm dark:text-stone-400"
         >
           {item.title}
         </a>
