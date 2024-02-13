@@ -9,7 +9,7 @@ const font = Poppins({
 
 const MasterDSA = () => {
   return (
-    <div className="flex flex-col justify-between">
+    <div className="flex flex-col space-y-4">
       <h1 className={cn("font-bold text-4xl", font.className)}>
         Master Data Structures <br /> and Algorithms
       </h1>

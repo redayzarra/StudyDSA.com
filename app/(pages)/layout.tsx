@@ -4,7 +4,7 @@ import React from "react";
 
 const PagesLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="w-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-background to-muted-foreground/25 dark:from-accent dark:to-background">
+    <div className="">
       <NavBar />
       <Container>
         <main className="mt-16">{children}</main>
