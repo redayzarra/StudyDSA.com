@@ -8,7 +8,7 @@ const DataStructuresLayout = ({ children }: { children: React.ReactNode }) => {
     <div className="">
       <NavBar />
       <Container>
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-[auto_1fr]">
           <TableOfContents />
           {children}
         </div>

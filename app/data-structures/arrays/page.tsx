@@ -1,9 +1,16 @@
-import React from 'react'
+import getTopicByName from "@/actions/topics/getTopicByName";
+import Heading from "@/components/Heading";
+import { redirect } from "next/navigation";
+import { TiArrowRight } from "react-icons/ti";
 
-const ArraysPage = () => {
+const ArraysPage = async () => {
+  const topic = await getTopicByName("Arrays");
+
   return (
-    <div>ArraysPage</div>
-  )
-}
+    <div className="">
+      <Heading topic={topic!} />
+    </div>
+  );
+};
 
-export default ArraysPage
+export default ArraysPage;
