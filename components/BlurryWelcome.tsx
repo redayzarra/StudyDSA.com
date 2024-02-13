@@ -34,10 +34,9 @@ const BlurryWelcome = () => {
         <h1 className={cn("text-lg font-semibold text-center", font.className)}>
           Log in to access all features!
         </h1>
-        <h2 className="text-muted-foreground pb-5 flex space-x-1 items-center">
-          <p>It's easy and free</p>
-          <LucideSmile size={20} />
-        </h2>
+        <p className="text-muted-foreground pb-5 flex space-x-1 items-center">
+          It's easy and free
+        </p>
         <div className="flex space-x-4">
           <LoginButton>
             <Button size="sm" className="font-semibold shadow-lg">
