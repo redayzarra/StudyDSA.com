@@ -3,11 +3,11 @@
 import db from "@/lib/db";
 import { Difficulty } from "@prisma/client"
 
-const getAlgorithms = async (difficulty: Difficulty) => {
+const getAlgorithms = async (difficulty?: Difficulty) => {
   try {
     const algorithms = await db.algorithm.findMany({
       where: {
-        difficulty: difficulty,
+        difficulty: difficulty ?  difficulty  : {},
       },
     });
 

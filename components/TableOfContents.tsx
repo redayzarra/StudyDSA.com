@@ -1,23 +1,47 @@
-import { Topic } from "@prisma/client";
-import { Button } from "./ui/button";
-import { ScrollArea } from "./ui/scroll-area";
+import getAlgorithms from "@/actions/algorithms/getAlgorithms";
 import getTopics from "@/actions/topics/getTopics";
+import { Topic } from "@prisma/client";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "./ui/accordion";
+import { ScrollArea } from "./ui/scroll-area";
 
-const TableSection = ({ children }: { children: React.ReactNode }) => {
-  return <div className="mb-6">{children}</div>;
-};
-
-const TableHeading = ({ heading }: { heading: string }) => {
-  return <h2 className="font-medium">{heading}</h2>;
+const TableSection = ({
+  heading,
+  children,
+}: {
+  heading: string;
+  children: React.ReactNode;
+}) => {
+  return (
+    <Accordion
+      type="single"
+      className="mr-2"
+      collapsible
+      defaultValue={heading ? "Data Structures" : ""}
+    >
+      <AccordionItem value={heading}>
+        <AccordionTrigger>{heading}</AccordionTrigger>
+        <AccordionContent>{children}</AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  );
 };
 
 const TableItems = ({ items }: { items: Topic[] }) => {
   return (
-    <div className="flex flex-col items-start space-y-2">
+    <div className="flex flex-col items-start space-y-3">
       {items.map((item) => (
-        <p key={item.id}>
+        <a
+          key={item.id}
+          href={item.href}
+          className="hover:underline text-sm dark:text-muted-foreground"
+        >
           {item.title}
-        </p>
+        </a>
       ))}
     </div>
   );
@@ -25,15 +49,15 @@ const TableItems = ({ items }: { items: Topic[] }) => {
 
 const TableOfContents = async () => {
   const topics = await getTopics();
+  const algorithms = await getAlgorithms();
   return (
-    <ScrollArea className="hidden md:block h-[750px] w-[200px] rounded-md">
-      <TableSection>
-        <TableHeading heading="Introduction" />
+    <ScrollArea className="hidden md:block h-[850px] w-[200px]">
+      <TableSection heading="Data Structures">
         <TableItems items={topics} />
       </TableSection>
 
-      <TableSection>
-        <TableHeading heading="Data Structures" />
+      <TableSection heading="Algorithms">
+        <TableItems items={algorithms} />
       </TableSection>
     </ScrollArea>
   );
