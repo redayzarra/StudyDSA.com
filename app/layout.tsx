@@ -31,7 +31,7 @@ export default async function RootLayout({
             disableTransitionOnChange
           >
             {/* <SmoothScroll>{children}</SmoothScroll> */}
-            <div className="w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-background to-muted-foreground/25 dark:from-accent dark:to-background">
+            <div className="w-full h-full">
               {children}
             </div>
             <Toaster />

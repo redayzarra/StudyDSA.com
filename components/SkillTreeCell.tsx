@@ -8,6 +8,8 @@ import getChapterStatus from "@/actions/chapters/getChapterStatus";
 import { toast } from "sonner";
 import markChapter from "@/actions/chapters/markChapter";
 import { useRouter } from "next/navigation";
+import { FaCheckCircle } from "react-icons/fa";
+import { FaRegCircle } from "react-icons/fa6";
 
 interface Props {
   title: string;
@@ -73,11 +75,18 @@ const SkillTreeCell = ({ title, href, description, chapterId }: Props) => {
           <h2 className="line-clamp-2 text-muted-foreground">{description}</h2>
         </div>
       </Link>
-      <Checkbox
+      <div className="absolute top-2 right-2 h-2 w-2 text-primary">
+        {isChecked ? (
+          <FaCheckCircle className="" />
+        ) : (
+          <FaRegCircle className="" />
+        )}
+      </div>
+      {/* <Checkbox
         className="absolute top-2 right-2 rounded-full"
         checked={isChecked}
         onClick={onClick}
-      />
+      /> */}
     </div>
   );
 };

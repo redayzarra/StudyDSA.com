@@ -1,11 +1,12 @@
-import { Chapter } from "@prisma/client";
+import { Chapter, Topic } from "@prisma/client";
 import React, { PropsWithChildren } from "react";
 
 interface Props {
   chapter?: Chapter;
+  topic?: Topic;
 }
 
-const Definition = ({ chapter, children }: PropsWithChildren<Props>) => {
+const Definition = ({ chapter, topic, children }: PropsWithChildren<Props>) => {
   return (
     <div>
       <h2 className="font-bold">

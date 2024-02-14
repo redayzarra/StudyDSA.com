@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Checkbox } from "./ui/checkbox";
 import { useRouter } from "next/navigation";
+import { FaCheckCircle } from "react-icons/fa";
+import { FaRegCircle } from "react-icons/fa6";
 
 interface Props {
   title: string;
@@ -21,7 +23,6 @@ const AlgorithmCell = ({ title, description, href, algorithmId }: Props) => {
 
   const [isChecked, setIsChecked] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter();
 
   useEffect(() => {
     const init = async () => {
@@ -85,11 +86,21 @@ const AlgorithmCell = ({ title, description, href, algorithmId }: Props) => {
           </h2>
         </div>
       </Link>
-      <Checkbox
+
+      {/* Removing the ability to mark them outside of page */}
+      <div className="absolute top-3 right-2 text-primary">
+        {isChecked ? (
+          <FaCheckCircle className="h-4 w-4" />
+        ) : (
+          <FaRegCircle className="h-4 w-4" />
+        )}
+      </div>
+
+      {/* <Checkbox
         checked={isChecked}
         onClick={onClick}
         className="absolute top-2 right-2 h-5 w-5 rounded-full"
-      />
+      /> */}
 
       {/* {isLoading ? (
         <Spinner className="text-primary border-[3px] absolute top-2 right-2 h-5 w-5 rounded-full" />
