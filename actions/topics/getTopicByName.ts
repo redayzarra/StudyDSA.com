@@ -8,6 +8,9 @@ const getTopicByName = async (title: string) => {
       where: {
         title: title,
       },
+      include: {
+        chapters: true,
+      }
     });
 
     return topic;
