@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import {
   Table,
   TableBody,
@@ -9,27 +9,43 @@ import {
   TableRow,
 } from "./ui/table";
 
-const Operations = () => {
+interface Props {
+  items: { operation: string; time: string; space: string; notes: string }[];
+}
+
+const Operations = ({ items, children }: PropsWithChildren<Props>) => {
   return (
-    <Table>
-      <TableCaption>Operations supported by Arrays</TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead className="">Operations</TableHead>
-          <TableHead>Time Complexity</TableHead>
-          <TableHead>Space Complexity</TableHead>
-          <TableHead className="">Notes</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        <TableRow>
-          <TableCell className="font-medium">INV001</TableCell>
-          <TableCell>Paid</TableCell>
-          <TableCell>Credit Card</TableCell>
-          <TableCell className="">$250.00</TableCell>
-        </TableRow>
-      </TableBody>
-    </Table>
+    <div className="">
+      {/* <h2 className="font-bold mb-8">
+        Operations: <span className="font-normal">{children}</span>
+      </h2> */}
+      <Table className="max-w-4xl mx-auto rounded-lg overflow-hidden">
+        <TableHeader>
+          <TableRow>
+            <TableHead className="text-foreground">Operations</TableHead>
+            <TableHead className="text-foreground text-center">
+              Time Complexity
+            </TableHead>
+            <TableHead className="text-foreground text-center">
+              Space Complexity
+            </TableHead>
+            <TableHead className="text-foreground">Notes</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {items.map((item) => (
+            <TableRow key={item.operation}>
+              <TableCell className="">{item.operation}</TableCell>
+              <TableCell className="text-center">{item.time}</TableCell>
+              <TableCell className="text-center">{item.space}</TableCell>
+              <TableCell className="text-muted-foreground">
+                {item.notes}
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
   );
 };
 

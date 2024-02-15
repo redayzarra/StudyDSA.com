@@ -3,6 +3,7 @@ import getTopicByName from "@/actions/topics/getTopicByName";
 import Definition from "@/components/Definition";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
+import { arrayOperations } from "@/data/operationsData";
 
 const ArraysPage = async () => {
   const topic = await getTopicByName("Arrays");
@@ -23,7 +24,10 @@ const ArraysPage = async () => {
         together) in memory and can be accessed with addresses. These items are
         of the same type, and the size of the array is fixed upon creation.
       </Definition>
-      <Operations />
+      <Operations items={arrayOperations}>
+        A closer look at what you can do with arrays. The following table
+        provides a detailed overview of everything you can do with arrays.
+      </Operations>
     </div>
   );
 };
