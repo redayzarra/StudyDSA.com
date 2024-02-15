@@ -19,7 +19,7 @@ const TableSection = ({
   return (
     <Accordion
       type="single"
-      className="mr-2"
+      className="mr-4"
       collapsible
       defaultValue={heading}
     >

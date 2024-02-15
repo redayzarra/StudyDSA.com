@@ -31,6 +31,9 @@ const ArraysPage = async () => {
         detailed overview of everything you can do with arrays:
       </ChapterHeading>
       <Operations items={arrayOperations}></Operations>
+      <ChapterHeading id="#pointers" title="Pointers">
+        
+      </ChapterHeading>
     </div>
   );
 };
