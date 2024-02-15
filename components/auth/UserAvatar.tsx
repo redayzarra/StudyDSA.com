@@ -3,11 +3,11 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { User } from "next-auth";
 
 interface Props {
-  user: User
-  userName: string
+  user: User;
+  userName: string;
 }
 
-const UserAvatar = ({user, userName}: Props) => {
+const UserAvatar = ({ user, userName }: Props) => {
   const getInitials = (name: string) => {
     if (!name) return "";
 
@@ -27,7 +27,9 @@ const UserAvatar = ({user, userName}: Props) => {
         src={user?.image ?? ""}
         alt={`${userName}'s profile image`}
       />
-      <AvatarFallback>{userInitials}</AvatarFallback>
+      <AvatarFallback className="bg-stone-300 dark:bg-stone-700">
+        {userInitials}
+      </AvatarFallback>
     </Avatar>
   );
 };

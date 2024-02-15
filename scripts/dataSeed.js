@@ -4,7 +4,7 @@ const database = new PrismaClient();
 const arraySkills = [
   {
     title: "Definition",
-    href: "/",
+    href: "/data-structures/arrays#definition",
     description: "You just store stuff in a line, it's quite literally a list of stuff",
   },
   {
