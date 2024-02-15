@@ -1,8 +1,7 @@
-import { Topic } from "@prisma/client";
-import React from "react";
-import { TiArrowRight } from "react-icons/ti";
-import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { Topic } from "@prisma/client";
+import { Poppins } from "next/font/google";
+import { TiArrowRight } from "react-icons/ti";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -11,8 +10,8 @@ const font = Poppins({
 
 const Heading = ({ topic }: { topic: Topic }) => {
   return (
-    <div className="">
-      <p className="mb-6 flex text-sm items-center text-muted-foreground gap-x-1">
+    <div className="space-y-6">
+      <p className="flex text-sm items-center text-muted-foreground gap-x-1">
         Data Structures <TiArrowRight size={15} />
         <span className="text-foreground">{topic.title}</span>
       </p>

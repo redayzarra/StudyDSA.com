@@ -1,6 +1,6 @@
 import findChapter from "@/actions/chapters/findChapter";
 import getTopicByName from "@/actions/topics/getTopicByName";
-import Definition from "@/components/Definition";
+import ChapterHeading from "@/components/ChapterHeading";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
 import { arrayOperations } from "@/data/operationsData";
@@ -19,15 +19,16 @@ const ArraysPage = async () => {
   return (
     <div className="space-y-6">
       <Heading topic={topic!} />
-      <Definition id="#definition" chapter={definitionChapter}>
+      <ChapterHeading id="#definition" title="Definition">
         Arrays are a collection of items that are stored contiguously (stored
         together) in memory and can be accessed with addresses. These items are
         of the same type, and the size of the array is fixed upon creation.
-      </Definition>
-      <Operations items={arrayOperations}>
+      </ChapterHeading>
+      <ChapterHeading id="#operations" title="Operations">
         A closer look at what you can do with arrays. The following table
-        provides a detailed overview of everything you can do with arrays.
-      </Operations>
+        provides a detailed overview of everything you can do with arrays:
+      </ChapterHeading>
+      <Operations items={arrayOperations}></Operations>
     </div>
   );
 };
