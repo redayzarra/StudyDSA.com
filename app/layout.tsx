@@ -23,6 +23,12 @@ export default async function RootLayout({
   return (
     <SessionProvider session={session}>
       <html lang="en">
+        <head>
+          <link
+            href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css"
+            rel="stylesheet"
+          />
+        </head>
         <body className={`${inter.className}`}>
           <ThemeProvider
             attribute="class"
@@ -31,9 +37,7 @@ export default async function RootLayout({
             disableTransitionOnChange
           >
             {/* <SmoothScroll>{children}</SmoothScroll> */}
-            <div className="w-full h-full">
-              {children}
-            </div>
+            <div className="w-full h-full">{children}</div>
             <Toaster />
           </ThemeProvider>
         </body>

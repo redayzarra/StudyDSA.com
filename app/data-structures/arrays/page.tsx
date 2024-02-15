@@ -17,7 +17,7 @@ const ArraysPage = async () => {
   const definitionChapter = findChapter(topic, "Definition");
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <Heading topic={topic!} />
       <ChapterHeading id="#definition" title="Definition">
         Arrays are a collection of items that are stored contiguously (stored
@@ -25,8 +25,10 @@ const ArraysPage = async () => {
         of the same type, and the size of the array is fixed upon creation.
       </ChapterHeading>
       <ChapterHeading id="#operations" title="Operations">
-        Let's take a closer look at what you can do with arrays. The following
-        table provides a detailed overview of everything you can do with arrays:
+        Let's take a closer look at what you can do with arrays. Arrays are
+        stored in memory together so inserting or deleting in the middle
+        involves moving things around. The following table provides a
+        detailed overview of everything you can do with arrays:
       </ChapterHeading>
       <Operations items={arrayOperations}></Operations>
     </div>

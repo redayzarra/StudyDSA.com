@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import {
   Table,
   TableBody,
@@ -6,6 +7,11 @@ import {
   TableHeader,
   TableRow,
 } from "./ui/table";
+import localFont from "next/font/local";
+
+const font = localFont({
+  src: "../public/fonts/computerModern.ttf",
+});
 
 interface Props {
   items: { operation: string; time: string; space: string; notes: string }[];
@@ -34,9 +40,17 @@ const Operations = ({ items }: Props) => {
         <TableBody>
           {items.map((item) => (
             <TableRow key={item.operation}>
-              <TableCell className="">{item.operation}</TableCell>
-              <TableCell className="text-center">{item.time}</TableCell>
-              <TableCell className="text-center">{item.space}</TableCell>
+              <TableCell className="font-medium">{item.operation}</TableCell>
+              <TableCell
+                className={cn("text-center font-bold text-lg", font.className)}
+              >
+                {item.time}
+              </TableCell>
+              <TableCell
+                className={cn("text-center font-bold text-lg", font.className)}
+              >
+                {item.space}
+              </TableCell>
               <TableCell className="hidden md:flex text-muted-foreground">
                 {item.notes}
               </TableCell>

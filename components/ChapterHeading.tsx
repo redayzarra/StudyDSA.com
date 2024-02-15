@@ -16,8 +16,10 @@ interface Props {
 const ChapterHeading = ({ id, title, children }: PropsWithChildren<Props>) => {
   return (
     <div id={id} className="">
-      <h2 className={cn("text-xl font-semibold", font.className)}>{title}</h2>
-      <Separator className="my-3" />
+      <h2 className={cn("text-[1.3rem] font-semibold", font.className)}>
+        {title}
+      </h2>
+      <Separator className="my-2" />
       {children}
     </div>
   );
