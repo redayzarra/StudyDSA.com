@@ -51,7 +51,7 @@ const TableOfContents = async () => {
   const topics = await getTopics();
   const algorithms = await getAlgorithms();
   return (
-    <ScrollArea className="hidden h-[99vh] mr-10 lg:block w-[250px]">
+    <ScrollArea className="h-full pr-6 py-6 w-[225px]">
       <TableSection heading="Data Structures">
         <TableItems items={topics} />
       </TableSection>
