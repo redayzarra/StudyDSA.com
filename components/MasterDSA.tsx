@@ -17,7 +17,7 @@ const MasterDSA = () => {
         Let's make the tough stuff easy. Get straightforward, free resources to
         tackle data structures and algorithms.
       </h2>
-      <p className="italic hidden md:block">"Where complexity meets clarity."</p>
+      <p className="italic font-medium hidden md:block">"Where complexity meets clarity."</p>
     </div>
   );
 };

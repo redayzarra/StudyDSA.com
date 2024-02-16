@@ -122,10 +122,13 @@ const ArraysPage = async () => {
       <ChapterHeading id="#algorithms" title="Algorithms">
         <Algorithms items={arrayAlgorithms} />
       </ChapterHeading>
+
       <ChapterHeading
         id="#bestPractices"
         title="Best Practices"
-      ></ChapterHeading>
+      >
+        
+      </ChapterHeading>
     </div>
   );
 };

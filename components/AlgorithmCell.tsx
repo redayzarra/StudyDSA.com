@@ -73,7 +73,7 @@ const AlgorithmCell = ({ title, description, href, algorithmId }: Props) => {
           className={`rounded-sm shadow-md transition-all p-2 border-t-2 border-white hover:cursor-pointer space-y-2 ${
             isChecked
               ? "bg-amber-200 dark:bg-yellow-600 dark:border-yellow-100/50"
-              : "hover:bg-gray-300/70 dark:bg-muted-foreground/10 dark:hover:bg-muted-foreground/20 dark:border-white/10"
+              : "hover:bg-gray-300/50 dark:bg-muted-foreground/10 dark:hover:bg-muted-foreground/20 dark:border-white/10"
           }`}
         >
           <h1 className="font-semibold text-[0.92rem] line-clamp-1">{title}</h1>
