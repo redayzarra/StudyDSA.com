@@ -9,7 +9,7 @@ const TextLink = ({ children, href }: PropsWithChildren<Props>) => {
   return (
     <a
       href={href}
-      className="underline text-primary-foreground dark:text-primary font-medium"
+      className="underline text-yellow-500 dark:text-primary font-medium"
     >
       {children}
     </a>

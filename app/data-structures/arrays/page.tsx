@@ -49,7 +49,7 @@ const ArraysPage = async () => {
   return (
     <div className="space-y-8">
       <Heading topic={topic!} />
-      <ChapterHeading id="#definition" title="Definition">
+      <ChapterHeading id="definition" title="Definition">
         <p>
           Arrays are a collection of items that are{" "}
           <span className="font-bold">stored contiguously (together)</span> in
@@ -59,7 +59,7 @@ const ArraysPage = async () => {
           creation.
         </p>
       </ChapterHeading>
-      <ChapterHeading id="#operations" title="Operations">
+      <ChapterHeading id="operations" title="Operations">
         <p>
           Let's take a closer look at what you can do with arrays. Arrays are
           stored in memory together so inserting or deleting in the middle
@@ -71,7 +71,7 @@ const ArraysPage = async () => {
       </ChapterHeading>
 
       <ChapterHeading
-        id="#pointers"
+        id="pointers"
         title="Pointers"
         chapter={pointersChapter}
       >
@@ -115,7 +115,7 @@ const ArraysPage = async () => {
       </ChapterHeading>
 
       <ChapterHeading
-        id="#staticArrays"
+        id="staticArrays"
         title="Static Arrays"
         chapter={staticChapter}
       >
@@ -143,7 +143,7 @@ const ArraysPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="#amortizedTime" title="Amortized Time">
+      <ChapterHeading id="amortizedTime" title="Amortized Time">
         <p>
           Amortized time analysis gives us an{" "}
           <span className="font-bold">average running time per operation</span>{" "}
@@ -167,7 +167,7 @@ const ArraysPage = async () => {
       </ChapterHeading>
 
       <ChapterHeading
-        id="#dynamicArrays"
+        id="dynamicArrays"
         title="Dynamic Arrays"
         chapter={dynamicChapter}
       >
@@ -196,7 +196,7 @@ const ArraysPage = async () => {
       </ChapterHeading>
 
       <ChapterHeading
-        id="#stacks"
+        id="stacks"
         title="Stacks"
         chapter={stacksChapter}
       >
@@ -224,11 +224,11 @@ const ArraysPage = async () => {
         <CodeBlock code={stackCode} title="Stacks.py" />
       </ChapterHeading>
 
-      <ChapterHeading id="#algorithms" title="Algorithms">
+      <ChapterHeading id="algorithms" title="Algorithms">
         <Algorithms items={arrayAlgorithms} />
       </ChapterHeading>
 
-      <ChapterHeading id="#bestPractices" title="Best Practices">
+      <ChapterHeading id="bestPractices" title="Best Practices">
         <p>
           Mastering arrays and stacks is crucial for coding interviews. Here are
           some tips that I learned for using these data structures effectively:

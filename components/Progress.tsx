@@ -25,7 +25,7 @@ const Progress = ({ type, completed, total }: Props) => {
       )}
       <div className="ml-2 font-bold text-lg text-muted-foreground flex items-center">
         <span className="text-yellow-500 dark:text-primary">{completed}</span>
-        <TbSlash className="mx-1" />
+        <TbSlash className="mx-0.5" />
         {total}
       </div>
     </div>

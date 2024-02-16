@@ -27,7 +27,7 @@ const ChapterHeading = ({
       <div
         id={id}
         className={cn(
-          "text-[1.3rem] font-semibold flex justify-between",
+          "text-[1.3rem] font-semibold flex items-center justify-between",
           font.className
         )}
       >

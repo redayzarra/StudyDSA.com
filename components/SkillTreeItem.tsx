@@ -8,6 +8,8 @@ import {
 import { Chapter } from "@prisma/client";
 import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { FaGoodreads } from "react-icons/fa6";
+import { FaCheckCircle } from "react-icons/fa";
 
 const font = Poppins({
   subsets: ["latin"],

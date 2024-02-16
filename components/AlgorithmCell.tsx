@@ -87,20 +87,20 @@ const AlgorithmCell = ({ title, description, href, algorithmId }: Props) => {
         </div>
       </Link>
 
-      {/* Removing the ability to mark them outside of page */}
+      {/* Removing the ability to mark them outside of page
       <div className="absolute top-3 right-2 text-primary">
         {isChecked ? (
           <FaCheckCircle className="h-4 w-4" />
         ) : (
           <FaRegCircle className="h-4 w-4" />
         )}
-      </div>
+      </div> */}
 
-      {/* <Checkbox
+      <Checkbox
         checked={isChecked}
         onClick={onClick}
         className="absolute top-2 right-2 h-5 w-5 rounded-full"
-      /> */}
+      />
 
       {/* {isLoading ? (
         <Spinner className="text-primary border-[3px] absolute top-2 right-2 h-5 w-5 rounded-full" />

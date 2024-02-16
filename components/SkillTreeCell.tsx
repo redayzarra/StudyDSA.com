@@ -75,18 +75,21 @@ const SkillTreeCell = ({ title, href, description, chapterId }: Props) => {
           <h2 className="line-clamp-2 text-muted-foreground">{description}</h2>
         </div>
       </Link>
-      <div className="absolute top-2 right-2 text-primary">
+      {/* Removing the ability to mark outside of page */}
+      {/* <div className="absolute top-2 right-2 text-primary">
         {isChecked ? (
           <FaCheckCircle size={15} />
         ) : (
           <FaRegCircle size={15} />
         )}
-      </div>
-      {/* <Checkbox
+      </div> */}
+
+      {/* Be able to mark outside of page */}
+      <Checkbox
         className="absolute top-2 right-2 rounded-full"
         checked={isChecked}
         onClick={onClick}
-      /> */}
+      />
     </div>
   );
 };
