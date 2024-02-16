@@ -3,6 +3,7 @@ import findChapter from "@/actions/chapters/findChapter";
 import getTopicByName from "@/actions/topics/getTopicByName";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
+import CodeBlock from "@/components/CodeBlock";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
 import { arrayOperations } from "@/data/operationsData";
@@ -32,17 +33,39 @@ const ArraysPage = async () => {
 
   const arrayAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
 
+  const obj = `class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        ROWS, COLS = len(board), len(board[0])
+
+        rows = defaultdict(set)
+        cols = defaultdict(set)
+        squares = defaultdict(set)
+
+        for r in range(ROWS):
+            for c in range(COLS):
+                if board[r][c] == ".":
+                    continue
+                
+                if (board[r][c] in rows[r] or 
+                    board[r][c] in cols[c] or
+                    board[r][c] in squares[(r//3, c//3)]):
+                        return False
+                
+                rows[r].add(board[r][c])
+                cols[c].add(board[r][c])
+                squares[(r//3, c//3)].add(board[r][c])
+        
+        return True`;
+
   return (
     <div className="space-y-8">
       <Heading topic={topic!} />
       <ChapterHeading id="#definition" title="Definition">
         <p>
           Arrays are a collection of items that are{" "}
-          <span className="font-bold">
-            stored contiguously (together)
-          </span>{" "}
-          in memory and can be accessed with addresses. These items are of the
-          same type, and the{" "}
+          <span className="font-bold">stored contiguously (together)</span> in
+          memory and can be accessed with addresses. These items are of the same
+          type, and the{" "}
           <span className="font-bold">size of the array is fixed</span> upon
           creation.
         </p>
@@ -52,7 +75,8 @@ const ArraysPage = async () => {
           Let's take a closer look at what you can do with arrays. Arrays are
           stored in memory together so inserting or deleting in the middle
           involves moving things around. The following table provides a detailed
-          overview of <span className="font-bold">everything you can do with arrays:</span>
+          overview of{" "}
+          <span className="font-bold">everything you can do with arrays:</span>
         </p>
       </ChapterHeading>
       <Operations items={arrayOperations}></Operations>
@@ -123,11 +147,8 @@ const ArraysPage = async () => {
         <Algorithms items={arrayAlgorithms} />
       </ChapterHeading>
 
-      <ChapterHeading
-        id="#bestPractices"
-        title="Best Practices"
-      >
-        
+      <ChapterHeading id="#bestPractices" title="Best Practices">
+        <CodeBlock code={obj} />
       </ChapterHeading>
     </div>
   );
