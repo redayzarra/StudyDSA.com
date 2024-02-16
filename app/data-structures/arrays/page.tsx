@@ -1,5 +1,7 @@
+import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsByName";
 import findChapter from "@/actions/chapters/findChapter";
 import getTopicByName from "@/actions/topics/getTopicByName";
+import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
@@ -14,7 +16,21 @@ const ArraysPage = async () => {
     return <div>Topic not found</div>;
   }
 
-  const definitionChapter = findChapter(topic, "Definition");
+  // const definitionChapter = findChapter(topic, "Definition");
+
+  const fetchAlgorithms = [
+    "Two Pointers",
+    "Sliding Window",
+    "Binary Search",
+    "Prefix Sums",
+    "Recursion",
+    "Sorting",
+    "Backtracking",
+    "1D Dynamic Pro.",
+    "Kadane's Algo.",
+  ];
+
+  const arrayAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
 
   return (
     <div className="space-y-8">
@@ -23,7 +39,7 @@ const ArraysPage = async () => {
         <p>
           Arrays are a collection of items that are{" "}
           <span className="font-bold">
-            stored contiguously (stored together)
+            stored contiguously (together)
           </span>{" "}
           in memory and can be accessed with addresses. These items are of the
           same type, and the{" "}
@@ -36,7 +52,7 @@ const ArraysPage = async () => {
           Let's take a closer look at what you can do with arrays. Arrays are
           stored in memory together so inserting or deleting in the middle
           involves moving things around. The following table provides a detailed
-          overview of everything you can do with arrays:
+          overview of <span className="font-bold">everything you can do with arrays:</span>
         </p>
       </ChapterHeading>
       <Operations items={arrayOperations}></Operations>
@@ -85,6 +101,7 @@ const ArraysPage = async () => {
           providing a versatile tool for managing collections of elements.
         </p>
       </ChapterHeading>
+
       <ChapterHeading id="#stacks" title="Stacks">
         <p>
           Stacks are a type of data structure that operates on the{" "}
@@ -101,6 +118,14 @@ const ArraysPage = async () => {
           before it.
         </p>
       </ChapterHeading>
+
+      <ChapterHeading id="#algorithms" title="Algorithms">
+        <Algorithms items={arrayAlgorithms} />
+      </ChapterHeading>
+      <ChapterHeading
+        id="#bestPractices"
+        title="Best Practices"
+      ></ChapterHeading>
     </div>
   );
 };

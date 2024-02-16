@@ -19,7 +19,7 @@ interface Props {
 
 const Operations = ({ items }: Props) => {
   return (
-    <div className="border-[2px] border-black/10 dark:border-border max-w-3xl mx-auto rounded-lg">
+    <div className="border-[1px] shadow-lg dark:border-stone-700/75 border-black/10 max-w-3xl mx-auto rounded-lg">
       <Table className="rounded-lg overflow-hidden">
         <TableHeader>
           <TableRow className="bg-stone-800/10 dark:bg-stone-200/5 hover:bg-stone-800/10">
@@ -51,7 +51,7 @@ const Operations = ({ items }: Props) => {
               >
                 {item.space}
               </TableCell>
-              <TableCell className="hidden md:flex text-muted-foreground">
+              <TableCell className="hidden md:flex items-center mt-1 text-muted-foreground">
                 {item.notes}
               </TableCell>
             </TableRow>

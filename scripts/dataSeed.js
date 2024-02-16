@@ -9,37 +9,37 @@ const arraySkills = [
   },
   {
     title: "Operations",
-    href: "/data-structures/arrays/#operations",
+    href: "/data-structures/arrays#operations",
     description: "Here's everything you can do with arrays and their complexities",
   },
   {
     title: "Pointers",
-    href: "/data-structures/arrays/#pointers",
+    href: "/data-structures/arrays#pointers",
     description: "They point to stuff instead of storing data",
   },
   {
     title: "Static Arrays",
-    href: "/data-structures/arrays/#staticArrays",
+    href: "/data-structures/arrays#staticArrays",
     description: "They're like a metal can, they can only fit a certain amount",
   },
   {
     title: "Dynamic Arrays",
-    href: "/data-structures/arrays/#dynamicArrays",
+    href: "/data-structures/arrays#dynamicArrays",
     description: "They're basically balloons, you can keep adding to them with no worries",
   },
   {
     title: "Stacks",
-    href: "/data-structures/arrays/#stacks",
+    href: "/data-structures/arrays#stacks",
     description: "LIFO - meaning you can quickly access the most recent one",
   },
   {
     title: "Algorithms",
-    href: "/data-structures/arrays/#algorithms",
+    href: "/data-structures/arrays#algorithms",
     description: "These are common algorithms you need to know for arrays and stacks",
   },
   {
     title: "Best Practices",
-    href: "/data-structures/arrays/#bestPractices",
+    href: "/data-structures/arrays#bestPractices",
     description: "The most efficient way of using arrays and avoiding pitfalls",
   },
 ]
