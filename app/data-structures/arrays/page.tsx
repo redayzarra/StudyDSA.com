@@ -15,6 +15,7 @@ import {
   stackCode,
   staticArrayCode,
 } from "./_components/arrayCode";
+import TextLink from "@/components/TextLink";
 
 const ArraysPage = async () => {
   const topic = await getTopicByName("Arrays");
@@ -171,9 +172,10 @@ const ArraysPage = async () => {
         <p>
           <br />
           Dynamic arrays are implemented in many programming languages as
-          built-in types, such as lists in Python or ArrayLists in Java. It's
-          important to understand the array functions and methods available in
-          your preferred programming language.
+          built-in types, such as <CodeText>List</CodeText> in Python or{" "}
+          <CodeText>ArrayList</CodeText> in Java. It's important to understand
+          the array functions and methods available in your preferred
+          programming language.
         </p>
       </ChapterHeading>
 
@@ -206,10 +208,59 @@ const ArraysPage = async () => {
         <Algorithms items={arrayAlgorithms} />
       </ChapterHeading>
 
-      <ChapterHeading
-        id="#bestPractices"
-        title="Best Practices"
-      ></ChapterHeading>
+      <ChapterHeading id="#bestPractices" title="Best Practices">
+        <p>
+          Mastering arrays and stacks is crucial for coding interviews. Here are
+          some tips that I learned for using these data structures effectively:
+          <br />
+          <br />
+        </p>
+
+        <ul className="ml-6">
+          <li>
+            <span className="font-bold">Identifying Patterns:</span> Arrays are
+            commonly used in sorting, searching, and iterating over data. Arrays
+            are also the most common data structures for storing the final
+            result of a problem. For this reason, you need to be comfortable
+            with all the common functions and methods for arrays in your
+            preferred language.
+            <br />
+            <br />
+          </li>
+          <li>
+            <span className="font-bold">Space-Time Trade-offs:</span> Understand
+            when it's beneficial to use additional space (like creating{" "}
+            <TextLink href="/data-structures/hashmaps">hashmaps</TextLink> from
+            arrays) to improve time efficiency. This strategy is useful in
+            problems involving frequency counting or mapping relationships
+            between elements.
+            <br />
+            <br />
+          </li>
+          <li>
+            <span className="font-bold">
+              When Elements Depend On Each Other:
+            </span>{" "}
+            Stacks are ideal for managing matching brackets or parentheses in
+            syntax validation problems. This is becuase the current element
+            depends on the elements that came before it, a perfect use case for
+            using stacks.
+            <br />
+            <br />
+          </li>
+          <li>
+            <span className="font-bold">Navigating Through Recursion:</span> For
+            recursive problem solutions, stacks are perfect for an iterative
+            approach. They allow you to maintain state across different levels
+            of <TextLink href="/algorithms/recursion">recursion</TextLink>. By
+            pushing temporary data onto the stack as you descend and popping it
+            off as you backtrack, you effectively mimic the call stack mechanism
+            of recursion.
+            <br />
+            <br />
+          </li>
+        </ul>
+      </ChapterHeading>
     </div>
   );
 };
