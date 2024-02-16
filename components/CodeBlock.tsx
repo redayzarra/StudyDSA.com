@@ -7,6 +7,7 @@ import { CSSProperties } from "react";
 interface Props {
   title?: string;
   code: string;
+  language?: string;
   showLines?: boolean;
   highlightLines?: number[];
 }
@@ -22,19 +23,31 @@ const customStyle = {
 const CodeBlock = ({
   code,
   title,
+  language="python",
   highlightLines = [],
   showLines = false,
 }: Props) => {
-  // Line props - determine if lineNumber is in highlightLines
-  const lineProps = (lineNumber: number) => {
-    let style: CSSProperties = { display: "block" };
-    if (highlightLines.includes(lineNumber)) {
-      style.backgroundColor = "#2c313c";
-    }
-    return { style };
-  };
+
+  // // Line props - determine if lineNumber is in highlightLines
+  // const lineProps = (lineNumber: number) => {
+  //   let style: CSSProperties = { display: "block" };
+  //   if (highlightLines.includes(lineNumber)) {
+  //     style.backgroundColor = "#2c313c";
+  //   }
+  //   return { style };
+  // };
+
+  const lineNumberStyle = {
+    minWidth: '1.5em',
+    paddingRight: '1em',
+    fontWeight: 'normal',
+    textAlign: 'left',
+    userSelect: 'none',
+    color: '#888',
+} as CSSProperties
+
   return (
-    <div className="mt-4 shadow-lg max-w-2xl min-w-[25rem] bg-[#23272e] dark: dark:bg-black/50 border-t-2 dark:border-stone-700 rounded-lg overflow-hidden">
+    <div className="mt-4 max-w-3xl mx-auto shadow-md bg-[#23272e] dark: dark:bg-black/50 border-t-2 dark:border-stone-700 rounded-lg overflow-hidden">
       <div className="grid grid-cols-3 items-center px-4 py-1 bg-[#17191d] dark:bg-black/70">
         <div className="flex justify-start items-center space-x-2">
           <FaCircle className="text-[#FF605C]" size={12} />
@@ -52,13 +65,12 @@ const CodeBlock = ({
         </div>
       </div>
       <SyntaxHighlighter
-        lineNumberStyle={{ color: "#767676" }}
-        language="python"
+        language={language}
         style={vscDarkPlus}
         customStyle={customStyle}
-        wrapLongLines
+        lineNumberStyle={lineNumberStyle}
         showLineNumbers={showLines}
-        lineProps={lineProps}
+        // lineProps={lineProps}
       >
         {code}
       </SyntaxHighlighter>

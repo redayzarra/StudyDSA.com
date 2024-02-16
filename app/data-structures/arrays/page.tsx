@@ -133,7 +133,7 @@ const ArraysPage = async () => {
       </ChapterHeading>
 
       <ChapterHeading id="#bestPractices" title="Best Practices">
-        <CodeBlock code={obj} title="" showLines/>
+        <CodeBlock code={obj} title="" />
       </ChapterHeading>
     </div>
   );
