@@ -28,4 +28,3 @@ const getBookmark = async (userId: string) => {
 };
 
 export default getBookmark;
-

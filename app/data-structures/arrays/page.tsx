@@ -16,6 +16,7 @@ import {
   staticArrayCode,
 } from "./_components/arrayCode";
 import TextLink from "@/components/TextLink";
+import findChapter from "@/actions/chapters/findChapter";
 
 const ArraysPage = async () => {
   const topic = await getTopicByName("Arrays");
@@ -26,7 +27,10 @@ const ArraysPage = async () => {
     return <div>Topic not found</div>;
   }
 
-  // const definitionChapter = findChapter(topic, "Definition");
+  const pointersChapter = findChapter(topic, "Pointers");
+  const staticChapter = findChapter(topic, "Static Arrays");
+  const dynamicChapter = findChapter(topic, "Dynamic Arrays");
+  const stacksChapter = findChapter(topic, "Stacks");
 
   const fetchAlgorithms = [
     "Two Pointers",
@@ -66,7 +70,11 @@ const ArraysPage = async () => {
         <Operations items={arrayOperations} />
       </ChapterHeading>
 
-      <ChapterHeading id="#pointers" title="Pointers">
+      <ChapterHeading
+        id="#pointers"
+        title="Pointers"
+        chapter={pointersChapter}
+      >
         <p>
           Pointers are{" "}
           <span className="font-bold">
@@ -106,7 +114,11 @@ const ArraysPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="#staticArrays" title="Static Arrays">
+      <ChapterHeading
+        id="#staticArrays"
+        title="Static Arrays"
+        chapter={staticChapter}
+      >
         <p>
           Static arrays have a fixed size, which is determined at compile time.
           This means the{" "}
@@ -154,7 +166,11 @@ const ArraysPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="#dynamicArrays" title="Dynamic Arrays">
+      <ChapterHeading
+        id="#dynamicArrays"
+        title="Dynamic Arrays"
+        chapter={dynamicChapter}
+      >
         <p>
           Unlike static arrays,{" "}
           <span className="font-bold">
@@ -179,7 +195,11 @@ const ArraysPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="#stacks" title="Stacks">
+      <ChapterHeading
+        id="#stacks"
+        title="Stacks"
+        chapter={stacksChapter}
+      >
         <p>
           Stacks are a type of data structure that operates on the{" "}
           <span className="font-bold">Last In, First Out (LIFO)</span>{" "}

@@ -12,7 +12,7 @@ const QuickBookmark = async ({ userId }: { userId: string }) => {
           <FaBookmark size={iconSize} />
           <a href={bookmark.href} className="text-muted-foreground font-medium">
             Your bookmark is on:{" "}
-            <span className="text-primary font-bold underline">
+            <span className="text-yellow-500 dark:text-primary font-bold underline">
               {bookmark.title}
             </span>
           </a>
