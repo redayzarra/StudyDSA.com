@@ -3,16 +3,18 @@ import getTopicByName from "@/actions/topics/getTopicByName";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
 import CodeBlock from "@/components/CodeBlock";
+import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
-import { arrayOperations } from "@/data/operationsData";
+import { arrayOperations, stackOperations } from "@/data/operationsData";
 import {
   amortizedTimeCode,
+  dynamicArraysCode,
   pointerCodeC,
   pointerCodePy,
+  stackCode,
   staticArrayCode,
 } from "./_components/arrayCode";
-import { CodeText } from "@/components/CodeText";
 
 const ArraysPage = async () => {
   const topic = await getTopicByName("Arrays");
@@ -60,8 +62,8 @@ const ArraysPage = async () => {
           overview of{" "}
           <span className="font-bold">everything you can do with arrays:</span>
         </p>
+        <Operations items={arrayOperations} />
       </ChapterHeading>
-      <Operations items={arrayOperations} />
 
       <ChapterHeading id="#pointers" title="Pointers">
         <p>
@@ -162,9 +164,16 @@ const ArraysPage = async () => {
           entire array to a new memory space when resizing.
           <br />
           <br />
+          Python has built-in support for dynamic arrays. Here is everything you
+          can do with dynamic arrays or lists in Python:
+        </p>
+        <CodeBlock code={dynamicArraysCode} title="DynamicArrays.py" />
+        <p>
+          <br />
           Dynamic arrays are implemented in many programming languages as
-          built-in types, such as lists in Python or ArrayLists in Java,
-          providing a versatile tool for managing collections of elements.
+          built-in types, such as lists in Python or ArrayLists in Java. It's
+          important to understand the array functions and methods available in
+          your preferred programming language.
         </p>
       </ChapterHeading>
 
@@ -177,12 +186,20 @@ const ArraysPage = async () => {
           access to <span className="font-bold">add (push)</span> or{" "}
           <span className="font-bold">remove (pop)</span> elements from the end.
           <br />
-          <br />
-          Stacks are fundamental in various computing tasks, including function
-          call management in programming languages. For coding interviews, use
-          them whenever you have elements that depend on the elements that came
-          before it.
         </p>
+        <p>
+          <br />
+          Given that stacks are implemented using arrays, all supported stack
+          operations can be executed in constant time:
+        </p>
+        <Operations items={stackOperations} />
+        <p>
+          Here's how to implement stacks in Python, using dynamic arrays (lists)
+          to efficiently manage stack operations. For coding interviews, use
+          stacks whenever you have elements that depend on the elements that
+          came before it.
+        </p>
+        <CodeBlock code={stackCode} title="Stacks.py" />
       </ChapterHeading>
 
       <ChapterHeading id="#algorithms" title="Algorithms">
