@@ -4,42 +4,42 @@ const database = new PrismaClient();
 const arraySkills = [
   {
     title: "Definition",
-    href: "/data-structures/arrays#definition",
+    href: "/data-structures/arrays",
     description: "You just store stuff in a line, it's quite literally a list of stuff",
   },
   {
     title: "Operations",
-    href: "/data-structures/arrays#operations",
+    href: "/data-structures/arrays",
     description: "Here's everything you can do with arrays and their complexities",
   },
   {
     title: "Pointers",
-    href: "/data-structures/arrays#pointers",
+    href: "/data-structures/arrays",
     description: "They point to stuff instead of storing data",
   },
   {
     title: "Static Arrays",
-    href: "/data-structures/arrays#staticArrays",
+    href: "/data-structures/arrays",
     description: "They're like a metal can, they can only fit a certain amount",
   },
   {
     title: "Dynamic Arrays",
-    href: "/data-structures/arrays#dynamicArrays",
+    href: "/data-structures/arrays",
     description: "They're basically balloons, you can keep adding to them with no worries",
   },
   {
     title: "Stacks",
-    href: "/data-structures/arrays#stacks",
+    href: "/data-structures/arrays",
     description: "LIFO - meaning you can quickly access the most recent one",
   },
   {
     title: "Algorithms",
-    href: "/data-structures/arrays#algorithms",
+    href: "/data-structures/arrays",
     description: "These are common algorithms you need to know for arrays and stacks",
   },
   {
     title: "Best Practices",
-    href: "/data-structures/arrays#bestPractices",
+    href: "/data-structures/arrays",
     description: "The most efficient way of using arrays and avoiding pitfalls",
   },
 ]

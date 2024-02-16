@@ -1,5 +1,4 @@
 import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsByName";
-import findChapter from "@/actions/chapters/findChapter";
 import getTopicByName from "@/actions/topics/getTopicByName";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
@@ -7,6 +6,13 @@ import CodeBlock from "@/components/CodeBlock";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
 import { arrayOperations } from "@/data/operationsData";
+import {
+  amortizedTimeCode,
+  pointerCodeC,
+  pointerCodePy,
+  staticArrayCode,
+} from "./_components/arrayCode";
+import { CodeText } from "@/components/CodeText";
 
 const ArraysPage = async () => {
   const topic = await getTopicByName("Arrays");
@@ -33,15 +39,6 @@ const ArraysPage = async () => {
 
   const arrayAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
 
-  const obj = `class Solution:
-    def twoSum(nums: List[int], target: int) -> int:
-        hashmap = {}
-        for index, num in enumerate(nums):
-            diff = target - num
-            if diff in hashmap:
-                return [index, hashmap[diff]]
-            hashmap[num] = index`;
-
   return (
     <div className="space-y-8">
       <Heading topic={topic!} />
@@ -64,17 +61,45 @@ const ArraysPage = async () => {
           <span className="font-bold">everything you can do with arrays:</span>
         </p>
       </ChapterHeading>
-      <Operations items={arrayOperations}></Operations>
+      <Operations items={arrayOperations} />
+
       <ChapterHeading id="#pointers" title="Pointers">
         <p>
-          Pointers are variables that store the memory address of another
-          variable. In the context of arrays, pointers are crucial because they
-          can be used to directly access and manipulate array elements.
+          Pointers are{" "}
+          <span className="font-bold">
+            variables that store the memory address
+          </span>{" "}
+          of another variable. In the context of arrays, pointers are crucial
+          because they can be used to directly access and manipulate array
+          elements. Let's take a look at pointers in a language that supports
+          them explicitly like C:
           <br />
+        </p>
+        <CodeBlock code={pointerCodeC} language="c" title="Pointers.c" />
+        <p>
           <br />
           This direct access via pointers is what makes arrays efficient,
           especially when it comes to iterating over elements or implementing
-          data structures like stacks and queues.
+          data structures like stacks and queues. Let's take a look at a more
+          complex example of pointers in Python:
+          <br />
+        </p>
+        <CodeBlock code={pointerCodePy} language="python" title="Pointers.py" />
+        <p>
+          <br />
+          The code above defines a function <CodeText>reverse</CodeText> that
+          takes an array of integers and reverses its elements in place, meaning
+          the original array is modified without needing extra space for another
+          array. It starts with two indexes, <CodeText>left</CodeText> at the
+          beginning of the array and <CodeText>right</CodeText> at the end. The
+          pointers meet in the middle to swap the elements, which reverses the
+          input.
+          <br />
+          <br />
+          By using indexes to directly access and modify array elements, this
+          approach mimics pointer manipulation in lower-level languages.
+          Pointers are going to be a crucial concept for you to understand, I
+          suggest playing with the code above on your own.
         </p>
       </ChapterHeading>
 
@@ -85,12 +110,44 @@ const ArraysPage = async () => {
           <span className="font-bold">
             amount of memory they occupy is constant
           </span>{" "}
-          and known, making them very fast for operations like access.
+          and known, making them very fast for operations like access. Python
+          does not have built-in static arrays which is why I am demonstrating
+          static arrays using C:
           <br />
+        </p>
+        <CodeBlock code={staticArrayCode} language="c" title="StaticArray.c" />
+        <p>
           <br />
-          However, the fixed size also means that once an array is full, you
-          cannot add more elements to it, and attempting to do so will result in
-          an error or undefined behavior.
+          However, the fixed size also means that{" "}
+          <span className="font-bold">
+            once an array is full, you cannot add more elements
+          </span>{" "}
+          to it, and attempting to do so will result in an error or undefined
+          behavior. You don't need to worry about this in Python, but the
+          concepts of static arrays are still imporant to know.
+        </p>
+      </ChapterHeading>
+
+      <ChapterHeading id="#amortizedTime" title="Amortized Time">
+        <p>
+          Amortized time analysis gives us an{" "}
+          <span className="font-bold">average running time per operation</span>{" "}
+          across multiple operations. Although arrays are initialized with a
+          fixed size, they may need to be resized—
+          <span className="font-bold">typically doubled in size</span>—when
+          additional space is required. This resizing involves copying all
+          elements to a new, larger array.
+          <br />
+        </p>
+
+        <CodeBlock code={amortizedTimeCode} title="Amortized_Time.py" />
+        <p>
+          <br />
+          While resizing the array can be costly, amortized analysis reveals
+          that the average cost of these operations, including resizings,
+          remains low. The simulation above shows that even though some
+          operations might be costly, spreading out these costs over many
+          appends keeps the process efficient.
         </p>
       </ChapterHeading>
 
@@ -132,9 +189,10 @@ const ArraysPage = async () => {
         <Algorithms items={arrayAlgorithms} />
       </ChapterHeading>
 
-      <ChapterHeading id="#bestPractices" title="Best Practices">
-        <CodeBlock code={obj} title="" />
-      </ChapterHeading>
+      <ChapterHeading
+        id="#bestPractices"
+        title="Best Practices"
+      ></ChapterHeading>
     </div>
   );
 };
