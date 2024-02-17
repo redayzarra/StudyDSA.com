@@ -16,7 +16,7 @@ export default async function Home() {
 
   return (
     <BackgroundGradientAnimation
-      className=""
+      className="-mb-[1300px]"
       gradientBackgroundEnd="var(--background)"
       gradientBackgroundStart="var(--background)"
       firstColor="var(--firstColor)"
@@ -25,6 +25,7 @@ export default async function Home() {
       fourthColor="var(--fourthColor)"
       fifthColor="var(--fifthColor)"
       size="40%"
+      interactive={false}
     >
       <div className="absolute overflow-hidden w-full z-50 bg-slate-900/10 dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex items-center justify-center">
         <NavBar />
