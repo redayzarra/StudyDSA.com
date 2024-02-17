@@ -4,6 +4,7 @@ import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Chapter } from "@prisma/client";
 import Bookmark from "./Bookmark";
+import MarkCheckbox from "./MarkCheckbox";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -13,6 +14,7 @@ const font = Poppins({
 interface Props {
   id: string;
   title: string;
+  chapterId?: string;
   chapter?: Chapter;
 }
 
@@ -20,6 +22,7 @@ const ChapterHeading = ({
   id,
   title,
   children,
+  chapterId,
   chapter,
 }: PropsWithChildren<Props>) => {
   return (
@@ -32,7 +35,12 @@ const ChapterHeading = ({
         )}
       >
         {title}
-        {chapter && <Bookmark chapter={chapter} />}
+        <div className="flex items-center space-x-4">
+          {chapter && <Bookmark chapter={chapter} />}
+          {chapterId && (
+            <MarkCheckbox className="h-5 w-5" chapterId={chapterId} />
+          )}
+        </div>
       </div>
       <Separator className="my-2" />
       {children}

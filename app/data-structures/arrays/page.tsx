@@ -27,10 +27,14 @@ const ArraysPage = async () => {
     return <div>Topic not found</div>;
   }
 
+  const definitionChapter = findChapter(topic, "Definition");
+  const operationsChapter = findChapter(topic, "Operations");
   const pointersChapter = findChapter(topic, "Pointers");
   const staticChapter = findChapter(topic, "Static Arrays");
   const dynamicChapter = findChapter(topic, "Dynamic Arrays");
   const stacksChapter = findChapter(topic, "Stacks");
+  const algorithmsChapter = findChapter(topic, "Algorithms");
+  const bestPracticesChapter = findChapter(topic, "Best Practices");
 
   const fetchAlgorithms = [
     "Two Pointers",
@@ -49,7 +53,11 @@ const ArraysPage = async () => {
   return (
     <div className="space-y-8">
       <Heading topic={topic!} />
-      <ChapterHeading id="definition" title="Definition">
+      <ChapterHeading
+        id="definition"
+        title="Definition"
+        chapterId={definitionChapter?.id}
+      >
         <p>
           Arrays are a collection of items that are{" "}
           <span className="font-bold">stored contiguously (together)</span> in
@@ -59,7 +67,11 @@ const ArraysPage = async () => {
           creation.
         </p>
       </ChapterHeading>
-      <ChapterHeading id="operations" title="Operations">
+      <ChapterHeading
+        id="operations"
+        title="Operations"
+        chapterId={operationsChapter?.id}
+      >
         <p>
           Let's take a closer look at what you can do with arrays. Arrays are
           stored in memory together so inserting or deleting in the middle
@@ -74,6 +86,7 @@ const ArraysPage = async () => {
         id="pointers"
         title="Pointers"
         chapter={pointersChapter}
+        chapterId={pointersChapter?.id}
       >
         <p>
           Pointers are{" "}
@@ -118,6 +131,7 @@ const ArraysPage = async () => {
         id="staticArrays"
         title="Static Arrays"
         chapter={staticChapter}
+        chapterId={staticChapter?.id}
       >
         <p>
           Static arrays have a fixed size, which is determined at compile time.
@@ -170,6 +184,7 @@ const ArraysPage = async () => {
         id="dynamicArrays"
         title="Dynamic Arrays"
         chapter={dynamicChapter}
+        chapterId={dynamicChapter?.id}
       >
         <p>
           Unlike static arrays,{" "}
@@ -199,6 +214,7 @@ const ArraysPage = async () => {
         id="stacks"
         title="Stacks"
         chapter={stacksChapter}
+        chapterId={stacksChapter?.id}
       >
         <p>
           Stacks are a type of data structure that operates on the{" "}
@@ -224,11 +240,19 @@ const ArraysPage = async () => {
         <CodeBlock code={stackCode} title="Stacks.py" />
       </ChapterHeading>
 
-      <ChapterHeading id="algorithms" title="Algorithms">
+      <ChapterHeading
+        id="algorithms"
+        title="Algorithms"
+        chapterId={algorithmsChapter?.id}
+      >
         <Algorithms items={arrayAlgorithms} />
       </ChapterHeading>
 
-      <ChapterHeading id="bestPractices" title="Best Practices">
+      <ChapterHeading
+        id="bestPractices"
+        title="Best Practices"
+        chapterId={bestPracticesChapter?.id}
+      >
         <p>
           Mastering arrays and stacks is crucial for coding interviews. Here are
           some tips that I learned for using these data structures effectively:
