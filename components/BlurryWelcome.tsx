@@ -32,10 +32,10 @@ const BlurryWelcome = () => {
       </div>
       <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
         <h1 className={cn("text-lg font-semibold text-center", font.className)}>
-          Log in to access all features!
+          Log in to access all features
         </h1>
         <p className="text-muted-foreground pb-5 flex space-x-1 items-center">
-          It's easy and free
+          It's easy and free!
         </p>
         <div className="flex space-x-4">
           <LoginButton>

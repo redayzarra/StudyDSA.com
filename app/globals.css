@@ -69,6 +69,10 @@ html {
   }
 }
 
+.noise-filter {
+  filter: url(#noiseFilter);
+}
+
 @layer base {
   * {
     @apply border-border;
