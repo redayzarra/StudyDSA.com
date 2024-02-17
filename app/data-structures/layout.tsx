@@ -1,6 +1,5 @@
 import NavBar from "@/components/NavBar";
 import TableOfContents from "@/components/TableOfContents";
-import { Spotlight } from "@/components/ui/Spotlight";
 
 const DataStructuresLayout = ({ children }: { children: React.ReactNode }) => {
   return (

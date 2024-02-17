@@ -42,7 +42,7 @@ export const GenerateText = ({
           return (
             <motion.span
               key={word + idx}
-              className="dark:text-white text-black opacity-0"
+              className="bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50 text-black opacity-0"
             >
               {word}{" "}
             </motion.span>
@@ -53,10 +53,14 @@ export const GenerateText = ({
   };
 
   return (
-    <div className={cn("font-bold", className, font.className)}>
-      <div className=" dark:text-white text-black text-left text-4xl leading-snug tracking-wide">
-        {renderWords()}
-      </div>
+    <div
+      className={cn(
+        "text-4xl md:text-5xl font-bold text-left bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50",
+        className,
+        font.className
+      )}
+    >
+      {renderWords()}
     </div>
   );
 };
