@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
-import { LucideSmile } from "lucide-react";
 import { Poppins } from "next/font/google";
 import Link from "next/link";
+import NeoButton from "./NeoButton";
 import LoginButton from "./auth/LoginButton";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
@@ -39,16 +39,12 @@ const BlurryWelcome = () => {
         </p>
         <div className="flex space-x-4">
           <LoginButton>
-            <Button size="sm" className="font-semibold shadow-lg">
-              Log In
-            </Button>
+            <NeoButton>
+              <span className="text-base font-normal px-2">Login</span>
+            </NeoButton>
           </LoginButton>
           <Link href="/register">
-            <Button
-              size="sm"
-              variant="link"
-              className="text-primary-foreground dark:text-primary"
-            >
+            <Button size="sm" variant="link" className="text-foreground">
               Create Account
             </Button>
           </Link>

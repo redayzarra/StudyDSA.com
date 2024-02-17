@@ -9,7 +9,7 @@ const MasterDSA = () => {
     <div className="flex flex-col space-y-4">
       <GenerateText>Master Data Structures and Algorithms</GenerateText>
       <TextGenerateEffect
-        className="dark:text-muted-foreground text-left"
+        className="text-foreground text-left"
         words="Let's make the tough stuff easy. Get straightforward, free resources to
         tackle data structures and algorithms."
       />

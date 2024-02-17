@@ -1,6 +1,8 @@
 "use client";
 
 import getUser from "@/hooks/client/getUser";
+import { FiLogIn } from "react-icons/fi";
+import NeoButton from "../NeoButton";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import {
@@ -55,9 +57,10 @@ const UserButton = () => {
     </DropdownMenu>
   ) : (
     <LoginButton>
-      <Button size="sm" className="font-semibold">
-        Log In
-      </Button>
+      <NeoButton>
+        <FiLogIn size={15} />
+        <span className="text-base">Sign In</span>
+      </NeoButton>
     </LoginButton>
   );
 };

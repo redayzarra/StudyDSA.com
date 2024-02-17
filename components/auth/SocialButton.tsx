@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "../ui/button";
+import NeoButton from "../NeoButton";
 
 interface Props {
   children: React.ReactNode;
@@ -8,14 +9,12 @@ interface Props {
 
 const SocialButton = ({ children, onClick }: Props) => {
   return (
-    <Button
-      className="w-full shadow-md"
-      size="lg"
-      variant="outline"
+    <NeoButton
+      className="shadow-md flex w-full py-3 items-center justify-center"
       onClick={onClick}
     >
       {children}
-    </Button>
+    </NeoButton>
   );
 };
 

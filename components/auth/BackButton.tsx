@@ -16,7 +16,7 @@ const BackButton = ({ label, href, drawAttention = false }: Props) => {
   ) : (
     <Button
       variant="link"
-      className="font-normal text-[0.8rem] mx-auto dark:text-primary text-primary-foreground"
+      className="font-normal text-[0.8rem] mx-auto text-foreground"
       size="sm"
       asChild
     >

@@ -20,6 +20,7 @@ import CardWrapper from "./CardWrapper";
 import FormResult from "./FormResult";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import NeoButton from "../NeoButton";
 
 const LoginForm = () => {
   const form = useForm<z.infer<typeof loginSchema>>({
@@ -89,6 +90,7 @@ const LoginForm = () => {
                   <FormControl>
                     <Input
                       {...field}
+                      className="bg-transparent"
                       disabled={isPending}
                       placeholder="Enter your email or username"
                       type="text"
@@ -106,6 +108,7 @@ const LoginForm = () => {
                   <FormLabel>Password</FormLabel>
                   <FormControl>
                     <Input
+                      className="bg-transparent"
                       disabled={isPending}
                       {...field}
                       placeholder="Enter your password"
@@ -116,7 +119,7 @@ const LoginForm = () => {
                     variant="link"
                     size="sm"
                     asChild
-                    className="px-0 font-normal text-[0.8rem] dark:text-primary text-primary-foreground"
+                    className="px-0 font-normal text-[0.8rem] text-foreground"
                   >
                     <Link href="/reset-password">Forgot password?</Link>
                   </Button>
@@ -126,9 +129,9 @@ const LoginForm = () => {
             />
           </div>
           <FormResult message={message} error={error} />
-          <Button type="submit" className="w-full shadow-lg font-semibold">
-            Login
-          </Button>
+          <NeoButton className="w-full">
+            <span className="w-full flex-grow text-base">Login</span>
+          </NeoButton>
         </form>
       </Form>
     </CardWrapper>
