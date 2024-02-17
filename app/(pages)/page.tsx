@@ -4,6 +4,7 @@ import BlurryWelcome from "@/components/BlurryWelcome";
 import Intermediate from "@/components/Intermediate";
 import MasterDSA from "@/components/MasterDSA";
 import Welcome from "@/components/Welcome";
+import { Spotlight } from "@/components/ui/Spotlight";
 import getUser from "@/hooks/server/getUser";
 
 export default async function Home() {
@@ -14,6 +15,10 @@ export default async function Home() {
     <div className="mt-24 md:mt-40">
       <div className="space-y-14">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-12">
+          <Spotlight
+            className="top-[-50rem] left-[10rem] md:left-[10rem] md:top-[-40rem]"
+            fill="white"
+          />
           <MasterDSA />
           {user ? (
             <Welcome user={user} userName={userName!} />
