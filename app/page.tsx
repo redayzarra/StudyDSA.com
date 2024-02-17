@@ -7,6 +7,7 @@ import MasterDSA from "@/components/MasterDSA";
 import NavBar from "@/components/NavBar";
 import Welcome from "@/components/Welcome";
 import { Spotlight } from "@/components/ui/Spotlight";
+import { BackgroundGradientAnimation } from "@/components/ui/backgroundGradient";
 import getUser from "@/hooks/server/getUser";
 
 export default async function Home() {
@@ -14,16 +15,25 @@ export default async function Home() {
   const userName = (user?.name ?? user?.username)?.trim();
 
   return (
-    <div className="w-full dark:bg-black bg-white  dark:bg-dot-white/[0.2] bg-dot-black/[0.2] relative flex items-center justify-center">
-      <NavBar />
-      <Container>
-        <div className="mt-24 md:mt-40">
-          <div className="space-y-14">
+    <BackgroundGradientAnimation
+      className=""
+      gradientBackgroundEnd="--var(bg-background)"
+      gradientBackgroundStart="--var(bg-background)"
+      firstColor="10, 178, 216"
+      secondColor="68, 140, 16"
+      thirdColor="242, 184, 12"
+      fourthColor="242, 161, 12"
+      fifthColor="216, 67, 13"
+    >
+      <div className="absolute w-full z-50 bg-transparent dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex items-center justify-center">
+        <NavBar />
+        <Container>
+          <div className="space-y-14 mt-16">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-12">
-              <Spotlight
+              {/* <Spotlight
                 className="top-[-78rem] left-[-25rem] md:top-[-70rem] md:left-[-50rem] lg:left-[-25rem] lg:top-[-55rem]"
                 fill="white"
-              />
+              /> */}
               <MasterDSA />
               {user ? (
                 <Welcome user={user} userName={userName!} />
@@ -35,8 +45,8 @@ export default async function Home() {
             <Intermediate />
             <Advanced />
           </div>
-        </div>
-      </Container>
-    </div>
+        </Container>
+      </div>
+    </BackgroundGradientAnimation>
   );
 }
