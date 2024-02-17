@@ -24,6 +24,7 @@ export default async function Home() {
       thirdColor="var(--thirdColor)"
       fourthColor="var(--fourthColor)"
       fifthColor="var(--fifthColor)"
+      size="40%"
     >
       <div className="absolute overflow-hidden w-full z-50 bg-slate-900/10 dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex items-center justify-center">
         <NavBar />
