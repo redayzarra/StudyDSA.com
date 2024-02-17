@@ -17,6 +17,7 @@ export default async function Home() {
   return (
     <BackgroundGradientAnimation
       className="-mb-[1300px]"
+      containerClassName="h-[354vh]"
       gradientBackgroundEnd="var(--background)"
       gradientBackgroundStart="var(--background)"
       firstColor="var(--firstColor)"
@@ -24,6 +25,7 @@ export default async function Home() {
       thirdColor="var(--thirdColor)"
       fourthColor="var(--fourthColor)"
       fifthColor="var(--fifthColor)"
+      sixthColor="var(--sixthColor)"
       size="40%"
       interactive={false}
     >

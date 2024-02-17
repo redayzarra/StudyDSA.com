@@ -23,7 +23,7 @@ const Heading = ({ topic }: { topic: Topic }) => {
         </h1>
         <h2 className="dark:text-muted-foreground">{topic.description}</h2>
       </div>
-      <Spotlight className="top-[-25rem] left-[-25rem]" />
+      <Spotlight className="top-[-25rem] w-screen overflow-hidden left-[-25rem]" />
     </div>
   );
 };
