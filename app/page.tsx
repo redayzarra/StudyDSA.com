@@ -17,15 +17,15 @@ export default async function Home() {
   return (
     <BackgroundGradientAnimation
       className=""
-      gradientBackgroundEnd="--var(bg-background)"
-      gradientBackgroundStart="--var(bg-background)"
-      firstColor="10, 178, 216"
-      secondColor="68, 140, 16"
-      thirdColor="242, 184, 12"
-      fourthColor="242, 161, 12"
-      fifthColor="216, 67, 13"
+      gradientBackgroundEnd="var(--background)"
+      gradientBackgroundStart="var(--background)"
+      firstColor="var(--firstColor)"
+      secondColor="var(--secondColor)"
+      thirdColor="var(--thirdColor)"
+      fourthColor="var(--fourthColor)"
+      fifthColor="var(--fifthColor)"
     >
-      <div className="absolute w-full z-50 bg-transparent dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex items-center justify-center">
+      <div className="absolute overflow-hidden w-full z-50 bg-slate-900/10 dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex items-center justify-center">
         <NavBar />
         <Container>
           <div className="space-y-14 mt-24">

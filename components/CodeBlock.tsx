@@ -23,11 +23,10 @@ const customStyle = {
 const CodeBlock = ({
   code,
   title,
-  language="python",
+  language = "python",
   highlightLines = [],
   showLines = false,
 }: Props) => {
-
   // // Line props - determine if lineNumber is in highlightLines
   // const lineProps = (lineNumber: number) => {
   //   let style: CSSProperties = { display: "block" };
@@ -38,16 +37,16 @@ const CodeBlock = ({
   // };
 
   const lineNumberStyle = {
-    minWidth: '1.5em',
-    paddingRight: '1em',
-    fontWeight: 'normal',
-    textAlign: 'left',
-    userSelect: 'none',
-    color: '#888',
-} as CSSProperties
+    minWidth: "1.5em",
+    paddingRight: "1em",
+    fontWeight: "normal",
+    textAlign: "left",
+    userSelect: "none",
+    color: "#888",
+  } as CSSProperties;
 
   return (
-    <div className="mt-4 max-w-3xl mx-auto shadow-md bg-[#23272e] dark: dark:bg-black/50 border-t-2 dark:border-stone-700 rounded-lg overflow-hidden">
+    <div className="mt-4 spacing-y-px max-w-3xl mx-auto shadow-md bg-[#23272e] dark: dark:bg-neutral-900/50 border-t-2 dark:border-stone-700 rounded-lg overflow-hidden">
       <div className="grid grid-cols-3 items-center px-4 py-1 bg-[#17191d] dark:bg-black/70">
         <div className="flex justify-start items-center space-x-2">
           <FaCircle className="text-[#FF605C]" size={12} />
