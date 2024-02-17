@@ -1,4 +1,5 @@
 "use client";
+
 import { PropsWithChildren, useEffect } from "react";
 import { motion, stagger, useAnimate } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -53,10 +54,8 @@ export const GenerateText = ({
 
   return (
     <div className={cn("font-bold", className, font.className)}>
-      <div className="mt-4">
-        <div className=" dark:text-white text-black text-left text-4xl leading-snug tracking-wide">
-          {renderWords()}
-        </div>
+      <div className=" dark:text-white text-black text-left text-4xl leading-snug tracking-wide">
+        {renderWords()}
       </div>
     </div>
   );

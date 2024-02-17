@@ -28,7 +28,7 @@ export default async function Home() {
       <div className="absolute w-full z-50 bg-transparent dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex items-center justify-center">
         <NavBar />
         <Container>
-          <div className="space-y-14 mt-16">
+          <div className="space-y-14 mt-24">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-12">
               {/* <Spotlight
                 className="top-[-78rem] left-[-25rem] md:top-[-70rem] md:left-[-50rem] lg:left-[-25rem] lg:top-[-55rem]"
