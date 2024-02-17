@@ -26,7 +26,7 @@ const Welcome = async ({ user, userName }: Props) => {
   const [algoCompleted, algoTotal] = await getAlgoProgress(user.id!)
 
   return (
-    <div className="w-full shadow-lg rounded-md bg-slate-200/50 dark:bg-zinc-950/50 border-t-2 border-white dark:border-stone-700 p-6">
+    <div className="w-full backdrop-blur-[1px] shadow-lg rounded-md bg-slate-200/50 dark:bg-zinc-950/50 border-t-2 border-white dark:border-stone-700 p-6">
       <div className="flex items-center space-x-4">
         <UserAvatar user={user} userName={userName} />
         <h1 className="text-2xl font-bold line-clamp-2">

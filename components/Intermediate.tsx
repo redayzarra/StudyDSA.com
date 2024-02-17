@@ -6,6 +6,7 @@ import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeItem from "./SkillTreeItem";
 import getAlgorithms from "@/actions/algorithms/getAlgorithms";
 import getChaptersByTopic from "@/actions/chapters/getChapters";
+import SkillTreeContainer from "./SkillTreeContainer";
 
 const Intermediate = async () => {
   // Fetch algorithms
@@ -18,7 +19,8 @@ const Intermediate = async () => {
   const trieChapters = await getChaptersByTopic("Tries");
 
   return (
-    <div className="w-full pb-10 shadow-lg rounded-md bg-slate-200/50 dark:bg-zinc-950/50 border-t-2 border-white dark:border-stone-700 px-8 py-4">
+    <SkillTreeContainer id="intermediate">
+
       <SkillTreeHeading>Intermediate</SkillTreeHeading>
       {/* Intermediate Data Structrues */}
       <h2 className="font-[650] mb-2 text-[1.15rem]">Data Structures</h2>
@@ -50,7 +52,7 @@ const Intermediate = async () => {
 
       <h2 className="font-[650] mb-5 mt-10 text-[1.15rem]">Algorithms</h2>
       <Algorithms items={intermediateAlgorithms} />
-    </div>
+    </SkillTreeContainer>
   );
 };
 

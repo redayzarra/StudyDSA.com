@@ -6,6 +6,7 @@ import Algorithms from "./Algorithms";
 import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeItem from "./SkillTreeItem";
 import getChaptersByTopic from "@/actions/chapters/getChapters";
+import SkillTreeContainer from "./SkillTreeContainer";
 
 const Advanced = async () => {
   // Fetch algorithms
@@ -18,7 +19,7 @@ const Advanced = async () => {
   const segmentChapters = await getChaptersByTopic("Segment Trees");
 
   return (
-    <div className="w-full pb-10 shadow-lg rounded-md bg-slate-200/50 dark:bg-zinc-950/50 border-t-2 border-white dark:border-stone-700 px-8 py-4">
+    <SkillTreeContainer id="advanced">
       <SkillTreeHeading>Advanced</SkillTreeHeading>
       {/* Advanced Data Structures */}
       <h2 className="font-[650] mb-2 text-[1.15rem]">Data Structures</h2>
@@ -62,7 +63,7 @@ const Advanced = async () => {
 
       <h2 className="font-[650] mb-5 mt-10 text-[1.15rem]">Algorithms</h2>
       <Algorithms items={advancedAlgorithms} />
-    </div>
+    </SkillTreeContainer>
   );
 };
 

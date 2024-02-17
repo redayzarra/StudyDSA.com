@@ -31,9 +31,7 @@ export default async function RootLayout({
             disableTransitionOnChange
           >
             {/* <SmoothScroll>{children}</SmoothScroll> */}
-            <div className="w-full dark:bg-black bg-white  dark:bg-dot-white/[0.2] bg-dot-black/[0.2] relative flex items-center justify-center">
-              {children}
-            </div>
+            {children}
             <Toaster />
           </ThemeProvider>
         </body>

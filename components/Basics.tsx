@@ -6,6 +6,7 @@ import Algorithms from "./Algorithms";
 import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeItem from "./SkillTreeItem";
 import getChaptersByTopic from "@/actions/chapters/getChapters";
+import SkillTreeContainer from "./SkillTreeContainer";
 
 const Basics = async () => {
   // Fetch all the algorithms
@@ -18,10 +19,7 @@ const Basics = async () => {
   const queueChapters = await getChaptersByTopic("Queues");
 
   return (
-    <div
-      id="basics"
-      className="w-full pb-10 shadow-lg rounded-md bg-slate-200/50 dark:bg-zinc-950/50 border-t-2 border-white dark:border-stone-700 px-8 py-4"
-    >
+    <SkillTreeContainer id="basics">
       <SkillTreeHeading>Basics</SkillTreeHeading>
       {/* The Basics */}
       <h2 className="font-[650] mb-2 text-[1.15rem]">Data Structures</h2>
@@ -60,7 +58,7 @@ const Basics = async () => {
 
       <h2 className="font-[650] mb-5 mt-10 text-[1.15rem]">Algorithms</h2>
       <Algorithms items={basicAlgorithms} />
-    </div>
+    </SkillTreeContainer>
   );
 };
 
