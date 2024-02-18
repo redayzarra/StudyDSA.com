@@ -13,10 +13,10 @@ export default async function Home() {
   const userName = (user?.name ?? user?.username)?.trim();
 
   return (
-    <div className="w-full rounded-md flex md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-white/[0.02] relative overflow-hidden">
+    <div className="w-full bg-neutral-950 rounded-md flex md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-small-white/5 relative overflow-hidden">
       <NavBar />
       <Container>
-        <div className="space-y-14 mt-24 md:mt-[30vh]">
+        <div className="space-y-24 mt-24 md:mt-44">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-12">
             <MasterDSA />
             {user ? (
@@ -25,7 +25,7 @@ export default async function Home() {
               <BlurryWelcome />
             )}
           </div>
-          
+
           <Basics />
           <Intermediate />
           <Advanced />

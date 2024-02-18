@@ -8,8 +8,9 @@ const SkillTreeContainer = ({ children, id }: PropsWithChildren<Props>) => {
   return (
     <div
       id={id}
-      className="w-full backdrop-blur-[1px] pb-10 shadow-lg rounded-md bg-slate-200/50 dark:bg-zinc-950/50 border-t-2 border-white dark:border-stone-700 px-8 py-4"
+      className="w-full border-t-[1px] backdrop-blur-[1px] pb-10 shadow-lg rounded-md bg-slate-200/50 dark:bg-black/25 border-white dark:border-stone-800 px-8 py-4"
     >
+      <div className="absolute inset-x-0 h-[2px] mx-auto -top-px bg-gradient-to-r from-transparent via-stone-400 to-transparent" />
       {children}
     </div>
   );

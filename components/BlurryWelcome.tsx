@@ -14,7 +14,7 @@ const font = Poppins({
 
 const BlurryWelcome = () => {
   return (
-    <div className="w-full shadow-lg rounded-md bg-slate-200/50 dark:bg-zinc-950/50 border-t-2 border-white dark:border-stone-700 p-6 relative">
+    <div className="w-full shadow-lg rounded-md bg-slate-200/50 dark:bg-black/50 border-t-2 border-white dark:border-stone-700 p-6 relative">
       <div className="blur-lg cursor-default">
         <div className="flex items-center space-x-4">
           <Avatar>

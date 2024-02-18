@@ -12,7 +12,7 @@ const SkillTreeCell = ({ title, href, description, chapterId }: Props) => {
   return (
     <div className="relative">
       <Link href={href}>
-        <div className="rounded-sm transition-all p-2 bg-transparent hover:bg-gray-300/40 dark:hover:bg-black/25 hover:cursor-pointer space-y-2">
+        <div className="rounded-sm transition-all p-2 bg-transparent hover:bg-gray-300/40 dark:hover:bg-neutral-500/20 hover:cursor-pointer space-y-2">
           <h1 className="font-semibold">{title}</h1>
           <h2 className="line-clamp-2 text-muted-foreground">{description}</h2>
         </div>
@@ -27,7 +27,7 @@ const SkillTreeCell = ({ title, href, description, chapterId }: Props) => {
       </div> */}
 
       {/* Be able to mark outside of page */}
-      <MarkCheckbox chapterId={chapterId} className="absolute top-2 right-2" />
+      <MarkCheckbox chapterId={chapterId} className="rounded-[3px] absolute top-2 right-2" />
     </div>
   );
 };
