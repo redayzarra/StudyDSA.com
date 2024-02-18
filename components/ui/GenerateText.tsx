@@ -55,7 +55,7 @@ export const GenerateText = ({
   return (
     <div
       className={cn(
-        "text-4xl md:text-5xl font-bold text-left bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50",
+        "text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50",
         className,
         font.className
       )}
