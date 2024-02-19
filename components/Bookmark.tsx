@@ -7,6 +7,7 @@ import checkBookmark from "@/actions/bookmark/checkBookmark";
 import toggleBookmark from "@/actions/bookmark/toggleBookmark";
 import getUserId from "@/hooks/client/getUserId"; // Assuming this hook exists and works similar to your example
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 interface Props {
   chapter: Chapter;
@@ -15,6 +16,8 @@ interface Props {
 const Bookmark = ({ chapter }: Props) => {
   const userId = getUserId();
   const [isBookmarked, setIsBookmarked] = useState(false);
+
+  const router = useRouter();
 
   useEffect(() => {
     // If the user isn't logged in, don't load
@@ -46,6 +49,8 @@ const Bookmark = ({ chapter }: Props) => {
 
     try {
       await toggleBookmark(userId, chapter.id);
+      router.refresh();
+
     } catch (error) {
       console.error("Failed to toggle bookmark:", error);
       setIsBookmarked(previousBookmarkState); // Revert on error

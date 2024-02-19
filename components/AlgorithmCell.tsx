@@ -24,6 +24,8 @@ const AlgorithmCell = ({ title, description, href, algorithmId }: Props) => {
   const [isChecked, setIsChecked] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
+  const router = useRouter();
+
   useEffect(() => {
     const init = async () => {
       // If the user isn't logged in, don't load
@@ -58,6 +60,7 @@ const AlgorithmCell = ({ title, description, href, algorithmId }: Props) => {
 
     try {
       await markAlgorithm(userId, algorithmId, !isChecked);
+      router.refresh();
 
       // Error handling
     } catch (error) {

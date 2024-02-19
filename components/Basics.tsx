@@ -26,7 +26,7 @@ const Basics = async () => {
       <h2 className="font-[650] mb-2 text-[1.15rem]">Data Structures</h2>
       <div className="grid gap-x-8 grid-cols-1 xm:grid-cols-2">
         {/* First Column */}
-        <Accordion type="single" defaultValue="arrays" collapsible>
+        <Accordion type="multiple">
           {/* Arrays */}
           <SkillTreeItem items={arrayChapters} name="Arrays" value="arrays">
             <MdDataArray size={30} />
@@ -42,7 +42,7 @@ const Basics = async () => {
         </Accordion>
 
         {/* Second Column */}
-        <Accordion type="single" defaultValue="hashmaps" collapsible>
+        <Accordion type="multiple">
           {/* Hashmaps */}
           <SkillTreeItem
             name="Hashmaps & Sets"

@@ -6,6 +6,7 @@ import getUserId from "@/hooks/client/getUserId";
 import getChapterStatus from "@/actions/chapters/getChapterStatus";
 import markChapter from "@/actions/chapters/markChapter";
 import { Checkbox } from "./ui/checkbox"; // Adjust the import path as needed
+import { useRouter } from "next/navigation";
 
 interface Props {
   chapterId: string;
@@ -16,6 +17,8 @@ const MarkCheckbox = ({ chapterId, className }: Props) => {
   const userId = getUserId();
   const [isChecked, setIsChecked] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+
+  const router = useRouter();
 
   useEffect(() => {
     const init = async () => {
@@ -46,6 +49,7 @@ const MarkCheckbox = ({ chapterId, className }: Props) => {
 
     try {
       await markChapter(userId, chapterId, !isChecked);
+      router.refresh();
     } catch (error) {
       console.error("Failed to update chapter completion status:", error);
       setIsChecked(isChecked); // Revert on error
