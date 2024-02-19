@@ -16,7 +16,7 @@ const getAlgorithms = async (difficulty?: Difficulty) => {
     // Error handling
   } catch (error) {
     console.error("Failed to fetch algorithms:", error);
-    throw error;
+    return [];
   }
 }
 

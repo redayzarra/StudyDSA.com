@@ -9,6 +9,7 @@ import getChaptersByTopic from "@/actions/chapters/getChapters";
 import SkillTreeContainer from "./SkillTreeContainer";
 
 const Basics = async () => {
+
   // Fetch all the algorithms
   const basicAlgorithms = await getAlgorithms("basic");
 
@@ -57,7 +58,7 @@ const Basics = async () => {
       </div>
 
       <h2 className="font-[650] mb-5 mt-10 text-[1.15rem]">Algorithms</h2>
-      <Algorithms items={basicAlgorithms} />
+      <Algorithms items={basicAlgorithms || []} />
     </SkillTreeContainer>
   );
 };
