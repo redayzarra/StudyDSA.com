@@ -25,16 +25,18 @@ export default async function RootLayout({
     <SessionProvider session={session}>
       <html lang="en">
         <body className={`${inter.className}`}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {/* <SmoothScroll>{children}</SmoothScroll> */}
-            {children}
-            <Toaster />
-          </ThemeProvider>
+          <QueryClientProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="dark"
+              enableSystem
+              disableTransitionOnChange
+            >
+              {/* <SmoothScroll>{children}</SmoothScroll> */}
+              {children}
+              <Toaster />
+            </ThemeProvider>
+          </QueryClientProvider>
         </body>
       </html>
     </SessionProvider>
