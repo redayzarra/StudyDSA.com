@@ -1,10 +1,11 @@
 "use client";
 
-import { Chapter } from "@prisma/client";
-import { FaBookmark, FaRegBookmark } from "react-icons/fa6";
-import getUserId from "@/hooks/client/getUserId";
-import { toast } from "sonner";
 import useBookmarkStore from "@/app/store/user";
+import getUserId from "@/hooks/client/getUserId";
+import { Chapter } from "@prisma/client";
+import { useEffect } from "react";
+import { FaBookmark, FaRegBookmark } from "react-icons/fa6";
+import { toast } from "sonner";
 
 interface Props {
   chapter: Chapter;
@@ -12,7 +13,14 @@ interface Props {
 
 const Bookmark = ({ chapter }: Props) => {
   const userId = getUserId();
-  const { isBookmarked, toggleBookmark } = useBookmarkStore();
+  const { isBookmarked, toggleBookmark, fetchBookmarkStatus } =
+    useBookmarkStore();
+
+  useEffect(() => {
+    if (userId && chapter.id) {
+      fetchBookmarkStatus(userId, chapter.id);
+    }
+  }, [userId, chapter.id, fetchBookmarkStatus]);
 
   const onClick = async () => {
     if (!userId) {

@@ -1,10 +1,12 @@
+import checkBookmark from '@/actions/bookmark/checkBookmark';
+import toggleBookmark from '@/actions/bookmark/toggleBookmark';
 import { create } from 'zustand';
-import toggleBookmarkAPI from "@/actions/bookmark/toggleBookmark"; 
 
 interface BookmarkStoreState {
-  bookmarkedChapterId: string | null; 
+  bookmarkedChapterId: string | null;
   toggleBookmark: (userId: string, chapterId: string) => Promise<void>;
   isBookmarked: (chapterId: string) => boolean;
+  fetchBookmarkStatus: (userId: string, chapterId: string) => Promise<void>;
 }
 
 const useBookmarkStore = create<BookmarkStoreState>((set, get) => ({
@@ -12,18 +14,36 @@ const useBookmarkStore = create<BookmarkStoreState>((set, get) => ({
   toggleBookmark: async (userId: string, chapterId: string) => {
     try {
       // Toggle bookmark in the backend
-      const success = await toggleBookmarkAPI(userId, chapterId); 
+      const success = await toggleBookmark(userId, chapterId); 
       if(success) {
         set(state => ({
           bookmarkedChapterId: state.bookmarkedChapterId === chapterId ? null : chapterId,
         }));
       }
+
+      // Error handling
     } catch (error) {
       console.error("Error toggling bookmark in backend:", error);
-      throw error; // Allows error handling in the component
+      throw error; 
     }
   },
   isBookmarked: (chapterId: string) => get().bookmarkedChapterId === chapterId,
+
+  fetchBookmarkStatus: async (userId: string, chapterId: string) => {
+  try {
+    const isBookmarked = await checkBookmark(userId, chapterId);
+    if (isBookmarked) {
+      set({ bookmarkedChapterId: chapterId });
+      return;
+    }
+    console.log("Bookmark was set", chapterId)
+
+    // Error handling
+  } catch (error) {
+    console.error("Failed to fetch bookmark status:", error);
+    throw error;
+  }
+},
 }));
 
 export default useBookmarkStore;
