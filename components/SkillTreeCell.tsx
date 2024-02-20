@@ -27,7 +27,7 @@ const SkillTreeCell = ({ title, href, description, chapterId }: Props) => {
       </div> */}
 
       {/* Be able to mark outside of page */}
-      <MarkCheckbox chapterId={chapterId} className="rounded-[3px] absolute top-2 right-2" />
+      <MarkCheckbox chapterId={chapterId} className="rounded-[3px] absolute top-2 right-2 border-2" />
     </div>
   );
 };

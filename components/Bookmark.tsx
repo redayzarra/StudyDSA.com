@@ -33,7 +33,7 @@ const Bookmark = ({ chapter }: Props) => {
       {isBookmarked(chapter.id) ? (
         <FaBookmark className="text-primary" />
       ) : (
-        <FaRegBookmark />
+        <FaRegBookmark className="text-primary" />
       )}
     </button>
   );

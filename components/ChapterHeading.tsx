@@ -38,7 +38,7 @@ const ChapterHeading = ({
         <div className="flex items-center space-x-4">
           {chapter && <Bookmark chapter={chapter} />}
           {chapterId && (
-            <MarkCheckbox className="h-5 w-5" chapterId={chapterId} />
+            <MarkCheckbox className="h-5 w-5 border-2" chapterId={chapterId} />
           )}
         </div>
       </div>

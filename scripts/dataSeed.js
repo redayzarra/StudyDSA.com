@@ -23,6 +23,11 @@ const arraySkills = [
     description: "They're like a metal can, they can only fit a certain amount",
   },
   {
+    title: "Amortized Time",
+    href: "/data-structures/arrays#amortizedTime",
+    description: "The average time to run operations despite some being expensive",
+  },
+  {
     title: "Dynamic Arrays",
     href: "/data-structures/arrays#dynamicArrays",
     description: "They're basically balloons, you can keep adding to them with no worries",
@@ -31,11 +36,6 @@ const arraySkills = [
     title: "Stacks",
     href: "/data-structures/arrays#stacks",
     description: "LIFO - meaning you can quickly access the most recent one",
-  },
-  {
-    title: "Algorithms",
-    href: "/data-structures/arrays#algorithms",
-    description: "These are common algorithms you need to know for arrays and stacks",
   },
   {
     title: "Best Practices",

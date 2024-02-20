@@ -33,7 +33,7 @@ const ArraysPage = async () => {
   const staticChapter = findChapter(topic, "Static Arrays");
   const dynamicChapter = findChapter(topic, "Dynamic Arrays");
   const stacksChapter = findChapter(topic, "Stacks");
-  const algorithmsChapter = findChapter(topic, "Algorithms");
+  const amortizedChapter = findChapter(topic, "Amortized Time");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
   const fetchAlgorithms = [
@@ -157,7 +157,12 @@ const ArraysPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="amortizedTime" title="Amortized Time">
+      <ChapterHeading
+        id="amortizedTime"
+        title="Amortized Time"
+        chapter={amortizedChapter}
+        chapterId={amortizedChapter?.id}
+      >
         <p>
           Amortized time analysis gives us an{" "}
           <span className="font-bold">average running time per operation</span>{" "}
