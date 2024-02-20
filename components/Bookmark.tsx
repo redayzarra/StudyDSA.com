@@ -1,13 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Chapter } from "@prisma/client";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa6";
-import checkBookmark from "@/actions/bookmark/checkBookmark";
-import toggleBookmark from "@/actions/bookmark/toggleBookmark";
-import getUserId from "@/hooks/client/getUserId"; // Assuming this hook exists and works similar to your example
+import getUserId from "@/hooks/client/getUserId";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
+import useBookmarkStore from "@/app/store/user";
 
 interface Props {
   chapter: Chapter;
@@ -15,28 +12,7 @@ interface Props {
 
 const Bookmark = ({ chapter }: Props) => {
   const userId = getUserId();
-  const [isBookmarked, setIsBookmarked] = useState(false);
-
-  const router = useRouter();
-
-  useEffect(() => {
-    // If the user isn't logged in, don't load
-    if (!userId) {
-      return;
-    }
-    
-    const checkBookmarkStatus = async () => {
-      try {
-        const status = await checkBookmark(userId, chapter.id);
-        setIsBookmarked(status);
-      } catch (error) {
-        console.error("Failed to fetch bookmark status:", error);
-        // Optionally show a toast message here
-      }
-    };
-
-    checkBookmarkStatus();
-  }, [chapter.id, userId]);
+  const { isBookmarked, toggleBookmark } = useBookmarkStore();
 
   const onClick = async () => {
     if (!userId) {
@@ -44,30 +20,23 @@ const Bookmark = ({ chapter }: Props) => {
       return;
     }
 
-    const previousBookmarkState = isBookmarked;
-    setIsBookmarked(!isBookmarked); // Optimistic UI update
-
     try {
       await toggleBookmark(userId, chapter.id);
-      router.refresh();
-
     } catch (error) {
       console.error("Failed to toggle bookmark:", error);
-      setIsBookmarked(previousBookmarkState); // Revert on error
       toast("An error occurred while bookmarking the chapter.");
     }
   };
 
   return (
     <button onClick={onClick}>
-      {isBookmarked ? (
+      {isBookmarked(chapter.id) ? (
         <FaBookmark className="text-primary" />
       ) : (
-        <FaRegBookmark className="" />
+        <FaRegBookmark />
       )}
     </button>
   );
 };
 
 export default Bookmark;
-

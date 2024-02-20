@@ -8,8 +8,6 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Checkbox } from "./ui/checkbox";
 import { useRouter } from "next/navigation";
-import { FaCheckCircle } from "react-icons/fa";
-import { FaRegCircle } from "react-icons/fa6";
 
 interface Props {
   title: string;
@@ -71,12 +69,17 @@ const AlgorithmCell = ({ title, description, href, algorithmId }: Props) => {
 
   return (
     <div className="relative hover:-translate-y-1 transition-all">
+      <div
+        className={`absolute inset-x-0 h-[1px] mx-auto bg-gradient-to-r from-transparent ${
+          isChecked ? "dark:via-yellow-200" : "dark:via-stone-400"
+        } to-transparent`}
+      />
       <Link href={href}>
         <div
-          className={`rounded-sm shadow-md transition-all p-2 border-t-2 border-white hover:cursor-pointer space-y-2 ${
+          className={`rounded-sm shadow-md transition-all p-2 hover:cursor-pointer space-y-2 ${
             isChecked
-              ? "bg-amber-200 dark:bg-yellow-600 dark:border-yellow-100/50"
-              : "hover:bg-gray-300/50 dark:bg-muted-foreground/10 dark:hover:bg-muted-foreground/20 dark:border-white/10"
+              ? "bg-amber-200 dark:bg-yellow-600"
+              : "hover:bg-gray-300/50 dark:bg-muted-foreground/10 dark:hover:bg-muted-foreground/20"
           }`}
         >
           <h1 className="font-semibold text-[0.92rem] line-clamp-1">{title}</h1>
