@@ -268,7 +268,7 @@ const ArraysPage = async () => {
 
         <ul className="ml-6">
           <li>
-            <span className="font-bold">Identifying Patterns:</span> Arrays are
+            <span className="font-bold">&bull; Identifying Patterns:</span> Arrays are
             commonly used in sorting, searching, and iterating over data. Arrays
             are also the most common data structures for storing the final
             result of a problem. For this reason, you need to be comfortable
@@ -278,7 +278,7 @@ const ArraysPage = async () => {
             <br />
           </li>
           <li>
-            <span className="font-bold">Space-Time Trade-offs:</span> Understand
+            <span className="font-bold">&bull; Space-Time Trade-offs:</span> Understand
             when it's beneficial to use additional space (like creating{" "}
             <TextLink href="/data-structures/hashmaps">hashmaps</TextLink> from
             arrays) to improve time efficiency. This strategy is useful in
@@ -289,7 +289,7 @@ const ArraysPage = async () => {
           </li>
           <li>
             <span className="font-bold">
-              When Elements Depend On Each Other:
+            &bull; When Elements Depend On Each Other:
             </span>{" "}
             Stacks are ideal for managing matching brackets or parentheses in
             syntax validation problems. This is becuase the current element
@@ -299,7 +299,7 @@ const ArraysPage = async () => {
             <br />
           </li>
           <li>
-            <span className="font-bold">Navigating Through Recursion:</span> For
+            <span className="font-bold">&bull; Navigating Through Recursion:</span> For
             recursive problem solutions, stacks are perfect for an iterative
             approach. They allow you to maintain state across different levels
             of <TextLink href="/algorithms/recursion">recursion</TextLink>. By

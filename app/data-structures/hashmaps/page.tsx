@@ -7,7 +7,7 @@ import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
 import { hashmapOperations } from "@/data/operationsData";
 import { Metadata } from "next";
-import { hashFunctionCode } from "./_components/hashmapCode";
+import { collisionsCode, hashFunctionCode } from "./_components/hashmapCode";
 import { CodeText } from "@/components/CodeText";
 
 const HashmapPage = async () => {
@@ -137,11 +137,29 @@ const HashmapPage = async () => {
 
       <ChapterHeading id="collisions" title="Collisions">
         <p>
+          Collisions occur when two{" "}
+          <span className="font-bold">
+            different keys are hashed to the same index
+          </span>
+          . Imagine two people mistakenly assigned the same seat in a movie
+          theater; similarly, when two pieces of data are directed to the same
+          spot in a hashmap, we need a way to accommodate both without losing
+          any information.
+          <br />
+        </p>
+        <CodeBlock
+          code={collisionsCode}
+          language="python"
+          title="Collisions.py"
+        />
+        <p>
+          <br />
           To address collisions, hashmaps use solutions like{" "}
           <span className="font-bold">chaining or open addressing</span>,
           ensuring that even when collisions occur, the data remains accessible
-          and secure.
+          and secure. Let's delve into both solutions in more detail.
         </p>
+        <br />
       </ChapterHeading>
     </div>
   );
