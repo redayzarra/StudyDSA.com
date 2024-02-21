@@ -7,7 +7,7 @@ import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
 import { hashmapOperations } from "@/data/operationsData";
 import { Metadata } from "next";
-import { collisionsCode, hashFunctionCode } from "./_components/hashmapCode";
+import { chainingCode, collisionsCode, hashFunctionCode } from "./_components/hashmapCode";
 import { CodeText } from "@/components/CodeText";
 import Algorithms from "@/components/Algorithms";
 
@@ -167,7 +167,52 @@ const HashmapPage = async () => {
         title="Chaining"
         chapter={chainingChapter}
         chapterId={chainingChapter?.id}
-      ></ChapterHeading>
+      >
+        <p>
+          When multiple keys hash to the same index in a hashmap, we face
+          collisions. Chaining is a popular and effective strategy to resolve
+          these collisions. It allows multiple elements to exist at the same
+          location (or "chain") by{" "}
+          <span className="font-bold">linking them together in a list</span> (or
+          linked list).
+          <br />
+        </p>
+        <p>
+          <br />
+          Imagine a coat check at a busy theater. If two patrons happen to have
+          the same ticket number, the attendant might decide to hang the coats
+          together on a single hook, one behind the other. Similarly, with
+          chaining,{" "}
+          <span className="font-bold">
+            each index in the hash table holds a list (or "chain")
+          </span>{" "}
+          of entries that all hash to that index. <br />
+        </p>
+        <CodeBlock
+          code={chainingCode}
+          language="python"
+          title="Chaining.py"
+        />
+        <p>
+          <br />
+          When we want to insert a new key-value pair, we simply add it to the
+          list at the computed index (using the hash function). To retrieve or
+          delete an item, we search through the list at that index to find the
+          exact key we're looking for.
+          <br />
+        </p>
+        <p>
+          <br />
+          Chaining handles collisions by utilizing extra space, ensuring that
+          the hashmap is efficient even as collisions occur. However, for
+          chaining to be most effective, the{" "}
+          <span className="font-bold">
+            hash function should distribute keys as uniformly as possible
+          </span>{" "}
+          across the hashmap. This minimizes the length of chains and keeps
+          operations efficient.
+        </p>
+      </ChapterHeading>
 
       <ChapterHeading
         id="algorithms"

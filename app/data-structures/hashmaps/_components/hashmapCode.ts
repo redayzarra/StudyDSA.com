@@ -30,3 +30,25 @@ hash_value2 = simple_hash(key2, size)
 print(hash_value1, hash_value2)
 
 # Output: (5, 5)`;
+
+export const chainingCode = 
+`# A simple hash function based on key length, for demonstration
+def simple_hash(key):
+    return len(key) % 5
+
+# Let's make our hashmap a list of lists: five arrays inside one larger array
+hashmap = [[]] * 5 
+
+# Insert function: Adds a key-value pair to the appropriate list
+def insert(key, value):
+    # 1. Calculate the index using the hash function
+    index = simple_hash(key)
+
+    # 2. If a key already exists, update the value
+    for item in hashmap[index]:
+        if item[0] == key:
+            item[1] = value
+            return
+
+    # 3. If the key doesn't exist, add new key-value pair
+    hashmap[index].append([key, value])`;
