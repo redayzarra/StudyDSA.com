@@ -56,11 +56,6 @@ const linkedListSkills = [
     description: "Here's everything you can do with linked lists and their complexities",
   },
   {
-    title: "Implementation",
-    href: "/data-structures/linkedLists#implementation",
-    description: "You implement a linked list with an object that has pointers and values",
-  },
-  {
     title: "Pointers",
     href: "/data-structures/linkedLists#pointers",
     description: "Nodes have pointers which point to the previous or next node",
@@ -74,6 +69,11 @@ const linkedListSkills = [
     title: "Doubly Linked List",
     href: "/data-structures/linkedLists#doubly",
     description: "Think of this as a two-way street, you can go to previous or next node",
+  },
+  {
+    title: "Implementation",
+    href: "/data-structures/linkedLists#implementation",
+    description: "You implement a linked list with an object that has pointers and values",
   },
   {
     title: "Algorithms",
@@ -99,13 +99,8 @@ const hashmapSkills = [
     description: "Here's everything you can do with hashmap and sets",
   },
   {
-    title: "Implementation",
-    href: "/data-structures/hashmaps#implementation",
-    description: "Here's how you can implement a hashmap/hashset from scratch",
-  },
-  {
     title: "Hash Function",
-    href: "/data-structures/hashmaps#hashfunction",
+    href: "/data-structures/hashmaps#hashFunction",
     description: "Just converts input into something unique",
   },
   {
@@ -122,6 +117,11 @@ const hashmapSkills = [
     title: "Sets",
     href: "/data-structures/hashmaps#sets",
     description: "They hate duplicates and searching in them is really efficient",
+  },
+  {
+    title: "Implementation",
+    href: "/data-structures/hashmaps#implementation",
+    description: "Here's how you can implement a hashmap/hashset from scratch",
   },
   {
     title: "Best Practices",

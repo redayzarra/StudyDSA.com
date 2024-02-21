@@ -2,12 +2,13 @@ import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsByName";
 import findChapter from "@/actions/chapters/findChapter";
 import getTopicByName from "@/actions/topics/getTopicByName";
 import ChapterHeading from "@/components/ChapterHeading";
+import CodeBlock from "@/components/CodeBlock";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
-import {
-  hashmapOperations
-} from "@/data/operationsData";
+import { hashmapOperations } from "@/data/operationsData";
 import { Metadata } from "next";
+import { hashFunctionCode } from "./_components/hashmapCode";
+import { CodeText } from "@/components/CodeText";
 
 const HashmapPage = async () => {
   const topic = await getTopicByName("Hashmaps");
@@ -34,7 +35,7 @@ const HashmapPage = async () => {
     "1D Dynamic Pro.",
   ];
 
-  const arrayAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
+  const hashmapAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
 
   return (
     <div className="space-y-8">
@@ -81,13 +82,74 @@ const HashmapPage = async () => {
         </p>
         <Operations items={hashmapOperations} />
       </ChapterHeading>
+
+      <ChapterHeading
+        id="hashFunction"
+        title="Hash Function"
+        chapter={hashingChapter}
+        chapterId={hashingChapter?.id}
+      >
+        <p>
+          Hashmaps are powered by{" "}
+          <span className="font-bold">hash function</span>, a special function
+          that takes any input—regardless of its size—and produces a fixed-size
+          string of bytes. The output, known as a{" "}
+          <span className="font-bold">
+            hash code, determines where to store the input value in the hashmap{" "}
+          </span>
+          .
+          <br />
+        </p>
+        <p>
+          <br />
+          This process allows hashmaps to achieve incredibly fast data retrieval
+          and insertion, as it can directly access the storage location without
+          needing to search through all the data.
+          <br />
+        </p>
+        <CodeBlock
+          code={hashFunctionCode}
+          language="python"
+          title="HashFunction.py"
+        />
+        <p>
+          <br />
+          The hash function I've shown is a basic example of how to turn the{" "}
+          <CodeText>key</CodeText> (like a name or a word) into a number{" "}
+          <CodeText>hash_val</CodeText> that tells us where to store or find
+          that string in our hashmap.
+          <br />
+        </p>
+        <p>
+          <br />A good hash function is crucial for{" "}
+          <span className="font-bold">
+            spreading out keys evenly across the hashmap
+          </span>
+          . This even distribution helps minimize the chances of{" "}
+          <span className="font-bold">"collisions"</span>—occurrences where{" "}
+          <span className="font-bold">
+            different keys produce the same output hash value
+          </span>
+          .
+          <br />
+        </p>
+      </ChapterHeading>
+
+      <ChapterHeading id="collisions" title="Collisions">
+        <p>
+          To address collisions, hashmaps use solutions like{" "}
+          <span className="font-bold">chaining or open addressing</span>,
+          ensuring that even when collisions occur, the data remains accessible
+          and secure.
+        </p>
+      </ChapterHeading>
     </div>
   );
 };
 
 export const metadata: Metadata = {
-  title: 'Hashmaps',
-  description: ""
+  title: "Hashmaps",
+  description: "",
 };
 
 export default HashmapPage;
