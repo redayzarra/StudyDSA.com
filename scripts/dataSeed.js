@@ -110,18 +110,18 @@ const hashmapSkills = [
   },
   {
     title: "Open Addressing",
-    href: "/data-structures/hashmaps",
+    href: "/data-structures/hashmaps#openAddressing",
     description: "Resolving collisions by finding another open slot for a new key-val pair",
-  },
-  {
-    title: "Sets",
-    href: "/data-structures/hashmaps#sets",
-    description: "They hate duplicates and searching in them is really efficient",
   },
   {
     title: "Implementation",
     href: "/data-structures/hashmaps#implementation",
     description: "Here's how you can implement a hashmap/hashset from scratch",
+  },
+  {
+    title: "Sets",
+    href: "/data-structures/hashmaps#sets",
+    description: "They hate duplicates and searching in them is really efficient",
   },
   {
     title: "Best Practices",

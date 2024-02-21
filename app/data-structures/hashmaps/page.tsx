@@ -7,7 +7,11 @@ import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
 import { hashmapOperations } from "@/data/operationsData";
 import { Metadata } from "next";
-import { chainingCode, collisionsCode, hashFunctionCode } from "./_components/hashmapCode";
+import {
+  chainingCode,
+  collisionsCode,
+  hashFunctionCode,
+} from "./_components/hashmapCode";
 import { CodeText } from "@/components/CodeText";
 import Algorithms from "@/components/Algorithms";
 
@@ -22,10 +26,10 @@ const HashmapPage = async () => {
 
   const definitionChapter = findChapter(topic, "Definition");
   const operationsChapter = findChapter(topic, "Operations");
-  const implementationChapter = findChapter(topic, "Implementation");
   const hashingChapter = findChapter(topic, "Hash Function");
   const chainingChapter = findChapter(topic, "Chaining");
   const openChapter = findChapter(topic, "Open Addressing");
+  const implementationChapter = findChapter(topic, "Implementation");
   const setsChapter = findChapter(topic, "Sets");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
@@ -188,11 +192,7 @@ const HashmapPage = async () => {
           </span>{" "}
           of entries that all hash to that index. <br />
         </p>
-        <CodeBlock
-          code={chainingCode}
-          language="python"
-          title="Chaining.py"
-        />
+        <CodeBlock code={chainingCode} language="python" title="Chaining.py" />
         <p>
           <br />
           When we want to insert a new key-value pair, we simply add it to the
@@ -213,6 +213,13 @@ const HashmapPage = async () => {
           operations efficient.
         </p>
       </ChapterHeading>
+
+      <ChapterHeading
+        id="openAddressing"
+        title="Open Addressing"
+        chapter={openChapter}
+        chapterId={openChapter?.id}
+      ></ChapterHeading>
 
       <ChapterHeading
         id="algorithms"
