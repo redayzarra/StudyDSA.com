@@ -1,4 +1,5 @@
 import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsByName";
+import findChapter from "@/actions/chapters/findChapter";
 import getTopicByName from "@/actions/topics/getTopicByName";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
@@ -6,7 +7,9 @@ import CodeBlock from "@/components/CodeBlock";
 import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
+import TextLink from "@/components/TextLink";
 import { arrayOperations, stackOperations } from "@/data/operationsData";
+import { Metadata } from "next";
 import {
   amortizedTimeCode,
   dynamicArraysCode,
@@ -15,8 +18,6 @@ import {
   stackCode,
   staticArrayCode,
 } from "./_components/arrayCode";
-import TextLink from "@/components/TextLink";
-import findChapter from "@/actions/chapters/findChapter";
 
 const ArraysPage = async () => {
   const topic = await getTopicByName("Arrays");
@@ -312,6 +313,11 @@ const ArraysPage = async () => {
       </ChapterHeading>
     </div>
   );
+};
+
+export const metadata: Metadata = {
+  title: "Arrays",
+  description: "",
 };
 
 export default ArraysPage;

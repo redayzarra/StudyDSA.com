@@ -1,5 +1,6 @@
 import NavBar from "@/components/NavBar";
 import TableOfContents from "@/components/TableOfContents";
+import { Metadata } from "next";
 
 const DataStructuresLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -17,3 +18,12 @@ const DataStructuresLayout = ({ children }: { children: React.ReactNode }) => {
 };
 
 export default DataStructuresLayout;
+
+export const metadata: Metadata = {
+  title: {
+    template: "%s | Data Structures",
+    default: "Data Structures",
+  },
+  description:
+    "Start mastering Data Structures & Algorithms - interactive, engaging, and suitable for all skill levels.",
+};

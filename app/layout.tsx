@@ -1,19 +1,13 @@
 import { ThemeProvider } from "@/components/theme-provider";
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
 import { Toaster } from "@/components/ui/sonner";
 import QueryClientProvider from "./QueryClientProvider";
+import { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "StudyDSA",
-  description:
-    "Start mastering Data Structures & Algorithms - interactive, engaging, and suitable for all skill levels.",
-};
 
 export default async function RootLayout({
   children,
@@ -42,3 +36,12 @@ export default async function RootLayout({
     </SessionProvider>
   );
 }
+
+export const metadata: Metadata = {
+  title: {
+    template: "%s | StudyDSA",
+    default: "StudyDSA",
+  },
+  description:
+    "Start mastering Data Structures & Algorithms - interactive, engaging, and suitable for all skill levels.",
+};

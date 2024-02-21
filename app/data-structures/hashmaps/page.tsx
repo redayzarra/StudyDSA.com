@@ -1,18 +1,13 @@
 import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsByName";
+import findChapter from "@/actions/chapters/findChapter";
 import getTopicByName from "@/actions/topics/getTopicByName";
-import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
-import CodeBlock from "@/components/CodeBlock";
-import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
 import {
-  arrayOperations,
-  hashmapOperations,
-  stackOperations,
+  hashmapOperations
 } from "@/data/operationsData";
-import TextLink from "@/components/TextLink";
-import findChapter from "@/actions/chapters/findChapter";
+import { Metadata } from "next";
 
 const HashmapPage = async () => {
   const topic = await getTopicByName("Hashmaps");
@@ -68,13 +63,15 @@ const HashmapPage = async () => {
         chapterId={operationsChapter?.id}
       >
         <p>
-          Hashmaps are powerful because of their efficiency. They utilize a hash
-          function to enable quick searching and insertion of data. However, sometimes hash functions can lead to collisions which causes operations to have a worst case time complexity of O(n).
+          Hashmaps are powerful because of their efficiency. They use a hash
+          function for fast data searching and insertion. A good hash function
+          spreads out the keys to prevent "collisions," a topic we'll delve into
+          with more detail.
           <br />
         </p>
         <p>
           <br />
-          It's important to note that{" "}
+          It's also important to note that{" "}
           <span className="font-bold">hashmaps are unordered</span>, which means
           they are not suitable for problems requiring sorted data. The
           following table provides a detailed overview of{" "}
@@ -86,6 +83,11 @@ const HashmapPage = async () => {
       </ChapterHeading>
     </div>
   );
+};
+
+export const metadata: Metadata = {
+  title: 'Hashmaps',
+  description: ""
 };
 
 export default HashmapPage;
