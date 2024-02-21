@@ -9,6 +9,7 @@ import { hashmapOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import { collisionsCode, hashFunctionCode } from "./_components/hashmapCode";
 import { CodeText } from "@/components/CodeText";
+import Algorithms from "@/components/Algorithms";
 
 const HashmapPage = async () => {
   const topic = await getTopicByName("Hashmaps");
@@ -159,7 +160,21 @@ const HashmapPage = async () => {
           ensuring that even when collisions occur, the data remains accessible
           and secure. Let's delve into both solutions in more detail.
         </p>
-        <br />
+      </ChapterHeading>
+
+      <ChapterHeading
+        id="chaining"
+        title="Chaining"
+        chapter={chainingChapter}
+        chapterId={chainingChapter?.id}
+      ></ChapterHeading>
+
+      <ChapterHeading
+        id="algorithms"
+        title="Algorithms"
+        // chapterId={algorithmsChapter?.id}
+      >
+        <Algorithms items={hashmapAlgorithms} />
       </ChapterHeading>
     </div>
   );
