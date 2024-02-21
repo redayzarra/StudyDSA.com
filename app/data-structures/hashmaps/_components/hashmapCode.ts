@@ -92,3 +92,41 @@ def linear_probe(hashmap: List[List[int]], key: str, value: int, size: int):
     # Once an empty slot is found, insert the key-value pair at the current index
     hashmap[index] = (key, value)
     print("Added a new key-val pair to empty slot!")`;
+
+export const chainingImplementationCode = 
+`class ChainingHashMap:
+    def __init__(self, size: int = 10):
+        # Initialize the hash table with as list of lists
+        self.hashmap = [[] for i in range(size)]
+    
+    def simple_hash(self, key: str) -> int:
+        # Simple hash function: modulo by the table size to "wrap" around
+        return len(key) % len(self.hashmap)
+    
+    def insert(self, key: str, value: int) -> None:
+        # Insert a key-value pair, updating the value if the key already exists
+        index = self.simple_hash(key)
+        for item in self.hashmap[index]:
+            if item[0] == key:
+                item[1] = value
+                return
+        self.hashmap[index].append([key, value])
+    
+    def get(self, key: str) -> int:
+        # Retrieve the value for a given key, if it exists
+        index = self.simple_hash(key)
+        for item in self.hashmap[index]:
+            if item[0] == key:
+                return item[1]
+        return None
+    
+    def delete(self, key: str) -> None:
+        # Delete a key-value pair by key, if it exists
+        index = self.simple_hash(key)
+        new_bucket = []
+
+        for item in self.hashmap[index]:
+            if item[0] != key:
+                new_bucket.append(item)
+
+        self.hashmap[index] = new_bucket`;

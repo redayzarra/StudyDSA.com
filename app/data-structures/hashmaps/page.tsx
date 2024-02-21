@@ -11,11 +11,12 @@ import TextLink from "@/components/TextLink";
 import { hashmapOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import {
+  chainingImplementationCode,
   collisionsCode,
   deleteChainingCode,
   hashFunctionCode,
   insertChainingCode,
-  openAddressingCode
+  openAddressingCode,
 } from "./_components/hashmapCode";
 
 const HashmapPage = async () => {
@@ -273,10 +274,26 @@ const HashmapPage = async () => {
       </ChapterHeading>
 
       <ChapterHeading
-        id="algorithms"
-        title="Algorithms"
-        // chapterId={algorithmsChapter?.id}
+        id="implementation"
+        title="Implementation"
+        chapter={implementationChapter}
+        chapterId={implementationChapter?.id}
       >
+        <p>
+          To implement hashmaps efficiently, you need to have a good
+          understanding of the underlying collision-resolution strategies. The
+          two most common resolution strategies are: chaining and open
+          addressing. Let's start by looking at a chaining implementation:
+          <br />
+        </p>
+        <CodeBlock
+          code={chainingImplementationCode}
+          language="python"
+          title="Chaining_Implementation.py"
+        />
+      </ChapterHeading>
+
+      <ChapterHeading id="algorithms" title="Algorithms">
         <Algorithms items={hashmapAlgorithms} />
       </ChapterHeading>
     </div>
