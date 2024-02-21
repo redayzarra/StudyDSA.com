@@ -15,6 +15,7 @@ const getBookmark = async (userId: string) => {
     if (bookmark) {
       return bookmark.chapterId ? bookmark.chapter : bookmark.algorithm;
     }
+
     return null;
 
     // Error handling

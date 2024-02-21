@@ -1,19 +1,22 @@
 import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsByName";
 import findChapter from "@/actions/chapters/findChapter";
 import getTopicByName from "@/actions/topics/getTopicByName";
+import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
 import CodeBlock from "@/components/CodeBlock";
+import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
+import TextLink from "@/components/TextLink";
 import { hashmapOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import {
-  chainingCode,
   collisionsCode,
+  deleteChainingCode,
   hashFunctionCode,
+  insertChainingCode,
+  openAddressingCode
 } from "./_components/hashmapCode";
-import { CodeText } from "@/components/CodeText";
-import Algorithms from "@/components/Algorithms";
 
 const HashmapPage = async () => {
   const topic = await getTopicByName("Hashmaps");
@@ -177,8 +180,9 @@ const HashmapPage = async () => {
           collisions. Chaining is a popular and effective strategy to resolve
           these collisions. It allows multiple elements to exist at the same
           location (or "chain") by{" "}
-          <span className="font-bold">linking them together in a list</span> (or
-          linked list).
+          <span className="font-bold">linking them together in a list</span> (or{" "}
+          <TextLink href="/data-structures/linked-lists">linked list</TextLink>
+          ).
           <br />
         </p>
         <p>
@@ -188,19 +192,28 @@ const HashmapPage = async () => {
           together on a single hook, one behind the other. Similarly, with
           chaining,{" "}
           <span className="font-bold">
-            each index in the hash table holds a list (or "chain")
+            each index in the hashmap holds a list (or "chain")
           </span>{" "}
           of entries that all hash to that index. <br />
         </p>
-        <CodeBlock code={chainingCode} language="python" title="Chaining.py" />
+        <CodeBlock
+          code={insertChainingCode}
+          language="python"
+          title="insert_Chaining.py"
+        />
         <p>
           <br />
           When we want to insert a new key-value pair, we simply add it to the
           list at the computed index (using the hash function). To retrieve or
           delete an item, we search through the list at that index to find the
-          exact key we're looking for.
+          exact key we're looking for:
           <br />
         </p>
+        <CodeBlock
+          code={deleteChainingCode}
+          language="python"
+          title="delete_Chaining.py"
+        />
         <p>
           <br />
           Chaining handles collisions by utilizing extra space, ensuring that
@@ -219,7 +232,45 @@ const HashmapPage = async () => {
         title="Open Addressing"
         chapter={openChapter}
         chapterId={openChapter?.id}
-      ></ChapterHeading>
+      >
+        <p>
+          Open addressing handles collisions in a hashmap by{" "}
+          <span className="font-bold">
+            finding alternative spots within the hashmap
+          </span>{" "}
+          for placing the new key-value pair. Unlike chaining, where collisions
+          are resolved by adding elements to a list at the index,{" "}
+          <span className="font-bold">
+            open addressing maintains only one element at each index
+          </span>
+          . If a collision occurs, the hashmap looks for the next available
+          slot.
+          <br />
+        </p>
+        <p>
+          <br />
+          There are several ways open addressing looks for indices: linear
+          probing, where the table is searched sequentially; quadratic probing,
+          which uses a quadratic function to find the next slot; and double
+          hashing, where a second hash function determines the step size for the
+          search.
+          <br />
+        </p>
+        <CodeBlock
+          code={openAddressingCode}
+          language="python"
+          title="OpenAddressing.py"
+        />
+        <p>
+          <br />
+          One key advantage of open addressing is that it can be more
+          space-efficient than chaining, especially when the load factor (the
+          ratio of elements to table size) is low. However, as the table fills
+          up, the efficiency of open addressing decreases due to an increased
+          number of probes required to find an empty slot or to retrieve an
+          item.
+        </p>
+      </ChapterHeading>
 
       <ChapterHeading
         id="algorithms"

@@ -31,9 +31,9 @@ print(hash_value1, hash_value2)
 
 # Output: (5, 5)`;
 
-export const chainingCode = 
-`# A simple hash function based on key length, for demonstration
-def simple_hash(key):
+export const insertChainingCode = 
+`# A simple hash function based on hashmap size of 5, for demonstration
+def simple_hash(key: str):
     return len(key) % 5
 
 # Let's make our hashmap a list of lists: five arrays inside one larger array
@@ -52,3 +52,43 @@ def insert(key, value):
 
     # 3. If the key doesn't exist, add new key-value pair
     hashmap[index].append([key, value])`;
+
+export const deleteChainingCode = 
+`# Get function: Retrieves the value for a given key
+def get(key: str):
+    index = simple_hash(key)
+    for item in hash_table[index]:
+        if item[0] == key:
+            return item[1]
+    return None  # If the key is not found
+
+# Delete function: Removes a key-value pair
+def delete(key: str):
+    index = simple_hash(key)
+    for i, item in enumerate(hash_table[index]):
+        if item[0] == key:
+            del hash_table[index][i]
+            return`;
+
+export const openAddressingCode = 
+`# A simple hash function to hash the keys into indices
+def simple_hash(key: str, size: int) -> int:
+    return len(key) % size
+    
+def linear_probe(hashmap: List[List[int]], key: str, value: int, size: int):
+    # 1. Use hash function to get the initial hash value/index
+    hashVal = simple_hash(key, size)
+    index = hashVal 
+    
+    # 2. Loop to find an empty slot when a collision occurs
+    while hashmap[index] is not None:
+        # Important: Wrap around to the start if we reach the end of the table
+        index = (index + 1) % size
+        
+        # If we are back to where we started, the table is full
+        if index == hashVal:
+            print("The table is full, no empty slot found!")
+    
+    # Once an empty slot is found, insert the key-value pair at the current index
+    hashmap[index] = (key, value)
+    print("Added a new key-val pair to empty slot!")`;
