@@ -4,23 +4,20 @@ import db from "@/lib/db";
 
 const getBookmark = async (userId: string) => {
   try {
-    const bookmark = await db.bookmark.findUnique({
+    const bookmark = await db.bookmark.findFirst({
       where: { userId },
       include: {
-        chapter: true, 
-        algorithm: true, 
+        chapter: true,
+        algorithm: true,
       },
     });
 
-    // Point to either a chapter or algorithm
-    if (bookmark?.chapterId) {
-      return bookmark.chapter;
-    } else if (bookmark?.algorithmId) {
-      return bookmark.algorithm;
-    } else {
-      return null;
+    if (bookmark) {
+      return bookmark.chapterId ? bookmark.chapter : bookmark.algorithm;
     }
-    
+    return null;
+
+    // Error handling
   } catch (error) {
     console.error("Failed to get bookmark:", error);
     throw error;

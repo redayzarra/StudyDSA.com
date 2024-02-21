@@ -100,7 +100,7 @@ model Chapter {
   topicId     String
   topic       Topic             @relation(fields: [topicId], references: [id], onDelete: Cascade)
   progress    ChapterProgress[]
-  Bookmark    Bookmark?
+  Bookmark    Bookmark[]
 }
 
 model ChapterProgress {
@@ -121,7 +121,7 @@ model Algorithm {
   href        String
   difficulty  Difficulty
   progress    AlgorithmProgress[]
-  Bookmark    Bookmark?
+  Bookmark    Bookmark[]
 }
 
 model AlgorithmProgress {
@@ -137,14 +137,15 @@ model AlgorithmProgress {
 
 model Bookmark {
   id          String   @id @default(cuid())
-  userId      String   @unique
-  chapterId   String?  @unique
-  algorithmId String?  @unique
-  createdAt   DateTime @default(now())
+  userId      String
+  chapterId   String?
+  algorithmId String?
 
   user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   chapter   Chapter?   @relation(fields: [chapterId], references: [id], onDelete: SetNull)
   algorithm Algorithm? @relation(fields: [algorithmId], references: [id], onDelete: SetNull)
 
-  @@index([userId], name: "idx_bookmark_user")
+  @@unique([userId])
+  @@index([chapterId], name: "idx_bookmark_chapter")
+  @@index([algorithmId], name: "idx_bookmark_algorithm")
 }

@@ -4,39 +4,36 @@ import db from "@/lib/db";
 
 const toggleBookmark = async (userId: string, chapterId: string) => {
   try {
-    // Check if the specified chapter is already bookmarked by the user
     const existingBookmark = await db.bookmark.findFirst({
       where: {
         userId: userId,
-        chapterId: chapterId,
       },
     });
 
     if (existingBookmark) {
-      // If the chapter is already bookmarked, remove the bookmark
-      await db.bookmark.delete({
-        where: {
-          id: existingBookmark.id,
-        },
-      });
+      // If a bookmark exists but for a different chapter, update it, otherwise delete it
+      if (existingBookmark.chapterId !== chapterId) {
+        await db.bookmark.update({
+          where: { id: existingBookmark.id },
+          data: { chapterId: chapterId },
+        });
+        return { action: 'updated', chapterId };
+      } else {
+        await db.bookmark.delete({
+          where: { id: existingBookmark.id },
+        });
+        return { action: 'deleted' };
+      }
     } else {
-      // If the chapter is not bookmarked, first remove any existing bookmarks for this user
-      await db.bookmark.deleteMany({
-        where: {
-          userId: userId,
-        },
-      });
-
-      // Then, create a new bookmark for the specified chapter
+      // Create a new bookmark if none exists
       await db.bookmark.create({
         data: {
           userId: userId,
           chapterId: chapterId,
         },
       });
+      return { action: 'created', chapterId };
     }
-
-    return true;
 
     // Error handling
   } catch (error) {
