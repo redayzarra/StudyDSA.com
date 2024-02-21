@@ -526,7 +526,7 @@ async function dataSeed() {
     data: {
       title: "Arrays",
       description: "A linear data structure for storing elements.",
-      href: "/data-structures/",
+      href: "/data-structures/arrays",
       chapters: {
         create: arraySkills,
       },
@@ -538,7 +538,7 @@ async function dataSeed() {
     data: {
       title: "Linked Lists",
       description: "Data elements connected together via links.",
-      href: "/linked-lists",
+      href: "/data-structures/linked-lists",
       chapters: {
         create: linkedListSkills,
       },
@@ -550,7 +550,7 @@ async function dataSeed() {
     data: {
       title: "Hashmaps",
       description: "Key-value pairs for efficient data lookup.",
-      href: "/hashmaps",
+      href: "/data-structures/hashmaps",
       chapters: {
         create: hashmapSkills,
       },
@@ -562,7 +562,7 @@ async function dataSeed() {
     data: {
       title: "Queues",
       description: "FIFO data structure for ordered processing.",
-      href: "/queues",
+      href: "/data-structures/queues",
       chapters: {
         create: queueSkills,
       },
@@ -574,7 +574,7 @@ async function dataSeed() {
     data: {
       title: "Trees",
       description: "Hierarchical data structure for representing relationships.",
-      href: "/trees",
+      href: "/data-structures/trees",
       chapters: {
         create: treeSkills,
       },
@@ -586,7 +586,7 @@ async function dataSeed() {
     data: {
       title: "Graphs",
       description: "Nodes connected by edges to represent networks.",
-      href: "/graphs",
+      href: "/data-structures/graphs",
       chapters: {
         create: graphSkills,
       },
@@ -598,7 +598,7 @@ async function dataSeed() {
     data: {
       title: "Heaps",
       description: "A specialized tree-based data structure that satisfies the heap property.",
-      href: "/heaps",
+      href: "/data-structures/heaps",
       chapters: {
         create: heapSkills,
       },
@@ -610,7 +610,7 @@ async function dataSeed() {
     data: {
       title: "Tries",
       description: "A kind of search tree used to store a dynamic set or associative array.",
-      href: "/tries",
+      href: "/data-structures/tries",
       chapters: {
         create: trieSkills,
       },
@@ -622,7 +622,7 @@ async function dataSeed() {
     data: {
       title: "Directed Acyclic Graphs",
       description: "Graphs with directed edges and no cycles, useful for modeling processes with dependencies.",
-      href: "/directed-acyclic-graphs",
+      href: "/data-structures/directed-acyclic-graphs",
       chapters: {
         create: dagSkills,
       },
@@ -634,7 +634,7 @@ async function dataSeed() {
     data: {
       title: "Disjoint Sets",
       description: "A data structure that keeps track of a set of elements partitioned into a number of disjoint (non-overlapping) subsets.",
-      href: "/disjoint-sets",
+      href: "/data-structures/disjoint-sets",
       chapters: {
         create: disjointSetSkills,
       },
@@ -646,7 +646,7 @@ async function dataSeed() {
     data: {
       title: "Weighted Graphs",
       description: "Graphs where each edge has an associated weight, representing the cost to move from one vertex to another.",
-      href: "/weighted-graphs",
+      href: "/data-structures/weighted-graphs",
       chapters: {
         create: weightedGraphSkills,
       },
@@ -658,7 +658,7 @@ async function dataSeed() {
     data: {
       title: "Segment Trees",
       description: "A tree data structure for storing intervals or segments.",
-      href: "/segment-trees",
+      href: "/data-structures/segment-trees",
       chapters: {
         create: segmentTreeSkills,
       },

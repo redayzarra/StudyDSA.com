@@ -63,3 +63,36 @@ export const stackOperations: { operation: string; time: string; space: string, 
     notes: "Checks if the stack is empty. This is a constant time operation as it just checks the list length.",
   },
 ]
+
+export const hashmapOperations: { operation: string; time: string; space: string, notes: string }[] = [
+  {
+    operation: "Access",
+    time: "O(1)",
+    space: "O(1)",
+    notes: "Retrieves the value for a given key.",
+  },
+  {
+    operation: "Insert",
+    time: "O(1)",
+    space: "O(1)",
+    notes: "Inserts a key-value pair.",
+  },
+  {
+    operation: "Delete",
+    time: "O(1)",
+    space: "O(1)",
+    notes: "Removes a key-value pair by the key.",
+  },
+  {
+    operation: "Search",
+    time: "O(1)",
+    space: "O(1)",
+    notes: "Checks if a certain key exists.",
+  },
+  {
+    operation: "Resize",
+    time: "O(n)",
+    space: "O(n)",
+    notes: "Resizes the underlying array in the hashmap, rehashing all existing keys.",
+  },
+]
