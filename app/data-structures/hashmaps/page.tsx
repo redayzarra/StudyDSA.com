@@ -132,9 +132,13 @@ const HashmapPage = async () => {
         <p>
           <br />
           The hash function I've shown is a basic example of how to turn the{" "}
-          <CodeText>key</CodeText> (like a name or a word) into a number{" "}
-          <CodeText>hash_val</CodeText> that tells us where to store or find
-          that key in our hashmap.
+          <CodeText>key</CodeText> (like a name or a word) into an index that
+          tells us where to store or find that key in our hashmap. It's
+          important to{" "}
+          <span className="font-bold">
+            apply the modulo operator against the hashmap's size
+          </span>{" "}
+          to make sure the resulting index will fall inside our hashmap.
           <br />
         </p>
         <p>
@@ -330,13 +334,38 @@ const HashmapPage = async () => {
           <br />
           My favorite way of implementing hashmaps is chaining with{" "}
           <TextLink href="/data-structures/linked-lists">linked lists</TextLink>
-          . Let's go over the code and then I'll explain why linked lists significantly improve efficiency and performance:
+          . Let's go over the code and then I'll explain why linked lists
+          significantly improve efficiency and performance:
         </p>
         <CodeBlock
           code={chainingWithLinked}
           language="python"
           title="Hashmap.py"
         />
+        <p>
+          <br />
+          Implementing hashmaps with{" "}
+          <span className="font-bold">
+            chaining and linked lists significantly enhances efficiency
+          </span>
+          . Linked lists allow for dynamic space allocation, avoiding costly
+          resizing operations (see{" "}
+          <TextLink href="/data-structures/arrays#amortizedTime">
+            amortized time
+          </TextLink>
+          ).
+          <br />
+        </p>
+        <p>
+          <br />
+          They simplify collision resolution by appending new nodes to
+          existing chains, ensuring <CodeText>insert</CodeText> and{" "}
+          <CodeText>get</CodeText> remain efficient. The{" "}
+          <CodeText>delete</CodeText> function is straightforward, we cut off
+          unwanted nodes without creating gaps. This
+          approach combines scalability with performance, making it an optimal
+          solution for handling collisions in hashmaps.
+        </p>
       </ChapterHeading>
 
       <ChapterHeading id="algorithms" title="Algorithms">
