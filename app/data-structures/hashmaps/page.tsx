@@ -358,19 +358,32 @@ const HashmapPage = async () => {
         </p>
         <p>
           <br />
-          They simplify collision resolution by appending new nodes to
-          existing chains, ensuring <CodeText>insert</CodeText> and{" "}
+          They simplify collision resolution by appending new nodes to existing
+          chains, ensuring <CodeText>insert</CodeText> and{" "}
           <CodeText>get</CodeText> remain efficient. The{" "}
           <CodeText>delete</CodeText> function is straightforward, we cut off
-          unwanted nodes without creating gaps. This
-          approach combines scalability with performance, making it an optimal
-          solution for handling collisions in hashmaps.
+          unwanted nodes without creating gaps. This approach combines
+          scalability with performance, making it an optimal solution for
+          handling collisions in hashmaps.
         </p>
       </ChapterHeading>
+
+      <ChapterHeading
+        id="sets"
+        title="Sets"
+        chapter={setsChapter}
+        chapterId={setsChapter?.id}
+      ></ChapterHeading>
 
       <ChapterHeading id="algorithms" title="Algorithms">
         <Algorithms items={hashmapAlgorithms} />
       </ChapterHeading>
+
+      <ChapterHeading
+        id="bestPractices"
+        title="Best Practices"
+        chapterId={bestPracticesChapter?.id}
+      ></ChapterHeading>
     </div>
   );
 };
