@@ -11,12 +11,13 @@ import TextLink from "@/components/TextLink";
 import { hashmapOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import {
-  chainingImplementationCode,
+  chainingHashmap,
   collisionsCode,
   deleteChainingCode,
   hashFunctionCode,
   insertChainingCode,
   openAddressingCode,
+  openAddressingHashmap,
 } from "./_components/hashmapCode";
 
 const HashmapPage = async () => {
@@ -73,10 +74,16 @@ const HashmapPage = async () => {
         chapterId={operationsChapter?.id}
       >
         <p>
-          Hashmaps are powerful because of their efficiency. They use a hash
-          function for fast data searching and insertion. A good hash function
-          spreads out the keys to prevent "collisions," a topic we'll delve into
-          with more detail.
+          Hashmaps are powerful because of their efficiency. They use a{" "}
+          <TextLink href="/data-structures/hashmaps#hashFunction">
+            hash function
+          </TextLink>{" "}
+          for fast data searching and insertion. A good hash function spreads
+          out the keys to prevent{" "}
+          <TextLink href="/data-structures/hashmaps#collisions">
+            collisions
+          </TextLink>
+          , a topic we'll delve into with more detail.
           <br />
         </p>
         <p>
@@ -100,11 +107,11 @@ const HashmapPage = async () => {
       >
         <p>
           Hashmaps are powered by{" "}
-          <span className="font-bold">hash function</span>, a special function
-          that takes any input—regardless of its size—and produces a fixed-size
-          string of bytes. The output, known as a{" "}
+          <span className="font-bold">hash functions</span>, a special function
+          that takes any input—regardless of its size—and produces a integer
+          that we can use as an index. The output, known as a hash code,{" "}
           <span className="font-bold">
-            hash code, determines where to store the input value in the hashmap{" "}
+            determines where to store the input value in the hashmap{" "}
           </span>
           .
           <br />
@@ -126,7 +133,7 @@ const HashmapPage = async () => {
           The hash function I've shown is a basic example of how to turn the{" "}
           <CodeText>key</CodeText> (like a name or a word) into a number{" "}
           <CodeText>hash_val</CodeText> that tells us where to store or find
-          that string in our hashmap.
+          that key in our hashmap.
           <br />
         </p>
         <p>
@@ -226,6 +233,26 @@ const HashmapPage = async () => {
           across the hashmap. This minimizes the length of chains and keeps
           operations efficient.
         </p>
+        <p>
+          <br />
+          Let's implement a hashmap with chaining. Chaining allows us to store
+          multiple entries at the same index by linking them together:
+          <br />
+        </p>
+        <CodeBlock
+          code={chainingHashmap}
+          language="python"
+          title="Chaining_Hashmap.py"
+        />
+        <p>
+          <br />
+          The <CodeText>ChainingHashMap</CodeText> class is initialized with a
+          predefined size, defaulting to 10, creating an internal table as a
+          list of empty lists. Each list represents a "bucket" where key-value
+          pairs are stored, allowing multiple values to be stored at the same
+          index, or "chaining."
+          <br />
+        </p>
       </ChapterHeading>
 
       <ChapterHeading
@@ -248,6 +275,11 @@ const HashmapPage = async () => {
           slot.
           <br />
         </p>
+        <CodeBlock
+          code={openAddressingCode}
+          language="python"
+          title="OpenAddressing.py"
+        />
         <p>
           <br />
           There are several ways open addressing looks for indices: linear
@@ -257,19 +289,26 @@ const HashmapPage = async () => {
           search.
           <br />
         </p>
+        <p>
+          <br />
+          Now let's implement a hashmap with open addressing. Open addressing
+          simply finds the next available spot for a value to be stored:
+          <br />
+        </p>
         <CodeBlock
-          code={openAddressingCode}
+          code={openAddressingHashmap}
           language="python"
-          title="OpenAddressing.py"
+          title="OpenAddressing_Hashmap.py"
         />
         <p>
           <br />
-          One key advantage of open addressing is that it can be more
-          space-efficient than chaining, especially when the load factor (the
-          ratio of elements to table size) is low. However, as the table fills
-          up, the efficiency of open addressing decreases due to an increased
-          number of probes required to find an empty slot or to retrieve an
-          item.
+          The <CodeText>find_slot</CodeText> method is crucial for the open
+          addressing implementation. It begins at the index determined by the
+          hash function and searches linearly (wrapping around to the beginning
+          of the array if necessary) until it finds an empty slot or the slot
+          where the key already exists. If it loops back to the starting index
+          without finding an empty slot, it raises an exception, indicating the
+          hashmap is full.
         </p>
       </ChapterHeading>
 
@@ -280,17 +319,11 @@ const HashmapPage = async () => {
         chapterId={implementationChapter?.id}
       >
         <p>
-          To implement hashmaps efficiently, you need to have a good
-          understanding of the underlying collision-resolution strategies. The
-          two most common resolution strategies are: chaining and open
-          addressing. Let's start by looking at a chaining implementation:
+          To implement hashmaps, you need a solid understanding of collisions and
+          different resolution strategies. The two primary strategies, chaining
+          and open addressing, offer unique approaches to managing collisions.
           <br />
         </p>
-        <CodeBlock
-          code={chainingImplementationCode}
-          language="python"
-          title="Chaining_Implementation.py"
-        />
       </ChapterHeading>
 
       <ChapterHeading id="algorithms" title="Algorithms">

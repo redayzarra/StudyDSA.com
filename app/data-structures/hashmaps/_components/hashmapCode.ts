@@ -37,7 +37,7 @@ def simple_hash(key: str):
     return len(key) % 5
 
 # Let's make our hashmap a list of lists: five arrays inside one larger array
-hashmap = [[]] * 5 
+hashmap = [[] for i in range(5)]
 
 # Insert function: Adds a key-value pair to the appropriate list
 def insert(key, value):
@@ -55,7 +55,7 @@ def insert(key, value):
 
 export const deleteChainingCode = 
 `# Get function: Retrieves the value for a given key
-def get(key: str):
+def get(key: str) -> int:
     index = simple_hash(key)
     for item in hash_table[index]:
         if item[0] == key:
@@ -63,48 +63,44 @@ def get(key: str):
     return None  # If the key is not found
 
 # Delete function: Removes a key-value pair
-def delete(key: str):
+def delete(key: str) -> None:
     index = simple_hash(key)
-    for i, item in enumerate(hash_table[index]):
-        if item[0] == key:
-            del hash_table[index][i]
-            return`;
+    # Rebuild the bucket without the item we want to delete
+    hash_table[index] = [item for item in hash_table[index] if item[0] != key]`;
 
 export const openAddressingCode = 
 `# A simple hash function to hash the keys into indices
 def simple_hash(key: str, size: int) -> int:
     return len(key) % size
     
-def linear_probe(hashmap: List[List[int]], key: str, value: int, size: int):
-    # 1. Use hash function to get the initial hash value/index
+def linear_probe(hashmap, key: str, value: int, size: int) -> bool:
     hashVal = simple_hash(key, size)
-    index = hashVal 
+    index = hashVal
     
-    # 2. Loop to find an empty slot when a collision occurs
     while hashmap[index] is not None:
-        # Important: Wrap around to the start if we reach the end of the table
         index = (index + 1) % size
-        
-        # If we are back to where we started, the table is full
-        if index == hashVal:
+        if index == hashVal:  # If we've looped all the way around, table is full
             print("The table is full, no empty slot found!")
+            return False
     
-    # Once an empty slot is found, insert the key-value pair at the current index
     hashmap[index] = (key, value)
-    print("Added a new key-val pair to empty slot!")`;
+    print("Added a new key-value pair to empty slot!")
+    return True`;
 
-export const chainingImplementationCode = 
-`class ChainingHashMap:
+export const chainingHashmap = 
+`# Implement a hashmap with chaining
+class ChainingHashMap:
+
+    # Initialize the hashmap with size 10
     def __init__(self, size: int = 10):
-        # Initialize the hash table with as list of lists
         self.hashmap = [[] for i in range(size)]
     
+    # Simple hash function: ensures index is within hashmap bounds
     def simple_hash(self, key: str) -> int:
-        # Simple hash function: modulo by the table size to "wrap" around
         return len(key) % len(self.hashmap)
     
+    # Insert: If the key exists, update it. Or else, add a new key-val pair
     def insert(self, key: str, value: int) -> None:
-        # Insert a key-value pair, updating the value if the key already exists
         index = self.simple_hash(key)
         for item in self.hashmap[index]:
             if item[0] == key:
@@ -112,21 +108,55 @@ export const chainingImplementationCode =
                 return
         self.hashmap[index].append([key, value])
     
-    def get(self, key: str) -> int:
-        # Retrieve the value for a given key, if it exists
+    # Get: Retrieve the value for a given key
+    def get(self, key: str) -> Optional[int]:
         index = self.simple_hash(key)
         for item in self.hashmap[index]:
             if item[0] == key:
                 return item[1]
         return None
     
+    # Delete: Remove a value for a given key, leave the rest alone
     def delete(self, key: str) -> None:
-        # Delete a key-value pair by key, if it exists
         index = self.simple_hash(key)
-        new_bucket = []
+        self.hashmap[index] = [item for item in self.hashmap[index] if item[0] != key]`;
+    
+export const openAddressingHashmap = 
+`# Linear probing - looks for the next available slot (linearly)
+class LinearProbingHashMap:
 
-        for item in self.hashmap[index]:
-            if item[0] != key:
-                new_bucket.append(item)
-
-        self.hashmap[index] = new_bucket`;
+    # Initialize the hashmap with size 10
+    def __init__(self, size: int = 10):
+        self.hashmap = [None] * size
+    
+    # Simple hash function (index will never be greater than table size)
+    def simple_hash(self, key: str) -> int:
+        return len(key) % len(self.hashmap)
+    
+    # Find available slot for a new key-value pair
+    def find_slot(self, key: str) -> int:
+        index = self.simple_hash(key)
+        start_index = index
+        while self.hashmap[index] is not None and self.hashmap[index][0] != key:
+            index = (index + 1) % len(self.hashmap)
+            if index == start_index:
+                raise Exception("No empty slots left. Hashmap is full!")
+        return index
+    
+    # Insert: Add new key-val pair at an empty slot
+    def insert(self, key, value) -> None:
+        index = self.find_slot(key)
+        self.hashmap[index] = (key, value)
+    
+    # Get: Retrieve the value from a given key
+    def get(self, key: str) -> int:
+        index = self.find_slot(key)
+        if self.hashmap[index] is None:
+            return None
+        return self.hashmap[index][1]
+    
+    # Delete: Remove the value from a given key
+    def delete(self, key: str) -> None:
+        index = self.find_slot(key)
+        if self.hashmap[index] is not None:
+            self.hashmap[index] = None`;
