@@ -12,6 +12,7 @@ import { hashmapOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import {
   chainingHashmap,
+  chainingWithLinked,
   collisionsCode,
   deleteChainingCode,
   hashFunctionCode,
@@ -319,11 +320,23 @@ const HashmapPage = async () => {
         chapterId={implementationChapter?.id}
       >
         <p>
-          To implement hashmaps, you need a solid understanding of collisions and
-          different resolution strategies. The two primary strategies, chaining
-          and open addressing, offer unique approaches to managing collisions.
+          To implement hashmaps, you need a solid understanding of collisions
+          and different resolution strategies. The two primary strategies,
+          chaining and open addressing, offer unique approaches to managing
+          collisions.
           <br />
         </p>
+        <p>
+          <br />
+          My favorite way of implementing hashmaps is chaining with{" "}
+          <TextLink href="/data-structures/linked-lists">linked lists</TextLink>
+          . Let's go over the code and then I'll explain why linked lists significantly improve efficiency and performance:
+        </p>
+        <CodeBlock
+          code={chainingWithLinked}
+          language="python"
+          title="Hashmap.py"
+        />
       </ChapterHeading>
 
       <ChapterHeading id="algorithms" title="Algorithms">

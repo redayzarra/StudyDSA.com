@@ -1,162 +1,211 @@
 export const hashFunctionCode = 
-`def simple_hash(key: str, table_size: int) -> int:
-    """
-    An example of a simple hash function for strings.
-    
-    :param key: The key to hash.
-    :param table_size: The size of the hash table.
-    :return: The hash value of the key, to be used as an index.
-    """
-    hash_val = 0
-    for char in key:
-        hash_val = (hash_val * 31 + ord(char)) % table_size
-    return hash_val`;
+`# Hash function: Convert key into index that is within hashmap
+def simple_hash(key: str, table_size: int) -> int:
+    # Ensure index is within hashmap bounds
+    return len(key) % size`;
 
 export const collisionsCode = 
-`# Simple hash function that will intentionally cause collisions
-def simple_hash(key: str, size: int) -> int:
+`def simple_hash(key: str, size: int) -> int:
+    # Ensure index is within hashmap bounds
     return len(key) % size
     
-# Providing two different keys that will intentionally cause a collision
+# Providing input keys and size that will intentionally cause a collision
 key1 = "hello"
 key2 = "world"
-
 size = 10
 
 # Calculating hash values for both keys to demonstrate a collision
 hash_value1 = simple_hash(key1, size)
 hash_value2 = simple_hash(key2, size)
 
-print(hash_value1, hash_value2)
-
-# Output: (5, 5)`;
+print(hash_value1, hash_value2) # Output: (5, 5)`;
 
 export const insertChainingCode = 
-`# A simple hash function based on hashmap size of 5, for demonstration
-def simple_hash(key: str):
-    return len(key) % 5
+`def simple_hash(key: str, size: int) -> int:
+    # Ensure index is within hashmap bounds
+    return len(key) % size
 
-# Let's make our hashmap a list of lists: five arrays inside one larger array
-hashmap = [[] for i in range(5)]
-
-# Insert function: Adds a key-value pair to the appropriate list
-def insert(key, value):
-    # 1. Calculate the index using the hash function
-    index = simple_hash(key)
-
-    # 2. If a key already exists, update the value
-    for item in hashmap[index]:
-        if item[0] == key:
-            item[1] = value
-            return
-
-    # 3. If the key doesn't exist, add new key-value pair
-    hashmap[index].append([key, value])`;
+# Insert: Update a key-val pair, or add it if it doesn't exist
+def insert(self, key: str, value: int) -> None:
+        # 1. Get the index from hashed key
+        index = self.simple_hash(key)
+        # 2. Find the key and update it's value
+        for item in self.hashmap[index]:
+            if item[0] == key:
+                item[1] = value
+                return
+        # 3. If a key doesn't exist, add a new key-val pair
+        self.hashmap[index].append([key, value])`;
 
 export const deleteChainingCode = 
-`# Get function: Retrieves the value for a given key
-def get(key: str) -> int:
-    index = simple_hash(key)
-    for item in hash_table[index]:
+`# Get: Retrieve the value from a given key
+def get(self, key: str) -> Optional[int]:
+    # 1. Get the index from hashed key
+    index = self.simple_hash(key)
+    # 2. Find the key and return it's value
+    for item in self.hashmap[index]:
         if item[0] == key:
             return item[1]
-    return None  # If the key is not found
+    # 3. If the key doesn't exist, return null
+    return None
 
-# Delete function: Removes a key-value pair
-def delete(key: str) -> None:
-    index = simple_hash(key)
-    # Rebuild the bucket without the item we want to delete
-    hash_table[index] = [item for item in hash_table[index] if item[0] != key]`;
+# Delete: Remove the value from a given key
+def delete(self, key: str) -> None:
+    # 1. Find the index from hashed key
+    index = self.simple_hash(key)
+    # 2. Keep all the items except for the key we want to delete
+    self.hashmap[index] = [item for item in self.hashmap[index] if item[0] != key]`;
 
 export const openAddressingCode = 
-`# A simple hash function to hash the keys into indices
-def simple_hash(key: str, size: int) -> int:
+`def simple_hash(key: str, size: int) -> int:
     return len(key) % size
-    
-def linear_probe(hashmap, key: str, value: int, size: int) -> bool:
-    hashVal = simple_hash(key, size)
-    index = hashVal
-    
-    while hashmap[index] is not None:
-        index = (index + 1) % size
-        if index == hashVal:  # If we've looped all the way around, table is full
-            print("The table is full, no empty slot found!")
-            return False
-    
-    hashmap[index] = (key, value)
-    print("Added a new key-value pair to empty slot!")
-    return True`;
+
+# Linear Probing: Find the next available slot by going down the hashmap one-by-one
+def find_slot(self, key: str) -> int:
+    # 1. Find the index from hashed key and store starting index
+    index = self.simple_hash(key)
+    start_index = index
+    # 2. Find an empty slot or one containing the key
+    while self.hashmap[index] is not None and self.hashmap[index][0] != key:
+        index = (index + 1) % len(self.hashmap)
+        if index == start_index:
+            raise Exception("No empty slots left. Hashmap is full!")
+    # 3. If everything goes well, return the index
+    return index`;
 
 export const chainingHashmap = 
 `# Implement a hashmap with chaining
 class ChainingHashMap:
 
-    # Initialize the hashmap with size 10
     def __init__(self, size: int = 10):
+        # Initialize the hashmap as list of lists 
         self.hashmap = [[] for i in range(size)]
     
-    # Simple hash function: ensures index is within hashmap bounds
     def simple_hash(self, key: str) -> int:
+        # Ensure index is within hashmap bounds
         return len(key) % len(self.hashmap)
     
-    # Insert: If the key exists, update it. Or else, add a new key-val pair
     def insert(self, key: str, value: int) -> None:
+        # 1. Get the index from hashed key
         index = self.simple_hash(key)
+        # 2. Find the key and update it's value
         for item in self.hashmap[index]:
             if item[0] == key:
                 item[1] = value
                 return
+        # 3. If a key doesn't exist, add a new key-val pair
         self.hashmap[index].append([key, value])
     
-    # Get: Retrieve the value for a given key
     def get(self, key: str) -> Optional[int]:
+        # 1. Get the index from hashed key
         index = self.simple_hash(key)
+        # 2. Find the key and return it's value
         for item in self.hashmap[index]:
             if item[0] == key:
                 return item[1]
+        # 3. If the key doesn't exist, return null
         return None
     
-    # Delete: Remove a value for a given key, leave the rest alone
     def delete(self, key: str) -> None:
+        # 1. Find the index from hashed key
         index = self.simple_hash(key)
+        # 2. Keep all the items except for the key we want to delete
         self.hashmap[index] = [item for item in self.hashmap[index] if item[0] != key]`;
     
 export const openAddressingHashmap = 
 `# Linear probing - looks for the next available slot (linearly)
 class LinearProbingHashMap:
 
-    # Initialize the hashmap with size 10
     def __init__(self, size: int = 10):
+        # Initialize as array of size 10 containing null values
         self.hashmap = [None] * size
     
-    # Simple hash function (index will never be greater than table size)
     def simple_hash(self, key: str) -> int:
+        # Ensure index is within hashmap bounds
         return len(key) % len(self.hashmap)
     
-    # Find available slot for a new key-value pair
     def find_slot(self, key: str) -> int:
+        # 1. Find the index from hashed key and store starting index
         index = self.simple_hash(key)
         start_index = index
+        # 2. Find an empty slot or one containing the key
         while self.hashmap[index] is not None and self.hashmap[index][0] != key:
             index = (index + 1) % len(self.hashmap)
             if index == start_index:
                 raise Exception("No empty slots left. Hashmap is full!")
+        # 3. If everything goes well, return the index
         return index
     
-    # Insert: Add new key-val pair at an empty slot
     def insert(self, key, value) -> None:
+        # Find the index with given key and update the key-val pair
         index = self.find_slot(key)
         self.hashmap[index] = (key, value)
     
-    # Get: Retrieve the value from a given key
     def get(self, key: str) -> int:
+        # 1. Find the index with given key
         index = self.find_slot(key)
         if self.hashmap[index] is None:
             return None
+        # 2. If there is a value there, return it
         return self.hashmap[index][1]
     
-    # Delete: Remove the value from a given key
     def delete(self, key: str) -> None:
+        # Find the index at given key and replace it with null
         index = self.find_slot(key)
         if self.hashmap[index] is not None:
             self.hashmap[index] = None`;
+
+export const chainingWithLinked = 
+`# ListNode class containing the key-val pair and next pointer
+class ListNode:
+    def __init__(self, key: str, val: int = 0, next = None):
+        self.val = val
+        self.next = next
+    
+class HashMap:
+
+    def __init__(self, self: int = 10):
+        # Initialize hashmap as array containing dummy ListNodes
+        self.hashmap = [ListNode() for i in range(size)]
+
+    def hash(self, key: str) -> int:
+        # 1. Convert string key to integer for hashing
+        hash_value = sum(ord(letter) for letter in key)
+        # 2. Ensure index is within hashmap bounds
+        return hash_value % len(self.hashmap)
+
+    def insert(self, key: str, value: int) -> None:
+        # 1. Set 'cur' to the head of the LinkedList 
+        index = self.hash(key)
+        cur = self.hashmap[index]
+        # 2. Try to find the key, then update it's value
+        while cur.next:
+            if cur.next.key == key:
+                cur.next.val = value
+                return
+            cur = cur.next
+        # 2. If the key doesn't exist, create a new key-val pair
+        cur.next = ListNode(key, value)
+
+    def get(self, key: str) -> int:
+        # 1. Set 'cur' to the second node of the LinkedList, skipping dummy node
+        index = self.hash(key)
+        cur = self.hashmap[index].next
+        # 2. Try to find the key, then return it's value
+        while cur:
+            if cur.key == key:
+                return cur.val
+            cur = cur.next
+        # 3. If you can't find the key, return -1
+        return -1
+
+    def delete(self, key: str) -> None:
+        # 1. Set 'cur' to the head of the LinkedList 
+        index = self.hash(key)
+        cur = self.hashmap[index]
+        # 2. If you find the key, cut it off from rest of linked list
+        while cur and cur.next:
+            if cur.next.key == key:
+                cur.next = cur.next.next
+                return
+            cur = cur.next`;
