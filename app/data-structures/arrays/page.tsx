@@ -123,8 +123,6 @@ const ArraysPage = async () => {
           <br />
           By using indexes to directly access and modify array elements, this
           approach mimics pointer manipulation in lower-level languages.
-          Pointers are going to be a crucial concept for you to understand, I
-          suggest playing with the code above on your own.
         </p>
       </ChapterHeading>
 
@@ -268,18 +266,19 @@ const ArraysPage = async () => {
 
         <ul className="ml-6">
           <li>
-            <span className="font-bold">&bull; Identifying Patterns:</span> Arrays are
-            commonly used in sorting, searching, and iterating over data. Arrays
-            are also the most common data structures for storing the final
-            result of a problem. For this reason, you need to be comfortable
-            with all the common functions and methods for arrays in your
-            preferred language.
+            <span className="font-bold">&bull; Identifying Patterns:</span>{" "}
+            Arrays are commonly used in sorting, searching, and iterating over
+            data. Arrays are also the most common data structures for storing
+            the final result of a problem. For this reason, you need to be
+            comfortable with all the common functions and methods for arrays in
+            your preferred language.
             <br />
             <br />
           </li>
           <li>
-            <span className="font-bold">&bull; Space-Time Trade-offs:</span> Understand
-            when it's beneficial to use additional space (like creating{" "}
+            <span className="font-bold">&bull; Space-Time Trade-offs:</span>{" "}
+            Understand when it's beneficial to use additional space (like
+            creating{" "}
             <TextLink href="/data-structures/hashmaps">hashmaps</TextLink> from
             arrays) to improve time efficiency. This strategy is useful in
             problems involving frequency counting or mapping relationships
@@ -289,7 +288,7 @@ const ArraysPage = async () => {
           </li>
           <li>
             <span className="font-bold">
-            &bull; When Elements Depend On Each Other:
+              &bull; When Elements Depend On Each Other:
             </span>{" "}
             Stacks are ideal for managing matching brackets or parentheses in
             syntax validation problems. This is becuase the current element
@@ -299,8 +298,10 @@ const ArraysPage = async () => {
             <br />
           </li>
           <li>
-            <span className="font-bold">&bull; Navigating Through Recursion:</span> For
-            recursive problem solutions, stacks are perfect for an iterative
+            <span className="font-bold">
+              &bull; Navigating Through Recursion:
+            </span>{" "}
+            For recursive problem solutions, stacks are perfect for an iterative
             approach. They allow you to maintain state across different levels
             of <TextLink href="/algorithms/recursion">recursion</TextLink>. By
             pushing temporary data onto the stack as you descend and popping it

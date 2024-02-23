@@ -19,6 +19,7 @@ import {
   insertChainingCode,
   openAddressingCode,
   openAddressingHashmap,
+  setImplementationCode,
 } from "./_components/hashmapCode";
 
 const HashmapPage = async () => {
@@ -64,8 +65,7 @@ const HashmapPage = async () => {
           <span className="font-bold">
             unique key to both store and retrieve data
           </span>
-          . Each piece of data is paired with a unique key, forming a key-value
-          pair.
+          . Each value is paired with a unique key, forming a key-value pair.
         </p>
       </ChapterHeading>
 
@@ -109,7 +109,7 @@ const HashmapPage = async () => {
         <p>
           Hashmaps are powered by{" "}
           <span className="font-bold">hash functions</span>, a special function
-          that takes any input—regardless of its size—and produces a integer
+          that takes any input (regardless of its size) and produces a integer
           that we can use as an index. The output, known as a hash code,{" "}
           <span className="font-bold">
             determines where to store the input value in the hashmap{" "}
@@ -147,7 +147,7 @@ const HashmapPage = async () => {
             spreading out keys evenly across the hashmap
           </span>
           . This even distribution helps minimize the chances of{" "}
-          <span className="font-bold">"collisions"</span>—occurrences where{" "}
+          <span className="font-bold">"collisions"</span> — when{" "}
           <span className="font-bold">
             different keys produce the same output hash value
           </span>
@@ -385,11 +385,33 @@ const HashmapPage = async () => {
         </p>
         <p>
           <br />
-          They offer fast operations for insertion, deletion, and membership
-          checks, making them ideal for various applications where duplicate
-          entries are not allowed and quick access is required:
+          They offer fast operations for insertion, deletion, and searches,
+          making them ideal for problems where duplicates are not allowed or
+          when quick access is required:
         </p>
         <Operations items={setOperations} />
+        <p>
+          Sets can be implemented using the same method as hashmaps. By using
+          chaining and linked lists, we can implement sets like this:
+          <br />
+        </p>
+        <CodeBlock
+          code={setImplementationCode}
+          language="python"
+          title="Sets.py"
+        />
+        <p>
+          <br />
+          At the heart of this implementation is the{" "}
+          <CodeText>ListNode</CodeText> class, which stores each element (key)
+          and a pointer to the next node, allowing us to create a chain of
+          unique elements at each index of the hashset. The{" "}
+          <CodeText>HashSet</CodeText> class itself is initialized with a
+          specified number of buckets, each starting with a dummy{" "}
+          <CodeText>ListNode</CodeText> to simplify insertion and deletion
+          operations.
+          <br />
+        </p>
       </ChapterHeading>
 
       <ChapterHeading id="algorithms" title="Algorithms">
@@ -400,7 +422,64 @@ const HashmapPage = async () => {
         id="bestPractices"
         title="Best Practices"
         chapterId={bestPracticesChapter?.id}
-      ></ChapterHeading>
+      >
+        <p>
+          Hashmaps and sets are the most important data structures to learn if
+          you ever want to see an optimal solution. Here are some best practices
+          for using hashmaps and sets effectively for problems:
+          <br />
+          <br />
+        </p>
+
+        <ul className="ml-6">
+          <li>
+            <span className="font-bold">&bull; Leveraging Uniqueness:</span>{" "}
+            Sets are the go-to for operations requiring uniqueness among
+            elements. They automatically handle duplicates and provide constant
+            time lookups, making them perfect for problems that involve
+            duplicates.
+            <br />
+            <br />
+          </li>
+          <li>
+            <span className="font-bold">&bull; Key-Value Mapping:</span>{" "}
+            Hashmaps are incredible when you need key-value associations. They
+            allow for fast data retrieval, update, and removal based on keys.
+            Use hashmaps for counting frequencies, caching results, and mapping
+            relationships between data.
+            <br />
+            <br />
+          </li>
+          <li>
+            <span className="font-bold">&bull; Efficient Data Lookup:</span>{" "}
+            Both hashmaps and sets offer constant time complexity for lookup
+            operations on average, making them exceptionally efficient for
+            searching for elements if you need to store them.
+            <br />
+            <br />
+          </li>
+          <li>
+            <span className="font-bold">
+              &bull; Space Complexity Considerations:
+            </span>{" "}
+            While hashmaps and sets are great for time complexity, they also
+            increase space complexity. Be careful of the space overhead when
+            storing large input, and consider the trade-offs between time and
+            space efficiency.
+            <br />
+            <br />
+          </li>
+          <li>
+            <span className="font-bold">&bull; Collision Handling:</span>{" "}
+            Understand how your chosen programming language or environment
+            handles collisions in hashmaps. This knowledge can help you
+            anticipate and design around potential performance bottlenecks in
+            high-collision scenarios.
+            <br />
+            <br />
+          </li>
+        </ul>
+      </ChapterHeading>
     </div>
   );
 };

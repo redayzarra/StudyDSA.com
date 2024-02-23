@@ -1,6 +1,6 @@
 export const hashFunctionCode = 
 `# Hash function: Convert key into index that is within hashmap
-def simple_hash(key: str, table_size: int) -> int:
+def simple_hash(key: str, size: int) -> int:
     # Ensure index is within hashmap bounds
     return len(key) % size`;
 
@@ -158,14 +158,15 @@ class LinearProbingHashMap:
 export const chainingWithLinked = 
 `# ListNode class containing the key-val pair and next pointer
 class ListNode:
-    def __init__(self, key: str, val: int = 0, next = None):
+    def __init__(self, key: str = None, val: int = 0, next = None):
+        self.key = key
         self.val = val
         self.next = next
     
 class HashMap:
 
-    def __init__(self, self: int = 10):
-        # Initialize hashmap as array containing dummy ListNodes
+    def __init__(self, size: int = 10):
+        # Initialize hashmap as an array containing dummy ListNodes
         self.hashmap = [ListNode() for i in range(size)]
 
     def hash(self, key: str) -> int:
@@ -184,7 +185,7 @@ class HashMap:
                 cur.next.val = value
                 return
             cur = cur.next
-        # 2. If the key doesn't exist, create a new key-val pair
+        # 3. If the key doesn't exist, create a new key-val pair
         cur.next = ListNode(key, value)
 
     def get(self, key: str) -> int:
@@ -208,4 +209,60 @@ class HashMap:
             if cur.next.key == key:
                 cur.next = cur.next.next
                 return
+            cur = cur.next`;
+
+export const setImplementationCode =
+`# ListNode class containing only the key and next pointer
+class ListNode:
+    def __init__(self, key: str = None, next = None):
+        self.key = key
+        self.next = next
+
+class HashSet:
+    def __init__(self, size: int = 10):
+        # Initialize hashset as an array containing dummy ListNodes
+        self.hashset = [ListNode() for i in range(size)]
+
+    def hash(self, key: str) -> int:
+        # 1. Convert string key to integer for hashing
+        hash_value = sum(ord(letter) for letter in key)
+        # 2. Ensure index is within hashset bounds
+        return hash_value % len(self.hashset)
+
+    def add(self, key: str) -> None:
+        # 1. Set 'cur' to the head of the LinkedList
+        index = self.hash(key)
+        cur = self.hashset[index]
+        # 2. Check for duplicate keys and prevent adding them
+        while cur.next:
+            if cur.next.key == key:
+                return  # Key exists, do not add again
+            cur = cur.next
+        # 3. Add new ListNode at the end of the chain if key does not exist
+        cur.next = ListNode(key)
+
+    def contains(self, key: str) -> bool:
+        # 1. Set 'cur' to the second node of the LinkedList, skipping dummy node
+        index = self.hash(key)
+        cur = self.hashset[index].next
+        # 2. Try to find the key and return True if you do 
+        while cur:
+            if cur.key == key:
+                return True  # Key found
+            cur = cur.next
+        # 3. If you don't find the key, return False
+        return False 
+
+    def remove(self, key: str) -> None:
+        # 1. Set 'prev' to the dummy node
+        index = self.hash(key)
+        prev = self.hashset[index] 
+        # 2. Set 'cur' to the second node (or first real node)
+        cur = prev.next
+        # 3. Traverse and remove the node with the given key
+        while cur:
+            if cur.key == key:
+                prev.next = cur.next  # Cut the node out of the list
+                return
+            prev = cur
             cur = cur.next`;

@@ -47,7 +47,7 @@ const arraySkills = [
 const linkedListSkills = [
   {
     title: "Definition",
-    href: "/data-structures/linkedLists#definition",
+    href: "/data-structures/linkedLists",
     description: "It's like that Spider-Man meme where they are all pointing to each other",
   },
   {
@@ -90,7 +90,7 @@ const linkedListSkills = [
 const hashmapSkills = [
   {
     title: "Definition",
-    href: "/data-structures/hashmaps#definition",
+    href: "/data-structures/hashmaps",
     description: "Hashmaps store unique key-value pairs and sets hate duplicates",
   },
   {
