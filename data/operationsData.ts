@@ -89,10 +89,43 @@ export const hashmapOperations: { operation: string; time: string; space: string
     space: "O(1)",
     notes: "Checks if a certain key exists.",
   },
-  {
-    operation: "Resize",
-    time: "O(n)",
-    space: "O(n)",
-    notes: "Resizes the underlying array in the hashmap, rehashing all existing keys.",
-  },
 ]
+
+export const setOperations: { operation: string; time: string; space: string, notes: string }[] = [
+  {
+    operation: "Add",
+    time: "O(1)",
+    space: "O(1)",
+    notes: "Adds a new element to the set. If the element already exists, nothing happens",
+  },
+  {
+    operation: "Remove",
+    time: "O(1)",
+    space: "O(1)",
+    notes: "Removes an element from the set. If the element does not exist, nothing happens",
+  },
+  {
+    operation: "Search",
+    time: "O(1)",
+    space: "O(1)",
+    notes: "Checks if the set contains a specific element",
+  },
+  {
+    operation: "Size",
+    time: "O(1)",
+    space: "O(1)",
+    notes: "Returns the number of elements in the set",
+  },
+  {
+    operation: "Iterate",
+    time: "O(n)",
+    space: "O(1)",
+    notes: "Iterates over each element in the set",
+  },
+  {
+    operation: "Clear",
+    time: "O(n)",
+    space: "O(1)",
+    notes: "Removes all elements from the set one at a time",
+  },
+];

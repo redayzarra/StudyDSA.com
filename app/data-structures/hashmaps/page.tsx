@@ -8,7 +8,7 @@ import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
 import TextLink from "@/components/TextLink";
-import { hashmapOperations } from "@/data/operationsData";
+import { hashmapOperations, setOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import {
   chainingHashmap,
@@ -362,9 +362,9 @@ const HashmapPage = async () => {
           chains, ensuring <CodeText>insert</CodeText> and{" "}
           <CodeText>get</CodeText> remain efficient. The{" "}
           <CodeText>delete</CodeText> function is straightforward, we cut off
-          unwanted nodes without creating gaps. This approach combines
-          scalability with performance, making it an optimal solution for
-          handling collisions in hashmaps.
+          unwanted nodes without creating gaps. This approach is scalability and
+          efficient, making it a good solution for handling collisions in
+          hashmaps.
         </p>
       </ChapterHeading>
 
@@ -373,7 +373,24 @@ const HashmapPage = async () => {
         title="Sets"
         chapter={setsChapter}
         chapterId={setsChapter?.id}
-      ></ChapterHeading>
+      >
+        <p>
+          Sets, or hash sets, are a data structure that uses hashing to store
+          unique elements efficiently. Unlike hash maps, which store key-value
+          pairs,{" "}
+          <span className="font-bold">
+            sets store individual values, ensuring no duplicates
+          </span>
+          .<br />
+        </p>
+        <p>
+          <br />
+          They offer fast operations for insertion, deletion, and membership
+          checks, making them ideal for various applications where duplicate
+          entries are not allowed and quick access is required:
+        </p>
+        <Operations items={setOperations} />
+      </ChapterHeading>
 
       <ChapterHeading id="algorithms" title="Algorithms">
         <Algorithms items={hashmapAlgorithms} />
