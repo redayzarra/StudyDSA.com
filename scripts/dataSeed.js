@@ -47,42 +47,42 @@ const arraySkills = [
 const linkedListSkills = [
   {
     title: "Definition",
-    href: "/data-structures/linkedLists",
+    href: "/data-structures/linked-lists",
     description: "It's like that Spider-Man meme where they are all pointing to each other",
   },
   {
     title: "Operations",
-    href: "/data-structures/linkedLists#operations",
+    href: "/data-structures/linked-lists#operations",
     description: "Here's everything you can do with linked lists and their complexities",
   },
   {
     title: "Pointers",
-    href: "/data-structures/linkedLists#pointers",
+    href: "/data-structures/linked-lists#pointers",
     description: "Nodes have pointers which point to the previous or next node",
   },
   {
+    title: "List Nodes",
+    href: "/data-structures/linked-lists#listNodes",
+    description: "These are common algorithms you need to know for linked lists",
+  },
+  {
     title: "Singly Linked List",
-    href: "/data-structures/linkedLists#singly",
+    href: "/data-structures/linked-lists#singly",
     description: "Think of a treasure hunt, each clue leads to the next until the end",
   },
   {
     title: "Doubly Linked List",
-    href: "/data-structures/linkedLists#doubly",
+    href: "/data-structures/linked-lists#doubly",
     description: "Think of this as a two-way street, you can go to previous or next node",
   },
   {
     title: "Implementation",
-    href: "/data-structures/linkedLists#implementation",
+    href: "/data-structures/linked-lists#implementation",
     description: "You implement a linked list with an object that has pointers and values",
   },
   {
-    title: "Algorithms",
-    href: "/data-structures/",
-    description: "These are common algorithms you need to know for linked lists",
-  },
-  {
     title: "Best Practices",
-    href: "/data-structures/linkedLists#bestPractices",
+    href: "/data-structures/linked-lists#bestPractices",
     description: "The most efficient way of using linked lists and avoiding pitfalls",
   },
 ]
