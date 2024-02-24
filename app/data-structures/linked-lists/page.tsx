@@ -8,7 +8,7 @@ import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
 import TextLink from "@/components/TextLink";
-import { arrayOperations, stackOperations } from "@/data/operationsData";
+import { arrayOperations, linkedListOperations, stackOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 
 const LinkedListsPage = async () => {
@@ -51,10 +51,10 @@ const LinkedListsPage = async () => {
           <TextLink href="/data-structures/linked-lists#listNodes">
             list nodes
           </TextLink>
-          , each pointing to the next node with a pointer. Unlike <TextLink href="/data-structures/arrays">arrays</TextLink>,
-          the elements in a linked list are{" "}
-          <span className="font-bold">not stored contiguously</span> in memory.
-          Linked lists are efficient for insertion and deletion of elements
+          , each pointing to the next node with a pointer. Unlike{" "}
+          <TextLink href="/data-structures/arrays">arrays</TextLink>, linked
+          lists are <span className="font-bold">not stored contiguously</span>{" "}
+          in memory. They are efficient for insertion and deletion of elements
           without reallocating or reorganizing the entire data structure.
           <br />
         </p>
@@ -65,13 +65,30 @@ const LinkedListsPage = async () => {
         chapterId={operationsChapter?.id}
       >
         <p>
-          Let's take a closer look at what you can do with arrays. Arrays are
-          stored in memory together so inserting or deleting in the middle
-          involves moving things around. The following table provides a detailed
-          overview of{" "}
-          <span className="font-bold">everything you can do with arrays:</span>
+          Linked lists stand out for their efficient insertions and deletions.
+          They can easily expand without the need for reallocation or copying
+          the entire structure. Each list node contains a reference (or{" "}
+          <TextLink href="/data-structures/linked-lists#pointers">
+            pointer
+          </TextLink>
+          ) to the next node, meaning you can access any node as long as you
+          have a pointer to it.
+          <br />
         </p>
-        <Operations items={arrayOperations} />
+        <p>
+          <br />
+          Here is everything you can do with linked lists:
+        </p>
+        <Operations items={linkedListOperations} />
+      </ChapterHeading>
+
+      <ChapterHeading
+        id="pointers"
+        title="Pointers"
+        chapterId={pointersChapter?.id}
+      >
+        <p>
+          <br /></p>
       </ChapterHeading>
 
       <ChapterHeading id="algorithms" title="Algorithms">

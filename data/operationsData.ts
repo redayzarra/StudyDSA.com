@@ -129,3 +129,36 @@ export const setOperations: { operation: string; time: string; space: string, no
     notes: "Removes all elements from the set one at a time",
   },
 ];
+
+export const linkedListOperations: { operation: string; time: string; space: string, notes: string }[] = [
+  {
+    operation: "Insert",
+    time: "O(1)",
+    space: "O(1)",
+    notes: "Add a list node as long as you have a pointer to the previous node",
+  },
+  {
+    operation: "Delete",
+    time: "O(1)",
+    space: "O(1)",
+    notes: "Removes a list node as long as you have a pointer to the previous node",
+  },
+  {
+    operation: "Access",
+    time: "O(n)",
+    space: "O(1)",
+    notes: "Retrieves an element by its position in the list",
+  },
+  {
+    operation: "Search",
+    time: "O(n)",
+    space: "O(1)",
+    notes: "Finds a specific list node based on a given value",
+  },
+  {
+    operation: "Size",
+    time: "O(n)",
+    space: "O(1)",
+    notes: "Calculates the total number of elements one-by-one",
+  }
+];
