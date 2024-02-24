@@ -14,7 +14,11 @@ import {
   stackOperations,
 } from "@/data/operationsData";
 import { Metadata } from "next";
-import { linkedPointersCode, singleNodeCode } from "./_components/linkedListsCode";
+import {
+  doublyNodeCode,
+  linkedPointersCode,
+  singleNodeCode,
+} from "./_components/linkedListsCode";
 
 const LinkedListsPage = async () => {
   const topic = await getTopicByName("Linked Lists");
@@ -118,9 +122,9 @@ const LinkedListsPage = async () => {
       >
         <p>
           List Nodes are building blocks for linked lists. They store both the
-          data (value) and the pointer to the next node in the sequence.In
-          singly linked lists, the <CodeText>ListNode</CodeText> class stores just a
-          value and a pointer to the next node:
+          data (value) and the pointer to the next node in the sequence. In
+          singly linked lists, the <CodeText>ListNode</CodeText> class stores
+          just a value and a pointer to the next node:
         </p>
         <CodeBlock
           code={singleNodeCode}
@@ -130,8 +134,19 @@ const LinkedListsPage = async () => {
         <br />
         <p>
           For doubly linked lists, the <CodeText>ListNode</CodeText> class also
-          include a <CodeText>prev</CodeText> pointer, linking back to
-          the previous node, which allows bidirectional traversal.
+          include a <CodeText>prev</CodeText> pointer, linking back to the
+          previous node, which allows bidirectional traversal:
+        </p>
+        <CodeBlock
+          code={doublyNodeCode}
+          language="python"
+          title="Doubly_ListNode.py"
+        />
+        <br />
+        <p>
+          List nodes can also be used to store other data alongside values, such
+          as keys. You can use linked lists efficiently for operations like
+          insertion or deletion when you have direct access to the nodes.{" "}
         </p>
       </ChapterHeading>
 
