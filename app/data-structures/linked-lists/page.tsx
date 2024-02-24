@@ -8,8 +8,13 @@ import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
 import TextLink from "@/components/TextLink";
-import { arrayOperations, linkedListOperations, stackOperations } from "@/data/operationsData";
+import {
+  arrayOperations,
+  linkedListOperations,
+  stackOperations,
+} from "@/data/operationsData";
 import { Metadata } from "next";
+import { linkedPointersCode } from "./_components/linkedListsCode";
 
 const LinkedListsPage = async () => {
   const topic = await getTopicByName("Linked Lists");
@@ -88,7 +93,25 @@ const LinkedListsPage = async () => {
         chapterId={pointersChapter?.id}
       >
         <p>
-          <br /></p>
+          Pointers are crucial for constructing linked lists, allowing each node
+          to connect to the next. Linked lists efficiently perform insertions
+          and deletions by simply updating links between nodes, without the need
+          to shift elements as in{" "}
+          <TextLink href="/data-structures/arrays#operations">arrays</TextLink>.
+          <br />
+        </p>
+        <CodeBlock
+          code={linkedPointersCode}
+          language="python"
+          title="LinkedLists_Pointers.py"
+        />
+        <p>
+          <br />
+          The example about shows how to insert a new node at the beginning of a
+          linked list. It starts by creating a new list node with the given {" "}
+          <CodeText>value</CodeText>. Then, it sets this new node's <CodeText>next</CodeText> pointer to the current <CodeText>head</CodeText>
+          {" "} of the list, effectively placing the new node at the front.
+        </p>
       </ChapterHeading>
 
       <ChapterHeading id="algorithms" title="Algorithms">
