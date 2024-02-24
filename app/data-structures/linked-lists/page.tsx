@@ -15,9 +15,11 @@ import {
 } from "@/data/operationsData";
 import { Metadata } from "next";
 import {
+  doublyLinkedList,
   doublyNodeCode,
   linkedPointersCode,
   singleNodeCode,
+  singlyLinkedList,
 } from "./_components/linkedListsCode";
 
 const LinkedListsPage = async () => {
@@ -90,6 +92,7 @@ const LinkedListsPage = async () => {
       <ChapterHeading
         id="pointers"
         title="Pointers"
+        chapter={pointersChapter}
         chapterId={pointersChapter?.id}
       >
         <p>
@@ -118,6 +121,7 @@ const LinkedListsPage = async () => {
       <ChapterHeading
         id="listNodes"
         title="List Nodes"
+        chapter={listNodesChapter}
         chapterId={listNodesChapter?.id}
       >
         <p>
@@ -147,6 +151,62 @@ const LinkedListsPage = async () => {
           List nodes can also be used to store other data alongside values, such
           as keys. You can use linked lists efficiently for operations like
           insertion or deletion when you have direct access to the nodes.{" "}
+        </p>
+      </ChapterHeading>
+
+      <ChapterHeading
+        id="singly"
+        title="Singly Linked List"
+        chapter={singlyChapter}
+        chapterId={singlyChapter?.id}
+      >
+        <p>
+          Singly linked lists are built with list nodes, where each{" "}
+          <CodeText>ListNode</CodeText> stores data and a pointer to the next
+          node. This means that singly linked lists cannot traverse backwards to
+          previous nodes, you can move your pointer forward:
+        </p>
+        <CodeBlock
+          code={singlyLinkedList}
+          language="python"
+          title="Singly_LinkedList.py"
+        />
+        <p>
+          <br />
+          To use singly linked lists correctly make sure you have access to
+          nodes that come before the target node. Otherwise you will need to
+          traverse the linked list to find the correct node.{" "}
+        </p>
+      </ChapterHeading>
+
+      <ChapterHeading
+        id="doubly"
+        title="Doubly Linked List"
+        chapter={doublyChapter}
+        chapterId={doublyChapter?.id}
+      >
+        <p>
+          Doubly linked lists are an upgrade to singly linked lists because they
+          store an additional pointer in each list node. This extra pointer
+          links to the previous node, enabling traversal in both forward and
+          backward directions.{" "}
+        </p>
+        <br />
+        <p>
+          Each node in a <CodeText>ListNode</CodeText> stores data, a pointer to
+          the next node, and a pointer to the previous node:
+        </p>
+        <CodeBlock
+          code={doublyLinkedList}
+          language="python"
+          title="Doubly_LinkedList.py"
+        />
+        <p>
+          <br />
+          This two-way capability makes doubly linked lists great for problems
+          that require backward traversal. However, to correcly use doubly
+          linked lists, manage both <CodeText>next</CodeText> and{" "}
+          <CodeText>prev</CodeText> pointers carefully to maintain the list.
         </p>
       </ChapterHeading>
 
