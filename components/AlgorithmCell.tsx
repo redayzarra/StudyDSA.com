@@ -105,7 +105,7 @@ const AlgorithmCell = ({ title, description, href, algorithmId }: Props) => {
       <Checkbox
         checked={isChecked}
         onClick={onClick}
-        className="absolute top-3 right-3 border-[2px] h-[20px] w-[20px] rounded-full"
+        className="absolute top-2 right-2 border-[2px] h-[20px] w-[20px] rounded-full"
       />
 
       {/* {isLoading ? (

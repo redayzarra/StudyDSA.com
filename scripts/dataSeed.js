@@ -66,6 +66,11 @@ const linkedListSkills = [
     description: "These are common algorithms you need to know for linked lists",
   },
   {
+    title: "Sentinel Nodes",
+    href: "/data-structures/linked-lists#sentinels",
+    description: "You implement a linked list with an object that has pointers and values",
+  },
+  {
     title: "Singly Linked List",
     href: "/data-structures/linked-lists#singly",
     description: "Think of a treasure hunt, each clue leads to the next until the end",
@@ -74,11 +79,6 @@ const linkedListSkills = [
     title: "Doubly Linked List",
     href: "/data-structures/linked-lists#doubly",
     description: "Think of this as a two-way street, you can go to previous or next node",
-  },
-  {
-    title: "Implementation",
-    href: "/data-structures/linked-lists#implementation",
-    description: "You implement a linked list with an object that has pointers and values",
   },
   {
     title: "Best Practices",

@@ -35,9 +35,9 @@ const LinkedListsPage = async () => {
   const operationsChapter = findChapter(topic, "Operations");
   const pointersChapter = findChapter(topic, "Pointers");
   const listNodesChapter = findChapter(topic, "List Nodes");
+  const sentinelsChapter = findChapter(topic, "Sentinel Nodes");
   const singlyChapter = findChapter(topic, "Singly Linked List");
   const doublyChapter = findChapter(topic, "Doubly Linked List");
-  const implementationChapter = findChapter(topic, "Implementation");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
   const fetchAlgorithms = [
@@ -64,9 +64,10 @@ const LinkedListsPage = async () => {
           </TextLink>
           , each pointing to the next node with a pointer. Unlike{" "}
           <TextLink href="/data-structures/arrays">arrays</TextLink>, linked
-          lists are <span className="font-bold">not stored contiguously</span>{" "}
-          in memory. They are efficient for insertion and deletion of elements
-          without reallocating or reorganizing the entire data structure.
+          lists are{" "}
+          <span className="font-bold">not stored contiguously in memory.</span>{" "}
+          They are efficient for insertion and deletion of elements without
+          reallocating or reorganizing the entire data structure.
         </p>
       </ChapterHeading>
       <ChapterHeading
@@ -77,15 +78,17 @@ const LinkedListsPage = async () => {
         <p>
           Linked lists stand out for their efficient insertions and deletions.
           They can easily expand without the need for reallocation or copying
-          the entire structure. Each list node contains a reference (or{" "}
+          the entire structure.{" "}
+        </p>{" "}
+        <p>
+          <br />
+          Each list node contains a reference (or{" "}
           <TextLink href="/data-structures/linked-lists#pointers">
             pointer
           </TextLink>
           ) to the next node, meaning you can access any node as long as you
-          have a pointer to it.
+          have a pointer to it:{" "}
         </p>
-        <br />
-        <p>Here is everything you can do with linked lists:</p>
         <Operations items={linkedListOperations} />
       </ChapterHeading>
 
@@ -109,7 +112,7 @@ const LinkedListsPage = async () => {
         />
         <br />
         <p>
-          The example about shows how to insert a new node at the beginning of a
+          The example above shows how to insert a new <CodeText>ListNode</CodeText> at the beginning of a
           linked list. It starts by creating a new list node with the given{" "}
           <CodeText>value</CodeText>. Then, it sets this new node's{" "}
           <CodeText>next</CodeText> pointer to the current{" "}
@@ -125,8 +128,8 @@ const LinkedListsPage = async () => {
         chapterId={listNodesChapter?.id}
       >
         <p>
-          List Nodes are building blocks for linked lists. They store both the
-          data (value) and the pointer to the next node in the sequence. In
+          List Nodes are the building blocks for linked lists. They store both the
+          data (value) and the pointer to the next node. In
           singly linked lists, the <CodeText>ListNode</CodeText> class stores
           just a value and a pointer to the next node:
         </p>
@@ -138,7 +141,7 @@ const LinkedListsPage = async () => {
         <br />
         <p>
           For doubly linked lists, the <CodeText>ListNode</CodeText> class also
-          include a <CodeText>prev</CodeText> pointer, linking back to the
+          includes a <CodeText>prev</CodeText> pointer, linking back to the
           previous node, which allows bidirectional traversal:
         </p>
         <CodeBlock
@@ -164,7 +167,7 @@ const LinkedListsPage = async () => {
           Singly linked lists are built with list nodes, where each{" "}
           <CodeText>ListNode</CodeText> stores data and a pointer to the next
           node. This means that singly linked lists cannot traverse backwards to
-          previous nodes, you can move your pointer forward:
+          previous nodes, you can only move your pointer forward:
         </p>
         <CodeBlock
           code={singlyLinkedList}
@@ -189,12 +192,12 @@ const LinkedListsPage = async () => {
           Doubly linked lists are an upgrade to singly linked lists because they
           store an additional pointer in each list node. This extra pointer
           links to the previous node, enabling traversal in both forward and
-          backward directions.{" "}
+          backwards.{" "}
         </p>
         <br />
         <p>
           Each node in a <CodeText>ListNode</CodeText> stores data, a pointer to
-          the next node, and a pointer to the previous node:
+          the previous node, and a pointer to the next node:
         </p>
         <CodeBlock
           code={doublyLinkedList}
