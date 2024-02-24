@@ -85,10 +85,9 @@ const HashmapPage = async () => {
             collisions
           </TextLink>
           , a topic we'll delve into with more detail.
-          <br />
         </p>
+        <br />
         <p>
-          <br />
           It's also important to note that{" "}
           <span className="font-bold">hashmaps are unordered</span>, which means
           they are not suitable for problems requiring sorted data. The
@@ -115,22 +114,20 @@ const HashmapPage = async () => {
             determines where to store the input value in the hashmap{" "}
           </span>
           .
-          <br />
         </p>
+        <br />
         <p>
-          <br />
           This process allows hashmaps to achieve incredibly fast data retrieval
           and insertion, as it can directly access the storage location without
           needing to search through all the data.
-          <br />
         </p>
         <CodeBlock
           code={hashFunctionCode}
           language="python"
           title="HashFunction.py"
         />
+        <br />
         <p>
-          <br />
           The hash function I've shown is a basic example of how to turn the{" "}
           <CodeText>key</CodeText> (like a name or a word) into an index that
           tells us where to store or find that key in our hashmap. It's
@@ -139,10 +136,10 @@ const HashmapPage = async () => {
             apply the modulo operator against the hashmap's size
           </span>{" "}
           to make sure the resulting index will fall inside our hashmap.
-          <br />
         </p>
+        <br />
         <p>
-          <br />A good hash function is crucial for{" "}
+          A good hash function is crucial for{" "}
           <span className="font-bold">
             spreading out keys evenly across the hashmap
           </span>
@@ -152,7 +149,6 @@ const HashmapPage = async () => {
             different keys produce the same output hash value
           </span>
           .
-          <br />
         </p>
       </ChapterHeading>
 
@@ -166,15 +162,14 @@ const HashmapPage = async () => {
           theater; similarly, when two pieces of data are directed to the same
           spot in a hashmap, we need a way to accommodate both without losing
           any information.
-          <br />
         </p>
         <CodeBlock
           code={collisionsCode}
           language="python"
           title="Collisions.py"
         />
+        <br />
         <p>
-          <br />
           To address collisions, hashmaps use solutions like{" "}
           <span className="font-bold">chaining or open addressing</span>,
           ensuring that even when collisions occur, the data remains accessible
@@ -196,10 +191,9 @@ const HashmapPage = async () => {
           <span className="font-bold">linking them together in a list</span> (or{" "}
           <TextLink href="/data-structures/linked-lists">linked list</TextLink>
           ).
-          <br />
         </p>
+        <br />
         <p>
-          <br />
           Imagine a coat check at a busy theater. If two patrons happen to have
           the same ticket number, the attendant might decide to hang the coats
           together on a single hook, one behind the other. Similarly, with
@@ -220,7 +214,6 @@ const HashmapPage = async () => {
           list at the computed index (using the hash function). To retrieve or
           delete an item, we search through the list at that index to find the
           exact key we're looking for:
-          <br />
         </p>
         <CodeBlock
           code={deleteChainingCode}
@@ -238,11 +231,10 @@ const HashmapPage = async () => {
           across the hashmap. This minimizes the length of chains and keeps
           operations efficient.
         </p>
+        <br />
         <p>
-          <br />
           Let's implement a hashmap with chaining. Chaining allows us to store
           multiple entries at the same index by linking them together:
-          <br />
         </p>
         <CodeBlock
           code={chainingHashmap}
@@ -256,7 +248,6 @@ const HashmapPage = async () => {
           list of empty lists. Each list represents a "bucket" where key-value
           pairs are stored, allowing multiple values to be stored at the same
           index, or "chaining."
-          <br />
         </p>
       </ChapterHeading>
 
@@ -278,7 +269,6 @@ const HashmapPage = async () => {
           </span>
           . If a collision occurs, the hashmap looks for the next available
           slot.
-          <br />
         </p>
         <CodeBlock
           code={openAddressingCode}
@@ -292,13 +282,11 @@ const HashmapPage = async () => {
           which uses a quadratic function to find the next slot; and double
           hashing, where a second hash function determines the step size for the
           search.
-          <br />
         </p>
+        <br />
         <p>
-          <br />
           Now let's implement a hashmap with open addressing. Open addressing
           simply finds the next available spot for a value to be stored:
-          <br />
         </p>
         <CodeBlock
           code={openAddressingHashmap}
@@ -328,10 +316,9 @@ const HashmapPage = async () => {
           and different resolution strategies. The two primary strategies,
           chaining and open addressing, offer unique approaches to managing
           collisions.
-          <br />
         </p>
+        <br />
         <p>
-          <br />
           My favorite way of implementing hashmaps is chaining with{" "}
           <TextLink href="/data-structures/linked-lists">linked lists</TextLink>
           . Let's go over the code and then I'll explain why linked lists
@@ -354,10 +341,9 @@ const HashmapPage = async () => {
             amortized time
           </TextLink>
           ).
-          <br />
         </p>
+        <br />
         <p>
-          <br />
           They simplify collision resolution by appending new nodes to existing
           chains, ensuring <CodeText>insert</CodeText> and{" "}
           <CodeText>get</CodeText> remain efficient. The{" "}
@@ -379,12 +365,11 @@ const HashmapPage = async () => {
           unique elements efficiently. Unlike hash maps, which store key-value
           pairs,{" "}
           <span className="font-bold">
-            sets store individual values, ensuring no duplicates
+            sets store individual values, ensuring no duplicates.
           </span>
-          .<br />
         </p>
+        <br />
         <p>
-          <br />
           They offer fast operations for insertion, deletion, and searches,
           making them ideal for problems where duplicates are not allowed or
           when quick access is required:
@@ -393,7 +378,6 @@ const HashmapPage = async () => {
         <p>
           Sets can be implemented using the same method as hashmaps. By using
           chaining and linked lists, we can implement sets like this:
-          <br />
         </p>
         <CodeBlock
           code={setImplementationCode}
@@ -410,7 +394,6 @@ const HashmapPage = async () => {
           specified number of buckets, each starting with a dummy{" "}
           <CodeText>ListNode</CodeText> to simplify insertion and deletion
           operations.
-          <br />
         </p>
       </ChapterHeading>
 
@@ -427,9 +410,8 @@ const HashmapPage = async () => {
           Hashmaps and sets are the most important data structures to learn if
           you ever want to see an optimal solution. Here are some best practices
           for using hashmaps and sets effectively for problems:
-          <br />
-          <br />
         </p>
+        <br />
 
         <ul className="ml-6">
           <li>

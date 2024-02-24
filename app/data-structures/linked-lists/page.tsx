@@ -14,7 +14,7 @@ import {
   stackOperations,
 } from "@/data/operationsData";
 import { Metadata } from "next";
-import { linkedPointersCode } from "./_components/linkedListsCode";
+import { linkedPointersCode, singleNodeCode } from "./_components/linkedListsCode";
 
 const LinkedListsPage = async () => {
   const topic = await getTopicByName("Linked Lists");
@@ -61,7 +61,6 @@ const LinkedListsPage = async () => {
           lists are <span className="font-bold">not stored contiguously</span>{" "}
           in memory. They are efficient for insertion and deletion of elements
           without reallocating or reorganizing the entire data structure.
-          <br />
         </p>
       </ChapterHeading>
       <ChapterHeading
@@ -78,12 +77,9 @@ const LinkedListsPage = async () => {
           </TextLink>
           ) to the next node, meaning you can access any node as long as you
           have a pointer to it.
-          <br />
         </p>
-        <p>
-          <br />
-          Here is everything you can do with linked lists:
-        </p>
+        <br />
+        <p>Here is everything you can do with linked lists:</p>
         <Operations items={linkedListOperations} />
       </ChapterHeading>
 
@@ -95,22 +91,47 @@ const LinkedListsPage = async () => {
         <p>
           Pointers are crucial for constructing linked lists, allowing each node
           to connect to the next. Linked lists efficiently perform insertions
-          and deletions by simply updating links between nodes, without the need
-          to shift elements as in{" "}
+          and deletions by simply updating links between nodes, without needing
+          to shift elements like in{" "}
           <TextLink href="/data-structures/arrays#operations">arrays</TextLink>.
-          <br />
         </p>
         <CodeBlock
           code={linkedPointersCode}
           language="python"
           title="LinkedLists_Pointers.py"
         />
+        <br />
         <p>
-          <br />
           The example about shows how to insert a new node at the beginning of a
-          linked list. It starts by creating a new list node with the given {" "}
-          <CodeText>value</CodeText>. Then, it sets this new node's <CodeText>next</CodeText> pointer to the current <CodeText>head</CodeText>
-          {" "} of the list, effectively placing the new node at the front.
+          linked list. It starts by creating a new list node with the given{" "}
+          <CodeText>value</CodeText>. Then, it sets this new node's{" "}
+          <CodeText>next</CodeText> pointer to the current{" "}
+          <CodeText>head</CodeText> of the list, effectively placing the new
+          node at the front.
+        </p>
+      </ChapterHeading>
+
+      <ChapterHeading
+        id="listNodes"
+        title="List Nodes"
+        chapterId={listNodesChapter?.id}
+      >
+        <p>
+          List Nodes are building blocks for linked lists. They store both the
+          data (value) and the pointer to the next node in the sequence.In
+          singly linked lists, the <CodeText>ListNode</CodeText> class stores just a
+          value and a pointer to the next node:
+        </p>
+        <CodeBlock
+          code={singleNodeCode}
+          language="python"
+          title="Singly_ListNode.py"
+        />
+        <br />
+        <p>
+          For doubly linked lists, the <CodeText>ListNode</CodeText> class also
+          include a <CodeText>prev</CodeText> pointer, linking back to
+          the previous node, which allows bidirectional traversal.
         </p>
       </ChapterHeading>
 
