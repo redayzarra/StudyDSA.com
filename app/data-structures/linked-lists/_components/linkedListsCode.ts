@@ -19,6 +19,32 @@ class ListNode:
         self.prev = prev
         self.next = next`;
 
+export const dummyNodesCode = 
+`# Definition of a doubly linked list
+class ListNode:
+    def __init__(self, val = None, prev = None, next = None):
+        self.val = val
+        self.prev = prev
+        self.next = next
+
+class DoublyLinkedList:
+    def __init__(self):
+        # Left and right dummy nodes surround the linked list
+        self.left = ListNode(0)
+        self.right = ListNode(0)
+
+        # Connecting the dummy nodes 
+        self.left.next = self.right
+        self.right.prev = self.left
+
+    def getHead(self) -> Optional[ListNode]:
+        # Set cur to the head which comes after left dummy node
+        cur = self.left.next
+        # If there is no head and cur is at right node, return None instead
+        if cur == self.right:
+            return None
+        return cur`;
+
 export const singlyLinkedList = 
 `# Definition of a singly list node
 class ListNode:

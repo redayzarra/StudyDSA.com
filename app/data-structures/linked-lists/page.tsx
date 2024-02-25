@@ -17,6 +17,7 @@ import { Metadata } from "next";
 import {
   doublyLinkedList,
   doublyNodeCode,
+  dummyNodesCode,
   linkedPointersCode,
   singleNodeCode,
   singlyLinkedList,
@@ -112,8 +113,9 @@ const LinkedListsPage = async () => {
         />
         <br />
         <p>
-          The example above shows how to insert a new <CodeText>ListNode</CodeText> at the beginning of a
-          linked list. It starts by creating a new list node with the given{" "}
+          The example above shows how to insert a new{" "}
+          <CodeText>ListNode</CodeText> at the beginning of a linked list. It
+          starts by creating a new list node with the given{" "}
           <CodeText>value</CodeText>. Then, it sets this new node's{" "}
           <CodeText>next</CodeText> pointer to the current{" "}
           <CodeText>head</CodeText> of the list, effectively placing the new
@@ -128,10 +130,10 @@ const LinkedListsPage = async () => {
         chapterId={listNodesChapter?.id}
       >
         <p>
-          List Nodes are the building blocks for linked lists. They store both the
-          data (value) and the pointer to the next node. In
-          singly linked lists, the <CodeText>ListNode</CodeText> class stores
-          just a value and a pointer to the next node:
+          List Nodes are the building blocks for linked lists. They store both
+          the data (value) and the pointer to the next node. In singly linked
+          lists, the <CodeText>ListNode</CodeText> class stores just a value and
+          a pointer to the next node:
         </p>
         <CodeBlock
           code={singleNodeCode}
@@ -159,10 +161,33 @@ const LinkedListsPage = async () => {
 
       <ChapterHeading
         id="sentinels"
-        title="Sentinels Nodes"
-        chapter={sentinelsChapter}
+        title="Sentinel Nodes"
         chapterId={sentinelsChapter?.id}
-      ></ChapterHeading>
+      >
+        <p>
+          Sentinel nodes, or dummy nodes, are a strategy for using linked lists
+          conveniently. These{" "}
+          <span className="font-bold">
+            dummy nodes do not hold any relevant data
+          </span>{" "}
+          but simplify operations by providing a non-null reference. Using dummy
+          nodes eliminates the need for special edge cases to handle inserting
+          or deleting at the beginning or the end of the list.
+        </p>
+        <CodeBlock
+          code={dummyNodesCode}
+          language="python"
+          title="Sentinels.py"
+        />
+        <br />
+        <p>
+          By initializing the list with two dummy nodes,{" "}
+          <CodeText>self.left</CodeText> and <CodeText>self.right</CodeText>,
+          which are the head and tail sentinels, we no longer need to handle
+          edge cases for operations. These sentinel nodes form a fixed boundary
+          around the linked list.
+        </p>
+      </ChapterHeading>
 
       <ChapterHeading
         id="singly"
@@ -230,59 +255,73 @@ const LinkedListsPage = async () => {
         chapterId={bestPracticesChapter?.id}
       >
         <p>
-          Mastering arrays and stacks is crucial for coding interviews. Here are
-          some tips that I learned for using these data structures effectively:
-          <br />
-          <br />
+          Linked lists are a staple in coding interviews due to their
+          versatility and the depth of understanding they reveal about a
+          candidate's grasp on data structures. Here are essential tips and
+          tricks for mastering linked list problems:
         </p>
+        <br />
 
         <ul className="ml-6">
           <li>
-            <span className="font-bold">&bull; Identifying Patterns:</span>{" "}
-            Arrays are commonly used in sorting, searching, and iterating over
-            data. Arrays are also the most common data structures for storing
-            the final result of a problem. For this reason, you need to be
-            comfortable with all the common functions and methods for arrays in
-            your preferred language.
+            <span className="font-bold">
+              &bull; Mastering Pointer Manipulation:
+            </span>{" "}
+            Proficiency with pointers is crucial for navigating and manipulating
+            linked lists. Understand how to safely advance pointers, and insert
+            or remove nodes without losing track of the list.
             <br />
             <br />
           </li>
           <li>
-            <span className="font-bold">&bull; Space-Time Trade-offs:</span>{" "}
-            Understand when it's beneficial to use additional space (like
-            creating{" "}
-            <TextLink href="/data-structures/hashmaps">hashmaps</TextLink> from
-            arrays) to improve time efficiency. This strategy is useful in
-            problems involving frequency counting or mapping relationships
-            between elements.
+            <span className="font-bold">&bull; Understanding Dummy Nodes:</span>{" "}
+            Familiarize yourself with the use of sentinel or dummy nodes to
+            simplify edge cases, especially at the beginning and end of the
+            list.
+            <br />
+            <br />
+          </li>
+          <li>
+            <span className="font-bold">&bull; Recognizing Patterns:</span>{" "}
+            Identifying problems that linked lists can naturally solve, such as
+            cycle detection, reversing a list, or merging two sorted lists, can
+            help quickly frame your solution.
             <br />
             <br />
           </li>
           <li>
             <span className="font-bold">
-              &bull; When Elements Depend On Each Other:
+              &bull; Tackling Recursive Problems:
             </span>{" "}
-            Stacks are ideal for managing matching brackets or parentheses in
-            syntax validation problems. This is becuase the current element
-            depends on the elements that came before it, a perfect use case for
-            using stacks.
+            Linked lists lend themselves well to recursive solutions. Be
+            comfortable with recursion for operations like reversal, and
+            understand how it impacts space complexity.
             <br />
             <br />
           </li>
           <li>
-            <span className="font-bold">
-              &bull; Navigating Through Recursion:
-            </span>{" "}
-            For recursive problem solutions, stacks are perfect for an iterative
-            approach. They allow you to maintain state across different levels
-            of <TextLink href="/algorithms/recursion">recursion</TextLink>. By
-            pushing temporary data onto the stack as you descend and popping it
-            off as you backtrack, you effectively mimic the call stack mechanism
-            of recursion.
+            <span className="font-bold">&bull; Practice with Variants:</span>{" "}
+            Don't limit your practice to singly linked lists. Familiarize
+            yourself with doubly linked lists and circular linked lists, as they
+            offer different challenges and insights.
+            <br />
+            <br />
+          </li>
+          <li>
+            <span className="font-bold">&bull; Time Complexity Awareness:</span>{" "}
+            Be aware of the time complexities of various operations. Operations
+            that require traversal, such as search or insert at a specific
+            index, are O(n), while adding/removing at the head is O(1).
             <br />
             <br />
           </li>
         </ul>
+        <p>
+          Excelling at linked list problems in interviews requires a balance of
+          theoretical knowledge and practical application. By focusing on these
+          areas, you can approach linked list questions with confidence and
+          demonstrate your problem-solving capabilities effectively.
+        </p>
       </ChapterHeading>
     </div>
   );
