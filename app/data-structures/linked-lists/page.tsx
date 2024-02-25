@@ -21,7 +21,7 @@ import {
   linkedPointersCode,
   singleNodeCode,
   singlyLinkedList,
-} from "./_components/linkedListsCode";
+} from "./linkedListsCode";
 
 const LinkedListsPage = async () => {
   const topic = await getTopicByName("Linked Lists");

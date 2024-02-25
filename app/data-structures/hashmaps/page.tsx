@@ -20,7 +20,7 @@ import {
   openAddressingCode,
   openAddressingHashmap,
   setImplementationCode,
-} from "./_components/hashmapCode";
+} from "./hashmapCode";
 
 const HashmapPage = async () => {
   const topic = await getTopicByName("Hashmaps");

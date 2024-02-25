@@ -17,7 +17,7 @@ import {
   pointerCodePy,
   stackCode,
   staticArrayCode,
-} from "./_components/arrayCode";
+} from "./arrayCode";
 
 const ArraysPage = async () => {
   const topic = await getTopicByName("Arrays");
