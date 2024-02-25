@@ -255,73 +255,59 @@ const LinkedListsPage = async () => {
         chapterId={bestPracticesChapter?.id}
       >
         <p>
-          Linked lists are a staple in coding interviews due to their
-          versatility and the depth of understanding they reveal about a
-          candidate's grasp on data structures. Here are essential tips and
-          tricks for mastering linked list problems:
+          Linked lists are important to understand because they are the
+          foundation for many other data structures, including{" "}
+          <TextLink href="/data-structures/hashmaps#implementation">
+            hashmaps
+          </TextLink>{" "}
+          and <TextLink href="/data-structures/queues">queues</TextLink>. Here
+          are essential tips and tricks for linked lists:
         </p>
         <br />
 
         <ul className="ml-6">
           <li>
-            <span className="font-bold">
-              &bull; Mastering Pointer Manipulation:
-            </span>{" "}
-            Proficiency with pointers is crucial for navigating and manipulating
+            <span className="font-bold">&bull; Mastering Pointers:</span>{" "}
+            Understanding pointers is crucial for traversing and manipulating
             linked lists. Understand how to safely advance pointers, and insert
-            or remove nodes without losing track of the list.
-            <br />
-            <br />
+            or remove nodes without losing track of the list. Use dummy nodes to
+            avoid handling annoying edge cases.
           </li>
+          <br />
           <li>
             <span className="font-bold">&bull; Understanding Dummy Nodes:</span>{" "}
-            Familiarize yourself with the use of sentinel or dummy nodes to
-            simplify edge cases, especially at the beginning and end of the
-            list.
-            <br />
-            <br />
+            Practice using dummy nodes to simplify edge cases, especially at the
+            beginning and end of the list. Try to solve problems again, with and
+            without the use of dummy nodes.
           </li>
+          <br />
           <li>
             <span className="font-bold">&bull; Recognizing Patterns:</span>{" "}
             Identifying problems that linked lists can naturally solve, such as
-            cycle detection, reversing a list, or merging two sorted lists, can
-            help quickly frame your solution.
-            <br />
-            <br />
+            cycle detection, reversing a list, etc. Rememeber that linked lists
+            are useful for inserting and deleting anywhere as long as we have
+            the pointer.
           </li>
+          <br />
           <li>
             <span className="font-bold">
               &bull; Tackling Recursive Problems:
             </span>{" "}
-            Linked lists lend themselves well to recursive solutions. Be
-            comfortable with recursion for operations like reversal, and
-            understand how it impacts space complexity.
-            <br />
-            <br />
+            Linked lists are naturally good with{" "}
+            <TextLink href="/algorithms/recursion">recursive</TextLink>{" "}
+            solutions. Be comfortable with recursion for operations like
+            reversal, and understand how it impacts space complexity.
           </li>
+          <br />
           <li>
             <span className="font-bold">&bull; Practice with Variants:</span>{" "}
-            Don't limit your practice to singly linked lists. Familiarize
-            yourself with doubly linked lists and circular linked lists, as they
-            offer different challenges and insights.
-            <br />
-            <br />
+            Don't limit your practice to doubly linked lists just because they
+            are easier to work with. Try problems with singly and doubly linked
+            lists to see how it affects the time and space complexity.
           </li>
-          <li>
-            <span className="font-bold">&bull; Time Complexity Awareness:</span>{" "}
-            Be aware of the time complexities of various operations. Operations
-            that require traversal, such as search or insert at a specific
-            index, are O(n), while adding/removing at the head is O(1).
-            <br />
-            <br />
-          </li>
+          <br />
         </ul>
-        <p>
-          Excelling at linked list problems in interviews requires a balance of
-          theoretical knowledge and practical application. By focusing on these
-          areas, you can approach linked list questions with confidence and
-          demonstrate your problem-solving capabilities effectively.
-        </p>
+        <br />
       </ChapterHeading>
     </div>
   );
