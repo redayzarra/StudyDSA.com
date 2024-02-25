@@ -158,6 +158,13 @@ const LinkedListsPage = async () => {
       </ChapterHeading>
 
       <ChapterHeading
+        id="sentinels"
+        title="Sentinels Nodes"
+        chapter={sentinelsChapter}
+        chapterId={sentinelsChapter?.id}
+      ></ChapterHeading>
+
+      <ChapterHeading
         id="singly"
         title="Singly Linked List"
         chapter={singlyChapter}
