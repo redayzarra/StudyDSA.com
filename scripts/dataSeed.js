@@ -63,12 +63,12 @@ const linkedListSkills = [
   {
     title: "List Nodes",
     href: "/data-structures/linked-lists#listNodes",
-    description: "These are common algorithms you need to know for linked lists",
+    description: "These are building blocks for linked lists which store data & pointers",
   },
   {
     title: "Sentinel Nodes",
     href: "/data-structures/linked-lists#sentinels",
-    description: "You implement a linked list with an object that has pointers and values",
+    description: "A strategy you can use to avoid annoying edge cases by using dummy nodes",
   },
   {
     title: "Singly Linked List",
@@ -101,7 +101,7 @@ const hashmapSkills = [
   {
     title: "Hash Function",
     href: "/data-structures/hashmaps#hashFunction",
-    description: "Just converts input into something unique",
+    description: "A function that converts any input into an index within the hashmap",
   },
   {
     title: "Chaining",
@@ -116,7 +116,7 @@ const hashmapSkills = [
   {
     title: "Implementation",
     href: "/data-structures/hashmaps#implementation",
-    description: "Here's how you can implement a hashmap/hashset from scratch",
+    description: "Here's how you can implement a hashmaps from scratch",
   },
   {
     title: "Sets",
@@ -134,41 +134,41 @@ const queueSkills = [
   {
     title: "Definition",
     href: "/data-structures/",
-    description: "FIFO - meaning it's first come, first served",
+    description: "FIFO - meaning you can easily access the oldest (or first) value",
   },
   {
     title: "Operations",
-    href: "/data-structures/",
+    href: "/data-structures/queues#operations",
     description: "Here's everything you can do with queues",
   },
   {
-    title: "Implementation",
-    href: "/data-structures/",
-    description: "Think of a line at the bank, the earliest one goes first",
+    title: "Queue Nodes",
+    href: "/data-structures/queues#nodes",
+    description: "These are the building blocks for queues implemented using linked lists",
   },
   {
-    title: "Circular Queue",
-    href: "/data-structures/",
-    description: "Efficiently uses space by connecting the last positition back to the first",
+    title: "Dynamic Queues",
+    href: "/data-structures/queues#dynamic",
+    description: "A type of queue that does not need to be resized as it grows",
   },
   {
-    title: "Priority Queue",
-    href: "/data-structures/",
-    description: "Each element has a priority meaning you can access elements based on that",
+    title: "Circular Queues",
+    href: "/data-structures/queues#circular",
+    description: "A type of queue where all the nodes are connected in a circle",
   },
   {
-    title: "Deque",
-    href: "/data-structures/",
+    title: "Deques",
+    href: "/data-structures/queues#deque",
     description: "Double-ended meaning you can insert and delete at the front and the rear",
   },
   {
-    title: "Algorithms",
-    href: "/data-structures/",
-    description: "These are all the common algorithms for queues",
+    title: "Priority Queues",
+    href: "/data-structures/queues#priority",
+    description: "A data type that can be implemented with queues for ordering data",
   },
   {
     title: "Best Practices",
-    href: "/data-structures/",
+    href: "/data-structures/queues#bestPractices",
     description: "This is the best way to use queues for best time and memory complexity",
   },
 ]

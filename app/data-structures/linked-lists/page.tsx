@@ -8,11 +8,7 @@ import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
 import TextLink from "@/components/TextLink";
-import {
-  arrayOperations,
-  linkedListOperations,
-  stackOperations,
-} from "@/data/operationsData";
+import { linkedListOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import {
   doublyLinkedList,
@@ -42,10 +38,10 @@ const LinkedListsPage = async () => {
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
   const fetchAlgorithms = [
+    "Two Pointers",
     "Fast & Slow Pointers",
     "Sliding Window",
     "Recursion",
-    "Backtracking",
   ];
 
   const linkedListAlgorithms = await getAlgorithmsByName(fetchAlgorithms);

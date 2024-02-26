@@ -162,3 +162,54 @@ export const linkedListOperations: { operation: string; time: string; space: str
     notes: "Calculates the total number of elements one-by-one",
   }
 ];
+
+export const queueOperations: { operation: string; time: string; space: string, notes: string }[] = [
+  {
+    operation: "Enqueue Front",
+    time: "O(1)",
+    space: "O(1)",
+    notes: "Adds an element to the front of the deque",
+  },
+  {
+    operation: "Enqueue Rear",
+    time: "O(1)",
+    space: "O(1)",
+    notes: "Adds an element to the rear of the deque",
+  },
+  {
+    operation: "Dequeue Front",
+    time: "O(1)",
+    space: "O(1)",
+    notes: "Removes an element from the front of the deque",
+  },
+  {
+    operation: "Dequeue Rear",
+    time: "O(1)",
+    space: "O(1)",
+    notes: "Removes an element from the rear of the deque",
+  },
+  {
+    operation: "Peek Front",
+    time: "O(1)",
+    space: "O(1)",
+    notes: "Views the element at the front of the deque without removing it",
+  },
+  {
+    operation: "Peek Rear",
+    time: "O(1)",
+    space: "O(1)",
+    notes: "Views the element at the rear of the deque without removing it",
+  },
+  {
+    operation: "IsEmpty",
+    time: "O(1)",
+    space: "O(1)",
+    notes: "Checks if the deque is empty",
+  },
+  {
+    operation: "Size",
+    time: "O(1)",
+    space: "O(1)",
+    notes: "Returns the number of elements in the deque",
+  }
+];
