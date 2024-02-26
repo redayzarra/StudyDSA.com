@@ -8,20 +8,9 @@ import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
 import TextLink from "@/components/TextLink";
-import {
-  arrayOperations,
-  linkedListOperations,
-  queueOperations,
-} from "@/data/operationsData";
+import { queueOperations } from "@/data/operationsData";
 import { Metadata } from "next";
-import {
-  doublyLinkedList,
-  doublyNodeCode,
-  dummyNodesCode,
-  linkedPointersCode,
-  singleNodeCode,
-  singlyLinkedList,
-} from "../linked-lists/linkedListsCode";
+import { queueNodesCode } from "./queueCode";
 
 const QueuePage = async () => {
   const topic = await getTopicByName("Queues");
@@ -97,11 +86,20 @@ const QueuePage = async () => {
           queue, each node contains the data and a reference to the next node in
           the queue:
         </p>
+        <CodeBlock
+          code={queueNodesCode}
+          language="python"
+          title="QueueNodes.py"
+        />
         <br />
         <p>
-          The queue maintains pointers to both the head (front) and tail (rear)
-          of the queue for efficient <CodeText>enqueue</CodeText> and{" "}
-          <CodeText>dequeue</CodeText> operations.
+          The queue maintains two{" "}
+          <TextLink href="/data-structures/linked-lists#sentinels">
+            dummy nodes
+          </TextLink>{" "}
+          at the head (front) and tail (rear) of the queue for efficient{" "}
+          <CodeText>enqueue</CodeText> and <CodeText>dequeue</CodeText>{" "}
+          operations.
         </p>
       </ChapterHeading>
 
@@ -112,7 +110,7 @@ const QueuePage = async () => {
         chapterId={dynamicQueueChapter?.id}
       >
         <p>
-          Dynamic queues are a type of queue that can grow and shrink, such as{" "}
+          Dynamic queues are a type of <span className="font-bold">queue that can grow and shrink</span>, such as{" "}
           <TextLink href="/data-structures/linked-lists">linked lists</TextLink>{" "}
           or{" "}
           <TextLink href="/data-structures/arrays#dynamicArrays">
@@ -120,10 +118,22 @@ const QueuePage = async () => {
           </TextLink>
           . Since we are implementing our queue using a linked list, it
           classifies as a dynamic queue meaning it is{" "}
-          <span className="font-bold">not stored contiguously in memory.</span>
+          <span className="font-bold">not stored contiguously in memory.</span>{" "}
+          Dynamic queues provide significant advantages in terms of memory
+          utilization and scalability, since we don't need to frequently
+          reallocate memory.
         </p>
         <br />
-        <p></p>
+        <p>
+          In contrast,{" "}
+          <span className="font-bold">
+            fixed queues have a specified capacity
+          </span>
+          , setting a limit on the number of elements they can hold. Fixed
+          queues are useful in scenarios where the size of the queue is known in advance and remains constant,
+          leading to a straightforward and efficient solution for managing data
+          in a FIFO (First In, First Out) manner.
+        </p>
       </ChapterHeading>
 
       <ChapterHeading
@@ -133,11 +143,13 @@ const QueuePage = async () => {
         chapterId={circularQueueChapter?.id}
       >
         <p>
-          Circular queues are a variant of queue where the last position is
-          connected back to the first, creating a circular structure. This
-          design is efficient for space utilization, allowing the queue to wrap
-          around and use vacant positions created after{" "}
-          <CodeText>dequeue</CodeText> operations.
+          Circular queues are a variant of queues where the{" "}
+          <span className="font-bold">
+            last position is connected back to the first
+          </span>
+          , creating a circular structure. This design is efficient for space
+          utilization, allowing the queue to wrap around and use vacant
+          positions created after <CodeText>dequeue</CodeText> operations.
         </p>
       </ChapterHeading>
 
@@ -148,24 +160,27 @@ const QueuePage = async () => {
         chapterId={dequeChapter?.id}
       >
         <p>
-          Deques (double-ended queues) allow insertion and removal of elements
-          from both the front and the rear. This flexibility makes deques a
-          versatile data structure for various scenarios where elements need to
-          be processed from both ends.
+          Deques (<span className="font-bold">double-ended queues</span>) allow{" "}
+          <span className="font-bold">
+            insertion and removal of elements from both the front and the rear
+          </span>
+          . This flexibility makes deques a versatile data structure for various
+          scenarios where elements need to be processed from both ends.
         </p>
       </ChapterHeading>
 
       <ChapterHeading
         id="priority"
         title="Priority Queue"
+        chapter={priorityQueueChapter}
         chapterId={priorityQueueChapter?.id}
       >
         <p>
-          Priority queues are a special type of queue where each element has a
-          priority assigned to it. Elements are dequeued according to their
-          priority rather than their order in the queue. This structure is
-          essential for tasks that need to be processed based on importance
-          rather than the order of submission.
+          Priority queue is a type of data structure where each element has a
+          priority assigned to it. Elements are <CodeText>dequeue</CodeText>{" "}
+          according to their priority rather than their order in the queue. This
+          structure is essential for tasks that need to be processed based on
+          importance rather than the order of submission.
         </p>
       </ChapterHeading>
 
