@@ -10,7 +10,7 @@ import Operations from "@/components/Operations";
 import TextLink from "@/components/TextLink";
 import { queueOperations } from "@/data/operationsData";
 import { Metadata } from "next";
-import { queueNodesCode } from "./queueCode";
+import { circularQueueCode, queueNodesCode } from "./queueCode";
 
 const QueuePage = async () => {
   const topic = await getTopicByName("Queues");
@@ -143,14 +143,19 @@ const QueuePage = async () => {
         chapterId={circularQueueChapter?.id}
       >
         <p>
-          Circular queues are a variant of queues where the{" "}
+          Circular queues are a variant of fixed queues where the{" "}
           <span className="font-bold">
             last position is connected back to the first
           </span>
           , creating a circular structure. This design is efficient for space
           utilization, allowing the queue to wrap around and use vacant
-          positions created after <CodeText>dequeue</CodeText> operations.
+          positions created after <CodeText>dequeue</CodeText> operations:
         </p>
+        <CodeBlock
+          code={circularQueueCode}
+          language="python"
+          title="CircularQueues.py"
+        />
       </ChapterHeading>
 
       <ChapterHeading
