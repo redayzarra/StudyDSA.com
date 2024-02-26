@@ -110,7 +110,9 @@ const QueuePage = async () => {
         chapterId={dynamicQueueChapter?.id}
       >
         <p>
-          Dynamic queues are a type of <span className="font-bold">queue that can grow and shrink</span>, such as{" "}
+          Dynamic queues are a type of{" "}
+          <span className="font-bold">queue that can grow and shrink</span>,
+          such as{" "}
           <TextLink href="/data-structures/linked-lists">linked lists</TextLink>{" "}
           or{" "}
           <TextLink href="/data-structures/arrays#dynamicArrays">
@@ -130,9 +132,10 @@ const QueuePage = async () => {
             fixed queues have a specified capacity
           </span>
           , setting a limit on the number of elements they can hold. Fixed
-          queues are useful in scenarios where the size of the queue is known in advance and remains constant,
-          leading to a straightforward and efficient solution for managing data
-          in a FIFO (First In, First Out) manner.
+          queues are useful in scenarios where the size of the queue is known in
+          advance and remains constant, leading to a straightforward and
+          efficient solution for managing data in a FIFO (First In, First Out)
+          manner.
         </p>
       </ChapterHeading>
 
@@ -156,6 +159,15 @@ const QueuePage = async () => {
           language="python"
           title="CircularQueues.py"
         />
+        <p>
+          <br />
+          The implementation above is a circular queue using a linked list
+          structure, where the queue has a fixed maximum capacity. The main
+          components are two dummy nodes (<CodeText>left</CodeText> for the head
+          and <CodeText>right</CodeText> for the tail of the queue) and a{" "}
+          <CodeText>size</CodeText> counter to track the number of elements in
+          the queue.
+        </p>
       </ChapterHeading>
 
       <ChapterHeading
