@@ -90,10 +90,17 @@ const QueuePage = async () => {
         chapterId={queueNodesChapter?.id}
       >
         <p>
-          In a linked list implementation of a queue, each node contains the
-          data and a reference to the next node in the queue. The queue
-          maintains pointers to both the head (front) and tail (rear) of the
-          queue to facilitate efficient <CodeText>enqueue</CodeText> and{" "}
+          Queues are best implemented by{" "}
+          <TextLink href="/data-structures/linked-lists">linked lists</TextLink>
+          . Linked lists provide constant time operations for insertion and
+          deletion at the front and rear. In a linked list implementation of a
+          queue, each node contains the data and a reference to the next node in
+          the queue:
+        </p>
+        <br />
+        <p>
+          The queue maintains pointers to both the head (front) and tail (rear)
+          of the queue for efficient <CodeText>enqueue</CodeText> and{" "}
           <CodeText>dequeue</CodeText> operations.
         </p>
       </ChapterHeading>
@@ -105,11 +112,18 @@ const QueuePage = async () => {
         chapterId={dynamicQueueChapter?.id}
       >
         <p>
-          Dynamic queues are implemented with structures that can grow and
-          shrink, such as linked lists or resizable arrays. This flexibility
-          allows the queue to adapt to runtime demands, accommodating varying
-          amounts of data without a fixed size constraint.
+          Dynamic queues are a type of queue that can grow and shrink, such as{" "}
+          <TextLink href="/data-structures/linked-lists">linked lists</TextLink>{" "}
+          or{" "}
+          <TextLink href="/data-structures/arrays#dynamicArrays">
+            dynamic arrays
+          </TextLink>
+          . Since we are implementing our queue using a linked list, it
+          classifies as a dynamic queue meaning it is{" "}
+          <span className="font-bold">not stored contiguously in memory.</span>
         </p>
+        <br />
+        <p></p>
       </ChapterHeading>
 
       <ChapterHeading
