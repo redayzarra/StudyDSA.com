@@ -35,6 +35,10 @@ const QueuePage = async () => {
     "Sliding Window",
     "Recursion",
     "Backtracking",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Dijkstra's Algo.",
+    "Topological Sort"
   ];
 
   const queueAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
@@ -184,11 +188,13 @@ const QueuePage = async () => {
           . This flexibility makes deques a versatile data structure for various
           scenarios where elements need to be processed from both ends.
         </p>
-         <CodeBlock
-          code={dequeCode}
-          language="python"
-          title="Deques.py"
-        />
+        <CodeBlock code={dequeCode} language="python" title="Deques.py" />
+        <p>
+          <br />
+          The flexibility and efficiency of deques for operations at both ends,
+          is powered by an underlying <TextLink href="/data-structures/linked-lists#doubly">doubly linked list</TextLink> that allows
+          bidirectional traversal and manipulation.
+        </p>
       </ChapterHeading>
 
       <ChapterHeading
