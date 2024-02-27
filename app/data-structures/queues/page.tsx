@@ -10,7 +10,7 @@ import Operations from "@/components/Operations";
 import TextLink from "@/components/TextLink";
 import { queueOperations } from "@/data/operationsData";
 import { Metadata } from "next";
-import { circularQueueCode, queueNodesCode } from "./queueCode";
+import { circularQueueCode, dequeCode, queueNodesCode } from "./queueCode";
 
 const QueuePage = async () => {
   const topic = await getTopicByName("Queues");
@@ -94,8 +94,8 @@ const QueuePage = async () => {
         <br />
         <p>
           The queue maintains two{" "}
-          <TextLink href="/data-structures/linked-lists#sentinels">
-            dummy nodes
+          <TextLink href="/data-structures/linked-lists#pointers">
+            pointers
           </TextLink>{" "}
           at the head (front) and tail (rear) of the queue for efficient{" "}
           <CodeText>enqueue</CodeText> and <CodeText>dequeue</CodeText>{" "}
@@ -163,7 +163,7 @@ const QueuePage = async () => {
           <br />
           The implementation above is a circular queue using a linked list
           structure, where the queue has a fixed maximum capacity. The main
-          components are two dummy nodes (<CodeText>left</CodeText> for the head
+          components are two pointers (<CodeText>left</CodeText> for the head
           and <CodeText>right</CodeText> for the tail of the queue) and a{" "}
           <CodeText>size</CodeText> counter to track the number of elements in
           the queue.
@@ -184,6 +184,11 @@ const QueuePage = async () => {
           . This flexibility makes deques a versatile data structure for various
           scenarios where elements need to be processed from both ends.
         </p>
+         <CodeBlock
+          code={dequeCode}
+          language="python"
+          title="Deques.py"
+        />
       </ChapterHeading>
 
       <ChapterHeading
