@@ -38,7 +38,7 @@ const QueuePage = async () => {
     "Depth-First Search",
     "Breadth-First Search",
     "Dijkstra's Algo.",
-    "Topological Sort"
+    "Topological Sort",
   ];
 
   const queueAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
@@ -192,8 +192,11 @@ const QueuePage = async () => {
         <p>
           <br />
           The flexibility and efficiency of deques for operations at both ends,
-          is powered by an underlying <TextLink href="/data-structures/linked-lists#doubly">doubly linked list</TextLink> that allows
-          bidirectional traversal and manipulation.
+          is powered by an underlying{" "}
+          <TextLink href="/data-structures/linked-lists#doubly">
+            doubly linked list
+          </TextLink>{" "}
+          that allows bidirectional traversal and manipulation.
         </p>
       </ChapterHeading>
 
@@ -204,11 +207,28 @@ const QueuePage = async () => {
         chapterId={priorityQueueChapter?.id}
       >
         <p>
-          Priority queue is a type of data structure where each element has a
-          priority assigned to it. Elements are <CodeText>dequeue</CodeText>{" "}
-          according to their priority rather than their order in the queue. This
-          structure is essential for tasks that need to be processed based on
-          importance rather than the order of submission.
+          Priority queue{" "}
+          <span className="font-bold">is an abstract data type</span> where each
+          element has a priority assigned to it. Elements are accessed according
+          to their priority rather than their order in the data structure.
+        </p>
+        <br />
+        <p>
+          While it's possible to implement a priority queue using simple queues,
+          they can often fall short in terms of efficiency, particularly for
+          operations such as insertion and removal of elements based on
+          priority. A{" "}
+          <TextLink href="/data-structures/heap">binary heap</TextLink>, on the
+          other hand,{" "}
+          <span className="font-bold">
+            is the best data structure for this purpose
+          </span>
+          .
+        </p>
+        <br />
+        <p>
+          I am adding this section to simply clarify that: Priority queues are more
+          a concept than actual queues. They are best implemented with heaps.
         </p>
       </ChapterHeading>
 
