@@ -57,7 +57,7 @@ const QueuePage = async () => {
           principle. It's like standing in line at a store; the first person in
           line is the first to be served. Queues are common in computing for
           managing tasks, data streams, and graph algorithms like{" "}
-          <TextLink href="/algorithms/bfs">BFS</TextLink>.
+          <TextLink href="/algorithms/breadth-first-search">BFS</TextLink>.
         </p>
       </ChapterHeading>
 
@@ -227,8 +227,9 @@ const QueuePage = async () => {
         </p>
         <br />
         <p>
-          I am adding this section to simply clarify that: Priority queues are more
-          a concept than actual queues. They are best implemented with heaps.
+          I am adding this section to simply clarify that: Priority queues are
+          more a concept than actual queues. They are best implemented with
+          heaps.
         </p>
       </ChapterHeading>
 
@@ -242,13 +243,50 @@ const QueuePage = async () => {
         chapterId={bestPracticesChapter?.id}
       >
         <p>
-          Understanding and implementing queues efficiently requires a grasp of
-          their underlying principles, such as choosing the appropriate type of
-          queue for a given problem, managing memory effectively in dynamic
-          queues, and leveraging circular queues to optimize space.
-          Additionally, when using priority queues or deques, it's crucial to
-          understand the specific use cases and performance implications.
+          Queues are the best data structure for managing data in a first-in,
+          first-out (FIFO) manner. They are useful for maintaining order and are
+          the foundations for complex algorithms. Here are some essential tips
+          and tricks for mastering queues:
         </p>
+        <br />
+
+        <ul className="ml-6">
+          <li>
+            <span className="font-bold">&bull; Queues in your language:</span>{" "}
+            Familiarize yourself with queues in your preferred programming
+            language. Make sure you know the built-in functions and libraries
+            designed for queues. Understand the fundamental operations such as {" "}
+            <CodeText>enqueue</CodeText> (add), <CodeText>dequeue</CodeText> (remove), <CodeText>peek</CodeText> (view the front item without
+            removal), and <CodeText>isEmpty</CodeText>.
+          </li>
+          <br />
+          <li>
+            <span className="font-bold">
+              &bull; Using Queues in Algorithms:
+            </span>{" "}
+            Understand how queues can optimize solutions in breadth-first search
+            (BFS) for traversing graphs or trees, implementing caching
+            algorithms like LRU (Least Recently Used), or in round-robin
+            scheduling.
+          </li>
+          <br />
+          <li>
+            <span className="font-bold">
+              &bull; Recognizing Queue Problems:
+            </span>{" "}
+            Identify problems where queues can simplify the solution, such as in
+            level order traversal of trees, or in implementing a buffer for data
+            streams. Anytime you need to store data to access it again, in order, queues are your best friend.
+          </li>
+          <br />
+          <li>
+            <span className="font-bold">&bull; Experimenting with Deques:</span>{" "}
+            Deques (double-ended queues) allow insertion and removal at both
+            ends. Practice using deques in scenarios that require flexible
+            access, such as sliding window problems or palindrome checking.
+          </li>
+          <br />
+        </ul>
       </ChapterHeading>
     </div>
   );
