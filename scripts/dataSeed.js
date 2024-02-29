@@ -200,7 +200,7 @@ const treeSkills = [
     description: "As the name suggests, the nodes can only have up to two children",
   },
   {
-    title: "Binary Seach Tree",
+    title: "Binary Search Tree",
     href: "/data-structures/trees#binarySearch",
     description: "A binary tree where left must be smaller than root, right must be bigger",
   },

@@ -94,6 +94,7 @@ const TreesPage = async () => {
       <ChapterHeading
         id="terminology"
         title="Terminology"
+        chapter={terminologyChapter}
         chapterId={terminologyChapter?.id}
       >
         <p>
@@ -107,6 +108,7 @@ const TreesPage = async () => {
       <ChapterHeading
         id="traversal"
         title="Tree Traversal"
+        chapter={treeTraversalChapter}
         chapterId={treeTraversalChapter?.id}
       >
         <p>
@@ -120,6 +122,7 @@ const TreesPage = async () => {
       <ChapterHeading
         id="binary"
         title="Binary Tree"
+        chapter={binaryTreeChapter}
         chapterId={binaryTreeChapter?.id}
       >
         <p>
@@ -133,6 +136,7 @@ const TreesPage = async () => {
       <ChapterHeading
         id="binarySearch"
         title="Binary Search Tree"
+        chapter={binarySearchTreeChapter}
         chapterId={binarySearchTreeChapter?.id}
       >
         <p>
@@ -147,6 +151,7 @@ const TreesPage = async () => {
       <ChapterHeading
         id="advanced"
         title="Advanced Trees"
+        chapter={advancedChapter}
         chapterId={advancedChapter?.id}
       >
         <p>
