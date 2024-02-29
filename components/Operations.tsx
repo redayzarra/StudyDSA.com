@@ -42,12 +42,12 @@ const Operations = ({ items }: Props) => {
             <TableRow key={item.operation}>
               <TableCell className="font-medium">{item.operation}</TableCell>
               <TableCell
-                className={cn("text-center font-bold text-lg", font.className)}
+                className={cn("text-center font-bold text-lg truncate", font.className)}
               >
                 {item.time}
               </TableCell>
               <TableCell
-                className={cn("text-center font-bold text-lg", font.className)}
+                className={cn("text-center font-bold text-lg truncate", font.className)}
               >
                 {item.space}
               </TableCell>

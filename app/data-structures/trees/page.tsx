@@ -8,7 +8,7 @@ import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
 import TextLink from "@/components/TextLink";
-import { arrayOperations } from "@/data/operationsData";
+import { arrayOperations, treeOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 
 const TreesPage = async () => {
@@ -51,30 +51,48 @@ const TreesPage = async () => {
         chapterId={definitionChapter?.id}
       >
         <p>
-          Trees are a type of data structure that simulate a hierarchical tree
-          structure, with a root value and subtrees of children, represented as
-          a set of linked nodes. A tree structure is a way to represent
-          hierarchical data, such as a file system on a computer. Unlike arrays,
-          linked lists, stack and queues, which are linear data structures,
-          trees are hierarchical data structures.
+          Trees are nodes connected in a hierarchy, where each node can point to
+          one or more nodes below it, starting from a single{" "}
+          <span className="font-bold">top node known as the root</span>. Each
+          connection represents a parent-child relationship. Trees{" "}
+          <span className="font-bold">do not contain cycles</span>, ensuring
+          there is one clear path from the root to any node.
         </p>
       </ChapterHeading>
 
       <ChapterHeading
-        id="operationsTree"
+        id="operations"
         title="Operations"
         chapterId={operationsChapter?.id}
       >
         <p>
-          Tree operations include basic operations such as insertion, deletion,
-          and traversal. The complexity of these operations can vary depending
-          on the type of tree and the specific operation being performed.
+          Tree operations vary in complexity based on the tree's balance. A{" "}
+          <span className="font-bold">
+            balanced tree, where nodes are evenly distributed
+          </span>
+          , allows for operations in <CodeText>O(log n)</CodeText> time. In
+          contrast, unbalanced trees, resembling a linked list, increase
+          operation complexity to <CodeText>O(n)</CodeText> since more nodes
+          need to be traversed.
         </p>
-        <Operations items={arrayOperations} />
+        <br />
+        <p>
+          Let's take a look at the time and space complexities of operations
+          supported by a balanced tree:
+        </p>
+        <Operations items={treeOperations} />
+        <p>
+          The rationale behind the <CodeText>O(log n)</CodeText> complexity is
+          that the binary tree is balanced. At the root, the entire dataset of{" "}
+          <CodeText>n</CodeText> nodes is visible. As you move to the next level
+          (left or right child) the number of visible nodes halves to{" "}
+          <CodeText>n/2</CodeText>. This halving process continues with each
+          level descended, essentially narrowing down the dataset.
+        </p>
       </ChapterHeading>
 
       <ChapterHeading
-        id="terminologyTree"
+        id="terminology"
         title="Terminology"
         chapterId={terminologyChapter?.id}
       >
@@ -87,7 +105,7 @@ const TreesPage = async () => {
       </ChapterHeading>
 
       <ChapterHeading
-        id="treeTraversal"
+        id="traversal"
         title="Tree Traversal"
         chapterId={treeTraversalChapter?.id}
       >
@@ -100,7 +118,7 @@ const TreesPage = async () => {
       </ChapterHeading>
 
       <ChapterHeading
-        id="binaryTree"
+        id="binary"
         title="Binary Tree"
         chapterId={binaryTreeChapter?.id}
       >
@@ -113,7 +131,7 @@ const TreesPage = async () => {
       </ChapterHeading>
 
       <ChapterHeading
-        id="binarySearchTree"
+        id="binarySearch"
         title="Binary Search Tree"
         chapterId={binarySearchTreeChapter?.id}
       >
@@ -127,7 +145,7 @@ const TreesPage = async () => {
       </ChapterHeading>
 
       <ChapterHeading
-        id="advancedTrees"
+        id="advanced"
         title="Advanced Trees"
         chapterId={advancedChapter?.id}
       >
@@ -143,7 +161,7 @@ const TreesPage = async () => {
       </ChapterHeading>
 
       <ChapterHeading
-        id="bestPracticesQueue"
+        id="bestPractices"
         title="Best Practices"
         chapterId={bestPracticesChapter?.id}
       >

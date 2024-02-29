@@ -247,7 +247,6 @@ const ArraysPage = async () => {
       <ChapterHeading
         id="algorithms"
         title="Algorithms"
-        // chapterId={algorithmsChapter?.id}
       >
         <Algorithms items={arrayAlgorithms} />
       </ChapterHeading>

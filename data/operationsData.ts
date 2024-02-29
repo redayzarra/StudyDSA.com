@@ -213,3 +213,36 @@ export const queueOperations: { operation: string; time: string; space: string, 
     notes: "Returns the number of elements in the deque",
   }
 ];
+
+export const treeOperations: { operation: string; time: string; space: string; notes: string }[] = [
+  {
+    operation: "Insert",
+    time: "O(log n)",
+    space: "O(1)",
+    notes: "Insertion ensures balance is maintained, requiring rebalancing if necessary",
+  },
+  {
+    operation: "Delete",
+    time: "O(log n)",
+    space: "O(1)",
+    notes: "Deletion might require rebalancing to maintain tree balance",
+  },
+  {
+  operation: "Search",
+  time: "O(n)",
+  space: "O(1)",
+  notes: "Binary trees don't have a guaranteed order, every node may need to be visited"
+  },
+  {
+    operation: "Traverse",
+    time: "O(n)",
+    space: "O(log n)",
+    notes: "To visit all nodes; space needed for recursion calls is the height of the tree",
+  },
+  {
+    operation: "Height",
+    time: "O(n)",
+    space: "O(log n)",
+    notes: "Need to visit each node to determine the maximum depth",
+  },
+]
