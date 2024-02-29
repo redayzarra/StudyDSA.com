@@ -10,6 +10,7 @@ import Operations from "@/components/Operations";
 import TextLink from "@/components/TextLink";
 import { arrayOperations, treeOperations } from "@/data/operationsData";
 import { Metadata } from "next";
+import { treeChildrenCode, treeMeasureCode, treeNodeCode } from "./treeCode";
 
 const TreesPage = async () => {
   const topic = await getTopicByName("Trees");
@@ -53,10 +54,14 @@ const TreesPage = async () => {
         <p>
           Trees are nodes connected in a hierarchy, where each node can point to
           one or more nodes below it, starting from a single{" "}
-          <span className="font-bold">top node known as the root</span>. Each
-          connection represents a parent-child relationship. Trees{" "}
-          <span className="font-bold">do not contain cycles</span>, ensuring
-          there is one clear path from the root to any node.
+          <strong>top node known as the root</strong>. Each edge, or connection,
+          represents a parent-child relationship. Trees{" "}
+          <strong>do not contain cycles</strong>, ensuring there is one clear
+          path from the root to any node. If there are <CodeText>N</CodeText>{" "}
+          nodes, then{" "}
+          <strong>
+            there will be at most <CodeText>N - 1</CodeText> edges
+          </strong>
         </p>
       </ChapterHeading>
 
@@ -67,10 +72,8 @@ const TreesPage = async () => {
       >
         <p>
           Tree operations vary in complexity based on the tree's balance. A{" "}
-          <span className="font-bold">
-            balanced tree, where nodes are evenly distributed
-          </span>
-          , allows for operations in <CodeText>O(log n)</CodeText> time. In
+          <strong>balanced tree, where nodes are evenly distributed</strong>,
+          allows for operations in <CodeText>O(log n)</CodeText> time. In
           contrast, unbalanced trees, resembling a linked list, increase
           operation complexity to <CodeText>O(n)</CodeText> since more nodes
           need to be traversed.
@@ -98,10 +101,54 @@ const TreesPage = async () => {
         chapterId={terminologyChapter?.id}
       >
         <p>
-          Understanding tree terminology is crucial for working with trees.
-          Terms include "root", "node", "parent", "child", "leaf", "subtree",
-          "depth", "height", and more. Each term has a specific meaning that
-          helps in the understanding and manipulation of tree structures.
+          At the heart of a trees is the <strong>node</strong>, an individual{" "}
+          <strong>
+            element that holds data and can have links to left or right children
+          </strong>
+          , creating a system of relationships. The <strong>root</strong> is the
+          topmost node, serving as{" "}
+          <strong>the origin from which all other nodes descend</strong>.
+        </p>
+        <CodeBlock code={treeNodeCode} language="python" title="TreeNode.py" />
+        <br />
+        <p>
+          This hierarchical structure ensures that each node (except the root)
+          has a single parent node it directly descends from, while any node can
+          be a parent as long as it has at least one child node connected to it.{" "}
+          <strong>Nodes without any children are called leaves</strong>, marking
+          the bottom of the tree.
+        </p>
+        <CodeBlock
+          code={treeChildrenCode}
+          language="python"
+          title="NodeChildren.py"
+        />
+        <br />
+        <p>
+          The structure of a tree can be measured by the depth and height.{" "}
+          <strong>
+            Depth is the number of edges on the path from the root to a specific
+            node
+          </strong>
+          , helping identify the level of that node within the overall
+          structure.{" "}
+          <strong>
+            Height measures the longest path from a node down to a leaf
+          </strong>
+          , with the height of the main tree being the height of the root node.
+        </p>
+        <CodeBlock
+          code={treeMeasureCode}
+          language="python"
+          title="Calculate_Depth.py"
+        />
+        <br />
+        <p>
+          <strong>Subtrees represent smaller sections of the main tree</strong>.
+          Each subtree starts with a node and consists of all its descendants.
+          Subtrees are trees themselves, which makes{" "}
+          <TextLink href="/algorithms/recursion">recursion</TextLink> the best
+          way to traverse trees.
         </p>
       </ChapterHeading>
 
