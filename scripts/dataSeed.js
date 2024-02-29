@@ -176,7 +176,7 @@ const queueSkills = [
 const treeSkills = [
   {
     title: "Definition",
-    href: "/data-structures/",
+    href: "/data-structures/trees",
     description: "Think of them like an upside-down tree in real life, roots are at the top",
   },
   {
@@ -212,7 +212,7 @@ const treeSkills = [
   {
     title: "Best Practices",
     href: "/data-structures/",
-    description: "This is the most efficient way to use trees",
+    description: "Here's the best tips and tricks for using trees in interviews",
   },
 ]
 
