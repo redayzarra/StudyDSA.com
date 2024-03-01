@@ -234,13 +234,7 @@ export const treeOperations: { operation: string; time: string; space: string; n
   notes: "Binary trees don't have a guaranteed order, every node may need to be visited"
   },
   {
-    operation: "Traverse",
-    time: "O(n)",
-    space: "O(log n)",
-    notes: "To visit all nodes; space needed for recursion calls is the height of the tree",
-  },
-  {
-    operation: "Height",
+    operation: "Depth",
     time: "O(n)",
     space: "O(log n)",
     notes: "Need to visit each node to determine the maximum depth",

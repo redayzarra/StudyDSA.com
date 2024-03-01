@@ -180,3 +180,47 @@ def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         # Once we've processed a level, add the entire level to 'res'
         res.append(level)
     return res`;
+
+export const binaryTreeCode = 
+`# Definition of a tree node
+class TreeNode:
+    def __init__(self, value=0, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+        
+class BinaryTree:
+    def __init__(self):
+        self.root = None
+
+    # Inorder Traversal to find a value in the tree
+    def inorder_traversal(root: Optional[TreeNode]):
+        if not root:
+            return
+        # Setup DFS: Go down to left subtree, print node value, then go to right
+        res = []
+        def dfs(node: Optional[TreeNode]) -> None:
+            if not node:
+                return
+            # Go down left subtree, process node, then go down right subtree
+            dfs(node.left)
+            res.append(node.val)
+            dfs(node.right)
+        
+        dfs(root)
+        return res
+    
+    # Calculate the depth of the tree
+    def depth(root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        
+        def dfs(node: Optional[TreeNode]) -> int:
+            if not node:
+                return 0
+            
+            left = dfs(node.left)
+            right = dfs(node.right)
+            return 1 + max(left, right)
+
+        return dfs(root)`;

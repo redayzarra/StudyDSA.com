@@ -11,6 +11,7 @@ import TextLink from "@/components/TextLink";
 import { arrayOperations, treeOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import {
+  binaryTreeCode,
   diameterCode,
   inorderCode,
   levelOrderCode,
@@ -258,11 +259,27 @@ const TreesPage = async () => {
         chapterId={binaryTreeChapter?.id}
       >
         <p>
-          A binary tree is a tree data structure in which each node has at most
-          two children, referred to as the left child and the right child. It is
-          a specialized form of a tree where every node has two or fewer
-          children.
+          Before we jump into the implementation of a binary tree, let's
+          summarize what we have gone over. A binary tree is a tree data
+          structure where each node <strong>has at most two children</strong>,
+          referred to as the left child and the right child.
         </p>
+        <br />
+        <p>
+          Binary <strong>trees have no cycles</strong>, and if there are{" "}
+          <strong>
+            <CodeText>N</CodeText> nodes then trees can have at most{" "}
+            <CodeText>N - 1</CodeText> edges
+          </strong>
+          . We start from the root, the top-most node, and traverse our way down
+          using different traversal methods. Let's take a look at the
+          implementation of a binary tree:
+        </p>
+        <CodeBlock
+          code={binaryTreeCode}
+          language="python"
+          title="BinaryTree.py"
+        />
       </ChapterHeading>
 
       <ChapterHeading
