@@ -19,18 +19,24 @@ root.right = TreeNode(3)  # Right child of the root
 export const treeMeasureCode = 
 `# Calculate the depth from root to leaf node; same as height
 def depth(root: Optional[TreeNode]) -> int:
+    # Base case: If there is no root, then depth is 0
     if not root:
         return 0
     
+    # Setup DFS: Calculate the depth and return it
     def dfs(node: Optional[TreeNode]) -> int:
         if not node:
             return 0
         
-        left_depth = dfs(node.left)
-        right_depth = dfs(node.right)
+        # 'Left' is the result of the left subtree (max depth)
+        left = dfs(node.left)
+        # 'Right' is the result of the right subtree (max depth)
+        right = dfs(node.right)
 
-        return 1 + max(left_depth, right_depth)
+        # Add the depth of current node (1) to the max of left or right
+        return 1 + max(left, right)
 
+    # Call DFS (which calculates the depth of any node) on root
     return dfs(root)`;
 
 export const subTreeCode = 
@@ -65,9 +71,9 @@ export const diameterCode =
     # Base case: the root doesn't exist then diameter is 0
     if not root:
         return 0
-    res = 0  # Global variable: the final result (diameter)
-
-    # Setup DFS: Calculate the depth, use that to update 'res'
+        
+    # Setup DFS: Calculate the depth, then update global variable 'res'
+    res = 0 
     def dfs(root: Optional[TreeNode]) -> int:
         if not root:
             return 0
@@ -86,4 +92,91 @@ export const diameterCode =
 
     # Call DFS to update 'res', we don't care about the result of DFS
     dfs(root)
+    return res`;
+
+export const preorderCode = 
+`# Preorder Traversal: The sequence is root, left, right.
+def preorder_traversal(root: Optional[TreeNode]):
+    if not root:
+        return
+
+    # Setup DFS: Print the current node value, then go left to right
+    res = []
+    def dfs(node: Optional[TreeNode]) -> None:
+        if not node:
+            return
+        # Process the node first, then go down left and right subtree
+        res.append(node.val)
+        dfs(node.left)
+        dfs(node.right)
+        
+    dfs(root)
+    return res`;
+
+export const inorderCode = 
+`# Inorder Traversal: The sequence is left, root, right.
+def inorder_traversal(root: Optional[TreeNode]):
+    if not root:
+        return
+    # Setup DFS: Go down to left subtree, print node value, then go to right
+    res = []
+    def dfs(node: Optional[TreeNode]) -> None:
+        if not node:
+            return
+        # Go down left subtree, process node, then go down right subtree
+        dfs(node.left)
+        res.append(node.val)
+        dfs(node.right)
+    
+    dfs(root)
+    return res`;
+
+export const postorderCode = 
+`# Postorder Traversal: The sequence is left, right, root.
+def postorder_traversal(root: Optional[TreeNode]):
+    if not root:
+        return
+    
+    # Setup DFS: Go down to left subtree, then go to right, finally add value
+    res = []
+    def dfs(node: Optional[TreeNode]) -> None:
+        if not node:
+            return 
+        # Go down left subtree, then right, finally process node 
+        dfs(node.left)
+        dfs(node.right)
+        res.append(node.val)
+    
+    dfs(root)
+    return res`;
+
+export const levelOrderCode = 
+`# Level Order Traversal: print all the values of the tree, level by level
+def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+    # Base case: If the root doesn't exist, return empty array
+    if not root:
+        return []
+
+    # Initialize queue and populate it with the root 
+    q = collections.deque()
+    q.append(root)
+    
+    # Setup BFS: While the queue has elements, add elements to res level-by-level
+    res = []
+    while q:
+        # Each for loop represents one level of the tree
+        level = []
+        for i in range(len(q)):
+            # Get the next node in line and add it's value to level
+            node = q.popleft()
+            level.append(node.val)
+
+            # If the node has left or right children, add that otherwise move on
+            if node.left:
+                q.append(node.left)
+            if node.right:
+                q.append(node.right)
+
+        # Once we've processed a level, add the entire level to 'res'
+        res.append(level)
     return res`;

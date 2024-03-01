@@ -12,6 +12,10 @@ import { arrayOperations, treeOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import {
   diameterCode,
+  inorderCode,
+  levelOrderCode,
+  postorderCode,
+  preorderCode,
   subTreeCode,
   treeChildrenCode,
   treeMeasureCode,
@@ -150,15 +154,6 @@ const TreesPage = async () => {
         />
         <br />
         <p>
-          <strong>Subtrees represent smaller sections of the main tree</strong>.
-          Each subtree starts with a node and consists of all its descendants.
-          Subtrees are trees themselves, which makes{" "}
-          <TextLink href="/algorithms/recursion">recursion</TextLink> the best
-          way to traverse trees.
-        </p>
-        <CodeBlock code={subTreeCode} language="python" title="Subtree.py" />
-        <br />
-        <p>
           The <strong>diameter</strong> of a tree represents the{" "}
           <strong>longest path between any two nodes</strong> in the tree. This{" "}
           <strong>path may or may not pass through the root</strong>.
@@ -167,6 +162,15 @@ const TreesPage = async () => {
           path length across the tree.
         </p>
         <CodeBlock code={diameterCode} language="python" title="Diameter.py" />
+        <br />
+        <p>
+          <strong>Subtrees represent smaller sections of the main tree</strong>.
+          Each subtree starts with a node and consists of all its descendants.
+          Subtrees are trees themselves, which makes{" "}
+          <TextLink href="/algorithms/recursion">recursion</TextLink> the best
+          way to traverse trees.
+        </p>
+        <CodeBlock code={subTreeCode} language="python" title="Subtree.py" />
       </ChapterHeading>
 
       <ChapterHeading
@@ -190,6 +194,11 @@ const TreesPage = async () => {
           tree in a way that reflects the hierarchy of operations in an
           expression.
         </p>
+        <CodeBlock
+          code={preorderCode}
+          language="python"
+          title="Preorder_Traversal.py"
+        />
         <br />
         <p>
           <strong>Inorder Traversal</strong> visits the nodes in a{" "}
@@ -203,6 +212,11 @@ const TreesPage = async () => {
           (BSTs), as it{" "}
           <strong>retrieves the nodes in their sorted order</strong>.
         </p>
+        <CodeBlock
+          code={inorderCode}
+          language="python"
+          title="Inorder_Traversal.py"
+        />
         <br />
         <p>
           <strong>Postorder Traversal</strong> is processing the{" "}
@@ -212,6 +226,11 @@ const TreesPage = async () => {
           resources since it ensures that child nodes are processed before their
           respective parent nodes.
         </p>
+        <CodeBlock
+          code={postorderCode}
+          language="python"
+          title="Postorder_Traversal.py"
+        />
         <br />
         <p>
           <strong>Level Order Traversal</strong>, also known as{" "}
@@ -220,10 +239,16 @@ const TreesPage = async () => {
           </TextLink>{" "}
           (BFS), <strong>visits nodes level by level</strong>, starting from the
           root. This method traverses the tree top-down and is{" "}
-          <strong>implemented using a queue</strong>. Level order traversal is
-          beneficial for finding the shortest path or processing a tree in
-          layers.
+          <strong>implemented using a</strong>{" "}
+          <TextLink href="/data-structures/queues">queue</TextLink>. Level order
+          traversal is beneficial for finding the shortest path or processing a
+          tree in layers.
         </p>
+        <CodeBlock
+          code={levelOrderCode}
+          language="python"
+          title="Level_Order_Traversal.py"
+        />
       </ChapterHeading>
 
       <ChapterHeading
