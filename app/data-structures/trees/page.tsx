@@ -181,6 +181,49 @@ const TreesPage = async () => {
           traversal algorithms are Preorder, Inorder, Postorder, and Level Order
           Traversal.
         </p>
+        <br />
+        <p>
+          <strong>Preorder Traversal</strong> is defined by{" "}
+          <strong>visiting each node before its children</strong>. The process
+          visits the nodes in a <strong>root-left-right </strong>sequence. This
+          approach is useful for creating a copy of the tree or representing the
+          tree in a way that reflects the hierarchy of operations in an
+          expression.
+        </p>
+        <br />
+        <p>
+          <strong>Inorder Traversal</strong> visits the nodes in a{" "}
+          <strong>left-root-right</strong> sequence. This means that for every
+          node, the traversal first visits the left child, then the node itself,
+          and finally the right child. Inorder traversal is particularly useful
+          for{" "}
+          <TextLink href="/data-structures/trees#binarySearch">
+            binary search trees
+          </TextLink>{" "}
+          (BSTs), as it{" "}
+          <strong>retrieves the nodes in their sorted order</strong>.
+        </p>
+        <br />
+        <p>
+          <strong>Postorder Traversal</strong> is processing the{" "}
+          <strong>root node after its children</strong>. The traversal sequence
+          is <strong>left-right-root</strong>, giving it the name "post" order
+          traversal. Postorder is great for when you need to delete nodes and
+          resources since it ensures that child nodes are processed before their
+          respective parent nodes.
+        </p>
+        <br />
+        <p>
+          <strong>Level Order Traversal</strong>, also known as{" "}
+          <TextLink href="/algorithms/breadth-first-search">
+            Breadth-First Search
+          </TextLink>{" "}
+          (BFS), <strong>visits nodes level by level</strong>, starting from the
+          root. This method traverses the tree top-down and is{" "}
+          <strong>implemented using a queue</strong>. Level order traversal is
+          beneficial for finding the shortest path or processing a tree in
+          layers.
+        </p>
       </ChapterHeading>
 
       <ChapterHeading
