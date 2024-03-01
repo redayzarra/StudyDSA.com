@@ -10,7 +10,13 @@ import Operations from "@/components/Operations";
 import TextLink from "@/components/TextLink";
 import { arrayOperations, treeOperations } from "@/data/operationsData";
 import { Metadata } from "next";
-import { treeChildrenCode, treeMeasureCode, treeNodeCode } from "./treeCode";
+import {
+  diameterCode,
+  subTreeCode,
+  treeChildrenCode,
+  treeMeasureCode,
+  treeNodeCode,
+} from "./treeCode";
 
 const TreesPage = async () => {
   const topic = await getTopicByName("Trees");
@@ -150,6 +156,17 @@ const TreesPage = async () => {
           <TextLink href="/algorithms/recursion">recursion</TextLink> the best
           way to traverse trees.
         </p>
+        <CodeBlock code={subTreeCode} language="python" title="Subtree.py" />
+        <br />
+        <p>
+          The <strong>diameter</strong> of a tree represents the{" "}
+          <strong>longest path between any two nodes</strong> in the tree. This{" "}
+          <strong>path may or may not pass through the root</strong>.
+          Calculating the diameter involves finding the height of left and right
+          subtrees for each node and adding them together to find the maximum
+          path length across the tree.
+        </p>
+        <CodeBlock code={diameterCode} language="python" title="Diameter.py" />
       </ChapterHeading>
 
       <ChapterHeading
