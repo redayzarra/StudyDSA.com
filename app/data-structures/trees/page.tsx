@@ -11,6 +11,7 @@ import TextLink from "@/components/TextLink";
 import { arrayOperations, treeOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import {
+  binarySearchTreeCode,
   binaryTreeCode,
   diameterCode,
   inorderCode,
@@ -183,8 +184,15 @@ const TreesPage = async () => {
         <p>
           Traversing a tree involves visiting all the nodes of the tree and
           performing an operation (like printing the node). The major tree
-          traversal algorithms are Preorder, Inorder, Postorder, and Level Order
-          Traversal.
+          traversal algorithms are Preorder, Inorder, and Postorder which use{" "}
+          <TextLink href="/algorithms/depth-first-search">
+            Depth-First Search
+          </TextLink>{" "}
+          (DFS). Level Order Traversal uses{" "}
+          <TextLink href="/algorithms/breadth-first-search">
+            Breadth-First Search
+          </TextLink>{" "}
+          (BFS) since we can only process nodes one level at a time.
         </p>
         <br />
         <p>
@@ -272,7 +280,7 @@ const TreesPage = async () => {
             <CodeText>N - 1</CodeText> edges
           </strong>
           . We start from the root, the top-most node, and traverse our way down
-          using different traversal methods. Let's take a look at the
+          using different traversal methods. Let's take a look at one
           implementation of a binary tree:
         </p>
         <CodeBlock
@@ -280,6 +288,22 @@ const TreesPage = async () => {
           language="python"
           title="BinaryTree.py"
         />
+        <br />
+        <p>
+          The main idea of the example above is using{" "}
+          <TextLink href="/algorithms/depth-first-search">
+            Depth-First Search{" "}
+          </TextLink>
+          (DFS) to explore each node, calculating the sum of paths from leaf to
+          root. The important part is using a{" "}
+          <strong>non-local variable (res)</strong>, which{" "}
+          <strong>
+            keeps track of the maximum path sum seen during the traversal
+          </strong>
+          . The DFS function's primary role is to{" "}
+          <strong>update res with the highest sum of any path found</strong>.
+          The actual return value of DFS is only to help calculate the path sum.
+        </p>
       </ChapterHeading>
 
       <ChapterHeading
@@ -289,11 +313,40 @@ const TreesPage = async () => {
         chapterId={binarySearchTreeChapter?.id}
       >
         <p>
-          A Binary Search Tree (BST) is a type of binary tree where the nodes
-          are arranged in order: for each node, all elements in the left subtree
-          are less than the node, and all the elements in the right subtree are
-          greater than the node. This property makes binary search trees
-          efficient for operations like search, insert, and delete.
+          A Binary Search Tree (BST) is a special kind of binary tree that uses
+          a <strong>sorted arrangement of nodes</strong>. Every node on the left
+          subtree{" "}
+          <strong>
+            (the left child) has a value smaller than its parent node
+          </strong>
+          . Meanwhile, every node on the right side{" "}
+          <strong>(the right child) has a value larger</strong> than its parent.
+        </p>
+        <br />
+        <p>
+          This sorted property increases the efficiency of search, insertion,
+          and deletion operations. By allowing these operations to skip over
+          half of the tree, it mirrors the principles of{" "}
+          <TextLink href="/algorithms/binary-search">binary search</TextLink>,
+          speeding up data management tasks.
+        </p>
+        <CodeBlock
+          code={binarySearchTreeCode}
+          language="python"
+          title="BinarySearchTree.py"
+        />
+        <br />
+        <p>
+          Inorder traversal is important here because it{" "}
+          <strong>naturally processes nodes in ascending order</strong>, given
+          the properties of a BST where left children are smaller and right
+          children are larger than their parent nodes. Using nonlocal variables{" "}
+          <CodeText>k</CodeText> and <CodeText>res</CodeText> is crucial since{" "}
+          <CodeText>k</CodeText> is decremented with each visited node,{" "}
+          <strong>acting as a countdown to the kth element</strong>. Once{" "}
+          <CodeText>k</CodeText> reaches zero, it means that we've reached the
+          kth smallest element, and <CodeText>res</CodeText>{" "}
+          <strong>is updated with the node's value</strong>.
         </p>
       </ChapterHeading>
 

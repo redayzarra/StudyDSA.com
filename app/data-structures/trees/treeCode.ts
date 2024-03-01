@@ -53,18 +53,18 @@ def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bo
     return (self.isSubtree(root.left, subRoot) or
             self.isSubtree(root.right, subRoot))
 
-# Check to see if the root and subRoot form the same tree
-def isSameTree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
-    # If both root and subRoot are None, then that's okay
-    if not root and not subRoot:
+# Check to see if the node and subRoot form the same tree
+def isSameTree(self, node: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
+    # If both node and subRoot are None, then that's okay
+    if not node and not subRoot:
         return True
-    # If root or subRoot is None or have different values, they aren't the same
-    if not root or not subRoot or root.val != subRoot.val:
+    # If node or subRoot is None or have different values, they aren't the same
+    if not node or not subRoot or node.val != subRoot.val:
         return False
     
-    # Traverse both root and subRoot children at the same time
-    return (self.isSameTree(root.left, subRoot.left) and 
-            self.isSameTree(root.right, subRoot.right))`;
+    # Traverse both node and subRoot children at the same time
+    return (self.isSameTree(node.left, subRoot.left) and 
+            self.isSameTree(node.right, subRoot.right))`;
 
 export const diameterCode = 
 `def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
@@ -191,36 +191,67 @@ class TreeNode:
         
 class BinaryTree:
     def __init__(self):
-        self.root = None
+        self.root = TreeNode()
 
-    # Inorder Traversal to find a value in the tree
-    def inorder_traversal(root: Optional[TreeNode]):
-        if not root:
-            return
-        # Setup DFS: Go down to left subtree, print node value, then go to right
-        res = []
-        def dfs(node: Optional[TreeNode]) -> None:
-            if not node:
-                return
-            # Go down left subtree, process node, then go down right subtree
-            dfs(node.left)
-            res.append(node.val)
-            dfs(node.right)
-        
-        dfs(root)
-        return res
-    
-    # Calculate the depth of the tree
-    def depth(root: Optional[TreeNode]) -> int:
+    # Finding the maximum path inside a binary tree
+    def maxPathSum(self, root: Optional[TreeNode]) -> int:
+        # Base case: If root doesn't exist, it's value is 0
         if not root:
             return 0
-        
+
+        # Setup DFS: Calculate the total value of subtrees and update 'res'
+        res = -math.inf
         def dfs(node: Optional[TreeNode]) -> int:
             if not node:
                 return 0
             
-            left = dfs(node.left)
-            right = dfs(node.right)
-            return 1 + max(left, right)
+            # Take the max of left and right subtree to ensure it's not negative
+            left = max(dfs(node.left), 0)
+            right = max(dfs(node.right), 0)
 
-        return dfs(root)`;
+            # Update global variable 'res' to the new max path if there is one
+            nonlocal res
+            res = max(res, left + node.val + right)
+
+            # Return the value of current node and the max of left and right
+            return node.val + max(left, right)
+        
+        # We don't care about the result of DFS, DFS is only for updating 'res'
+        dfs(root)
+        return res`;
+
+export const binarySearchTreeCode = 
+`# Definition of a tree node
+class TreeNode:
+    def __init__(self, value=0, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+class BinarySearchTree:
+    def __init__(self):
+        self.root = TreeNode()
+        
+    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+        # Setup DFS - Inorder Traversal: go to left, process node, then go right
+        res = None
+        def dfs(root: Optional[TreeNode]) -> None:
+            # Base case: If we reach a leaf node, then just return
+            if not root:
+                return None
+            
+            # Go down the left subtree first
+            dfs(root.left)
+
+            # Nonlocal variables k and res, when k hits zero... update res
+            nonlocal k, res
+            k -= 1
+            if k == 0:
+                res = root.val
+            
+            # Now work your way back down the right subtree
+            dfs(root.right)
+            return
+        
+        dfs(root)
+        return res`;
