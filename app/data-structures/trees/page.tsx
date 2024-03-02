@@ -359,15 +359,17 @@ const TreesPage = async () => {
         <p>
           Advanced trees, such as AVL trees, Red-Black trees, and B-trees, are
           designed to provide efficient search, insert, and delete operations by
-          automatically maintaining tree balance. Let's take a quick look at
-          them to see what makes them unique:
+          automatically maintaining tree balance. While{" "}
+          <strong>they aren't common in coding interviews</strong>, it's still
+          interesting to learn about these trees. Let's take a quick look at them
+          to see what makes them unique:
         </p>
         <br />
         <p>
           <strong>AVL trees</strong>, named after their inventors,
-          <strong> are a type of self-balancing binary search tree</strong>. Each
-          node in an AVL tree maintains an extra factor — the height balance,
-          ensuring that the {" "}
+          <strong> are a type of self-balancing binary search tree</strong>.
+          Each node in an AVL tree maintains an extra factor — the height
+          balance, ensuring that the{" "}
           <strong>
             difference between the heights of the left and right subtrees is no
             more than one
@@ -378,6 +380,34 @@ const TreesPage = async () => {
             insertion, and deletion operations
           </strong>
           , making them highly efficient for databases and lookup tables.
+        </p>
+        <br />
+        <p>
+          <strong>
+            Red-Black trees are another form of self-balancing binary search
+            tree
+          </strong>
+          , where each{" "}
+          <strong>node has an additional color attribute (red or black)</strong>
+          . These trees have specific rules for the colors of nodes and their
+          children, ensuring that the
+          <strong>
+            tree remains balanced after each insertion or deletion
+          </strong>
+          . This balance is less strict than AVL trees, allowing slightly faster
+          insertions and deletions at the cost of slightly slower lookups.
+        </p>
+        <br />
+        <p>
+          <strong>
+            B-trees are trees than can have more than two children
+          </strong>
+          , making them ideal for large blocks of data. A B-tree{" "}
+          <strong>
+            maintains balance by keeping the number of keys within each node in
+            a specific range
+          </strong>
+          , allowing efficient insertion, deletion, and search operations.
         </p>
       </ChapterHeading>
 
