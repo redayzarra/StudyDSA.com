@@ -357,9 +357,27 @@ const TreesPage = async () => {
         chapterId={advancedChapter?.id}
       >
         <p>
-          Advanced trees, such as AVL trees, Red-Black trees, Segment trees, and
-          B-trees, are designed to provide efficient search, insert, and delete
-          operations by automatically maintaining tree balance.
+          Advanced trees, such as AVL trees, Red-Black trees, and B-trees, are
+          designed to provide efficient search, insert, and delete operations by
+          automatically maintaining tree balance. Let's take a quick look at
+          them to see what makes them unique:
+        </p>
+        <br />
+        <p>
+          <strong>AVL trees</strong>, named after their inventors,
+          <strong> are a type of self-balancing binary search tree</strong>. Each
+          node in an AVL tree maintains an extra factor — the height balance,
+          ensuring that the {" "}
+          <strong>
+            difference between the heights of the left and right subtrees is no
+            more than one
+          </strong>
+          . This balancing property allows{" "}
+          <strong>
+            AVL trees to guarantee O(log n) time complexity for search,
+            insertion, and deletion operations
+          </strong>
+          , making them highly efficient for databases and lookup tables.
         </p>
       </ChapterHeading>
 
