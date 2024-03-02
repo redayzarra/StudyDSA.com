@@ -361,8 +361,8 @@ const TreesPage = async () => {
           designed to provide efficient search, insert, and delete operations by
           automatically maintaining tree balance. While{" "}
           <strong>they aren't common in coding interviews</strong>, it's still
-          interesting to learn about these trees. Let's take a quick look at them
-          to see what makes them unique:
+          interesting to learn about these trees. Let's take a quick look at
+          them to see what makes them unique:
         </p>
         <br />
         <p>
@@ -430,40 +430,56 @@ const TreesPage = async () => {
 
         <ul className="ml-6">
           <li>
-            <span className="font-bold">&bull; Queues in your language:</span>{" "}
-            Familiarize yourself with queues in your preferred programming
-            language. Make sure you know the built-in functions and libraries
-            designed for queues. Understand the fundamental operations such as{" "}
-            <CodeText>enqueue</CodeText> (add), <CodeText>dequeue</CodeText>{" "}
-            (remove), <CodeText>peek</CodeText> (view the front item without
-            removal), and <CodeText>isEmpty</CodeText>.
+            <span className="font-bold">&bull; Base Case:</span> Always check if
+            the head/root node is empty right at the start,{" "}
+            <em>before you do anything else with your tree</em>. Although this
+            may seem redundant, it helps{" "}
+            <strong>avoid edge cases and ensures things work</strong> properly
+            (BFS doesn't work without initial base case). It's a simple yet easy
+            way for ensuring your tree algorithms are efficient and error-free.
           </li>
           <br />
           <li>
             <span className="font-bold">
-              &bull; Using Queues in Algorithms:
+              &bull; Using Global Variables with DFS:
             </span>{" "}
-            Understand how queues can optimize solutions in breadth-first search
-            (BFS) for traversing graphs or trees, implementing caching
-            algorithms like LRU (Least Recently Used), or in round-robin
-            scheduling.
+            Global variables are a cheat code when used inside{" "}
+            <TextLink href="/algorithms/depth-first-search">
+              Depth-First Search
+            </TextLink>{" "}
+            (DFS) function calls for trees. They can{" "}
+            <strong>track states or accumulate values</strong> across recursive
+            calls{" "}
+            <strong>
+              without the need to pass a large number of parameters
+            </strong>{" "}
+            down the call stack. However, use them carefully to keep your code
+            clean and readable.
           </li>
           <br />
           <li>
-            <span className="font-bold">
-              &bull; Recognizing Queue Problems:
-            </span>{" "}
-            Identify problems where queues can simplify the solution, such as in
-            level order traversal of trees, or in implementing a buffer for data
-            streams. Anytime you need to store data to access it again, in
-            order, queues are your best friend.
+            <span className="font-bold">&bull; Mastering Tree Traversals:</span>{" "}
+            Familiarize yourself with different tree{" "}
+            <TextLink href="/data-structures/trees#traversal">
+              traversal
+            </TextLink>{" "}
+            techniques—
+            <strong>preorder, inorder, and postorder</strong> for binary trees,
+            as well as <strong>level-order</strong> traversal. Understanding
+            these methods and when to use them allows you to solve problems in
+            the most efficient way possible.
           </li>
           <br />
           <li>
-            <span className="font-bold">&bull; Experimenting with Deques:</span>{" "}
-            Deques (double-ended queues) allow insertion and removal at both
-            ends. Practice using deques in scenarios that require flexible
-            access, such as sliding window problems or palindrome checking.
+            <span className="font-bold">&bull; Visualizing Tree Problems:</span>{" "}
+            Before diving into coding, take a moment to{" "}
+            <strong>draw out the tree</strong> based on the problem description.
+            Visualizing the tree can help you understand the problem better,
+            help you choose a{" "}
+            <TextLink href="/data-structures/trees#traversal">
+              traversal
+            </TextLink>{" "}
+            technique, and plan your solution more effectively.
           </li>
           <br />
         </ul>
