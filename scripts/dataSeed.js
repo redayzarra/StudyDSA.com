@@ -211,7 +211,7 @@ const treeSkills = [
   },
   {
     title: "Best Practices",
-    href: "/data-structures/",
+    href: "/data-structures/trees#bestPractices",
     description: "Here's the best tips and tricks for using trees in interviews",
   },
 ]
@@ -219,42 +219,42 @@ const treeSkills = [
 const graphSkills = [
   {
     title: "Definition",
-    href: "/data-structures/",
+    href: "/data-structures/graphs",
     description: "Graphs consist on nodes that are connected to each other with edges",
   },
   {
     title: "Operations",
-    href: "/data-structures/",
+    href: "/data-structures/graphs#operations",
     description: "Here's everything you can do with graphs based on the representation",
   },
   {
     title: "Implementation",
-    href: "/data-structures/",
+    href: "/data-structures/graphs",
     description: "There are many ways to represent graphs based on the problem",
   },
   {
     title: "Directionality",
-    href: "/data-structures/",
+    href: "/data-structures/graphs",
     description: "If graph edges are directional, they point from one node to another",
   },
   {
     title: "Matrix",
-    href: "/data-structures/",
+    href: "/data-structures/graphs",
     description: "Usually represented by arrays, they basically form a rectangle of nodes",
   },
   {
     title: "Adjacency List",
-    href: "/data-structures/",
+    href: "/data-structures/graphs",
     description: "Each node has a list of it's neighbors, most common representation",
   },
   {
     title: "Algorithms",
-    href: "/data-structures/",
+    href: "/data-structures/graphs",
     description: "These are all the common algorithms for graphs that you need to know",
   },
   {
     title: "Best Practices",
-    href: "/data-structures/",
+    href: "/data-structures/graphs#bestPractices",
     description: "This is the best way to use graphs based on their representations",
   },
 ]
@@ -262,42 +262,42 @@ const graphSkills = [
 const heapSkills = [
   {
     title: "Definition",
-    href: "/data-structures/",
+    href: "/data-structures/heaps",
     description: "They are basically binary trees with a specific order and structure",
   },
   {
     title: "Operations",
-    href: "/data-structures/",
+    href: "/data-structures/heaps#operations",
     description: "Here's everything you can do with heaps",
   },
   {
-    title: "Implementation",
-    href: "/data-structures/",
-    description: "Heaps have to maintain their order and structure even if they change",
+    title: "Structure Property",
+    href: "/data-structures/heaps#structure",
+    description: "Heaps follow a rule which ensures that they are always a complete tree",
   },
   {
-    title: "Order & Structure",
-    href: "/data-structures/",
-    description: "Looking under the hood of how heaps maintain their order and structure",
+    title: "Sorted Property",
+    href: "/data-structures/heaps#sorted",
+    description: "The second rule where all the children nodes are greater than parent",
   },
   {
     title: "Heapify",
-    href: "/data-structures/",
+    href: "/data-structures/heaps#heapify",
     description: "This is how an unordered array of numbers turns into a ordered heap",
   },
   {
-    title: "Min/Max Heap",
-    href: "/data-structures/",
+    title: "Min/Max Heaps",
+    href: "/data-structures/heaps#minMax",
     description: "Here's how you can use min and max heaps most efficiently",
   },
   {
-    title: "Algorithms",
-    href: "/data-structures/",
-    description: "These are all the common algorithms for heaps that you need to know",
+    title: "Implementation",
+    href: "/data-structures/heaps#implementation",
+    description: "Heaps have to maintain their order and structure even if they change",
   },
   {
     title: "Best Practices",
-    href: "/data-structures/",
+    href: "/data-structures/heaps#bestPractices",
     description: "This is the best way to use heaps for best time and space complexity",
   },
 ]
@@ -597,7 +597,7 @@ async function dataSeed() {
   await database.topic.create({
     data: {
       title: "Heaps",
-      description: "A specialized tree-based data structure that satisfies the heap property.",
+      description: "A special binary tree that satisfies the requirements of a priority queue.",
       href: "/data-structures/heaps",
       chapters: {
         create: heapSkills,
