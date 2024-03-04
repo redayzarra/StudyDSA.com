@@ -13,7 +13,7 @@ export default async function Home() {
   const userName = (user?.name ?? user?.username)?.trim();
 
   return (
-    <div className="w-full bg-neutral-950 rounded-md flex md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-small-white/5 relative overflow-hidden">
+    <div className="w-full dark:bg-neutral-950 rounded-md flex md:items-center md:justify-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-background via-muted-foreground/10 to-muted-foreground/[0.22] dark:bg-black/[0.96] antialiased dark:bg-grid-small-white/5 relative overflow-hidden">
       <NavBar />
       <Container>
         <div className="space-y-24 mt-24 md:mt-44">

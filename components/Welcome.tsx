@@ -34,12 +34,12 @@ const Welcome = async ({ user, userName }: Props) => {
 
   return (
     <div className="w-full backdrop-blur-[1px] shadow-lg rounded-md bg-slate-200/50 dark:bg-neutral-900/20 border-t-[1px] border-white dark:border-stone-700 p-6">
-      <div className="absolute inset-x-0 h-[1px] mx-auto -top-px bg-gradient-to-r from-transparent via-stone-400 to-transparent" />
+      <div className="absolute inset-x-0 h-[1px] mx-auto -top-px bg-gradient-to-r from-transparent via-white dark:via-stone-400 to-transparent" />
       <div className="flex items-center space-x-4">
         <UserAvatar user={user} userName={userName} />
         <h1
           className={cn(
-            "text-2xl font-extrabold line-clamp-2 bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50",
+            "text-2xl font-extrabold line-clamp-2 bg-clip-text text-transparent bg-gradient-to-b from-neutral-700 to-neutral-900 dark:from-neutral-50 dark:to-neutral-400 bg-opacity-50",
             font.className
           )}
         >
