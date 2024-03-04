@@ -71,7 +71,9 @@ const AlgorithmCell = ({ title, description, href, algorithmId }: Props) => {
     <div className="relative hover:-translate-y-1 transition-all">
       <div
         className={`absolute inset-x-0 h-[1px] mx-auto bg-gradient-to-r from-transparent ${
-          isChecked ? "dark:via-yellow-200" : "dark:via-stone-400"
+          isChecked
+            ? "via-yellow-100 dark:via-yellow-200"
+            : "via-white dark:via-stone-400"
         } to-transparent`}
       />
       <Link href={href}>
@@ -79,7 +81,7 @@ const AlgorithmCell = ({ title, description, href, algorithmId }: Props) => {
           className={`rounded-sm shadow-md transition-all p-2 hover:cursor-pointer space-y-2 ${
             isChecked
               ? "bg-amber-200 dark:bg-yellow-600"
-              : "hover:bg-gray-300/50 dark:bg-muted-foreground/10 dark:hover:bg-muted-foreground/20"
+              : "bg-gray-100/25 hover:bg-gray-200/50 dark:bg-muted-foreground/10 dark:hover:bg-muted-foreground/20"
           }`}
         >
           <h1 className="font-semibold text-[0.92rem] line-clamp-1">{title}</h1>
