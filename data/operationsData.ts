@@ -240,3 +240,36 @@ export const treeOperations: { operation: string; time: string; space: string; n
     notes: "Need to visit each node to determine the maximum depth",
   },
 ]
+
+export const heapOperations: { operation: string; time: string; space: string, notes: string }[] = [
+  {
+    operation: "Push",
+    time: "O(log n)",
+    space: "O(1)",
+    notes: "Inserting a new element requires re-balancing the heap upwards",
+  },
+  {
+    operation: "Pop",
+    time: "O(log n)",
+    space: "O(1)",
+    notes: "Removes and returns the min (or max) element, requires re-heapifying",
+  },
+  {
+    operation: "Peek",
+    time: "O(1)",
+    space: "O(1)",
+    notes: "Retrieves the min (or max) element without removing it",
+  },
+  {
+    operation: "Heapify",
+    time: "O(n)",
+    space: "O(1)",
+    notes: "Rearranges an array into a heap, done in-place for binary heaps",
+  },
+  {
+    operation: "Delete",
+    time: "O(log n)",
+    space: "O(1)",
+    notes: "Deleting a specific node requires re-heapifying to maintain heap structure",
+  },
+]

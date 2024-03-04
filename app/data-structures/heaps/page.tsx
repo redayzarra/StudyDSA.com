@@ -8,7 +8,7 @@ import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
 import TextLink from "@/components/TextLink";
-import { arrayOperations, linkedListOperations } from "@/data/operationsData";
+import { heapOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 
 const HeapsPage = async () => {
@@ -23,7 +23,7 @@ const HeapsPage = async () => {
   const definitionChapter = findChapter(topic, "Definition");
   const operationsChapter = findChapter(topic, "Operations");
   const structureChapter = findChapter(topic, "Structure Property");
-  const orderChapter = findChapter(topic, "Order Property");
+  const heapPropertyChapter = findChapter(topic, "Heap Property");
   const heapifyChapter = findChapter(topic, "Heapify");
   const minMaxChapter = findChapter(topic, "Min/Max Heaps");
   const implementationChapter = findChapter(topic, "Implementation");
@@ -53,8 +53,12 @@ const HeapsPage = async () => {
             children
           </strong>
           . Unlike binary search trees, heaps are not sorted but do follow this
-          specific <TextLink href="#order">order property</TextLink> to
-          efficiently support priority queue operations.
+          specific <TextLink href="#property">property</TextLink> to efficiently
+          support{" "}
+          <TextLink href="/data-structures/queues#priority">
+            priority queue
+          </TextLink>{" "}
+          operations.
         </p>
       </ChapterHeading>
       <ChapterHeading
@@ -63,12 +67,12 @@ const HeapsPage = async () => {
         chapterId={operationsChapter?.id}
       >
         <p>
-          Heaps primarily support two key operations: inserting a new element
-          and removing the top element. These operations are designed to
-          maintain the heap property, ensuring that the heap is correctly
-          updated and balanced.
+          Heaps primarily support two key operations:{" "}
+          <strong>inserting a new element and removing the top element</strong>.
+          These operations are designed to maintain the heap property, ensuring
+          that the heap is correctly updated and balanced.
         </p>
-        <Operations items={arrayOperations} />
+        <Operations items={heapOperations} />
       </ChapterHeading>
       <ChapterHeading
         id="structure"
@@ -85,10 +89,10 @@ const HeapsPage = async () => {
         </p>
       </ChapterHeading>
       <ChapterHeading
-        id="order"
-        title="Order Property"
-        chapter={orderChapter}
-        chapterId={orderChapter?.id}
+        id="property"
+        title="Heap Property"
+        chapter={heapPropertyChapter}
+        chapterId={heapPropertyChapter?.id}
       >
         <p>
           While heaps do not store elements in a strictly sorted order, the heap

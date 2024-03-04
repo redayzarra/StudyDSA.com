@@ -277,7 +277,7 @@ const heapSkills = [
   },
   {
     title: "Order Property",
-    href: "/data-structures/heaps#order",
+    href: "/data-structures/heaps#property",
     description: "The second rule where all the children nodes are greater than parent",
   },
   {
