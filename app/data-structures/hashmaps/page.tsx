@@ -76,12 +76,12 @@ const HashmapPage = async () => {
       >
         <p>
           Hashmaps are powerful because of their efficiency. They use a{" "}
-          <TextLink href="/data-structures/hashmaps#hashFunction">
+          <TextLink href="#hashFunction">
             hash function
           </TextLink>{" "}
           for fast data searching and insertion. A good hash function spreads
           out the keys to prevent{" "}
-          <TextLink href="/data-structures/hashmaps#collisions">
+          <TextLink href="#collisions">
             collisions
           </TextLink>
           , a topic we'll delve into with more detail.

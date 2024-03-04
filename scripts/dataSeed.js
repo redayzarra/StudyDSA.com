@@ -276,8 +276,8 @@ const heapSkills = [
     description: "Heaps follow a rule which ensures that they are always a complete tree",
   },
   {
-    title: "Sorted Property",
-    href: "/data-structures/heaps#sorted",
+    title: "Order Property",
+    href: "/data-structures/heaps#order",
     description: "The second rule where all the children nodes are greater than parent",
   },
   {

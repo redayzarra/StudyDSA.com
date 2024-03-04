@@ -218,7 +218,7 @@ const QueuePage = async () => {
           they can often fall short in terms of efficiency, particularly for
           operations such as insertion and removal of elements based on
           priority. A{" "}
-          <TextLink href="/data-structures/heap">binary heap</TextLink>, on the
+          <TextLink href="/data-structures/heaps">binary heap</TextLink>, on the
           other hand,{" "}
           <span className="font-bold">
             is the best data structure for this purpose

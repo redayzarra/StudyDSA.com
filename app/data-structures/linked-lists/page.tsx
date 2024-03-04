@@ -56,10 +56,8 @@ const LinkedListsPage = async () => {
       >
         <p>
           A linked list is a linear collection of elements, called{" "}
-          <TextLink href="/data-structures/linked-lists#listNodes">
-            list nodes
-          </TextLink>
-          , each pointing to the next node with a pointer. Unlike{" "}
+          <TextLink href="#listNodes">list nodes</TextLink>, each pointing to
+          the next node with a pointer. Unlike{" "}
           <TextLink href="/data-structures/arrays">arrays</TextLink>, linked
           lists are{" "}
           <span className="font-bold">not stored contiguously in memory.</span>{" "}
@@ -80,11 +78,8 @@ const LinkedListsPage = async () => {
         <p>
           <br />
           Each list node contains a reference (or{" "}
-          <TextLink href="/data-structures/linked-lists#pointers">
-            pointer
-          </TextLink>
-          ) to the next node, meaning you can access any node as long as you
-          have a pointer to it:{" "}
+          <TextLink href="#pointers">pointer</TextLink>) to the next node,
+          meaning you can access any node as long as you have a pointer to it:{" "}
         </p>
         <Operations items={linkedListOperations} />
       </ChapterHeading>

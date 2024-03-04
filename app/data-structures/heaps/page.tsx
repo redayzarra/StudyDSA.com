@@ -23,7 +23,7 @@ const HeapsPage = async () => {
   const definitionChapter = findChapter(topic, "Definition");
   const operationsChapter = findChapter(topic, "Operations");
   const structureChapter = findChapter(topic, "Structure Property");
-  const sortedChapter = findChapter(topic, "Sorted Property");
+  const orderChapter = findChapter(topic, "Order Property");
   const heapifyChapter = findChapter(topic, "Heapify");
   const minMaxChapter = findChapter(topic, "Min/Max Heaps");
   const implementationChapter = findChapter(topic, "Implementation");
@@ -40,14 +40,21 @@ const HeapsPage = async () => {
 
   return (
     <div className="space-y-8">
-       <Heading topic={topic!} />
+      <Heading topic={topic!} />
       <ChapterHeading
         id="definition"
         title="Definition"
         chapterId={definitionChapter?.id}
       >
         <p>
-          Heaps are a type of binary tree where each parent node is either greater than or equal to (in a max heap) or less than or equal to (in a min heap) its child nodes. Unlike binary search trees, heaps are not sorted but do follow this specific property to efficiently support priority queue operations.
+          Heaps are a type of binary tree where{" "}
+          <strong>
+            each parent node is either less than or equal to (in a min heap) its
+            children
+          </strong>
+          . Unlike binary search trees, heaps are not sorted but do follow this
+          specific <TextLink href="#order">order property</TextLink> to
+          efficiently support priority queue operations.
         </p>
       </ChapterHeading>
       <ChapterHeading
@@ -56,28 +63,38 @@ const HeapsPage = async () => {
         chapterId={operationsChapter?.id}
       >
         <p>
-          Heaps primarily support two key operations: inserting a new element and removing the top element. These operations are designed to maintain the heap property, ensuring that the heap is correctly updated and balanced.
+          Heaps primarily support two key operations: inserting a new element
+          and removing the top element. These operations are designed to
+          maintain the heap property, ensuring that the heap is correctly
+          updated and balanced.
         </p>
         <Operations items={arrayOperations} />
       </ChapterHeading>
       <ChapterHeading
-        id="structureProperty"
+        id="structure"
         title="Structure Property"
         chapter={structureChapter}
         chapterId={structureChapter?.id}
       >
         <p>
-          The structure property of heaps ensures that they are always complete binary trees. This means all levels of the tree are fully filled except possibly for the last level, which is filled from left to right. This structure is crucial for the efficient implementation of heaps.
+          The structure property of heaps ensures that they are always complete
+          binary trees. This means all levels of the tree are fully filled
+          except possibly for the last level, which is filled from left to
+          right. This structure is crucial for the efficient implementation of
+          heaps.
         </p>
       </ChapterHeading>
       <ChapterHeading
-        id="sortedProperty"
-        title="Sorted Property"
-        chapter={sortedChapter}
-        chapterId={sortedChapter?.id}
+        id="order"
+        title="Order Property"
+        chapter={orderChapter}
+        chapterId={orderChapter?.id}
       >
         <p>
-          While heaps do not store elements in a strictly sorted order, the heap property ensures that the path from any node to the root node will always be sorted. This property allows for efficient access to the heap's maximum or minimum element.
+          While heaps do not store elements in a strictly sorted order, the heap
+          property ensures that the path from any node to the root node will
+          always be sorted. This property allows for efficient access to the
+          heap's maximum or minimum element.
         </p>
       </ChapterHeading>
       <ChapterHeading
@@ -87,7 +104,9 @@ const HeapsPage = async () => {
         chapterId={heapifyChapter?.id}
       >
         <p>
-          The heapify process transforms an unorganized array of elements into a heap by iteratively applying the heap property from the bottom up. It's a key operation for building heaps and for heap sort algorithms.
+          The heapify process transforms an unorganized array of elements into a
+          heap by iteratively applying the heap property from the bottom up.
+          It's a key operation for building heaps and for heap sort algorithms.
         </p>
       </ChapterHeading>
       <ChapterHeading
@@ -97,17 +116,24 @@ const HeapsPage = async () => {
         chapterId={minMaxChapter?.id}
       >
         <p>
-          Heaps come in two forms: min heaps, where the parent is less than or equal to its children, and max heaps, where the parent is greater. This distinction dictates how elements are prioritized and accessed during heap operations.
+          Heaps come in two forms: min heaps, where the parent is less than or
+          equal to its children, and max heaps, where the parent is greater.
+          This distinction dictates how elements are prioritized and accessed
+          during heap operations.
         </p>
       </ChapterHeading>
 
-       <ChapterHeading
+      <ChapterHeading
         id="implementation"
         title="Implementation"
         chapterId={implementationChapter?.id}
       >
         <p>
-          Heaps are a type of binary tree where each parent node is either greater than or equal to (in a max heap) or less than or equal to (in a min heap) its child nodes. Unlike binary search trees, heaps are not sorted but do follow this specific property to efficiently support priority queue operations.
+          Heaps are a type of binary tree where each parent node is either
+          greater than or equal to (in a max heap) or less than or equal to (in
+          a min heap) its child nodes. Unlike binary search trees, heaps are not
+          sorted but do follow this specific property to efficiently support
+          priority queue operations.
         </p>
       </ChapterHeading>
 

@@ -460,7 +460,7 @@ const TreesPage = async () => {
           <li>
             <span className="font-bold">&bull; Mastering Tree Traversals:</span>{" "}
             Familiarize yourself with different tree{" "}
-            <TextLink href="/data-structures/trees#traversal">
+            <TextLink href="#traversal">
               traversal
             </TextLink>{" "}
             techniques—
@@ -476,7 +476,7 @@ const TreesPage = async () => {
             <strong>draw out the tree</strong> based on the problem description.
             Visualizing the tree can help you understand the problem better,
             help you choose a{" "}
-            <TextLink href="/data-structures/trees#traversal">
+            <TextLink href="#traversal">
               traversal
             </TextLink>{" "}
             technique, and plan your solution more effectively.
