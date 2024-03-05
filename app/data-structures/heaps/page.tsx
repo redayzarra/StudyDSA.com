@@ -6,6 +6,7 @@ import ChapterHeading from "@/components/ChapterHeading";
 import CodeBlock from "@/components/CodeBlock";
 import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
+import ImageBlock from "@/components/ImageBlock";
 import Operations from "@/components/Operations";
 import TextLink from "@/components/TextLink";
 import { heapOperations } from "@/data/operationsData";
@@ -89,7 +90,10 @@ const HeapsPage = async () => {
           </strong>
           , which is <strong>filled from left to right</strong>.
         </p>
-        <br />
+        <ImageBlock
+          src="/images/heaps/StructureProperty.jpg"
+          alt="Captain america"
+        />
         <p>
           This structural property not only ensures a{" "}
           <strong>balanced distribution of nodes</strong> but also{" "}
@@ -106,14 +110,20 @@ const HeapsPage = async () => {
         chapterId={heapPropertyChapter?.id}
       >
         <p>
-          The heap property While heaps do not store elements in a strictly
-          sorted order, the heap property ensures that{" "}
+          The heap property states that each{" "}
+          <strong>
+            parent node's value is less than or equal to the values of its
+            children (in a min heap)
+          </strong>
+          . While heaps do not store elements in a strictly sorted order, the
+          heap property ensures that{" "}
           <strong>
             the path from any node to the root node will always be sorted
           </strong>
           . This property allows for efficient access to the heap's maximum or
           minimum element.
         </p>
+        <ImageBlock src="/images/heaps/HeapProperty.jpg" alt="Heap Property" />
       </ChapterHeading>
       <ChapterHeading
         id="heapify"
