@@ -70,7 +70,7 @@ const HeapsPage = async () => {
           Heaps primarily support two key operations:{" "}
           <strong>inserting a new element and removing the top element</strong>.
           These operations are designed to maintain the heap property, ensuring
-          that the heap is correctly updated and balanced.
+          that the heap is correctly updated and balanced:
         </p>
         <Operations items={heapOperations} />
       </ChapterHeading>
@@ -81,11 +81,22 @@ const HeapsPage = async () => {
         chapterId={structureChapter?.id}
       >
         <p>
-          The structure property of heaps ensures that they are always complete
-          binary trees. This means all levels of the tree are fully filled
-          except possibly for the last level, which is filled from left to
-          right. This structure is crucial for the efficient implementation of
-          heaps.
+          The structure property of heaps ensures that{" "}
+          <strong>they are always complete binary trees</strong>. This means
+          <strong>
+            {" "}
+            all levels of the tree are fully filled except maybe the last level
+          </strong>
+          , which is <strong>filled from left to right</strong>.
+        </p>
+        <br />
+        <p>
+          This structural property not only ensures a{" "}
+          <strong>balanced distribution of nodes</strong> but also{" "}
+          <strong>guarantees an optimal height</strong>, allowing for efficient
+          operations. The completeness of the heap also optimizes storage by
+          eliminating the need for pointers typically required in trees,
+          allowing heaps to be efficiently implemented using arrays.
         </p>
       </ChapterHeading>
       <ChapterHeading
@@ -95,10 +106,13 @@ const HeapsPage = async () => {
         chapterId={heapPropertyChapter?.id}
       >
         <p>
-          While heaps do not store elements in a strictly sorted order, the heap
-          property ensures that the path from any node to the root node will
-          always be sorted. This property allows for efficient access to the
-          heap's maximum or minimum element.
+          The heap property While heaps do not store elements in a strictly
+          sorted order, the heap property ensures that{" "}
+          <strong>
+            the path from any node to the root node will always be sorted
+          </strong>
+          . This property allows for efficient access to the heap's maximum or
+          minimum element.
         </p>
       </ChapterHeading>
       <ChapterHeading

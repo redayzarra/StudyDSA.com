@@ -57,7 +57,7 @@ export const amortizedTimeCode =
             operations += i  # Simulate copying all elements to a new array
         operations += 1  # The append operation itself
 
-    print(f"Total operations: {operations}, Amortized time per operation: {operations / n}")
+    print(f"Total operations: {operations}, Amortized time: {operations / n}")
 
     # Let's run this simulation for an input size (n) of 1000
     print(amortized_time_simulation(1000)) 
