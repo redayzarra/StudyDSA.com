@@ -8,7 +8,7 @@ interface Props {
 
 const ImageBlock = ({ src, alt }: Props) => {
   return (
-    <div className="my-4 overflow-hidden mx-auto rounded-md max-w-3xl">
+    <div className="my-6 shadow-lg overflow-hidden mx-auto rounded-md max-w-3xl">
       <Image src={src} alt={alt} width={1200} height={200} />
     </div>
   );

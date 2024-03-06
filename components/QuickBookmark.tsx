@@ -3,10 +3,10 @@ import { FaBookmark, FaRegBookmark } from "react-icons/fa6";
 
 const QuickBookmark = async ({ userId }: { userId: string }) => {
   const bookmark = await getBookmark(userId);
-  const iconSize = 20;
+  const iconSize = 18;
 
   return (
-    <div className="flex items-center space-x-2">
+    <div className="ml-0.5 flex items-center space-x-2">
       {bookmark ? (
         <>
           <FaBookmark size={iconSize} />

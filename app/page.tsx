@@ -11,6 +11,7 @@ import getUser from "@/hooks/server/getUser";
 export default async function Home() {
   const user = await getUser();
   const userName = (user?.name ?? user?.username)?.trim();
+  const firstName = userName?.split(" ")[0];
 
   return (
     <div className="w-full dark:bg-neutral-950 rounded-md flex md:items-center md:justify-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-background via-muted-foreground/10 to-muted-foreground/[0.22] dark:bg-black/[0.96] antialiased dark:bg-grid-small-white/5 relative overflow-hidden">
@@ -20,7 +21,7 @@ export default async function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-12">
             <MasterDSA />
             {user ? (
-              <Welcome user={user} userName={userName!} />
+              <Welcome user={user} userName={firstName!} />
             ) : (
               <BlurryWelcome />
             )}
