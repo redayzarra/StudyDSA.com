@@ -11,6 +11,7 @@ import Operations from "@/components/Operations";
 import TextLink from "@/components/TextLink";
 import { heapOperations } from "@/data/operationsData";
 import { Metadata } from "next";
+import { heapifyCode } from "./heapsCode";
 
 const HeapsPage = async () => {
   const topic = await getTopicByName("Heaps");
@@ -132,9 +133,29 @@ const HeapsPage = async () => {
         chapterId={heapifyChapter?.id}
       >
         <p>
-          The heapify process transforms an unorganized array of elements into a
-          heap by iteratively applying the heap property from the bottom up.
-          It's a key operation for building heaps and for heap sort algorithms.
+          The heapify function is a fundamental operation for converting any
+          array into a heap structure. This process{" "}
+          <strong>rearranges the elements of the array to satisfy the</strong>{" "}
+          <TextLink href="#property">heap property</TextLink>, ensuring that for
+          every node the value of the node is not less than the value of its
+          parent, <strong>forming a min heap</strong>.
+        </p>
+        <br />
+        <p>
+          Starting from the last non-leaf node all the way up to the root node,
+          the process applies the <CodeText>sift-down</CodeText> operation. This
+          ensures that each subtree satisfies the heap property before finally{" "}
+          <strong>transforming the entire array into a heap</strong>:
+        </p>
+        <CodeBlock code={heapifyCode} language="python" title="Heapify.py" />
+        <p>
+          <br />
+          The <CodeText>siftDown</CodeText> method is important in the{" "}
+          <CodeText>heapify</CodeText> process. It compares the parent node with
+          its children to ensure the heap property is maintained, swapping the
+          nodes when necessary. This{" "}
+          <strong>function continues until the subtree</strong> rooted at the
+          node being sifted down <strong>satisfies the heap property</strong>.
         </p>
       </ChapterHeading>
       <ChapterHeading
