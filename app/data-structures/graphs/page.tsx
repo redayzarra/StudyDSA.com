@@ -9,7 +9,7 @@ import Heading from "@/components/Heading";
 import ImageBlock from "@/components/ImageBlock";
 import Operations from "@/components/Operations";
 import TextLink from "@/components/TextLink";
-import { arrayOperations, heapOperations } from "@/data/operationsData";
+import { arrayOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 
 const GraphsPage = async () => {
@@ -56,11 +56,15 @@ const GraphsPage = async () => {
         chapterId={definitionChapter?.id}
       >
         <p>
-          Graphs are structures composed of nodes (or vertices) connected by
-          edges. Unlike trees, graphs can include cycles, allowing for a more
-          complex network of connections. Graphs model various real-world
-          systems such as social networks, transportation networks, and computer
-          networks.
+          Graphs are composed of{" "}
+          <strong>vertices (or nodes) connected by edges</strong>. Unlike trees,{" "}
+          graphs{" "}
+          <strong>
+            can include cycles and vertices can be connected to any number of
+            other vertices.
+          </strong>{" "}
+          This allows for a more complex network of connections to represent
+          relationships.
         </p>
       </ChapterHeading>
 
@@ -94,6 +98,7 @@ const GraphsPage = async () => {
       <ChapterHeading
         id="directionality"
         title="Directionality"
+        chapter={directionalityChapter}
         chapterId={directionalityChapter?.id}
       >
         <p>
@@ -107,6 +112,7 @@ const GraphsPage = async () => {
       <ChapterHeading
         id="adjacency"
         title="Adjacency List"
+        chapter={adjacencyChapter}
         chapterId={adjacencyChapter?.id}
       >
         <p>
@@ -117,7 +123,12 @@ const GraphsPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="matrix" title="Matrix" chapterId={matrixChapter?.id}>
+      <ChapterHeading
+        chapter={matrixChapter}
+        id="matrix"
+        title="Matrix"
+        chapterId={matrixChapter?.id}
+      >
         <p>
           The adjacency matrix is a 2D array representation of a graph where
           rows represent source vertices and columns represent destination
@@ -129,6 +140,7 @@ const GraphsPage = async () => {
       <ChapterHeading
         id="traversal"
         title="Graph Traversal"
+        chapter={graphTraversalChapter}
         chapterId={graphTraversalChapter?.id}
       >
         <p>
