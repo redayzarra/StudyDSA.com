@@ -228,29 +228,29 @@ const graphSkills = [
     description: "Here's everything you can do with graphs based on the representation",
   },
   {
-    title: "Implementation",
-    href: "/data-structures/graphs",
-    description: "There are many ways to represent graphs based on the problem",
+    title: "Terminology",
+    href: "/data-structures/graphs#terminology",
+    description: "Key terms like vertices, edges, weighted, and directed graphs",
   },
   {
     title: "Directionality",
-    href: "/data-structures/graphs",
+    href: "/data-structures/graphs#directionality",
     description: "If graph edges are directional, they point from one node to another",
   },
   {
-    title: "Matrix",
-    href: "/data-structures/graphs",
-    description: "Usually represented by arrays, they basically form a rectangle of nodes",
-  },
-  {
     title: "Adjacency List",
-    href: "/data-structures/graphs",
+    href: "/data-structures/graphs#adjacencyList",
     description: "Each node has a list of it's neighbors, most common representation",
   },
   {
-    title: "Algorithms",
-    href: "/data-structures/graphs",
-    description: "These are all the common algorithms for graphs that you need to know",
+    title: "Matrix",
+    href: "/data-structures/graphs#matrix",
+    description: "Usually represented by arrays, they basically form a rectangle of nodes",
+  },
+  {
+    title: "Graph Traversal",
+    href: "/data-structures/graphs#traversal",
+    description: "Using DFS and BFS methods for navigating different type of graphs",
   },
   {
     title: "Best Practices",

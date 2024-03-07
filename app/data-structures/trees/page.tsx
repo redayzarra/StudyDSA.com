@@ -8,7 +8,7 @@ import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
 import TextLink from "@/components/TextLink";
-import { arrayOperations, treeOperations } from "@/data/operationsData";
+import { treeOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import {
   binarySearchTreeCode,
