@@ -273,3 +273,48 @@ export const heapOperations: { operation: string; time: string; space: string, n
     notes: "Deleting a specific node requires re-heapifying to maintain heap structure",
   },
 ]
+
+export const graphOperations: { operation: string; time: string; space: string, notes: string }[] = [
+  {
+    operation: "Add Vertex",
+    time: "O(1)",
+    space: "O(1)",
+    notes: "Adding a vertex is direct, adjusting the storage structure.",
+  },
+  {
+    operation: "Add Edge",
+    time: "O(1)",
+    space: "O(1)",
+    notes: "Adding an edge between two vertices is straightforward.",
+  },
+  {
+    operation: "Remove Vertex",
+    time: "O(V+E)",
+    space: "O(1)",
+    notes: "Removal requires deleting edges, affecting the adjacency list/matrix.",
+  },
+  {
+    operation: "Remove Edge",
+    time: "O(1)",
+    space: "O(1)",
+    notes: "Edge removal is direct but requires locating the edge.",
+  },
+  {
+    operation: "Search",
+    time: "O(V+E)",
+    space: "O(V)",
+    notes: "Exploring nodes/edges, time varies by search type (DFS/BFS).",
+  },
+  {
+    operation: "Check Connectivity",
+    time: "O(α(V))",
+    space: "O(V)",
+    notes: "Determines if two vertices are connected, using Union-Find (with optimizations)",
+},
+  {
+    operation: "Find Path",
+    time: "O(V+E)",
+    space: "O(V)",
+    notes: "Determines path between vertices, complexity depends on search.",
+  },
+]

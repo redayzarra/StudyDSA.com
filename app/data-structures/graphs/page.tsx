@@ -3,13 +3,10 @@ import findChapter from "@/actions/chapters/findChapter";
 import getTopicByName from "@/actions/topics/getTopicByName";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
-import CodeBlock from "@/components/CodeBlock";
 import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
-import ImageBlock from "@/components/ImageBlock";
 import Operations from "@/components/Operations";
-import TextLink from "@/components/TextLink";
-import { arrayOperations } from "@/data/operationsData";
+import { graphOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 
 const GraphsPage = async () => {
@@ -75,11 +72,20 @@ const GraphsPage = async () => {
       >
         <p>
           Graph operations encompass adding and removing vertices or edges,
-          checking for connectivity, and finding paths or cycles. These
-          operations enable the manipulation and analysis of the graph
-          structure.
+          checking for connectivity, and finding paths or cycles. Here's
+          everything you can do with graphs and their time complexities:
         </p>
-        <Operations items={arrayOperations} />
+        <Operations items={graphOperations} />
+        <p>
+          The Inverse Ackermann function, denoted as <CodeText>a(n)</CodeText>,
+          is a math function that occurs in certain algorithms involving
+          disjoint set unions or connectivity checks in graphs. The{" "}
+          <strong>Inverse Ackermann function grows very slowly</strong> so when
+          algorithms have a complexity of <CodeText>O(a(n))</CodeText> it means
+          that these algorithms are{" "}
+          <strong>almost as efficient as those running in constant time</strong>
+          .
+        </p>
       </ChapterHeading>
 
       <ChapterHeading
