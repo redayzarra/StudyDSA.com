@@ -94,15 +94,12 @@ const GraphsPage = async () => {
         chapterId={terminologyChapter?.id}
       >
         <p>
-          The foundational elements of graphs are{" "}
-          <strong>vertices (or nodes)</strong> and <strong>edges</strong>.
-          Vertices represent entities in a graph, while edges denote the
-          connections or relationships between these entities. A unique aspect
-          of graph structure is the <strong>edge</strong>, which can be
-          directed, indicating a one-way relationship, or undirected,
-          representing a two-way relationship.
+          Graphs are made up of vertices and edges.{" "}
+          <strong>Vertices represent nodes in a graph</strong>, while{" "}
+          <strong>edges are connections</strong> between these nodes. Every node
+          contains a value and a list of neighbors that it is connected to.
         </p>
-        
+
         <br />
         <p>
           Graphs are categorized into <strong>directed</strong> and{" "}
@@ -112,7 +109,7 @@ const GraphsPage = async () => {
           <strong>undirected graphs</strong> have edges that lack direction,
           signifying a bidirectional relationship.
         </p>
-        
+
         <br />
         <p>
           Another critical concept in graphs is <strong>weight</strong>. In{" "}
@@ -121,7 +118,7 @@ const GraphsPage = async () => {
           concept is crucial for algorithms that find the shortest path or
           minimum spanning tree.
         </p>
-        
+
         <br />
         <p>
           The terms <strong>adjacency</strong> and <strong>path</strong> are
@@ -130,7 +127,7 @@ const GraphsPage = async () => {
           them. A <strong>path</strong> in a graph is a sequence of vertices
           where each pair of consecutive vertices is connected by an edge.
         </p>
-        
+
         <br />
         <p>
           Additionally, <strong>cycles</strong> represent paths that start and
@@ -138,7 +135,7 @@ const GraphsPage = async () => {
           Understanding cycles is essential for algorithms that detect cycles in
           graphs, impacting the graph's traversal and properties.
         </p>
-        
+
         <br />
         <p>
           Lastly, the concepts of <strong>connected components</strong> in
@@ -148,7 +145,6 @@ const GraphsPage = async () => {
           graphs, a strongly connected component is where every vertex is
           reachable from every other vertex in the component.
         </p>
-        
       </ChapterHeading>
 
       <ChapterHeading
