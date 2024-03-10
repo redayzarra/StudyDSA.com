@@ -3,11 +3,13 @@ import findChapter from "@/actions/chapters/findChapter";
 import getTopicByName from "@/actions/topics/getTopicByName";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
+import CodeBlock from "@/components/CodeBlock";
 import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
 import { graphOperations } from "@/data/operationsData";
 import { Metadata } from "next";
+import { graphNodeCode } from "./graphCode";
 
 const GraphsPage = async () => {
   const topic = await getTopicByName("Graphs");
@@ -95,11 +97,14 @@ const GraphsPage = async () => {
       >
         <p>
           Graphs are made up of vertices and edges.{" "}
-          <strong>Vertices represent nodes in a graph</strong>, while{" "}
-          <strong>edges are connections</strong> between these nodes. Every node
-          contains a value and a list of neighbors that it is connected to.
+          <strong>Vertices represent nodes in a graph</strong>, each can
+          containing values (or data), while{" "}
+          <strong>edges are connections</strong> between these nodes, defining
+          the connections among them.{" "}
+          <strong>Vertices maintain a list of their adjacent neighbors</strong>,
+          which are other nodes directly connected to them through edges:
         </p>
-
+        <CodeBlock code={graphNodeCode} language="c" title="GraphNodes.py" />
         <br />
         <p>
           Graphs are categorized into <strong>directed</strong> and{" "}
