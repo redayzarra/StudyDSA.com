@@ -10,6 +10,7 @@ import Operations from "@/components/Operations";
 import { graphOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import { graphNodeCode } from "./graphCode";
+import ImageBlock from "@/components/ImageBlock";
 
 const GraphsPage = async () => {
   const topic = await getTopicByName("Graphs");
@@ -104,51 +105,44 @@ const GraphsPage = async () => {
           <strong>Vertices maintain a list of their adjacent neighbors</strong>,
           which are other nodes directly connected to them through edges:
         </p>
-        <CodeBlock code={graphNodeCode} language="c" title="GraphNodes.py" />
+        <CodeBlock
+          code={graphNodeCode}
+          language="python"
+          title="GraphNodes.py"
+        />
         <br />
         <p>
-          Graphs are categorized into <strong>directed</strong> and{" "}
-          <strong>undirected graphs</strong> based on the nature of their edges.
-          In <strong>directed graphs (digraphs)</strong>, edges have a
-          direction, from a source vertex to a destination vertex. Conversely,{" "}
-          <strong>undirected graphs</strong> have edges that lack direction,
-          signifying a bidirectional relationship.
+          Vertices are <strong>adjacent</strong> if there is an edge directly
+          connecting them. A <strong>path</strong> in a graph is a sequence of
+          vertices where each consecutive vertex is connected by an edge.{" "}
+          <strong>Cycles</strong> are paths that{" "}
+          <strong>start and end at the same vertex</strong>:
         </p>
 
-        <br />
+        <ImageBlock
+          src="/images/graphs/GraphTerms.jpg"
+          alt="Graph key terms like vertices, edges, loops, and cycles"
+        />
+
         <p>
-          Another critical concept in graphs is <strong>weight</strong>. In{" "}
+          Another important aspect of graphs is <strong>weight</strong>. In{" "}
           <strong>weighted graphs</strong>, edges have weights assigned to them,
-          which can represent quantities like distance, cost, or capacity. This
-          concept is crucial for algorithms that find the shortest path or
-          minimum spanning tree.
+          which can <strong>represent quantities</strong> like distance, cost,
+          or capacity. This allows for algorithms that find the shortest path or
+          create a minimum spanning tree.
         </p>
 
-        <br />
-        <p>
-          The terms <strong>adjacency</strong> and <strong>path</strong> are
-          vital for understanding graph connectivity. Vertices are{" "}
-          <strong>adjacent</strong> if there is an edge directly connecting
-          them. A <strong>path</strong> in a graph is a sequence of vertices
-          where each pair of consecutive vertices is connected by an edge.
-        </p>
+        <ImageBlock
+          src="/images/graphs/WeightedGraph.jpg"
+          alt="Weighted graph with weights on edges, includes cycles"
+        />
 
-        <br />
         <p>
-          Additionally, <strong>cycles</strong> represent paths that start and
-          end at the same vertex, with no other repeated vertices or edges.
-          Understanding cycles is essential for algorithms that detect cycles in
-          graphs, impacting the graph's traversal and properties.
-        </p>
-
-        <br />
-        <p>
-          Lastly, the concepts of <strong>connected components</strong> in
-          undirected graphs and <strong>strongly connected components</strong>{" "}
-          in directed graphs are crucial. A connected component is a subset of
-          the graph where any two vertices are connected by paths. In directed
-          graphs, a strongly connected component is where every vertex is
-          reachable from every other vertex in the component.
+          A <strong>connected component</strong> is a portion of the graph where{" "}
+          <strong>vertices are connected by paths</strong>. In directed graphs,
+          a <strong>strongly connected component</strong> is where every{" "}
+          <strong>vertex is reachable from every other vertex</strong> in the
+          component.
         </p>
       </ChapterHeading>
 
