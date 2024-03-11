@@ -153,11 +153,17 @@ const GraphsPage = async () => {
         chapterId={directionalityChapter?.id}
       >
         <p>
-          Graph directionality refers to whether edges have a direction
-          (directed graphs) or not (undirected graphs). In directed graphs,
-          edges indicate a one-way relationship, while in undirected graphs,
-          edges represent a two-way, mutual connection.
+          Graph directionality is when edges have a direction (
+          <strong>directed graphs</strong>) or not (undirected graphs). In
+          directed graphs,
+          <strong> edges indicate a one-way relationship</strong>, while in
+          <strong> undirected graphs, edges represent a two-way</strong>, mutual
+          connection.
         </p>
+        <ImageBlock
+          src="/images/graphs/GraphDirectionality.jpg"
+          alt="Directed graphs have edges that point a certain direction, while undirected graphs have two-way edges"
+        />
       </ChapterHeading>
 
       <ChapterHeading
