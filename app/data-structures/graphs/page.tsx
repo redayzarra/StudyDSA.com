@@ -11,6 +11,7 @@ import { graphOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import { graphNodeCode } from "./graphCode";
 import ImageBlock from "@/components/ImageBlock";
+import TextLink from "@/components/TextLink";
 
 const GraphsPage = async () => {
   const topic = await getTopicByName("Graphs");
@@ -173,10 +174,18 @@ const GraphsPage = async () => {
         chapterId={adjacencyChapter?.id}
       >
         <p>
-          An adjacency list is a common way to represent graphs, where each
-          vertex stores a list of vertices to which it is connected. This method
-          is space-efficient for sparse graphs and facilitates easy exploration
-          of connected vertices.
+          <strong>Adjacency lists are a way to represent graphs</strong>, where
+          each vertex stores a list of other vertices directly connected by
+          edges. Typically{" "}
+          <strong>
+            implemented as a{" "}
+            <TextLink href="/data-structures/hashmaps">hashmap</TextLink>
+          </strong>
+          , the
+          <strong> vertices are stored as keys</strong>, while the{" "}
+          <strong>values are lists of adjacent vertices</strong>. This structure
+          is a flexible way to represent the relationships within the graph,
+          allowing for efficient operations.
         </p>
       </ChapterHeading>
 
@@ -186,12 +195,7 @@ const GraphsPage = async () => {
         title="Matrix"
         chapterId={matrixChapter?.id}
       >
-        <p>
-          The adjacency matrix is a 2D array representation of a graph where
-          rows represent source vertices and columns represent destination
-          vertices. Cell values indicate the presence of an edge and, in
-          weighted graphs, the weight of the edge.
-        </p>
+        <p>Baobeis are my favorite.</p>
       </ChapterHeading>
 
       <ChapterHeading
