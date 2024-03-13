@@ -9,7 +9,7 @@ import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
 import { graphOperations } from "@/data/operationsData";
 import { Metadata } from "next";
-import { graphNodeCode } from "./graphCode";
+import { adjacencyListCode, graphNodeCode } from "./graphCode";
 import ImageBlock from "@/components/ImageBlock";
 import TextLink from "@/components/TextLink";
 
@@ -181,12 +181,26 @@ const GraphsPage = async () => {
             implemented as a{" "}
             <TextLink href="/data-structures/hashmaps">hashmap</TextLink>
           </strong>
-          , the
-          <strong> vertices are stored as keys</strong>, while the{" "}
-          <strong>values are lists of adjacent vertices</strong>. This structure
-          is a flexible way to represent the relationships within the graph,
-          allowing for efficient operations.
+          , where <strong>keys are vertices</strong> and{" "}
+          <strong>values are a list of adjacent vertices</strong>. This
+          structure is a flexible way to represent the relationships within the
+          graph.
         </p>
+
+        <br />
+        <p>
+          Adjacency lists are typically{" "}
+          <strong>built from a given list of edges</strong>, where each edge in
+          the list is represented as a{" "}
+          <strong>pair of vertices indicating an edge</strong> from one vertex
+          to another. Each edge is a list containing two items: the 'from'
+          vertex and the 'to' vertex.
+        </p>
+        <CodeBlock
+          code={adjacencyListCode}
+          language="python"
+          title="AdjacencyList.py"
+        />
       </ChapterHeading>
 
       <ChapterHeading
