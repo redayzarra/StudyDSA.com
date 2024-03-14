@@ -168,7 +168,7 @@ const GraphsPage = async () => {
       </ChapterHeading>
 
       <ChapterHeading
-        id="adjacency"
+        id="adjacencyList"
         title="Adjacency List"
         chapter={adjacencyChapter}
         chapterId={adjacencyChapter?.id}
@@ -209,7 +209,16 @@ const GraphsPage = async () => {
         title="Matrix"
         chapterId={matrixChapter?.id}
       >
-        <p>Baobeis are my favorite.</p>
+        <p>
+          A <strong>matrix is a two-dimensional array</strong> that forms a
+          rectangle or square of cells, organized into <strong>rows and columns</strong>. Each
+          cell in a matrix can hold a value.
+        </p>
+        <br />
+        <p>
+          In graph theory, a specific use of matrices is the{" "}
+          <strong>adjacency matrix</strong>. 
+        </p>
       </ChapterHeading>
 
       <ChapterHeading
