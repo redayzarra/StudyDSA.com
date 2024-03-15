@@ -236,11 +236,20 @@ const GraphsPage = async () => {
         />
         <p>
           For{" "}
-          <strong>
-            undirected graphs, their adjacency matrix is symmetric
-          </strong>
-          , because of their bidirectional nature of connections. However, the{" "}
+          <strong>undirected graphs, the adjacency matrix is symmetric</strong>,
+          because of their bidirectional nature of connections. However, the{" "}
           <strong>adjcency matrix for directed graphs is non-symmetric</strong>.
+        </p>
+        <br />
+        <p>
+          Adjacency matrices are extremely{" "}
+          <strong>inefficient and should be avoided</strong>. They
+          <strong> consume a large amount of memory</strong> to store many zero
+          values, which represent absent edges between most pairs of vertices.
+          Operations like adding or removing can be{" "}
+          <strong>computationally expensive</strong> because we need to resize
+          and update large portions of the matrix.{" "}
+          <strong>Use adjacency lists</strong>.
         </p>
       </ChapterHeading>
 
