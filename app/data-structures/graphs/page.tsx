@@ -9,7 +9,7 @@ import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
 import { graphOperations } from "@/data/operationsData";
 import { Metadata } from "next";
-import { adjacencyListCode, graphNodeCode } from "./graphCode";
+import { adjacencyListCode, graphNodeCode, matrixCode } from "./graphCode";
 import ImageBlock from "@/components/ImageBlock";
 import TextLink from "@/components/TextLink";
 
@@ -215,14 +215,32 @@ const GraphsPage = async () => {
           <strong>rows and columns</strong>. The individual items in a matrix
           are called elements or <strong>cells</strong>. The size or{" "}
           <strong>dimensions of a matrix</strong> is defined by the{" "}
-          <strong>number of rows and columns</strong> it contains. A matrix with {" "}
+          <strong>number of rows and columns</strong> it contains. A matrix with{" "}
           <CodeText>m</CodeText> rows and <CodeText>n</CodeText> columns is
           called a <CodeText>m × n</CodeText> matrix:
         </p>
+        <CodeBlock code={matrixCode} language="python" title="Matrix.py" />
         <br />
         <p>
-          In graph theory, a specific use of matrices is the{" "}
-          <strong>adjacency matrix</strong>.
+          In graph theory, an{" "}
+          <strong>adjacency matrix is a way to represent connections</strong>{" "}
+          between nodes in a graph. It <strong>always forms a square</strong>{" "}
+          matrix where each element indicates whether a pair of vertices is
+          directly connected by an edge. The{" "}
+          <strong>rows and columns correspond to the vertices</strong> of the
+          graph.
+        </p>
+        <ImageBlock
+          src="/images/graphs/AdjacencyMatrix.jpg"
+          alt="An adjacency matrix is full of zeroes and ones to indicate the presence of an edge between two vertices."
+        />
+        <p>
+          For{" "}
+          <strong>
+            undirected graphs, their adjacency matrix is symmetric
+          </strong>
+          , because of their bidirectional nature of connections. However, the{" "}
+          <strong>adjcency matrix for directed graphs is non-symmetric</strong>.
         </p>
       </ChapterHeading>
 

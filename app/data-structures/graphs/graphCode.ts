@@ -26,3 +26,16 @@ def undirectedGraph(self, edges: List[List[int]]) -> dict:
             hashmap[source].append(destination)
             hashmap[destination].append(source)
         return hashmap`;
+
+export const matrixCode = 
+`# Example 4 x 5 matrix (m = 4, n = 5)
+matrix = [
+    [1,  2,  3,  4,  5 ], # Row 0
+    [6,  7,  8,  9,  10], # Row 1
+    [11, 12, 13, 14, 15], # Row 2
+    [16, 17, 18, 19, 20]  # Row 3
+]
+
+# Extracting the number of rows and columns
+ROWS, COLS = len(matrix), len(matrix[0])
+print(f"The matrix has {ROWS} rows and {COLS} columns")`;
