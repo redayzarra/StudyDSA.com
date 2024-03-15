@@ -9,7 +9,13 @@ import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
 import { graphOperations } from "@/data/operationsData";
 import { Metadata } from "next";
-import { adjacencyListCode, dfsAdjacencyCode, graphNodeCode, matrixCode } from "./graphCode";
+import {
+  adjacencyListCode,
+  bfsAdjacencyCode,
+  dfsAdjacencyCode,
+  graphNodeCode,
+  matrixCode,
+} from "./graphCode";
 import ImageBlock from "@/components/ImageBlock";
 import TextLink from "@/components/TextLink";
 
@@ -275,21 +281,31 @@ const GraphsPage = async () => {
           possible along one branch before backtracking. This is implemented
           using <TextLink href="/algorithms/recursion">recursion</TextLink> (or
           a stack). In adjacency lists, DFS begins at a selected vertex, marking
-          it as visited using a <TextLink href="/data-structures/hashmaps#sets">hashset</TextLink>. It then recursively visits unvisited neighboring
-          vertices, exploring the graph's depth before backtracking to explore
-          new branches:
+          it as visited using a{" "}
+          <TextLink href="/data-structures/hashmaps#sets">hashset</TextLink>. It
+          then recursively visits unvisited neighboring vertices, exploring the
+          graph's depth before backtracking to explore new branches:
         </p>
-        <CodeBlock code={dfsAdjacencyCode} language="python" title="DFS_AdjacencyList.py" />
+        <CodeBlock
+          code={dfsAdjacencyCode}
+          language="python"
+          title="DFS_AdjacencyList.py"
+        />
         <br />
         <p>
           <strong>BFS for Adjacency Lists: </strong>BFS explores the graph level
-          by level, starting from a selected node. It uses a queue to keep track
+          by level, starting from a selected node. It uses a <TextLink href="/data-structures/queues">queue</TextLink> to keep track
           of the order in which to visit vertices. For adjacency lists, BFS
-          iteratively visits each unvisited neighbor of a vertex, marks it as
-          visited, and enqueues its adjacent vertices. This process is repeated
-          until the queue is empty, ensuring that vertices are visited in
-          increasing distance from the start vertex.
+          visits each unvisited neighbor of a vertex, marks it as
+          visited, and adds its adjacent vertices to the queue. This process is repeated
+          until the queue is empty, so that all connected vertices are visited in
+          increasing distance from the starting vertex:
         </p>
+        <CodeBlock
+          code={bfsAdjacencyCode}
+          language="python"
+          title="BFS_AdjacencyList.py"
+        />
         <br />
         <p>
           <strong>DFS for Matrices: </strong>When implementing DFS with

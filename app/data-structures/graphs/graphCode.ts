@@ -74,9 +74,36 @@ def performDFS(edges: List[List[int]], start: int) -> List[int]:
 
     # Step 4: Perform DFS from the starting node, return 'res' array
     dfs(start)
-    return res
+    return res`;
 
-# Example usage:
-edges = [(0, 1), (0, 2), (1, 2), (2, 0), (2, 3), (3, 3)]
-start_node = 2  # Starting node for DFS
-print(performDFS(edges, start_node))`;
+export const bfsAdjacencyCode = 
+`from collections import defaultdict, deque
+"""
+'defaultdict' is a function in Python that automatically creates a hashmap 
+which fills missing keys with a specified default value (int, set, list, etc.)
+"""
+
+# Perform BFS on an Adjacency List, given the edges and a starting vertex
+def performBFS(edges: List[List[int]], start: int) -> List[int]:
+    # Step 1: Building an adjacency list for a directed graph
+    hashmap = defaultdict(list)
+    for source, destination in edges:
+        hashmap[source].append(destination)
+    
+    # Step 2: Initialize a queue & set and add our starting index
+    queue = deque([start])
+    visited = set([start])
+    res = []
+
+    # Step 3: Start BFS function which runs while the queue is not empty
+    while queue:
+        # Get the first node from the queue and add it to 'res'
+        node = queue.popleft()
+        res.append(node)
+        # For every node it points to, add them to our queue & visit
+        for friend in hashmap[node]:
+            if friend not in visited:
+                visited.add(friend) 
+                queue.append(friend)
+    
+    return res`;
