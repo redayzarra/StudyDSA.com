@@ -9,7 +9,7 @@ import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
 import { graphOperations } from "@/data/operationsData";
 import { Metadata } from "next";
-import { adjacencyListCode, graphNodeCode, matrixCode } from "./graphCode";
+import { adjacencyListCode, dfsAdjacencyCode, graphNodeCode, matrixCode } from "./graphCode";
 import ImageBlock from "@/components/ImageBlock";
 import TextLink from "@/components/TextLink";
 
@@ -127,9 +127,12 @@ const GraphsPage = async () => {
 
         <p>
           Another important aspect of graphs is <strong>weight</strong>. In{" "}
-          <strong>weighted graphs</strong>, edges have weights assigned to them,
-          which can <strong>represent quantities</strong> like distance, cost,
-          or capacity. This allows for algorithms that find the shortest path or
+          <TextLink href="/data-structures/weighted-graphs">
+            weighted graphs
+          </TextLink>
+          , edges have weights assigned to them, which can{" "}
+          <strong>represent quantities</strong> like distance, cost, or
+          capacity. This allows for algorithms that find the shortest path or
           create a minimum spanning tree.
         </p>
 
@@ -211,13 +214,13 @@ const GraphsPage = async () => {
       >
         <p>
           A <strong>matrix is a two-dimensional array</strong> that forms a
-          rectangle or square of cells, organized into{" "}
-          <strong>rows and columns</strong>. The individual items in a matrix
-          are called elements or <strong>cells</strong>. The size or{" "}
-          <strong>dimensions of a matrix</strong> is defined by the{" "}
-          <strong>number of rows and columns</strong> it contains. A matrix with{" "}
-          <CodeText>m</CodeText> rows and <CodeText>n</CodeText> columns is
-          called a <CodeText>m × n</CodeText> matrix:
+          rectangle of cells, organized into <strong>rows and columns</strong>.
+          The individual items in a matrix are called elements or{" "}
+          <strong>cells</strong>. The <strong>dimensions of a matrix</strong>{" "}
+          are defined by the <strong>number of rows and columns</strong> it
+          contains. A matrix with <CodeText>m</CodeText> rows and{" "}
+          <CodeText>n</CodeText> columns is called a <CodeText>m × n</CodeText>{" "}
+          matrix:
         </p>
         <CodeBlock code={matrixCode} language="python" title="Matrix.py" />
         <br />
@@ -234,13 +237,6 @@ const GraphsPage = async () => {
           src="/images/graphs/AdjacencyMatrix.jpg"
           alt="An adjacency matrix is full of zeroes and ones to indicate the presence of an edge between two vertices."
         />
-        <p>
-          For{" "}
-          <strong>undirected graphs, the adjacency matrix is symmetric</strong>,
-          because of their bidirectional nature of connections. However, the{" "}
-          <strong>adjcency matrix for directed graphs is non-symmetric</strong>.
-        </p>
-        <br />
         <p>
           Adjacency matrices are extremely{" "}
           <strong>inefficient and should be avoided</strong>. They
@@ -260,10 +256,58 @@ const GraphsPage = async () => {
         chapterId={graphTraversalChapter?.id}
       >
         <p>
-          Graph traversal algorithms, such as Depth-First Search (DFS) and
-          Breadth-First Search (BFS), are crucial for exploring graphs. They
-          enable the identification of reachable vertices, pathfinding, and the
-          discovery of graph properties.
+          Graph traversal algorithms, such as{" "}
+          <TextLink href="/algorithms/depth-first-search">
+            Depth-First Search
+          </TextLink>{" "}
+          (DFS) and{" "}
+          <TextLink href="/algorithms/breadth-first-search">
+            Breadth-First Search
+          </TextLink>{" "}
+          (BFS), are necessary for exploring graphs. Understanding how to
+          implement and apply these algorithms for different graph
+          representations—specifically, adjacency lists and matrices—is
+          important for graph problems.
+        </p>
+        <br />
+        <p>
+          <strong>DFS for Adjacency Lists: </strong>DFS explores as far as
+          possible along one branch before backtracking. This is implemented
+          using <TextLink href="/algorithms/recursion">recursion</TextLink> (or
+          a stack). In adjacency lists, DFS begins at a selected vertex, marking
+          it as visited using a <TextLink href="/data-structures/hashmaps#sets">hashset</TextLink>. It then recursively visits unvisited neighboring
+          vertices, exploring the graph's depth before backtracking to explore
+          new branches:
+        </p>
+        <CodeBlock code={dfsAdjacencyCode} language="python" title="DFS_AdjacencyList.py" />
+        <br />
+        <p>
+          <strong>BFS for Adjacency Lists: </strong>BFS explores the graph level
+          by level, starting from a selected node. It uses a queue to keep track
+          of the order in which to visit vertices. For adjacency lists, BFS
+          iteratively visits each unvisited neighbor of a vertex, marks it as
+          visited, and enqueues its adjacent vertices. This process is repeated
+          until the queue is empty, ensuring that vertices are visited in
+          increasing distance from the start vertex.
+        </p>
+        <br />
+        <p>
+          <strong>DFS for Matrices: </strong>When implementing DFS with
+          adjacency matrices, the algorithm selects an unvisited vertex and
+          explores as far along a branch as possible, similar to the process
+          with adjacency lists. However, instead of iterating over a list of
+          neighbors, the algorithm checks the matrix row corresponding to the
+          current vertex for unvisited vertices to explore next.
+        </p>
+        <br />
+        <p>
+          <strong>BFS for Matrices: </strong>BFS implementation using adjacency
+          matrices also parallels that with adjacency lists, with the key
+          difference being in how neighbors are identified. The algorithm
+          examines the matrix row of the current vertex to find all unvisited
+          vertices, marking them as visited and adding them to the queue. This
+          process continues until all vertices reachable from the starting
+          vertex have been explored.
         </p>
       </ChapterHeading>
 
