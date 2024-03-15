@@ -211,13 +211,18 @@ const GraphsPage = async () => {
       >
         <p>
           A <strong>matrix is a two-dimensional array</strong> that forms a
-          rectangle or square of cells, organized into <strong>rows and columns</strong>. Each
-          cell in a matrix can hold a value.
+          rectangle or square of cells, organized into{" "}
+          <strong>rows and columns</strong>. The individual items in a matrix
+          are called elements or <strong>cells</strong>. The size or{" "}
+          <strong>dimensions of a matrix</strong> is defined by the{" "}
+          <strong>number of rows and columns</strong> it contains. A matrix with {" "}
+          <CodeText>m</CodeText> rows and <CodeText>n</CodeText> columns is
+          called a <CodeText>m × n</CodeText> matrix:
         </p>
         <br />
         <p>
           In graph theory, a specific use of matrices is the{" "}
-          <strong>adjacency matrix</strong>. 
+          <strong>adjacency matrix</strong>.
         </p>
       </ChapterHeading>
 
