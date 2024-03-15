@@ -12,7 +12,9 @@ import { Metadata } from "next";
 import {
   adjacencyListCode,
   bfsAdjacencyCode,
+  bfsMatrixCode,
   dfsAdjacencyCode,
+  dfsMatrixCode,
   graphNodeCode,
   matrixCode,
 } from "./graphCode";
@@ -280,10 +282,10 @@ const GraphsPage = async () => {
           <strong>DFS for Adjacency Lists: </strong>DFS explores as far as
           possible along one branch before backtracking. This is implemented
           using <TextLink href="/algorithms/recursion">recursion</TextLink> (or
-          a stack). In adjacency lists, DFS begins at a selected vertex, marking
+          a stack). In adjacency lists, DFS begins at a selected node, marking
           it as visited using a{" "}
           <TextLink href="/data-structures/hashmaps#sets">hashset</TextLink>. It
-          then recursively visits unvisited neighboring vertices, exploring the
+          then recursively visits unvisited neighboring nodes, exploring the
           graph's depth before backtracking to explore new branches:
         </p>
         <CodeBlock
@@ -294,12 +296,13 @@ const GraphsPage = async () => {
         <br />
         <p>
           <strong>BFS for Adjacency Lists: </strong>BFS explores the graph level
-          by level, starting from a selected node. It uses a <TextLink href="/data-structures/queues">queue</TextLink> to keep track
-          of the order in which to visit vertices. For adjacency lists, BFS
-          visits each unvisited neighbor of a vertex, marks it as
-          visited, and adds its adjacent vertices to the queue. This process is repeated
-          until the queue is empty, so that all connected vertices are visited in
-          increasing distance from the starting vertex:
+          by level, starting from a selected node. It uses a{" "}
+          <TextLink href="/data-structures/queues">queue</TextLink> to keep
+          track of the order in which to visit nodes. For adjacency lists, BFS
+          visits each unvisited neighbor of a node, marks it as visited, and
+          adds its adjacent nodes to the queue. This process is repeated until
+          the queue is empty, so that all connected nodes are visited in
+          increasing distance from the starting node:
         </p>
         <CodeBlock
           code={bfsAdjacencyCode}
@@ -308,23 +311,32 @@ const GraphsPage = async () => {
         />
         <br />
         <p>
-          <strong>DFS for Matrices: </strong>When implementing DFS with
-          adjacency matrices, the algorithm selects an unvisited vertex and
+          <strong>DFS for Matrices: </strong>DFS selects an unvisited node and
           explores as far along a branch as possible, similar to the process
           with adjacency lists. However, instead of iterating over a list of
-          neighbors, the algorithm checks the matrix row corresponding to the
-          current vertex for unvisited vertices to explore next.
+          neighbors, the algorithm checks the matrix in all four directions to
+          find the next unvisited node to explore:
         </p>
+        <CodeBlock
+          code={dfsMatrixCode}
+          language="python"
+          title="DFS_Matrix.py"
+        />
         <br />
         <p>
-          <strong>BFS for Matrices: </strong>BFS implementation using adjacency
-          matrices also parallels that with adjacency lists, with the key
-          difference being in how neighbors are identified. The algorithm
-          examines the matrix row of the current vertex to find all unvisited
-          vertices, marking them as visited and adding them to the queue. This
-          process continues until all vertices reachable from the starting
-          vertex have been explored.
+          <strong>BFS for Matrices: </strong>BFS starts from a given cell (or
+          node) and explores all its neighboring cells first, before moving to
+          the next level. To implement BFS on a matrix, we typically use a{" "}
+          <TextLink href="/data-structures/queues">queue</TextLink> to keep
+          track of the cells to visit (implemented using{" "}
+          <TextLink href="/data-structures/hashmaps#sets">hashset</TextLink>)
+          next:
         </p>
+        <CodeBlock
+          code={bfsMatrixCode}
+          language="python"
+          title="BFS_Matrix.py"
+        />
       </ChapterHeading>
 
       <ChapterHeading id="algorithms" title="Algorithms">
