@@ -48,9 +48,19 @@ const basicAlgorithms = [
     description: "Break problems down into simpler subproblems and storing results to avoid recomputation.",
   },
   {
-    title: "Kadane’s Algo.",
+    title: "Greedy",
     href: "/",
-    description: "Find the maximum sum of a contiguous subarray within a one-dimensional array.",
+    description: "Optimize for the best solution step by step, choosing the most beneficial option at each stage without reconsidering.",
+  },
+  {
+    title: "Intervals",
+    href: "/",
+    description: "Work with ranges or periods, solving problems such as overlaps, merging intervals, and scheduling.",
+  },
+  {
+    title: "2D Dynamic Pro.",
+    href: "/",
+    description: "Solve problems by breaking them down into simpler subproblems in a two-dimensional space, often used for grid-based problems.",
   },
 ];
 
@@ -76,6 +86,11 @@ const intermediateAlgorithms = [
   description: "Find the shortest paths from a single source node to all other nodes in a weighted graph.",
   },
   {
+  title: "A* Search Algo.",
+  href: "/",
+  description: "Traverse the graph to find the most efficient path between two nodes, optimizing for shortest distance or cost.",
+  },
+  {
   title: "Floyd-Warshall's Algo.",
   href: "/",
   description: "Find the shortest paths between all pairs of vertices in a weighted graph, with positive and negative edges.",
@@ -89,11 +104,6 @@ const intermediateAlgorithms = [
   title: "Prim's Algo.",
   href: "/",
   description: "Construct a minimum spanning tree for a weighted, undirected graph, ensuring minimal total edge weight.",
-  },
-  {
-    title: "2D Dynamic Pro.",
-    href: "/",
-    description: "Solve problems by breaking them down into simpler subproblems in a two-dimensional space, often used for grid-based problems.",
   },
 ];
 
@@ -114,7 +124,7 @@ const advancedAlgorithms = [
     description: "Ordering the vertices in a directed graph where for each directed edge from vertex A to vertex B, vertex A comes before B in the ordering.",
   },
   {
-    title: "DAG Shortest Paths",
+    title: "DAG Shortest Path",
     href: "/",
     description: "Utilizes topological sorting of DAGs to find the shortest paths from a single source vertex to all other vertices in the graph efficiently.",
   },

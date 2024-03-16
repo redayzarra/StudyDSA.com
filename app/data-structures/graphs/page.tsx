@@ -342,78 +342,84 @@ const GraphsPage = async () => {
       <ChapterHeading id="algorithms" title="Algorithms">
         <Algorithms items={graphAlgorithms} />
       </ChapterHeading>
-
       <ChapterHeading
         id="bestPractices"
         title="Best Practices"
         chapterId={bestPracticesChapter?.id}
       >
         <p>
-          Heaps should be your go-to data structure for keeping track of{" "}
-          <CodeText>k</CodeText> smallest (or largest) elements, and supporting
-          operations like finding the minimum or maximum element efficiently.
-          Here are some tips and tricks for using heaps effectively in coding
-          interviews:
+          Graphs are incredibly flexible data structures that can represent
+          complex relationships which is why they are popular in coding
+          interviews. Here are some essential tips and tricks for solving
+          graph-related questions:
         </p>
         <br />
-
         <ul className="ml-6">
           <li>
-            <span className="font-bold">&bull; Min vs Max Heaps:</span> Know
-            when to use a min heap or a max heap. Use a min heap when you need
-            quick access to the smallest element, and a max heap for the
-            largest. This decision impacts the heap's structure and the
-            implementation of your solution.
-          </li>
-          <br />
-          <li>
-            <span className="font-bold">&bull; Heapify for Efficiency:</span>{" "}
-            Whenever you're given an unsorted array that needs to be processed
-            element by element according to their priority, start by converting
-            it into a heap using the <CodeText>heapify</CodeText> operation.
-            This is more efficient than inserting elements one by one.
+            <span className="font-bold">&bull; Use Adjacency Lists:</span>{" "}
+            Understand the different ways of representing graphs from a given
+            list of edges, such as adjacency lists and adjacency matrices.
+            However, <strong>do not use an adjacency matrix</strong> for solving
+            graph problems. They are really inefficient and are only used for a
+            specific use-case.{" "}
+            <strong>Adjacency lists are a much better option</strong> for
+            representing a graph.
           </li>
           <br />
           <li>
             <span className="font-bold">
-              &bull; Efficiency of <CodeText>heappushpop</CodeText>:
+              &bull; Master Traversal Algorithms:
             </span>{" "}
-            Using <CodeText>heapq.heappushpop</CodeText> is more efficient than
-            separate push and pop operations. It minimizes the number of
-            reheapify steps needed by combining both actions into a single
-            operation, ideal for maintaining a heap when adding a new element
-            and immediately retrieving the smallest element.
+            <TextLink href="/algorithms/depth-first-search">
+              Depth-First Search
+            </TextLink>{" "}
+            (DFS) and{" "}
+            <TextLink href="/algorithms/breadth-first-search">
+              Breadth-First Search
+            </TextLink>{" "}
+            (BFS) are necessary algorithms for graph traversal. Know when to use
+            each technique.{" "}
+            <strong>BFS is excellent for finding the shortest path </strong>
+            in unweighted graphs, while{" "}
+            <strong>DFS can be used to explore all possible paths</strong>.
           </li>
           <br />
           <li>
-            <span className="font-bold">&bull; Keeping Track of Elements:</span>{" "}
-            In problems involving the <CodeText>k</CodeText> largest or smallest
-            elements, heaps can manage these subsets efficiently. For the{" "}
-            <strong>
-              <CodeText>k</CodeText> largest, use a min heap
-            </strong>
-            ; for the{" "}
-            <strong>
-              <CodeText>k</CodeText> smallest, use a max heap
-            </strong>
-            . This counterintuitive trick ensures optimal time complexity.
+            <span className="font-bold">&bull; Cycle Detection:</span> Use a
+            version of{" "}
+            <TextLink href="/algorithms/topological-sort">
+              topological sort
+            </TextLink>{" "}
+            for detecting cycles in a graph, especially for directed graphs.
+            Cycle detection is important for problems involving scheduling,
+            prerequisites, and deadlock detection. Understanding how to
+            implement
+            <strong> cycle detection with DFS (topological sort)</strong> can be
+            very useful.
           </li>
           <br />
           <li>
-            <span className="font-bold">&bull; Streams of Data:</span> Heaps are
-            ideal for problems where data continuously changes, and you need to
-            maintain a certain order or priority. Examples include real-time
-            data processing, event scheduling, and running median calculations.
+            <span className="font-bold">&bull; Connected Components:</span> Use{" "}
+            <TextLink href="/algorithms/union-find">Union-Find</TextLink>{" "}
+            (Disjoint Set Union) for finding connected components or strongly
+            connected components in a graph. This is also valuable for
+            clustering, network analysis, and simplifying graph structures.
           </li>
           <br />
           <li>
-            <span className="font-bold">
-              &bull; Simulate Max Heap in Python:
-            </span>{" "}
-            Python's <CodeText>heapq</CodeText> library only provides a min
-            heap. To simulate a max heap, negate the values when adding or
-            removing from the heap. Remember to negate the value again when
-            accessing it.
+            <span className="font-bold">&bull; Graphs for Pathfinding:</span>{" "}
+            For problems involving finding paths or connectivity, use graph
+            algorithms like{" "}
+            <TextLink href="/algorithms/dijkstras-algorithm">
+              Dijkstra's
+            </TextLink>
+            , <TextLink href="/algorithms/astar-algorithm">A* search</TextLink>,
+            or{" "}
+            <TextLink href="/algorithms/floyd-warshalls-algorithm">
+              Floyd-Warshall
+            </TextLink>
+            , depending on whether you're dealing with weighted or unweighted,
+            and directed or undirected graphs.
           </li>
           <br />
         </ul>
