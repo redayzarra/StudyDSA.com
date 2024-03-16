@@ -133,7 +133,7 @@ const hashmapSkills = [
 const queueSkills = [
   {
     title: "Definition",
-    href: "/data-structures/",
+    href: "/data-structures/queues",
     description: "FIFO - meaning you can easily access the oldest (or first) value",
   },
   {
@@ -305,32 +305,32 @@ const heapSkills = [
 const trieSkills = [
   {
     title: "Definition",
-    href: "/data-structures/",
+    href: "/data-structures/tries",
     description: "They are known as prefix trees because they form words & prefixes",
   },
   {
     title: "Operations",
-    href: "/data-structures/",
+    href: "/data-structures/tries#operations",
     description: "Here's everything you can do with tries",
   },
   {
     title: "Implementation",
-    href: "/data-structures/",
+    href: "/data-structures/tries",
     description: "Each node in the trie must store the children and if the word is reached",
   },
   {
     title: "Insertion",
-    href: "/data-structures/",
+    href: "/data-structures/tries#insertion",
     description: "To insert into a trie we essentially follow the letters and add to the gaps",
   },
   {
     title: "Searching",
-    href: "/data-structures/",
+    href: "/data-structures/tries#searching",
     description: "You can find words by simply following the letters and checking if it's marked",
   },
   {
     title: "Finding Prefixes",
-    href: "/data-structures/",
+    href: "/data-structures/tries#findingPrefix",
     description: "You can follow the letters as long as they satisfy the prefix",
   },
   {
@@ -340,7 +340,7 @@ const trieSkills = [
   },
   {
     title: "Best Practices",
-    href: "/data-structures/",
+    href: "/data-structures/tries#bestPractices",
     description: "This is the most efficient way of using tries",
   },
 ]

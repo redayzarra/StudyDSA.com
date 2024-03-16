@@ -401,9 +401,8 @@ const GraphsPage = async () => {
           <li>
             <span className="font-bold">&bull; Connected Components:</span> Use{" "}
             <TextLink href="/algorithms/union-find">Union-Find</TextLink>{" "}
-            (Disjoint Set Union) for finding connected components or strongly
-            connected components in a graph. This is also valuable for
-            clustering, network analysis, and simplifying graph structures.
+            (Disjoint Set Union) for finding connected components in a graph. This is good for
+            clustering, network analysis, and <strong>simplifying graph structures</strong>.
           </li>
           <br />
           <li>
