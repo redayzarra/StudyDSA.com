@@ -314,14 +314,14 @@ const trieSkills = [
     description: "Here's everything you can do with tries",
   },
   {
-    title: "Implementation",
-    href: "/data-structures/tries",
-    description: "Each node in the trie must store the children and if the word is reached",
+    title: "Trie Nodes",
+    href: "/data-structures/tries#nodes",
+    description: "Each node in the trie must store the children and if we are at the end",
   },
   {
     title: "Insertion",
     href: "/data-structures/tries#insertion",
-    description: "To insert into a trie we essentially follow the letters and add to the gaps",
+    description: "To insert into a trie, we essentially follow the letters and add to the gaps",
   },
   {
     title: "Searching",
@@ -334,9 +334,9 @@ const trieSkills = [
     description: "You can follow the letters as long as they satisfy the prefix",
   },
   {
-    title: "Algorithms",
-    href: "/data-structures/",
-    description: "These are all the common algorithms for tries or prefix trees",
+    title: "Implementation",
+    href: "/data-structures/tries#implementation",
+    description: "Implement tries using hashmaps and nodes to form a tree-like structure",
   },
   {
     title: "Best Practices",
