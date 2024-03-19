@@ -48,11 +48,10 @@ const TriesPage = async () => {
         chapterId={definitionChapter?.id}
       >
         <p>
-          Tries, also known as prefix trees, are specialized tree-like data
-          structures that facilitate efficient information retrieval. They
-          manage sets of strings by storing them in a character-by-character
-          hierarchy, making them particularly useful for tasks such as
-          autocomplete, spell checking, and prefix searches.
+          Tries, also known as <strong>prefix trees</strong>, are a tree-like
+          data structure that allow for efficient lookup times for strings. They{" "}
+          <strong>manage strings</strong> by storing them{" "}
+          <strong>character-by-character</strong>.
         </p>
       </ChapterHeading>
 
