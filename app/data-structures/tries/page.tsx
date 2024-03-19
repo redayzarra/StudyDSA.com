@@ -7,7 +7,7 @@ import CodeBlock from "@/components/CodeBlock";
 import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
-import { graphOperations } from "@/data/operationsData";
+import { graphOperations, trieOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import ImageBlock from "@/components/ImageBlock";
 import TextLink from "@/components/TextLink";
@@ -62,11 +62,11 @@ const TriesPage = async () => {
       >
         <p>
           Trie operations include insertion, search, and deletion of words.
-          These operations allow tries to efficiently manage dynamic sets of
-          words or other character sequences, supporting quick lookups, prefix
-          searches, and even pattern matching in some cases.
+          These operations allow tries to efficiently manage sets of
+          words or other character sequences, supporting quick lookups, and prefix
+          searches:
         </p>
-        <Operations items={graphOperations} />
+        <Operations items={trieOperations} />
       </ChapterHeading>
 
       <ChapterHeading

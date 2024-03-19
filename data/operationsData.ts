@@ -318,3 +318,30 @@ export const graphOperations: { operation: string; time: string; space: string, 
     notes: "Determines path between vertices, complexity depends on search",
   },
 ]
+
+export const trieOperations: { operation: string; time: string; space: string; notes: string }[] = [
+  {
+    operation: "Insert",
+    time: "O(n)",
+    space: "O(n*Σ)",
+    notes: "Inserts a word of length 'n', creating new nodes for each character not already present",
+  },
+  {
+    operation: "Search",
+    time: "O(n)",
+    space: "O(1)",
+    notes: "Searches for a word of length 'n', traversing down the Trie",
+  },
+  {
+    operation: "StartsWith",
+    time: "O(n)",
+    space: "O(1)",
+    notes: "Checks if there is any word in the trie that starts with the given prefix of length 'n'",
+  },
+  {
+    operation: "Delete",
+    time: "O(n)",
+    space: "O(1)",
+    notes: "Deletes a word of length 'n' from the Trie",
+  },
+]
