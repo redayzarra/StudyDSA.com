@@ -62,11 +62,18 @@ const TriesPage = async () => {
       >
         <p>
           Trie operations include insertion, search, and deletion of words.
-          These operations allow tries to efficiently manage sets of
-          words or other character sequences, supporting quick lookups, and prefix
+          These operations allow tries to efficiently manage sets of words or
+          other character sequences, supporting quick lookups, and prefix
           searches:
         </p>
         <Operations items={trieOperations} />
+        <p>
+          Tries are used to <strong>store strings or words</strong>, the symbol{" "}
+          <CodeText>Σ</CodeText> (Sigma){" "}
+          <strong>represents the size of the alphabet being used</strong>.
+          Essentially, it tells us how many different characters can appear in
+          the strings that the Trie is capable of storing.
+        </p>
       </ChapterHeading>
 
       <ChapterHeading
