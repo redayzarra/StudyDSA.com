@@ -75,3 +75,38 @@ class Trie:
             cur = cur.children[char]
         # If we got to a valid node, a prefix exists so return True
         return True`;
+
+export const trieCode = 
+`# Definition of a Trie Node
+class TrieNode: 
+    def __init__(self):
+        self.children = {}
+        self.isWord = False
+
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+
+    def insert(self, word: str) -> None:
+        cur = self.root
+        for char in word:
+            if char not in cur.children:
+                cur.children[char] = TrieNode()
+            cur = cur.children[char]
+        cur.isWord = True
+
+    def search(self, word: str) -> bool:
+        cur = self.root
+        for char in word:
+            if char not in cur.children:
+                return False
+            cur = cur.children[char]
+        return cur.isWord
+
+    def findPrefix(self, prefix: str) -> bool:
+        cur = self.root
+        for char in prefix:
+            if char not in cur.children:
+                return False
+            cur = cur.children[char]
+        return True`;

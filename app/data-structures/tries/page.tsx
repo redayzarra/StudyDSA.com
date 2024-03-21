@@ -15,6 +15,7 @@ import {
   insertionCode,
   prefixCode,
   searchingCode,
+  trieCode,
   trieNodeCode,
 } from "./triesCode";
 
@@ -164,12 +165,15 @@ const TriesPage = async () => {
         chapterId={implementationChapter?.id}
       >
         <p>
-          Implementing a trie typically involves defining a trie node class with
-          a children map (to store references to child nodes) and a boolean flag
-          to mark the end of a word. The trie itself is represented by the root
-          node, from which all words are accessible by traversing down child
-          references corresponding to each character in the words.
+          Implementing a trie involves{" "}
+          <strong>defining a trie node class with a children map</strong> (to
+          store references to child nodes) and a{" "}
+          <strong>boolean flag to mark the end of a word</strong>. The trie
+          itself is represented by the root node, where all words are accessible
+          by <strong>traversing down child nodes</strong> corresponding to
+          each character in the word.
         </p>
+        <CodeBlock code={trieCode} language="python" title="Tries.py" />
       </ChapterHeading>
 
       <ChapterHeading id="algorithms" title="Algorithms">
