@@ -7,11 +7,16 @@ import CodeBlock from "@/components/CodeBlock";
 import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
-import { graphOperations, trieOperations } from "@/data/operationsData";
+import { trieOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import ImageBlock from "@/components/ImageBlock";
 import TextLink from "@/components/TextLink";
-import { trieNodeCode } from "./triesCode";
+import {
+  insertionCode,
+  prefixCode,
+  searchingCode,
+  trieNodeCode,
+} from "./triesCode";
 
 const TriesPage = async () => {
   const topic = await getTopicByName("Tries");
@@ -100,12 +105,18 @@ const TriesPage = async () => {
         chapterId={insertionChapter?.id}
       >
         <p>
-          Inserting a word into a trie involves creating a new path of nodes for
-          each character in the word, if that path does not already exist.
-          Starting from the root, for each character, move to the corresponding
-          child node or create a new child node if one doesn't exist, marking
-          the final node as the end of a word.
+          Inserting a word into a trie means creating a new path of nodes for
+          each character in the word, if that path does not already exist.{" "}
+          <strong>Starting from the root</strong>, for each character,{" "}
+          <strong>move to the next child node</strong> or create a new child
+          node if one doesn't exist, then{" "}
+          <strong>mark the final node as the end of a word</strong>:
         </p>
+        <CodeBlock
+          code={insertionCode}
+          language="python"
+          title="Insertion.py"
+        />
       </ChapterHeading>
 
       <ChapterHeading
@@ -121,6 +132,11 @@ const TriesPage = async () => {
           without matching the end of a word flag in the node, the search
           returns false; otherwise, it returns true.
         </p>
+        <CodeBlock
+          code={searchingCode}
+          language="python"
+          title="Searching.py"
+        />
       </ChapterHeading>
 
       <ChapterHeading
@@ -131,11 +147,14 @@ const TriesPage = async () => {
       >
         <p>
           Finding prefixes in a trie is similar to searching for a whole word
-          but stops at the end of the prefix. If the traversal can follow the
-          characters of the prefix to a node successfully, then the prefix
-          exists in the trie. This operation is foundational for autocomplete
-          suggestions and prefix-based searches.
+          but we stop at the end of the prefix. If we{" "}
+          <strong>
+            can follow the characters of the prefix to a node successfully, then
+            the prefix exists
+          </strong>{" "}
+          in the trie:
         </p>
+        <CodeBlock code={prefixCode} language="python" title="FindPrefix.py" />
       </ChapterHeading>
 
       <ChapterHeading
