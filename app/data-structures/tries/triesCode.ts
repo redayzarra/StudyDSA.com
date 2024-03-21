@@ -109,4 +109,29 @@ class Trie:
             if char not in cur.children:
                 return False
             cur = cur.children[char]
-        return True`;
+        return True
+
+
+    def delete(self, word: str) -> bool:
+        # DFS function to recursively delete word, pruning nodes
+        def dfs(node: Optional[TrieNode], word: str, depth: int):
+            # If we reached the end of the word...
+            if depth == len(word):
+                if not node.isWord:
+                    return False  # Word not found.
+                node.isWord = False
+                return len(node.children) == 0  # If true, delete this node.
+
+            char = word[depth]
+            if char not in node.children:
+                return False  # Word not found.
+
+            shouldDeleteNode = dfs(node.children[char], word, depth + 1)
+
+            if shouldDeleteNode:
+                del node.children[char]
+                return len(node.children) == 0 and not node.isWord
+
+            return False
+
+        return dfs(self.root, word, 0)`;

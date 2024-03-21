@@ -111,8 +111,12 @@ const TriesPage = async () => {
           <strong>Starting from the root</strong>, for each character,{" "}
           <strong>move to the next child node</strong> or create a new child
           node if one doesn't exist, then{" "}
-          <strong>mark the final node as the end of a word</strong>:
+          <strong>mark the final node as the end of a word</strong>.
         </p>
+        <ImageBlock
+          src="/images/tries/TrieInsertion.jpg"
+          alt="Inserting into tries by going down the trie and adding nodes to build the word"
+        />
         <CodeBlock
           code={insertionCode}
           language="python"
@@ -127,12 +131,16 @@ const TriesPage = async () => {
         chapterId={searchingChapter?.id}
       >
         <p>
-          Searching for a word in a trie checks each character of the word
-          against the nodes, starting from the root. If at any point the
-          required child node does not exist, or the end of the word is reached
-          without matching the end of a word flag in the node, the search
-          returns false; otherwise, it returns true.
+          Searching for a word in a trie{" "}
+          <strong>checks each character of the word against the nodes</strong>,
+          starting from the root. If at any point the child node does not exist,
+          or if the end of the word is reached without matching the end flag in
+          the node, the search returns false; otherwise, it returns true:
         </p>
+        <ImageBlock
+          src="/images/tries/TrieSearch.jpg"
+          alt="Searching words in Tries by going down the child nodes and seeing if we land on node marked as end"
+        />
         <CodeBlock
           code={searchingCode}
           language="python"
@@ -155,6 +163,10 @@ const TriesPage = async () => {
           </strong>{" "}
           in the trie:
         </p>
+        <ImageBlock
+          src="/images/tries/TriePrefix.jpg"
+          alt="Searching prefixes by traversing down the children nodes until we reach the end of the prefix"
+        />
         <CodeBlock code={prefixCode} language="python" title="FindPrefix.py" />
       </ChapterHeading>
 
@@ -170,8 +182,8 @@ const TriesPage = async () => {
           store references to child nodes) and a{" "}
           <strong>boolean flag to mark the end of a word</strong>. The trie
           itself is represented by the root node, where all words are accessible
-          by <strong>traversing down child nodes</strong> corresponding to
-          each character in the word.
+          by <strong>traversing down child nodes</strong> corresponding to each
+          character in the word.
         </p>
         <CodeBlock code={trieCode} language="python" title="Tries.py" />
       </ChapterHeading>
@@ -186,78 +198,38 @@ const TriesPage = async () => {
         chapterId={bestPracticesChapter?.id}
       >
         <p>
-          Graphs are incredibly flexible data structures that can represent
-          complex relationships which is why they are popular in coding
-          interviews. Here are some essential tips and tricks for solving
-          graph-related questions:
+          Tries efficiently store and search words or sequences of strings. They
+          are useful for tasks involving prefixes, such as autocomplete systems
+          or spell checkers. To get the most out of tries in coding interviews,
+          here are some essential tips and tricks:
         </p>
         <br />
         <ul className="ml-6">
           <li>
-            <span className="font-bold">&bull; Use Adjacency Lists:</span>{" "}
-            Understand the different ways of representing graphs from a given
-            list of edges, such as adjacency lists and adjacency matrices.
-            However, <strong>do not use an adjacency matrix</strong> for solving
-            graph problems. They are really inefficient and are only used for a
-            specific use-case.{" "}
-            <strong>Adjacency lists are a much better option</strong> for
-            representing a graph.
+            <span className="font-bold">&bull; Use Hash Maps:</span> When
+            dealing with a large alphabet, use hash maps to store children nodes
+            instead of fixed-size arrays. This improves space efficiency and
+            flexibility, allowing the trie to handle any range of characters.
           </li>
           <br />
           <li>
             <span className="font-bold">
-              &bull; Master Traversal Algorithms:
+              &bull; Iterative vs. Recursive Implementations:
             </span>{" "}
-            <TextLink href="/algorithms/depth-first-search">
-              Depth-First Search
-            </TextLink>{" "}
-            (DFS) and{" "}
-            <TextLink href="/algorithms/breadth-first-search">
-              Breadth-First Search
-            </TextLink>{" "}
-            (BFS) are necessary algorithms for graph traversal. Know when to use
-            each technique.{" "}
-            <strong>BFS is excellent for finding the shortest path </strong>
-            in unweighted graphs, while{" "}
-            <strong>DFS can be used to explore all possible paths</strong>.
+            Be comfortable with both iterative and recursive implementations of
+            trie operations. Recursive approaches are often more intuitive but
+            can be inefficient with very deep tries. Iterative implementations,
+            while sometimes more complex, can be more efficient.
           </li>
           <br />
           <li>
-            <span className="font-bold">&bull; Cycle Detection:</span> Use a
-            version of{" "}
-            <TextLink href="/algorithms/topological-sort">
-              topological sort
-            </TextLink>{" "}
-            for detecting cycles in a graph, especially for directed graphs.
-            Cycle detection is important for problems involving scheduling,
-            prerequisites, and deadlock detection. Understanding how to
-            implement
-            <strong> cycle detection with DFS (topological sort)</strong> can be
-            very useful.
-          </li>
-          <br />
-          <li>
-            <span className="font-bold">&bull; Connected Components:</span> Use{" "}
-            <TextLink href="/algorithms/union-find">Union-Find</TextLink>{" "}
-            (Disjoint Set Union) for finding connected components in a graph.
-            This is good for clustering, network analysis, and{" "}
-            <strong>simplifying graph structures</strong>.
-          </li>
-          <br />
-          <li>
-            <span className="font-bold">&bull; Graphs for Pathfinding:</span>{" "}
-            For problems involving finding paths or connectivity, use graph
-            algorithms like{" "}
-            <TextLink href="/algorithms/dijkstras-algorithm">
-              Dijkstra's
-            </TextLink>
-            , <TextLink href="/algorithms/astar-algorithm">A* search</TextLink>,
-            or{" "}
-            <TextLink href="/algorithms/floyd-warshalls-algorithm">
-              Floyd-Warshall
-            </TextLink>
-            , depending on whether you're dealing with weighted or unweighted,
-            and directed or undirected graphs.
+            <span className="font-bold">
+              &bull; Handling Deletions Carefully:
+            </span>{" "}
+            Implement deletion operations carefully to ensure the trie remains
+            consistent. After removing a word, check whether the parent nodes
+            have become unnecessary (i.e., they no longer have any children and
+            are not end of any word) and remove them as well.
           </li>
           <br />
         </ul>
@@ -267,7 +239,7 @@ const TriesPage = async () => {
 };
 
 export const metadata: Metadata = {
-  title: "Graphs",
+  title: "Tries",
   description: "",
 };
 
