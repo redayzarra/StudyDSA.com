@@ -11,6 +11,7 @@ import { graphOperations, trieOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import ImageBlock from "@/components/ImageBlock";
 import TextLink from "@/components/TextLink";
+import { trieNodeCode } from "./triesCode";
 
 const TriesPage = async () => {
   const topic = await getTopicByName("Tries");
@@ -62,9 +63,8 @@ const TriesPage = async () => {
       >
         <p>
           Trie operations include insertion, search, and deletion of words.
-          These operations allow tries to efficiently manage sets of words or
-          other character sequences, supporting quick lookups, and prefix
-          searches:
+          These operations allow tries to efficiently manage words or other
+          character sequences, supporting quick lookups, and prefix searches:
         </p>
         <Operations items={trieOperations} />
         <p>
@@ -83,12 +83,14 @@ const TriesPage = async () => {
         chapterId={trieNodesChapter?.id}
       >
         <p>
-          Each node in a trie represents a single character from a string and
-          maintains references to child nodes for subsequent characters. A node
-          may also have a flag to indicate the end of a word. This structure
-          allows for the compact representation of overlapping prefixes, saving
-          space and speeding up searches.
+          Each node in a trie{" "}
+          <strong>represents a single character from a string</strong> and has
+          references to child nodes for consecutive characters (stored in a{" "}
+          <TextLink href="/data-structures/hashmaps">hashmap</TextLink>). A trie
+          node also <strong>has a flag to indicate the end of a word</strong>.
+          This structure saves space and speeds up searches:
         </p>
+        <CodeBlock code={trieNodeCode} language="python" title="TrieNodes.py" />
       </ChapterHeading>
 
       <ChapterHeading
