@@ -580,19 +580,7 @@ async function dataSeed() {
       },
     },
   });
-
-  // Graphs
-  await database.topic.create({
-    data: {
-      title: "Graphs",
-      description: "Nodes connected by edges to represent networks.",
-      href: "/data-structures/graphs",
-      chapters: {
-        create: graphSkills,
-      },
-    },
-  });
-
+  
   // Heaps
   await database.topic.create({
     data: {
@@ -604,6 +592,18 @@ async function dataSeed() {
       },
     },
   });
+  
+    // Graphs
+    await database.topic.create({
+      data: {
+        title: "Graphs",
+        description: "Nodes connected by edges to represent networks.",
+        href: "/data-structures/graphs",
+        chapters: {
+          create: graphSkills,
+        },
+      },
+    });
 
   // Tries
   await database.topic.create({

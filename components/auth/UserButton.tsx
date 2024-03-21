@@ -21,12 +21,13 @@ import UserAvatar from "./UserAvatar";
 const UserButton = () => {
   const user = getUser();
   const userName = (user?.name ?? user?.username)?.trim();
+  const firstName = userName?.split(" ")[0];
 
   return user ? (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-10 w-10 rounded-full">
-          <UserAvatar user={user} userName={userName!} />
+          <UserAvatar user={user} userName={firstName!} />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end" forceMount>
