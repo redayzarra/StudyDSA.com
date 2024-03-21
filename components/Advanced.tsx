@@ -27,30 +27,16 @@ const Advanced = async () => {
         {/* First Column */}
         <Accordion type="multiple">
           <SkillTreeItem
-            items={dagChapters}
-            name="Directed Acyclic Graphs"
-            value="dag"
-          >
-            <TbVector size={28} />
-          </SkillTreeItem>
-          <SkillTreeItem
-            items={weightedChapters}
-            name="Weighted Graphs"
-            value="weightedGraphs"
-          >
-            <TbVector size={28} />
-          </SkillTreeItem>
-        </Accordion>
-
-        {/* Second Column */}
-        <Accordion type="multiple">
-          <SkillTreeItem
             name="Disjoint Sets"
             value="disjointSet"
             items={disjointChapters}
           >
             <PiGraph size={30} />
           </SkillTreeItem>
+        </Accordion>
+
+        {/* Second Column */}
+        <Accordion type="multiple">
           <SkillTreeItem
             items={segmentChapters}
             name="Segment Trees"

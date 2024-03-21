@@ -617,17 +617,17 @@ async function dataSeed() {
     },
   });
 
-  // Directed Acyclic Graphs (DAGs)
-  await database.topic.create({
-    data: {
-      title: "Directed Acyclic Graphs",
-      description: "Graphs with directed edges and no cycles, useful for modeling processes with dependencies.",
-      href: "/data-structures/directed-acyclic-graphs",
-      chapters: {
-        create: dagSkills,
-      },
-    },
-  });
+  // // Directed Acyclic Graphs (DAGs)
+  // await database.topic.create({
+  //   data: {
+  //     title: "Directed Acyclic Graphs",
+  //     description: "Graphs with directed edges and no cycles, useful for modeling processes with dependencies.",
+  //     href: "/data-structures/directed-acyclic-graphs",
+  //     chapters: {
+  //       create: dagSkills,
+  //     },
+  //   },
+  // });
 
   // Disjoint Sets
   await database.topic.create({
@@ -641,17 +641,17 @@ async function dataSeed() {
     },
   });
 
-  // Weighted Graphs
-  await database.topic.create({
-    data: {
-      title: "Weighted Graphs",
-      description: "Graphs where each edge has an associated weight, representing the cost to move from one vertex to another.",
-      href: "/data-structures/weighted-graphs",
-      chapters: {
-        create: weightedGraphSkills,
-      },
-    },
-  });
+  // // Weighted Graphs
+  // await database.topic.create({
+  //   data: {
+  //     title: "Weighted Graphs",
+  //     description: "Graphs where each edge has an associated weight, representing the cost to move from one vertex to another.",
+  //     href: "/data-structures/weighted-graphs",
+  //     chapters: {
+  //       create: weightedGraphSkills,
+  //     },
+  //   },
+  // });
 
   // Segment Trees
   await database.topic.create({
