@@ -391,12 +391,12 @@ const segmentTreeSkills = [
 const disjointSetSkills = [
   {
     title: "Definition",
-    href: "/data-structures/",
+    href: "/data-structures/disjoint-sets",
     description: "Think of these as separate groups of friends in highschool",
   },
   {
     title: "Operations",
-    href: "/data-structures/",
+    href: "/data-structures/disjoint-sets#operations",
     description: "All the ways to build, find, and merge these friends, without any drama",
   },
   {
@@ -406,17 +406,17 @@ const disjointSetSkills = [
   },
   {
     title: "Network Connectivity",
-    href: "/data-structures/",
+    href: "/data-structures/disjoint-sets#connectivity",
     description: "Checking if two people are in the same friend circle or strangers",
   },
   {
     title: "Path Compression",
-    href: "/data-structures/",
+    href: "/data-structures/disjoint-sets#path-compression",
     description: "While checking, link everyone directly to the 'big boss' to speed up future checks",
   },
   {
     title: "Union by Rank",
-    href: "/data-structures/",
+    href: "/data-structures/disjoint-sets#union-by-rank",
     description: "Keep things balanced by adding the smaller group to the bigger one",
   },
   {
@@ -426,7 +426,7 @@ const disjointSetSkills = [
   },
   {
     title: "Best Practices",
-    href: "/data-structures/",
+    href: "/data-structures/disjoint-sets#bestPractices",
     description: "The most efficient way of using disjoint sets efficiently",
   },
 ]

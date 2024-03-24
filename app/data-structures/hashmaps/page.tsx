@@ -76,15 +76,10 @@ const HashmapPage = async () => {
       >
         <p>
           Hashmaps are powerful because of their efficiency. They use a{" "}
-          <TextLink href="#hashFunction">
-            hash function
-          </TextLink>{" "}
-          for fast data searching and insertion. A good hash function spreads
-          out the keys to prevent{" "}
-          <TextLink href="#collisions">
-            collisions
-          </TextLink>
-          , a topic we'll delve into with more detail.
+          <TextLink href="#hashFunction">hash function</TextLink> for fast data
+          searching and insertion. A good hash function spreads out the keys to
+          prevent <TextLink href="#collisions">collisions</TextLink>, a topic
+          we'll delve into with more detail.
         </p>
         <br />
         <p>
@@ -111,7 +106,7 @@ const HashmapPage = async () => {
           that takes any input (regardless of its size) and produces a integer
           that we can use as an index. The output, known as a hash code,{" "}
           <span className="font-bold">
-            determines where to store the input value in the hashmap{" "}
+            determines where to store the input value in the hashmap
           </span>
           .
         </p>
