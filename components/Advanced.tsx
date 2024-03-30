@@ -1,7 +1,7 @@
 import getAlgorithms from "@/actions/algorithms/getAlgorithms";
 import { Accordion } from "@/components/ui/accordion";
 import { PiGraph } from "react-icons/pi";
-import { TbBinaryTree, TbVector } from "react-icons/tb";
+import { TbBinaryTree } from "react-icons/tb";
 import Algorithms from "./Algorithms";
 import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeItem from "./SkillTreeItem";
@@ -13,8 +13,6 @@ const Advanced = async () => {
   const advancedAlgorithms = await getAlgorithms("advanced");
 
   // Fetch chapters
-  const dagChapters = await getChaptersByTopic("Directed Acyclic Graphs");
-  const weightedChapters = await getChaptersByTopic("Weighted Graphs");
   const disjointChapters = await getChaptersByTopic("Disjoint Sets");
   const segmentChapters = await getChaptersByTopic("Segment Trees");
 

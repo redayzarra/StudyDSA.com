@@ -633,7 +633,7 @@ async function dataSeed() {
   await database.topic.create({
     data: {
       title: "Disjoint Sets",
-      description: "A data structure that keeps track of a set of elements partitioned into a number of disjoint (non-overlapping) subsets.",
+      description: "A data structure that keeps track of disconnected sets of elements.",
       href: "/data-structures/disjoint-sets",
       chapters: {
         create: disjointSetSkills,
