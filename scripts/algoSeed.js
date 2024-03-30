@@ -58,9 +58,9 @@ const basicAlgorithms = [
     description: "Work with ranges or periods, solving problems such as overlaps, merging intervals, and scheduling.",
   },
   {
-    title: "2D Dynamic Pro.",
+    title: "Bit Operations",
     href: "/",
-    description: "Solve problems by breaking them down into simpler subproblems in a two-dimensional space, often used for grid-based problems.",
+    description: "Using bitwise operators for efficient problem-solving, ideal for optimizing time and space.",
   },
 ];
 
@@ -74,6 +74,11 @@ const intermediateAlgorithms = [
     title: "Breadth-First Search",
     href: "/",
     description: "Explore all neighbors at the present depth prior to moving on to the nodes at the next depth level.",
+  },
+  {
+    title: "2D Dynamic Pro.",
+    href: "/",
+    description: "Solve problems by breaking them down into simpler subproblems in a two-dimensional space, often used for grid-based problems.",
   },
   {
     title: "Two-Heaps Pattern",
@@ -96,27 +101,22 @@ const intermediateAlgorithms = [
   description: "Find the shortest paths between all pairs of vertices in a weighted graph, with positive and negative edges.",
   },
   {
-  title: "Kruskal's Algo.",
-  href: "/",
-  description: "Build a minimum spanning tree by selecting the shortest edges without forming a cycle.",
-  },
-  {
-  title: "Prim's Algo.",
-  href: "/",
-  description: "Construct a minimum spanning tree for a weighted, undirected graph, ensuring minimal total edge weight.",
+    title: "Bellman-Ford Algo.",
+    href: "/",
+    description: "Finding the shortest paths from a single source vertex to all other vertices in a weighted graph, even with negative weights.",
   },
 ];
 
 const advancedAlgorithms = [
   {
-    title: "Union Find",
+    title: "Prim's Algo.",
     href: "/",
-    description: "Grouping elements into disjoint subsets, efficiently supporting union and find operations.",
+    description: "Construct a minimum spanning tree for a weighted, undirected graph, ensuring minimal total edge weight.",
   },
   {
-  title: "Bellman-Ford Algo.",
+  title: "Kruskal's Algo.",
   href: "/",
-  description: "Finding the shortest paths from a single source vertex to all other vertices in a weighted graph, even with negative weights.",
+  description: "Build a minimum spanning tree by selecting the shortest edges without forming a cycle.",
   },
   {
     title: "Topological Sort",

@@ -632,9 +632,9 @@ async function dataSeed() {
   // Disjoint Sets
   await database.topic.create({
     data: {
-      title: "Disjoint Sets",
+      title: "Union Find",
       description: "A data structure that keeps track of disconnected sets of elements.",
-      href: "/data-structures/disjoint-sets",
+      href: "/data-structures/union-find",
       chapters: {
         create: disjointSetSkills,
       },

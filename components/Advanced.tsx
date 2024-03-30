@@ -13,7 +13,7 @@ const Advanced = async () => {
   const advancedAlgorithms = await getAlgorithms("advanced");
 
   // Fetch chapters
-  const disjointChapters = await getChaptersByTopic("Disjoint Sets");
+  const unionFindChapters = await getChaptersByTopic("Union Find");
   const segmentChapters = await getChaptersByTopic("Segment Trees");
 
   return (
@@ -25,9 +25,9 @@ const Advanced = async () => {
         {/* First Column */}
         <Accordion type="multiple">
           <SkillTreeItem
-            name="Disjoint Sets"
-            value="disjointSet"
-            items={disjointChapters}
+            name="Union Find"
+            value="unionFind"
+            items={unionFindChapters}
           >
             <PiGraph size={30} />
           </SkillTreeItem>
