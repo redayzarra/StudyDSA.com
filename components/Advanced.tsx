@@ -13,7 +13,7 @@ const Advanced = async () => {
   const advancedAlgorithms = await getAlgorithms("advanced");
 
   // Fetch chapters
-  const unionFindChapters = await getChaptersByTopic("Union Find");
+  const unionFindChapters = await getChaptersByTopic("Union-Find");
   const segmentChapters = await getChaptersByTopic("Segment Trees");
 
   return (

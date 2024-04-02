@@ -23,10 +23,10 @@ const UnionFindPage = async () => {
 
   const definitionChapter = findChapter(topic, "Definition");
   const operationsChapter = findChapter(topic, "Operations");
-  const trieNodesChapter = findChapter(topic, "Trie Nodes");
-  const insertionChapter = findChapter(topic, "Insertion");
-  const searchingChapter = findChapter(topic, "Searching");
-  const prefixesChapter = findChapter(topic, "Finding Prefixes");
+  const disjointSetsChapter = findChapter(topic, "Disjoint Sets");
+  const networkChapter = findChapter(topic, "Network Connectivity");
+  const pathChapter = findChapter(topic, "Path Compression");
+  const rankChapter = findChapter(topic, "Union by Rank");
   const implementationChapter = findChapter(topic, "Implementation");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
@@ -57,41 +57,40 @@ const UnionFindPage = async () => {
       ></ChapterHeading>
 
       <ChapterHeading
-        id="nodes"
-        title="Trie Nodes"
-        chapter={trieNodesChapter}
-        chapterId={trieNodesChapter?.id}
+        id="disjoint-sets"
+        title="Disjoint Sets"
+        chapter={disjointSetsChapter}
+        chapterId={disjointSetsChapter?.id}
       >
         <p></p>
       </ChapterHeading>
 
       <ChapterHeading
-        id="insertion"
-        title="Insertion"
-        chapter={insertionChapter}
-        chapterId={insertionChapter?.id}
-      >
-        <p></p>
-      </ChapterHeading>
-
-      <ChapterHeading
-        id="searching"
-        title="Searching"
-        chapter={searchingChapter}
-        chapterId={searchingChapter?.id}
+        id="connectivity"
+        title="Network Connectivity"
+        chapter={pathChapter}
+        chapterId={pathChapter?.id}
       ></ChapterHeading>
 
       <ChapterHeading
-        id="findingPrefix"
-        title="Finding Prefixes"
-        chapter={prefixesChapter}
-        chapterId={prefixesChapter?.id}
+        id="path-compression"
+        title="Path Compression"
+        chapter={networkChapter}
+        chapterId={networkChapter?.id}
+      >
+        <p></p>
+      </ChapterHeading>
+
+      <ChapterHeading
+        id="union-by-rank"
+        title="Union by Rank"
+        chapter={rankChapter}
+        chapterId={rankChapter?.id}
       ></ChapterHeading>
 
       <ChapterHeading
         id="implementation"
         title="Implementation"
-        chapter={implementationChapter}
         chapterId={implementationChapter?.id}
       ></ChapterHeading>
 
