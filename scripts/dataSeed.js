@@ -400,6 +400,11 @@ const unionFindSkills = [
     description: "All the ways to build, find, and merge sets of nodes with union-find",
   },
   {
+    title: "Disjoint Sets",
+    href: "/data-structures/union-find#disjoint-sets",
+    description: "Sets of nodes that don't overlap with their own unique leader",
+  },
+  {
     title: "Network Connectivity",
     href: "/data-structures/union-find#connectivity",
     description: "Similar to checking if two people are friends or strangers",
@@ -418,11 +423,6 @@ const unionFindSkills = [
     title: "Implementation",
     href: "/data-structures/union-find#implementation",
     description: "Use a special tree where each friend points to the 'leader' of friend group",
-  },
-  {
-    title: "Algorithms",
-    href: "/data-structures/union-find#",
-    description: "Here are the most common algorithms for the union-find data structure",
   },
   {
     title: "Best Practices",
@@ -632,7 +632,7 @@ async function dataSeed() {
   // Union-Find
   await database.topic.create({
     data: {
-      title: "Union Find",
+      title: "Union-Find",
       description: "A data structure that keeps track of disconnected sets of elements.",
       href: "/data-structures/union-find",
       chapters: {
