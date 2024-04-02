@@ -23,10 +23,10 @@ const SegmentTreesPage = async () => {
 
   const definitionChapter = findChapter(topic, "Definition");
   const operationsChapter = findChapter(topic, "Operations");
-  const disjointSetsChapter = findChapter(topic, "Disjoint Sets");
-  const networkChapter = findChapter(topic, "Network Connectivity");
-  const pathChapter = findChapter(topic, "Path Compression");
-  const rankChapter = findChapter(topic, "Union by Rank");
+  const buildingChapter = findChapter(topic, "Building");
+  const queryingChapter = findChapter(topic, "Querying");
+  const updatingChapter = findChapter(topic, "Updating");
+  const lazyChapter = findChapter(topic, "Lazy Propagation");
   const implementationChapter = findChapter(topic, "Implementation");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
@@ -59,8 +59,8 @@ const SegmentTreesPage = async () => {
       <ChapterHeading
         id="disjoint-sets"
         title="Disjoint Sets"
-        chapter={disjointSetsChapter}
-        chapterId={disjointSetsChapter?.id}
+        chapter={buildingChapter}
+        chapterId={buildingChapter?.id}
       >
         <p></p>
       </ChapterHeading>
@@ -68,15 +68,15 @@ const SegmentTreesPage = async () => {
       <ChapterHeading
         id="connectivity"
         title="Network Connectivity"
-        chapter={pathChapter}
-        chapterId={pathChapter?.id}
+        chapter={queryingChapter}
+        chapterId={queryingChapter?.id}
       ></ChapterHeading>
 
       <ChapterHeading
         id="path-compression"
         title="Path Compression"
-        chapter={networkChapter}
-        chapterId={networkChapter?.id}
+        chapter={updatingChapter}
+        chapterId={updatingChapter?.id}
       >
         <p></p>
       </ChapterHeading>
@@ -84,8 +84,8 @@ const SegmentTreesPage = async () => {
       <ChapterHeading
         id="union-by-rank"
         title="Union by Rank"
-        chapter={rankChapter}
-        chapterId={rankChapter?.id}
+        chapter={lazyChapter}
+        chapterId={lazyChapter?.id}
       ></ChapterHeading>
 
       <ChapterHeading
@@ -145,7 +145,7 @@ const SegmentTreesPage = async () => {
 };
 
 export const metadata: Metadata = {
-  title: "Union-Find",
+  title: "Segment Trees",
   description: "",
 };
 

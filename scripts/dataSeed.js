@@ -348,43 +348,43 @@ const trieSkills = [
 const segmentTreeSkills = [
   {
     title: "Definition",
-    href: "/data-structures/",
+    href: "/data-structures/segment-trees",
     description: "Just divide an array into halves until you can't, then add them up",
   },
   {
     title: "Operations",
-    href: "/data-structures/",
+    href: "/data-structures/segment-trees#operations",
     description: "Here's everything you can do with segment trees and their complexities",
   },
   {
-    title: "Implementation",
-    href: "/data-structures/",
-    description: "They are represented by binary trees and each node contains a lot of info",
-  },
-  {
     title: "Building",
-    href: "/data-structures/",
+    href: "/data-structures/segment-trees#building",
     description: "Divide the array by half and put each half in the left and right children",
   },
   {
     title: "Querying",
-    href: "/data-structures/",
+    href: "/data-structures/segment-trees#querying",
     description: "You simply have to traverse down the tree to build the range you need",
   },
   {
     title: "Updating",
-    href: "/data-structures/",
+    href: "/data-structures/segment-trees#updating",
     description: "You need to find the leaf node to fetch the index of the element",
   },
   {
-    title: "Algorithms",
-    href: "/data-structures/",
-    description: "These are all the common algorithms for segment trees",
+    title: "Lazy Propagation",
+    href: "/data-structures/segment-trees#lazy-propagation",
+    description: "Postpones updates to save time, applying them only during queries",
+  },
+  {
+    title: "Implementation",
+    href: "/data-structures/segment-trees#implementation",
+    description: "They are represented by binary trees and each node contains a lot of info",
   },
   {
     title: "Best Practices",
-    href: "/data-structures/",
-    description: "The best way to use segment trees for time complexity",
+    href: "/data-structures/segment-trees#bestPractices",
+    description: "The best way tips and tricks use segment trees for efficient solutions",
   },
 ]
 
