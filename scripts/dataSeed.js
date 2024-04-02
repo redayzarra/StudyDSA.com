@@ -388,15 +388,15 @@ const segmentTreeSkills = [
   },
 ]
 
-const disjointSetSkills = [
+const unionFindSkills = [
   {
     title: "Definition",
-    href: "/data-structures/disjoint-sets",
+    href: "/data-structures/union-find",
     description: "Think of these as separate groups of friends in highschool",
   },
   {
     title: "Operations",
-    href: "/data-structures/disjoint-sets#operations",
+    href: "/data-structures/union-find#operations",
     description: "All the ways to build, find, and merge these friends, without any drama",
   },
   {
@@ -406,17 +406,17 @@ const disjointSetSkills = [
   },
   {
     title: "Network Connectivity",
-    href: "/data-structures/disjoint-sets#connectivity",
+    href: "/data-structures/union-find#connectivity",
     description: "Checking if two people are in the same friend circle or strangers",
   },
   {
     title: "Path Compression",
-    href: "/data-structures/disjoint-sets#path-compression",
+    href: "/data-structures/union-find#path-compression",
     description: "While checking, link everyone directly to the 'big boss' to speed up future checks",
   },
   {
     title: "Union by Rank",
-    href: "/data-structures/disjoint-sets#union-by-rank",
+    href: "/data-structures/union-find#union-by-rank",
     description: "Keep things balanced by adding the smaller group to the bigger one",
   },
   {
@@ -426,7 +426,7 @@ const disjointSetSkills = [
   },
   {
     title: "Best Practices",
-    href: "/data-structures/disjoint-sets#bestPractices",
+    href: "/data-structures/union-find#bestPractices",
     description: "The most efficient way of using disjoint sets efficiently",
   },
 ]
@@ -629,14 +629,14 @@ async function dataSeed() {
   //   },
   // });
 
-  // Disjoint Sets
+  // Union-Find
   await database.topic.create({
     data: {
       title: "Union Find",
       description: "A data structure that keeps track of disconnected sets of elements.",
       href: "/data-structures/union-find",
       chapters: {
-        create: disjointSetSkills,
+        create: unionFindSkills,
       },
     },
   });
