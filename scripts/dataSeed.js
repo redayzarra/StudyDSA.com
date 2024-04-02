@@ -392,27 +392,22 @@ const unionFindSkills = [
   {
     title: "Definition",
     href: "/data-structures/union-find",
-    description: "Think of these as separate groups of friends in highschool",
+    description: "Think of these as separate groups of friends looking to join",
   },
   {
     title: "Operations",
     href: "/data-structures/union-find#operations",
-    description: "All the ways to build, find, and merge these friends, without any drama",
-  },
-  {
-    title: "Implementation",
-    href: "/data-structures/",
-    description: "Use a special tree where each friend points to the 'leader' of friend group",
+    description: "All the ways to build, find, and merge sets of nodes with union-find",
   },
   {
     title: "Network Connectivity",
     href: "/data-structures/union-find#connectivity",
-    description: "Checking if two people are in the same friend circle or strangers",
+    description: "Similar to checking if two people are friends or strangers",
   },
   {
     title: "Path Compression",
     href: "/data-structures/union-find#path-compression",
-    description: "While checking, link everyone directly to the 'big boss' to speed up future checks",
+    description: "Connects all nodes directly to the group leader, speeding up searches",
   },
   {
     title: "Union by Rank",
@@ -420,9 +415,14 @@ const unionFindSkills = [
     description: "Keep things balanced by adding the smaller group to the bigger one",
   },
   {
+    title: "Implementation",
+    href: "/data-structures/union-find#implementation",
+    description: "Use a special tree where each friend points to the 'leader' of friend group",
+  },
+  {
     title: "Algorithms",
-    href: "/data-structures/",
-    description: "Here are the most common algorithms for disjoint sets",
+    href: "/data-structures/union-find#",
+    description: "Here are the most common algorithms for the union-find data structure",
   },
   {
     title: "Best Practices",
