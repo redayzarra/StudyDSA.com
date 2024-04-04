@@ -85,10 +85,31 @@ const UnionFindPage = async () => {
         chapterId={disjointSetsChapter?.id}
       >
         <p>
-          Disjoint Sets represent a collection where each element is part of one
-          and only one subset. Union-Find efficiently tracks these sets,
-          providing insights into how components of a larger system are
-          interconnected or isolated.
+          A disjoint set, also known as a <strong>set of sets</strong>, is a
+          collection where{" "}
+          <strong>each node belongs to exactly one subset</strong>, ensuring no
+          overlap between these subsets. Union-Find provides an efficient method
+          to manage these disjoint sets.
+        </p>
+        <br />
+        <p>
+          One of the key challenges Union-Find addresses is the{" "}
+          <strong>dynamic nature of disjoint sets</strong>. As elements can be
+          grouped or regrouped over time, maintaining an efficient and quick
+          access to these sets becomes difficult, especially in graph algorithms
+          where connectivity changes.
+        </p>
+        <br />
+        <p>
+          Union-Find, with optimizations such as{" "}
+          <TextLink href="#path-compression">path compression</TextLink> and{" "}
+          <TextLink href="#union-by-rank">union by rank</TextLink>,
+          significantly improves the efficiency of these operations. Path
+          compression flattens the structure of the sets, making future find
+          operations faster by directly connecting nodes to their root. Union by
+          rank ensures that the smaller set is always merged into the larger
+          one, preventing the formation of long chains that can slow down find
+          operations.
         </p>
       </ChapterHeading>
 
@@ -97,7 +118,7 @@ const UnionFindPage = async () => {
         title="Network Connectivity"
         chapter={networkChapter}
         chapterId={networkChapter?.id}
-        >
+      >
         <p>
           Applying Union-Find in network connectivity scenarios allows for quick
           determinations of whether points in a network are connected. This
