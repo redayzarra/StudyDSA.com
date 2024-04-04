@@ -47,14 +47,28 @@ const UnionFindPage = async () => {
         title="Definition"
         chapterId={definitionChapter?.id}
       >
-        <p></p>
+        <p>
+          The Union-Find data structure, also known as Disjoint Set Union (DSU),
+          helps manage a collection of disjoint sets, enabling efficient queries
+          and updates about whether elements are in the same set or separate
+          sets. It's crucial for algorithms that require the partitioning of
+          elements into disjoint sets without overlap.
+        </p>
       </ChapterHeading>
 
       <ChapterHeading
         id="operations"
         title="Operations"
         chapterId={operationsChapter?.id}
-      ></ChapterHeading>
+      >
+        <p>
+          Fundamental operations include <strong>find</strong>, which identifies
+          the set an element belongs to, and <strong>union</strong>, which
+          merges two sets. These operations enable the dynamic grouping and
+          querying of elements, forming the core of the Union-Find's
+          functionality.
+        </p>
+      </ChapterHeading>
 
       <ChapterHeading
         id="disjoint-sets"
@@ -62,7 +76,12 @@ const UnionFindPage = async () => {
         chapter={disjointSetsChapter}
         chapterId={disjointSetsChapter?.id}
       >
-        <p></p>
+        <p>
+          Disjoint Sets represent a collection where each element is part of one
+          and only one subset. Union-Find efficiently tracks these sets,
+          providing insights into how components of a larger system are
+          interconnected or isolated.
+        </p>
       </ChapterHeading>
 
       <ChapterHeading
@@ -70,7 +89,14 @@ const UnionFindPage = async () => {
         title="Network Connectivity"
         chapter={pathChapter}
         chapterId={pathChapter?.id}
-      ></ChapterHeading>
+      >
+        <p>
+          Applying Union-Find in network connectivity scenarios allows for quick
+          determinations of whether points in a network are connected. This
+          application is vital for understanding the structure of networks and
+          solving connectivity problems.
+        </p>
+      </ChapterHeading>
 
       <ChapterHeading
         id="path-compression"
@@ -78,7 +104,12 @@ const UnionFindPage = async () => {
         chapter={networkChapter}
         chapterId={networkChapter?.id}
       >
-        <p></p>
+        <p>
+          Path compression is an optimization technique that flattens the
+          structure of the tree representing each set, speeding up future
+          operations by directly linking nodes to their ultimate parent after a
+          find operation.
+        </p>
       </ChapterHeading>
 
       <ChapterHeading
@@ -86,13 +117,27 @@ const UnionFindPage = async () => {
         title="Union by Rank"
         chapter={rankChapter}
         chapterId={rankChapter?.id}
-      ></ChapterHeading>
+      >
+        <p>
+          Union by Rank is another optimization that maintains a balanced tree
+          by always attaching the shorter tree to the root of the taller tree
+          during union operations. This reduces the overall height of trees,
+          improving the efficiency of find operations.
+        </p>
+      </ChapterHeading>
 
       <ChapterHeading
         id="implementation"
         title="Implementation"
         chapterId={implementationChapter?.id}
-      ></ChapterHeading>
+      >
+        <p>
+          Implementing Union-Find involves creating a structure that supports
+          efficient find and union operations. Typically, it includes an array
+          to track parent relationships between elements, alongside mechanisms
+          for path compression and rank by union optimizations.
+        </p>
+      </ChapterHeading>
 
       <ChapterHeading id="algorithms" title="Algorithms">
         <Algorithms items={unionFindAlgorithms} />
