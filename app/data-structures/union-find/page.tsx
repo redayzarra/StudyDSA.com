@@ -120,10 +120,26 @@ const UnionFindPage = async () => {
         chapterId={networkChapter?.id}
       >
         <p>
-          Applying Union-Find in network connectivity scenarios allows for quick
-          determinations of whether points in a network are connected. This
-          application is vital for understanding the structure of networks and
-          solving connectivity problems.
+          Network connectivity problems often ask us to{" "}
+          <strong>
+            find out whether two elements are part of the same subset or if a
+            path exists between them
+          </strong>
+          . Union-Find simplifies this process by maintaining information about
+          connected components within a network.
+        </p>
+        <br />
+        <p>
+          Union-Find can handle large networks by efficiently{" "}
+          <strong>grouping nodes into sets of connected components</strong>.
+          When a new connection between two nodes is introduced, Union-Find can
+          quickly{" "}
+          <strong>
+            update the corresponding sets using the union operation
+          </strong>
+          . Checking if two nodes are connected is as simple as verifying if
+          they belong to the same set, which can be easily done with the find
+          operation.
         </p>
       </ChapterHeading>
 
