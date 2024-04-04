@@ -7,7 +7,7 @@ import CodeBlock from "@/components/CodeBlock";
 import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
-import { trieOperations } from "@/data/operationsData";
+import { unionFindOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import ImageBlock from "@/components/ImageBlock";
 import TextLink from "@/components/TextLink";
@@ -48,11 +48,10 @@ const UnionFindPage = async () => {
         chapterId={definitionChapter?.id}
       >
         <p>
-          The Union-Find data structure, also known as Disjoint Set Union (DSU),
-          helps manage a collection of disjoint sets, enabling efficient queries
-          and updates about whether elements are in the same set or separate
-          sets. It's crucial for algorithms that require the partitioning of
-          elements into disjoint sets without overlap.
+          Union-Find, also known as Disjoint Set Union (DSU), manages a
+          collection of <TextLink href="#disjointSets">disjoint sets</TextLink>,
+          allowing for efficient queries and updates about{" "}
+          <strong>whether elements are in the same set or not</strong>.
         </p>
       </ChapterHeading>
 
@@ -62,11 +61,20 @@ const UnionFindPage = async () => {
         chapterId={operationsChapter?.id}
       >
         <p>
-          Fundamental operations include <strong>find</strong>, which identifies
-          the set an element belongs to, and <strong>union</strong>, which
-          merges two sets. These operations enable the dynamic grouping and
-          querying of elements, forming the core of the Union-Find's
-          functionality.
+          Union-Find supports two fundamental operations: <strong>find</strong>,
+          which identifies the set an element belongs to, and{" "}
+          <strong>union</strong>, which merges two sets into one. These
+          operations are dynamic, meaning they{" "}
+          <strong>can be performed at any time</strong> after the graph's
+          initial construction:
+        </p>
+        <Operations items={unionFindOperations} />
+        <p>
+          The Inverse Ackermann function, <CodeText>O(α(N))</CodeText>, is a
+          time complexity that <strong>grows extremely slowly</strong>, so much
+          so that for all practical programming purposes,{" "}
+          <strong>it's almost constant</strong>. This means algorithms with this
+          complexity are highly efficient, even for very large input sizes.
         </p>
       </ChapterHeading>
 
@@ -87,9 +95,9 @@ const UnionFindPage = async () => {
       <ChapterHeading
         id="connectivity"
         title="Network Connectivity"
-        chapter={pathChapter}
-        chapterId={pathChapter?.id}
-      >
+        chapter={networkChapter}
+        chapterId={networkChapter?.id}
+        >
         <p>
           Applying Union-Find in network connectivity scenarios allows for quick
           determinations of whether points in a network are connected. This
@@ -101,8 +109,8 @@ const UnionFindPage = async () => {
       <ChapterHeading
         id="path-compression"
         title="Path Compression"
-        chapter={networkChapter}
-        chapterId={networkChapter?.id}
+        chapter={pathChapter}
+        chapterId={pathChapter?.id}
       >
         <p>
           Path compression is an optimization technique that flattens the

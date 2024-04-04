@@ -345,3 +345,30 @@ export const trieOperations: { operation: string; time: string; space: string; n
     notes: "Deletes a word of length 'n' from the Trie",
   },
 ]
+
+export const unionFindOperations: { operation: string; time: string; space: string; notes: string }[] = [
+  {
+    operation: "Find",
+    time: "O(α(N))",
+    space: "O(N)",
+    notes: "Determines the set of an element, using path compression for efficiency.",
+  },
+  {
+    operation: "Union",
+    time: "O(α(N))",
+    space: "O(N)",
+    notes: "Merges two sets into one, applying union by rank to maintain a balanced structure.",
+  },
+  {
+    operation: "Connected",
+    time: "O(α(N))",
+    space: "O(N)",
+    notes: "Checks if two elements are in the same set using the find operation.",
+  },
+  {
+    operation: "MakeSet",
+    time: "O(1)",
+    space: "O(N)",
+    notes: "Initializes a new set containing a new element.",
+  },
+]
