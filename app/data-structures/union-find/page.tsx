@@ -303,38 +303,47 @@ const UnionFindPage = async () => {
         chapterId={bestPracticesChapter?.id}
       >
         <p>
-          Tries efficiently store and search words or sequences of strings. They
-          are useful for tasks involving prefixes, such as autocomplete systems
-          or spell checkers. To get the most out of tries in coding interviews,
-          here are some essential tips and tricks:
+          Union-Find is a great tool for solving problems related to disjoint
+          sets, connectivity, and clustering in coding interviews. To use
+          Union-Find efficiently, here are some great tips and tricks:
         </p>
         <br />
         <ul className="ml-6">
           <li>
-            <span className="font-bold">&bull; Use Hash Maps:</span> When
-            dealing with a large alphabet, use hash maps to store children nodes
-            instead of fixed-size arrays. This improves space efficiency and
-            flexibility, allowing the trie to handle any range of characters.
+            <span className="font-bold">
+              &bull; Understand Union-Find Conceptually:
+            </span>{" "}
+            Grasp the core concepts of Union-Find, including how it manages
+            disjoint sets, and the significance of its <CodeText>find</CodeText>{" "}
+            and <CodeText>union</CodeText> operations. A solid understanding
+            will enable you to apply it to a wide range of problems.
           </li>
           <br />
           <li>
             <span className="font-bold">
-              &bull; Iterative vs. Recursive Implementations:
+              &bull; Optimize with Path Compression:
             </span>{" "}
-            Be comfortable with both iterative and recursive implementations of
-            trie operations. Recursive approaches are often more intuitive but
-            can be inefficient with very deep tries. Iterative implementations,
-            while sometimes more complex, can be more efficient.
+            Always implement path compression with your{" "}
+            <CodeText>find</CodeText> operation. This simple optimization
+            dramatically improves the efficiency of Union-Find,{" "}
+            <strong>making the time complexity nearly constant</strong> for each
+            operation.
+          </li>
+          <br />
+          <li>
+            <span className="font-bold">&bull; Use Union by Size or Rank:</span>{" "}
+            Use union by rank (size) to keep the data structure's trees as
+            flat as possible. This strategy minimizes the depth of trees and
+            optimizes find operations.
           </li>
           <br />
           <li>
             <span className="font-bold">
-              &bull; Handling Deletions Carefully:
+              &bull; Identify Union-Find Applications:
             </span>{" "}
-            Implement deletion operations carefully to ensure the trie remains
-            consistent. After removing a word, check whether the parent nodes
-            have become unnecessary (i.e., they no longer have any children and
-            are not end of any word) and remove them as well.
+            Recognize problems where Union-Find can be applied, such as
+            determining connected components in a network, checking for cycles
+            in an undirected graph, or solving dynamic connectivity issues.
           </li>
           <br />
         </ul>
