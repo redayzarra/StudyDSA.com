@@ -11,6 +11,7 @@ import { unionFindOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import ImageBlock from "@/components/ImageBlock";
 import TextLink from "@/components/TextLink";
+import { findOperationCode, pathCompressionCode } from "./unionFindCode";
 
 const UnionFindPage = async () => {
   const topic = await getTopicByName("Union-Find");
@@ -150,10 +151,66 @@ const UnionFindPage = async () => {
         chapterId={pathChapter?.id}
       >
         <p>
-          Path compression is an optimization technique that flattens the
-          structure of the tree representing each set, speeding up future
-          operations by directly linking nodes to their ultimate parent after a
-          find operation.
+          Path compression is an optimization technique which{" "}
+          <strong>reduces the depth of Union-Find</strong>. By minimizing the
+          number of hops required to reach the root of each node, path
+          compression speeds up the the <strong>find</strong> operations.
+        </p>
+        <br />
+        <p>
+          Just out of curiosity, let's take a look at the Union-Find{" "}
+          <CodeText>find</CodeText> operation{" "}
+          <strong>without path compression</strong>. The code below will run at{" "}
+          <CodeText>O(n)</CodeText> time complexity:
+        </p>
+        <CodeBlock
+          code={findOperationCode}
+          language="python"
+          title="FindOperation.py"
+        />
+        <br />
+        <p>
+          Path compression{" "}
+          <strong>
+            works by changing the structure of the Union-Find tree
+          </strong>{" "}
+          during each find operation. When we need a node's parent from the{" "}
+          <CodeText>find</CodeText> operation, path compression ensures that{" "}
+          <strong>
+            {" "}
+            each node along the path to the root is directly linked to the root
+            itself
+          </strong>
+          . This adjustment is made dynamically, ensuring that future queries
+          for any of these nodes will require far fewer steps to ascertain their
+          set representative.
+        </p>
+        <br />
+        <p>
+          <strong>Path compression is just a simple modification</strong> to the{" "}
+          <CodeText>find</CodeText> operation. Instead of traversing up the tree
+          to find the root, the <CodeText>find</CodeText> operation{" "}
+          <strong>
+            reassigns the parent of each traversed node to point directly to the
+            root
+          </strong>
+          . This can be done by adding one simple line to the{" "}
+          <CodeText>find</CodeText> function, resulting in a tree that is much
+          flatter and more efficient to work with:
+        </p>
+        <CodeBlock
+          code={pathCompressionCode}
+          language="python"
+          title="PathCompression.py"
+        />
+        <br />
+        <p>
+          The benefits of path compression are noticeable in large numbers of
+          elements and operations. By ensuring that <strong>trees remain shallow</strong>, path
+          compression guarantees that the amortized time complexity of <CodeText>find</CodeText> approaches{" "}
+          <CodeText>O(log n)</CodeText> in the worst case and is closer to{" "}
+          <CodeText>O(α(n))</CodeText>, the inverse Ackermann function, for most
+          practical purposes.
         </p>
       </ChapterHeading>
 
