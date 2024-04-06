@@ -11,7 +11,7 @@ import { unionFindOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import ImageBlock from "@/components/ImageBlock";
 import TextLink from "@/components/TextLink";
-import { findOperationCode, pathCompressionCode } from "./unionFindCode";
+import { findOperationCode, pathCompressionCode, unionByRankCode } from "./unionFindCode";
 
 const UnionFindPage = async () => {
   const topic = await getTopicByName("Union-Find");
@@ -221,7 +221,48 @@ const UnionFindPage = async () => {
         chapter={rankChapter}
         chapterId={rankChapter?.id}
       >
-        
+        <p>
+          Union by Rank is an optimization technique that{" "}
+          <strong>maintains a balanced tree structure</strong> during union
+          operations. This ensures that the tree's height is minimized for
+          future find operations. The <CodeText>rank</CodeText> in this context{" "}
+          <strong>represents the tree's height</strong>, and during a union
+          operation, the{" "}
+          <strong>
+            tree with the lower rank is merged into the tree with the higher
+            rank
+          </strong>
+          .
+        </p>
+        <br />
+        <p>
+          Union by Rank can be adapted to use a{" "}
+          <strong>
+            <CodeText>size</CodeText> array for tracking each set's size instead
+            of rank
+          </strong>
+          . Initially, every element forms a set of size one. During a union
+          operation,{" "}
+          <strong>
+            the smaller set's root is linked to the larger set's root
+          </strong>
+          , optimizing the set's structure for future <CodeText>find</CodeText>{" "}
+          operations. If sets are equal in size, one becomes the root of the
+          combined set, which then updates its size to the total of both:
+        </p>
+        <CodeBlock
+          code={unionByRankCode}
+          language="python"
+          title="UnionByRank.py"
+        />
+        <br />
+        <p>
+          {" "}
+          This size-based approach, a variant of the traditional rank method,
+          ensures the Union-Find's efficiency, returning{" "}
+          <CodeText>True</CodeText> for merging separate sets and{" "}
+          <CodeText>False</CodeText> if already connected.
+        </p>
       </ChapterHeading>
 
       <ChapterHeading
