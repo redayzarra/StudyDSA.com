@@ -11,7 +11,12 @@ import { unionFindOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import ImageBlock from "@/components/ImageBlock";
 import TextLink from "@/components/TextLink";
-import { findOperationCode, pathCompressionCode, unionByRankCode } from "./unionFindCode";
+import {
+  findOperationCode,
+  pathCompressionCode,
+  unionByRankCode,
+  unionFindImplementation,
+} from "./unionFindCode";
 
 const UnionFindPage = async () => {
   const topic = await getTopicByName("Union-Find");
@@ -271,11 +276,21 @@ const UnionFindPage = async () => {
         chapterId={implementationChapter?.id}
       >
         <p>
-          Implementing Union-Find involves creating a structure that supports
-          efficient find and union operations. Typically, it includes an array
-          to track parent relationships between elements, alongside mechanisms
-          for path compression and rank by union optimizations.
+          Implement Union-Find by{" "}
+          <strong>creating an array to track parent relationships</strong>{" "}
+          between elements. Use an additional array, often referred to as{" "}
+          <strong>
+            <CodeText>size</CodeText>
+          </strong>
+          , to keep track of <strong>the number of elements in each set</strong>
+          . This <CodeText>size</CodeText> array plays an important role during
+          the union process:
         </p>
+        <CodeBlock
+          code={unionFindImplementation}
+          language="python"
+          title="Union-Find.py"
+        />
       </ChapterHeading>
 
       <ChapterHeading id="algorithms" title="Algorithms">
