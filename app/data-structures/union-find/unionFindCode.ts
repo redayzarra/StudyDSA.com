@@ -25,6 +25,31 @@ export const pathCompressionCode =
 
 export const unionByRankCode = 
 `def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
+    # Setup Union-Find - 'size' keeps track of node's size
+    size = [1] * (len(edges) + 1)
+
+    # Union by Rank - Return false if the nodes are already connnected
+    def union(node1: int, node2: int) -> bool:
+        # Find the roots of the given nodes using 'find' function
+        p1, p2 = find(node1), find(node2)
+
+        # If roots are the same => they're part of the same set (connected)
+        if p1 == p2:
+            return False
+
+        # Union by Rank - using size to merge the two unique sets
+        if size[p1] > size[p2]:
+            par[p2] = p1
+            size[p1] += size[p2]
+        else:
+            par[p1] = p2
+            size[p2] += size[p1]
+        
+        # Return true to indicate that the two sets are merged
+        return True`;
+
+export const unionFindImplementation = 
+`def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
     # Setup Union-Find - 'par' and 'size' for info on every node
     par = [i for i in range(len(edges) + 1)]
     size = [1] * (len(edges) + 1)
