@@ -206,11 +206,12 @@ const UnionFindPage = async () => {
         <br />
         <p>
           The benefits of path compression are noticeable in large numbers of
-          elements and operations. By ensuring that <strong>trees remain shallow</strong>, path
-          compression guarantees that the amortized time complexity of <CodeText>find</CodeText> approaches{" "}
-          <CodeText>O(log n)</CodeText> in the worst case and is closer to{" "}
-          <CodeText>O(α(n))</CodeText>, the inverse Ackermann function, for most
-          practical purposes.
+          elements and operations. By ensuring that{" "}
+          <strong>trees remain shallow</strong>, path compression guarantees
+          that the amortized time complexity of <CodeText>find</CodeText>{" "}
+          approaches <CodeText>O(log n)</CodeText> in the worst case and is
+          closer to <CodeText>O(α(n))</CodeText>, the inverse Ackermann
+          function, for most practical purposes.
         </p>
       </ChapterHeading>
 
@@ -220,12 +221,7 @@ const UnionFindPage = async () => {
         chapter={rankChapter}
         chapterId={rankChapter?.id}
       >
-        <p>
-          Union by Rank is another optimization that maintains a balanced tree
-          by always attaching the shorter tree to the root of the taller tree
-          during union operations. This reduces the overall height of trees,
-          improving the efficiency of find operations.
-        </p>
+        
       </ChapterHeading>
 
       <ChapterHeading
