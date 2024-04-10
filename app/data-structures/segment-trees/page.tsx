@@ -57,8 +57,8 @@ const SegmentTreesPage = async () => {
       ></ChapterHeading>
 
       <ChapterHeading
-        id="disjoint-sets"
-        title="Disjoint Sets"
+        id="building"
+        title="Building"
         chapter={buildingChapter}
         chapterId={buildingChapter?.id}
       >
@@ -66,15 +66,15 @@ const SegmentTreesPage = async () => {
       </ChapterHeading>
 
       <ChapterHeading
-        id="connectivity"
-        title="Network Connectivity"
+        id="querying"
+        title="Querying"
         chapter={queryingChapter}
         chapterId={queryingChapter?.id}
       ></ChapterHeading>
 
       <ChapterHeading
-        id="path-compression"
-        title="Path Compression"
+        id="updating"
+        title="Updating"
         chapter={updatingChapter}
         chapterId={updatingChapter?.id}
       >
@@ -82,8 +82,8 @@ const SegmentTreesPage = async () => {
       </ChapterHeading>
 
       <ChapterHeading
-        id="union-by-rank"
-        title="Union by Rank"
+        id="lazy-propagation"
+        title="Lazy Propagation"
         chapter={lazyChapter}
         chapterId={lazyChapter?.id}
       ></ChapterHeading>
