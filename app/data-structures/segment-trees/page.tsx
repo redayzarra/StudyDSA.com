@@ -47,7 +47,14 @@ const SegmentTreesPage = async () => {
         title="Definition"
         chapterId={definitionChapter?.id}
       >
-        <p></p>
+        <p>
+          A Segment Tree is a binary tree used for storing the intervals or
+          segments. It allows querying which segments or intervals contain a
+          given point. It's particularly useful in scenarios requiring frequent
+          updates and queries on a set of intervals, making it a versatile tool
+          for problems involving range queries, such as finding the sum,
+          minimum, or maximum in a subarray.
+        </p>
       </ChapterHeading>
 
       <ChapterHeading
