@@ -45,7 +45,7 @@ const LoginForm = () => {
     setMessage("");
 
     startTransition(() => {
-      login(values).then((data) => {
+      login(values, callbackUrl).then((data) => {
         // If there is an error, then mark error to be true
         if (data.error) {
           setError(true);
@@ -59,6 +59,7 @@ const LoginForm = () => {
   };
 
   const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl")
   const urlError =
     searchParams.get("error") === "OAuthAccountNotLinked"
       ? "Email is being used with a different provider"

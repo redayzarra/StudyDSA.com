@@ -8,7 +8,7 @@ import { AuthError } from "next-auth";
 import * as z from "zod";
 import isEmail from "./isEmail";
 
-export const login = async (values: z.infer<typeof loginSchema>) => {
+export const login = async (values: z.infer<typeof loginSchema>, callbackUrl?: string | null) => {
   const validated = loginSchema.safeParse(values);
 
   if (!validated.success) {
@@ -38,7 +38,7 @@ export const login = async (values: z.infer<typeof loginSchema>) => {
     await signIn("credentials", {
       emailUsername,
       password,
-      redirectTo: DEFAULT_LOGIN_REDIRECT,
+      redirectTo: callbackUrl || DEFAULT_LOGIN_REDIRECT,
     });
 
     return { success: "Successfully logging in!" };
