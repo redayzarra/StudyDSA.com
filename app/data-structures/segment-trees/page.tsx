@@ -61,7 +61,17 @@ const SegmentTreesPage = async () => {
         id="operations"
         title="Operations"
         chapterId={operationsChapter?.id}
-      ></ChapterHeading>
+      >
+        <p>
+          The core operations of a Segment Tree include{" "}
+          <strong>building</strong> the tree from a given array,{" "}
+          <strong>updating</strong> values in the tree to reflect changes in the
+          array, and <strong>querying</strong> the tree to obtain aggregate
+          information over a range. These operations enable efficient
+          manipulation and retrieval of data over segments, catering to dynamic
+          data sets.
+        </p>
+      </ChapterHeading>
 
       <ChapterHeading
         id="building"
@@ -69,7 +79,14 @@ const SegmentTreesPage = async () => {
         chapter={buildingChapter}
         chapterId={buildingChapter?.id}
       >
-        <p></p>
+        <p>
+          Building a Segment Tree involves constructing a binary tree where each
+          leaf represents an element of the array, and each internal node stores
+          information (like sum, minimum, or maximum) about the interval or
+          segment it covers. This process typically runs in{" "}
+          <strong>O(n log n)</strong> time, setting up the structure for
+          efficient subsequent updates and queries.
+        </p>
       </ChapterHeading>
 
       <ChapterHeading
