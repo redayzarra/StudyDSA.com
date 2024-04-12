@@ -1,6 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
+import LoginForm from "./LoginForm";
 
 interface Props {
   children: React.ReactNode;
@@ -18,8 +20,17 @@ const LoginButton = ({ children, mode = "redirect", asChild }: Props) => {
 
   // Modal version
   if (mode == "modal") {
-    return <div>Model Version</div>;
+    return (
+      <Dialog>
+        <DialogTrigger asChild={asChild}>{children}</DialogTrigger>
+        <DialogContent className="p-0 bg-transparent w-auto border-none">
+          <LoginForm />
+        </DialogContent>
+      </Dialog>
+    );
   }
+  
+  // Redirect version
   return (
     <div onClick={onClick} className="cursor-pointer">
       {children}
