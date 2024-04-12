@@ -94,7 +94,15 @@ const SegmentTreesPage = async () => {
         title="Querying"
         chapter={queryingChapter}
         chapterId={queryingChapter?.id}
-      ></ChapterHeading>
+      >
+        <p>
+          Querying a Segment Tree allows for retrieving aggregated data over a
+          specified range in <strong>O(log n)</strong> time. This operation
+          traverses the tree, merging the information from relevant segments to
+          produce the final result. It's particularly useful for dynamic data
+          sets where queries over ranges are frequent.
+        </p>
+      </ChapterHeading>
 
       <ChapterHeading
         id="updating"
@@ -102,7 +110,14 @@ const SegmentTreesPage = async () => {
         chapter={updatingChapter}
         chapterId={updatingChapter?.id}
       >
-        <p></p>
+        <p>
+          Updating the Segment Tree to reflect changes in the underlying data
+          set involves modifying one or more leaf nodes and then propagating
+          these changes up the tree to ensure all relevant internal nodes have
+          the correct aggregated information. This operation maintains the
+          tree's integrity, allowing for continuous accurate queries, typically
+          executed in <strong>O(log n)</strong> time.
+        </p>
       </ChapterHeading>
 
       <ChapterHeading
