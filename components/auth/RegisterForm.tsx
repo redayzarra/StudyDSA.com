@@ -76,7 +76,9 @@ const RegisterForm = () => {
                     <Input
                       {...field}
                       disabled={isPending}
+                      className="bg-transparent"
                       placeholder="E.g. TheCapn"
+                      type="text"
                     />
                   </FormControl>
                   <FormMessage />
@@ -93,6 +95,7 @@ const RegisterForm = () => {
                     <Input
                       {...field}
                       disabled={isPending}
+                      className="bg-transparent"
                       placeholder="E.g. steve_rodgers@gmail.com"
                       type="email"
                     />
@@ -111,6 +114,7 @@ const RegisterForm = () => {
                     <Input
                       disabled={isPending}
                       {...field}
+                      className="bg-transparent"
                       placeholder="Enter a password"
                       type="password"
                     />
