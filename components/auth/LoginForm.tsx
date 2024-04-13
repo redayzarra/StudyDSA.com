@@ -94,7 +94,7 @@ const LoginForm = () => {
                       className="bg-transparent"
                       disabled={isPending}
                       placeholder="Enter your email or username"
-                      type="email"
+                      type="text"
                     />
                   </FormControl>
                   <FormMessage />

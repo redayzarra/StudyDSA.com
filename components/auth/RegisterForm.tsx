@@ -18,6 +18,7 @@ import {
 import { Input } from "../ui/input";
 import CardWrapper from "./CardWrapper";
 import FormResult from "./FormResult";
+import NeoButton from "../NeoButton";
 
 const RegisterForm = () => {
   const form = useForm<z.infer<typeof registerSchema>>({
@@ -125,9 +126,9 @@ const RegisterForm = () => {
             />
           </div>
           <FormResult message={message} error={error} />
-          <Button type="submit" className="w-full shadow-lg font-semibold">
-            Register
-          </Button>
+          <NeoButton className="w-full">
+            <span className="w-full flex-grow text-base">Register</span>
+          </NeoButton>
         </form>
       </Form>
     </CardWrapper>

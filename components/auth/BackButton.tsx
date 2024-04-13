@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import NeoButton from "../NeoButton";
 
 interface Props {
   label: string;
@@ -10,9 +11,11 @@ interface Props {
 
 const BackButton = ({ label, href, drawAttention = false }: Props) => {
   return drawAttention ? (
-    <Button className="mx-auto" size="sm" asChild>
-      <Link href={href}>{label}</Link>
-    </Button>
+    <NeoButton className="">
+      <Link href={href} className="w-full flex-grow text-base">
+        {label}
+      </Link>
+    </NeoButton>
   ) : (
     <Button
       variant="link"
