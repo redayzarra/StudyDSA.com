@@ -18,6 +18,7 @@ import {
 import { Input } from "../ui/input";
 import CardWrapper from "./CardWrapper";
 import FormResult from "./FormResult";
+import NeoButton from "../NeoButton";
 
 const ResetForm = () => {
   const form = useForm<z.infer<typeof resetSchema>>({
@@ -83,9 +84,9 @@ const ResetForm = () => {
             />
           </div>
           <FormResult message={message} error={error} />
-          <Button type="submit" className="w-full shadow-lg font-semibold">
-            Send Email
-          </Button>
+          <NeoButton className="w-full">
+            <span className="w-full flex-grow text-base">Send Email</span>
+          </NeoButton>
         </form>
       </Form>
     </CardWrapper>

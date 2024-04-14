@@ -19,6 +19,7 @@ import CardWrapper from "./CardWrapper";
 import FormResult from "./FormResult";
 import { useSearchParams } from "next/navigation";
 import { newPassword } from "@/actions/newPassword";
+import NeoButton from "../NeoButton";
 
 const NewPasswordForm = () => {
   const searchParams = useSearchParams();
@@ -113,9 +114,9 @@ const NewPasswordForm = () => {
             />
           </div>
           <FormResult message={message} error={error} />
-          <Button type="submit" className="w-full shadow-lg font-semibold">
-            Confirm
-          </Button>
+          <NeoButton className="w-full">
+            <span className="w-full flex-grow text-base">Confirm</span>
+          </NeoButton>
         </form>
       </Form>
     </CardWrapper>
