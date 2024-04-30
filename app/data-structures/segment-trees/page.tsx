@@ -11,6 +11,7 @@ import { segmentTreeOperations, trieOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import ImageBlock from "@/components/ImageBlock";
 import TextLink from "@/components/TextLink";
+import { buildingCode } from "./segmentCode";
 
 const SegmentTreesPage = async () => {
   const topic = await getTopicByName("Segment Trees");
@@ -80,12 +81,28 @@ const SegmentTreesPage = async () => {
         chapterId={buildingChapter?.id}
       >
         <p>
-          Building a Segment Tree involves constructing a binary tree where each
-          leaf represents an element of the array, and each internal node stores
-          information (like sum, minimum, or maximum) about the interval or
-          segment it covers. This process typically runs in{" "}
-          <strong>O(n log n)</strong> time, setting up the structure for
-          efficient subsequent updates and queries.
+          Building a segment tree involves constructing a{" "}
+          <TextLink href="/data-structures/trees#binary">binary tree</TextLink>{" "}
+          where <strong>each leaf represents an element of the array</strong>,
+          and <strong>each node stores information</strong> (like sum, minimum,
+          or maximum) about the interval or segment it covers. This process
+          typically runs in <CodeText>O(n log n)</CodeText> time, setting up the
+          structure for efficient future updates and queries.
+        </p>
+        <CodeBlock
+          code={buildingCode}
+          language="python"
+          title="Building_SegmentTrees.py"
+        />
+        <br />
+        <p>
+          The <CodeText>SegmentTree</CodeText> class constructs a segment tree
+          from an <TextLink href="/data-structures/arrays">array</TextLink> for
+          efficient range queries and updates. First, it{" "}
+          <strong>doubles the array size for tree construction</strong>, placing
+          each array element in a leaf node. The tree is then{" "}
+          <strong>built upward by summing child nodes into their parent</strong>
+          , enabling fast operations on array segments in logarithmic time.
         </p>
       </ChapterHeading>
 
