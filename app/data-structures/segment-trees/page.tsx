@@ -11,7 +11,7 @@ import { segmentTreeOperations, trieOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import ImageBlock from "@/components/ImageBlock";
 import TextLink from "@/components/TextLink";
-import { buildingCode } from "./segmentCode";
+import { buildingCode, queryingCode } from "./segmentCode";
 
 const SegmentTreesPage = async () => {
   const topic = await getTopicByName("Segment Trees");
@@ -113,11 +113,32 @@ const SegmentTreesPage = async () => {
         chapterId={queryingChapter?.id}
       >
         <p>
-          Querying a Segment Tree allows for retrieving aggregated data over a
-          specified range in <strong>O(log n)</strong> time. This operation
-          traverses the tree, merging the information from relevant segments to
-          produce the final result. It's particularly useful for dynamic data
-          sets where queries over ranges are frequent.
+          Querying a segment tree efficiently retrieves the sum of a range
+          within an array. Simply put,{" "}
+          <strong>
+            traverse down the tree from the root to the relevant leaves
+          </strong>{" "}
+          that represent the query interval. Since the segment tree is a binary
+          tree, this operation can retrieve sums in{" "}
+          <CodeText>O(log n)</CodeText> time, making it significantly faster
+          than a linear approach using a <CodeText>for</CodeText> loop.
+        </p>
+        <CodeBlock
+          code={queryingCode}
+          language="python"
+          title="Querying_SegmentTrees.py"
+        />
+        <br />
+        <p>
+          The <CodeText>query</CodeText> method begins at the root and
+          selectively{" "}
+          <strong>
+            navigates to child nodes that overlap with the desired query range
+          </strong>
+          . If a segment completely falls within the query range, its sum is
+          included in the result. If not, the tree further subdivides into
+          smaller segments, efficiently combining the results of overlapping
+          nodes.
         </p>
       </ChapterHeading>
 
