@@ -11,7 +11,7 @@ import { segmentTreeOperations, trieOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import ImageBlock from "@/components/ImageBlock";
 import TextLink from "@/components/TextLink";
-import { buildingCode, queryingCode } from "./segmentCode";
+import { buildingCode, queryingCode, updatingCode } from "./segmentCode";
 
 const SegmentTreesPage = async () => {
   const topic = await getTopicByName("Segment Trees");
@@ -149,12 +149,29 @@ const SegmentTreesPage = async () => {
         chapterId={updatingChapter?.id}
       >
         <p>
-          Updating the Segment Tree to reflect changes in the underlying data
-          set involves modifying one or more leaf nodes and then propagating
-          these changes up the tree to ensure all relevant internal nodes have
-          the correct aggregated information. This operation maintains the
-          tree's integrity, allowing for continuous accurate queries, typically
-          executed in <strong>O(log n)</strong> time.
+          Update a segment tree by modifying an element of the array and
+          reflecting this change throughout the tree. This ensures the{" "}
+          <strong>
+            segment tree maintains accurate collection of data after array
+            elements change
+          </strong>
+          . To update, the tree modifies the specific leaf node representing the
+          array element and <strong>then updates all parent nodes</strong> to
+          reflect this change.
+        </p>
+        <CodeBlock
+          code={updatingCode}
+          language="python"
+          title="Updating_SegmentTrees.py"
+        />
+        <br />
+        <p>
+          The <CodeText>update</CodeText> method in the{" "}
+          <CodeText>SegmentTree</CodeText> class modifies a single element by
+          <strong>adjusting the value at the corresponding leaf</strong> and
+          then recursively recalculating the sum for each parent node up to the
+          root. This ensures the tree always represents the correct sums across
+          all segments.
         </p>
       </ChapterHeading>
 
