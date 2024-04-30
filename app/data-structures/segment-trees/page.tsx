@@ -48,12 +48,13 @@ const SegmentTreesPage = async () => {
         chapterId={definitionChapter?.id}
       >
         <p>
-          A Segment Tree is a binary tree used for storing the intervals or
-          segments. It allows querying which segments or intervals contain a
-          given point. It's particularly useful in scenarios requiring frequent
-          updates and queries on a set of intervals, making it a versatile tool
-          for problems involving range queries, such as finding the sum,
-          minimum, or maximum in a subarray.
+          A Segment Tree is a{" "}
+          <TextLink href="/data-structures/trees#binary">binary tree</TextLink>{" "}
+          used for <strong>storing intervals or segments</strong>. It allows{" "}
+          <TextLink href="#querying">querying</TextLink> which segments or
+          intervals contain a given point. Segment trees are useful in scenarios
+          requiring{" "}
+          <strong>frequent updates and queries on a set of intervals</strong>.
         </p>
       </ChapterHeading>
 
@@ -123,15 +124,60 @@ const SegmentTreesPage = async () => {
       <ChapterHeading
         id="lazy-propagation"
         title="Lazy Propagation"
-        chapter={lazyChapter}
         chapterId={lazyChapter?.id}
-      ></ChapterHeading>
+      >
+        <p>
+          Lazy Propagation is an optimization technique used in Segment Trees to
+          improve the efficiency of updates over a range. When making multiple
+          updates, instead of updating each segment individually, lazy
+          propagation delays these updates to only when they are needed (during
+          a query). This method involves marking the nodes that need updating
+          without immediately updating the tree. As a result, both range updates
+          and queries can be performed in <strong>O(log n)</strong> time,
+          significantly improving performance for large data sets with frequent
+          updates and queries.
+        </p>
+        <p>
+          This technique uses an additional array, often called the 'lazy'
+          array, to store update information. During a query or a further
+          update, the tree nodes are adjusted as necessary by applying these
+          pending updates. This approach ensures that the Segment Tree remains
+          efficient even as operations scale.
+        </p>
+      </ChapterHeading>
 
       <ChapterHeading
         id="implementation"
         title="Implementation"
         chapterId={implementationChapter?.id}
-      ></ChapterHeading>
+      >
+        <p>
+          Implementing a Segment Tree typically involves a combination of
+          recursive and iterative techniques. Below is a basic outline of how a
+          Segment Tree can be implemented in code, focusing on the operations of
+          building, querying, updating, and incorporating lazy propagation.
+        </p>
+        <p>
+          The implementation requires defining the tree structure, usually in an
+          array format where children of a node at index <em>i</em> are found at
+          indices <em>2*i</em> and <em>2*i + 1</em>. The tree is initialized by
+          building it from the bottom up, starting from the leaves which
+          represent the individual elements of the array. Each internal node is
+          then calculated as the aggregation (e.g., sum, min, or max) of its
+          children nodes.
+        </p>
+        <p>
+          Queries and updates are managed by navigating through the relevant
+          segments of the tree, adjusting values and applying any lazy updates
+          as needed. The detailed implementation can vary based on the specific
+          aggregation function and the nature of the data being managed.
+        </p>
+        <p>
+          For further clarity, providing code snippets in popular programming
+          languages like Python or Java can help students understand the
+          practical aspects of implementing Segment Trees.
+        </p>
+      </ChapterHeading>
 
       <ChapterHeading id="algorithms" title="Algorithms">
         <Algorithms items={segmentTreesAlgorithms} />
