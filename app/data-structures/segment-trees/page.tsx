@@ -7,7 +7,7 @@ import CodeBlock from "@/components/CodeBlock";
 import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
-import { trieOperations } from "@/data/operationsData";
+import { segmentTreeOperations, trieOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import ImageBlock from "@/components/ImageBlock";
 import TextLink from "@/components/TextLink";
@@ -67,11 +67,10 @@ const SegmentTreesPage = async () => {
           The core operations of a Segment Tree include{" "}
           <strong>building</strong> the tree from a given array,{" "}
           <strong>updating</strong> values in the tree to reflect changes in the
-          array, and <strong>querying</strong> the tree to obtain aggregate
-          information over a range. These operations enable efficient
-          manipulation and retrieval of data over segments, catering to dynamic
-          data sets.
+          array, and <strong>querying</strong> the tree to obtain data over a
+          range.
         </p>
+        <Operations items={segmentTreeOperations} />
       </ChapterHeading>
 
       <ChapterHeading

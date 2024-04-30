@@ -372,3 +372,30 @@ export const unionFindOperations: { operation: string; time: string; space: stri
     notes: "Initializes a new set containing a new element.",
   },
 ]
+
+export const segmentTreeOperations: { operation: string; time: string; space: string; notes: string }[] = [
+  {
+    operation: "Build",
+    time: "O(n log n)",
+    space: "O(n)",
+    notes: "Constructs the segment tree from a given array for range queries.",
+  },
+  {
+    operation: "Query",
+    time: "O(log n)",
+    space: "O(1)",
+    notes: "Retrieves collected data over a specified range by traversing segments",
+  },
+  {
+    operation: "Update",
+    time: "O(log n)",
+    space: "O(1)",
+    notes: "Modifies the value of an array element and updates the segments",
+  },
+  {
+    operation: "Lazy Propagation",
+    time: "O(log n)",
+    space: "O(n)",
+    notes: "Optimizes range updates by delaying updates until necessary",
+  },
+]
