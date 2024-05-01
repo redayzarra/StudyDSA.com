@@ -372,14 +372,14 @@ const segmentTreeSkills = [
     description: "You need to find the leaf node to fetch the index of the element",
   },
   {
-    title: "Lazy Propagation",
-    href: "/data-structures/segment-trees#lazy-propagation",
-    description: "Postpones updates to save time, applying them only during queries",
-  },
-  {
     title: "Implementation",
     href: "/data-structures/segment-trees#implementation",
     description: "They are represented by binary trees and each node contains a lot of info",
+  },
+  {
+    title: "Lazy Propagation",
+    href: "/data-structures/segment-trees#lazy-propagation",
+    description: "Postpones updates to save time, applying them only during queries",
   },
   {
     title: "Best Practices",

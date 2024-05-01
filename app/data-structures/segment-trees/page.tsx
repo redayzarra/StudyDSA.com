@@ -11,7 +11,13 @@ import { segmentTreeOperations, trieOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import ImageBlock from "@/components/ImageBlock";
 import TextLink from "@/components/TextLink";
-import { buildingCode, queryingCode, updatingCode } from "./segmentCode";
+import {
+  buildingCode,
+  lazyCode,
+  queryingCode,
+  segmentTreeCode,
+  updatingCode,
+} from "./segmentCode";
 
 const SegmentTreesPage = async () => {
   const topic = await getTopicByName("Segment Trees");
@@ -27,8 +33,8 @@ const SegmentTreesPage = async () => {
   const buildingChapter = findChapter(topic, "Building");
   const queryingChapter = findChapter(topic, "Querying");
   const updatingChapter = findChapter(topic, "Updating");
-  const lazyChapter = findChapter(topic, "Lazy Propagation");
   const implementationChapter = findChapter(topic, "Implementation");
+  const lazyChapter = findChapter(topic, "Lazy Propagation");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
   const fetchAlgorithms = [
@@ -118,10 +124,11 @@ const SegmentTreesPage = async () => {
           <strong>
             traverse down the tree from the root to the relevant leaves
           </strong>{" "}
-          that represent the query interval. Since the segment tree is a binary
-          tree, this operation can retrieve sums in{" "}
-          <CodeText>O(log n)</CodeText> time, making it significantly faster
-          than a linear approach using a <CodeText>for</CodeText> loop.
+          that represent the query interval. Since the segment tree is a{" "}
+          <TextLink href="/data-structures/trees#binary">binary tree</TextLink>,
+          this operation can retrieve sums in <CodeText>O(log n)</CodeText>{" "}
+          time, making it significantly faster than a linear approach using a{" "}
+          <CodeText>for</CodeText> loop.
         </p>
         <CodeBlock
           code={queryingCode}
@@ -149,7 +156,8 @@ const SegmentTreesPage = async () => {
         chapterId={updatingChapter?.id}
       >
         <p>
-          Update a segment tree by modifying an element of the array and
+          Update a segment tree by modifying an element of the{" "}
+          <TextLink href="/data-structures/arrays">array</TextLink> and
           reflecting this change throughout the tree. This ensures the{" "}
           <strong>
             segment tree maintains accurate collection of data after array
@@ -167,36 +175,11 @@ const SegmentTreesPage = async () => {
         <br />
         <p>
           The <CodeText>update</CodeText> method in the{" "}
-          <CodeText>SegmentTree</CodeText> class modifies a single element by
+          <CodeText>SegmentTree</CodeText> class modifies a single element by{" "}
           <strong>adjusting the value at the corresponding leaf</strong> and
           then recursively recalculating the sum for each parent node up to the
           root. This ensures the tree always represents the correct sums across
           all segments.
-        </p>
-      </ChapterHeading>
-
-      <ChapterHeading
-        id="lazy-propagation"
-        title="Lazy Propagation"
-        chapterId={lazyChapter?.id}
-      >
-        <p>
-          Lazy Propagation is an optimization technique used in Segment Trees to
-          improve the efficiency of updates over a range. When making multiple
-          updates, instead of updating each segment individually, lazy
-          propagation delays these updates to only when they are needed (during
-          a query). This method involves marking the nodes that need updating
-          without immediately updating the tree. As a result, both range updates
-          and queries can be performed in <strong>O(log n)</strong> time,
-          significantly improving performance for large data sets with frequent
-          updates and queries.
-        </p>
-        <p>
-          This technique uses an additional array, often called the 'lazy'
-          array, to store update information. During a query or a further
-          update, the tree nodes are adjusted as necessary by applying these
-          pending updates. This approach ensures that the Segment Tree remains
-          efficient even as operations scale.
         </p>
       </ChapterHeading>
 
@@ -206,30 +189,56 @@ const SegmentTreesPage = async () => {
         chapterId={implementationChapter?.id}
       >
         <p>
-          Implementing a Segment Tree typically involves a combination of
-          recursive and iterative techniques. Below is a basic outline of how a
-          Segment Tree can be implemented in code, focusing on the operations of
-          building, querying, updating, and incorporating lazy propagation.
+          Constructed from an{" "}
+          <TextLink href="/data-structures/arrays">array</TextLink>, a segment
+          tree transforms <strong>each array element into a leaf node</strong> and organizes{" "}
+          <strong>parent nodes to calculate values from their children</strong>. This
+          structure allows for efficient data operations across intervals.
         </p>
+        <br />
         <p>
-          The implementation requires defining the tree structure, usually in an
-          array format where children of a node at index <em>i</em> are found at
-          indices <em>2*i</em> and <em>2*i + 1</em>. The tree is initialized by
-          building it from the bottom up, starting from the leaves which
-          represent the individual elements of the array. Each internal node is
-          then calculated as the aggregation (e.g., sum, min, or max) of its
-          children nodes.
+          Query operations use the tree's structure to efficiently compute
+          sums, while updates are seamlessly handled by adjusting an element in
+          the array and <strong>propagating this change throughout the tree</strong>.
+          This ensures that the data remains consistent and accurately
+          represents the current state of the array.
         </p>
+        <CodeBlock
+          code={segmentTreeCode}
+          language="python"
+          title="SegmentTrees.py"
+        />
+        <br />
+      </ChapterHeading>
+
+      <ChapterHeading
+        id="lazy-propagation"
+        title="Lazy Propagation"
+        chapter={lazyChapter}
+        chapterId={lazyChapter?.id}
+      >
         <p>
-          Queries and updates are managed by navigating through the relevant
-          segments of the tree, adjusting values and applying any lazy updates
-          as needed. The detailed implementation can vary based on the specific
-          aggregation function and the nature of the data being managed.
+          Lazy propagation is a technique used in segment trees to defer updates
+          until necessary, optimizing performance for range query operations.
+          Instead of immediately updating all affected nodes upon an update,
+          lazy propagation postpones the update to a later time, only applying
+          it when needed during a query. This deferred approach minimizes
+          unnecessary updates and improves efficiency, particularly for sparse
+          update operations over large ranges.
         </p>
+        <CodeBlock
+          code={lazyCode}
+          language="python"
+          title="Lazy_SegmentTrees.py"
+        />
+        <br />
         <p>
-          For further clarity, providing code snippets in popular programming
-          languages like Python or Java can help students understand the
-          practical aspects of implementing Segment Trees.
+          The key idea behind lazy propagation is to store pending updates at
+          each node of the segment tree. When a range update is performed,
+          instead of immediately updating all affected nodes, the update is
+          stored as a "lazy" value at the node. During subsequent queries, these
+          lazy updates are applied as needed, ensuring accurate results without
+          the need for immediate node updates.
         </p>
       </ChapterHeading>
 
