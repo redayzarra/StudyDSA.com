@@ -191,16 +191,17 @@ const SegmentTreesPage = async () => {
         <p>
           Constructed from an{" "}
           <TextLink href="/data-structures/arrays">array</TextLink>, a segment
-          tree transforms <strong>each array element into a leaf node</strong> and organizes{" "}
-          <strong>parent nodes to calculate values from their children</strong>. This
-          structure allows for efficient data operations across intervals.
+          tree transforms <strong>each array element into a leaf node</strong>{" "}
+          and organizes{" "}
+          <strong>parent nodes to calculate values from their children</strong>.
+          This structure allows for efficient data operations across intervals.
         </p>
         <br />
         <p>
-          Query operations use the tree's structure to efficiently compute
-          sums, while updates are seamlessly handled by adjusting an element in
-          the array and <strong>propagating this change throughout the tree</strong>.
-          This ensures that the data remains consistent and accurately
+          Query operations use the tree's structure to efficiently compute sums,
+          while updates are seamlessly handled by adjusting an element in the
+          array and <strong>propagating this change throughout the tree</strong>
+          . This ensures that the data remains consistent and accurately
           represents the current state of the array.
         </p>
         <CodeBlock
@@ -218,13 +219,14 @@ const SegmentTreesPage = async () => {
         chapterId={lazyChapter?.id}
       >
         <p>
-          Lazy propagation is a technique used in segment trees to defer updates
-          until necessary, optimizing performance for range query operations.
-          Instead of immediately updating all affected nodes upon an update,
-          lazy propagation postpones the update to a later time, only applying
-          it when needed during a query. This deferred approach minimizes
-          unnecessary updates and improves efficiency, particularly for sparse
-          update operations over large ranges.
+          Lazy propagation is a technique used in segment trees to{" "}
+          <strong>
+            defer updates until necessary, optimizing performance for range
+            queries
+          </strong>
+          . Instead of immediately updating all affected nodes upon an update,
+          lazy propagation <strong>postpones the update to a later time</strong>
+          , only applying it when needed during a query.
         </p>
         <CodeBlock
           code={lazyCode}
@@ -233,12 +235,15 @@ const SegmentTreesPage = async () => {
         />
         <br />
         <p>
-          The key idea behind lazy propagation is to store pending updates at
-          each node of the segment tree. When a range update is performed,
-          instead of immediately updating all affected nodes, the update is
-          stored as a "lazy" value at the node. During subsequent queries, these
-          lazy updates are applied as needed, ensuring accurate results without
-          the need for immediate node updates.
+          The key idea behind lazy propagation is to <strong>
+            store pending updates at
+            each node of the segment tree
+          </strong>. When a range update is performed,
+          instead of immediately updating the nodes, the <strong>
+            update is
+            stored as a "lazy" value at the node
+          </strong>. During future queries, these
+          lazy updates are applied as needed.
         </p>
       </ChapterHeading>
 
