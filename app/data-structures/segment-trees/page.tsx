@@ -228,22 +228,21 @@ const SegmentTreesPage = async () => {
           lazy propagation <strong>postpones the update to a later time</strong>
           , only applying it when needed during a query.
         </p>
-        <CodeBlock
+        {/* <CodeBlock
           code={lazyCode}
           language="python"
           title="Lazy_SegmentTrees.py"
-        />
+        /> */}
         <br />
         <p>
-          The key idea behind lazy propagation is to <strong>
-            store pending updates at
-            each node of the segment tree
-          </strong>. When a range update is performed,
-          instead of immediately updating the nodes, the <strong>
-            update is
-            stored as a "lazy" value at the node
-          </strong>. During future queries, these
-          lazy updates are applied as needed.
+          The key idea behind lazy propagation is to{" "}
+          <strong>
+            store pending updates at each node of the segment tree
+          </strong>
+          . When a range update is performed, instead of immediately updating
+          the nodes, the{" "}
+          <strong>update is stored as a "lazy" value at the node</strong>.
+          During future queries, these lazy updates are applied as needed.
         </p>
       </ChapterHeading>
 
@@ -257,38 +256,36 @@ const SegmentTreesPage = async () => {
         chapterId={bestPracticesChapter?.id}
       >
         <p>
-          Tries efficiently store and search words or sequences of strings. They
-          are useful for tasks involving prefixes, such as autocomplete systems
-          or spell checkers. To get the most out of tries in coding interviews,
-          here are some essential tips and tricks:
+          Segment trees should be your go-to tool for solving range query
+          problems efficiently in coding interviews. They allow rapid updates
+          and queries, making them <strong>great for dynamic data</strong> where
+          values change frequently. Here are some essential tips and tricks to
+          master segment trees:
         </p>
         <br />
         <ul className="ml-6">
           <li>
-            <span className="font-bold">&bull; Use Hash Maps:</span> When
-            dealing with a large alphabet, use hash maps to store children nodes
-            instead of fixed-size arrays. This improves space efficiency and
-            flexibility, allowing the trie to handle any range of characters.
+            <span className="font-bold">&bull; Rare Case:</span> While segment
+            trees are versatile, <strong>they can be overkill</strong> for
+            simple calculation functions or when the data doesn't get updated.
+            Use them when you have multiple range queries and dynamic data.
+            Segment trees are <strong>almost never used in interviews</strong>.
+          </li>
+          <br />
+          <li>
+            <span className="font-bold">&bull; Space Optimization:</span>{" "}
+            Represent your segment tree using a flat{" "}
+            <TextLink href="/data-structures/arrays">array</TextLink> structure
+            to reduce memory overhead and improve cache performance on hardware.
           </li>
           <br />
           <li>
             <span className="font-bold">
-              &bull; Iterative vs. Recursive Implementations:
+              &bull; Iterative vs. Recursive Approach:
             </span>{" "}
-            Be comfortable with both iterative and recursive implementations of
-            trie operations. Recursive approaches are often more intuitive but
-            can be inefficient with very deep tries. Iterative implementations,
-            while sometimes more complex, can be more efficient.
-          </li>
-          <br />
-          <li>
-            <span className="font-bold">
-              &bull; Handling Deletions Carefully:
-            </span>{" "}
-            Implement deletion operations carefully to ensure the trie remains
-            consistent. After removing a word, check whether the parent nodes
-            have become unnecessary (i.e., they no longer have any children and
-            are not end of any word) and remove them as well.
+            Understand both iterative and recursive builds of segment trees.
+            <strong>Iterative can be more space-efficient</strong> while
+            recursive is often simpler to implement and understand.
           </li>
           <br />
         </ul>
