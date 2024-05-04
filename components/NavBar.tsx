@@ -6,6 +6,7 @@ import Logo from "./Logo";
 import MobileSideBar from "./MobileSideBar";
 import { ModeToggle } from "./ModeToggle";
 import UserButton from "./auth/UserButton";
+import { NavMenuItems } from "./NavMenuItems";
 
 const NavBar = () => {
   const pathname = usePathname();
@@ -24,7 +25,13 @@ const NavBar = () => {
             <Logo />
           </div>
 
-          {/* <NavMenuItems /> */}
+          <div className="block md:hidden absolute left-1/2 transform -translate-x-1/2">
+            <Logo />
+          </div>
+
+          <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2">
+            <NavMenuItems />
+          </div>
 
           {/* Dark Mode and LogIn */}
           <div className="gap-x-2 flex items-center justify-center">
