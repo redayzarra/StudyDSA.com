@@ -198,7 +198,7 @@ const SegmentTreesPage = async () => {
         </p>
         <br />
         <p>
-          Query operations use the tree's structure to efficiently compute sums,
+          Query operations use the tree&apos;s structure to efficiently compute sums,
           while updates are seamlessly handled by adjusting an element in the
           array and <strong>propagating this change throughout the tree</strong>
           . This ensures that the data remains consistent and accurately
@@ -241,7 +241,7 @@ const SegmentTreesPage = async () => {
           </strong>
           . When a range update is performed, instead of immediately updating
           the nodes, the{" "}
-          <strong>update is stored as a "lazy" value at the node</strong>.
+          <strong>update is stored as a &quot;lazy&quot; value at the node</strong>.
           During future queries, these lazy updates are applied as needed.
         </p>
       </ChapterHeading>
@@ -267,7 +267,7 @@ const SegmentTreesPage = async () => {
           <li>
             <span className="font-bold">&bull; Rare Case:</span> While segment
             trees are versatile, <strong>they can be overkill</strong> for
-            simple calculation functions or when the data doesn't get updated.
+            simple calculation functions or when the data doesn&apos;t get updated.
             Use them when you have multiple range queries and dynamic data.
             Segment trees are <strong>almost never used in interviews</strong>.
           </li>

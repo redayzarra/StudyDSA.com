@@ -71,7 +71,7 @@ const UnionFindPage = async () => {
           which identifies the set an element belongs to, and{" "}
           <strong>union</strong>, which merges two sets into one. These
           operations are dynamic, meaning they{" "}
-          <strong>can be performed at any time</strong> after the graph's
+          <strong>can be performed at any time</strong> after the graph&apos;s
           initial construction:
         </p>
         <Operations items={unionFindOperations} />
@@ -79,7 +79,7 @@ const UnionFindPage = async () => {
           The Inverse Ackermann function, <CodeText>O(α(N))</CodeText>, is a
           time complexity that <strong>grows extremely slowly</strong>, so much
           so that for all practical programming purposes,{" "}
-          <strong>it's almost constant</strong>. This means algorithms with this
+          <strong>it&apos;s almost constant</strong>. This means algorithms with this
           complexity are highly efficient, even for very large input sizes.
         </p>
       </ChapterHeading>
@@ -163,7 +163,7 @@ const UnionFindPage = async () => {
         </p>
         <br />
         <p>
-          Just out of curiosity, let's take a look at the Union-Find{" "}
+          Just out of curiosity, let&apos;s take a look at the Union-Find{" "}
           <CodeText>find</CodeText> operation{" "}
           <strong>without path compression</strong>. The code below will run at{" "}
           <CodeText>O(n)</CodeText> time complexity:
@@ -179,7 +179,7 @@ const UnionFindPage = async () => {
           <strong>
             works by changing the structure of the Union-Find tree
           </strong>{" "}
-          during each find operation. When we need a node's parent from the{" "}
+          during each find operation. When we need a node&apos;s parent from the{" "}
           <CodeText>find</CodeText> operation, path compression ensures that{" "}
           <strong>
             {" "}
@@ -229,9 +229,9 @@ const UnionFindPage = async () => {
         <p>
           Union by Rank is an optimization technique that{" "}
           <strong>maintains a balanced tree structure</strong> during union
-          operations. This ensures that the tree's height is minimized for
+          operations. This ensures that the tree&apos;s height is minimized for
           future find operations. The <CodeText>rank</CodeText> in this context{" "}
-          <strong>represents the tree's height</strong>, and during a union
+          <strong>represents the tree&apos;s height</strong>, and during a union
           operation, the{" "}
           <strong>
             tree with the lower rank is merged into the tree with the higher
@@ -243,15 +243,15 @@ const UnionFindPage = async () => {
         <p>
           Union by Rank can be adapted to use a{" "}
           <strong>
-            <CodeText>size</CodeText> array for tracking each set's size instead
+            <CodeText>size</CodeText> array for tracking each set&apos;s size instead
             of rank
           </strong>
           . Initially, every element forms a set of size one. During a union
           operation,{" "}
           <strong>
-            the smaller set's root is linked to the larger set's root
+            the smaller set&apos;s root is linked to the larger set&apos;s root
           </strong>
-          , optimizing the set's structure for future <CodeText>find</CodeText>{" "}
+          , optimizing the set&apos;s structure for future <CodeText>find</CodeText>{" "}
           operations. If sets are equal in size, one becomes the root of the
           combined set, which then updates its size to the total of both:
         </p>
@@ -264,7 +264,7 @@ const UnionFindPage = async () => {
         <p>
           {" "}
           This size-based approach, a variant of the traditional rank method,
-          ensures the Union-Find's efficiency, returning{" "}
+          ensures the Union-Find&apos;s efficiency, returning{" "}
           <CodeText>True</CodeText> for merging separate sets and{" "}
           <CodeText>False</CodeText> if already connected.
         </p>
@@ -332,7 +332,7 @@ const UnionFindPage = async () => {
           <br />
           <li>
             <span className="font-bold">&bull; Use Union by Size or Rank:</span>{" "}
-            Use union by rank (size) to keep the data structure's trees as
+            Use union by rank (size) to keep the data structure&apos;s trees as
             flat as possible. This strategy minimizes the depth of trees and
             optimizes find operations.
           </li>

@@ -54,7 +54,7 @@ const QueuePage = async () => {
         <p>
           A queue is a linear data structure that follows a{" "}
           <span className="font-bold">First In, First Out (FIFO)</span>{" "}
-          principle. It's like standing in line at a store; the first person in
+          principle. It&apos;s like standing in line at a store; the first person in
           line is the first to be served. Queues are common in computing for
           managing tasks, data streams, and graph algorithms like{" "}
           <TextLink href="/algorithms/breadth-first-search">BFS</TextLink>.
@@ -126,7 +126,7 @@ const QueuePage = async () => {
           classifies as a dynamic queue meaning it is{" "}
           <span className="font-bold">not stored contiguously in memory.</span>{" "}
           Dynamic queues provide significant advantages in terms of memory
-          utilization and scalability, since we don't need to frequently
+          utilization and scalability, since we don&apos;t need to frequently
           reallocate memory.
         </p>
         <br />
@@ -214,7 +214,7 @@ const QueuePage = async () => {
         </p>
         <br />
         <p>
-          While it's possible to implement a priority queue using simple queues,
+          While it&apos;s possible to implement a priority queue using simple queues,
           they can often fall short in terms of efficiency, particularly for
           operations such as insertion and removal of elements based on
           priority. A{" "}

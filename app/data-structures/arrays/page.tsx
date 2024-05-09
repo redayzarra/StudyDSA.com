@@ -74,7 +74,7 @@ const ArraysPage = async () => {
         chapterId={operationsChapter?.id}
       >
         <p>
-          Let's take a closer look at what you can do with arrays. Arrays are
+          Let&apos;s take a closer look at what you can do with arrays. Arrays are
           stored in memory together so inserting or deleting in the middle
           involves moving things around. The following table provides a detailed
           overview of{" "}
@@ -96,7 +96,7 @@ const ArraysPage = async () => {
           </span>{" "}
           of another variable. In the context of arrays, pointers are crucial
           because they can be used to directly access and manipulate array
-          elements. Let's take a look at pointers in a language that supports
+          elements. Let&apos;s take a look at pointers in a language that supports
           them explicitly like C:
           <br />
         </p>
@@ -105,7 +105,7 @@ const ArraysPage = async () => {
           <br />
           This direct access via pointers is what makes arrays efficient,
           especially when it comes to iterating over elements or implementing
-          data structures like stacks and queues. Let's take a look at a more
+          data structures like stacks and queues. Let&apos;s take a look at a more
           complex example of pointers in Python:
           <br />
         </p>
@@ -151,7 +151,7 @@ const ArraysPage = async () => {
             once an array is full, you cannot add more elements
           </span>{" "}
           to it, and attempting to do so will result in an error or undefined
-          behavior. You don't need to worry about this in Python, but the
+          behavior. You don&apos;t need to worry about this in Python, but the
           concepts of static arrays are still imporant to know.
         </p>
       </ChapterHeading>
@@ -196,7 +196,7 @@ const ArraysPage = async () => {
             dynamic arrays can grow and shrink in size
           </span>{" "}
           at runtime. This flexibility comes at the cost of overhead for keeping
-          track of the array's size and potentially reallocating and copying the
+          track of the array&apos;s size and potentially reallocating and copying the
           entire array to a new memory space when resizing.
           <br />
           <br />
@@ -208,7 +208,7 @@ const ArraysPage = async () => {
           <br />
           Dynamic arrays are implemented in many programming languages as
           built-in types, such as <CodeText>List</CodeText> in Python or{" "}
-          <CodeText>ArrayList</CodeText> in Java. It's important to understand
+          <CodeText>ArrayList</CodeText> in Java. It&apos;s important to understand
           the array functions and methods available in your preferred
           programming language.
         </p>
@@ -224,7 +224,7 @@ const ArraysPage = async () => {
           Stacks are a type of data structure that operates on the{" "}
           <span className="font-bold">Last In, First Out (LIFO)</span>{" "}
           principle. Although not a type of array, stacks can be efficiently
-          implemented using arrays, taking advantage of the array's direct
+          implemented using arrays, taking advantage of the array&apos;s direct
           access to <span className="font-bold">add (push)</span> or{" "}
           <span className="font-bold">remove (pop)</span> elements from the end.
           <br />
@@ -236,7 +236,7 @@ const ArraysPage = async () => {
         </p>
         <Operations items={stackOperations} />
         <p>
-          Here's how to implement stacks in Python, using dynamic arrays (lists)
+          Here&apos;s how to implement stacks in Python, using dynamic arrays (lists)
           to efficiently manage stack operations. For coding interviews, use
           stacks whenever you have elements that depend on the elements that
           came before it.
@@ -276,7 +276,7 @@ const ArraysPage = async () => {
           </li>
           <li>
             <span className="font-bold">&bull; Space-Time Trade-offs:</span>{" "}
-            Understand when it's beneficial to use additional space (like
+            Understand when it&apos;s beneficial to use additional space (like
             creating{" "}
             <TextLink href="/data-structures/hashmaps">hashmaps</TextLink> from
             arrays) to improve time efficiency. This strategy is useful in

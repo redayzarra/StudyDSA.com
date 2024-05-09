@@ -113,7 +113,7 @@ const HeapsPage = async () => {
         <p>
           The heap property states that each{" "}
           <strong>
-            parent node's value is less than or equal to the values of its
+            parent node&apos;s value is less than or equal to the values of its
             children (in a min heap)
           </strong>
           . While heaps do not store elements in a strictly sorted order, the
@@ -121,7 +121,7 @@ const HeapsPage = async () => {
           <strong>
             the path from any node to the root node will always be sorted
           </strong>
-          . This property allows for efficient access to the heap's maximum or
+          . This property allows for efficient access to the heap&apos;s maximum or
           minimum element.
         </p>
         <ImageBlock src="/images/heaps/HeapProperty.jpg" alt="Heap Property" />
@@ -208,7 +208,7 @@ const HeapsPage = async () => {
           is a problem when a max heap is required. To create a max heap in
           Python, a common workaround involves{" "}
           <strong>negating the values</strong> before adding them to the heap.
-          By negating each value, the heap's property is inverted:{" "}
+          By negating each value, the heap&apos;s property is inverted:{" "}
           <strong>
             the largest elements (when negative are now the smallest) bubble up
             to the root of the heap
@@ -230,7 +230,7 @@ const HeapsPage = async () => {
         <p>
           Heaps efficiently organize data for priority-based access, with min
           heaps accessing the smallest element and max heaps the largest. Now
-          let's implement a min heap using what we learned. Key operations
+          let&apos;s implement a min heap using what we learned. Key operations
           include heapify, inserting elements, and extracting the highest (or
           lowest) priority item:
         </p>
@@ -260,13 +260,13 @@ const HeapsPage = async () => {
             <span className="font-bold">&bull; Min vs Max Heaps:</span> Know
             when to use a min heap or a max heap. Use a min heap when you need
             quick access to the smallest element, and a max heap for the
-            largest. This decision impacts the heap's structure and the
+            largest. This decision impacts the heap&apos;s structure and the
             implementation of your solution.
           </li>
           <br />
           <li>
             <span className="font-bold">&bull; Heapify for Efficiency:</span>{" "}
-            Whenever you're given an unsorted array that needs to be processed
+            Whenever you&apos;re given an unsorted array that needs to be processed
             element by element according to their priority, start by converting
             it into a heap using the <CodeText>heapify</CodeText> operation.
             This is more efficient than inserting elements one by one.
@@ -308,7 +308,7 @@ const HeapsPage = async () => {
             <span className="font-bold">
               &bull; Simulate Max Heap in Python:
             </span>{" "}
-            Python's <CodeText>heapq</CodeText> library only provides a min
+            Python&apos;s <CodeText>heapq</CodeText> library only provides a min
             heap. To simulate a max heap, negate the values when adding or
             removing from the heap. Remember to negate the value again when
             accessing it.

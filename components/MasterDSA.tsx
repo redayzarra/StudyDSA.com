@@ -22,7 +22,7 @@ const MasterDSA = () => {
         Master Data Structures and Algorithms
       </h1>
       <p className="text-neutral-900 dark:text-muted-foreground text-center md:text-left">
-        Let's make the tough stuff easy. Get straightforward, free resources to
+        Let&apos;s make the tough stuff easy. Get straightforward, free resources to
         tackle data structures and algorithms.
       </p>
       <TextGenerateEffect

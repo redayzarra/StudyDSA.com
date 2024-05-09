@@ -84,7 +84,7 @@ const GraphsPage = async () => {
       >
         <p>
           Graph operations encompass adding and removing vertices or edges,
-          checking for connectivity, and finding paths or cycles. Here's
+          checking for connectivity, and finding paths or cycles. Here&apos;s
           everything you can do with graphs and their time complexities:
         </p>
         <Operations items={graphOperations} />
@@ -204,8 +204,9 @@ const GraphsPage = async () => {
           <strong>built from a given list of edges</strong>, where each edge in
           the list is represented as a{" "}
           <strong>pair of vertices indicating an edge</strong> from one vertex
-          to another. Each edge is a list containing two items: the 'from'
-          vertex and the 'to' vertex.
+          to another. Each edge is a list containing two items: the{" "}
+          <CodeText>source</CodeText> vertex and the{" "}
+          <CodeText>destination</CodeText> vertex.
         </p>
         <CodeBlock
           code={adjacencyListCode}
@@ -286,7 +287,7 @@ const GraphsPage = async () => {
           it as visited using a{" "}
           <TextLink href="/data-structures/hashmaps#sets">hashset</TextLink>. It
           then recursively visits unvisited neighboring nodes, exploring the
-          graph's depth before backtracking to explore new branches:
+          graph&apos;s depth before backtracking to explore new branches:
         </p>
         <CodeBlock
           code={dfsAdjacencyCode}
@@ -401,8 +402,9 @@ const GraphsPage = async () => {
           <li>
             <span className="font-bold">&bull; Connected Components:</span> Use{" "}
             <TextLink href="/algorithms/union-find">Union-Find</TextLink>{" "}
-            (Disjoint Set Union) for finding connected components in a graph. This is good for
-            clustering, network analysis, and <strong>simplifying graph structures</strong>.
+            (Disjoint Set Union) for finding connected components in a graph.
+            This is good for clustering, network analysis, and{" "}
+            <strong>simplifying graph structures</strong>.
           </li>
           <br />
           <li>
@@ -410,15 +412,15 @@ const GraphsPage = async () => {
             For problems involving finding paths or connectivity, use graph
             algorithms like{" "}
             <TextLink href="/algorithms/dijkstras-algorithm">
-              Dijkstra's
+              Dijkstra&apos;s
             </TextLink>
             , <TextLink href="/algorithms/astar-algorithm">A* search</TextLink>,
             or{" "}
             <TextLink href="/algorithms/floyd-warshalls-algorithm">
               Floyd-Warshall
             </TextLink>
-            , depending on whether you're dealing with weighted or unweighted,
-            and directed or undirected graphs.
+            , depending on whether you&apos;re dealing with weighted or
+            unweighted, and directed or undirected graphs.
           </li>
           <br />
         </ul>

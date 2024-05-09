@@ -110,7 +110,7 @@ const TriesPage = async () => {
           each character in the word, if that path does not already exist.{" "}
           <strong>Starting from the root</strong>, for each character,{" "}
           <strong>move to the next child node</strong> or create a new child
-          node if one doesn't exist, then{" "}
+          node if one doesn&apos;t exist, then{" "}
           <strong>mark the final node as the end of a word</strong>.
         </p>
         <ImageBlock

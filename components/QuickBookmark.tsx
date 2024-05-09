@@ -21,7 +21,7 @@ const QuickBookmark = async ({ userId }: { userId: string }) => {
         <>
           <FaRegBookmark size={iconSize} />
           <p className="text-muted-foreground font-medium">
-            You haven't bookmarked anything
+            You haven&apos;t bookmarked anything
           </p>
         </>
       )}

@@ -23,8 +23,8 @@ const LandingCard = () => {
         {/* Right Side */}
         <div className="">
           <div className="grid grid-cols-2 gap-2">
-            {dataStructures.map((item) => (
-              <Link href={item.href}>
+            {dataStructures.map((item, index) => (
+              <Link key={index} href={item.href}>
                 <GlassCard className="rounded-sm p-2 font-medium bg-zinc-400/20 line-clamp-1 truncate">
                   {item.title}
                 </GlassCard>

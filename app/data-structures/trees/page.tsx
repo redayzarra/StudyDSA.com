@@ -83,7 +83,7 @@ const TreesPage = async () => {
         chapterId={operationsChapter?.id}
       >
         <p>
-          Tree operations vary in complexity based on the tree's balance. A{" "}
+          Tree operations vary in complexity based on the tree&apos;s balance. A{" "}
           <strong>balanced tree, where nodes are evenly distributed</strong>,
           allows for operations in <CodeText>O(log n)</CodeText> time. In
           contrast, unbalanced trees, resembling a linked list, increase
@@ -92,7 +92,7 @@ const TreesPage = async () => {
         </p>
         <br />
         <p>
-          Let's take a look at the time and space complexities of operations
+          Let&apos;s take a look at the time and space complexities of operations
           supported by a balanced tree:
         </p>
         <Operations items={treeOperations} />
@@ -230,7 +230,7 @@ const TreesPage = async () => {
         <p>
           <strong>Postorder Traversal</strong> is processing the{" "}
           <strong>root node after its children</strong>. The traversal sequence
-          is <strong>left-right-root</strong>, giving it the name "post" order
+          is <strong>left-right-root</strong>, giving it the name &quot;post&quot; order
           traversal. Postorder is great for when you need to delete nodes and
           resources since it ensures that child nodes are processed before their
           respective parent nodes.
@@ -267,7 +267,7 @@ const TreesPage = async () => {
         chapterId={binaryTreeChapter?.id}
       >
         <p>
-          Before we jump into the implementation of a binary tree, let's
+          Before we jump into the implementation of a binary tree, let&apos;s
           summarize what we have gone over. A binary tree is a tree data
           structure where each node <strong>has at most two children</strong>,
           referred to as the left child and the right child.
@@ -280,7 +280,7 @@ const TreesPage = async () => {
             <CodeText>N - 1</CodeText> edges
           </strong>
           . We start from the root, the top-most node, and traverse our way down
-          using different traversal methods. Let's take a look at one
+          using different traversal methods. Let&apos;s take a look at one
           implementation of a binary tree:
         </p>
         <CodeBlock
@@ -300,7 +300,7 @@ const TreesPage = async () => {
           <strong>
             keeps track of the maximum path sum seen during the traversal
           </strong>
-          . The DFS function's primary role is to{" "}
+          . The DFS function&apos;s primary role is to{" "}
           <strong>update res with the highest sum of any path found</strong>.
           The actual return value of DFS is only to help calculate the path sum.
         </p>
@@ -344,9 +344,9 @@ const TreesPage = async () => {
           <CodeText>k</CodeText> and <CodeText>res</CodeText> is crucial since{" "}
           <CodeText>k</CodeText> is decremented with each visited node,{" "}
           <strong>acting as a countdown to the kth element</strong>. Once{" "}
-          <CodeText>k</CodeText> reaches zero, it means that we've reached the
+          <CodeText>k</CodeText> reaches zero, it means that we&apos;ve reached the
           kth smallest element, and <CodeText>res</CodeText>{" "}
-          <strong>is updated with the node's value</strong>.
+          <strong>is updated with the node&apos;s value</strong>.
         </p>
       </ChapterHeading>
 
@@ -360,8 +360,8 @@ const TreesPage = async () => {
           Advanced trees, such as AVL trees, Red-Black trees, and B-trees, are
           designed to provide efficient search, insert, and delete operations by
           automatically maintaining tree balance. While{" "}
-          <strong>they aren't common in coding interviews</strong>, it's still
-          interesting to learn about these trees. Let's take a quick look at
+          <strong>they aren&apos;t common in coding interviews</strong>, it&apos;s still
+          interesting to learn about these trees. Let&apos;s take a quick look at
           them to see what makes them unique:
         </p>
         <br />
@@ -435,7 +435,7 @@ const TreesPage = async () => {
             <em>before you do anything else with your tree</em>. Although this
             may seem redundant, it helps{" "}
             <strong>avoid edge cases and ensures things work</strong> properly
-            (BFS doesn't work without initial base case). It's a simple yet easy
+            (BFS doesn&apos;t work without initial base case). It&apos;s a simple yet easy
             way for ensuring your tree algorithms are efficient and error-free.
           </li>
           <br />

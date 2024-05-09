@@ -36,7 +36,7 @@ const BlurryWelcome = () => {
           Log in to access all features
         </h1>
         <p className="text-muted-foreground pb-5 flex space-x-1 items-center">
-          It's easy and free!
+          It&apos;s easy and free!
         </p>
         <div className="flex space-x-4">
           <LoginButton>

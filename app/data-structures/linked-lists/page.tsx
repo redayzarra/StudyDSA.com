@@ -107,7 +107,7 @@ const LinkedListsPage = async () => {
           The example above shows how to insert a new{" "}
           <CodeText>ListNode</CodeText> at the beginning of a linked list. It
           starts by creating a new list node with the given{" "}
-          <CodeText>value</CodeText>. Then, it sets this new node's{" "}
+          <CodeText>value</CodeText>. Then, it sets this new node&apos;s{" "}
           <CodeText>next</CodeText> pointer to the current{" "}
           <CodeText>head</CodeText> of the list, effectively placing the new
           node at the front.
@@ -292,7 +292,7 @@ const LinkedListsPage = async () => {
           <br />
           <li>
             <span className="font-bold">&bull; Practice with Variants:</span>{" "}
-            Don't limit your practice to doubly linked lists just because they
+            Don&apos;t limit your practice to doubly linked lists just because they
             are easier to work with. Try problems with singly and doubly linked
             lists to see how it affects the time and space complexity.
           </li>
