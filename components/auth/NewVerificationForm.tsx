@@ -11,13 +11,16 @@ const NewVerificationForm = () => {
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
 
+  const [loading, setLoading] = useState(true);  // State to handle loading
   const [error, setError] = useState(false);
   const [message, setMessage] = useState<string | undefined>("");
 
   const onSubmit = useCallback(() => {
+    setLoading(true); // Start loading when onSubmit is called
     if (!token) {
       setError(true);
       setMessage("Missing token. Please send a new email");
+      setLoading(false); // Stop loading if there is no token
       return;
     }
 
@@ -29,10 +32,12 @@ const NewVerificationForm = () => {
         } else {
           setMessage(data.success);
         }
+        setLoading(false); // Stop loading once data is received
       })
       .catch((error) => {
         setError(true);
         setMessage("An error occurred during verification.");
+        setLoading(false); // Stop loading if there is an error
       });
   }, [token]);
 
@@ -48,8 +53,7 @@ const NewVerificationForm = () => {
       drawAttention
     >
       <div className="flex items-center w-full my-3 justify-center animate">
-        {!error && <HashLoader color="#f9cb14" />}
-        <FormResult message={message} error={error} />
+        {loading ? <HashLoader color="#f9cb14" /> : <FormResult message={message} error={error} />}
       </div>
     </CardWrapper>
   );
