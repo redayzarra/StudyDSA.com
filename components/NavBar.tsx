@@ -34,7 +34,7 @@ const NavBar = () => {
           </div>
 
           {/* Dark Mode and LogIn */}
-          <div className="hidden md:flex gap-x-2 items-center justify-center">
+          <div className="flex gap-x-2 items-center justify-center">
             {!authRoute && (
               <>
                 <UserButton />

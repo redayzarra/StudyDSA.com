@@ -60,7 +60,7 @@ const UserButton = () => {
     <LoginButton>
       <NeoButton>
         <FiLogIn size={15} />
-        <span className="text-base">Sign In</span>
+        <span className="text-base">Login</span>
       </NeoButton>
     </LoginButton>
   );
