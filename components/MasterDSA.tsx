@@ -14,11 +14,11 @@ const MasterDSA = () => {
   const words = ["Study", "Master", "Learn", "Explore"];
 
   return (
-    <div className="flex flex-col space-y-4 relative">
+    <div className="flex flex-col space-y-2 relative">
       {/* <Spotlight className="hidden dark:block top-[-30rem] left-[-25rem] overflow-hidden h-[700%] w-[180vh]" /> */}
       <h1
         className={cn(
-          "text-3xl pb-2 text-left md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50",
+          "text-2xl pb-2 text-left md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50",
           font.className
         )}
       >
