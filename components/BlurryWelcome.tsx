@@ -6,6 +6,7 @@ import LoginButton from "./auth/LoginButton";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
+import WelcomeCard from "./WelcomeCard";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -14,8 +15,7 @@ const font = Poppins({
 
 const BlurryWelcome = () => {
   return (
-    <div className="w-full backdrop-blur-[15px] border-[1px] shadow-2xl shadow-black rounded-md bg-black/[.35] border-t-[1px] border-neutral-800/[.35] p-6">
-      <div className="absolute inset-x-0 h-[2px] mx-auto -top-px bg-gradient-to-r from-transparent via-white dark:via-stone-400 to-transparent" />
+    <WelcomeCard>
       <div className="blur-lg cursor-default">
         <div className="flex items-center space-x-4">
           <Avatar>
@@ -51,7 +51,7 @@ const BlurryWelcome = () => {
           </Link>
         </div>
       </div>
-    </div>
+    </WelcomeCard>
   );
 };
 

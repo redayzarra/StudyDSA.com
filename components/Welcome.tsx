@@ -7,6 +7,7 @@ import getTopicProgress from "@/actions/topics/getTopicProgress";
 import getAlgoProgress from "@/actions/algorithms/getAlgoProgress";
 import { cn } from "@/lib/utils";
 import { Poppins } from "next/font/google";
+import WelcomeCard from "./WelcomeCard";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -33,8 +34,8 @@ const Welcome = async ({ user, userName }: Props) => {
   const [algoCompleted, algoTotal] = await getAlgoProgress(user.id!);
 
   return (
-    <div className="w-full backdrop-blur-[15px] border-[1px] shadow-2xl shadow-black rounded-md bg-black/[.35] border-t-[1px] border-neutral-800/[.35] p-6">
-      <div className="absolute inset-x-0 h-[2px] mx-auto -top-px bg-gradient-to-r from-transparent via-white dark:via-stone-400 to-transparent" />
+    <WelcomeCard>
+
       <div className="flex items-center space-x-4">
         <UserAvatar user={user} userName={userName} />
         <h1
@@ -60,7 +61,7 @@ const Welcome = async ({ user, userName }: Props) => {
           total={algoTotal}
         />
       </div>
-    </div>
+    </WelcomeCard>
   );
 };
 
