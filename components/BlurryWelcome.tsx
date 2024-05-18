@@ -39,12 +39,12 @@ const BlurryWelcome = () => {
         <p className="text-muted-foreground pb-5 flex space-x-1 items-center">
           It&apos;s easy and free!
         </p>
-        <div className="flex space-x-4">
+        <div className="flex items-center space-x-4">
           <LoginButton>
             <BetterButton
               containerClassName="rounded-full"
               as="button"
-              className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+              className="bg-neutral-200/5 hover:bg-black text-white flex items-center space-x-2"
             >
               <span>Login</span>
             </BetterButton>
