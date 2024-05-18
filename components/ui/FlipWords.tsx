@@ -1,8 +1,8 @@
 "use client";
+
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
-let interval: any;
+import { useEffect, useState, useRef } from "react";
 
 export const FlipWords = ({
   words,
@@ -14,68 +14,43 @@ export const FlipWords = ({
   className?: string;
 }) => {
   const [currentWord, setCurrentWord] = useState(words[0]);
+  const intervalRef = useRef<any>();
 
   useEffect(() => {
     startAnimation();
 
     return () => {
-      clearInterval(interval);
+      clearInterval(intervalRef.current);
     };
   }, []);
 
   const startAnimation = () => {
     let i = 0;
-    interval = setInterval(() => {
+    intervalRef.current = setInterval(() => {
       i++;
       if (i === words.length) {
         i = 0;
       }
-      const word = words[i];
-      setCurrentWord(word);
+      setCurrentWord(words[i]);
     }, duration);
   };
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       <motion.div
-        initial={{
-          opacity: 0,
-          y: 10,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          duration: 0.4,
-          ease: "easeInOut",
-          type: "spring",
-          stiffness: 100,
-          damping: 10,
-        }}
-        exit={{
-          opacity: 0,
-          y: -40,
-          x: 40,
-          filter: "blur(8px)",
-          scale: 2,
-          position: "absolute",
-        }}
-        className={cn(
-          "z-10 inline-block relative text-white/[.87]",
-          className
-        )}
         key={currentWord}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -10 }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
+        className={cn("z-10 inline-block relative text-white/[.87]", className)}
       >
         {currentWord.split("").map((letter, index) => (
           <motion.span
             key={currentWord + index}
             initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{
-              delay: index * 0.08,
-              duration: 0.4,
-            }}
+            transition={{ delay: index * 0.08, duration: 0.4 }}
             className="inline-block"
           >
             {letter}

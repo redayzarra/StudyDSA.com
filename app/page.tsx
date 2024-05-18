@@ -4,6 +4,7 @@ import MasterDSA from "@/components/MasterDSA";
 import NavBar from "@/components/NavBar";
 import { Aurora } from "@/components/ui/Aurora";
 import Welcome from "@/components/Welcome";
+import { WelcomeGrid } from "@/components/WelcomeGrid";
 import getUser from "@/hooks/server/getUser";
 
 export default async function Home() {
@@ -16,8 +17,9 @@ export default async function Home() {
       <Aurora>
         <NavBar />
         <Container>
-            <div className="space-y-24 mt-24 md:mt-44">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-24 gap-y-12">
+          <div className="mt-36 md:mt-48">
+            <div className="grid grid-cols-1 transition-all md:grid-cols-2 gap-x-10 gap-y-12">
+              <div className="space-y-10">
                 <MasterDSA />
                 {user ? (
                   <Welcome user={user} userName={firstName!} />
@@ -25,8 +27,10 @@ export default async function Home() {
                   <BlurryWelcome />
                 )}
               </div>
+              <WelcomeGrid />
             </div>
-          </Container>
+          </div>
+        </Container>
       </Aurora>
     </div>
   );

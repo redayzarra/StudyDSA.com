@@ -46,11 +46,10 @@ const LoginForm = () => {
 
     startTransition(() => {
       login(values, callbackUrl).then((data) => {
-        // If there is an error, then mark error to be true
-        if (data.error) {
+        // If data is undefined or there is an error, mark error as true
+        if (!data || data.error) {
           setError(true);
-          setMessage(data.error);
-          // Error is already false so we can store the message
+          setMessage(data?.error || 'An unexpected error occurred');
         } else {
           setMessage(data.success);
         }
@@ -59,7 +58,7 @@ const LoginForm = () => {
   };
 
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl")
+  const callbackUrl = searchParams.get("callbackUrl");
   const urlError =
     searchParams.get("error") === "OAuthAccountNotLinked"
       ? "Email is being used with a different provider"
@@ -140,3 +139,4 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
+
