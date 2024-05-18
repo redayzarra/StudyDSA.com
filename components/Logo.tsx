@@ -1,8 +1,7 @@
-import Link from "next/link";
-import React from "react";
-import { FaBook } from "react-icons/fa6";
-import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { Poppins } from "next/font/google";
+import Image from "next/image";
+import Link from "next/link";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -14,9 +13,10 @@ interface Props {
 }
 
 export const LogoText = ({ size = "default" }: Props) => {
+  const imageSize = size === "lg" ? 30 : 18;
   return (
     <div className="gap-x-1 flex items-center">
-      <FaBook size={size === "lg" ? 30 : 18} />
+      <Image width={imageSize} height={imageSize} alt="StudyDSA.com Logo" src="/images/icon.png"/>
       <h1
         className={cn(
           "font-[700]",
@@ -39,3 +39,4 @@ const Logo = ({ size }: Props) => {
 };
 
 export default Logo;
+
