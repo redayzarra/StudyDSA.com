@@ -44,7 +44,7 @@ const BlurryWelcome = () => {
             <BetterButton
               containerClassName="rounded-full"
               as="button"
-              className=""
+              className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
             >
               <span>Login</span>
             </BetterButton>
