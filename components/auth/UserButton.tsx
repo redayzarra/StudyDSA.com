@@ -17,6 +17,7 @@ import {
 import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
 import UserAvatar from "./UserAvatar";
+import { BetterButton } from "../ui/BetterButton";
 
 const UserButton = () => {
   const user = getUser();
@@ -58,10 +59,13 @@ const UserButton = () => {
     </DropdownMenu>
   ) : (
     <LoginButton>
-      <NeoButton>
-        <FiLogIn size={15} />
-        <span className="text-base">Login</span>
-      </NeoButton>
+      <BetterButton
+        containerClassName="rounded-full"
+        as="button"
+        className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+      >
+        <span>Login</span>
+      </BetterButton>
     </LoginButton>
   );
 };

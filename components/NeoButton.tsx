@@ -1,8 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Poppins } from "next/font/google";
 import { PropsWithChildren } from "react";
-import { FiLogIn } from "react-icons/fi";
-import { IoIosLogIn } from "react-icons/io";
 
 const font = Poppins({
   subsets: ["latin"],

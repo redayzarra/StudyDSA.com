@@ -22,7 +22,7 @@ const MasterDSA = () => {
           font.className
         )}
       >
-        <FlipWords words={words} className="min-w-[100px]" /> Data <br/> Structures & Algorithms
+        <FlipWords words={words} className="" /> Data <br/> Structures & Algorithms
       </h1>
       <p className="text-muted-foreground text-left">
         Let&apos;s make the tough stuff easy. Get straightforward, free

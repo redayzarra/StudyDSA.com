@@ -7,6 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 import WelcomeCard from "./WelcomeCard";
+import { BetterButton } from "./ui/BetterButton";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -40,9 +41,13 @@ const BlurryWelcome = () => {
         </p>
         <div className="flex space-x-4">
           <LoginButton>
-            <NeoButton>
-              <span className="text-base font-normal px-2">Login</span>
-            </NeoButton>
+            <BetterButton
+              containerClassName="rounded-full"
+              as="button"
+              className=""
+            >
+              <span>Login</span>
+            </BetterButton>
           </LoginButton>
           <Link href="/register">
             <Button size="sm" variant="link" className="text-foreground">
