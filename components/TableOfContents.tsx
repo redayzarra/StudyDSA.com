@@ -33,7 +33,7 @@ const TableSection = ({
 
 const TableItems = ({ items }: { items: Topic[] }) => {
   return (
-    <div className="flex flex-col items-start space-y-3">
+    <div className="flex flex-col items-start space-y-3 ml-4">
       {items.map((item) => (
         <a
           key={item.id}
@@ -50,8 +50,34 @@ const TableItems = ({ items }: { items: Topic[] }) => {
 const TableOfContents = async () => {
   const topics = await getTopics();
   const algorithms = await getAlgorithms();
+
+  const basics = [
+    {
+      id: "data-structures",
+      title: "Data Structures",
+      description: "",
+      href: "/data-structures",
+    },
+    {
+      id: "algorithms",
+      title: "Algorithms",
+      description: "",
+      href: "/algorithms",
+    },
+    {
+      id: "big-o",
+      title: "Big-O Notation",
+      description: "",
+      href: "/big-o",
+    },
+  ];
+
   return (
     <ScrollArea className="h-full pr-6 py-4 w-[225px]">
+      <TableSection heading="Introduction">
+        <TableItems items={basics} />
+      </TableSection>
+
       <TableSection heading="Data Structures">
         <TableItems items={topics} />
       </TableSection>
