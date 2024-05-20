@@ -1,6 +1,6 @@
 # StudyDSA.com
 
-StudyDSA.com is an educational platform designed for mastering data structures and algorithms. Built using Next.js, React, and TypeScript, it aims to provide a structured learning environment with integrated LeetCode practice problems, progress tracking, and user customization.
+An educational platform designed for mastering data structures and algorithms. Built using Next.js, React, and TypeScript, it aims to provide a structured learning environment with integrated LeetCode practice problems, progress tracking, and user customization.
 
 ## Table of Contents
 1. [Overview](#overview)
