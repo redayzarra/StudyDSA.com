@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import MainChapter from "../_components/MainChapter";
-import MainHeading from "../_components/MainHeading";
+import MainChapter from "../(introduction)/_components/MainChapter";
+import MainHeading from "../(introduction)/_components/MainHeading";
 
 const AlgorithmsPage = async () => {
   return (

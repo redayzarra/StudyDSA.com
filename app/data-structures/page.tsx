@@ -59,7 +59,7 @@ const DataStructuresPage = async () => {
             (BSTs) are a great example where data structures and algorithms work
             together. Algorithms like{" "}
             <TextLink href="/algortithms/binary-search">binary search</TextLink>{" "}
-            are designed to take advantage of the BST's properties, making
+            are designed to take advantage of the BST&apos;s properties, making
             searches extremely efficient.
           </li>
           <br />
@@ -67,7 +67,7 @@ const DataStructuresPage = async () => {
             <span className="font-bold">&bull; Graph Algorithms: </span>
             <TextLink href="/data-structures/graphs">Graphs</TextLink> are used
             in algorithms like{" "}
-            <TextLink href="/algorithms/dijkstras">Dijkstra's</TextLink> for
+            <TextLink href="/algorithms/dijkstras">Dijkstra&apos;s</TextLink> for
             finding the shortest path, or algorithms for detecting cycles in a
             network. These algorithms are tailored to navigate the nodes and
             edges of graphs efficiently.

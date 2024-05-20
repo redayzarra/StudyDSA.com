@@ -4,14 +4,14 @@ import { cn } from "@/lib/utils";
 
 const font = Poppins({
   subsets: ["latin"],
-  weight: ["800"],
+  weight: ["600"],
 });
 
 const SkillTreeHeading = ({ children }: { children: React.ReactNode }) => {
   return (
     <h1
       className={cn(
-        "w-full mb-5 mt-2 text-[1.7rem] font-bold flex items-center justify-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-600 to-neutral-950 dark:from-neutral-50 dark:to-neutral-400 bg-opacity-50",
+        "w-full mb-5 mt-2 text-[1.7rem] font-semibold flex items-center justify-center",
         font.className
       )}
     >
