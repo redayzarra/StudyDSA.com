@@ -49,9 +49,9 @@ const Intermediate = async () => {
           </SkillTreeItem>
         </Accordion>
       </div>
-
+{/* 
       <h2 className="font-[650] mb-5 mt-10 text-[1.15rem]">Algorithms</h2>
-      <Algorithms items={intermediateAlgorithms} />
+      <Algorithms items={intermediateAlgorithms} /> */}
     </SkillTreeContainer>
   );
 };

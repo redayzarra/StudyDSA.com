@@ -42,7 +42,7 @@ const Basics = async () => {
         </Accordion>
 
         {/* Second Column */}
-        <Accordion type="multiple">
+        <Accordion type="multiple" >
           {/* Hashmaps */}
           <SkillTreeItem
             name="Hashmaps & Sets"
@@ -57,8 +57,8 @@ const Basics = async () => {
         </Accordion>
       </div>
 
-      <h2 className="font-[650] mb-5 mt-10 text-[1.15rem]">Algorithms</h2>
-      <Algorithms items={basicAlgorithms || []} />
+      {/* <h2 className="font-[650] mb-5 mt-10 text-[1.15rem]">Algorithms</h2>
+      <Algorithms items={basicAlgorithms || []} /> */}
     </SkillTreeContainer>
   );
 };

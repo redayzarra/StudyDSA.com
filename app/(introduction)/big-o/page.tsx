@@ -1,19 +1,17 @@
+import CodeBlock from "@/components/CodeBlock";
+import { CodeText } from "@/components/CodeText";
+import ImageBlock from "@/components/ImageBlock";
+import TextLink from "@/components/TextLink";
 import { Metadata } from "next";
+import Notations from "../../../components/Notations";
 import MainChapter from "../_components/MainChapter";
 import MainHeading from "../_components/MainHeading";
 import {
-  bigOAlgorithmsCode,
   challengingExample,
   easyExample,
   harderExample,
-  notations,
+  notations
 } from "./bigCode";
-import CodeBlock from "@/components/CodeBlock";
-import { arrayOperations } from "@/data/operationsData";
-import Notations from "../../../components/Notations";
-import ImageBlock from "@/components/ImageBlock";
-import { CodeText } from "@/components/CodeText";
-import TextLink from "@/components/TextLink";
 
 const BigOPage = async () => {
   return (
@@ -286,14 +284,14 @@ const BigOPage = async () => {
         <br />
         <ul className="ml-6">
           <li>
-            <span className="font-bold">Understand the problem:</span> Clearly
+            <span className="font-bold">&bull; Understand the problem:</span> Clearly
             define the problem and identify the requirements before choosing an
             algorithm. Break down the problem, consider edge cases, and ensure
             you understand the input and output requirements.
           </li>
           <br />
           <li>
-            <span className="font-bold">Choose the right data structures:</span>{" "}
+            <span className="font-bold">&bull; Choose the right data structures:</span>{" "}
             Selecting the right data structures can significantly impact the
             efficiency of your algorithm. For example, using a hash map can
             reduce the time complexity of search operations from{" "}
@@ -301,14 +299,14 @@ const BigOPage = async () => {
           </li>
           <br />
           <li>
-            <span className="font-bold">Base Cases:</span>
+            <span className="font-bold">&bull; Base Cases:</span>
             Ensure that your algorithm handles base cases first. Base cases
             are the simplest, smallest instances of the problem, and they help
             prevent infinite recursion or iterations.
           </li>
           <br />
           <li>
-            <span className="font-bold">Space-Time Tradeoff:</span> Consider the
+            <span className="font-bold">&bull; Space-Time Tradeoff:</span> Consider the
             trade-offs between time and space complexity, and choose the
             approach that best suits your needs. Sometimes, using more memory
             can reduce the time complexity, or vice versa.
