@@ -66,7 +66,7 @@ const TableOfContents = async () => {
     },
     {
       id: "big-o",
-      title: "Big-O Notation",
+      title: "Big O Notation",
       description: "",
       href: "/big-o",
     },

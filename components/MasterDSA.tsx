@@ -14,11 +14,11 @@ const MasterDSA = () => {
   const words = ["Study", "Master", "Learn", "Explore"];
 
   return (
-    <div className="flex flex-col space-y-2 relative">
+    <div className="flex flex-col space-y-4 relative">
       {/* <Spotlight className="hidden dark:block top-[-30rem] left-[-25rem] overflow-hidden h-[700%] w-[180vh]" /> */}
       <h1
         className={cn(
-          "text-2xl pb-2 text-left md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50",
+          "text-5xl pb-2 text-left md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50",
           font.className
         )}
       >
@@ -29,7 +29,7 @@ const MasterDSA = () => {
         resources to tackle data structures and algorithms.
       </p>
       <TextGenerateEffect
-        className="italic font-medium hidden md:flex"
+        className="italic font-medium"
         words={`"Where complexity meets clarity."`}
       />
     </div>

@@ -74,11 +74,10 @@ const ArraysPage = async () => {
         chapterId={operationsChapter?.id}
       >
         <p>
-          Let&apos;s take a closer look at what you can do with arrays. Arrays are
-          stored in memory together so inserting or deleting in the middle
+          Let&apos;s take a closer look at what you can do with arrays. Arrays
+          are stored in memory together so inserting or deleting in the middle
           involves moving things around. The following table provides a detailed
-          overview of{" "}
-          <span className="font-bold">everything you can do with arrays:</span>
+          overview of <strong>everything you can do with arrays:</strong>
         </p>
         <Operations items={arrayOperations} />
       </ChapterHeading>
@@ -96,8 +95,8 @@ const ArraysPage = async () => {
           </span>{" "}
           of another variable. In the context of arrays, pointers are crucial
           because they can be used to directly access and manipulate array
-          elements. Let&apos;s take a look at pointers in a language that supports
-          them explicitly like C:
+          elements. Let&apos;s take a look at pointers in a language that
+          supports them explicitly like C:
           <br />
         </p>
         <CodeBlock code={pointerCodeC} language="c" title="Pointers.c" />
@@ -105,13 +104,13 @@ const ArraysPage = async () => {
           <br />
           This direct access via pointers is what makes arrays efficient,
           especially when it comes to iterating over elements or implementing
-          data structures like stacks and queues. Let&apos;s take a look at a more
-          complex example of pointers in Python:
+          data structures like stacks and queues. Let&apos;s take a look at a
+          more complex example of pointers in Python:
           <br />
         </p>
         <CodeBlock code={pointerCodePy} language="python" title="Pointers.py" />
+        <br />
         <p>
-          <br />
           The code above defines a function <CodeText>reverse</CodeText> that
           takes an array of integers and reverses its elements in place, meaning
           the original array is modified without needing extra space for another
@@ -196,8 +195,8 @@ const ArraysPage = async () => {
             dynamic arrays can grow and shrink in size
           </span>{" "}
           at runtime. This flexibility comes at the cost of overhead for keeping
-          track of the array&apos;s size and potentially reallocating and copying the
-          entire array to a new memory space when resizing.
+          track of the array&apos;s size and potentially reallocating and
+          copying the entire array to a new memory space when resizing.
           <br />
           <br />
           Python has built-in support for dynamic arrays. Here is everything you
@@ -208,8 +207,8 @@ const ArraysPage = async () => {
           <br />
           Dynamic arrays are implemented in many programming languages as
           built-in types, such as <CodeText>List</CodeText> in Python or{" "}
-          <CodeText>ArrayList</CodeText> in Java. It&apos;s important to understand
-          the array functions and methods available in your preferred
+          <CodeText>ArrayList</CodeText> in Java. It&apos;s important to
+          understand the array functions and methods available in your preferred
           programming language.
         </p>
       </ChapterHeading>
@@ -236,18 +235,15 @@ const ArraysPage = async () => {
         </p>
         <Operations items={stackOperations} />
         <p>
-          Here&apos;s how to implement stacks in Python, using dynamic arrays (lists)
-          to efficiently manage stack operations. For coding interviews, use
-          stacks whenever you have elements that depend on the elements that
+          Here&apos;s how to implement stacks in Python, using dynamic arrays
+          (lists) to efficiently manage stack operations. For coding interviews,
+          use stacks whenever you have elements that depend on the elements that
           came before it.
         </p>
         <CodeBlock code={stackCode} title="Stacks.py" />
       </ChapterHeading>
 
-      <ChapterHeading
-        id="algorithms"
-        title="Algorithms"
-      >
+      <ChapterHeading id="algorithms" title="Algorithms">
         <Algorithms items={arrayAlgorithms} />
       </ChapterHeading>
 
@@ -259,9 +255,8 @@ const ArraysPage = async () => {
         <p>
           Mastering arrays and stacks is crucial for coding interviews. Here are
           some tips that I learned for using these data structures effectively:
-          <br />
-          <br />
         </p>
+        <br />
 
         <ul className="ml-6">
           <li>
@@ -271,9 +266,8 @@ const ArraysPage = async () => {
             the final result of a problem. For this reason, you need to be
             comfortable with all the common functions and methods for arrays in
             your preferred language.
-            <br />
-            <br />
           </li>
+          <br />
           <li>
             <span className="font-bold">&bull; Space-Time Trade-offs:</span>{" "}
             Understand when it&apos;s beneficial to use additional space (like
@@ -282,9 +276,8 @@ const ArraysPage = async () => {
             arrays) to improve time efficiency. This strategy is useful in
             problems involving frequency counting or mapping relationships
             between elements.
-            <br />
-            <br />
           </li>
+          <br />
           <li>
             <span className="font-bold">
               &bull; When Elements Depend On Each Other:
@@ -293,9 +286,8 @@ const ArraysPage = async () => {
             syntax validation problems. This is becuase the current element
             depends on the elements that came before it, a perfect use case for
             using stacks.
-            <br />
-            <br />
           </li>
+          <br />
           <li>
             <span className="font-bold">
               &bull; Navigating Through Recursion:
@@ -306,9 +298,8 @@ const ArraysPage = async () => {
             pushing temporary data onto the stack as you descend and popping it
             off as you backtrack, you effectively mimic the call stack mechanism
             of recursion.
-            <br />
-            <br />
           </li>
+          <br />
         </ul>
       </ChapterHeading>
     </div>
