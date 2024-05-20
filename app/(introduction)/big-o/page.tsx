@@ -25,7 +25,7 @@ const BigOPage = async () => {
 
       <MainChapter id="definition" title="Definition">
         <p>
-          Big O notation is used to describe an algorithm's{" "}
+          Big O notation is used to describe an algorithm&apos;s{" "}
           <strong>performance</strong> or complexity,{" "}
           <strong>focusing on the most significant factors</strong> affecting
           its execution time or space.
@@ -85,8 +85,8 @@ const BigOPage = async () => {
           <br />
           <li>
             <span className="font-bold">Worst-case Scenario: </span>
-            Analyze the algorithm's performance in the worst-case scenario.
-            Big-O notation typically describes the upper bound of an algorithm's
+            Analyze the algorithm&apos;s performance in the worst-case scenario.
+            Big-O notation typically describes the upper bound of an algorithm&apos;s
             running time, representing the longest time it could take to
             complete. This helps in understanding the maximum resources
             required.
@@ -96,7 +96,7 @@ const BigOPage = async () => {
 
       <MainChapter id="easy-example" title="Easy Example">
         <p>
-          Let's consider a simple example to understand how to analyze the time
+          Let&apos;s consider a simple example to understand how to analyze the time
           complexity of different algorithms. The code below shows a loop that
           iterates through an array of size <CodeText>n</CodeText>:
         </p>
@@ -107,7 +107,7 @@ const BigOPage = async () => {
         />
         <br />
         <p>
-          Let's apply the <TextLink href="/big-o#analyzing">steps</TextLink> we
+          Let&apos;s apply the <TextLink href="/big-o#analyzing">steps</TextLink> we
           discussed earlier and walk through the code step-by-step:
         </p>
         <br />
@@ -245,7 +245,7 @@ const BigOPage = async () => {
           <li>
             <span className="font-bold">Scaling:</span> The DFS function
             explores all possible permutations of the input list. For each
-            position in the list, it tries every number that hasn't been used
+            position in the list, it tries every number that hasn&apos;t been used
             yet, leading to <CodeText>n!</CodeText> (factorial of n)
             permutations. Thus, the DFS function is called{" "}
             <CodeText>O(n!)</CodeText> times, and within each call, it performs
