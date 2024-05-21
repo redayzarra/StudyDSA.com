@@ -1,17 +1,12 @@
-import getAlgorithms from "@/actions/algorithms/getAlgorithms";
+import getChaptersByTopic from "@/actions/chapters/getChapters";
 import { Accordion } from "@/components/ui/accordion";
 import { AiOutlineNodeIndex } from "react-icons/ai";
 import { MdDataArray, MdDataObject, MdLinearScale } from "react-icons/md";
-import Algorithms from "./Algorithms";
+import SkillTreeContainer from "./SkillTreeContainer";
 import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeItem from "./SkillTreeItem";
-import getChaptersByTopic from "@/actions/chapters/getChapters";
-import SkillTreeContainer from "./SkillTreeContainer";
 
 const Basics = async () => {
-
-  // Fetch all the algorithms
-  const basicAlgorithms = await getAlgorithms("basic");
 
   // Fetch all chapters
   const arrayChapters = await getChaptersByTopic("Arrays");
@@ -23,7 +18,6 @@ const Basics = async () => {
     <SkillTreeContainer id="basics">
       <SkillTreeHeading>Basics</SkillTreeHeading>
       {/* The Basics */}
-      <h2 className="font-[650] mb-2 text-[1.15rem]">Data Structures</h2>
       <div className="grid gap-x-8 grid-cols-1 xm:grid-cols-2">
         {/* First Column */}
         <Accordion type="multiple">

@@ -29,7 +29,7 @@ const DataStructuresPage = async () => {
 
       <MainChapter id="with-algorithms" title="With Algorithms">
         <p>
-          Data structures and algorithms are like two sides of the same coin in
+          Data structures and <TextLink href="/algorithms">algorithms</TextLink> are like two sides of the same coin in
           computer science. While data structures deal with the organization and
           storage of data, algorithms are all about the steps and rules to
           process that data efficiently. Here are the some examples of data

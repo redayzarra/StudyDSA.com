@@ -1,17 +1,12 @@
+import getChaptersByTopic from "@/actions/chapters/getChapters";
 import { Accordion } from "@/components/ui/accordion";
 import { FaArrowUpRightDots } from "react-icons/fa6";
 import { TbBinaryTree, TbBinaryTree2, TbVector } from "react-icons/tb";
-import Algorithms from "./Algorithms";
+import SkillTreeContainer from "./SkillTreeContainer";
 import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeItem from "./SkillTreeItem";
-import getAlgorithms from "@/actions/algorithms/getAlgorithms";
-import getChaptersByTopic from "@/actions/chapters/getChapters";
-import SkillTreeContainer from "./SkillTreeContainer";
 
 const Intermediate = async () => {
-  // Fetch algorithms
-  const intermediateAlgorithms = await getAlgorithms("intermediate");
-
   // Fetch chapters
   const treeChapters = await getChaptersByTopic("Trees");
   const graphChapters = await getChaptersByTopic("Graphs");
@@ -23,7 +18,6 @@ const Intermediate = async () => {
 
       <SkillTreeHeading>Intermediate</SkillTreeHeading>
       {/* Intermediate Data Structrues */}
-      <h2 className="font-[650] mb-2 text-[1.15rem]">Data Structures</h2>
       <div className="grid gap-x-8 grid-cols-1 xm:grid-cols-2">
         {/* First Column */}
         <Accordion type="multiple">

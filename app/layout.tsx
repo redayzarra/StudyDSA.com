@@ -38,7 +38,7 @@ export default async function RootLayout({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | StudyDSA",
+    template: "%s",
     default: "StudyDSA",
   },
   description:
