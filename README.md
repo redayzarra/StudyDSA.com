@@ -1,5 +1,16 @@
 # StudyDSA.com
 
+<div align="center">
+ 
+  <img src="https://github.com/redayzarra/StudyDSA.com/assets/113388793/a9bfe743-18c4-418b-ad7c-94077d76e0cf" alt="StudyDSA.com homepage">
+
+</div>
+
+<div>
+
+  <br />
+</div>
+
 An educational platform designed for learning data structures and algorithms. Built using Next.js, React, and TypeScript, it aims to provide a structured learning environment with integrated LeetCode practice problems, progress tracking, and user customization.
 
 ## Table of Contents
