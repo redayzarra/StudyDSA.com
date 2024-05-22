@@ -158,7 +158,7 @@ const SkeletonThree = () => {
           <AiOutlineNodeIndex size={24} />
         </div>
         <div className="w-full bg-gray-100 text-sm h-6 rounded-full pl-4 dark:bg-neutral-900 flex items-center">
-          Review Linked Lists!
+          Review Linked Lists
         </div>
       </motion.div>
       <motion.div
@@ -166,7 +166,7 @@ const SkeletonThree = () => {
         className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2 items-center space-x-2 w-3/4 ml-auto bg-black/75"
       >
         <div className="w-full bg-gray-100 text-sm h-6 rounded-full pr-4 text-right justify-end dark:bg-neutral-900 flex items-center">
-          Study Trees!
+          Study Trees
         </div>
         <div className="h-6 w-6 rounded-full bg-gradient-to-r from-orange-500 to-amber-800 flex-shrink-0 flex items-center justify-center">
           <TbBinaryTree size={18} />
@@ -180,7 +180,7 @@ const SkeletonThree = () => {
           <PiGraph size={22} />
         </div>
         <div className="w-full bg-gray-100 text-sm h-6 rounded-full pl-4 dark:bg-neutral-900 flex items-center">
-          Master Union Find!
+          Learn Union Find
         </div>
       </motion.div>
     </motion.div>
@@ -227,7 +227,7 @@ const SkeletonFour = () => {
           className="rounded-full h-10 w-10"
         />
         <p className="sm:text-sm text-xs text-center font-semibold text-muted-foreground mt-4">
-          Longest Increasing Path In a Matrix
+          Alien Dictionary
         </p>
         <p className="border border-red-500 bg-red-100 mb-2 dark:bg-red-900/20 text-red-600 text-xs rounded-full px-2 py-0.5 mt-4">
           Hard
@@ -274,7 +274,7 @@ const items = [
   {
     title: "Big-O Notation",
     url: "/big-o",
-    description: "Learn how to measure algorithm efficiency.",
+    description: "Learn how to measure an algorithm's time complexity.",
     header: <SkeletonOne />,
   },
   {
@@ -286,20 +286,20 @@ const items = [
   {
     title: "Algorithms",
     url: "/algorithms",
-    description: "Explore core algorithms in computer science.",
+    description: "Explore the most important algorithms in computer science.",
     header: <SkeletonTwo />,
   },
   {
     title: "Practice LeetCode Questions!",
     url: "/practice",
     description:
-      "Practice coding with curated lists of questions! Track your problems and prepare for technical interviews.",
+      "Practice problem solving with curated lists of questions! Track your progress and prepare to ace your technical interviews.",
     header: <SkeletonFour />,
   },
   {
-    title: "Support on Patreon",
-    url: "/support",
-    description: "Support us on Patreon to keep our content free.",
+    title: "About Us",
+    url: "/about",
+    description: "The one-man team behind StudyDSA and his mission.",
     header: <Skeleton />,
   },
 ];

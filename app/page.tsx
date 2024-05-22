@@ -21,7 +21,7 @@ export default async function Home() {
             <div className="grid grid-cols-1 transition-all md:grid-cols-[3fr_5fr] gap-x-3">
               <div className="">
                 <MasterDSA />
-                <div className="-mt-[24px]">
+                <div className="-mt-[24px] mb-3">
                   {user ? (
                     <Welcome user={user} userName={firstName!} />
                   ) : (
