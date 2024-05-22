@@ -42,7 +42,7 @@ export const TypeWriter = ({
           width: "fit-content",
         },
         {
-          duration: 0.3,
+          duration: 0.1,
           delay: stagger(0.1),
           ease: "easeInOut",
         }
@@ -96,7 +96,7 @@ export const TypeWriter = ({
           repeatType: "reverse",
         }}
         className={cn(
-          "inline-block rounded-sm w-[2px] -mb-1 h-3 bg-white",
+          "inline-block rounded-sm w-[2px] -ml-2 -mb-1 h-5 bg-white",
           cursorClassName
         )}
       ></motion.span>

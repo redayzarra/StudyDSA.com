@@ -83,14 +83,10 @@ const SkeletonTwo = () => {
     },
     {
       text: "return",
-      className: "text-blue-400",
+      className: "ml-6 text-blue-400",
     },
     {
-      text: '"Welcome',
-      className: "text-rose-300",
-    },
-    {
-      text: 'Back!"',
+      text: '"Welcome!"',
       className: "text-rose-300",
     },
   ];

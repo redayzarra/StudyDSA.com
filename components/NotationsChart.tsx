@@ -49,6 +49,8 @@ const NotationsChart = ({ className }: { className?: string }) => {
     },
     stroke: {
       curve: "smooth",
+      lineCap: 'round',
+      width: 2,
     },
     tooltip: {
       enabled: false,
