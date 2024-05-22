@@ -78,7 +78,7 @@ export const TypeWriter = ({
   return (
     <div
       className={cn(
-        "text-[14px] tracking-wide text-left",
+        "text-[13px] tracking-tight text-left",
         className, font.className
       )}
     >

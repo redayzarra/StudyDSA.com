@@ -1,12 +1,14 @@
 "use client";
 
-import React from "react";
-import { BentoGrid, BentoGridItem } from "./ui/BentoGrid";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { AiOutlineNodeIndex } from "react-icons/ai";
+import { FaCircle } from "react-icons/fa";
+import { PiGraph } from "react-icons/pi";
+import { TbBinaryTree } from "react-icons/tb";
 import NotationsChart from "./NotationsChart";
 import { TypeWriter } from "./TypeWriter";
-import { FaCircle } from "react-icons/fa";
+import { BentoGrid, BentoGridItem } from "./ui/BentoGrid";
 
 export function WelcomeGrid() {
   return (
@@ -51,7 +53,7 @@ const SkeletonTwo = () => {
     },
     {
       text: "):",
-      className: "text-yellow-200",
+      className: "md:mr-2 text-yellow-200",
     },
     {
       text: "AAAAAAAAAAAAA",
@@ -74,10 +76,10 @@ const SkeletonTwo = () => {
       className: "ml-12 text-blue-400",
     },
     {
-      text: '"Hello!"',
+      text: '"Welcome!"',
       className: "text-rose-300",
     },
-        {
+    {
       text: "AAAAAAAAAAAAAAAAA",
       className: "invisible md:hidden",
     },
@@ -86,14 +88,18 @@ const SkeletonTwo = () => {
       className: "ml-6 text-blue-400",
     },
     {
-      text: '"Welcome!"',
+      text: '"Welcome',
+      className: "text-rose-300",
+    },
+    {
+      text: 'back!"',
       className: "text-rose-300",
     },
   ];
 
   return (
     <div className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-row space-x-2 text-green">
-      <div className="spacing-y-px max-w-3xl mx-auto shadow-md bg-[#23272e] dark: dark:bg-stone-900/[0.3] border-t-2 dark:border-stone-700 rounded-lg overflow-hidden">
+      <div className="spacing-y-px max-w-3xl mx-auto shadow-md bg-[#23272e] dark: dark:bg-black/[0.5] border-t-2 dark:border-stone-700 rounded-lg overflow-hidden">
         <div className="grid grid-cols-3 items-center px-2 py-1 bg-[#17191d] dark:bg-black/70">
           <div className="flex justify-start items-center space-x-2">
             <FaCircle className="text-[#FF605C]" size={10} />
@@ -109,6 +115,75 @@ const SkeletonTwo = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+const SkeletonThree = () => {
+  const variants = {
+    initial: {
+      x: 0,
+    },
+    animate: {
+      x: 10,
+      rotate: 5,
+      transition: {
+        duration: 0.2,
+      },
+    },
+  };
+  const variantsSecond = {
+    initial: {
+      x: 0,
+    },
+    animate: {
+      x: -10,
+      rotate: -5,
+      transition: {
+        duration: 0.2,
+      },
+    },
+  };
+
+  return (
+    <motion.div
+      initial="initial"
+      whileHover="animate"
+      className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2"
+    >
+      <motion.div
+        variants={variants}
+        className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2  items-center space-x-2 bg-black/75"
+      >
+        <div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0 flex items-center justify-center">
+          <AiOutlineNodeIndex size={24} />
+        </div>
+        <div className="w-full bg-gray-100 text-sm h-6 rounded-full pl-4 dark:bg-neutral-900 flex items-center">
+          Review Linked Lists!
+        </div>
+      </motion.div>
+      <motion.div
+        variants={variantsSecond}
+        className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2 items-center space-x-2 w-3/4 ml-auto bg-black/75"
+      >
+        <div className="w-full bg-gray-100 text-sm h-6 rounded-full pr-4 text-right justify-end dark:bg-neutral-900 flex items-center">
+          Study Trees!
+        </div>
+        <div className="h-6 w-6 rounded-full bg-gradient-to-r from-orange-500 to-amber-800 flex-shrink-0 flex items-center justify-center">
+          <TbBinaryTree size={18} />
+        </div>
+      </motion.div>
+      <motion.div
+        variants={variants}
+        className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2 items-center space-x-2 bg-black/75"
+      >
+        <div className="h-6 w-6 rounded-full bg-gradient-to-r from-lime-500 to-teal-700 flex-shrink-0 flex items-center justify-center">
+          <PiGraph size={22} />
+        </div>
+        <div className="w-full bg-gray-100 text-sm h-6 rounded-full pl-4 dark:bg-neutral-900 flex items-center">
+          Master Union Find!
+        </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
@@ -199,36 +274,32 @@ const items = [
   {
     title: "Big-O Notation",
     url: "/big-o",
-    description:
-      "Dive into the world of sorting algorithms and their efficiency.",
+    description: "Learn how to measure algorithm efficiency.",
     header: <SkeletonOne />,
   },
   {
     title: "Data Structures",
     url: "/data-structures",
-    description:
-      "Dive into the world of sorting algorithms and their efficiency.",
-    header: <Skeleton />,
+    description: "Understand different data structures and their uses.",
+    header: <SkeletonThree />,
   },
   {
     title: "Algorithms",
     url: "/algorithms",
-    description:
-      "Dive into the world of sorting algorithms and their efficiency.",
+    description: "Explore core algorithms in computer science.",
     header: <SkeletonTwo />,
   },
   {
     title: "Practice LeetCode Questions!",
     url: "/practice",
     description:
-      "Understand how hash tables work and their significance in programming.",
+      "Practice coding with curated lists of questions! Track your problems and prepare for technical interviews.",
     header: <SkeletonFour />,
   },
   {
     title: "Support on Patreon",
-    url: "/algorithms/graph-algorithms",
-    description:
-      "Dive into the world of sorting algorithms and their efficiency.",
+    url: "/support",
+    description: "Support us on Patreon to keep our content free.",
     header: <Skeleton />,
   },
 ];

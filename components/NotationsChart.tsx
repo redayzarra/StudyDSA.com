@@ -30,6 +30,7 @@ const NotationsChart = ({ className }: { className?: string }) => {
         show: false,
       },
       redrawOnWindowResize: true,
+      redrawOnParentResize: true,
       animations: {
         enabled: true,
         easing: "easeinout",

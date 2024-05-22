@@ -18,14 +18,16 @@ export default async function Home() {
         <NavBar />
         <Container>
           <div className="mt-36 md:mt-48">
-            <div className="grid grid-cols-1 transition-all md:grid-cols-[3fr_5fr] gap-x-10 gap-y-12">
+            <div className="grid grid-cols-1 transition-all md:grid-cols-[3fr_5fr] gap-x-3">
               <div className="">
                 <MasterDSA />
-                {user ? (
-                  <Welcome user={user} userName={firstName!} />
-                ) : (
-                  <BlurryWelcome />
-                )}
+                <div className="-mt-[24px]">
+                  {user ? (
+                    <Welcome user={user} userName={firstName!} />
+                  ) : (
+                    <BlurryWelcome />
+                  )}
+                </div>
               </div>
               <WelcomeGrid />
             </div>
