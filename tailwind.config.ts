@@ -73,6 +73,14 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: 0 },
         },
+        meteor: {
+          "0%": { transform: "rotate(215deg) translateX(0)", opacity: "1" },
+          "70%": { opacity: "1" },
+          "100%": {
+            transform: "rotate(215deg) translateX(-500px)",
+            opacity: "0",
+          },
+        },
         spotlight: {
           "0%": {
             opacity: 0,
@@ -135,6 +143,7 @@ module.exports = {
         fourth: "moveHorizontal 40s ease infinite",
         fifth: "moveInCircle 20s ease infinite",
         aurora: "aurora 60s linear infinite",
+        "meteor-effect": "meteor 5s linear infinite",
       },
       screens: {
         'xm': '895px',

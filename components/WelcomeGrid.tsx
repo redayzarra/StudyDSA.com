@@ -9,6 +9,7 @@ import { TbBinaryTree } from "react-icons/tb";
 import NotationsChart from "./NotationsChart";
 import { TypeWriter } from "./TypeWriter";
 import { BentoGrid, BentoGridItem } from "./ui/BentoGrid";
+import { Meteors } from "./Meteors";
 
 export function WelcomeGrid() {
   return (
@@ -28,7 +29,15 @@ export function WelcomeGrid() {
 }
 
 const Skeleton = () => (
-  <div className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-row space-x-2"></div>
+  <div className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-row space-x-2">
+      <div className=" w-full relative max-w-xs">
+        <div className="relative shadow-xl h-full px-4 overflow-hidden rounded-2xl flex flex-col items-center justify-center">
+          {/* Meaty part - Meteor effect */}
+          <div className="font-thin text-sm">Everyone deserves a chance at good education.</div>
+          <Meteors number={40} />
+        </div>
+      </div>
+  </div>
 );
 
 const SkeletonOne = () => (
@@ -299,7 +308,7 @@ const items = [
   {
     title: "About Us",
     url: "/about",
-    description: "The one-man team behind StudyDSA and his mission.",
+    description: "A one-man team and his mission to make education free.",
     header: <Skeleton />,
   },
 ];
