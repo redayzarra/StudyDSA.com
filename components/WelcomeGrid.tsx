@@ -53,7 +53,7 @@ const SkeletonTwo = () => {
     },
     {
       text: "):",
-      className: "md:mr-2 text-yellow-200",
+      className: "mr-20 md:mr-2 text-yellow-200",
     },
     {
       text: "AAAAAAAAAAAAA",
@@ -65,7 +65,7 @@ const SkeletonTwo = () => {
     },
     {
       text: "is_new:",
-      className: "text-white",
+      className: "mr-20 md:mr-6 text-white",
     },
     {
       text: "AAAAAAAAAAAAAAAAA",

@@ -96,7 +96,7 @@ export const TypeWriter = ({
           repeatType: "reverse",
         }}
         className={cn(
-          "inline-block rounded-sm w-[2px] -ml-2 -mb-1 h-5 bg-white",
+          "inline-block rounded-sm w-[2px] -ml-2 -mb-1 h-4 bg-neutral-500",
           cursorClassName
         )}
       ></motion.span>
