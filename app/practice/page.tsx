@@ -1,5 +1,6 @@
 import { QuestionsTable } from "@/components/QuestionsTable";
 import QuestionsTabs from "@/components/QuestionsTabs";
+import TextLink from "@/components/TextLink";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { Poppins } from "next/font/google";
@@ -12,21 +13,24 @@ const font = Poppins({
 const PracticePage = () => {
   return (
     <div className="">
-      <div className="space-y-6 relative">
-        <div className="space-y-2">
-          <h1 className={cn("text-4xl md:text-6xl font-bold", font.className)}>
-            NeetCode 150 🚀
-          </h1>
-          <h2 className="dark:text-muted-foreground">Description here</h2>
-        </div>
-        {/* <Spotlight className="block w-screen overflow-hidden top-[-10rem] left-[-4rem] md:h-[700%] md:top-[-14rem] md:left-[-13rem] " /> */}
+      <div className="space-y-5 mt-4 md:mt-0">
+        <h1 className={cn("text-4xl md:text-6xl font-bold", font.className)}>
+          NeetCode 150 🚀
+        </h1>
+        <h2 className="dark:text-muted-foreground line-clamp-2">
+          A comprehensive list curated by Navdeep Singh (
+          <TextLink href="https://www.youtube.com/@NeetCode">NeetCode</TextLink>
+          ). It is an expansion of the{" "}
+          <TextLink href="/practice/blind-75">Blind 75</TextLink> list and
+          features more beginner-friendly problems.
+        </h2>
       </div>
       <Separator className="my-4 self-stretch bg-border" />
       <div className="grid grid-cols-1 transition-all md:grid-cols-[1fr_5fr] gap-x-3">
         <div className="mt-4 hidden md:block">
           <QuestionsTabs />
         </div>
-        <div className="w-full">
+        <div className="w-full mt-4">
           <QuestionsTable />
         </div>
       </div>

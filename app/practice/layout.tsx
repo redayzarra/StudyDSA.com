@@ -18,9 +18,6 @@ const PracticeLayout = ({ children }: { children: React.ReactNode }) => {
       <Aurora>
         <NavBar />
         <Container className="absolute mt-20 md:mt-36">
-          <div className="block md:hidden mb-8">
-            <QuestionsTabs />
-          </div>
           {children}
         </Container>
       </Aurora>
