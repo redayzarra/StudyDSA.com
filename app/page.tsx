@@ -16,7 +16,7 @@ export default async function Home() {
     <div className="">
       <Aurora>
         <NavBar />
-        <Container>
+        <Container className="absolute">
           <div className="mt-36 md:mt-48">
             <div className="grid grid-cols-1 transition-all md:grid-cols-[3fr_5fr] gap-x-3">
               <div className="">

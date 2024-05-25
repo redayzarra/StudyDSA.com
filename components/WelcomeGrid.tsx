@@ -166,7 +166,7 @@ const SkeletonThree = () => {
         <div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0 flex items-center justify-center">
           <AiOutlineNodeIndex size={24} />
         </div>
-        <div className="w-full bg-gray-100 text-sm h-6 rounded-full pl-4 dark:bg-neutral-900 flex items-center">
+        <div className="w-full bg-gray-100 text-sm h-6 rounded-full pl-4 dark:bg-neutral-900 flex items-center line-clamp-1">
           Review Linked Lists
         </div>
       </motion.div>
@@ -174,7 +174,7 @@ const SkeletonThree = () => {
         variants={variantsSecond}
         className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2 items-center space-x-2 w-3/4 ml-auto bg-black/75"
       >
-        <div className="w-full bg-gray-100 text-sm h-6 rounded-full pr-4 text-right justify-end dark:bg-neutral-900 flex items-center">
+        <div className="w-full bg-gray-100 text-sm h-6 rounded-full pr-4 text-right justify-end dark:bg-neutral-900 flex items-center line-clamp-1">
           Study Trees
         </div>
         <div className="h-6 w-6 rounded-full bg-gradient-to-r from-orange-500 to-amber-800 flex-shrink-0 flex items-center justify-center">
@@ -188,7 +188,7 @@ const SkeletonThree = () => {
         <div className="h-6 w-6 rounded-full bg-gradient-to-r from-lime-500 to-teal-700 flex-shrink-0 flex items-center justify-center">
           <PiGraph size={22} />
         </div>
-        <div className="w-full bg-gray-100 text-sm h-6 rounded-full pl-4 dark:bg-neutral-900 flex items-center">
+        <div className="w-full bg-gray-100 text-sm h-6 rounded-full pl-4 dark:bg-neutral-900 flex items-center line-clamp-1">
           Learn Union Find
         </div>
       </motion.div>
