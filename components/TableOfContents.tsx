@@ -70,10 +70,16 @@ const TableOfContents = async () => {
       description: "",
       href: "/big-o",
     },
+    {
+      id: "practice",
+      title: "Practice",
+      description: "",
+      href: "/practice",
+    },
   ];
 
   return (
-    <ScrollArea className="h-full pr-6 py-4 w-[225px]">
+    <ScrollArea className="h-full mt-2 pr-6 py-4 w-[225px]">
       <TableSection heading="Introduction">
         <TableItems items={basics} />
       </TableSection>

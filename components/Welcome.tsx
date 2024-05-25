@@ -47,7 +47,7 @@ const Welcome = async ({ user, userName }: Props) => {
           {greeting}, {userName}!
         </h1>
       </div>
-      <Separator className="my-4 self-stretch bg-neutral-950/25 dark:bg-border" />
+      <Separator className="my-4 self-stretch bg-border" />
       <div className="flex flex-col space-y-3">
         <QuickBookmark userId={user.id!} />
         <Progress
