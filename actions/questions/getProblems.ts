@@ -3,9 +3,9 @@
 import db from "@/lib/db";
 import { LeetCodeProblem } from "@prisma/client";
 
-export const questionsCache: { [key: string]: LeetCodeProblem } = {}; // Initialize the hashmap
+const questionsCache: { [key: string]: LeetCodeProblem } = {}; // Initialize the hashmap
 
-const getQuestions = async (names: string[]) => {
+const getProblems = async (names: string[]) => {
   // Check if the hashmap is empty
   if (Object.keys(questionsCache).length === 0) {
     try {
@@ -28,4 +28,4 @@ const getQuestions = async (names: string[]) => {
   return questions;
 };
 
-export default getQuestions;
+export default getProblems;

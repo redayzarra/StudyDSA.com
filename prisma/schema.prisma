@@ -51,7 +51,7 @@ model User {
   algorithmProgress AlgorithmProgress[]
   topicProgress     TopicProgress[]
   Bookmark          Bookmark?
-  leetCodeProblems  LeetCodeProblem[]
+  problemProgress   ProblemProgress[]
 }
 
 model VerificationToken {
@@ -171,19 +171,30 @@ model ProblemTag {
 }
 
 model LeetCodeProblem {
-  id                 String             @id @default(cuid())
-  title              String
-  problemDescription String
-  difficulty         QuestionDifficulty
-  completed          Boolean            @default(false)
-  masteryLevel       MasteryLevel?
-  tags               ProblemTag[]       @relation
-  personalNotes      String?
-  favorite           Boolean            @default(false)
-  videoURL           String?
-  userId             String
+  id            String             @id @default(cuid())
+  title         String
+  href          String
+  difficulty    QuestionDifficulty
+  completed     Boolean            @default(false)
+  masteryLevel  MasteryLevel       @default(Practicing)
+  tags          ProblemTag[]
+  personalNotes String?
+  videoURL      String?
+  solution      String?
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ProblemProgress ProblemProgress[]
+  
+  @@index([id], name: "idx_leetcodeproblem_id")
+}
 
-  @@index([userId], name: "idx_leetcodeproblem_user")
+model ProblemProgress {
+  id           Int             @id @default(autoincrement())
+  userId       String
+  problemId    String
+  isComplete   Boolean         @default(false)
+  masteryLevel MasteryLevel    @default(Practicing)
+  user         User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  problem      LeetCodeProblem @relation(fields: [problemId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, problemId])
 }

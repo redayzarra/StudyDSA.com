@@ -1,9 +1,7 @@
 "use client";
 
 import {
-  CaretSortIcon,
-  ChevronDownIcon,
-  DotsHorizontalIcon,
+  CaretSortIcon
 } from "@radix-ui/react-icons";
 import {
   ColumnDef,
@@ -20,16 +18,6 @@ import {
 
 import { Button } from "@/components/ui/button";
 import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
-import {
   Table,
   TableBody,
   TableCell,
@@ -37,123 +25,84 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useEffect, useState } from "react";
+import { LeetCodeProblem } from "@prisma/client";
+import Link from "next/link";
+import { useState } from "react";
 import QuestionCheckbox from "./QuestionCheckbox";
+import { Status } from "./Status";
 
-export type LeetCodeProblem = {
-  id: string;
-  title: string;
-  problemDescription: string;
-  difficulty: "Easy" | "Medium" | "Hard";
-  completed: boolean;
-  masteryLevel?: string;
-  tags: { name: string }[];
-  notes?: string;
-  favorite: boolean;
-  videoURL?: string;
-  userId: string;
-};
+interface Props {
+  userId: string | undefined,
+  problems: LeetCodeProblem[];
+}
 
-export const columns: ColumnDef<LeetCodeProblem>[] = [
-  {
-    id: "select",
-    header: () => <div className="w-[50px]">Completed</div>,
-    cell: ({ row }) => (
-      <div className="flex items-center justify-center w-[50px]">
-        <QuestionCheckbox />
-      </div>
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
-  {
-    accessorKey: "title",
-    header: "Title",
-    cell: ({ row }) => <div className="text-left">{row.getValue("title")}</div>,
-  },
-  {
-    accessorKey: "difficulty",
-    header: ({ column }) => (
-      <Button
-        variant="ghost"
-        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-      >
-        Difficulty
-        <CaretSortIcon className="ml-2 h-4 w-4" />
-      </Button>
-    ),
-    cell: ({ row }) => <div>{row.getValue("difficulty")}</div>,
-  },
-  // {
-  //   accessorKey: "tags",
-  //   header: "Tags",
-  //   cell: ({ row }) => (
-  //     <div>{row.original.tags.map((tag) => tag.name).join(", ")}</div>
-  //   ),
-  // },
-  {
-    accessorKey: "notes",
-    header: () => <div className="hidden md:flex">Notes</div>,
-    cell: ({ row }) => <div className="hidden md:flex">{row.getValue("notes")}</div>,
-  },
-  // {
-  //   accessorKey: "videoURL",
-  //   header: "Video",
-  //   cell: ({ row }) => (
-  //     <a href={row.getValue("videoURL")} target="_blank" rel="noopener noreferrer">
-  //       Video
-  //     </a>
-  //   ),
-  // },
-  {
-    id: "actions",
-    enableHiding: false,
-    cell: ({ row }) => {
-      const problem = row.original;
-
-      return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <DotsHorizontalIcon className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(problem.id)}
-            >
-              Copy problem ID
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>View details</DropdownMenuItem>
-            <DropdownMenuItem>Edit problem</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      );
-    },
-  },
-];
-
-export function QuestionsTable() {
-  const [data, setData] = useState<LeetCodeProblem[]>([]);
+export function QuestionsTable({ userId, problems }: Props) {
+  const [data, setData] = useState<LeetCodeProblem[]>(problems);
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = useState({});
 
-  // Fetch data from your API endpoint
-  useEffect(() => {
-    async function fetchData() {
-      // Replace with your API endpoint
-      const response = await fetch("/api/leetcode-problems");
-      const data = await response.json();
-      setData(data);
-    }
-
-    fetchData();
-  }, []);
+  const columns: ColumnDef<LeetCodeProblem>[] = [
+    {
+      id: "select",
+      header: () => <div className="">Completed</div>,
+      cell: ({ row }) => (
+        <div className="flex items-center justify-center w-[75px]">
+          <QuestionCheckbox />
+        </div>
+      ),
+      enableSorting: false,
+      enableHiding: false,
+    },
+    {
+      accessorKey: "status",
+      header: () => <div className="hidden md:flex w-[150px]">Status</div>,
+      cell: ({ row }) => (
+        <div className="hidden md:flex w-[150px]"><Status userId={userId} problemId={row.original.id}/></div>
+      ),
+    },
+    {
+      accessorKey: "title",
+      header: "Title",
+      cell: ({ row }) => {
+        const href = row.original.href;
+        return href ? (
+          <Link
+            className="text-left font-bold"
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {row.getValue("title")}
+          </Link>
+        ) : (
+          <span className="text-left">Links are not working</span>
+        );
+      },
+    },
+    {
+      accessorKey: "difficulty",
+      header: ({ column }) => (
+        <Button
+          variant="ghost"
+          className="-ml-4 hover:bg-neutral-600/25"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Difficulty
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
+      ),
+      cell: ({ row }) => <div>{row.getValue("difficulty")}</div>,
+    },
+    {
+      accessorKey: "notes",
+      header: () => <div className="hidden md:flex">Notes</div>,
+      cell: ({ row }) => (
+        <div className="hidden md:flex">{row.getValue("notes")}</div>
+      ),
+    },
+  ];
 
   const table = useReactTable({
     data,
@@ -232,3 +181,4 @@ export function QuestionsTable() {
     </div>
   );
 }
+

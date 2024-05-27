@@ -65,7 +65,7 @@ const SkeletonTwo = () => {
       className: "mr-20 md:mr-2 text-yellow-200",
     },
     {
-      text: "AAAAAAAAAAAAA",
+      text: "AAAAAAAAAAAAAAAA",
       className: "invisible md:hidden",
     },
     {
@@ -89,7 +89,7 @@ const SkeletonTwo = () => {
       className: "text-rose-300",
     },
     {
-      text: "AAAAAAAAAAAAAAAAA",
+      text: "AAAAAAAAAAAAAAAAAAAAA",
       className: "invisible md:hidden",
     },
     {

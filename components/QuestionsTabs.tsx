@@ -15,8 +15,8 @@ const QuestionsTabs = () => {
 
   const getLinkClass = (href: string) => {
     return pathname === href
-      ? "rounded-sm text-[14px] p-2 bg-neutral-800 font-medium text-white"
-      : "rounded-sm text-[14px] p-2 text-neutral-400";
+      ? "rounded-sm text-[14px] p-2 bg-neutral-600/25 hover:bg-neutral-600/25 font-medium text-white"
+      : "rounded-sm text-[14px] p-2 text-neutral-400 hover:bg-neutral-400/[0.15]";
   };
 
   const items = [

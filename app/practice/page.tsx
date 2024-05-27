@@ -1,16 +1,23 @@
+import getQuestions from "@/actions/questions/getProblems";
 import { QuestionsTable } from "@/components/QuestionsTable";
 import QuestionsTabs from "@/components/QuestionsTabs";
 import TextLink from "@/components/TextLink";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { Poppins } from "next/font/google";
+import getUserId from "@/hooks/server/getUserId";
 
 const font = Poppins({
   subsets: ["latin"],
   weight: ["700"],
 });
 
-const PracticePage = () => {
+const PracticePage = async () => {
+  const userId = await getUserId();
+  const fetchProblems = ["Two Sum", "Add Two Numbers"];
+
+  const neetCodeProblems = await getQuestions(fetchProblems);
+
   return (
     <div className="">
       <div className="space-y-5 mt-4 md:mt-0">
@@ -31,7 +38,7 @@ const PracticePage = () => {
           <QuestionsTabs />
         </div>
         <div className="w-full mt-4">
-          <QuestionsTable />
+          <QuestionsTable problems={neetCodeProblems} userId={userId} />
         </div>
       </div>
     </div>
