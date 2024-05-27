@@ -1,9 +1,6 @@
 "use client";
 
 import {
-  CaretSortIcon
-} from "@radix-ui/react-icons";
-import {
   ColumnDef,
   ColumnFiltersState,
   SortingState,
@@ -16,7 +13,6 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
-import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -28,11 +24,13 @@ import {
 import { LeetCodeProblem } from "@prisma/client";
 import Link from "next/link";
 import { useState } from "react";
+import Difficulty from "./Difficulty";
 import QuestionCheckbox from "./QuestionCheckbox";
 import { Status } from "./Status";
+import { Notes } from "./Notes";
 
 interface Props {
-  userId: string | undefined,
+  userId: string | undefined;
   problems: LeetCodeProblem[];
 }
 
@@ -49,18 +47,14 @@ export function QuestionsTable({ userId, problems }: Props) {
       header: () => <div className="">Completed</div>,
       cell: ({ row }) => (
         <div className="flex items-center justify-center w-[75px]">
-          <QuestionCheckbox />
+          <QuestionCheckbox
+            userId={userId!}
+            problemId={row.original.id}
+          />
         </div>
       ),
       enableSorting: false,
       enableHiding: false,
-    },
-    {
-      accessorKey: "status",
-      header: () => <div className="hidden md:flex w-[150px]">Status</div>,
-      cell: ({ row }) => (
-        <div className="hidden md:flex w-[150px]"><Status userId={userId} problemId={row.original.id}/></div>
-      ),
     },
     {
       accessorKey: "title",
@@ -83,23 +77,30 @@ export function QuestionsTable({ userId, problems }: Props) {
     },
     {
       accessorKey: "difficulty",
-      header: ({ column }) => (
-        <Button
-          variant="ghost"
-          className="-ml-4 hover:bg-neutral-600/25"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Difficulty
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
+      header: () => <div>Difficulty</div>,
+      cell: ({ row }) => <Difficulty difficulty={row.original.difficulty} />,
+    },
+    {
+      accessorKey: "status",
+      header: () => <div className="hidden md:flex">Status</div>,
+      cell: ({ row }) => (
+        <div className="hidden md:flex">
+          <Status userId={userId} problemId={row.original.id} />
+        </div>
       ),
-      cell: ({ row }) => <div>{row.getValue("difficulty")}</div>,
     },
     {
       accessorKey: "notes",
-      header: () => <div className="hidden md:flex">Notes</div>,
+      header: () => <div className="hidden md:flex items-center justify-center">Notes</div>,
       cell: ({ row }) => (
-        <div className="hidden md:flex">{row.getValue("notes")}</div>
+        <div className="hidden md:flex items-center justify-center"><Notes /></div>
+      ),
+    },
+    {
+      accessorKey: "solution",
+      header: () => <div className="flexitems-center justify-center">Solution</div>,
+      cell: ({ row }) => (
+        <div className="flex items-center justify-center"><Notes /></div>
       ),
     },
   ];
@@ -154,6 +155,7 @@ export function QuestionsTable({ userId, problems }: Props) {
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
+                  className=""
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>

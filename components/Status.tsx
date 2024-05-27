@@ -57,9 +57,9 @@ export function Status({ userId, problemId }: Props) {
   const getBackgroundColor = (masteryLevel: string) => {
     switch (masteryLevel) {
       case "Practicing":
-        return "bg-neutral-600/25 text-neutral-400";
+        return "bg-neutral-600/25 hover:bg-black/30 text-neutral-400";
       case "Review":
-        return "bg-yellow-400/50 hover:bg-yellow-400/50 text-neutral-200";
+        return "bg-orange-400/50 hover:bg-yellow-400/50 text-neutral-200";
       case "Mastered":
         return "bg-green-500/50 hover:bg-green-500/50 text-neutral-200";
       case "Challenging":
@@ -72,11 +72,11 @@ export function Status({ userId, problemId }: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className={`bg-neutral-600/25 ${getBackgroundColor(masteryLevel)} text-sm px-2 py-2`}>
+        <Button variant="outline" className={`bg-neutral-600/25 h-8 ${getBackgroundColor(masteryLevel)} text-sm px-2 py-2`}>
           {masteryLevel} <FaChevronDown className="ml-2" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className={`w-56 `}>
+      <DropdownMenuContent className={`w-45 `}>
         <DropdownMenuLabel>Problem Status</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuRadioGroup value={masteryLevel} onValueChange={handleStatusChange}>

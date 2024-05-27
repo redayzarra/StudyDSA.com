@@ -2,13 +2,7 @@
 
 import db from "@/lib/db";
 
-interface Props {
-  userId: string, 
-  problemId: string,
-  isComplete: boolean,
-}
-
-const markProblem = async ({userId, problemId, isComplete}: Props) => {
+const markProblem = async (userId: string, problemId: string, isComplete: boolean) => {
   try {
     const progress = await db.problemProgress.upsert({
       where: {
@@ -21,9 +15,9 @@ const markProblem = async ({userId, problemId, isComplete}: Props) => {
         isComplete: isComplete,
       },
       create: {
-        userId: userId,
-        problemId: problemId,
-        isComplete: isComplete,
+        userId,
+        problemId,
+        isComplete,
       },
     });
 
