@@ -68,7 +68,7 @@ const AlgorithmCell = ({ title, description, href, algorithmId }: Props) => {
   };
 
   return (
-    <div className="relative hover:-translate-y-1 transition-all">
+    <div className="relative hover:-translate-y-1 transition-all duration-200">
       <div
         className={`absolute inset-x-0 h-[1px] mx-auto bg-gradient-to-r from-transparent ${
           isChecked

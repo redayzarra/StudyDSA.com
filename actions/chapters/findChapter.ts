@@ -1,5 +1,3 @@
-"use server";
-
 import { Chapter } from "@prisma/client";
 
 interface TopicWithChapters {
