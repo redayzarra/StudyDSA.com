@@ -3,7 +3,7 @@
 import db from "@/lib/db";
 import { Algorithm } from "@prisma/client";
 
-export const algorithmCache: { [key: string]: Algorithm } = {}; // Initialize the hashmap
+const algorithmCache: { [key: string]: Algorithm } = {}; // Initialize the hashmap
 
 const getAlgorithmsByName = async (names: string[]) => {
   // Check if the hashmap is empty
