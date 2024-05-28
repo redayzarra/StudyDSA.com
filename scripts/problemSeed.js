@@ -8,7 +8,7 @@ const leetCodeProblems = [
     difficulty: "Easy",
     completed: false,
     masteryLevel: "Practicing",
-    personalNotes: "Use a hash map to find complements efficiently.",
+    notes: "Use a hash map to find complements efficiently.",
     videoURL: "https://www.youtube.com/watch?v=KLlXCFG5TnA",
     tags: [
       { tag: "Array" },
@@ -21,7 +21,7 @@ const leetCodeProblems = [
     difficulty: "Medium",
     completed: false,
     masteryLevel: "Practicing",
-    personalNotes: "Use linked lists to add numbers represented by nodes.",
+    notes: "Use linked lists to add numbers represented by nodes.",
     videoURL: "https://www.youtube.com/watch?v=LBVsXSMOIk4",
     tags: [
       { tag: "Linked List" },
@@ -47,7 +47,7 @@ async function seedLeetCodeProblems() {
         difficulty: problem.difficulty,
         completed: problem.completed,
         masteryLevel: problem.masteryLevel,
-        personalNotes: problem.personalNotes,
+        notes: problem.notes,
         videoURL: problem.videoURL,
         tags: {
           connectOrCreate: tags,

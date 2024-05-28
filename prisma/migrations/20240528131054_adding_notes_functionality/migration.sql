@@ -153,7 +153,7 @@ CREATE TABLE `LeetCodeProblem` (
     `difficulty` ENUM('Easy', 'Medium', 'Hard') NOT NULL,
     `completed` BOOLEAN NOT NULL DEFAULT false,
     `masteryLevel` ENUM('Practicing', 'Mastered', 'Review', 'Challenging') NOT NULL DEFAULT 'Practicing',
-    `personalNotes` VARCHAR(191) NULL,
+    `notes` VARCHAR(191) NULL,
     `videoURL` VARCHAR(191) NULL,
     `solution` VARCHAR(191) NULL,
 
@@ -168,6 +168,7 @@ CREATE TABLE `ProblemProgress` (
     `problemId` VARCHAR(191) NOT NULL,
     `isComplete` BOOLEAN NOT NULL DEFAULT false,
     `masteryLevel` ENUM('Practicing', 'Mastered', 'Review', 'Challenging') NOT NULL DEFAULT 'Practicing',
+    `notes` VARCHAR(191) NULL,
 
     UNIQUE INDEX `ProblemProgress_userId_problemId_key`(`userId`, `problemId`),
     PRIMARY KEY (`id`)
