@@ -6,6 +6,8 @@ import { auth } from "@/auth";
 import { Toaster } from "@/components/ui/sonner";
 import QueryClientProvider from "./QueryClientProvider";
 import { Metadata } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +32,8 @@ export default async function RootLayout({
               <Toaster />
             </ThemeProvider>
           </QueryClientProvider>
+          <SpeedInsights />
+          <Analytics/>
         </body>
       </html>
     </SessionProvider>
