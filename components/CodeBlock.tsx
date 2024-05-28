@@ -10,6 +10,8 @@ interface Props {
   language?: string;
   showLines?: boolean;
   highlightLines?: number[];
+  className?: string
+  spacing?: string
 }
 
 const customStyle = {
@@ -25,6 +27,8 @@ const CodeBlock = ({
   title,
   language = "python",
   highlightLines = [],
+  className,
+  spacing,
   showLines = false,
 }: Props) => {
   // // Line props - determine if lineNumber is in highlightLines
@@ -46,7 +50,7 @@ const CodeBlock = ({
   } as CSSProperties;
 
   return (
-    <div className="mt-4 spacing-y-px max-w-3xl mx-auto shadow-md bg-[#23272e] dark: dark:bg-stone-900/[0.3] border-t-2 dark:border-stone-700 rounded-lg overflow-hidden">
+    <div className={`mt-4 spacing-y-px max-w-3xl mx-auto shadow-md bg-[#23272e] dark: dark:bg-stone-900/[0.3] border-t-2 dark:border-stone-700 rounded-lg overflow-hidden ${className}`}>
       <div className="grid grid-cols-3 items-center px-4 py-1 bg-[#17191d] dark:bg-black/70">
         <div className="flex justify-start items-center space-x-2">
           <FaCircle className="text-[#FF605C]" size={12} />
@@ -56,7 +60,7 @@ const CodeBlock = ({
         <h1 className="text-base font-medium text-white justify-self-center">
           {title}
         </h1>
-        <div className="justify-self-end">
+        <div className={`justify-self-end ${spacing}`}>
           <CopyButton
             code={code}
             className="text-white hover:bg-black/40 hover:text-white"

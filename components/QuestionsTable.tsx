@@ -25,9 +25,10 @@ import { LeetCodeProblem } from "@prisma/client";
 import Link from "next/link";
 import { useState } from "react";
 import Difficulty from "./Difficulty";
-import QuestionCheckbox from "./QuestionCheckbox";
-import { Status } from "./Status";
 import { Notes } from "./Notes";
+import QuestionCheckbox from "./QuestionCheckbox";
+import { Solution } from "./Solution";
+import { Status } from "./Status";
 
 interface Props {
   userId: string | undefined;
@@ -47,10 +48,7 @@ export function QuestionsTable({ userId, problems }: Props) {
       header: () => <div className="">Completed</div>,
       cell: ({ row }) => (
         <div className="flex items-center justify-center w-[75px]">
-          <QuestionCheckbox
-            userId={userId!}
-            problemId={row.original.id}
-          />
+          <QuestionCheckbox userId={userId!} problemId={row.original.id} />
         </div>
       ),
       enableSorting: false,
@@ -91,16 +89,24 @@ export function QuestionsTable({ userId, problems }: Props) {
     },
     {
       accessorKey: "notes",
-      header: () => <div className="hidden md:flex items-center justify-center">Notes</div>,
+      header: () => (
+        <div className="hidden md:flex items-center justify-center">Notes</div>
+      ),
       cell: ({ row }) => (
-        <div className="hidden md:flex items-center justify-center"><Notes /></div>
+        <div className="hidden md:flex items-center justify-center">
+          <Notes />
+        </div>
       ),
     },
     {
       accessorKey: "solution",
-      header: () => <div className="flexitems-center justify-center">Solution</div>,
+      header: () => (
+        <div className="flexitems-center justify-center">Solution</div>
+      ),
       cell: ({ row }) => (
-        <div className="flex items-center justify-center"><Notes /></div>
+        <div className="flex items-center justify-center">
+          <Solution />
+        </div>
       ),
     },
   ];
@@ -183,4 +189,3 @@ export function QuestionsTable({ userId, problems }: Props) {
     </div>
   );
 }
-
