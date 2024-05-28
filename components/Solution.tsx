@@ -1,31 +1,31 @@
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 } from "@/components/ui/dialog";
 import { FaCode } from "react-icons/fa";
 import CodeBlock from "./CodeBlock";
 import { Button } from "./ui/button";
 
-export function Solution() {
+export function Solution({ code }: { code?: string | undefined | null }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="secondary" className="bg-neutral-800/50 px-2 py-1">
-          <FaCode className="text-neutral-300 hover:text-white" size={20} />
+        <Button
+          variant="secondary"
+          className="bg-black/50 hover:bg-neutral-950/50 text-neutral-400 hover:text-white px-2 py-1"
+        >
+          <FaCode className="" size={20} />
         </Button>
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-[425px] px-[10px] -py-10">
         <CodeBlock
-          code={`return len(array) != len(set(array))`}
+          code={code!}
           language="python"
           title="Solution.py"
           spacing="mr-4"
-          className="-mx-3 -mb-6 -mt-7"
+          className="-mx-[13px] -mb-6 -mt-[27px]"
         />
       </DialogContent>
     </Dialog>

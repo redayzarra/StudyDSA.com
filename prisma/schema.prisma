@@ -171,19 +171,19 @@ model ProblemTag {
 }
 
 model LeetCodeProblem {
-  id            String             @id @default(cuid())
-  title         String
-  href          String
-  difficulty    QuestionDifficulty
-  completed     Boolean            @default(false)
-  masteryLevel  MasteryLevel       @default(Practicing)
-  tags          ProblemTag[]
-  personalNotes String?
-  videoURL      String?
-  solution      String?
+  id           String             @id @default(cuid())
+  title        String
+  href         String
+  difficulty   QuestionDifficulty
+  completed    Boolean            @default(false)
+  masteryLevel MasteryLevel       @default(Practicing)
+  tags         ProblemTag[]
+  notes        String?
+  videoURL     String?
+  solution     String?
 
   ProblemProgress ProblemProgress[]
-  
+
   @@index([id], name: "idx_leetcodeproblem_id")
 }
 
@@ -193,6 +193,7 @@ model ProblemProgress {
   problemId    String
   isComplete   Boolean         @default(false)
   masteryLevel MasteryLevel    @default(Practicing)
+  notes        String?
   user         User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   problem      LeetCodeProblem @relation(fields: [problemId], references: [id], onDelete: Cascade)
 

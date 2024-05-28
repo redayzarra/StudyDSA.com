@@ -94,18 +94,18 @@ export function QuestionsTable({ userId, problems }: Props) {
       ),
       cell: ({ row }) => (
         <div className="hidden md:flex items-center justify-center">
-          <Notes />
+          <Notes userId={userId} problemId={row.original.id} />
         </div>
       ),
     },
     {
       accessorKey: "solution",
       header: () => (
-        <div className="flexitems-center justify-center">Solution</div>
+        <div className="flex items-center justify-center">Solution</div>
       ),
       cell: ({ row }) => (
         <div className="flex items-center justify-center">
-          <Solution />
+          <Solution code={row.original.solution} />
         </div>
       ),
     },

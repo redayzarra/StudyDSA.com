@@ -11,14 +11,6 @@ const NotationsChart = ({ className }: { className?: string }) => {
   const ON = inputSizes.map((n) => n);
   const ONLogN = inputSizes.map((n) => n * Math.log(n));
   const ON2 = inputSizes.map((n) => n * n);
-  const ON3 = inputSizes.map((n) => n * n * n);
-  const O2N = inputSizes.map((n) => Math.pow(2, n));
-  const ONFact = inputSizes.map((n) => factorial(n));
-
-  function factorial(n: number): number {
-    if (n === 0) return 1;
-    return n * factorial(n - 1);
-  }
 
   const options: ApexOptions = {
     chart: {
@@ -29,8 +21,6 @@ const NotationsChart = ({ className }: { className?: string }) => {
       toolbar: {
         show: false,
       },
-      redrawOnWindowResize: true,
-      redrawOnParentResize: true,
       animations: {
         enabled: true,
         easing: "easeinout",
