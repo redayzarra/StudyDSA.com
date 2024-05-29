@@ -19,13 +19,13 @@ export function Solution({ code }: { code?: string | undefined | null }) {
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-[425px] px-[10px] -py-10">
+      <DialogContent className="sm:max-w-[425px] p-0 rounded-lg">
         <CodeBlock
           code={code!}
           language="python"
           title="Solution.py"
           spacing="mr-4"
-          className="-mx-[13px] -mb-6 -mt-[27px]"
+          className="w-full mt-0"
         />
       </DialogContent>
     </Dialog>

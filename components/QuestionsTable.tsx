@@ -58,18 +58,15 @@ export function QuestionsTable({ userId, problems }: Props) {
       accessorKey: "title",
       header: "Title",
       cell: ({ row }) => {
-        const href = row.original.href;
-        return href ? (
+        return (
           <Link
             className="text-left font-bold"
-            href={href}
+            href={row.original.href}
             target="_blank"
             rel="noopener noreferrer"
           >
             {row.getValue("title")}
           </Link>
-        ) : (
-          <span className="text-left">Links are not working</span>
         );
       },
     },
