@@ -68,10 +68,6 @@ export function NotesInput({ userId, problemId }: Props) {
       return;
     }
 
-    if (isEmptyContent(data.notes)) {
-      return;
-    }
-
     try {
       setLoading(true);
       await updateNotes({ userId, problemId, notes: data.notes });

@@ -5,7 +5,7 @@ import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { Poppins } from "next/font/google";
 import getUserId from "@/hooks/server/getUserId";
-import getProblems from "@/actions/questions/getProblem";
+import getProblems from "@/actions/questions/getProblems";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -38,7 +38,7 @@ const PracticePage = async () => {
           <QuestionsTabs />
         </div>
         <div className="w-full mt-4">
-          <QuestionsTable problems={neetCodeProblems} userId={userId} />
+          <QuestionsTable problems={neetCodeProblems} userId={userId} showTags={false}/>
         </div>
       </div>
     </div>

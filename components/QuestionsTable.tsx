@@ -21,7 +21,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { LeetCodeProblem } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 import Link from "next/link";
 import { useState } from "react";
 import Difficulty from "./Difficulty";
@@ -29,20 +29,28 @@ import { Notes } from "./Notes";
 import QuestionCheckbox from "./QuestionCheckbox";
 import { Solution } from "./Solution";
 import { Status } from "./Status";
+import ProblemTags from "./ProblemTags";
 
 interface Props {
   userId: string | undefined;
-  problems: LeetCodeProblem[];
+  problems: LeetCodeProblemWithTags[];
+  showTags?: boolean;
 }
 
-export function QuestionsTable({ userId, problems }: Props) {
-  const [data, setData] = useState<LeetCodeProblem[]>(problems);
+type LeetCodeProblemWithTags = Prisma.LeetCodeProblemGetPayload<{
+  include: {
+    tags: true;
+  };
+}>;
+
+export function QuestionsTable({ userId, problems, showTags = true }: Props) {
+  const [data, setData] = useState<LeetCodeProblemWithTags[]>(problems);
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = useState({});
 
-  const columns: ColumnDef<LeetCodeProblem>[] = [
+  const columns: ColumnDef<LeetCodeProblemWithTags>[] = [
     {
       id: "select",
       header: () => <div className="">Completed</div>,
@@ -59,14 +67,17 @@ export function QuestionsTable({ userId, problems }: Props) {
       header: "Title",
       cell: ({ row }) => {
         return (
-          <Link
-            className="text-left font-bold"
-            href={row.original.href}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {row.getValue("title")}
-          </Link>
+          <div className="space-y-2">
+            <Link
+              className="text-left font-bold"
+              href={row.original.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {row.getValue("title")}
+            </Link>
+            {showTags && <ProblemTags items={row.original.tags} />}
+          </div>
         );
       },
     },
