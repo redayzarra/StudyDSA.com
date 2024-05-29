@@ -251,7 +251,7 @@ export function SearchBar({ ...props }: DialogProps) {
       <Button
         variant="outline"
         className={cn(
-          "relative h-8 w-full justify-start rounded-[0.5rem] bg-background text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-40"
+          "relative h-8 w-full justify-start rounded-[0.5rem] bg-black hover:bg-neutral-950 text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-40"
         )}
         onClick={() => setOpen(true)}
         {...props}
@@ -295,7 +295,7 @@ export function SearchBar({ ...props }: DialogProps) {
               ))}
             </CommandGroup>
             <CommandGroup heading="Algorithms">
-              {data.map((algorithm) => (
+              {algo.map((algorithm) => (
                 <CommandItem
                   key={algorithm.href}
                   value={algorithm.title}
