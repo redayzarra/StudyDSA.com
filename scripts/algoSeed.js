@@ -4,62 +4,62 @@ const database = new PrismaClient();
 const basicAlgorithms = [
   {
     title: "Two Pointers",
-    href: "/",
+    href: "/algorithms/two-pointers",
     description: "Maintain a pair of pointers to carry out logic efficiently, often used in sorted arrays or linked lists.",
   },
   {
     title: "Fast & Slow Pointers",
-    href: "/",
+    href: "/algorithms/fast-and-slow",
     description: "Utilize two pointers at different speeds to solve problems like cycle detection in a sequence.",
   },
   {
     title: "Sliding Window",
-    href: "/",
+    href: "/algorithms/sliding-window",
     description: "Apply a window that slides over data to find subsets meeting a condition, useful for contiguous sequences.",
   },
   {
     title: "Binary Search",
-    href: "/",
+    href: "/algorithms/binary-search",
     description: "Divide and conquer approach to search sorted data, significantly reducing search time.",
   },
   {
     title: "Prefix Sums",
-    href: "/",
+    href: "/algorithms/prefix-sums",
     description: "Precompute sums of arrays to quickly calculate sum of ranges.",
   },
   {
     title: "Recursion",
-    href: "/",
+    href: "/algorithms/recursion",
     description: "Start with base case and take a leap of faith to solve these problems",
   },
   {
     title: "Sorting",
-    href: "/",
+    href: "/algorithms/sorting",
     description: "Organize data in a specific order, foundational for many algorithms and applications.",
   },
   {
     title: "Backtracking",
-    href: "/",
+    href: "/algorithms/backtracking",
     description: "Explore all options and backtrack to find all possible solutions, used in puzzles like Sudoku.",
   },
   {
     title: "1D Dynamic Pro.",
-    href: "/",
+    href: "/algorithms/1d-dynamic-programming",
     description: "Break problems down into simpler subproblems and storing results to avoid recomputation.",
   },
   {
     title: "Greedy",
-    href: "/",
+    href: "/algorithms/greedy",
     description: "Optimize for the best solution step by step, choosing the most beneficial option at each stage without reconsidering.",
   },
   {
     title: "Intervals",
-    href: "/",
+    href: "/algorithms/intervals",
     description: "Work with ranges or periods, solving problems such as overlaps, merging intervals, and scheduling.",
   },
   {
     title: "Bit Operations",
-    href: "/",
+    href: "/algorithms/bit-operations",
     description: "Using bitwise operators for efficient problem-solving, ideal for optimizing time and space.",
   },
 ];
@@ -67,42 +67,42 @@ const basicAlgorithms = [
 const intermediateAlgorithms = [
   {
     title: "Depth-First Search",
-    href: "/",
+    href: "/algorithms/depth-first-search",
     description: "Explore as far as possible along branches before backtracking, applicable to trees and graphs.",
   },
   {
     title: "Breadth-First Search",
-    href: "/",
+    href: "/algorithms/breadth-first-search",
     description: "Explore all neighbors at the present depth prior to moving on to the nodes at the next depth level.",
   },
   {
     title: "2D Dynamic Pro.",
-    href: "/",
+    href: "/algorithms/2d-dynamic-programming",
     description: "Solve problems by breaking them down into simpler subproblems in a two-dimensional space, often used for grid-based problems.",
   },
   {
     title: "Two-Heaps Pattern",
-    href: "/",
+    href: "/algorithms/two-heaps",
     description: "Manage two heaps to solve problems like finding the median of a data stream efficiently.",
   },
   {
   title: "Dijkstra's Algo.",
-  href: "/",
+  href: "/algorithms/dijkstras",
   description: "Find the shortest paths from a single source node to all other nodes in a weighted graph.",
   },
   {
   title: "A* Search Algo.",
-  href: "/",
+  href: "/algorithms/a-star",
   description: "Traverse the graph to find the most efficient path between two nodes, optimizing for shortest distance or cost.",
   },
   {
   title: "Floyd-Warshall's Algo.",
-  href: "/",
+  href: "/algorithms/floyd-warshalls",
   description: "Find the shortest paths between all pairs of vertices in a weighted graph, with positive and negative edges.",
   },
   {
     title: "Bellman-Ford Algo.",
-    href: "/",
+    href: "/algorithms/bellman-ford",
     description: "Finding the shortest paths from a single source vertex to all other vertices in a weighted graph, even with negative weights.",
   },
 ];
@@ -110,22 +110,22 @@ const intermediateAlgorithms = [
 const advancedAlgorithms = [
   {
     title: "Prim's Algo.",
-    href: "/",
+    href: "/algorithms/prims",
     description: "Construct a minimum spanning tree for a weighted, undirected graph, ensuring minimal total edge weight.",
   },
   {
   title: "Kruskal's Algo.",
-  href: "/",
+  href: "/algorithms/kruskals",
   description: "Build a minimum spanning tree by selecting the shortest edges without forming a cycle.",
   },
   {
     title: "Topological Sort",
-    href: "/",
+    href: "/algorithms/topological-sort",
     description: "Ordering the vertices in a directed graph where for each directed edge from vertex A to vertex B, vertex A comes before B in the ordering.",
   },
   {
     title: "DAG Shortest Path",
-    href: "/",
+    href: "/algorithms/dag-shortest-path",
     description: "Utilizes topological sorting of DAGs to find the shortest paths from a single source vertex to all other vertices in the graph efficiently.",
   },
 ];

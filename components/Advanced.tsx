@@ -6,6 +6,7 @@ import SkillTreeContainer from "./SkillTreeContainer";
 import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeItem from "./SkillTreeItem";
 
+
 const Advanced = async () => {
   // Fetch chapters
   const unionFindChapters = await getChaptersByTopic("Union-Find");

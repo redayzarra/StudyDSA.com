@@ -67,7 +67,7 @@ export function QuestionsTable({ userId, problems, showTags = true }: Props) {
       header: "Title",
       cell: ({ row }) => {
         return (
-          <div className="space-y-2">
+          <div className="relative"> 
             <Link
               className="text-left font-bold"
               href={row.original.href}
@@ -76,7 +76,11 @@ export function QuestionsTable({ userId, problems, showTags = true }: Props) {
             >
               {row.getValue("title")}
             </Link>
-            {showTags && <ProblemTags items={row.original.tags} />}
+            {showTags && (
+              <div className="absolute top-6 left-0">
+                <ProblemTags items={row.original.tags} />
+              </div>
+            )}
           </div>
         );
       },
@@ -169,7 +173,6 @@ export function QuestionsTable({ userId, problems, showTags = true }: Props) {
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  className=""
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>

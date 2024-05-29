@@ -2,32 +2,13 @@
 
 import { authRoutes } from "@/routes";
 import { usePathname } from "next/navigation";
-import Logo from "./Logo";
-import MobileSideBar from "./MobileSideBar";
-import { ModeToggle } from "./ModeToggle";
 import UserButton from "./auth/UserButton";
-import { NavMenuItems } from "./NavMenuItems";
-import { VanishInput } from "./ui/VanishInput";
+import Logo from "./Logo";
+import { SearchBar } from "./SearchBar";
 
 const NavBar = () => {
   const pathname = usePathname();
   const authRoute = authRoutes.includes(pathname);
-
-  const placeholders = [
-    "Arrays",
-    "Hashmaps",
-    "Recursion",
-    "Dynamic Programming",
-    "Graphs",
-  ];
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
-  };
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("submitted");
-  };
 
   return (
     <div className="shadow-md border-b fixed top-0 left-0 right-0 z-50 flex items-center bg-slate-200/50 dark:bg-zinc-950/70 backdrop-blur-[8px] min-h-[69px]">
@@ -36,6 +17,7 @@ const NavBar = () => {
           <Logo />
 
           <div className="flex gap-x-2 items-center justify-center">
+            <SearchBar />
             {!authRoute && (
               <>
                 <UserButton />
