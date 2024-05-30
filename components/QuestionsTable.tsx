@@ -75,9 +75,9 @@ export function QuestionsTable({ userId, title, problems, showTags = true }: Pro
       header: "Title",
       cell: ({ row }) => {
         return (
-          <div className="relative">
+          <div className="relative w-[250px]">
             <Link
-              className="text-left font-bold"
+              className="text-left font-semibold"
               href={row.original.href}
               target="_blank"
               rel="noopener noreferrer"
@@ -95,8 +95,10 @@ export function QuestionsTable({ userId, title, problems, showTags = true }: Pro
     },
     {
       accessorKey: "difficulty",
-      header: () => <div>Difficulty</div>,
-      cell: ({ row }) => <Difficulty difficulty={row.original.difficulty} />,
+      header: () => <div className="flex items-center justify-center">Difficulty</div>,
+      cell: ({ row }) => <div className="flex items-center justify-center">
+        <Difficulty difficulty={row.original.difficulty} />
+      </div>,
     },
     {
       accessorKey: "status",
