@@ -38,7 +38,7 @@ const PracticePage = async () => {
           <QuestionsTabs />
         </div>
         <div className="w-full mt-4">
-          <QuestionsTable problems={neetCodeProblems} userId={userId} showTags={false}/>
+          <QuestionsTable title="Arrays/Strings" problems={neetCodeProblems} userId={userId} showTags={false}/>
         </div>
       </div>
     </div>

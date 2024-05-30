@@ -30,11 +30,19 @@ import QuestionCheckbox from "./QuestionCheckbox";
 import { Solution } from "./Solution";
 import { Status } from "./Status";
 import ProblemTags from "./ProblemTags";
+import { Poppins } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const font = Poppins({
+  subsets: ["latin"],
+  weight: ["600"],
+});
 
 interface Props {
   userId: string | undefined;
   problems: LeetCodeProblemWithTags[];
   showTags?: boolean;
+  title: string;
 }
 
 type LeetCodeProblemWithTags = Prisma.LeetCodeProblemGetPayload<{
@@ -43,7 +51,7 @@ type LeetCodeProblemWithTags = Prisma.LeetCodeProblemGetPayload<{
   };
 }>;
 
-export function QuestionsTable({ userId, problems, showTags = true }: Props) {
+export function QuestionsTable({ userId, title, problems, showTags = true }: Props) {
   const [data, setData] = useState<LeetCodeProblemWithTags[]>(problems);
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
@@ -67,7 +75,7 @@ export function QuestionsTable({ userId, problems, showTags = true }: Props) {
       header: "Title",
       cell: ({ row }) => {
         return (
-          <div className="relative"> 
+          <div className="relative">
             <Link
               className="text-left font-bold"
               href={row.original.href}
@@ -102,10 +110,10 @@ export function QuestionsTable({ userId, problems, showTags = true }: Props) {
     {
       accessorKey: "notes",
       header: () => (
-        <div className="hidden md:flex items-center justify-center">Notes</div>
+        <div className="flex items-center justify-center">Notes</div>
       ),
       cell: ({ row }) => (
-        <div className="hidden md:flex items-center justify-center">
+        <div className="flex items-center justify-center">
           <Notes userId={userId} problemId={row.original.id} />
         </div>
       ),
@@ -145,9 +153,12 @@ export function QuestionsTable({ userId, problems, showTags = true }: Props) {
   return (
     <div className="w-auto">
       {/* Table */}
-      <div className="w-full backdrop-blur-[15px] border-[1px] shadow-2xl shadow-black rounded-md bg-black/[.35] border-t-[1px] border-neutral-800/[.35] p-4">
+      <div className="w-full backdrop-blur-[15px] border-[1px] shadow-2xl shadow-black rounded-md bg-black/[.35] border-t-[1px] border-neutral-800/[.35]">
         {/* Highlight */}
         <div className="absolute inset-x-0 h-[1px] mx-auto -top-px bg-gradient-to-r from-transparent via-stone-400 to-transparent" />
+          <div className={cn("flex items-center justify-center font-bold pt-5 pb-3", font.className)}>
+            {title}
+          </div>
         <Table className="">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
