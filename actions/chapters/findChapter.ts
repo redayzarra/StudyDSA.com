@@ -1,7 +1,7 @@
 import { Chapter } from "@prisma/client";
 
 interface TopicWithChapters {
-  id: string;
+  id: number;
   title: string;
   description: string;
   href: string;

@@ -5,7 +5,7 @@ import { MasteryLevel } from "@prisma/client";
 
 interface Props {
   userId: string,
-  problemId: string,
+  problemId: number,
   masteryLevel: MasteryLevel
 }
 

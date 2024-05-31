@@ -2,7 +2,7 @@
 
 import db from "@/lib/db";
 
-const markAlgorithm = async (userId: string, algorithmId: string, isComplete: boolean) => {
+const markAlgorithm = async (userId: string, algorithmId: number, isComplete: boolean) => {
   try {
     const progress = await db.algorithmProgress.upsert({
       where: {

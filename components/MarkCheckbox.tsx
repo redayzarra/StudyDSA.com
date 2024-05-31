@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { Checkbox } from "./ui/checkbox"; // Adjust the import path as needed
 
 interface Props {
-  chapterId: string;
+  chapterId: number;
   className?: string;
 }
 

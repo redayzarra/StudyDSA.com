@@ -2,7 +2,7 @@
 
 import db from "@/lib/db";
 
-const getChapterById = async (chapterId: string | null) => {
+const getChapterById = async (chapterId: number | null) => {
   try {
 
     if (!chapterId) {

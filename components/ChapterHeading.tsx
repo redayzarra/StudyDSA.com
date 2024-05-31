@@ -14,7 +14,7 @@ const font = Poppins({
 interface Props {
   id: string;
   title: string;
-  chapterId?: string;
+  chapterId?: number;
   chapter?: Chapter;
 }
 

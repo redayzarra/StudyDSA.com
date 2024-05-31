@@ -2,7 +2,7 @@
 
 import db from "@/lib/db";
 
-const getProblemCompletion = async (userId: string, problemId: string) => {
+const getProblemCompletion = async (userId: string, problemId: number) => {
   try {
     const progress = await db.problemProgress.findUnique({
       where: {

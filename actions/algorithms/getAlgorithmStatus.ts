@@ -2,7 +2,7 @@
 
 import db from "@/lib/db";
 
-const getAlgorithmStatus = async (userId: string, algorithmId: string) => {
+const getAlgorithmStatus = async (userId: string, algorithmId: number) => {
   try {
     const progress = await db.algorithmProgress.findUnique({
       where: {

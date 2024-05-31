@@ -2,13 +2,7 @@
 
 import db from "@/lib/db";
 
-interface Props {
-  userId: string;
-  problemId: string;
-  notes: string;
-}
-
-const updateNotes = async ({ userId, problemId, notes }: Props) => {
+const updateNotes = async (userId: string, problemId: number, notes: string ) => {
   try {
     const progress = await db.problemProgress.upsert({
       where: {

@@ -2,7 +2,7 @@
 
 import db from "@/lib/db";
 
-const markChapter = async (userId: string, chapterId: string, isComplete: boolean) => {
+const markChapter = async (userId: string, chapterId: number, isComplete: boolean) => {
   try {
     // Step 1: Update Chapter Completion Status
     const progress = await db.chapterProgress.upsert({

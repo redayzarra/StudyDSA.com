@@ -2,7 +2,7 @@
 
 import db from "@/lib/db";
 
-const getChapterStatus = async (userId: string, chapterId: string) => {
+const getChapterStatus = async (userId: string, chapterId: number) => {
   try {
     const progress = await db.chapterProgress.findUnique({
       where: {

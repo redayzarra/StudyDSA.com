@@ -74,7 +74,7 @@ model PasswordResetToken {
 
 // For tracking progress
 model Topic {
-  id          String          @id @default(cuid())
+  id          Int          @id @default(autoincrement())
   title       String          @unique
   description String
   href        String
@@ -85,7 +85,7 @@ model Topic {
 model TopicProgress {
   id         Int     @id @default(autoincrement())
   userId     String
-  topicId    String
+  topicId    Int
   isComplete Boolean @default(false)
   user       User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   topic      Topic   @relation(fields: [topicId], references: [id], onDelete: Cascade)
@@ -94,11 +94,11 @@ model TopicProgress {
 }
 
 model Chapter {
-  id          String            @id @default(cuid())
+  id          Int            @id @default(autoincrement())
   title       String
   description String
   href        String
-  topicId     String
+  topicId     Int
   topic       Topic             @relation(fields: [topicId], references: [id], onDelete: Cascade)
   progress    ChapterProgress[]
   Bookmark    Bookmark[]
@@ -107,7 +107,7 @@ model Chapter {
 model ChapterProgress {
   id         Int     @id @default(autoincrement())
   userId     String
-  chapterId  String
+  chapterId  Int
   isComplete Boolean @default(false)
   user       User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   chapter    Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
@@ -116,7 +116,7 @@ model ChapterProgress {
 }
 
 model Algorithm {
-  id          String              @id @default(cuid())
+  id          Int              @id @default(autoincrement())
   title       String
   description String
   href        String
@@ -128,7 +128,7 @@ model Algorithm {
 model AlgorithmProgress {
   id          Int       @id @default(autoincrement())
   userId      String
-  algorithmId String
+  algorithmId Int
   isComplete  Boolean   @default(false)
   user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   algorithm   Algorithm @relation(fields: [algorithmId], references: [id], onDelete: Cascade)
@@ -139,8 +139,8 @@ model AlgorithmProgress {
 model Bookmark {
   id          String  @id @default(cuid())
   userId      String
-  chapterId   String?
-  algorithmId String?
+  chapterId   Int?
+  algorithmId Int?
 
   user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   chapter   Chapter?   @relation(fields: [chapterId], references: [id], onDelete: SetNull)
@@ -171,7 +171,7 @@ model ProblemTag {
 }
 
 model LeetCodeProblem {
-  id           String             @id @default(cuid())
+  id           Int             @id @default(autoincrement())
   title        String
   href         String
   difficulty   QuestionDifficulty
@@ -190,7 +190,7 @@ model LeetCodeProblem {
 model ProblemProgress {
   id           Int             @id @default(autoincrement())
   userId       String
-  problemId    String
+  problemId    Int
   isComplete   Boolean         @default(false)
   masteryLevel MasteryLevel    @default(Practicing)
   notes        String?

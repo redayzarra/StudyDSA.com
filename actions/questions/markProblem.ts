@@ -2,7 +2,7 @@
 
 import db from "@/lib/db";
 
-const markProblem = async (userId: string, problemId: string, isComplete: boolean) => {
+const markProblem = async (userId: string, problemId: number, isComplete: boolean) => {
   try {
     const progress = await db.problemProgress.upsert({
       where: {
