@@ -2,11 +2,11 @@
 
 import db from "@/lib/db";
 
-const toggleBookmark = async (userId: string, chapterId: string) => {
+const toggleBookmark = async (userId: string, chapterId: number) => {
   try {
     const existingBookmark = await db.bookmark.findFirst({
       where: {
-        userId: userId,
+        userId,
       },
     });
 
@@ -28,8 +28,8 @@ const toggleBookmark = async (userId: string, chapterId: string) => {
       // Create a new bookmark if none exists
       await db.bookmark.create({
         data: {
-          userId: userId,
-          chapterId: chapterId,
+          userId,
+          chapterId,
         },
       });
       return { action: 'created', chapterId };

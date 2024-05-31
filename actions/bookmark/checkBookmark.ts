@@ -2,13 +2,13 @@
 
 import db from "@/lib/db";
 
-const checkBookmark = async (userId: string, chapterId: string) => {
+const checkBookmark = async (userId: string, chapterId: number) => {
   try {
     // Simplified query without the explicit AND
     const bookmark = await db.bookmark.findFirst({
       where: {
-        userId: userId,
-        chapterId: chapterId,
+        userId,
+        chapterId,
       },
     });
 
