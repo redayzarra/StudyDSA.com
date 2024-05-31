@@ -53,25 +53,25 @@ const TableOfContents = async () => {
 
   const basics = [
     {
-      id: "data-structures",
+      id: 100,
       title: "Data Structures",
       description: "",
       href: "/data-structures",
     },
     {
-      id: "algorithms",
+      id: 101,
       title: "Algorithms",
       description: "",
       href: "/algorithms",
     },
     {
-      id: "big-o",
+      id: 102,
       title: "Big O Notation",
       description: "",
       href: "/big-o",
     },
     {
-      id: "practice",
+      id: 103,
       title: "Practice",
       description: "",
       href: "/practice",
