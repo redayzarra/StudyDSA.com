@@ -3,15 +3,15 @@ import toggleBookmark from '@/actions/bookmark/toggleBookmark';
 import { create } from 'zustand';
 
 interface BookmarkStoreState {
-  bookmarkedChapterId: string | null;
-  toggleBookmark: (userId: string, chapterId: string) => Promise<void>;
-  isBookmarked: (chapterId: string) => boolean;
-  fetchBookmarkStatus: (userId: string, chapterId: string) => Promise<void>;
+  bookmarkedChapterId: number | null;
+  toggleBookmark: (userId: string, chapterId: number) => Promise<void>;
+  isBookmarked: (chapterId: number) => boolean;
+  fetchBookmarkStatus: (userId: string, chapterId: number) => Promise<void>;
 }
 
 const useBookmarkStore = create<BookmarkStoreState>((set, get) => ({
   bookmarkedChapterId: null,
-  toggleBookmark: async (userId: string, chapterId: string) => {
+  toggleBookmark: async (userId: string, chapterId: number) => {
     try {
       // Toggle bookmark in the backend
       const success = await toggleBookmark(userId, chapterId); 
@@ -27,9 +27,9 @@ const useBookmarkStore = create<BookmarkStoreState>((set, get) => ({
       throw error; 
     }
   },
-  isBookmarked: (chapterId: string) => get().bookmarkedChapterId === chapterId,
+  isBookmarked: (chapterId: number) => get().bookmarkedChapterId === chapterId,
 
-  fetchBookmarkStatus: async (userId: string, chapterId: string) => {
+  fetchBookmarkStatus: async (userId: string, chapterId: number) => {
   try {
     const isBookmarked = await checkBookmark(userId, chapterId);
     if (isBookmarked) {
