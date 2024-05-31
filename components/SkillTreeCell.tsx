@@ -5,7 +5,7 @@ interface Props {
   title: string;
   description: string;
   href: string;
-  chapterId: string;
+  chapterId: number;
 }
 
 const SkillTreeCell = ({ title, href, description, chapterId }: Props) => {

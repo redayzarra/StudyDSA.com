@@ -11,7 +11,7 @@ import { Button } from "./ui/button";
 
 interface Props {
   userId: string | undefined;
-  problemId: string;
+  problemId: number;
 }
 
 export function Notes({ userId, problemId }: Props) {

@@ -9,10 +9,10 @@ import SkillTreeItem from "./SkillTreeItem";
 const Basics = async () => {
 
   // Fetch all chapters
-  const arrayChapters = await getChaptersByTopic("Arrays");
-  const linkedListChapters = await getChaptersByTopic("Linked Lists");
-  const hashmapChapters = await getChaptersByTopic("Hashmaps");
-  const queueChapters = await getChaptersByTopic("Queues");
+  const arrayChapters = await getChaptersByTopic(1);
+  const linkedListChapters = await getChaptersByTopic(2);
+  const hashmapChapters = await getChaptersByTopic(3);
+  const queueChapters = await getChaptersByTopic(4);
 
   return (
     <SkillTreeContainer id="basics">

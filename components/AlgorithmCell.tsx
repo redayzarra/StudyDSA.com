@@ -12,7 +12,7 @@ interface Props {
   title: string;
   description: string;
   href: string;
-  algorithmId: string;
+  algorithmId: number;
 }
 
 const AlgorithmCell = ({ title, description, href, algorithmId }: Props) => {

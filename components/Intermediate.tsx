@@ -8,10 +8,10 @@ import SkillTreeItem from "./SkillTreeItem";
 
 const Intermediate = async () => {
   // Fetch chapters
-  const treeChapters = await getChaptersByTopic("Trees");
-  const graphChapters = await getChaptersByTopic("Graphs");
-  const heapChapters = await getChaptersByTopic("Heaps");
-  const trieChapters = await getChaptersByTopic("Tries");
+  const treeChapters = await getChaptersByTopic(5);
+  const heapChapters = await getChaptersByTopic(6);
+  const graphChapters = await getChaptersByTopic(7);
+  const trieChapters = await getChaptersByTopic(8);
 
   return (
     <SkillTreeContainer id="intermediate">

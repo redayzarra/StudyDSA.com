@@ -1,6 +1,6 @@
-import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsByName";
+import getAlgorithmsById from "@/actions/algorithms/getAlgorithmsById";
 import findChapter from "@/actions/chapters/findChapter";
-import getTopicByName from "@/actions/topics/getTopicByName";
+import getTopicById from "@/actions/topics/getTopicById";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
 import CodeBlock from "@/components/CodeBlock";
@@ -20,7 +20,7 @@ import {
 } from "./arrayCode";
 
 const ArraysPage = async () => {
-  const topic = await getTopicByName("Arrays");
+  const topic = await getTopicById(1);
 
   // I will have to change this later
   if (!topic) {
@@ -28,6 +28,7 @@ const ArraysPage = async () => {
     return <div>Topic not found</div>;
   }
 
+  // Uses a simple hashmap so that's fine
   const definitionChapter = findChapter(topic, "Definition");
   const operationsChapter = findChapter(topic, "Operations");
   const pointersChapter = findChapter(topic, "Pointers");
@@ -37,19 +38,9 @@ const ArraysPage = async () => {
   const amortizedChapter = findChapter(topic, "Amortized Time");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
-  const fetchAlgorithms = [
-    "Two Pointers",
-    "Sliding Window",
-    "Binary Search",
-    "Prefix Sums",
-    "Recursion",
-    "Sorting",
-    "Backtracking",
-    "1D Dynamic Pro.",
-    "Kadane's Algo.",
-  ];
+  const fetchAlgorithms = [1, 3, 4, 5, 6, 7, 8, 9, 11];
 
-  const arrayAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
+  const arrayAlgorithms = await getAlgorithmsById(fetchAlgorithms);
 
   return (
     <div className="space-y-8">

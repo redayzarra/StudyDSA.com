@@ -9,8 +9,8 @@ import SkillTreeItem from "./SkillTreeItem";
 
 const Advanced = async () => {
   // Fetch chapters
-  const unionFindChapters = await getChaptersByTopic("Union-Find");
-  const segmentChapters = await getChaptersByTopic("Segment Trees");
+  const unionFindChapters = await getChaptersByTopic(9);
+  const segmentChapters = await getChaptersByTopic(10);
 
   return (
     <SkillTreeContainer id="advanced">

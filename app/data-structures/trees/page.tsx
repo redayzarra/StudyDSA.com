@@ -1,6 +1,6 @@
-import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsByName";
+import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsById";
 import findChapter from "@/actions/chapters/findChapter";
-import getTopicByName from "@/actions/topics/getTopicByName";
+import getTopicById from "@/actions/topics/getTopicById";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
 import CodeBlock from "@/components/CodeBlock";
@@ -25,7 +25,7 @@ import {
 } from "./treeCode";
 
 const TreesPage = async () => {
-  const topic = await getTopicByName("Trees");
+  const topic = await getTopicById(5);
 
   // I will have to change this later
   if (!topic) {
@@ -42,16 +42,7 @@ const TreesPage = async () => {
   const advancedChapter = findChapter(topic, "Advanced Trees");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
-  const fetchAlgorithms = [
-    "Recursion",
-    "Backtracking",
-    "Depth-First Search",
-    "Breadth-First Search",
-    "Dijkstra's Algo.",
-    "Prim's Algo.",
-    "Union Find",
-    "Kruskal's Algo.",
-  ];
+  const fetchAlgorithms = [6, 8, 13, 14, 17, 21, 22];
 
   const treeAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
 
@@ -92,8 +83,8 @@ const TreesPage = async () => {
         </p>
         <br />
         <p>
-          Let&apos;s take a look at the time and space complexities of operations
-          supported by a balanced tree:
+          Let&apos;s take a look at the time and space complexities of
+          operations supported by a balanced tree:
         </p>
         <Operations items={treeOperations} />
         <p>
@@ -230,10 +221,10 @@ const TreesPage = async () => {
         <p>
           <strong>Postorder Traversal</strong> is processing the{" "}
           <strong>root node after its children</strong>. The traversal sequence
-          is <strong>left-right-root</strong>, giving it the name &quot;post&quot; order
-          traversal. Postorder is great for when you need to delete nodes and
-          resources since it ensures that child nodes are processed before their
-          respective parent nodes.
+          is <strong>left-right-root</strong>, giving it the name
+          &quot;post&quot; order traversal. Postorder is great for when you need
+          to delete nodes and resources since it ensures that child nodes are
+          processed before their respective parent nodes.
         </p>
         <CodeBlock
           code={postorderCode}
@@ -344,8 +335,8 @@ const TreesPage = async () => {
           <CodeText>k</CodeText> and <CodeText>res</CodeText> is crucial since{" "}
           <CodeText>k</CodeText> is decremented with each visited node,{" "}
           <strong>acting as a countdown to the kth element</strong>. Once{" "}
-          <CodeText>k</CodeText> reaches zero, it means that we&apos;ve reached the
-          kth smallest element, and <CodeText>res</CodeText>{" "}
+          <CodeText>k</CodeText> reaches zero, it means that we&apos;ve reached
+          the kth smallest element, and <CodeText>res</CodeText>{" "}
           <strong>is updated with the node&apos;s value</strong>.
         </p>
       </ChapterHeading>
@@ -360,9 +351,9 @@ const TreesPage = async () => {
           Advanced trees, such as AVL trees, Red-Black trees, and B-trees, are
           designed to provide efficient search, insert, and delete operations by
           automatically maintaining tree balance. While{" "}
-          <strong>they aren&apos;t common in coding interviews</strong>, it&apos;s still
-          interesting to learn about these trees. Let&apos;s take a quick look at
-          them to see what makes them unique:
+          <strong>they aren&apos;t common in coding interviews</strong>,
+          it&apos;s still interesting to learn about these trees. Let&apos;s
+          take a quick look at them to see what makes them unique:
         </p>
         <br />
         <p>
@@ -435,8 +426,9 @@ const TreesPage = async () => {
             <em>before you do anything else with your tree</em>. Although this
             may seem redundant, it helps{" "}
             <strong>avoid edge cases and ensures things work</strong> properly
-            (BFS doesn&apos;t work without initial base case). It&apos;s a simple yet easy
-            way for ensuring your tree algorithms are efficient and error-free.
+            (BFS doesn&apos;t work without initial base case). It&apos;s a
+            simple yet easy way for ensuring your tree algorithms are efficient
+            and error-free.
           </li>
           <br />
           <li>
@@ -460,10 +452,7 @@ const TreesPage = async () => {
           <li>
             <span className="font-bold">&bull; Mastering Tree Traversals:</span>{" "}
             Familiarize yourself with different tree{" "}
-            <TextLink href="#traversal">
-              traversal
-            </TextLink>{" "}
-            techniques—
+            <TextLink href="#traversal">traversal</TextLink> techniques—
             <strong>preorder, inorder, and postorder</strong> for binary trees,
             as well as <strong>level-order</strong> traversal. Understanding
             these methods and when to use them allows you to solve problems in
@@ -475,10 +464,7 @@ const TreesPage = async () => {
             Before diving into coding, take a moment to{" "}
             <strong>draw out the tree</strong> based on the problem description.
             Visualizing the tree can help you understand the problem better,
-            help you choose a{" "}
-            <TextLink href="#traversal">
-              traversal
-            </TextLink>{" "}
+            help you choose a <TextLink href="#traversal">traversal</TextLink>{" "}
             technique, and plan your solution more effectively.
           </li>
           <br />

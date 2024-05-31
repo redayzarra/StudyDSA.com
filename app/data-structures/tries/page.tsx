@@ -1,6 +1,6 @@
-import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsByName";
+import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsById";
 import findChapter from "@/actions/chapters/findChapter";
-import getTopicByName from "@/actions/topics/getTopicByName";
+import getTopicById from "@/actions/topics/getTopicById";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
 import CodeBlock from "@/components/CodeBlock";
@@ -20,7 +20,7 @@ import {
 } from "./triesCode";
 
 const TriesPage = async () => {
-  const topic = await getTopicByName("Tries");
+  const topic = await getTopicById(8);
 
   // I will have to change this later
   if (!topic) {
@@ -37,12 +37,7 @@ const TriesPage = async () => {
   const implementationChapter = findChapter(topic, "Implementation");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
-  const fetchAlgorithms = [
-    "Recursion",
-    "Backtracking",
-    "Depth-First Search",
-    "Breadth-First Search",
-  ];
+  const fetchAlgorithms = [6, 8, 13, 14];
 
   const graphAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
 

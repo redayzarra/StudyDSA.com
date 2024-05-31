@@ -1,6 +1,5 @@
-import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsByName";
+import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsById";
 import findChapter from "@/actions/chapters/findChapter";
-import getTopicByName from "@/actions/topics/getTopicByName";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
 import CodeBlock from "@/components/CodeBlock";
@@ -20,9 +19,10 @@ import {
 } from "./graphCode";
 import ImageBlock from "@/components/ImageBlock";
 import TextLink from "@/components/TextLink";
+import getTopicById from "@/actions/topics/getTopicById";
 
 const GraphsPage = async () => {
-  const topic = await getTopicByName("Graphs");
+  const topic = await getTopicById(7);
 
   // I will have to change this later
   if (!topic) {
@@ -39,20 +39,7 @@ const GraphsPage = async () => {
   const graphTraversalChapter = findChapter(topic, "Graph Traversal");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
-  const fetchAlgorithms = [
-    "Recursion",
-    "Backtracking",
-    "Depth-First Search",
-    "Breadth-First Search",
-    "Dijkstra's Algo.",
-    "Floyd-Warshall's Algo.",
-    "Kruskal's Algo.",
-    "Prim's Algo.",
-    "Union Find",
-    "Bellman-Ford Algo.",
-    "Topological Sort",
-    "DAG Shortest Paths",
-  ];
+  const fetchAlgorithms = [6, 8, 13, 14, 17, 19, 20, 21, 22, 23, 24];
 
   const graphAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
 

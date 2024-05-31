@@ -1,6 +1,6 @@
-import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsByName";
+import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsById";
 import findChapter from "@/actions/chapters/findChapter";
-import getTopicByName from "@/actions/topics/getTopicByName";
+import getTopicById from "@/actions/topics/getTopicById";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
 import CodeBlock from "@/components/CodeBlock";
@@ -14,7 +14,7 @@ import { Metadata } from "next";
 import { heapCode, heapifyCode, maxHeapCode } from "./heapsCode";
 
 const HeapsPage = async () => {
-  const topic = await getTopicByName("Heaps");
+  const topic = await getTopicById(6);
 
   // I will have to change this later
   if (!topic) {
@@ -31,12 +31,7 @@ const HeapsPage = async () => {
   const implementationChapter = findChapter(topic, "Implementation");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
-  const fetchAlgorithms = [
-    "Sorting",
-    "Dijkstra's Algo.",
-    "Prim's Algo.",
-    "Two-Heaps Pattern",
-  ];
+  const fetchAlgorithms = [7, 16, 17, 21];
 
   const heapsAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
 
@@ -121,8 +116,8 @@ const HeapsPage = async () => {
           <strong>
             the path from any node to the root node will always be sorted
           </strong>
-          . This property allows for efficient access to the heap&apos;s maximum or
-          minimum element.
+          . This property allows for efficient access to the heap&apos;s maximum
+          or minimum element.
         </p>
         <ImageBlock src="/images/heaps/HeapProperty.jpg" alt="Heap Property" />
       </ChapterHeading>
@@ -266,10 +261,11 @@ const HeapsPage = async () => {
           <br />
           <li>
             <span className="font-bold">&bull; Heapify for Efficiency:</span>{" "}
-            Whenever you&apos;re given an unsorted array that needs to be processed
-            element by element according to their priority, start by converting
-            it into a heap using the <CodeText>heapify</CodeText> operation.
-            This is more efficient than inserting elements one by one.
+            Whenever you&apos;re given an unsorted array that needs to be
+            processed element by element according to their priority, start by
+            converting it into a heap using the <CodeText>heapify</CodeText>{" "}
+            operation. This is more efficient than inserting elements one by
+            one.
           </li>
           <br />
           <li>

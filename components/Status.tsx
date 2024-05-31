@@ -19,14 +19,14 @@ import { MasteryLevel } from "@prisma/client";
 
 interface Props {
   userId: string | undefined;
-  problemId: string;
+  problemId: number;
 }
 
 export function Status({ userId, problemId }: Props) {
   const [masteryLevel, setMasteryLevel] = useState<string>("Practicing");
 
   // Function to fetch initial status
-  const fetchInitialStatus = async (userId: string, problemId: string) => {
+  const fetchInitialStatus = async (userId: string, problemId: number) => {
     try {
       const status = await getProblemStatus(userId, problemId);
       setMasteryLevel(status || "Practicing");

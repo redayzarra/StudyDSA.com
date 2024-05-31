@@ -1,6 +1,6 @@
-import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsByName";
+import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsById";
 import findChapter from "@/actions/chapters/findChapter";
-import getTopicByName from "@/actions/topics/getTopicByName";
+import getTopicById from "@/actions/topics/getTopicById";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
 import CodeBlock from "@/components/CodeBlock";
@@ -20,7 +20,7 @@ import {
 } from "./linkedListsCode";
 
 const LinkedListsPage = async () => {
-  const topic = await getTopicByName("Linked Lists");
+  const topic = await getTopicById(2);
 
   // I will have to change this later
   if (!topic) {
@@ -37,12 +37,7 @@ const LinkedListsPage = async () => {
   const doublyChapter = findChapter(topic, "Doubly Linked List");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
-  const fetchAlgorithms = [
-    "Two Pointers",
-    "Fast & Slow Pointers",
-    "Sliding Window",
-    "Recursion",
-  ];
+  const fetchAlgorithms = [1, 2, 3, 6];
 
   const linkedListAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
 
@@ -292,9 +287,9 @@ const LinkedListsPage = async () => {
           <br />
           <li>
             <span className="font-bold">&bull; Practice with Variants:</span>{" "}
-            Don&apos;t limit your practice to doubly linked lists just because they
-            are easier to work with. Try problems with singly and doubly linked
-            lists to see how it affects the time and space complexity.
+            Don&apos;t limit your practice to doubly linked lists just because
+            they are easier to work with. Try problems with singly and doubly
+            linked lists to see how it affects the time and space complexity.
           </li>
           <br />
         </ul>

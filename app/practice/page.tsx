@@ -14,9 +14,9 @@ const font = Poppins({
 
 const PracticePage = async () => {
   const userId = await getUserId();
-  const fetchProblems = ["Two Sum", "Add Two Numbers"];
+  // const fetchProblems = [];
 
-  const neetCodeProblems = await getProblems(fetchProblems);
+  // const neetCodeProblems = await getProblems(fetchProblems);
 
   return (
     <div className="">
@@ -26,7 +26,9 @@ const PracticePage = async () => {
         </h1>
         <h2 className="dark:text-muted-foreground line-clamp-2">
           A comprehensive list curated by Navdeep Singh (
-          <TextLink href="https://www.youtube.com/@NeetCode" external={true}>NeetCode</TextLink>
+          <TextLink href="https://www.youtube.com/@NeetCode" external={true}>
+            NeetCode
+          </TextLink>
           ). It is an expansion of the{" "}
           <TextLink href="/practice/blind-75">Blind 75</TextLink> list and
           features more beginner-friendly problems.
@@ -38,7 +40,12 @@ const PracticePage = async () => {
           <QuestionsTabs />
         </div>
         <div className="w-full mt-4">
-          <QuestionsTable title="Arrays/Strings" problems={neetCodeProblems} userId={userId} showTags={false}/>
+          <QuestionsTable
+            title="Arrays/Strings"
+            problems={[]}
+            userId={userId}
+            showTags={false}
+          />
         </div>
       </div>
     </div>

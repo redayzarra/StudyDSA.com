@@ -1,6 +1,6 @@
-import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsByName";
+import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsById";
 import findChapter from "@/actions/chapters/findChapter";
-import getTopicByName from "@/actions/topics/getTopicByName";
+import getTopicById from "@/actions/topics/getTopicById";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
 import CodeBlock from "@/components/CodeBlock";
@@ -20,7 +20,7 @@ import {
 } from "./segmentCode";
 
 const SegmentTreesPage = async () => {
-  const topic = await getTopicByName("Segment Trees");
+  const topic = await getTopicById(10);
 
   // I will have to change this later
   if (!topic) {
@@ -37,12 +37,7 @@ const SegmentTreesPage = async () => {
   const lazyChapter = findChapter(topic, "Lazy Propagation");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
-  const fetchAlgorithms = [
-    "Intervals",
-    "Depth-First Search",
-    "Breadth-First Search",
-    "1D Dynamic Pro.",
-  ];
+  const fetchAlgorithms = [9, 11, 13, 14];
 
   const segmentTreesAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
 
@@ -198,11 +193,12 @@ const SegmentTreesPage = async () => {
         </p>
         <br />
         <p>
-          Query operations use the tree&apos;s structure to efficiently compute sums,
-          while updates are seamlessly handled by adjusting an element in the
-          array and <strong>propagating this change throughout the tree</strong>
-          . This ensures that the data remains consistent and accurately
-          represents the current state of the array.
+          Query operations use the tree&apos;s structure to efficiently compute
+          sums, while updates are seamlessly handled by adjusting an element in
+          the array and{" "}
+          <strong>propagating this change throughout the tree</strong>. This
+          ensures that the data remains consistent and accurately represents the
+          current state of the array.
         </p>
         <CodeBlock
           code={segmentTreeCode}
@@ -241,8 +237,10 @@ const SegmentTreesPage = async () => {
           </strong>
           . When a range update is performed, instead of immediately updating
           the nodes, the{" "}
-          <strong>update is stored as a &quot;lazy&quot; value at the node</strong>.
-          During future queries, these lazy updates are applied as needed.
+          <strong>
+            update is stored as a &quot;lazy&quot; value at the node
+          </strong>
+          . During future queries, these lazy updates are applied as needed.
         </p>
       </ChapterHeading>
 
@@ -267,9 +265,10 @@ const SegmentTreesPage = async () => {
           <li>
             <span className="font-bold">&bull; Rare Case:</span> While segment
             trees are versatile, <strong>they can be overkill</strong> for
-            simple calculation functions or when the data doesn&apos;t get updated.
-            Use them when you have multiple range queries and dynamic data.
-            Segment trees are <strong>almost never used in interviews</strong>.
+            simple calculation functions or when the data doesn&apos;t get
+            updated. Use them when you have multiple range queries and dynamic
+            data. Segment trees are{" "}
+            <strong>almost never used in interviews</strong>.
           </li>
           <br />
           <li>

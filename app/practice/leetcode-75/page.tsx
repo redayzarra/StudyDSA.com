@@ -14,147 +14,31 @@ const font = Poppins({
 
 const LeetCode75Page = async () => {
   const userId = await getUserId();
+  
+  // Fetching problems in groups
+  const arrayProblems = await getProblems([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  const twoPointersProblems = await getProblems([10, 11, 12, 13]);
+  const slidingWindowProblems = await getProblems([14, 15, 16, 17]);
+  const prefixSumProblems = await getProblems([18, 19]);
+  const hashmapProblems = await getProblems([20, 21, 22, 23]);
+  const stackProblems = await getProblems([24, 25, 26]);
+  const queueProblems = await getProblems([27, 28]);
+  const linkedlistProblems = await getProblems([29, 30, 31, 32]);
+  const dfsProblems = await getProblems([33, 34, 35, 36, 37, 38]);
+  const bfsProblems = await getProblems([39, 40]);
+  const binarySearchTreeProblems = await getProblems([41, 42]);
+  const graphDFSProblems = await getProblems([43, 44, 45, 46]);
+  const graphBFSProblems = await getProblems([47, 48]);
+  const heapProblems = await getProblems([49, 50, 51, 52]);
+  const binarySearchProblems = await getProblems([53, 54, 55, 56]);
+  const backtrackingProblems = await getProblems([57, 58]);
+  const oneDProblems = await getProblems([59, 60, 61, 62]);
+  const multiDPProblems = await getProblems([63, 64, 65, 66]);
+  const bitProblems = await getProblems([67, 68, 69]);
+  const trieProblems = await getProblems([70, 71]);
+  const intervalsProblems = await getProblems([72, 73]);
+  const monoStackProblems = await getProblems([74, 75]);
 
-  const arrayProblems = await getProblems([
-    "Merge Strings Alternately",
-    "Greatest Common Divisor of Strings",
-    "Kids With the Greatest Number of Candies",
-    "Can Place Flowers",
-    "Reverse Vowels of a String",
-    "Reverse Words in a String",
-    "Product of Array Except Self",
-    "Increasing Triplet Subsequence",
-    "String Compression",
-  ]);
-
-  const twoPointersProblems = await getProblems([
-    "Move Zeroes",
-    "Is Subsequence",
-    "Container With Most Water",
-    "Max Number of K-Sum Pairs",
-  ]);
-
-  const slidingWindowProblems = await getProblems([
-    "Maximum Average Subarray I",
-    "Maximum Number of Vowels in a Substring of Given Length",
-    "Max Consecutive Ones III",
-    "Longest Subarray of 1's After Deleting One Element",
-  ]);
-
-  const prefixSumProblems = await getProblems([
-    "Find the Highest Altitude",
-    "Find Pivot Index",
-  ]);
-
-  const hashmapProblems = await getProblems([
-    "Find the Difference of Two Arrays",
-    "Unique Number of Occurrences",
-    "Determine if Two Strings Are Close",
-    "Equal Row and Column Pairs",
-  ]);
-
-  const stackProblems = await getProblems([
-    "Removing Stars From a String",
-    "Asteroid Collision",
-    "Decode String",
-  ]);
-
-  const queueProblems = await getProblems([
-    "Number of Recent Calls",
-    "Dota2 Senate",
-  ]);
-
-  const linkedlistProblems = await getProblems([
-    "Delete the Middle Node of a Linked List",
-    "Odd Even Linked List",
-    "Reverse Linked List",
-    "Maximum Twin Sum of a Linked List",
-  ]);
-
-  const dfsProblems = await getProblems([
-    "Maximum Depth of Binary Tree",
-    "Leaf-Similar Trees",
-    "Count Good Nodes in Binary Tree",
-    "Path Sum III",
-    "Longest ZigZag Path in a Binary Tree",
-    "Lowest Common Ancestor of a Binary Tree",
-  ]);
-
-  const bfsProblems = await getProblems([
-    "Binary Tree Right Side View",
-    "Maximum Level Sum of a Binary Tree",
-  ]);
-
-  const binarySearchTreeProblems = await getProblems([
-    "Search in a Binary Search Tree",
-    "Delete Node in a BST",
-  ]);
-
-  const graphDFSProblems = await getProblems([
-    "Keys and Rooms",
-    "Number of Provinces",
-    "Reorder Routes to Make All Paths Lead to the City Zero",
-    "Evaluate Division",
-  ]);
-
-  const graphBFSProblems = await getProblems([
-    "Nearest Exit from Entrance in Maze",
-    "Rotting Oranges",
-  ]);
-
-  const heapProblems = await getProblems([
-    "Kth Largest Element in an Array",
-    "Smallest Number in Infinite Set",
-    "Maximum Subsequence Score",
-    "Total Cost to Hire K Workers",
-  ]);
-
-  const binarySearchProblems = await getProblems([
-    "Guess Number Higher or Lower",
-    "Successful Pairs of Spells and Potions",
-    "Find Peak Element",
-    "Koko Eating Bananas",
-  ]);
-
-  const backtrackingProblems = await getProblems([
-    "Letter Combinations of a Phone Number",
-    "Combination Sum III",
-  ]);
-
-  const oneDProblems = await getProblems([
-    "N-th Tribonacci Number",
-    "Min Cost Climbing Stairs",
-    "House Robber",
-    "Domino and Tromino Tiling",
-  ]);
-
-  const multiDPProblems = await getProblems([
-    "Unique Paths",
-    "Longest Common Subsequence",
-    "Best Time to Buy and Sell Stock with Transaction Fee",
-    "Edit Distance",
-  ]);
-
-  const bitProblems = await getProblems([
-    "Counting Bits",
-    "Single Number",
-    "Minimum Flips to Make a OR b Equal to c",
-  ]);
-
-  const trieProblems = await getProblems([
-    "Implement Trie (Prefix Tree)",
-    "Search Suggestions System",
-  ]);
-
-  const intervalsProblems = await getProblems([
-    "Non-overlapping Intervals",
-    "Minimum Number of Arrows to Burst Balloons",
-  ]);
-
-  const monoStackProblems = await getProblems([
-    "Daily Temperatures",
-    "Online Stock Span",
-  ]);
 
   return (
     <div className="">

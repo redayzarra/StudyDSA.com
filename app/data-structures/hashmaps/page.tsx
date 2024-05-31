@@ -1,6 +1,6 @@
-import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsByName";
+import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsById";
 import findChapter from "@/actions/chapters/findChapter";
-import getTopicByName from "@/actions/topics/getTopicByName";
+import getTopicById from "@/actions/topics/getTopicById";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
 import CodeBlock from "@/components/CodeBlock";
@@ -23,7 +23,7 @@ import {
 } from "./hashmapCode";
 
 const HashmapPage = async () => {
-  const topic = await getTopicByName("Hashmaps");
+  const topic = await getTopicById(3);
 
   // I will have to change this later
   if (!topic) {
@@ -40,12 +40,7 @@ const HashmapPage = async () => {
   const setsChapter = findChapter(topic, "Sets");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
-  const fetchAlgorithms = [
-    "Two Pointers",
-    "Sliding Window",
-    "Recursion",
-    "1D Dynamic Pro.",
-  ];
+  const fetchAlgorithms = [1, 3, 6, 9];
 
   const hashmapAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
 
@@ -123,10 +118,10 @@ const HashmapPage = async () => {
         />
         <br />
         <p>
-          The hash function I&apos;ve shown is a basic example of how to turn the{" "}
-          <CodeText>key</CodeText> (like a name or a word) into an index that
-          tells us where to store or find that key in our hashmap. It&apos;s
-          important to{" "}
+          The hash function I&apos;ve shown is a basic example of how to turn
+          the <CodeText>key</CodeText> (like a name or a word) into an index
+          that tells us where to store or find that key in our hashmap.
+          It&apos;s important to{" "}
           <span className="font-bold">
             apply the modulo operator against the hashmap&apos;s size
           </span>{" "}
@@ -228,8 +223,8 @@ const HashmapPage = async () => {
         </p>
         <br />
         <p>
-          Let&apos;s implement a hashmap with chaining. Chaining allows us to store
-          multiple entries at the same index by linking them together:
+          Let&apos;s implement a hashmap with chaining. Chaining allows us to
+          store multiple entries at the same index by linking them together:
         </p>
         <CodeBlock
           code={chainingHashmap}
@@ -240,9 +235,9 @@ const HashmapPage = async () => {
           <br />
           The <CodeText>ChainingHashMap</CodeText> class is initialized with a
           predefined size, defaulting to 10, creating an internal table as a
-          list of empty lists. Each list represents a &quot;bucket&quot; where key-value
-          pairs are stored, allowing multiple values to be stored at the same
-          index, or &quot;chaining&quot;.
+          list of empty lists. Each list represents a &quot;bucket&quot; where
+          key-value pairs are stored, allowing multiple values to be stored at
+          the same index, or &quot;chaining&quot;.
         </p>
       </ChapterHeading>
 
@@ -280,8 +275,9 @@ const HashmapPage = async () => {
         </p>
         <br />
         <p>
-          Now let&apos;s implement a hashmap with open addressing. Open addressing
-          simply finds the next available spot for a value to be stored:
+          Now let&apos;s implement a hashmap with open addressing. Open
+          addressing simply finds the next available spot for a value to be
+          stored:
         </p>
         <CodeBlock
           code={openAddressingHashmap}
@@ -316,8 +312,8 @@ const HashmapPage = async () => {
         <p>
           My favorite way of implementing hashmaps is chaining with{" "}
           <TextLink href="/data-structures/linked-lists">linked lists</TextLink>
-          . Let&apos;s go over the code and then I&apos;ll explain why linked lists
-          significantly improve efficiency and performance:
+          . Let&apos;s go over the code and then I&apos;ll explain why linked
+          lists significantly improve efficiency and performance:
         </p>
         <CodeBlock
           code={chainingWithLinked}

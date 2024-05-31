@@ -9,7 +9,7 @@ import { Checkbox } from "./ui/checkbox";
 interface Props {
   className?: string;
   userId: string;
-  problemId: string;
+  problemId: number;
 }
 
 const QuestionCheckbox = ({

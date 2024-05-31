@@ -21,7 +21,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Prisma } from "@prisma/client";
+import { LeetCodeProblem, Prisma } from "@prisma/client";
 import Link from "next/link";
 import { useState } from "react";
 import Difficulty from "./Difficulty";
@@ -40,25 +40,19 @@ const font = Poppins({
 
 interface Props {
   userId: string | undefined;
-  problems: LeetCodeProblemWithTags[];
+  problems: LeetCodeProblem[];
   showTags?: boolean;
   title: string;
 }
 
-type LeetCodeProblemWithTags = Prisma.LeetCodeProblemGetPayload<{
-  include: {
-    tags: true;
-  };
-}>;
-
 export function QuestionsTable({ userId, title, problems, showTags = true }: Props) {
-  const [data, setData] = useState<LeetCodeProblemWithTags[]>(problems);
+  const [data, setData] = useState<LeetCodeProblem[]>(problems);
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = useState({});
 
-  const columns: ColumnDef<LeetCodeProblemWithTags>[] = [
+  const columns: ColumnDef<LeetCodeProblem>[] = [
     {
       id: "select",
       header: () => <div className="">Completed</div>,
@@ -84,11 +78,11 @@ export function QuestionsTable({ userId, title, problems, showTags = true }: Pro
             >
               {row.getValue("title")}
             </Link>
-            {showTags && (
+            {/* {showTags && (
               <div className="absolute top-6 left-0">
                 <ProblemTags items={row.original.tags} />
               </div>
-            )}
+            )} */}
           </div>
         );
       },

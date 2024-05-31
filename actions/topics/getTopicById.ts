@@ -2,11 +2,11 @@
 
 import db from "@/lib/db";
 
-const getTopicByName = async (title: string) => {
+const getTopicById = async (titleId: number) => {
   try {
     const topic = await db.topic.findUnique({
       where: {
-        title: title,
+        id: titleId,
       },
       include: {
         chapters: true,
@@ -22,4 +22,4 @@ const getTopicByName = async (title: string) => {
   }
 }
 
-export default getTopicByName;
+export default getTopicById;

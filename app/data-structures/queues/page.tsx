@@ -1,6 +1,6 @@
-import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsByName";
+import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsById";
 import findChapter from "@/actions/chapters/findChapter";
-import getTopicByName from "@/actions/topics/getTopicByName";
+import getTopicById from "@/actions/topics/getTopicById";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
 import CodeBlock from "@/components/CodeBlock";
@@ -13,7 +13,7 @@ import { Metadata } from "next";
 import { circularQueueCode, dequeCode, queueNodesCode } from "./queueCode";
 
 const QueuePage = async () => {
-  const topic = await getTopicByName("Queues");
+  const topic = await getTopicById(4);
 
   // I will have to change this later
   if (!topic) {
@@ -30,16 +30,7 @@ const QueuePage = async () => {
   const priorityQueueChapter = findChapter(topic, "Priority Queues");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
-  const fetchAlgorithms = [
-    "Two Pointers",
-    "Sliding Window",
-    "Recursion",
-    "Backtracking",
-    "Depth-First Search",
-    "Breadth-First Search",
-    "Dijkstra's Algo.",
-    "Topological Sort",
-  ];
+  const fetchAlgorithms = [1, 3, 6, 8, 13, 14, 17, 23];
 
   const queueAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
 
@@ -54,9 +45,9 @@ const QueuePage = async () => {
         <p>
           A queue is a linear data structure that follows a{" "}
           <span className="font-bold">First In, First Out (FIFO)</span>{" "}
-          principle. It&apos;s like standing in line at a store; the first person in
-          line is the first to be served. Queues are common in computing for
-          managing tasks, data streams, and graph algorithms like{" "}
+          principle. It&apos;s like standing in line at a store; the first
+          person in line is the first to be served. Queues are common in
+          computing for managing tasks, data streams, and graph algorithms like{" "}
           <TextLink href="/algorithms/breadth-first-search">BFS</TextLink>.
         </p>
       </ChapterHeading>
@@ -214,9 +205,9 @@ const QueuePage = async () => {
         </p>
         <br />
         <p>
-          While it&apos;s possible to implement a priority queue using simple queues,
-          they can often fall short in terms of efficiency, particularly for
-          operations such as insertion and removal of elements based on
+          While it&apos;s possible to implement a priority queue using simple
+          queues, they can often fall short in terms of efficiency, particularly
+          for operations such as insertion and removal of elements based on
           priority. A{" "}
           <TextLink href="/data-structures/heaps">binary heap</TextLink>, on the
           other hand,{" "}
@@ -255,8 +246,9 @@ const QueuePage = async () => {
             <span className="font-bold">&bull; Queues in your language:</span>{" "}
             Familiarize yourself with queues in your preferred programming
             language. Make sure you know the built-in functions and libraries
-            designed for queues. Understand the fundamental operations such as {" "}
-            <CodeText>enqueue</CodeText> (add), <CodeText>dequeue</CodeText> (remove), <CodeText>peek</CodeText> (view the front item without
+            designed for queues. Understand the fundamental operations such as{" "}
+            <CodeText>enqueue</CodeText> (add), <CodeText>dequeue</CodeText>{" "}
+            (remove), <CodeText>peek</CodeText> (view the front item without
             removal), and <CodeText>isEmpty</CodeText>.
           </li>
           <br />
@@ -276,7 +268,8 @@ const QueuePage = async () => {
             </span>{" "}
             Identify problems where queues can simplify the solution, such as in
             level order traversal of trees, or in implementing a buffer for data
-            streams. Anytime you need to store data to access it again, in order, queues are your best friend.
+            streams. Anytime you need to store data to access it again, in
+            order, queues are your best friend.
           </li>
           <br />
           <li>

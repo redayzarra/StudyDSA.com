@@ -1,6 +1,6 @@
-import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsByName";
+import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsById";
 import findChapter from "@/actions/chapters/findChapter";
-import getTopicByName from "@/actions/topics/getTopicByName";
+import getTopicById from "@/actions/topics/getTopicById";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
 import CodeBlock from "@/components/CodeBlock";
@@ -19,7 +19,7 @@ import {
 } from "./unionFindCode";
 
 const UnionFindPage = async () => {
-  const topic = await getTopicByName("Union-Find");
+  const topic = await getTopicById(9);
 
   // I will have to change this later
   if (!topic) {
@@ -36,12 +36,7 @@ const UnionFindPage = async () => {
   const implementationChapter = findChapter(topic, "Implementation");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
-  const fetchAlgorithms = [
-    "Depth-First Search",
-    "Breadth-First Search",
-    "Prim's Algo.",
-    "Kruskal's Algo.",
-  ];
+  const fetchAlgorithms = [13, 14, 21, 22];
 
   const unionFindAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
 
@@ -79,8 +74,8 @@ const UnionFindPage = async () => {
           The Inverse Ackermann function, <CodeText>O(α(N))</CodeText>, is a
           time complexity that <strong>grows extremely slowly</strong>, so much
           so that for all practical programming purposes,{" "}
-          <strong>it&apos;s almost constant</strong>. This means algorithms with this
-          complexity are highly efficient, even for very large input sizes.
+          <strong>it&apos;s almost constant</strong>. This means algorithms with
+          this complexity are highly efficient, even for very large input sizes.
         </p>
       </ChapterHeading>
 
@@ -243,17 +238,18 @@ const UnionFindPage = async () => {
         <p>
           Union by Rank can be adapted to use a{" "}
           <strong>
-            <CodeText>size</CodeText> array for tracking each set&apos;s size instead
-            of rank
+            <CodeText>size</CodeText> array for tracking each set&apos;s size
+            instead of rank
           </strong>
           . Initially, every element forms a set of size one. During a union
           operation,{" "}
           <strong>
             the smaller set&apos;s root is linked to the larger set&apos;s root
           </strong>
-          , optimizing the set&apos;s structure for future <CodeText>find</CodeText>{" "}
-          operations. If sets are equal in size, one becomes the root of the
-          combined set, which then updates its size to the total of both:
+          , optimizing the set&apos;s structure for future{" "}
+          <CodeText>find</CodeText> operations. If sets are equal in size, one
+          becomes the root of the combined set, which then updates its size to
+          the total of both:
         </p>
         <CodeBlock
           code={unionByRankCode}

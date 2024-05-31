@@ -26,7 +26,7 @@ const FormSchema = z.object({
 
 interface Props {
   userId: string | undefined;
-  problemId: string;
+  problemId: number;
 }
 
 const isEmptyContent = (content: string): boolean => {
@@ -70,7 +70,7 @@ export function NotesInput({ userId, problemId }: Props) {
 
     try {
       setLoading(true);
-      await updateNotes({ userId, problemId, notes: data.notes });
+      await updateNotes(userId, problemId, data.notes);
       toast("Your personal notes for the problem are saved.");
       setSavedNotes(data.notes);
     } catch (error) {

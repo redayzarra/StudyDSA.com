@@ -2,12 +2,12 @@
 
 import db from "@/lib/db";
 
-const getChaptersByTopic = async (topicName: string) => {
+const getChaptersByTopic = async (topicId: number) => {
   try {
-    // Find the topic by title and include its chapters
+    // Find the topic by id and include its chapters
     const topicWithChapters = await db.topic.findUnique({
       where: {
-        title: topicName, 
+        id: topicId, 
       },
       include: {
         chapters: true, // Include all chapters related to the topic
@@ -16,7 +16,7 @@ const getChaptersByTopic = async (topicName: string) => {
 
     // Check if the topic exists and has chapters
     if (!topicWithChapters) {
-      console.log(`Topic with title '${topicName}' not found.`);
+      console.log(`Topic with id '${topicId}' not found.`);
       return [];
     }
 
