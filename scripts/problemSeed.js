@@ -1024,6 +1024,22 @@ const leetCodeProblems = [
       { tag: "Monotonic Stack" },
     ],
   },
+  // 75 problems end here ^^^
+
+  {
+    title: "Contains Duplicate",
+    href: "https://leetcode.com/problems/contains-duplicate/description/",
+    difficulty: "Easy",
+    completed: false,
+    masteryLevel: "Practicing",
+    notes: "",
+    videoURL: "",
+    tags: [
+      { tag: "Array" },
+      { tag: "Hash Table" },
+      { tag: "Sorting" },
+    ],
+  },
 ];
 
 async function seedLeetCodeProblems() {

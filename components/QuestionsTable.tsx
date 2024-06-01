@@ -21,7 +21,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { LeetCodeProblem, Prisma } from "@prisma/client";
+import { cn } from "@/lib/utils";
+import { LeetCodeProblem } from "@prisma/client";
+import { Poppins } from "next/font/google";
 import Link from "next/link";
 import { useState } from "react";
 import Difficulty from "./Difficulty";
@@ -29,9 +31,6 @@ import { Notes } from "./Notes";
 import QuestionCheckbox from "./QuestionCheckbox";
 import { Solution } from "./Solution";
 import { Status } from "./Status";
-import ProblemTags from "./ProblemTags";
-import { Poppins } from "next/font/google";
-import { cn } from "@/lib/utils";
 
 const font = Poppins({
   subsets: ["latin"],
