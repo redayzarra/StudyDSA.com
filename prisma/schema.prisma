@@ -183,8 +183,6 @@ model LeetCodeProblem {
   solution     String?
 
   ProblemProgress ProblemProgress[]
-
-  @@index([id], name: "idx_leetcodeproblem_id")
 }
 
 model ProblemProgress {
