@@ -151,7 +151,7 @@ export function QuestionsTable({ userId, title, problems, showTags = true }: Pro
       <div className="w-full backdrop-blur-[15px] border-[1px] shadow-2xl shadow-black rounded-md bg-black/[.35] border-t-[1px] border-neutral-800/[.35]">
         {/* Highlight */}
         <div className="absolute inset-x-0 h-[1px] mx-auto -top-px bg-gradient-to-r from-transparent via-stone-400 to-transparent" />
-          <div className={cn("flex items-center justify-center font-bold pt-5 pb-3", font.className)}>
+          <div className={cn("flex items-center justify-center font-bold py-3 bg-gradient-to-t from-neutral-950/80  to-neutral-900/75 rounded-t-sm", font.className)}>
             {title}
           </div>
         <Table className="">

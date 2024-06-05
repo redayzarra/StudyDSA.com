@@ -57,13 +57,13 @@ export function Status({ userId, problemId }: Props) {
   const getBackgroundColor = (masteryLevel: string) => {
     switch (masteryLevel) {
       case "Practicing":
-        return "bg-neutral-600/25 hover:bg-black/30 text-neutral-400";
+        return "bg-neutral-600/25 hover:bg-black/30 hover:text-white text-neutral-400";
       case "Review":
-        return "bg-orange-400/50 hover:bg-yellow-400/50 text-neutral-200";
+        return "bg-orange-400/50 hover:bg-orange-500/60 hover:text-white text-neutral-200";
       case "Mastered":
-        return "bg-green-500/50 hover:bg-green-500/50 text-neutral-200";
+        return "bg-green-500/50 hover:bg-green-600/50 hover:text-white text-neutral-200";
       case "Challenging":
-        return "bg-red-500/50 hover:bg-red-500/50 text-neutral-200";
+        return "bg-red-500/50 hover:bg-red-600/50 hover:text-white text-neutral-200";
       default:
         return "bg-neutral-600/25 text-neutral-400";
     }
