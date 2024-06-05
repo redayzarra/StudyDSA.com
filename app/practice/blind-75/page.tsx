@@ -16,13 +16,12 @@ const Blind75Page = async () => {
   const userId = await getUserId();
 
   // Fetching problems in groups
-  const arrayProblems = await getProblems([151, 152, 3, 4, 5, 6, 7, 8, 9]);
-  const twoPointersProblems = await getProblems([10, 11, 12, 13]);
-  const slidingWindowProblems = await getProblems([14, 15, 16, 17]);
-  const stackProblems = await getProblems([24, 25, 26]);
-  const linkedlistProblems = await getProblems([29, 30, 31, 32]);
-  const binarySearchProblems = await getProblems([53, 54, 55, 56]);
-
+  const arrayProblems = await getProblems([76, 77, 78, 79, 80, 81, 7, 82]);
+  const twoPointersProblems = await getProblems([83, 84, 12]);
+  const slidingWindowProblems = await getProblems([85, 15, 86, 88]);
+  const stackProblems = await getProblems([89]);
+  const binarySearchProblems = await getProblems([90, 91]);
+  const linkedlistProblems = await getProblems([31, 92, 93, 94, 95, 96]);
 
   return (
     <div className="">

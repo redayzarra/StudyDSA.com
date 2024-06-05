@@ -232,18 +232,18 @@ export function SearchBar({ ...props }: DialogProps) {
       title: "LeetCode 75",
       href: "/practice/leetcode-75",
     },
-    {
-      title: "Top 100 Liked",
-      href: "/practice/top-100-liked",
-    },
+    // {
+    //   title: "Top 100 Liked",
+    //   href: "/practice/top-100-liked",
+    // },
     {
       title: "NeetCode 150",
       href: "/practice",
     },
-    {
-      title: "Top Interview 150",
-      href: "/practice/top-interview-150",
-    },
+    // {
+    //   title: "Top Interview 150",
+    //   href: "/practice/top-interview-150",
+    // },
   ];
 
   return (

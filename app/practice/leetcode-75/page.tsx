@@ -23,7 +23,7 @@ const LeetCode75Page = async () => {
   const hashmapProblems = await getProblems([20, 21, 22, 23]);
   const stackProblems = await getProblems([24, 25, 26]);
   const queueProblems = await getProblems([27, 28]);
-  const linkedlistProblems = await getProblems([29, 30, 31, 32]);
+  const linkedlistProblems = await getProblems([31, 29, 30, 32]);
   const dfsProblems = await getProblems([33, 34, 35, 36, 37, 38]);
   const bfsProblems = await getProblems([39, 40]);
   const binarySearchTreeProblems = await getProblems([41, 42]);
