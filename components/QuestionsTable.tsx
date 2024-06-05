@@ -31,6 +31,8 @@ import { Notes } from "./Notes";
 import QuestionCheckbox from "./QuestionCheckbox";
 import { Solution } from "./Solution";
 import { Status } from "./Status";
+import { CaretSortIcon } from "@radix-ui/react-icons";
+import { Button } from "./ui/button";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -44,9 +46,22 @@ interface Props {
   title: string;
 }
 
-export function QuestionsTable({ userId, title, problems, showTags = true }: Props) {
+const difficultyOrder = {
+  Easy: 1,
+  Medium: 2,
+  Hard: 3,
+};
+
+export function QuestionsTable({
+  userId,
+  title,
+  problems,
+  showTags = true,
+}: Props) {
   const [data, setData] = useState<LeetCodeProblem[]>(problems);
-  const [sorting, setSorting] = useState<SortingState>([]);
+  const [sorting, setSorting] = useState<SortingState>([
+    { id: "difficulty", desc: false },
+  ]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = useState({});
@@ -77,21 +92,30 @@ export function QuestionsTable({ userId, title, problems, showTags = true }: Pro
             >
               {row.getValue("title")}
             </Link>
-            {/* {showTags && (
-              <div className="absolute top-6 left-0">
-                <ProblemTags items={row.original.tags} />
-              </div>
-            )} */}
           </div>
         );
       },
     },
     {
       accessorKey: "difficulty",
-      header: () => <div className="flex items-center justify-center">Difficulty</div>,
-      cell: ({ row }) => <div className="flex items-center justify-center">
-        <Difficulty difficulty={row.original.difficulty} />
-      </div>,
+      header: ({ column }) => (
+        <Button
+          variant="ghost"
+          className="hover:bg-neutral-800/50"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Difficulty
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
+      ),
+      cell: ({ row }) => (
+        <div className="flex items-center justify-center">
+          <Difficulty difficulty={row.original.difficulty} />
+        </div>
+      ),
+      sortingFn: (a, b) =>
+        difficultyOrder[a.original.difficulty] -
+        difficultyOrder[b.original.difficulty],
     },
     {
       accessorKey: "status",
@@ -151,9 +175,14 @@ export function QuestionsTable({ userId, title, problems, showTags = true }: Pro
       <div className="w-full backdrop-blur-[15px] border-[1px] shadow-2xl shadow-black rounded-md bg-black/[.35] border-t-[1px] border-neutral-800/[.35]">
         {/* Highlight */}
         <div className="absolute inset-x-0 h-[1px] mx-auto -top-px bg-gradient-to-r from-transparent via-stone-400 to-transparent" />
-          <div className={cn("flex items-center justify-center font-bold py-4 border-b-transparent border-1 border bg-gradient-to-t from-neutral-950/80  to-neutral-900/75 rounded-t-sm", font.className)}>
-            {title}
-          </div>
+        <div
+          className={cn(
+            "flex items-center justify-center font-bold py-4 border-b-transparent border-1 border bg-gradient-to-t from-neutral-950/80  to-neutral-900/75 rounded-t-sm",
+            font.className
+          )}
+        >
+          {title}
+        </div>
         <Table className="">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
