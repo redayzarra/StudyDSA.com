@@ -1423,6 +1423,7 @@ async function seedLeetCodeProblems() {
 
     await database.leetCodeProblem.create({
       data: {
+        id: problem.id,
         title: problem.title,
         href: problem.href,
         difficulty: problem.difficulty,
