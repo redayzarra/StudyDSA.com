@@ -27,6 +27,7 @@ export const BentoGridItem = ({
   description,
   header,
   icon,
+  external,
 }: {
   className?: string;
   url: string;
@@ -34,6 +35,7 @@ export const BentoGridItem = ({
   description?: string | React.ReactNode;
   header?: React.ReactNode;
   icon?: React.ReactNode;
+  external?: boolean;
 }) => {
   return (
     <Link
@@ -42,6 +44,8 @@ export const BentoGridItem = ({
         "row-span-1 group/bento hover:shadow-xl transition duration-200 justify-between flex flex-col space-y-4 w-full backdrop-blur-[15px] border-[1px] shadow-2xl shadow-black rounded-md bg-black/[.35] border-t-[1px] border-neutral-800/[.35] p-4",
         className
       )}
+      target={external ? "_blank" : ""}
+      rel={external ? "noopener noreferrer" : ""}
     >
       {/* Highlight at the very top */}
       <div className="absolute inset-x-0 h-[1px] mx-auto -top-px bg-gradient-to-r from-transparent via-stone-400 to-transparent" />

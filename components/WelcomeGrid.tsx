@@ -22,6 +22,7 @@ export function WelcomeGrid() {
           description={item.description}
           header={item.header}
           className={i === 3 || i === 6 ? "md:col-span-2" : ""}
+          external={item.external}
         />
       ))}
     </BentoGrid>
@@ -306,9 +307,10 @@ const items = [
     header: <SkeletonFour />,
   },
   {
-    title: "About Us",
-    url: "/about",
+    title: "About Me",
+    url: "https://www.linkedin.com/in/redayzarra/",
     description: "A one-man team and his mission to make education free.",
     header: <Skeleton />,
+    external: true,
   },
 ];
