@@ -206,6 +206,7 @@ export function QuestionsTable({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
+                  className="h-[10px]"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>

@@ -20,7 +20,8 @@ export function Notes({ userId, problemId }: Props) {
       <DialogTrigger asChild>
         <Button
           variant="secondary"
-          className="bg-black/50 hover:bg-neutral-950/50 text-neutral-400 hover:text-white px-2 py-1"
+          size="sm"
+          className="bg-neutral-900/75 hover:bg-neutral-800/50 text-neutral-400 hover:text-white px-2"
         >
           <FaRegStickyNote size={20} />
         </Button>

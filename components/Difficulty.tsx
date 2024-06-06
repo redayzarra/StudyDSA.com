@@ -16,7 +16,7 @@ const getBadgeColor = (difficulty: QuestionDifficulty) => {
 };
 
 const Difficulty = ({ difficulty }: { difficulty: QuestionDifficulty }) => {
-  return <Badge variant="secondary" className={`rounded-[4px] h-6 font-medium ${getBadgeColor(difficulty)}`}>{difficulty}</Badge>;
+  return <Badge variant="secondary" className={`rounded-[4px] font-medium ${getBadgeColor(difficulty)}`}>{difficulty}</Badge>;
 };
 
 export default Difficulty;
