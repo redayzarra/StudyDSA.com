@@ -52,7 +52,7 @@ const QuestionsTabs = () => {
       <div className="absolute inset-x-0 h-[1px] mx-auto -top-px bg-gradient-to-r from-transparent via-stone-400 to-transparent" />
       <Accordion
         type="single"
-        className="w-full md:w-[180px]"
+        className="w-full"
         collapsible
         defaultValue="questions"
       >

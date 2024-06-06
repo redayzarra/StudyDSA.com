@@ -14,7 +14,7 @@ const font = Poppins({
 
 const LeetCode75Page = async () => {
   const userId = await getUserId();
-  
+
   // Fetching problems in groups
   const arrayProblems = await getProblems([1, 2, 3, 4, 5, 6, 7, 8, 9]);
   const twoPointersProblems = await getProblems([10, 11, 12, 13]);
@@ -39,7 +39,6 @@ const LeetCode75Page = async () => {
   const intervalsProblems = await getProblems([72, 73]);
   const monoStackProblems = await getProblems([74, 75]);
 
-
   return (
     <div className="">
       <div className="space-y-5 mt-4 md:mt-0">
@@ -59,122 +58,113 @@ const LeetCode75Page = async () => {
         </h2>
       </div>
       <Separator className="my-4 self-stretch bg-border" />
-      <div className="grid grid-cols-1 transition-all md:grid-cols-[1fr_5fr] gap-x-3">
-        <div className="mt-4 hidden md:block">
-          <QuestionsTabs />
-        </div>
-        <div className="w-full mt-4 space-y-12">
-          <QuestionsTable
-            title="Array / String"
-            problems={arrayProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Two Pointers"
-            problems={twoPointersProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Sliding Window"
-            problems={slidingWindowProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Prefix Sum"
-            problems={prefixSumProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Hash Map / Set"
-            problems={hashmapProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Stack"
-            problems={stackProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Queue"
-            problems={queueProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Linked List"
-            problems={linkedlistProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Binary Tree - DFS"
-            problems={dfsProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Binary Tree - BFS"
-            problems={bfsProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Binary Search Tree"
-            problems={binarySearchTreeProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Graphs - DFS"
-            problems={graphDFSProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Graphs - BFS"
-            problems={graphBFSProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Heap / Priority Queue"
-            problems={heapProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Binary Search"
-            problems={binarySearchProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Backtracking"
-            problems={backtrackingProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="DP - 1D"
-            problems={oneDProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="DP - Multidimensional"
-            problems={multiDPProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Bit Manipulation"
-            problems={bitProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Trie"
-            problems={trieProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Intervals"
-            problems={intervalsProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Monotonic Stack"
-            problems={monoStackProblems}
-            userId={userId}
-          />
-        </div>
+      <div className="w-full mt-4 space-y-12">
+        <QuestionsTable
+          title="Array / String"
+          problems={arrayProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Two Pointers"
+          problems={twoPointersProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Sliding Window"
+          problems={slidingWindowProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Prefix Sum"
+          problems={prefixSumProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Hash Map / Set"
+          problems={hashmapProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Stack"
+          problems={stackProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Queue"
+          problems={queueProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Linked List"
+          problems={linkedlistProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Binary Tree - DFS"
+          problems={dfsProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Binary Tree - BFS"
+          problems={bfsProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Binary Search Tree"
+          problems={binarySearchTreeProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Graphs - DFS"
+          problems={graphDFSProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Graphs - BFS"
+          problems={graphBFSProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Heap / Priority Queue"
+          problems={heapProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Binary Search"
+          problems={binarySearchProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Backtracking"
+          problems={backtrackingProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="DP - 1D"
+          problems={oneDProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="DP - Multidimensional"
+          problems={multiDPProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Bit Manipulation"
+          problems={bitProblems}
+          userId={userId}
+        />
+        <QuestionsTable title="Trie" problems={trieProblems} userId={userId} />
+        <QuestionsTable
+          title="Intervals"
+          problems={intervalsProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Monotonic Stack"
+          problems={monoStackProblems}
+          userId={userId}
+        />
       </div>
     </div>
   );

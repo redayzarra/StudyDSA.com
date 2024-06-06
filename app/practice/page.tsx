@@ -56,102 +56,89 @@ const PracticePage = async () => {
         </h2>
       </div>
       <Separator className="my-4 self-stretch bg-border" />
-      <div className="grid grid-cols-1 transition-all md:grid-cols-[1fr_5fr] gap-x-3">
-        <div className="mt-4 hidden md:block">
-          <QuestionsTabs />
-        </div>
-        <div className="w-full mt-4 space-y-12">
-          <QuestionsTable
-            title="Array / String"
-            problems={arrayProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Two Pointers"
-            problems={twoPointersProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Sliding Window"
-            problems={slidingWindowProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Stack"
-            problems={stackProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Binary Search"
-            problems={binarySearchProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Linked List"
-            problems={linkedlistProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Trees"
-            problems={treesProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Heap"
-            problems={heapsProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Backtracking"
-            problems={backtrackingProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Tries"
-            problems={triesProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Graphs"
-            problems={graphsProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Advanced Graphs"
-            problems={advancedProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="1D Dynamic Programming"
-            problems={onedprogrammingProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="2D Dynamic Programming"
-            problems={twodprogrammingProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Greedy Algorithms"
-            problems={greedyProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Intervals"
-            problems={intervalsProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Math"
-            problems={mathProblems}
-            userId={userId}
-          />
-          <QuestionsTable
-            title="Bit Manipulation"
-            problems={bitProblems}
-            userId={userId}
-          />
-        </div>
+      <div className="w-full mt-4 space-y-12">
+        <QuestionsTable
+          title="Array / String"
+          problems={arrayProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Two Pointers"
+          problems={twoPointersProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Sliding Window"
+          problems={slidingWindowProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Stack"
+          problems={stackProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Binary Search"
+          problems={binarySearchProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Linked List"
+          problems={linkedlistProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Trees"
+          problems={treesProblems}
+          userId={userId}
+        />
+        <QuestionsTable title="Heap" problems={heapsProblems} userId={userId} />
+        <QuestionsTable
+          title="Backtracking"
+          problems={backtrackingProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Tries"
+          problems={triesProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Graphs"
+          problems={graphsProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Advanced Graphs"
+          problems={advancedProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="1D Dynamic Programming"
+          problems={onedprogrammingProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="2D Dynamic Programming"
+          problems={twodprogrammingProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Greedy Algorithms"
+          problems={greedyProblems}
+          userId={userId}
+        />
+        <QuestionsTable
+          title="Intervals"
+          problems={intervalsProblems}
+          userId={userId}
+        />
+        <QuestionsTable title="Math" problems={mathProblems} userId={userId} />
+        <QuestionsTable
+          title="Bit Manipulation"
+          problems={bitProblems}
+          userId={userId}
+        />
       </div>
     </div>
   );
