@@ -22,6 +22,18 @@ const Blind75Page = async () => {
   const stackProblems = await getProblems([89]);
   const binarySearchProblems = await getProblems([90, 91]);
   const linkedlistProblems = await getProblems([31, 92, 93, 94, 95, 96]);
+  const treesProblems = await getProblems([97, 33, 99, 100, 101, 102, 103, 104, 105, 106, 107]);
+  const heapsProblems = await getProblems([108]);
+  const backtrackingProblems = await getProblems([109, 110]);
+  const triesProblems = await getProblems([70, 112, 113]);
+  const graphsProblems = await getProblems([114, 115, 116, 117, 118, 119]);
+  const advancedProblems = await getProblems([120]);
+  const onedprogrammingProblems = await getProblems([121, 61, 123, 124, 125, 126, 127, 128, 129, 130]);
+  const twodprogrammingProblems = await getProblems([31, 92, 93, 94, 95, 96]);
+  const greedyProblems = await getProblems([133, 134]);
+  const intervalsProblems = await getProblems([135, 136, 137, 138, 72]);
+  const mathProblems = await getProblems([140, 141, 142]);
+  const bitProblems = await getProblems([143, 67, 145, 146, 147]);
 
   return (
     <div className="">
@@ -51,37 +63,91 @@ const Blind75Page = async () => {
             title="Array / String"
             problems={arrayProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="Two Pointers"
             problems={twoPointersProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="Sliding Window"
             problems={slidingWindowProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="Stack"
             problems={stackProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="Binary Search"
             problems={binarySearchProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="Linked List"
             problems={linkedlistProblems}
             userId={userId}
-            showTags={false}
+          />
+          <QuestionsTable
+            title="Trees"
+            problems={treesProblems}
+            userId={userId}
+          />
+          <QuestionsTable
+            title="Heap"
+            problems={heapsProblems}
+            userId={userId}
+          />
+          <QuestionsTable
+            title="Backtracking"
+            problems={backtrackingProblems}
+            userId={userId}
+          />
+          <QuestionsTable
+            title="Tries"
+            problems={triesProblems}
+            userId={userId}
+          />
+          <QuestionsTable
+            title="Graphs"
+            problems={graphsProblems}
+            userId={userId}
+          />
+          <QuestionsTable
+            title="Advanced Graphs"
+            problems={advancedProblems}
+            userId={userId}
+          />
+          <QuestionsTable
+            title="1D Dynamic Programming"
+            problems={onedprogrammingProblems}
+            userId={userId}
+          />
+          <QuestionsTable
+            title="2D Dynamic Programming"
+            problems={twodprogrammingProblems}
+            userId={userId}
+          />
+          <QuestionsTable
+            title="Greedy Algorithms"
+            problems={greedyProblems}
+            userId={userId}
+          />
+          <QuestionsTable
+            title="Intervals"
+            problems={intervalsProblems}
+            userId={userId}
+          />
+          <QuestionsTable
+            title="Math"
+            problems={mathProblems}
+            userId={userId}
+          />
+          <QuestionsTable
+            title="Bit Manipulation"
+            problems={bitProblems}
+            userId={userId}
           />
         </div>
       </div>

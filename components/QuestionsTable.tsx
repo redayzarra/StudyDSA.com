@@ -42,7 +42,6 @@ const font = Poppins({
 interface Props {
   userId: string | undefined;
   problems: LeetCodeProblem[];
-  showTags?: boolean;
   title: string;
 }
 
@@ -56,7 +55,6 @@ export function QuestionsTable({
   userId,
   title,
   problems,
-  showTags = true,
 }: Props) {
   const [data, setData] = useState<LeetCodeProblem[]>(problems);
   const [sorting, setSorting] = useState<SortingState>([

@@ -1516,7 +1516,7 @@ const leetCodeProblems = [
   },
   {
     id: 105,
-    title: "Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal",
+    title: "Construct Binary Tree from Preorder and Inorder Traversal",
     href: "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description",
     difficulty: "Medium",
     completed: false,
