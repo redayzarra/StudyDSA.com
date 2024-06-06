@@ -68,133 +68,111 @@ const LeetCode75Page = async () => {
             title="Array / String"
             problems={arrayProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="Two Pointers"
             problems={twoPointersProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="Sliding Window"
             problems={slidingWindowProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="Prefix Sum"
             problems={prefixSumProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="Hash Map / Set"
             problems={hashmapProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="Stack"
             problems={stackProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="Queue"
             problems={queueProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="Linked List"
             problems={linkedlistProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="Binary Tree - DFS"
             problems={dfsProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="Binary Tree - BFS"
             problems={bfsProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="Binary Search Tree"
             problems={binarySearchTreeProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="Graphs - DFS"
             problems={graphDFSProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="Graphs - BFS"
             problems={graphBFSProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="Heap / Priority Queue"
             problems={heapProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="Binary Search"
             problems={binarySearchProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="Backtracking"
             problems={backtrackingProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="DP - 1D"
             problems={oneDProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="DP - Multidimensional"
             problems={multiDPProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="Bit Manipulation"
             problems={bitProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="Trie"
             problems={trieProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="Intervals"
             problems={intervalsProblems}
             userId={userId}
-            showTags={false}
           />
           <QuestionsTable
             title="Monotonic Stack"
             problems={monoStackProblems}
             userId={userId}
-            showTags={false}
           />
         </div>
       </div>

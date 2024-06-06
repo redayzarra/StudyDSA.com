@@ -44,7 +44,6 @@ const PracticePage = async () => {
             title="Arrays/Strings"
             problems={[]}
             userId={userId}
-            showTags={false}
           />
         </div>
       </div>
