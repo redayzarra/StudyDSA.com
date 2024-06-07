@@ -25,25 +25,32 @@ const fetchProblemsByCategories = async (categories: ProblemCategories) => {
 
 const PracticePage = async () => {
   const userId = await getUserId();
+
   const categories = {
     "Array / String": [76, 77, 78, 79, 80, 81, 7, 148, 82],
     "Two Pointers": [83, 84, 12, 149, 150],
     "Sliding Window": [85, 86, 87, 88, 151, 152],
     Stack: [89, 153, 154, 155, 74, 157, 158],
     "Binary Search": [90, 91, 159, 160, 161, 56, 162],
-    "Linked List": [31, 92, 93, 94, 95, 96],
-    Trees: [97, 33, 99, 100, 101, 102, 103, 104, 105, 106, 107],
-    Heaps: [108],
-    Backtracking: [109, 110],
+    "Linked List": [31, 92, 93, 94, 95, 96, 163, 164, 165, 166, 167],
+    Trees: [
+      97, 33, 35, 39, 99, 100, 101, 102, 103, 104, 105, 106, 107, 168, 169,
+    ],
+    Heaps: [49, 108, 170, 171, 172, 173, 174],
+    Backtracking: [57, 58, 109, 110, 175, 176, 177, 178, 179],
     Tries: [70, 112, 113],
-    Graphs: [114, 115, 116, 117, 118, 119],
-    "Advanced Graphs": [120],
-    "1D Dynamic Programming": [121, 61, 123, 124, 125, 126, 127, 128, 129, 130],
-    "2D Dynamic Programming": [63, 64],
-    "Greedy Algorithms": [133, 134],
-    Intervals: [135, 136, 137, 138, 72],
-    Math: [140, 141, 142],
-    "Bit Manipulation": [143, 67, 145, 146, 147],
+    Graphs: [48, 114, 115, 116, 117, 118, 119, 180, 181, 182, 183, 184, 185],
+    "Advanced Graphs": [120, 186, 187, 188, 189, 190],
+    "1D Dynamic Programming": [
+      60, 121, 61, 123, 124, 125, 126, 127, 128, 129, 130, 191,
+    ],
+    "2D Dynamic Programming": [
+      63, 64, 66, 192, 193, 194, 195, 196, 197, 198, 199,
+    ],
+    "Greedy Algorithms": [133, 134, 200, 201, 202, 203, 204, 205],
+    Intervals: [135, 136, 137, 138, 72, 206],
+    Math: [140, 141, 142, 207, 208, 209, 210, 211],
+    "Bit Manipulation": [143, 67, 68, 145, 146, 147, 212],
   };
 
   const problemsByCategory = await fetchProblemsByCategories(categories);
