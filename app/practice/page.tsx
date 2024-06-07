@@ -24,7 +24,7 @@ const fetchProblemsByCategories = async (categories: ProblemCategories) => {
       // Error handling
     } catch (error) {
       console.error(`Error fetching problems for category: ${category}`, error);
-      problems[category] = []; // Assign an empty array in case of an error
+      problems[category] = [];
     }
   }
 

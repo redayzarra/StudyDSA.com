@@ -1,43 +1,65 @@
-import getProblems from "@/actions/questions/getProblems";
 import { QuestionsTable } from "@/components/QuestionsTable";
-import QuestionsTabs from "@/components/QuestionsTabs";
 import TextLink from "@/components/TextLink";
 import { Separator } from "@/components/ui/separator";
-import getUserId from "@/hooks/server/getUserId";
 import { cn } from "@/lib/utils";
 import { Poppins } from "next/font/google";
+import getUserId from "@/hooks/server/getUserId";
+import getProblems from "@/actions/questions/getProblems";
 
 const font = Poppins({
   subsets: ["latin"],
   weight: ["700"],
 });
 
+type ProblemCategories = {
+  [category: string]: number[];
+};
+
+const fetchProblemsByCategories = async (categories: ProblemCategories) => {
+  const problems: { [category: string]: any } = {};
+  for (const [category, ids] of Object.entries(categories)) {
+    try {
+      problems[category] = await getProblems(ids);
+      
+      // Error handling
+    } catch (error) {
+      console.error(`Error fetching problems for category: ${category}`, error);
+      problems[category] = [];
+    }
+  }
+
+  return problems;
+};
+
 const LeetCode75Page = async () => {
   const userId = await getUserId();
 
-  // Fetching problems in groups
-  const arrayProblems = await getProblems([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-  const twoPointersProblems = await getProblems([10, 11, 12, 13]);
-  const slidingWindowProblems = await getProblems([14, 15, 16, 17]);
-  const prefixSumProblems = await getProblems([18, 19]);
-  const hashmapProblems = await getProblems([20, 21, 22, 23]);
-  const stackProblems = await getProblems([24, 25, 26]);
-  const queueProblems = await getProblems([27, 28]);
-  const linkedlistProblems = await getProblems([31, 29, 30, 32]);
-  const dfsProblems = await getProblems([33, 34, 35, 36, 37, 38]);
-  const bfsProblems = await getProblems([39, 40]);
-  const binarySearchTreeProblems = await getProblems([41, 42]);
-  const graphDFSProblems = await getProblems([43, 44, 45, 46]);
-  const graphBFSProblems = await getProblems([47, 48]);
-  const heapProblems = await getProblems([49, 50, 51, 52]);
-  const binarySearchProblems = await getProblems([53, 54, 55, 56]);
-  const backtrackingProblems = await getProblems([57, 58]);
-  const oneDProblems = await getProblems([59, 60, 61, 62]);
-  const multiDPProblems = await getProblems([63, 64, 65, 66]);
-  const bitProblems = await getProblems([67, 68, 69]);
-  const trieProblems = await getProblems([70, 71]);
-  const intervalsProblems = await getProblems([72, 73]);
-  const monoStackProblems = await getProblems([74, 75]);
+  const categories = {
+    "Array / String": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    "Two Pointers": [10, 11, 12, 13],
+    "Sliding Window": [14, 15, 16, 17],
+    "Prefix Sum": [18, 19],
+    "Hash Map / Set": [20, 21, 22, 23],
+    Stack: [24, 25, 26],
+    Queue: [27, 28],
+    "Linked List": [31, 29, 30, 32],
+    "Binary Tree - DFS": [33, 34, 35, 36, 37, 38],
+    "Binary Tree - BFS": [39, 40],
+    "Binary Search Tree": [41, 42],
+    "Graphs - DFS": [43, 44, 45, 46],
+    "Graphs - BFS": [47, 48],
+    "Heap / Priority Queue": [49, 50, 51, 52],
+    "Binary Search": [53, 54, 55, 56],
+    Backtracking: [57, 58],
+    "DP - 1D": [59, 60, 61, 62],
+    "DP - Multidimensional": [63, 64, 65, 66],
+    "Bit Manipulation": [67, 68, 69],
+    Trie: [70, 71],
+    Intervals: [72, 73],
+    "Monotonic Stack": [74, 75],
+  };
+
+  const problemsByCategory = await fetchProblemsByCategories(categories);
 
   return (
     <div className="">
@@ -59,115 +81,20 @@ const LeetCode75Page = async () => {
       </div>
       <Separator className="my-4 self-stretch bg-border" />
       <div className="w-full mt-4 space-y-12">
-        <QuestionsTable
-          title="Array / String"
-          problems={arrayProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Two Pointers"
-          problems={twoPointersProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Sliding Window"
-          problems={slidingWindowProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Prefix Sum"
-          problems={prefixSumProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Hash Map / Set"
-          problems={hashmapProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Stack"
-          problems={stackProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Queue"
-          problems={queueProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Linked List"
-          problems={linkedlistProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Binary Tree - DFS"
-          problems={dfsProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Binary Tree - BFS"
-          problems={bfsProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Binary Search Tree"
-          problems={binarySearchTreeProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Graphs - DFS"
-          problems={graphDFSProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Graphs - BFS"
-          problems={graphBFSProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Heap / Priority Queue"
-          problems={heapProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Binary Search"
-          problems={binarySearchProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Backtracking"
-          problems={backtrackingProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="DP - 1D"
-          problems={oneDProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="DP - Multidimensional"
-          problems={multiDPProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Bit Manipulation"
-          problems={bitProblems}
-          userId={userId}
-        />
-        <QuestionsTable title="Trie" problems={trieProblems} userId={userId} />
-        <QuestionsTable
-          title="Intervals"
-          problems={intervalsProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Monotonic Stack"
-          problems={monoStackProblems}
-          userId={userId}
-        />
+        {Object.entries(problemsByCategory)
+          .filter(([_, problems]) => problems.length > 0)
+          .map(([category, problems]) => (
+            <QuestionsTable
+              key={category}
+              title={category}
+              problems={problems}
+              userId={userId}
+            />
+          ))}
       </div>
     </div>
   );
 };
 
 export default LeetCode75Page;
+
