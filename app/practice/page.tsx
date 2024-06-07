@@ -18,8 +18,16 @@ type ProblemCategories = {
 const fetchProblemsByCategories = async (categories: ProblemCategories) => {
   const problems: { [category: string]: any } = {};
   for (const [category, ids] of Object.entries(categories)) {
-    problems[category] = await getProblems(ids);
+    try {
+      problems[category] = await getProblems(ids);
+      
+      // Error handling
+    } catch (error) {
+      console.error(`Error fetching problems for category: ${category}`, error);
+      problems[category] = []; // Assign an empty array in case of an error
+    }
   }
+
   return problems;
 };
 
