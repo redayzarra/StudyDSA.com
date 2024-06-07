@@ -175,10 +175,7 @@ model LeetCodeProblem {
   title        String
   href         String
   difficulty   QuestionDifficulty
-  completed    Boolean            @default(false)
-  masteryLevel MasteryLevel       @default(Practicing)
   tags         ProblemTag[]
-  notes        String?
   videoURL     String?
   solution     String?
 

@@ -18,7 +18,7 @@ const Blind75Page = async () => {
   // Fetching problems in groups
   const arrayProblems = await getProblems([76, 77, 78, 79, 80, 81, 7, 82]);
   const twoPointersProblems = await getProblems([83, 84, 12]);
-  const slidingWindowProblems = await getProblems([85, 15, 86, 88]);
+  const slidingWindowProblems = await getProblems([85, 86, 87, 88]);
   const stackProblems = await getProblems([89]);
   const binarySearchProblems = await getProblems([90, 91]);
   const linkedlistProblems = await getProblems([31, 92, 93, 94, 95, 96]);
@@ -33,7 +33,7 @@ const Blind75Page = async () => {
   const onedprogrammingProblems = await getProblems([
     121, 61, 123, 124, 125, 126, 127, 128, 129, 130,
   ]);
-  const twodprogrammingProblems = await getProblems([31, 92, 93, 94, 95, 96]);
+  const twodprogrammingProblems = await getProblems([63, 64]);
   const greedyProblems = await getProblems([133, 134]);
   const intervalsProblems = await getProblems([135, 136, 137, 138, 72]);
   const mathProblems = await getProblems([140, 141, 142]);

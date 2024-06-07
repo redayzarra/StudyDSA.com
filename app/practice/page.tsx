@@ -1,5 +1,4 @@
 import { QuestionsTable } from "@/components/QuestionsTable";
-import QuestionsTabs from "@/components/QuestionsTabs";
 import TextLink from "@/components/TextLink";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
@@ -12,32 +11,42 @@ const font = Poppins({
   weight: ["700"],
 });
 
+type ProblemCategories = {
+  [category: string]: number[];
+};
+
+const fetchProblemsByCategories = async (categories: ProblemCategories) => {
+  const problems: { [category: string]: any } = {};
+  for (const [category, ids] of Object.entries(categories)) {
+    problems[category] = await getProblems(ids);
+  }
+  return problems;
+};
+
 const PracticePage = async () => {
   const userId = await getUserId();
+  const categories = {
+    "Array / String": [76, 77, 78, 79, 80, 81, 7, 148, 82],
+    "Two Pointers": [83, 84, 12, 149, 150],
+    "Sliding Window": [85, 86, 87, 88, 151, 152],
+    Stack: [89, 153, 154, 155, 74, 157, 158],
+    "Binary Search": [90, 91, 159, 160, 161, 56, 162],
+    "Linked List": [31, 92, 93, 94, 95, 96],
+    Trees: [97, 33, 99, 100, 101, 102, 103, 104, 105, 106, 107],
+    Heaps: [108],
+    Backtracking: [109, 110],
+    Tries: [70, 112, 113],
+    Graphs: [114, 115, 116, 117, 118, 119],
+    "Advanced Graphs": [120],
+    "1D Dynamic Programming": [121, 61, 123, 124, 125, 126, 127, 128, 129, 130],
+    "2D Dynamic Programming": [63, 64],
+    "Greedy Algorithms": [133, 134],
+    Intervals: [135, 136, 137, 138, 72],
+    Math: [140, 141, 142],
+    "Bit Manipulation": [143, 67, 145, 146, 147],
+  };
 
-  // Fetching problems in groups
-  const arrayProblems = await getProblems([76, 77, 78, 79, 80, 81, 7, 82]);
-  const twoPointersProblems = await getProblems([83, 84, 12]);
-  const slidingWindowProblems = await getProblems([85, 15, 86, 88]);
-  const stackProblems = await getProblems([89]);
-  const binarySearchProblems = await getProblems([90, 91]);
-  const linkedlistProblems = await getProblems([31, 92, 93, 94, 95, 96]);
-  const treesProblems = await getProblems([
-    97, 33, 99, 100, 101, 102, 103, 104, 105, 106, 107,
-  ]);
-  const heapsProblems = await getProblems([108]);
-  const backtrackingProblems = await getProblems([109, 110]);
-  const triesProblems = await getProblems([70, 112, 113]);
-  const graphsProblems = await getProblems([114, 115, 116, 117, 118, 119]);
-  const advancedProblems = await getProblems([120]);
-  const onedprogrammingProblems = await getProblems([
-    121, 61, 123, 124, 125, 126, 127, 128, 129, 130,
-  ]);
-  const twodprogrammingProblems = await getProblems([31, 92, 93, 94, 95, 96]);
-  const greedyProblems = await getProblems([133, 134]);
-  const intervalsProblems = await getProblems([135, 136, 137, 138, 72]);
-  const mathProblems = await getProblems([140, 141, 142]);
-  const bitProblems = await getProblems([143, 67, 145, 146, 147]);
+  const problemsByCategory = await fetchProblemsByCategories(categories);
 
   return (
     <div className="">
@@ -57,88 +66,16 @@ const PracticePage = async () => {
       </div>
       <Separator className="my-4 self-stretch bg-border" />
       <div className="w-full mt-4 space-y-12">
-        <QuestionsTable
-          title="Array / String"
-          problems={arrayProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Two Pointers"
-          problems={twoPointersProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Sliding Window"
-          problems={slidingWindowProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Stack"
-          problems={stackProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Binary Search"
-          problems={binarySearchProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Linked List"
-          problems={linkedlistProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Trees"
-          problems={treesProblems}
-          userId={userId}
-        />
-        <QuestionsTable title="Heap" problems={heapsProblems} userId={userId} />
-        <QuestionsTable
-          title="Backtracking"
-          problems={backtrackingProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Tries"
-          problems={triesProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Graphs"
-          problems={graphsProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Advanced Graphs"
-          problems={advancedProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="1D Dynamic Programming"
-          problems={onedprogrammingProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="2D Dynamic Programming"
-          problems={twodprogrammingProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Greedy Algorithms"
-          problems={greedyProblems}
-          userId={userId}
-        />
-        <QuestionsTable
-          title="Intervals"
-          problems={intervalsProblems}
-          userId={userId}
-        />
-        <QuestionsTable title="Math" problems={mathProblems} userId={userId} />
-        <QuestionsTable
-          title="Bit Manipulation"
-          problems={bitProblems}
-          userId={userId}
-        />
+        {Object.entries(problemsByCategory)
+          .filter(([_, problems]) => problems.length > 0)
+          .map(([category, problems]) => (
+            <QuestionsTable
+              key={category}
+              title={category}
+              problems={problems}
+              userId={userId}
+            />
+          ))}
       </div>
     </div>
   );
