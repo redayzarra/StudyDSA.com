@@ -99,7 +99,7 @@ const LinkedListsPage = async () => {
           title="Pointers.py"
         />
         <ImageBlock
-          src="/images/linked-lists/Pointers.gif"
+          src="/images/linked-lists/AddingNodeToBeginning.gif"
           alt="Animation of linked lists and pointers used to add new list node"
         />
         <p>
@@ -170,7 +170,10 @@ const LinkedListsPage = async () => {
           language="python"
           title="Sentinels.py"
         />
-        <br />
+        <ImageBlock
+          src="/images/linked-lists/SentinelNodes.gif"
+          alt="Animation of linked lists and sentinel nodes used to add a new node"
+        />
         <p>
           By initializing the list with two dummy nodes,{" "}
           <CodeText>self.left</CodeText> and <CodeText>self.right</CodeText>,
