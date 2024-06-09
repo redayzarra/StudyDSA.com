@@ -18,6 +18,7 @@ import {
   singleNodeCode,
   singlyLinkedList,
 } from "./linkedListsCode";
+import ImageBlock from "@/components/ImageBlock";
 
 const LinkedListsPage = async () => {
   const topic = await getTopicById(2);
@@ -97,7 +98,10 @@ const LinkedListsPage = async () => {
           language="python"
           title="LinkedLists_Pointers.py"
         />
-        <br />
+        <ImageBlock
+          src="/images/linked-lists/Pointers.gif"
+          alt="Animation of linked lists and pointers used to add new list node"
+        />
         <p>
           The example above shows how to insert a new{" "}
           <CodeText>ListNode</CodeText> at the beginning of a linked list. It
