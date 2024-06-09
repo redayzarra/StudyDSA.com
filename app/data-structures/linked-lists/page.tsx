@@ -96,7 +96,7 @@ const LinkedListsPage = async () => {
         <CodeBlock
           code={linkedPointersCode}
           language="python"
-          title="LinkedLists_Pointers.py"
+          title="Pointers.py"
         />
         <ImageBlock
           src="/images/linked-lists/Pointers.gif"
@@ -104,12 +104,13 @@ const LinkedListsPage = async () => {
         />
         <p>
           The example above shows how to insert a new{" "}
-          <CodeText>ListNode</CodeText> at the beginning of a linked list. It
+          <CodeText>ListNode</CodeText> after the head of a linked list. It
           starts by creating a new list node with the given{" "}
           <CodeText>value</CodeText>. Then, it sets this new node&apos;s{" "}
-          <CodeText>next</CodeText> pointer to the current{" "}
-          <CodeText>head</CodeText> of the list, effectively placing the new
-          node at the front.
+          <CodeText>next</CodeText> pointer to the node after{" "}
+          <CodeText>head</CodeText>. Finally, <CodeText>head</CodeText>&apos;s
+          next pointer is set to the <CodeText>new_node</CodeText> effectively
+          placing the new node at the front.
         </p>
       </ChapterHeading>
 
