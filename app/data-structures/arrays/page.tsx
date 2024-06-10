@@ -18,6 +18,7 @@ import {
   stackCode,
   staticArrayCode,
 } from "./arrayCode";
+import ImageBlock from "@/components/ImageBlock";
 
 const ArraysPage = async () => {
   const topic = await getTopicById(1);
@@ -100,7 +101,10 @@ const ArraysPage = async () => {
           <br />
         </p>
         <CodeBlock code={pointerCodePy} language="python" title="Pointers.py" />
-        <br />
+        <ImageBlock
+          src="/images/arrays/ArrayPointers.gif"
+          alt="Animation of two pointers being used to reverse the elements of an array"
+        />
         <p>
           The code above defines a function <CodeText>reverse</CodeText> that
           takes an array of integers and reverses its elements in place, meaning
@@ -109,10 +113,6 @@ const ArraysPage = async () => {
           beginning of the array and <CodeText>right</CodeText> at the end. The
           pointers meet in the middle to swap the elements, which reverses the
           input.
-          <br />
-          <br />
-          By using indexes to directly access and modify array elements, this
-          approach mimics pointer manipulation in lower-level languages.
         </p>
       </ChapterHeading>
 

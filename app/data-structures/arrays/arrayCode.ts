@@ -25,9 +25,9 @@ export const pointerCodePy =
         right -= 1
 
   # Example usage
-  my_array = [1, 2, 3, 4, 5]
+  my_array = [1, 2, 3, 4, 5, 6]
   reverse(my_array)
-  print(my_array)  # Output: [5, 4, 3, 2, 1]`;
+  print(my_array)  # Output: [6, 5, 4, 3, 2, 1]`;
 
 export const staticArrayCode = 
   `#include <stdio.h>
