@@ -9,13 +9,14 @@ const font = Poppins({
 });
 
 interface Props {
+  className?: string;
   size?: "default" | "lg";
 }
 
-export const LogoText = ({ size = "default" }: Props) => {
+export const LogoText = ({ size = "default", className }: Props) => {
   const imageSize = size === "lg" ? 30 : 18;
   return (
-    <div className="gap-x-1 flex items-center">
+    <div className={`gap-x-1 flex items-center ${className}`}>
       <Image width={imageSize} height={imageSize} alt="StudyDSA.com Logo" src="/images/icon.png"/>
       <h1
         className={cn(

@@ -20,7 +20,6 @@ import {
   CommandItem,
   CommandList,
 } from "./ui/command";
-import { ScrollArea } from "./ui/scroll-area";
 import { FaSearch } from "react-icons/fa";
 
 export function SearchBar({ ...props }: DialogProps) {
