@@ -1,18 +1,25 @@
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React, { PropsWithChildren } from "react";
 
 interface Props {
   href: string;
   external?: boolean;
+  className?: string;
 }
 
-const TextLink = ({ children, href, external = false }: PropsWithChildren<Props>) => {
+const TextLink = ({
+  className,
+  children,
+  href,
+  external = false,
+}: PropsWithChildren<Props>) => {
   return (
     <Link
       href={href}
       target={external ? "_blank" : ""}
       rel={external ? "noopener noreferrer" : ""}
-      className="underline text-yellow-500 dark:text-primary font-medium"
+      className={cn(`underline text-primary font-medium`, className)}
     >
       {children}
     </Link>
