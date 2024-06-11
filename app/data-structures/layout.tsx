@@ -10,7 +10,7 @@ const DataStructuresLayout = ({ children }: { children: React.ReactNode }) => {
         <aside className="fixed top-16 z-3 -ml-2 hidden h-[92vh] w-full shrink-0 lg:sticky lg:block">
           <TableOfContents />
         </aside>
-        <div className="pt-10 max-w-4xl">{children}</div>
+        <div className="pt-10 max-w-4xl mb-[100px]">{children}</div>
       </div>
     </div>
   );

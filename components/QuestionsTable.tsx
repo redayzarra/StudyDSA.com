@@ -51,11 +51,7 @@ const difficultyOrder = {
   Hard: 3,
 };
 
-export function QuestionsTable({
-  userId,
-  title,
-  problems,
-}: Props) {
+export function QuestionsTable({ userId, title, problems }: Props) {
   const [data, setData] = useState<LeetCodeProblem[]>(problems);
   const [sorting, setSorting] = useState<SortingState>([
     { id: "difficulty", desc: false },
@@ -67,9 +63,11 @@ export function QuestionsTable({
   const columns: ColumnDef<LeetCodeProblem>[] = [
     {
       id: "select",
-      header: () => <div className="">Completed</div>,
+      header: () => (
+        <div className="flex items-center justify-center">Completed</div>
+      ),
       cell: ({ row }) => (
-        <div className="flex items-center justify-center w-[75px]">
+        <div className="flex items-center justify-center -ml-4">
           <QuestionCheckbox userId={userId!} problemId={row.original.id} />
         </div>
       ),
@@ -78,10 +76,10 @@ export function QuestionsTable({
     },
     {
       accessorKey: "title",
-      header: "Title",
+      header: () => <div className="flex justify-left">Title</div>,
       cell: ({ row }) => {
         return (
-          <div className="relative w-[250px]">
+          <div className="w-72">
             <Link
               className="text-left font-semibold"
               href={row.original.href}
@@ -97,14 +95,16 @@ export function QuestionsTable({
     {
       accessorKey: "difficulty",
       header: ({ column }) => (
-        <Button
-          variant="ghost"
-          className="hover:bg-neutral-800/50"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Difficulty
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
+        <div className="flex items-center justify-center">
+          <Button
+            variant="ghost"
+            className="hover:bg-neutral-800/50"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            Difficulty
+            <CaretSortIcon className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
       ),
       cell: ({ row }) => (
         <div className="flex items-center justify-center">
@@ -117,9 +117,11 @@ export function QuestionsTable({
     },
     {
       accessorKey: "status",
-      header: () => <div className="hidden md:flex">Status</div>,
+      header: () => (
+        <div className="hidden md:flex items-center justify-center">Status</div>
+      ),
       cell: ({ row }) => (
-        <div className="hidden md:flex">
+        <div className="hidden md:flex items-center justify-center">
           <Status userId={userId} problemId={row.original.id} />
         </div>
       ),
@@ -186,7 +188,7 @@ export function QuestionsTable({
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id}>
+                    <TableHead key={header.id} className="h-[60px]">
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -205,7 +207,7 @@ export function QuestionsTable({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  className="h-[10px]"
+                  className="h-[60px] px-4"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
