@@ -217,12 +217,9 @@ const ArraysPage = async () => {
           implemented using arrays, taking advantage of the array&apos;s direct
           access to <span className="font-bold">add (push)</span> or{" "}
           <span className="font-bold">remove (pop)</span> elements from the end.
-          <br />
-        </p>
-        <p>
-          <br />
           Given that stacks are implemented using arrays, all supported stack
           operations can be executed in constant time:
+          <br />
         </p>
         <Operations items={stackOperations} />
         <p>
