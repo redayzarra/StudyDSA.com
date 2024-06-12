@@ -16,28 +16,28 @@ const SocialLinks = ({ size = 25, className }: Props) => {
         className
       )}
     >
-      <Link
+      <Link className="hover:text-white hover:-translate-y-1 transition-all duration-200"
         href="https://www.youtube.com/@TodaysReDay"
         target="_blank"
         rel="noopener noreferrer"
       >
         <FaYoutube size={size} />
       </Link>
-      <Link
+      <Link className="hover:text-white hover:-translate-y-1 transition-all duration-200"
         href="https://www.linkedin.com/company/studydsa"
         target="_blank"
         rel="noopener noreferrer"
       >
         <FaXTwitter size={size} />
       </Link>
-      <Link
+      <Link className="hover:text-white hover:-translate-y-1 transition-all duration-200"
         href="https://github.com/redayzarra/StudyDSA.com"
         target="_blank"
         rel="noopener noreferrer"
       >
         <FaGithub size={size} />
       </Link>
-      <Link
+      <Link className="hover:text-white hover:-translate-y-1 transition-all duration-200"
         href="https://www.linkedin.com/company/studydsa"
         target="_blank"
         rel="noopener noreferrer"

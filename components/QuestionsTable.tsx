@@ -121,7 +121,7 @@ export function QuestionsTable({ userId, title, problems }: Props) {
         <div className="hidden md:flex items-center justify-center">Status</div>
       ),
       cell: ({ row }) => (
-        <div className="hidden md:flex items-center justify-center">
+        <div className="hidden md:flex w-[100px]">
           <Status userId={userId} problemId={row.original.id} />
         </div>
       ),
@@ -185,7 +185,7 @@ export function QuestionsTable({ userId, title, problems }: Props) {
         <Table className="">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
+              <TableRow key={headerGroup.id} >
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead key={header.id} className="h-[60px]">
@@ -207,7 +207,7 @@ export function QuestionsTable({ userId, title, problems }: Props) {
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  className="h-[60px] px-4"
+                  className="h-[55px] px-4"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
