@@ -39,19 +39,26 @@ const Operations = ({ items }: Props) => {
         </TableHeader>
         <TableBody>
           {items.map((item) => (
-            <TableRow key={item.operation}>
+            <TableRow key={item.operation} className="">
               <TableCell className="font-medium">{item.operation}</TableCell>
               <TableCell
-                className={cn("text-center font-bold text-lg truncate", font.className)}
+                className={cn(
+                  "text-center font-bold text-lg truncate",
+                  font.className
+                )}
               >
                 {item.time}
               </TableCell>
               <TableCell
-                className={cn("text-center font-bold text-lg truncate", font.className)}
+                className={cn(
+                  "text-center font-bold text-lg truncate",
+                  font.className
+                )}
               >
                 {item.space}
               </TableCell>
-              <TableCell className="hidden md:flex items-center mt-1 text-muted-foreground">
+              {/* This cell below is the problem */}
+              <TableCell className="hidden md:flex items-center py-4 text-left text-muted-foreground">
                 {item.notes}
               </TableCell>
             </TableRow>
