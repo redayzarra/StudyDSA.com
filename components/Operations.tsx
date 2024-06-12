@@ -39,7 +39,7 @@ const Operations = ({ items }: Props) => {
         </TableHeader>
         <TableBody>
           {items.map((item) => (
-            <TableRow key={item.operation} className="">
+            <TableRow key={item.operation} className="h-14">
               <TableCell className="font-medium">{item.operation}</TableCell>
               <TableCell
                 className={cn(
@@ -57,10 +57,9 @@ const Operations = ({ items }: Props) => {
               >
                 {item.space}
               </TableCell>
-              {/* This cell below is the problem */}
-              <TableCell className="hidden md:flex items-center py-4 text-left text-muted-foreground">
+              <TableHead className="hidden md:flex items-center mt-1 text-muted-foreground">
                 {item.notes}
-              </TableCell>
+              </TableHead>
             </TableRow>
           ))}
         </TableBody>
