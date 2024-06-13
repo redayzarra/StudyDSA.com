@@ -31,13 +31,15 @@ export function WelcomeGrid() {
 
 const Skeleton = () => (
   <div className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-row space-x-2">
-      <div className=" w-full relative max-w-xs">
-        <div className="relative shadow-xl h-full px-4 overflow-hidden rounded-2xl flex flex-col items-center justify-center">
-          {/* Meaty part - Meteor effect */}
-          <div className="font-thin text-sm">Everyone deserves a chance at good education.</div>
-          <Meteors number={40} />
+    <div className=" w-full relative max-w-xs">
+      <div className="relative shadow-xl h-full px-4 overflow-hidden rounded-2xl flex flex-col items-center justify-center">
+        {/* Meaty part - Meteor effect */}
+        <div className="font-thin text-sm">
+          Everyone deserves a chance at good education.
         </div>
+        <Meteors number={40} />
       </div>
+    </div>
   </div>
 );
 
@@ -48,82 +50,15 @@ const SkeletonOne = () => (
 );
 
 const SkeletonTwo = () => {
-  const words = [
-    {
-      text: "def",
-      className: "text-blue-400",
-    },
-    {
-      text: "welcome(",
-      className: "text-yellow-200",
-    },
-    {
-      text: "is_new",
-      className: "text-white -mx-2",
-    },
-    {
-      text: "):",
-      className: "mr-20 md:mr-2 text-yellow-200",
-    },
-    {
-      text: "AAAAAAAAAAAAAAAA",
-      className: "invisible md:hidden",
-    },
-    {
-      text: "if",
-      className: "ml-6 text-blue-400",
-    },
-    {
-      text: "is_new:",
-      className: "mr-20 md:mr-6 text-white",
-    },
-    {
-      text: "AAAAAAAAAAAAAAAAA",
-      className: "invisible md:hidden",
-    },
-    {
-      text: "return",
-      className: "ml-12 text-blue-400",
-    },
-    {
-      text: '"Welcome!"',
-      className: "text-rose-300",
-    },
-    {
-      text: "AAAAAAAAAAAAAAAAAAAAA",
-      className: "invisible md:hidden",
-    },
-    {
-      text: "return",
-      className: "ml-6 text-blue-400",
-    },
-    {
-      text: '"Welcome',
-      className: "text-rose-300",
-    },
-    {
-      text: 'back!"',
-      className: "text-rose-300",
-    },
-  ];
-
   return (
     <div className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-row space-x-2 text-green">
-      <div className="spacing-y-px max-w-3xl mx-auto shadow-md bg-[#23272e] dark: dark:bg-black/[0.5] border-t-2 dark:border-stone-700 rounded-lg overflow-hidden">
-        <div className="grid grid-cols-3 items-center px-2 py-1 bg-[#17191d] dark:bg-black/70">
-          <div className="flex justify-start items-center space-x-2">
-            <FaCircle className="text-[#FF605C]" size={10} />
-            <FaCircle className="text-[#FFBD44]" size={10} />
-            <FaCircle className="text-[#00CA4E]" size={10} />
-          </div>
-          <h1 className="text-[14px] font-medium text-white justify-self-center">
-            Welcome.py
-          </h1>
-        </div>
-        <div className="p-2">
-          <TypeWriter words={words} />
-        </div>
-      </div>
+      <Image
+        src="/images/homepage/Algorithms.gif"
+        className="absolute inset-0 object-cover w-fit h-full -mt-10"
+        width={100}
+        height={100}
+        alt="Animation of an algorithm"
+      />
     </div>
   );
 };
@@ -227,19 +162,19 @@ const SkeletonFour = () => {
     >
       <motion.div
         variants={first}
-        className="h-full w-1/3 rounded-2xl bg-white p-4 dark:bg-black/75 dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
+        className="h-full w-1/3 relative rounded-2xl bg-white p-4 dark:bg-black/75 dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
       >
         <Image
           src="/images/LeetCode.png"
           alt="avatar"
           height="100"
           width="100"
-          className="rounded-full h-10 w-10"
+          className="rounded-full h-10 w-10 absolute -top-5"
         />
-        <p className="sm:text-sm text-xs text-center font-semibold text-muted-foreground mt-4">
+        <p className="sm:text-sm text-xs text-center absolute font-semibold text-muted-foreground">
           Alien Dictionary
         </p>
-        <p className="border border-red-500 bg-red-100 mb-2 dark:bg-red-900/20 text-red-600 text-xs rounded-full px-2 py-0.5 mt-4">
+        <p className="border border-red-500 absolute -bottom-2 bg-red-100 mb-2 dark:bg-red-900/20 text-red-600 text-xs rounded-full px-2 py-0.5 mt-4">
           Hard
         </p>
       </motion.div>
@@ -249,30 +184,30 @@ const SkeletonFour = () => {
           alt="avatar"
           height="100"
           width="100"
-          className="rounded-full h-10 w-10"
+          className="rounded-full h-10 w-10 absolute -top-5"
         />
-        <p className="sm:text-sm text-xs text-center font-semibold mb-4 text-muted-foreground mt-4">
+        <p className="sm:text-sm text-xs absolute text-center font-semibold mb-4 text-muted-foreground mt-4">
           Reverse <br /> Linked List
         </p>
-        <p className="border border-green-500 bg-green-100 mb-2 dark:bg-green-900/20 text-green-600 text-xs rounded-full px-2 py-0.5 mt-4">
+        <p className="border border-green-500 absolute -bottom-2 bg-green-100 mb-2 dark:bg-green-900/20 text-green-600 text-xs rounded-full px-2 py-0.5">
           Easy
         </p>
       </motion.div>
       <motion.div
         variants={second}
-        className="h-full w-1/3 rounded-2xl bg-white p-4 dark:bg-black/75 dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
+        className="h-full w-1/3 rounded-2xl relative bg-white p-4 dark:bg-black/75 dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
       >
         <Image
           src="/images/LeetCode.png"
           alt="avatar"
           height="100"
           width="100"
-          className="rounded-full h-10 w-10"
+          className="rounded-full h-10 w-10 absolute -top-5"
         />
-        <p className="sm:text-sm text-xs text-center font-semibold text-muted-foreground mt-4">
-          Longest Increasing Subsequence
+        <p className="sm:text-sm text-xs text-center absolute font-semibold text-muted-foreground">
+          Group Anagrams
         </p>
-        <p className="border border-orange-500 bg-orange-100 mb-2 dark:bg-orange-900/20 text-orange-600 text-xs rounded-full px-2 py-0.5 mt-4">
+        <p className="border border-orange-500 absolute -bottom-2 bg-orange-100 mb-2 dark:bg-orange-900/20 text-orange-600 text-xs rounded-full px-2 py-0.5 mt-4">
           Medium
         </p>
       </motion.div>
