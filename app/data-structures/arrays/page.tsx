@@ -188,14 +188,9 @@ const ArraysPage = async () => {
           at runtime. This flexibility comes at the cost of overhead for keeping
           track of the array&apos;s size and potentially reallocating and
           copying the entire array to a new memory space when resizing.
-          <br />
-          <br />
-          Python has built-in support for dynamic arrays. Here is everything you
-          can do with dynamic arrays or lists in Python:
         </p>
-        <CodeBlock code={dynamicArraysCode} title="DynamicArrays.py" />
+        <br />
         <p>
-          <br />
           Dynamic arrays are implemented in many programming languages as
           built-in types, such as <CodeText>List</CodeText> in Python or{" "}
           <CodeText>ArrayList</CodeText> in Java. It&apos;s important to
@@ -229,6 +224,10 @@ const ArraysPage = async () => {
           came before it.
         </p>
         <CodeBlock code={stackCode} title="Stacks.py" />
+        <ImageBlock
+          src="/images/arrays/Stacks.gif"
+          alt="Animation of stacks and the operations that they support"
+        />
       </ChapterHeading>
 
       <ChapterHeading id="algorithms" title="Algorithms">
