@@ -50,15 +50,82 @@ const SkeletonOne = () => (
 );
 
 const SkeletonTwo = () => {
+  const line1 = [
+    {
+      text: "def",
+      className: "text-blue-400",
+    },
+    {
+      text: "welcome(",
+      className: "text-yellow-200",
+    },
+    {
+      text: "is_new",
+      className: "text-white -mx-2",
+    },
+    {
+      text: "):\n",
+      className: "text-yellow-200",
+    },
+  ];
+
+  const line2 = [
+    {
+      text: "if",
+      className: "ml-6 text-blue-400",
+    },
+    {
+      text: "is_new:",
+      className: "text-white",
+    },
+  ];
+
+  const line3 = [
+    {
+      text: "return",
+      className: "ml-12 text-blue-400",
+    },
+    {
+      text: '"Welcome!"',
+      className: "text-rose-300",
+    },
+  ];
+
+  const line4 = [
+    {
+      text: "return",
+      className: "ml-6 text-blue-400",
+    },
+    {
+      text: '"Welcome',
+      className: "text-rose-300",
+    },
+    {
+      text: 'back!"',
+      className: "text-rose-300",
+    },
+  ];
+
   return (
     <div className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-row space-x-2 text-green">
-      <Image
-        src="/images/homepage/Algorithms.gif"
-        className="absolute inset-0 object-cover w-fit h-full -mt-10"
-        width={100}
-        height={100}
-        alt="Animation of an algorithm"
-      />
+      <div className="spacing-y-px max-w-3xl w-full mx-auto shadow-md bg-[#23272e] dark: dark:bg-black/[0.5] border-t-2 dark:border-stone-700 rounded-lg overflow-hidden">
+        <div className="grid grid-cols-3 items-center px-2 py-1 bg-[#17191d] dark:bg-black/70">
+          <div className="flex justify-start items-center space-x-2">
+            <FaCircle className="text-[#FF605C]" size={10} />
+            <FaCircle className="text-[#FFBD44]" size={10} />
+            <FaCircle className="text-[#00CA4E]" size={10} />
+          </div>
+          <h1 className="text-[14px] font-medium text-white justify-self-center">
+            Welcome.py
+          </h1>
+        </div>
+        <div className="p-2">
+          <TypeWriter words={line1} />
+          <TypeWriter words={line2} />
+          <TypeWriter words={line3} />
+          <TypeWriter words={line4} />
+        </div>
+      </div>
     </div>
   );
 };
