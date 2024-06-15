@@ -200,8 +200,11 @@ const LinkedListsPage = async () => {
           language="python"
           title="Singly_LinkedList.py"
         />
+        <ImageBlock
+          src="/images/linked-lists/SinglyLinkedList.gif"
+          alt="Animation of a pointer traversing through a singly linked list"
+        />
         <p>
-          <br />
           To use singly linked lists correctly make sure you have access to
           nodes that come before the target node. Otherwise you will need to
           traverse the linked list to find the correct node.{" "}
@@ -218,11 +221,7 @@ const LinkedListsPage = async () => {
           Doubly linked lists are an upgrade to singly linked lists because they
           store an additional pointer in each list node. This extra pointer
           links to the previous node, enabling traversal in both forward and
-          backwards.{" "}
-        </p>
-        <br />
-        <p>
-          Each node in a <CodeText>ListNode</CodeText> stores data, a pointer to
+          backwards. Each node in a <CodeText>ListNode</CodeText> stores data, a pointer to
           the previous node, and a pointer to the next node:
         </p>
         <CodeBlock
