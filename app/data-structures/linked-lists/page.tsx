@@ -229,8 +229,11 @@ const LinkedListsPage = async () => {
           language="python"
           title="Doubly_LinkedList.py"
         />
+        <ImageBlock
+          src="/images/linked-lists/DoublyLinkedLists.gif"
+          alt="Animation of a pointer traversing through a doubly linked list"
+        />
         <p>
-          <br />
           This two-way capability makes doubly linked lists great for problems
           that require backward traversal. However, to correcly use doubly
           linked lists, manage both <CodeText>next</CodeText> and{" "}
