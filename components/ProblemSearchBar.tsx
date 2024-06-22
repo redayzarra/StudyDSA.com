@@ -11,7 +11,7 @@ import {
   problemPages,
 } from "@/data/constants";
 import { cn } from "@/lib/utils";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { AiOutlineFunction } from "react-icons/ai";
 import { FaSearch } from "react-icons/fa";
 import { Button } from "./ui/button";
@@ -24,30 +24,9 @@ import {
   CommandList,
 } from "./ui/command";
 
-export function SearchBar({ ...props }: DialogProps) {
+export function ProblemSearchBar({ ...props }: DialogProps) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if ((e.key === "k" && (e.metaKey || e.ctrlKey)) || e.key === "/") {
-        if (
-          (e.target instanceof HTMLElement && e.target.isContentEditable) ||
-          e.target instanceof HTMLInputElement ||
-          e.target instanceof HTMLTextAreaElement ||
-          e.target instanceof HTMLSelectElement
-        ) {
-          return;
-        }
-
-        e.preventDefault();
-        setOpen((open) => !open);
-      }
-    };
-
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
-  }, []);
 
   const runCommand = useCallback((command: () => unknown) => {
     setOpen(false);
