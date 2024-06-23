@@ -1,5 +1,6 @@
 import BlurryWelcome from "@/components/BlurryWelcome";
 import Container from "@/components/Container";
+import Footer from "@/components/Footer";
 import MasterDSA from "@/components/MasterDSA";
 import NavBar from "@/components/NavBar";
 import { Aurora } from "@/components/ui/Aurora";
@@ -13,27 +14,23 @@ export default async function Home() {
   const firstName = userName?.split(" ")[0];
 
   return (
-    <div className="">
-      <Aurora>
-        <NavBar />
-        <Container className="absolute">
-          <div className="mt-36 md:mt-48">
-            <div className="grid grid-cols-1 transition-all md:grid-cols-[3fr_5fr] gap-x-3">
-              <div className="">
-                <MasterDSA />
-                <div className="-mt-[24px] mb-3">
-                  {user ? (
-                    <Welcome user={user} userName={firstName!} />
-                  ) : (
-                    <BlurryWelcome />
-                  )}
-                </div>
-              </div>
-              <WelcomeGrid />
+    <Aurora>
+      <NavBar />
+      <Container className="absolute">
+        <div className="grid mt-36 md:mt-48 grid-cols-1 transition-all md:grid-cols-[3fr_5fr] gap-x-3">
+          <div className="">
+            <MasterDSA />
+            <div className="-mt-[24px] mb-3">
+              {user ? (
+                <Welcome user={user} userName={firstName!} />
+              ) : (
+                <BlurryWelcome />
+              )}
             </div>
           </div>
-        </Container>
-      </Aurora>
-    </div>
+          <WelcomeGrid />
+        </div>
+      </Container>
+    </Aurora>
   );
 }
