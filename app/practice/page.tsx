@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { Poppins } from "next/font/google";
 import getUserId from "@/hooks/server/getUserId";
 import getProblems from "@/actions/questions/getProblems";
+import ProblemBar from "@/components/ProblemBar";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -80,6 +81,9 @@ const PracticePage = async () => {
         </h2>
       </div>
       <Separator className="my-4 self-stretch bg-border" />
+      <div className="">
+        <ProblemBar />
+      </div>
       <div className="w-full mt-4 space-y-12">
         {Object.entries(problemsByCategory)
           .filter(([_, problems]) => problems.length > 0)
