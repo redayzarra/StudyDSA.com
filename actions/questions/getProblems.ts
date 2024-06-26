@@ -10,6 +10,9 @@ const getProblems = async (ids: number[]) => {
           in: ids,
         },
       },
+      orderBy: {
+        difficulty: 'asc', // Ascending order: Easy, Medium, Hard
+      },
     });
 
     return problems;

@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { Poppins } from "next/font/google";
 import getUserId from "@/hooks/server/getUserId";
 import getProblems from "@/actions/questions/getProblems";
+import ProblemBar from "@/components/ProblemBar";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -20,11 +21,11 @@ const fetchProblemsByCategories = async (categories: ProblemCategories) => {
   for (const [category, ids] of Object.entries(categories)) {
     try {
       problems[category] = await getProblems(ids);
-      
+
       // Error handling
     } catch (error) {
       console.error(`Error fetching problems for category: ${category}`, error);
-      problems[category] = []; 
+      problems[category] = [];
     }
   }
 
@@ -38,17 +39,19 @@ const Blind75Page = async () => {
     "Array / String": [76, 77, 78, 79, 80, 81, 7, 82],
     "Two Pointers": [83, 84, 12],
     "Sliding Window": [85, 86, 87, 88],
-    Stack: [89],
+    Stacks: [89],
     "Binary Search": [90, 91],
-    "Linked List": [31, 92, 93, 94, 95, 96],
+    "Linked Lists": [31, 92, 93, 94, 95, 96],
     Trees: [97, 33, 99, 100, 101, 102, 103, 104, 105, 106, 107],
     Heaps: [108],
     Backtracking: [109, 110],
     Tries: [70, 112, 113],
     Graphs: [114, 115, 116, 117, 118, 119],
     "Advanced Graphs": [120],
-    "1D Dynamic Programming": [121, 61, 123, 124, 125, 126, 127, 128, 129, 130],
-    "2D Dynamic Programming": [63, 64],
+    "Dynamic Programming - 1D": [
+      121, 61, 123, 124, 125, 126, 127, 128, 129, 130,
+    ],
+    "Dynamic Programming - Multidimensional": [63, 64],
     "Greedy Algorithms": [133, 134],
     Intervals: [135, 136, 137, 138, 72],
     Math: [140, 141, 142],
@@ -76,6 +79,9 @@ const Blind75Page = async () => {
         </h2>
       </div>
       <Separator className="my-4 self-stretch bg-border" />
+      <div className="">
+        <ProblemBar problems={problemsByCategory} />
+      </div>
       <div className="w-full mt-4 space-y-12">
         {Object.entries(problemsByCategory)
           .filter(([_, problems]) => problems.length > 0)
@@ -93,4 +99,3 @@ const Blind75Page = async () => {
 };
 
 export default Blind75Page;
-

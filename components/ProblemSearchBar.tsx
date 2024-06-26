@@ -4,13 +4,8 @@ import { DialogProps } from "@radix-ui/react-alert-dialog";
 import { useRouter } from "next/navigation";
 import { FaListCheck } from "react-icons/fa6";
 
-import {
-  algorithmPages,
-  dataStructurePages,
-  introPages,
-  problemPages,
-} from "@/data/constants";
 import { cn } from "@/lib/utils";
+import { LeetCodeProblem } from "@prisma/client";
 import { useCallback, useState } from "react";
 import { AiOutlineFunction } from "react-icons/ai";
 import { FaSearch } from "react-icons/fa";
@@ -24,13 +19,73 @@ import {
   CommandList,
 } from "./ui/command";
 
-export function ProblemSearchBar({ ...props }: DialogProps) {
+type Category =
+  | "Array / String"
+  | "Two Pointers"
+  | "Sliding Window"
+  | "Prefix Sum"
+  | "Hash Map / Set"
+  | "Stack"
+  | "Queue"
+  | "Linked List"
+  | "Binary Tree - DFS"
+  | "Binary Tree - BFS"
+  | "Binary Search Tree"
+  | "Graphs - DFS"
+  | "Graphs - BFS"
+  | "Heaps / Priority Queues"
+  | "Binary Search"
+  | "Backtracking"
+  | "Dynamic Programming - 1D"
+  | "Dynamic Programming - Multidimensional"
+  | "Bit Manipulation"
+  | "Tries"
+  | "Intervals"
+  | "Monotonic Stack"
+  | "Trees"
+  | "Advanced Graphs"
+  | "Greedy Algorithms"
+  | "Math";
+
+const categoryIcons: Record<Category, JSX.Element> = {
+  "Array / String": <AiOutlineFunction size={20} />,
+  "Two Pointers": <FaListCheck size={20} />,
+  "Sliding Window": <FaListCheck size={20} />,
+  "Prefix Sum": <FaListCheck size={20} />,
+  "Hash Map / Set": <FaListCheck size={20} />,
+  Stack: <FaListCheck size={20} />,
+  Queue: <FaListCheck size={20} />,
+  "Linked List": <FaListCheck size={20} />,
+  "Binary Tree - DFS": <FaListCheck size={20} />,
+  "Binary Tree - BFS": <FaListCheck size={20} />,
+  "Binary Search Tree": <FaListCheck size={20} />,
+  "Graphs - DFS": <FaListCheck size={20} />,
+  "Graphs - BFS": <FaListCheck size={20} />,
+  "Heaps / Priority Queues": <FaListCheck size={20} />,
+  "Binary Search": <FaListCheck size={20} />,
+  Backtracking: <FaListCheck size={20} />,
+  "Dynamic Programming - 1D": <FaListCheck size={20} />,
+  "Dynamic Programming - Multidimensional": <FaListCheck size={20} />,
+  "Bit Manipulation": <FaListCheck size={20} />,
+  Tries: <FaListCheck size={20} />,
+  Intervals: <FaListCheck size={20} />,
+  "Monotonic Stack": <FaListCheck size={20} />,
+  Trees: <FaListCheck size={20} />,
+  "Advanced Graphs": <FaListCheck size={20} />,
+  "Greedy Algorithms": <FaListCheck size={20} />,
+  Math: <FaListCheck size={20} />,
+};
+
+export function ProblemSearchBar({
+  problems,
+  ...props
+}: DialogProps & { problems: { [category: string]: LeetCodeProblem[] } }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
 
-  const runCommand = useCallback((command: () => unknown) => {
+  const runCommand = useCallback((url: string) => {
     setOpen(false);
-    command();
+    window.open(url, "_blank");
   }, []);
 
   return (
@@ -50,66 +105,25 @@ export function ProblemSearchBar({ ...props }: DialogProps) {
         <CommandInput placeholder="Search all problems..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Array / String">
-            {introPages.map((array) => (
-              <CommandItem
-                className="cursor-pointer"
-                key={array.href}
-                value={array.title}
-                onSelect={() => {
-                  runCommand(() => router.push(array.href));
-                }}
-              >
-                {array.icon}
-                <span className="ml-2">{array.title}</span>
-              </CommandItem>
-            ))}
-          </CommandGroup>
-          <CommandGroup heading="Data Structures">
-            {dataStructurePages.map((dataStructure) => (
-              <CommandItem
-                className="cursor-pointer"
-                key={dataStructure.href}
-                value={dataStructure.title}
-                onSelect={() => {
-                  runCommand(() => router.push(dataStructure.href));
-                }}
-              >
-                {dataStructure.icon}
-                <span className="ml-2">{dataStructure.title}</span>
-              </CommandItem>
-            ))}
-          </CommandGroup>
-          <CommandGroup heading="Algorithms">
-            {algorithmPages.map((algorithm) => (
-              <CommandItem
-                className="cursor-pointer"
-                key={algorithm.href}
-                value={algorithm.title}
-                onSelect={() => {
-                  runCommand(() => router.push(algorithm.href));
-                }}
-              >
-                <AiOutlineFunction size={20} />
-                <span className="ml-2">{algorithm.title}</span>
-              </CommandItem>
-            ))}
-          </CommandGroup>
-          <CommandGroup heading="Practice">
-            {problemPages.map((problem) => (
-              <CommandItem
-                className="cursor-pointer"
-                key={problem.href}
-                value={problem.title}
-                onSelect={() => {
-                  runCommand(() => router.push(problem.href));
-                }}
-              >
-                <FaListCheck size={20} />
-                <span className="ml-2">{problem.title}</span>
-              </CommandItem>
-            ))}
-          </CommandGroup>
+          {Object.entries(problems).map(([category, problems]) => (
+            <CommandGroup key={category} heading={category}>
+              {problems.map((problem) => (
+                <CommandItem
+                  className="cursor-pointer"
+                  key={problem.id}
+                  value={problem.title}
+                  onSelect={() => {
+                    runCommand(problem.href);
+                  }}
+                >
+                  {categoryIcons[category as Category] || (
+                    <FaListCheck size={20} />
+                  )}
+                  <span className="ml-2">{problem.title}</span>
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          ))}
         </CommandList>
       </CommandDialog>
     </>

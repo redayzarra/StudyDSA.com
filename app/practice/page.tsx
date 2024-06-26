@@ -6,6 +6,7 @@ import { Poppins } from "next/font/google";
 import getUserId from "@/hooks/server/getUserId";
 import getProblems from "@/actions/questions/getProblems";
 import ProblemBar from "@/components/ProblemBar";
+import { LeetCodeProblem } from "@prisma/client";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -17,7 +18,7 @@ type ProblemCategories = {
 };
 
 const fetchProblemsByCategories = async (categories: ProblemCategories) => {
-  const problems: { [category: string]: any } = {};
+  const problems: { [category: string]: LeetCodeProblem[] } = {};
   for (const [category, ids] of Object.entries(categories)) {
     try {
       problems[category] = await getProblems(ids);
@@ -39,21 +40,21 @@ const PracticePage = async () => {
     "Array / String": [76, 77, 78, 79, 80, 81, 7, 148, 82],
     "Two Pointers": [83, 84, 12, 149, 150],
     "Sliding Window": [85, 86, 87, 88, 151, 152],
-    Stack: [89, 153, 154, 155, 74, 157, 158],
+    Stacks: [89, 153, 154, 155, 74, 157, 158],
     "Binary Search": [90, 91, 159, 160, 161, 56, 162],
-    "Linked List": [31, 92, 93, 94, 95, 96, 163, 164, 165, 166, 167],
+    "Linked Lists": [31, 92, 93, 94, 95, 96, 163, 164, 165, 166, 167],
     Trees: [
       97, 33, 35, 39, 99, 100, 101, 102, 103, 104, 105, 106, 107, 168, 169,
     ],
-    Heaps: [49, 108, 170, 171, 172, 173, 174],
+    "Heaps / Priority Queues": [49, 108, 170, 171, 172, 173, 174],
     Backtracking: [57, 58, 109, 110, 175, 176, 177, 178, 179],
     Tries: [70, 112, 113],
     Graphs: [48, 114, 115, 116, 117, 118, 119, 180, 181, 182, 183, 184, 185],
     "Advanced Graphs": [120, 186, 187, 188, 189, 190],
-    "1D Dynamic Programming": [
+    "Dynamic Programming - 1D": [
       60, 121, 61, 123, 124, 125, 126, 127, 128, 129, 130, 191,
     ],
-    "2D Dynamic Programming": [
+    "Dynamic Programming - Multidimensional": [
       63, 64, 66, 192, 193, 194, 195, 196, 197, 198, 199,
     ],
     "Greedy Algorithms": [133, 134, 200, 201, 202, 203, 204, 205],
@@ -82,7 +83,7 @@ const PracticePage = async () => {
       </div>
       <Separator className="my-4 self-stretch bg-border" />
       <div className="">
-        <ProblemBar />
+        <ProblemBar problems={problemsByCategory} />
       </div>
       <div className="w-full mt-4 space-y-12">
         {Object.entries(problemsByCategory)

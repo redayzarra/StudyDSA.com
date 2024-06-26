@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { Poppins } from "next/font/google";
 import getUserId from "@/hooks/server/getUserId";
 import getProblems from "@/actions/questions/getProblems";
+import ProblemBar from "@/components/ProblemBar";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -40,23 +41,23 @@ const LeetCode75Page = async () => {
     "Sliding Window": [14, 15, 16, 17],
     "Prefix Sum": [18, 19],
     "Hash Map / Set": [20, 21, 22, 23],
-    Stack: [24, 25, 26],
-    Queue: [27, 28],
-    "Linked List": [31, 29, 30, 32],
+    Stacks: [24, 25, 26],
+    Queues: [27, 28],
+    "Linked Lists": [31, 29, 30, 32],
     "Binary Tree - DFS": [33, 34, 35, 36, 37, 38],
     "Binary Tree - BFS": [39, 40],
     "Binary Search Tree": [41, 42],
     "Graphs - DFS": [43, 44, 45, 46],
     "Graphs - BFS": [47, 48],
-    "Heap / Priority Queue": [49, 50, 51, 52],
+    "Heaps / Priority Queues": [49, 50, 51, 52],
     "Binary Search": [53, 54, 55, 56],
     Backtracking: [57, 58],
-    "DP - 1D": [59, 60, 61, 62],
-    "DP - Multidimensional": [63, 64, 65, 66],
+    "Dynamic Programming - 1D": [59, 60, 61, 62],
+    "Dynamic Programming - Multidimensional": [63, 64, 65, 66],
     "Bit Manipulation": [67, 68, 69],
-    Trie: [70, 71],
+    Tries: [70, 71],
     Intervals: [72, 73],
-    "Monotonic Stack": [74, 75],
+    "Monotonic Stacks": [74, 75],
   };
 
   const problemsByCategory = await fetchProblemsByCategories(categories);
@@ -80,6 +81,9 @@ const LeetCode75Page = async () => {
         </h2>
       </div>
       <Separator className="my-4 self-stretch bg-border" />
+      <div className="">
+        <ProblemBar problems={problemsByCategory} />
+      </div>
       <div className="w-full mt-4 space-y-12">
         {Object.entries(problemsByCategory)
           .filter(([_, problems]) => problems.length > 0)
