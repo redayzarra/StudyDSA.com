@@ -2,13 +2,11 @@
 
 import db from "@/lib/db";
 
-const getProblems = async (ids: number[]) => {
+const getAllProblems = async () => {
   try {
     const problems = await db.leetCodeProblem.findMany({
-      where: {
-        id: {
-          in: ids,
-        },
+      include: {
+        tags: true, // Include tags associated with each problem
       },
     });
 
@@ -16,9 +14,9 @@ const getProblems = async (ids: number[]) => {
 
     // Error handling
   } catch (error) {
-    console.error("Failed to fetch problems by ids:", error);
+    console.error("Failed to fetch all problems:", error);
     throw error;
   }
 };
 
-export default getProblems;
+export default getAllProblems;

@@ -50,18 +50,18 @@ export function ProblemSearchBar({ ...props }: DialogProps) {
         <CommandInput placeholder="Search all problems..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Links">
-            {introPages.map((doc) => (
+          <CommandGroup heading="Array / String">
+            {introPages.map((array) => (
               <CommandItem
                 className="cursor-pointer"
-                key={doc.href}
-                value={doc.title}
+                key={array.href}
+                value={array.title}
                 onSelect={() => {
-                  runCommand(() => router.push(doc.href));
+                  runCommand(() => router.push(array.href));
                 }}
               >
-                {doc.icon}
-                <span className="ml-2">{doc.title}</span>
+                {array.icon}
+                <span className="ml-2">{array.title}</span>
               </CommandItem>
             ))}
           </CommandGroup>
