@@ -21,6 +21,7 @@ import {
   openAddressingHashmap,
   setImplementationCode,
 } from "./hashmapCode";
+import ImageBlock from "@/components/ImageBlock";
 
 const HashmapPage = async () => {
   const topic = await getTopicById(3);
@@ -103,20 +104,19 @@ const HashmapPage = async () => {
           <span className="font-bold">
             determines where to store the input value in the hashmap
           </span>
-          .
-        </p>
-        <br />
-        <p>
-          This process allows hashmaps to achieve incredibly fast data retrieval
-          and insertion, as it can directly access the storage location without
-          needing to search through all the data.
+          . This process allows hashmaps to achieve incredibly fast data
+          retrieval and insertion, as it can directly access the storage
+          location without needing to search through all the data.
         </p>
         <CodeBlock
           code={hashFunctionCode}
           language="python"
           title="HashFunction.py"
         />
-        <br />
+        <ImageBlock
+          src="/images/hashmaps/HashFunction.gif"
+          alt="Animation of hash functions and how they produce an index for key-value pairs to be stored at"
+        />
         <p>
           The hash function I&apos;ve shown is a basic example of how to turn
           the <CodeText>key</CodeText> (like a name or a word) into an index
