@@ -80,7 +80,7 @@ const Blind75Page = async () => {
       </div>
       <Separator className="my-4 self-stretch bg-border" />
       <div className="">
-        <ProblemBar problems={problemsByCategory} />
+        <ProblemBar userId={userId} problems={problemsByCategory} title="Blind 75" />
       </div>
       <div className="w-full mt-4 space-y-12">
         {Object.entries(problemsByCategory)

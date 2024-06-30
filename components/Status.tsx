@@ -72,7 +72,7 @@ export function Status({ userId, problemId }: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className={`bg-neutral-600/25 h-[28px] ${getBackgroundColor(masteryLevel)} text-sm px-2`}>
+        <Button variant="outline" className={`bg-neutral-600/25 h-[30px] ${getBackgroundColor(masteryLevel)} text-sm px-2`}>
           {masteryLevel} <FaChevronDown className="ml-2" />
         </Button>
       </DropdownMenuTrigger>
