@@ -76,7 +76,7 @@ const ProblemDeleteButton = ({ userId, title, problems }: Props) => {
           </AlertDialogTitle>
           <AlertDialogDescription>
             This will delete your progress for the <strong>{title}</strong> list
-            only. Your progress on other lists and problems won't be affected.
+            only. Your progress on other lists and problems won&apos;t be affected.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter className="mt-2">
