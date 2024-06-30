@@ -43,7 +43,7 @@ const Blind75Page = async () => {
     "Binary Search": [90, 91],
     "Linked Lists": [31, 92, 93, 94, 95, 96],
     Trees: [97, 33, 99, 100, 101, 102, 103, 104, 105, 106, 107],
-    Heaps: [108],
+    "Heaps / Priority Queues": [108],
     Backtracking: [109, 110],
     Tries: [70, 112, 113],
     Graphs: [114, 115, 116, 117, 118, 119],

@@ -2,13 +2,23 @@
 
 import { DialogProps } from "@radix-ui/react-alert-dialog";
 import { useRouter } from "next/navigation";
-import { FaListCheck } from "react-icons/fa6";
+import {
+  FaArrowRightArrowLeft,
+  FaArrowUpRightDots,
+  FaListCheck,
+  FaQuestion,
+  FaSearchengin,
+  FaTimeline,
+} from "react-icons/fa6";
+import { HiArrowsRightLeft } from "react-icons/hi2";
+import { GoSearch } from "react-icons/go";
+import { GiArrowed, GiArrowFlights, GiArrowhead, GiChoppedSkull, GiKneeling, GiPathDistance, GiPiercedBody, GiRobber, GiStrikingArrows, GiWilliamTellSkull } from "react-icons/gi";
 
 import { cn } from "@/lib/utils";
 import { LeetCodeProblem } from "@prisma/client";
 import { useCallback, useState } from "react";
-import { AiOutlineFunction } from "react-icons/ai";
-import { FaSearch } from "react-icons/fa";
+import { TfiLayoutSlider, TfiVector } from "react-icons/tfi";
+import { FaPray, FaSearch } from "react-icons/fa";
 import { Button } from "./ui/button";
 import {
   CommandDialog,
@@ -18,6 +28,10 @@ import {
   CommandItem,
   CommandList,
 } from "./ui/command";
+import { MdDataArray } from "react-icons/md";
+import { PiGraph, PiGraphFill, PiStack } from "react-icons/pi";
+import { AiOutlineNodeIndex } from "react-icons/ai";
+import { TbArrowLoopLeft2, TbBinaryTree, TbBinaryTree2 } from "react-icons/tb";
 
 type Category =
   | "Array / String"
@@ -25,13 +39,14 @@ type Category =
   | "Sliding Window"
   | "Prefix Sum"
   | "Hash Map / Set"
-  | "Stack"
-  | "Queue"
-  | "Linked List"
+  | "Stacks"
+  | "Queues"
+  | "Linked Lists"
   | "Binary Tree - DFS"
   | "Binary Tree - BFS"
   | "Binary Search Tree"
   | "Graphs - DFS"
+  | "Graphs"
   | "Graphs - BFS"
   | "Heaps / Priority Queues"
   | "Binary Search"
@@ -48,31 +63,32 @@ type Category =
   | "Math";
 
 const categoryIcons: Record<Category, JSX.Element> = {
-  "Array / String": <AiOutlineFunction size={20} />,
-  "Two Pointers": <FaListCheck size={20} />,
-  "Sliding Window": <FaListCheck size={20} />,
+  "Array / String": <MdDataArray size={20} />,
+  "Two Pointers": <HiArrowsRightLeft size={20} />,
+  "Sliding Window": <TfiLayoutSlider size={20} />,
   "Prefix Sum": <FaListCheck size={20} />,
   "Hash Map / Set": <FaListCheck size={20} />,
-  Stack: <FaListCheck size={20} />,
-  Queue: <FaListCheck size={20} />,
-  "Linked List": <FaListCheck size={20} />,
+  Stacks: <PiStack size={20} />,
+  Queues: <FaListCheck size={20} />,
+  "Linked Lists": <AiOutlineNodeIndex size={20} />,
   "Binary Tree - DFS": <FaListCheck size={20} />,
   "Binary Tree - BFS": <FaListCheck size={20} />,
   "Binary Search Tree": <FaListCheck size={20} />,
-  "Graphs - DFS": <FaListCheck size={20} />,
-  "Graphs - BFS": <FaListCheck size={20} />,
-  "Heaps / Priority Queues": <FaListCheck size={20} />,
-  "Binary Search": <FaListCheck size={20} />,
-  Backtracking: <FaListCheck size={20} />,
-  "Dynamic Programming - 1D": <FaListCheck size={20} />,
-  "Dynamic Programming - Multidimensional": <FaListCheck size={20} />,
+  "Graphs - DFS": <PiGraph size={20} />,
+  "Graphs - BFS": <PiGraph size={20} />,
+  Graphs: <PiGraph size={20} />,
+  "Heaps / Priority Queues": <FaArrowUpRightDots size={20} />,
+  "Binary Search": <GoSearch size={20} />,
+  Backtracking: <TbArrowLoopLeft2 size={20} />,
+  "Dynamic Programming - 1D": <GiArrowhead size={20} />,
+  "Dynamic Programming - Multidimensional": <GiArrowed size={20} />,
   "Bit Manipulation": <FaListCheck size={20} />,
-  Tries: <FaListCheck size={20} />,
-  Intervals: <FaListCheck size={20} />,
-  "Monotonic Stack": <FaListCheck size={20} />,
-  Trees: <FaListCheck size={20} />,
-  "Advanced Graphs": <FaListCheck size={20} />,
-  "Greedy Algorithms": <FaListCheck size={20} />,
+  Tries: <TbBinaryTree2 size={20} />,
+  Intervals: <FaTimeline size={20} />,
+  "Monotonic Stack": <PiStack size={20} />,
+  Trees: <TbBinaryTree size={20} />,
+  "Advanced Graphs": <TfiVector size={23} />,
+  "Greedy Algorithms": <GiRobber size={20} />,
   Math: <FaListCheck size={20} />,
 };
 
@@ -117,7 +133,7 @@ export function ProblemSearchBar({
                   }}
                 >
                   {categoryIcons[category as Category] || (
-                    <FaListCheck size={20} />
+                    <FaQuestion size={20} />
                   )}
                   <span className="ml-2">{problem.title}</span>
                 </CommandItem>
