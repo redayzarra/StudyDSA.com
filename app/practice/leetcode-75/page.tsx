@@ -21,7 +21,7 @@ const fetchProblemsByCategories = async (categories: ProblemCategories) => {
   for (const [category, ids] of Object.entries(categories)) {
     try {
       problems[category] = await getProblems(ids);
-      
+
       // Error handling
     } catch (error) {
       console.error(`Error fetching problems for category: ${category}`, error);
@@ -75,9 +75,10 @@ const LeetCode75Page = async () => {
             external={true}
           >
             LeetCode
-          </TextLink>
-          . This list is a great way to introduce yourself to the core concepts
-          and get in the rhythm of problem-solving.
+          </TextLink>{" "}
+          without any hard problems. This list is a great way to introduce
+          yourself to the core concepts and get in the rhythm of
+          problem-solving.
         </h2>
       </div>
       <Separator className="my-4 self-stretch bg-border" />
@@ -101,4 +102,3 @@ const LeetCode75Page = async () => {
 };
 
 export default LeetCode75Page;
-

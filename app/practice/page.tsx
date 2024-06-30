@@ -78,7 +78,7 @@ const PracticePage = async () => {
           </TextLink>
           ). It is an expansion of the{" "}
           <TextLink href="/practice/blind-75">Blind 75</TextLink> list and
-          features more beginner-friendly problems.
+          features a blend of beginner-friendly and more challenging problems.
         </h2>
       </div>
       <Separator className="my-4 self-stretch bg-border" />

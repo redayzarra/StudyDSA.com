@@ -64,18 +64,18 @@ const Blind75Page = async () => {
     <div className="">
       <div className="space-y-5 mt-4 md:mt-0">
         <h1 className={cn("text-4xl md:text-6xl font-bold", font.className)}>
-          Blind 75 🧠
+          Blind 75 🛠️
         </h1>
         <h2 className="dark:text-muted-foreground line-clamp-2">
-          A beginner-friendly list curated by{" "}
+          The infamous list of essential coding problems by a Meta tech lead on{" "}
           <TextLink
-            href="https://leetcode.com/studyplan/leetcode-75/"
+            href="https://www.teamblind.com/post/new-year-gift---curated-list-of-top-75-leetcode-questions-to-save-your-time-OaM1orEU"
             external={true}
           >
-            LeetCode
+            Blind
           </TextLink>
-          . This list is a great way to introduce yourself to the core concepts
-          and get in the rhythm of problem-solving.
+          . This list is designed to help software engineers efficiently master
+          the fundamental concepts and patterns needed for technical interviews.
         </h2>
       </div>
       <Separator className="my-4 self-stretch bg-border" />
