@@ -15,6 +15,7 @@ import { toast } from "sonner";
 import { FaChevronDown } from "react-icons/fa6";
 import Difficulty from "./Difficulty";
 import { QuestionDifficulty } from "@prisma/client";
+import { Badge } from "./ui/badge";
 
 interface Props {
   userId: string | undefined;
@@ -27,7 +28,7 @@ export function ProblemFilter({ userId }: Props) {
   const filters = {
     completed: ["complete", "incomplete"],
     difficulty: ["Easy", "Medium", "Hard"],
-    status: ["practicing", "review", "mastered", "challenging"],
+    status: ["Practicing", "Review", "Mastered", "Challenging"],
   };
 
   const updateFilters = (category: string, item: string) => {
@@ -51,6 +52,21 @@ export function ProblemFilter({ userId }: Props) {
   const isChecked = (category: string, item: string) => {
     const currentFilters = searchParams.get(category)?.split(",") || [];
     return currentFilters.includes(item);
+  };
+
+  const getStatusStyle = (status: string) => {
+    switch (status) {
+      case "Practicing":
+        return "bg-neutral-400/25 hover:bg-neutral-400/50 text-neutral-100";
+      case "Review":
+        return "bg-orange-400/50 hover:bg-orange-500/60 hover:text-white text-neutral-200";
+      case "Mastered":
+        return "bg-green-500/50 hover:bg-green-600/50 hover:text-white text-neutral-200";
+      case "Challenging":
+        return "bg-red-500/50 hover:bg-red-600/50 hover:text-white text-neutral-200";
+      default:
+        return "bg-neutral-600/25 text-neutral-400";
+    }
   };
 
   return (
@@ -78,6 +94,10 @@ export function ProblemFilter({ userId }: Props) {
               >
                 {category === "difficulty" ? (
                   <Difficulty difficulty={item as QuestionDifficulty} />
+                ) : category === "status" ? (
+                  <Badge className={`${getStatusStyle(item)} font-medium rounded-[4px] border text-xs`}>
+                    {item}
+                  </Badge>
                 ) : (
                   item.charAt(0).toUpperCase() + item.slice(1)
                 )}
