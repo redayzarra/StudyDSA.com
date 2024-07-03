@@ -1,8 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
-
+import { useSearchParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -13,80 +12,61 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-type Checked = DropdownMenuCheckboxItemProps["checked"];
-
 export function ProblemFilter() {
-  const [showStatusBar, setShowStatusBar] = React.useState<Checked>(true);
-  const [showActivityBar, setShowActivityBar] = React.useState<Checked>(false);
-  const [showPanel, setShowPanel] = React.useState<Checked>(false);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const filters = {
+    completed: ["complete", "incomplete"],
+    difficulty: ["easy", "medium", "hard"],
+    status: ["practicing", "review", "mastered", "challenging"],
+  };
+
+  const updateFilters = (category: string, item: string) => {
+    const params = new URLSearchParams(searchParams);
+    const currentFilters = params.get(category)?.split(",") || [];
+
+    if (currentFilters.includes(item)) {
+      params.set(category, currentFilters.filter((i) => i !== item).join(","));
+    } else {
+      params.set(category, [...currentFilters, item].join(","));
+    }
+
+    if (params.get(category) === "") {
+      params.delete(category);
+    }
+
+    router.push(`?${params.toString()}`);
+  };
+
+  const isChecked = (category: string, item: string) => {
+    const currentFilters = searchParams.get(category)?.split(",") || [];
+    return currentFilters.includes(item);
+  };
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">Open</Button>
+        <Button variant="outline">Filter</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
-        <DropdownMenuLabel>Completed</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuCheckboxItem
-          checked={showStatusBar}
-          onCheckedChange={setShowStatusBar}
-        >
-          Complete
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem
-          checked={showActivityBar}
-          onCheckedChange={setShowActivityBar}
-        >
-          Incomplete
-        </DropdownMenuCheckboxItem>
-
-        <DropdownMenuLabel>Difficulty</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuCheckboxItem
-          checked={showStatusBar}
-          onCheckedChange={setShowStatusBar}
-        >
-          Easy
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem
-          checked={showActivityBar}
-          onCheckedChange={setShowActivityBar}
-        >
-          Medium
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem
-          checked={showPanel}
-          onCheckedChange={setShowPanel}
-        >
-          Hard
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuLabel>Status</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuCheckboxItem
-          checked={showStatusBar}
-          onCheckedChange={setShowStatusBar}
-        >
-          Practicing
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem
-          checked={showActivityBar}
-          onCheckedChange={setShowActivityBar}
-        >
-          Review
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem
-          checked={showPanel}
-          onCheckedChange={setShowPanel}
-        >
-          Mastered
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem
-          checked={showPanel}
-          onCheckedChange={setShowPanel}
-        >
-          Challenging
-        </DropdownMenuCheckboxItem>
+        {Object.entries(filters).map(([category, items]) => (
+          <React.Fragment key={category}>
+            <DropdownMenuLabel>
+              {category.charAt(0).toUpperCase() + category.slice(1)}
+            </DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            {items.map((item) => (
+              <DropdownMenuCheckboxItem
+                key={item}
+                checked={isChecked(category, item)}
+                onCheckedChange={() => updateFilters(category, item)}
+              >
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </DropdownMenuCheckboxItem>
+            ))}
+          </React.Fragment>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );
