@@ -16,7 +16,6 @@ import { LeetCodeProblem } from "@prisma/client";
 import { toast } from "sonner";
 import clearProgress from "@/actions/questions/clearProgress";
 import { useRouter } from "next/navigation";
-import Spinner from "./Spinner";
 
 interface Props {
   userId: string | undefined;

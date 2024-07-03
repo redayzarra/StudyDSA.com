@@ -1,5 +1,4 @@
 "use client";
-
 import * as React from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -11,8 +10,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { toast } from "sonner";
 
-export function ProblemFilter() {
+interface Props {
+  userId: string | undefined;
+}
+
+export function ProblemFilter({ userId }: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -23,19 +27,24 @@ export function ProblemFilter() {
   };
 
   const updateFilters = (category: string, item: string) => {
+    if (!userId) {
+      toast("You need to be logged in to use filters");
+      return;
+    }
+
     const params = new URLSearchParams(searchParams);
     const currentFilters = params.get(category)?.split(",") || [];
-
+    
     if (currentFilters.includes(item)) {
       params.set(category, currentFilters.filter((i) => i !== item).join(","));
     } else {
       params.set(category, [...currentFilters, item].join(","));
     }
-
+    
     if (params.get(category) === "") {
       params.delete(category);
     }
-
+    
     router.push(`?${params.toString()}`);
   };
 
@@ -59,7 +68,7 @@ export function ProblemFilter() {
             {items.map((item) => (
               <DropdownMenuCheckboxItem
                 key={item}
-                checked={isChecked(category, item)}
+                checked={userId ? isChecked(category, item) : false}
                 onCheckedChange={() => updateFilters(category, item)}
               >
                 {item.charAt(0).toUpperCase() + item.slice(1)}
