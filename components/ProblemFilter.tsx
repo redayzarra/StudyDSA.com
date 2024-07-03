@@ -37,7 +37,6 @@ export function ProblemFilter() {
         <DropdownMenuCheckboxItem
           checked={showActivityBar}
           onCheckedChange={setShowActivityBar}
-          disabled
         >
           Incomplete
         </DropdownMenuCheckboxItem>
@@ -48,20 +47,19 @@ export function ProblemFilter() {
           checked={showStatusBar}
           onCheckedChange={setShowStatusBar}
         >
-          Status Bar
+          Easy
         </DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem
           checked={showActivityBar}
           onCheckedChange={setShowActivityBar}
-          disabled
         >
-          Activity Bar
+          Medium
         </DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem
           checked={showPanel}
           onCheckedChange={setShowPanel}
         >
-          Panel
+          Hard
         </DropdownMenuCheckboxItem>
         <DropdownMenuLabel>Status</DropdownMenuLabel>
         <DropdownMenuSeparator />
@@ -74,15 +72,20 @@ export function ProblemFilter() {
         <DropdownMenuCheckboxItem
           checked={showActivityBar}
           onCheckedChange={setShowActivityBar}
-          disabled
         >
-          Activity Bar
+          Review
         </DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem
           checked={showPanel}
           onCheckedChange={setShowPanel}
         >
-          Panel
+          Mastered
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem
+          checked={showPanel}
+          onCheckedChange={setShowPanel}
+        >
+          Challenging
         </DropdownMenuCheckboxItem>
       </DropdownMenuContent>
     </DropdownMenu>
