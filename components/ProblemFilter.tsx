@@ -1,4 +1,5 @@
 "use client";
+
 import * as React from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -11,6 +12,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { toast } from "sonner";
+import { FaChevronDown } from "react-icons/fa6";
+import Difficulty from "./Difficulty";
+import { QuestionDifficulty } from "@prisma/client";
 
 interface Props {
   userId: string | undefined;
@@ -22,7 +26,7 @@ export function ProblemFilter({ userId }: Props) {
 
   const filters = {
     completed: ["complete", "incomplete"],
-    difficulty: ["easy", "medium", "hard"],
+    difficulty: ["Easy", "Medium", "Hard"],
     status: ["practicing", "review", "mastered", "challenging"],
   };
 
@@ -31,20 +35,16 @@ export function ProblemFilter({ userId }: Props) {
       toast("You need to be logged in to use filters");
       return;
     }
-
     const params = new URLSearchParams(searchParams);
     const currentFilters = params.get(category)?.split(",") || [];
-    
     if (currentFilters.includes(item)) {
       params.set(category, currentFilters.filter((i) => i !== item).join(","));
     } else {
       params.set(category, [...currentFilters, item].join(","));
     }
-    
     if (params.get(category) === "") {
       params.delete(category);
     }
-    
     router.push(`?${params.toString()}`);
   };
 
@@ -56,7 +56,12 @@ export function ProblemFilter({ userId }: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">Filter</Button>
+        <Button
+          variant="outline"
+          className="h-9 text-sm px-3 font-semibold bg-neutral-600/25 hover:bg-black/30 hover:text-white text-neutral-400"
+        >
+          Filter <FaChevronDown className="ml-2" />
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         {Object.entries(filters).map(([category, items]) => (
@@ -71,7 +76,11 @@ export function ProblemFilter({ userId }: Props) {
                 checked={userId ? isChecked(category, item) : false}
                 onCheckedChange={() => updateFilters(category, item)}
               >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
+                {category === "difficulty" ? (
+                  <Difficulty difficulty={item as QuestionDifficulty} />
+                ) : (
+                  item.charAt(0).toUpperCase() + item.slice(1)
+                )}
               </DropdownMenuCheckboxItem>
             ))}
           </React.Fragment>

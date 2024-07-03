@@ -17,12 +17,12 @@ const ProblemBar = ({ problems, title, userId }: Props) => {
         {/* <div className="absolute inset-x-0 h-[1px] mx-auto -top-px bg-gradient-to-r from-transparent via-stone-400 to-transparent" /> */}
         <ProblemSearchBar problems={problems} />
         <div className="flex items-center space-x-2">
+          <ProblemFilter userId={userId} />
           <ProblemDeleteButton
             userId={userId}
             title={title}
             problems={problems}
           />
-          <ProblemFilter userId={userId} />
         </div>
       </div>
     </div>
