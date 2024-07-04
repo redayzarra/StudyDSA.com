@@ -29,6 +29,7 @@ export function ProblemFilter({ userId }: Props) {
     status: ["practicing", "review", "mastered", "challenging"],
   };
 
+  // In ProblemFilter.tsx
   const updateFilters = (category: string, item: string) => {
     if (!userId) {
       toast("You need to be logged in to use filters");

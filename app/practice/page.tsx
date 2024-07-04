@@ -6,7 +6,7 @@ import { Poppins } from "next/font/google";
 import getUserId from "@/hooks/server/getUserId";
 import getProblems from "@/actions/questions/getProblems";
 import ProblemBar from "@/components/ProblemBar";
-import { LeetCodeProblem } from "@prisma/client";
+import { MasteryLevel } from "@prisma/client";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -17,25 +17,87 @@ type ProblemCategories = {
   [category: string]: number[];
 };
 
-const fetchProblemsByCategories = async (categories: ProblemCategories) => {
-  const problems: { [category: string]: LeetCodeProblem[] } = {};
-  for (const [category, ids] of Object.entries(categories)) {
-    try {
-      problems[category] = await getProblems(ids);
-      
-      // Error handling
-    } catch (error) {
-      console.error(`Error fetching problems for category: ${category}`, error);
-      problems[category] = [];
-    }
-  }
-
-  return problems;
+type Filters = {
+  completed: string[];
+  difficulty: string[];
+  status: string[];
 };
 
-const PracticePage = async () => {
+const PracticePage = async ({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) => {
+  // Fetch userId
   const userId = await getUserId();
 
+  const capitalizeFirstLetter = (string: string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+  };
+
+  const parseFilters = (searchParams: {
+    [key: string]: string | string[] | undefined;
+  }): Filters => {
+    const completed = ((searchParams.completed as string)?.split(",") ||
+      []) as string[];
+    const difficulty = ((searchParams.difficulty as string)?.split(",") ||
+      []) as string[];
+    const status = ((searchParams.status as string)?.split(",") || []).map(
+      capitalizeFirstLetter
+    ) as MasteryLevel[];
+
+    return { completed, difficulty, status };
+  };
+
+  // Fetch problems by filter
+  const fetchProblemsByCategories = async (
+    categories: ProblemCategories,
+    filters: Filters,
+    userId: string | undefined
+  ) => {
+    const problems: {
+      [category: string]: Awaited<ReturnType<typeof getProblems>>;
+    } = {};
+    for (const [category, ids] of Object.entries(categories)) {
+      try {
+        let categoryProblems = await getProblems(ids, userId);
+
+        // Apply filters
+        categoryProblems = categoryProblems.filter((problem) => {
+          const matchesDifficulty =
+            filters.difficulty.length === 0 ||
+            filters.difficulty.includes(problem.difficulty);
+          const matchesStatus =
+            filters.status.length === 0 ||
+            (problem.progress &&
+              filters.status.includes(problem.progress.masteryLevel));
+          const matchesCompleted =
+            filters.completed.length === 0 ||
+            (filters.completed.includes("complete") &&
+              problem.progress &&
+              problem.progress.isComplete) ||
+            (filters.completed.includes("incomplete") &&
+              (!problem.progress || !problem.progress.isComplete));
+
+          return matchesDifficulty && matchesStatus && matchesCompleted;
+        });
+
+        problems[category] = categoryProblems;
+      } catch (error) {
+        console.error(
+          `Error fetching problems for category: ${category}`,
+          error
+        );
+        problems[category] = [];
+      }
+    }
+    return problems;
+  };
+
+  // Get the filters from the url search params
+  const filters = parseFilters(searchParams);
+
+  // Define the categories we need
   const categories = {
     "Array / String": [76, 77, 78, 79, 80, 81, 7, 148, 82],
     "Two Pointers": [83, 84, 12, 149, 150],
@@ -63,7 +125,12 @@ const PracticePage = async () => {
     "Bit Manipulation": [143, 67, 68, 145, 146, 147, 212],
   };
 
-  const problemsByCategory = await fetchProblemsByCategories(categories);
+  // Get the problems from the categories, filters, and userId
+  const problemsByCategory = await fetchProblemsByCategories(
+    categories,
+    filters,
+    userId
+  );
 
   return (
     <div className="">
@@ -83,7 +150,11 @@ const PracticePage = async () => {
       </div>
       <Separator className="my-4 self-stretch bg-border" />
       <div className="">
-        <ProblemBar userId={userId} problems={problemsByCategory} title="NeetCode 150" />
+        <ProblemBar
+          userId={userId}
+          problems={problemsByCategory}
+          title="NeetCode 150"
+        />
       </div>
       <div className="w-full mt-4 space-y-12">
         {Object.entries(problemsByCategory)
