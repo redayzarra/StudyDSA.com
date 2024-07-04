@@ -1,7 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import qs from "query-string";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -19,8 +20,10 @@ import { QuestionDifficulty } from "@prisma/client";
 interface Props {
   userId: string | undefined;
 }
+
 export function ProblemFilter({ userId }: Props) {
   const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
 
   const filters = {
@@ -29,29 +32,48 @@ export function ProblemFilter({ userId }: Props) {
     status: ["practicing", "review", "mastered", "challenging"],
   };
 
-  // In ProblemFilter.tsx
   const updateFilters = (category: string, item: string) => {
     if (!userId) {
       toast("You need to be logged in to use filters");
       return;
     }
-    const params = new URLSearchParams(searchParams);
-    const currentFilters = params.get(category)?.split(",") || [];
-    if (currentFilters.includes(item)) {
-      params.set(category, currentFilters.filter((i) => i !== item).join(","));
+
+    const current = qs.parse(searchParams.toString());
+    const currentCategory = current[category] as string | undefined;
+    const currentItems = currentCategory ? currentCategory.split(',') : [];
+
+    let newItems: string[];
+    if (currentItems.includes(item)) {
+      newItems = currentItems.filter((i) => i !== item);
     } else {
-      params.set(category, [...currentFilters, item].join(","));
+      newItems = [...currentItems, item];
     }
-    if (params.get(category) === "") {
-      params.delete(category);
+
+    const newQuery = {
+      ...current,
+      [category]: newItems.join(','),
+    };
+
+    if (newItems.length === 0) {
+      delete newQuery[category];
     }
-    router.push(`?${params.toString()}`);
+
+    const url = qs.stringifyUrl(
+      {
+        url: pathname,
+        query: newQuery,
+      },
+      { skipNull: true, skipEmptyString: true }
+    );
+
+    router.push(url);
   };
 
   const isChecked = (category: string, item: string) => {
-    const currentFilters = searchParams.get(category)?.split(",") || [];
-    return currentFilters.includes(item);
+    const currentCategory = searchParams.get(category);
+    return currentCategory ? currentCategory.split(',').includes(item) : false;
   };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
