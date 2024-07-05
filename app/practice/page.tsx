@@ -1,150 +1,13 @@
+import getProblems from "@/actions/questions/getProblems";
+import ProblemBar from "@/components/ProblemBar";
+import ProblemHeader from "@/components/ProblemHeader";
+import ProblemTables from "@/components/ProblemTables";
 import { QuestionsTable } from "@/components/QuestionsTable";
 import TextLink from "@/components/TextLink";
 import { Separator } from "@/components/ui/separator";
-import { cn } from "@/lib/utils";
-import { Poppins } from "next/font/google";
 import getUserId from "@/hooks/server/getUserId";
-import getProblems from "@/actions/questions/getProblems";
-import ProblemBar from "@/components/ProblemBar";
-import { MasteryLevel, QuestionDifficulty } from "@prisma/client";
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["700"],
-});
-
-type ProblemCategories = Record<string, number[]>;
-
-type Filters = {
-  completed: string[];
-  difficulty: QuestionDifficulty[];
-  status: MasteryLevel[];
-};
-
-type SearchParams = Record<string, string | string[] | undefined>;
-
-const PracticePage = async ({
-  searchParams,
-}: {
-  searchParams: SearchParams;
-}) => {
-  const userId = await getUserId();
-  const filters = parseFilters(searchParams);
-  const problemsByCategory = await fetchProblemsByCategories(
-    categories,
-    filters,
-    userId
-  );
-
-  return (
-    <div className="space-y-4 mt-4 md:mt-0">
-      <Header />
-      <Separator className="my-4 self-stretch bg-border" />
-      <ProblemBar
-        userId={userId}
-        problems={problemsByCategory}
-        title="NeetCode 150"
-      />
-      <ProblemTables problemsByCategory={problemsByCategory} userId={userId} />
-    </div>
-  );
-};
-
-const Header = () => (
-  <div className="space-y-5">
-    <h1 className={cn("text-4xl md:text-6xl font-bold", poppins.className)}>
-      NeetCode 150 🚀
-    </h1>
-    <h2 className="dark:text-muted-foreground line-clamp-2">
-      A comprehensive list curated by Navdeep Singh (
-      <TextLink href="https://www.youtube.com/@NeetCode" external={true}>
-        NeetCode
-      </TextLink>
-      ). It is an expansion of the{" "}
-      <TextLink href="/practice/blind-75">Blind 75</TextLink> list and features
-      a blend of beginner-friendly and more challenging problems.
-    </h2>
-  </div>
-);
-
-const ProblemTables = ({
-  problemsByCategory,
-  userId,
-}: {
-  problemsByCategory: Record<string, Awaited<ReturnType<typeof getProblems>>>;
-  userId: string | undefined;
-}) => (
-  <div className="w-full mt-4 space-y-12">
-    {Object.entries(problemsByCategory)
-      .filter(([_, problems]) => problems.length > 0)
-      .map(([category, problems]) => (
-        <QuestionsTable
-          key={category}
-          title={category}
-          problems={problems}
-          userId={userId}
-        />
-      ))}
-  </div>
-);
-
-const parseFilters = (searchParams: SearchParams): Filters => {
-  const completed = (searchParams.completed as string)?.split(",") || [];
-  const difficulty = ((searchParams.difficulty as string)?.split(",") ||
-    []) as QuestionDifficulty[];
-  const status = ((searchParams.status as string)?.split(",") || []).map(
-    capitalizeFirstLetter
-  ) as MasteryLevel[];
-
-  return { completed, difficulty, status };
-};
-
-const fetchProblemsByCategories = async (
-  categories: ProblemCategories,
-  filters: Filters,
-  userId: string | undefined
-) => {
-  const problems: Record<string, Awaited<ReturnType<typeof getProblems>>> = {};
-
-  for (const [category, ids] of Object.entries(categories)) {
-    try {
-      let categoryProblems = await getProblems(ids, userId);
-      problems[category] = applyFilters(categoryProblems, filters);
-    } catch (error) {
-      console.error(`Error fetching problems for category: ${category}`, error);
-      problems[category] = [];
-    }
-  }
-
-  return problems;
-};
-
-const applyFilters = (
-  problems: Awaited<ReturnType<typeof getProblems>>,
-  filters: Filters
-) => {
-  return problems.filter((problem) => {
-    const matchesDifficulty =
-      filters.difficulty.length === 0 ||
-      filters.difficulty.includes(problem.difficulty);
-    const matchesStatus =
-      filters.status.length === 0 ||
-      (problem.progress &&
-        filters.status.includes(problem.progress.masteryLevel));
-    const matchesCompleted =
-      filters.completed.length === 0 ||
-      (filters.completed.includes("complete") &&
-        problem.progress?.isComplete) ||
-      (filters.completed.includes("incomplete") &&
-        (!problem.progress || !problem.progress.isComplete));
-
-    return matchesDifficulty && matchesStatus && matchesCompleted;
-  });
-};
-
-const capitalizeFirstLetter = (string: string) => {
-  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-};
+import { SearchParams } from "@/types/problems";
+import { fetchProblemsByCategories, parseFilters } from "@/utils/problems";
 
 // Define the categories we need
 const categories = {
@@ -170,6 +33,43 @@ const categories = {
   Intervals: [135, 136, 137, 138, 72, 206],
   Math: [140, 141, 142, 207, 208, 209, 210, 211],
   "Bit Manipulation": [143, 67, 68, 145, 146, 147, 212],
+};
+
+const PracticePage = async ({
+  searchParams,
+}: {
+  searchParams: SearchParams;
+}) => {
+  const userId = await getUserId();
+  const filters = parseFilters(searchParams);
+  const problemsByCategory = await fetchProblemsByCategories(
+    categories,
+    filters,
+    userId
+  );
+
+  return (
+    <div className="space-y-4 mt-4 md:mt-0">
+      <ProblemHeader title="NeetCode 150 🚀">
+        <h2 className="dark:text-muted-foreground line-clamp-2">
+          A comprehensive list curated by Navdeep Singh (
+          <TextLink href="https://www.youtube.com/@NeetCode" external={true}>
+            NeetCode
+          </TextLink>
+          ). It is an expansion of the{" "}
+          <TextLink href="/practice/blind-75">Blind 75</TextLink> list and
+          features a blend of beginner-friendly and more challenging problems.
+        </h2>
+      </ProblemHeader>
+      <Separator className="my-4 self-stretch bg-border" />
+      <ProblemBar
+        userId={userId}
+        problems={problemsByCategory}
+        title="NeetCode 150"
+      />
+      <ProblemTables problemsByCategory={problemsByCategory} userId={userId} />
+    </div>
+  );
 };
 
 export default PracticePage;
