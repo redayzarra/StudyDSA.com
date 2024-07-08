@@ -2,12 +2,11 @@ import getProblems from "@/actions/questions/getProblems";
 import ProblemBar from "@/components/ProblemBar";
 import ProblemHeader from "@/components/ProblemHeader";
 import ProblemTables from "@/components/ProblemTables";
-import { QuestionsTable } from "@/components/QuestionsTable";
 import TextLink from "@/components/TextLink";
 import { Separator } from "@/components/ui/separator";
 import getUserId from "@/hooks/server/getUserId";
-import { SearchParams } from "@/types/problems";
-import { fetchProblemsByCategories, parseFilters } from "@/utils/problems";
+import { ProblemCategories, SearchParams } from "@/types/problems";
+import { LeetCodeProblem } from "@prisma/client";
 
 // Define the categories we need
 const categories = {
@@ -35,19 +34,31 @@ const categories = {
   "Bit Manipulation": [143, 67, 68, 145, 146, 147, 212],
 };
 
+const fetchProblemsByCategories = async (categories: ProblemCategories) => {
+  const problems: { [category: string]: LeetCodeProblem[] } = {};
+  for (const [category, ids] of Object.entries(categories)) {
+    try {
+      problems[category] = await getProblems(ids);
+      
+      // Error handling
+    } catch (error) {
+      console.error(`Error fetching problems for category: ${category}`, error);
+      problems[category] = [];
+    }
+  }
+
+  return problems;
+};
+
 const PracticePage = async ({
   searchParams,
 }: {
   searchParams: SearchParams;
 }) => {
   const userId = await getUserId();
-  const filters = parseFilters(searchParams);
-  const problemsByCategory = await fetchProblemsByCategories(
-    categories,
-    filters,
-    userId
-  );
-
+  
+  const problemsByCategory = await fetchProblemsByCategories(categories);
+  
   return (
     <div className="space-y-4 mt-4 md:mt-0">
       <ProblemHeader title="NeetCode 150 🚀">
