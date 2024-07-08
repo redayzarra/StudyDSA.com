@@ -14,7 +14,6 @@ const SettingsPage = () => {
   return (
     <div className="space-y-10 w-80">
       <p>{JSON.stringify(user)}</p>
-      <ProblemChart />
     </div>
   );
 };
