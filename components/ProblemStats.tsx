@@ -5,7 +5,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "./ui/accordion";
-import Link from "next/link";
 import { ProblemChart } from "./ProblemChart";
 
 const ProblemStats = () => {
