@@ -8,7 +8,6 @@ import {
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
-  getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
@@ -68,7 +67,7 @@ export function QuestionsTable({ userId, title, problems }: Props) {
       ),
       cell: ({ row }) => (
         <div className="flex items-center justify-center -ml-4">
-          <QuestionCheckbox userId={userId!} problemId={row.original.id} />
+          <QuestionCheckbox userId={userId!} problemId={row.original.id} difficulty={row.original.difficulty} />
         </div>
       ),
       enableSorting: false,

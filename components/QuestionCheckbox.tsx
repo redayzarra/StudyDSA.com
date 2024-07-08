@@ -1,22 +1,24 @@
 "use client";
 
+import React, { useEffect, useState, useCallback } from "react";
 import getProblemCompletion from "@/actions/problems/getProblemCompletion";
 import markProblem from "@/actions/problems/markProblem";
-import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Checkbox } from "./ui/checkbox";
 import { useProblemCountStore } from "@/app/store/problemCount";
+
+type Difficulty = "Easy" | "Medium" | "Hard";
 
 interface Props {
   className?: string;
   userId: string;
   problemId: number;
-  difficulty: 'easy' | 'medium' | 'hard'; // Add difficulty prop
+  difficulty: Difficulty;
 }
 
-const QuestionCheckbox = ({ className, userId, problemId, difficulty }: Props) => {
+const QuestionCheckbox: React.FC<Props> = ({ className, userId, problemId, difficulty }) => {
   const [isComplete, setIsComplete] = useState(false);
-  const { incrementCount, decrementCount } = useProblemCountStore(); // Use the Zustand store
+  const { currentSet, incrementCompleted, decrementCompleted } = useProblemCountStore();
 
   useEffect(() => {
     const fetchCompletionStatus = async () => {
@@ -26,46 +28,44 @@ const QuestionCheckbox = ({ className, userId, problemId, difficulty }: Props) =
       try {
         const completionStatus = await getProblemCompletion(userId, problemId);
         setIsComplete(completionStatus);
-        // If the problem is already complete when component mounts, increment the count
         if (completionStatus) {
-          incrementCount(difficulty);
+          incrementCompleted(currentSet, difficulty);
         }
       } catch (error) {
         console.error("Failed to fetch problem completion status:", error);
       }
     };
     fetchCompletionStatus();
-  }, [userId, problemId, difficulty, incrementCount]);
+  }, [userId, problemId, difficulty, currentSet, incrementCompleted]);
 
-  const handleChange = async () => {
+  const handleChange = useCallback(async () => {
     if (!userId) {
       toast("You need to be logged in to mark a problem");
       return;
     }
+
     const newIsComplete = !isComplete;
     setIsComplete(newIsComplete);
 
-    // Update the Zustand store
     if (newIsComplete) {
-      incrementCount(difficulty);
+      incrementCompleted(currentSet, difficulty);
     } else {
-      decrementCount(difficulty);
+      decrementCompleted(currentSet, difficulty);
     }
 
     try {
       await markProblem(userId, problemId, newIsComplete);
     } catch (error) {
       console.error("Failed to toggle problem completion:", error);
-      setIsComplete(isComplete); // Revert on error
-      
-      // Revert the Zustand store update on error
+      setIsComplete(isComplete);
+
       if (newIsComplete) {
-        decrementCount(difficulty);
+        decrementCompleted(currentSet, difficulty);
       } else {
-        incrementCount(difficulty);
+        incrementCompleted(currentSet, difficulty);
       }
     }
-  };
+  }, [userId, isComplete, currentSet, difficulty, incrementCompleted, decrementCompleted, problemId]);
 
   return (
     <Checkbox
@@ -80,4 +80,5 @@ const QuestionCheckbox = ({ className, userId, problemId, difficulty }: Props) =
   );
 };
 
-export default QuestionCheckbox;
+export default React.memo(QuestionCheckbox);
+

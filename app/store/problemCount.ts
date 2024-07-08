@@ -1,21 +1,55 @@
-import { create } from 'zustand';
+import { create } from "zustand";
+import { produce } from "immer";
+
+// Define a type for difficulties to reduce repetition
+type Difficulty = 'Easy' | 'Medium' | 'Hard';
+
+interface ProblemSetCounts {
+  total: Record<Difficulty, number>;
+  completed: Record<Difficulty, number>;
+}
 
 interface ProblemCountState {
-  easy: number;
-  medium: number;
-  hard: number;
-  incrementCount: (difficulty: 'easy' | 'medium' | 'hard') => void;
-  decrementCount: (difficulty: 'easy' | 'medium' | 'hard') => void;
-  setCount: (difficulty: 'easy' | 'medium' | 'hard', count: number) => void;
+  currentSet: string;
+  problemSets: Record<string, ProblemSetCounts>;
+  setCurrentSet: (set: string) => void;
+  initializeProblemSet: (set: string, counts: ProblemSetCounts['total']) => void;
+  incrementCompleted: (set: string, difficulty: Difficulty) => void;
+  decrementCompleted: (set: string, difficulty: Difficulty) => void;
 }
 
 export const useProblemCountStore = create<ProblemCountState>((set) => ({
-  easy: 0,
-  medium: 0,
-  hard: 0,
-  incrementCount: (difficulty) =>
-    set((state) => ({ [difficulty]: state[difficulty] + 1 })),
-  decrementCount: (difficulty) =>
-    set((state) => ({ [difficulty]: Math.max(0, state[difficulty] - 1) })),
-  setCount: (difficulty, count) => set(() => ({ [difficulty]: count })),
+  currentSet: 'NeetCode150',
+  problemSets: {},
+
+  setCurrentSet: (newSet: string): void => set({ currentSet: newSet }),
+
+  initializeProblemSet: (newSet: string, counts: ProblemSetCounts['total']): void => 
+    set(produce((state: ProblemCountState) => {
+      state.problemSets[newSet] = {
+        total: counts,
+        completed: { Easy: 0, Medium: 0, Hard: 0 }
+      };
+    })),
+
+  incrementCompleted: (setName: string, difficulty: Difficulty): void =>
+    set(produce((state: ProblemCountState) => {
+      const set = state.problemSets[setName];
+      if (set) {
+        set.completed[difficulty] = (set.completed[difficulty] || 0) + 1;
+      } else {
+        console.error(`Problem set ${setName} not found`);
+      }
+    })),
+
+  decrementCompleted: (setName: string, difficulty: Difficulty): void =>
+    set(produce((state: ProblemCountState) => {
+      const set = state.problemSets[setName];
+      if (set) {
+        set.completed[difficulty] = Math.max(0, (set.completed[difficulty] || 0) - 1);
+      } else {
+        console.error(`Problem set ${setName} not found`);
+      }
+    })),
 }));
+
