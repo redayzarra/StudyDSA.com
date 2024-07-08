@@ -6,7 +6,8 @@ import { Poppins } from "next/font/google";
 import getUserId from "@/hooks/server/getUserId";
 import ProblemBar from "@/components/ProblemBar";
 import { MasteryLevel, QuestionDifficulty } from "@prisma/client";
-import getProblems from "@/actions/problems/getProblems";
+import getFilteredProblems from "@/actions/problems/getFilteredProblems";
+import { Filters } from "@/types/problems";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -17,79 +18,36 @@ type ProblemCategories = {
   [category: string]: number[];
 };
 
-type Filters = {
-  completed: string[];
-  difficulty: string[];
-  status: string[];
-};
-
 const PracticePage = async ({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) => {
-  // Fetch userId
   const userId = await getUserId();
 
   const parseFilters = (searchParams: {
     [key: string]: string | string[] | undefined;
   }): Filters => {
-    const completed = ((searchParams.completed as string)?.split(",") ||
-      []) as string[];
-    const difficulty = ((searchParams.difficulty as string)?.split(",") ||
-      []) as QuestionDifficulty[];
-    const status = ((searchParams.status as string)?.split(",") ||
-      []) as MasteryLevel[];
+    const completed = (
+      (searchParams.completed as string)?.split(",") || []
+    ).filter((c) => c === "complete" || c === "incomplete") as (
+      | "complete"
+      | "incomplete"
+    )[];
+
+    const difficulty = (
+      (searchParams.difficulty as string)?.split(",") || []
+    ).filter((d) =>
+      ["Easy", "Medium", "Hard"].includes(d)
+    ) as QuestionDifficulty[];
+
+    const status = ((searchParams.status as string)?.split(",") || []).filter(
+      (s) => ["Practicing", "Review", "Mastered", "Challenging"].includes(s)
+    ) as MasteryLevel[];
 
     return { completed, difficulty, status };
   };
 
-  // Fetch problems by filter
-  const fetchProblemsByCategories = async (
-    categories: ProblemCategories,
-    filters: Filters,
-    userId: string | undefined
-  ) => {
-    const problems: {
-      [category: string]: Awaited<ReturnType<typeof getProblems>>;
-    } = {};
-    for (const [category, ids] of Object.entries(categories)) {
-      try {
-        let categoryProblems = await getProblems(ids, userId);
-
-        // Apply filters
-        categoryProblems = categoryProblems.filter((problem) => {
-          const matchesDifficulty =
-            filters.difficulty.length === 0 ||
-            filters.difficulty.includes(problem.difficulty);
-          const matchesStatus =
-            filters.status.length === 0 ||
-            (problem.progress &&
-              filters.status.includes(problem.progress.masteryLevel));
-          const matchesCompleted =
-            filters.completed.length === 0 ||
-            (filters.completed.includes("complete") &&
-              problem.progress &&
-              problem.progress.isComplete) ||
-            (filters.completed.includes("incomplete") &&
-              (!problem.progress || !problem.progress.isComplete));
-
-          return matchesDifficulty && matchesStatus && matchesCompleted;
-        });
-
-        problems[category] = categoryProblems;
-      } catch (error) {
-        console.error(
-          `Error fetching problems for category: ${category}`,
-          error
-        );
-        problems[category] = [];
-      }
-    }
-    return problems;
-  };
-
-  // Get the filters from the url search params
   const filters = parseFilters(searchParams);
 
   // Define the categories we need
@@ -120,7 +78,30 @@ const PracticePage = async ({
     "Bit Manipulation": [143, 67, 68, 145, 146, 147, 212],
   };
 
-  // Get the problems from the categories, filters, and userId
+  const fetchProblemsByCategories = async (
+    categories: ProblemCategories,
+    filters: Filters,
+    userId: string | undefined
+  ) => {
+    const problems: {
+      [category: string]: Awaited<ReturnType<typeof getFilteredProblems>>;
+    } = {};
+
+    for (const [category, ids] of Object.entries(categories)) {
+      try {
+        // Pass filters to getFilteredProblems for server-side filtering
+        problems[category] = await getFilteredProblems(ids, userId, filters);
+      } catch (error) {
+        console.error(
+          `Error fetching problems for category: ${category}`,
+          error
+        );
+        problems[category] = [];
+      }
+    }
+    return problems;
+  };
+
   const problemsByCategory = await fetchProblemsByCategories(
     categories,
     filters,
