@@ -81,9 +81,11 @@ const TableOfProblems = async () => {
   ];
 
   return (
-    <ScrollArea className="h-full mt-2 pr-6 py-4 w-[225px]">
-      <QuestionsTabs />
-      <ProblemStats />
+    <ScrollArea className="h-full mt-2 pr-6 py-4 w-[250px] overflow-visible">
+      <div className="space-y-6">
+        <QuestionsTabs />
+        <ProblemStats />
+      </div>
     </ScrollArea>
   );
 };
