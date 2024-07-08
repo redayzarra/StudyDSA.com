@@ -47,7 +47,7 @@ interface Props {
 
 export function NotationsChart({ className }: Props) {
   return (
-    <ChartContainer config={chartConfig} className={`${className}`}>
+    <ChartContainer config={chartConfig} className={`sm:min-h-[300px] md:min-h-[100px] ${className}`}>
       <LineChart
         accessibilityLayer
         data={chartData}
