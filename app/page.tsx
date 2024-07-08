@@ -1,6 +1,5 @@
 import BlurryWelcome from "@/components/BlurryWelcome";
 import Container from "@/components/Container";
-import Footer from "@/components/Footer";
 import MasterDSA from "@/components/MasterDSA";
 import NavBar from "@/components/NavBar";
 import { Aurora } from "@/components/ui/Aurora";
@@ -14,13 +13,13 @@ export default async function Home() {
   const firstName = userName?.split(" ")[0];
 
   return (
-    <Aurora className="min-h-[2250px] md:min-h-0 md:h-screen">
+    <Aurora className="min-h-screen md:min-h-[800px]">
       <NavBar />
-      <Container className="absolute">
-        <div className="grid mt-[104px] xl:mt-10 xl:scale-[.85] 2xl:scale-100 2xl:mt-48 grid-cols-1 transition-all md:grid-cols-[3fr_5fr] gap-x-3">
-          <div className="">
+      <Container className="flex flex-col justify-start min-h-screen pt-24 md:justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-[3fr_5fr] gap-x-3 w-full max-w-7xl px-4 py-8 md:py-12">
+          <div>
             <MasterDSA />
-            <div className="-mt-[24px] mb-3">
+            <div className="mt-3 mb-3">
               {user ? (
                 <Welcome user={user} userName={firstName!} />
               ) : (
