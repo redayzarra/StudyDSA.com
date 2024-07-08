@@ -17,7 +17,7 @@ export default async function Home() {
     <Aurora className="min-h-[2250px] md:min-h-0 md:h-screen">
       <NavBar />
       <Container className="absolute">
-        <div className="grid mt-28 lg:scale-90 xl:scale-100 xl:mt-48 grid-cols-1 transition-all md:grid-cols-[3fr_5fr] gap-x-3">
+        <div className="grid mt-[104px] grid-cols-1 transition-all md:grid-cols-[3fr_5fr] gap-x-3">
           <div className="">
             <MasterDSA />
             <div className="-mt-[24px] mb-3">
