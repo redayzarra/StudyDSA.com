@@ -1,39 +1,17 @@
 "use client";
-
-import React from "react";
+import React, { Suspense } from "react";
+import dynamic from 'next/dynamic';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "./ui/accordion";
-import { ProblemChart } from "./ProblemChart";
 
-type Difficulty = "Easy" | "Medium" | "Hard";
-
-interface ChartConfig {
-  difficulty: Difficulty;
-  color: string;
-}
-
-const CHART_CONFIGS: ChartConfig[] = [
-  { difficulty: "Easy", color: "#73BF5E" },
-  { difficulty: "Medium", color: "#F2AE30" },
-  { difficulty: "Hard", color: "#F23C13" },
-];
-
-const ProblemCharts: React.FC = () => (
-  <div className="-space-y-9 -mt-6 -mb-6 flex flex-col items-center justify-center">
-    {CHART_CONFIGS.map(({ difficulty, color }) => (
-      <ProblemChart
-        key={difficulty}
-        className="scale-[.65]"
-        difficulty={difficulty}
-        color={color}
-      />
-    ))}
-  </div>
-);
+const DynamicProblemCharts = dynamic(() => import('./ProblemCharts'), {
+  loading: () => <p>Loading charts...</p>,
+  ssr: false
+});
 
 const ProblemStats: React.FC = () => (
   <div className="w-full backdrop-blur-[15px] border-[1px] shadow-lg shadow-black rounded-md bg-black/[.35] border-t-[1px] border-neutral-800/[.35] pt-2 px-6 pb-4">
@@ -47,7 +25,9 @@ const ProblemStats: React.FC = () => (
       <AccordionItem value="progress">
         <AccordionTrigger>Progress</AccordionTrigger>
         <AccordionContent>
-          <ProblemCharts />
+          <Suspense fallback={<div>Loading...</div>}>
+            <DynamicProblemCharts />
+          </Suspense>
         </AccordionContent>
       </AccordionItem>
     </Accordion>
