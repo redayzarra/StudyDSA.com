@@ -2,12 +2,7 @@
 
 import { Line, LineChart } from "recharts";
 
-import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/components/ui/chart";
+import { ChartConfig, ChartContainer } from "@/components/ui/chart";
 
 const chartData = Array.from({ length: 10 }, (_, i) => ({
   n: i + 1,
@@ -15,7 +10,7 @@ const chartData = Array.from({ length: 10 }, (_, i) => ({
   OLogN: Math.log2(i + 1),
   ON: i + 1,
   ONLogN: (i + 1) * Math.log2(i + 1),
-  ON2: (i + 1) ** 2
+  ON2: (i + 1) ** 2,
 }));
 
 const chartConfig = {
@@ -47,7 +42,10 @@ interface Props {
 
 export function NotationsChart({ className }: Props) {
   return (
-    <ChartContainer config={chartConfig} className={`sm:min-h-[300px] md:min-h-[100px] ${className}`}>
+    <ChartContainer
+      config={chartConfig}
+      className={`w-full min-h-[200px] sm:min-h-[250px] md:min-h-[50px] ${className}`}
+    >
       <LineChart
         accessibilityLayer
         data={chartData}
