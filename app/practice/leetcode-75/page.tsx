@@ -4,7 +4,7 @@ import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { Poppins } from "next/font/google";
 import getUserId from "@/hooks/server/getUserId";
-import getProblems from "@/actions/questions/getProblems";
+import getProblems from "@/actions/problems/getProblems";
 import ProblemBar from "@/components/ProblemBar";
 
 const font = Poppins({
@@ -83,7 +83,11 @@ const LeetCode75Page = async () => {
       </div>
       <Separator className="my-4 self-stretch bg-border" />
       <div className="">
-        <ProblemBar userId={userId} problems={problemsByCategory} title="LeetCode 75" />
+        <ProblemBar
+          userId={userId}
+          problems={problemsByCategory}
+          title="LeetCode 75"
+        />
       </div>
       <div className="w-full mt-4 space-y-12">
         {Object.entries(problemsByCategory)

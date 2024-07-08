@@ -1,7 +1,7 @@
 "use client";
 
-import getProblemCompletion from "@/actions/questions/getProblemCompletion";
-import markProblem from "@/actions/questions/markProblem";
+import getProblemCompletion from "@/actions/problems/getProblemCompletion";
+import markProblem from "@/actions/problems/markProblem";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Checkbox } from "./ui/checkbox";
@@ -12,11 +12,7 @@ interface Props {
   problemId: number;
 }
 
-const QuestionCheckbox = ({
-  className,
-  userId,
-  problemId,
-}: Props) => {
+const QuestionCheckbox = ({ className, userId, problemId }: Props) => {
   const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {

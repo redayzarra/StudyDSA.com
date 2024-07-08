@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 
-import getProblemStatus from "@/actions/questions/getProblemStatus";
-import updateStatus from "@/actions/questions/updateStatus";
+import getProblemStatus from "@/actions/problems/getProblemStatus";
+import updateStatus from "@/actions/problems/updateStatus";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -13,7 +13,7 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { MasteryLevel } from "@prisma/client";
 
@@ -47,7 +47,11 @@ export function Status({ userId, problemId }: Props) {
     if (userId) {
       setMasteryLevel(newStatus);
       try {
-        await updateStatus({ userId, problemId, masteryLevel: newStatus as MasteryLevel });
+        await updateStatus({
+          userId,
+          problemId,
+          masteryLevel: newStatus as MasteryLevel,
+        });
       } catch (error) {
         console.error("Failed to update mastery level:", error);
       }
@@ -72,21 +76,36 @@ export function Status({ userId, problemId }: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className={`bg-neutral-600/25 h-[30px] ${getBackgroundColor(masteryLevel)} text-sm px-2`}>
+        <Button
+          variant="outline"
+          className={`bg-neutral-600/25 h-[30px] ${getBackgroundColor(
+            masteryLevel
+          )} text-sm px-2`}
+        >
           {masteryLevel} <FaChevronDown className="ml-2" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className={`w-45 `}>
         <DropdownMenuLabel>Problem Status</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuRadioGroup value={masteryLevel} onValueChange={handleStatusChange}>
-          <DropdownMenuRadioItem value="Practicing" disabled={!userId}>Practicing</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="Review" disabled={!userId}>Review</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="Mastered" disabled={!userId}>Mastered</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="Challenging" disabled={!userId}>Challenging</DropdownMenuRadioItem>
+        <DropdownMenuRadioGroup
+          value={masteryLevel}
+          onValueChange={handleStatusChange}
+        >
+          <DropdownMenuRadioItem value="Practicing" disabled={!userId}>
+            Practicing
+          </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="Review" disabled={!userId}>
+            Review
+          </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="Mastered" disabled={!userId}>
+            Mastered
+          </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="Challenging" disabled={!userId}>
+            Challenging
+          </DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>
   );
 }
-

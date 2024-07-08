@@ -29,7 +29,7 @@ export function ProblemFilter({ userId }: Props) {
   const filters = {
     completed: ["complete", "incomplete"],
     difficulty: ["Easy", "Medium", "Hard"],
-    status: ["practicing", "review", "mastered", "challenging"],
+    status: ["Practicing", "Review", "Mastered", "Challenging"],
   };
 
   const updateFilters = (category: string, item: string) => {

@@ -14,7 +14,7 @@ import {
 } from "./ui/alert-dialog";
 import { LeetCodeProblem } from "@prisma/client";
 import { toast } from "sonner";
-import clearProgress from "@/actions/questions/clearProgress";
+import clearProgress from "@/actions/problems/clearProgress";
 import { useRouter } from "next/navigation";
 
 interface Props {
@@ -75,7 +75,8 @@ const ProblemDeleteButton = ({ userId, title, problems }: Props) => {
           </AlertDialogTitle>
           <AlertDialogDescription>
             This will delete your progress for the <strong>{title}</strong> list
-            only. Your progress on other lists and problems won&apos;t be affected.
+            only. Your progress on other lists and problems won&apos;t be
+            affected.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter className="mt-2">

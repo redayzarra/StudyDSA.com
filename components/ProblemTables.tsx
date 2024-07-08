@@ -1,4 +1,4 @@
-import getProblems from "@/actions/questions/getProblems";
+import getProblems from "@/actions/problems/getProblems";
 import React from "react";
 import { QuestionsTable } from "./QuestionsTable";
 

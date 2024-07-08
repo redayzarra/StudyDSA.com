@@ -14,8 +14,8 @@ import {
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import updateNotes from "@/actions/questions/updateNotes";
-import getNotes from "@/actions/questions/getNotes"; // Assuming you have a function to fetch notes
+import updateNotes from "@/actions/problems/updateNotes";
+import getNotes from "@/actions/problems/getNotes"; // Assuming you have a function to fetch notes
 
 const FormSchema = z.object({
   notes: z.string().max(1000, {
