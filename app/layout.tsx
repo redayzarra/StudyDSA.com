@@ -49,4 +49,18 @@ export const metadata: Metadata = {
   },
   description:
     "Start mastering Data Structures & Algorithms - interactive, engaging, and suitable for all skill levels.",
+  icons: {
+    icon: [
+      {
+        media: "(prefers-color-scheme: light)",
+        url: "/images/icon-light.png",
+        href: "/images/icon-light.png",
+      },
+      {
+        media: "(prefers-color-scheme: dark)",
+        url: "/images/icon-dark.png",
+        href: "/images/icon-dark.png",
+      },
+    ],
+  },
 };
