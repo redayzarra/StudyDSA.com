@@ -6,10 +6,10 @@ import { AiOutlineNodeIndex } from "react-icons/ai";
 import { FaCircle } from "react-icons/fa";
 import { PiGraph } from "react-icons/pi";
 import { TbBinaryTree } from "react-icons/tb";
-import NotationsChart from "./NotationsChart";
 import { TypeWriter } from "./TypeWriter";
 import { BentoGrid, BentoGridItem } from "./ui/BentoGrid";
 import { Meteors } from "./Meteors";
+import { NotationsChart } from "./NotationsChart";
 
 export function WelcomeGrid() {
   return (
@@ -44,8 +44,8 @@ const Skeleton = () => (
 );
 
 const SkeletonOne = () => (
-  <div className="flex flex-1 min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2]">
-    <NotationsChart />
+  <div className="flex flex-1 w-full h-full dark:bg-dot-white/[0.2] bg-dot-black/[0.2]">
+    <NotationsChart className="-ml-[10px]" />
   </div>
 );
 

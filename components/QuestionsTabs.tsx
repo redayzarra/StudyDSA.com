@@ -30,21 +30,11 @@ const QuestionsTabs = () => {
       href: "/practice/leetcode-75",
       id: "leetcode-75",
     },
-    // {
-    //   title: "Top 100 Liked",
-    //   href: "/practice/top-100-liked",
-    //   id: "top-100-liked",
-    // },
     {
       title: "NeetCode 150",
       href: "/practice",
       id: "neetcode-150",
     },
-    // {
-    //   title: "Top Interview 150",
-    //   href: "/practice/top-interview-150",
-    //   id: "top-interview-150",
-    // },
   ];
 
   return (

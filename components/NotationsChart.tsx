@@ -1,99 +1,97 @@
 "use client";
 
-import React from "react";
-import ReactApexChart from "react-apexcharts";
-import { ApexOptions } from "apexcharts";
+import { Line, LineChart } from "recharts";
 
-const NotationsChart = ({ className }: { className?: string }) => {
-  const inputSizes = Array.from({ length: 10 }, (_, i) => i + 1);
-  const O1 = inputSizes.map((n) => 1);
-  const OLogN = inputSizes.map((n) => Math.log(n));
-  const ON = inputSizes.map((n) => n);
-  const ONLogN = inputSizes.map((n) => n * Math.log(n));
-  const ON2 = inputSizes.map((n) => n * n);
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
 
-  const options: ApexOptions = {
-    chart: {
-      type: "line",
-      zoom: {
-        enabled: false,
-      },
-      toolbar: {
-        show: false,
-      },
-      animations: {
-        enabled: true,
-        easing: "easeinout",
-        speed: 800,
-        animateGradually: {
-          enabled: true,
-          delay: 150,
-        },
-        dynamicAnimation: {
-          enabled: true,
-          speed: 350,
-        },
-      },
-    },
-    grid: {
-      show: false,
-    },
-    stroke: {
-      curve: "smooth",
-      lineCap: 'round',
-      width: 2,
-    },
-    tooltip: {
-      enabled: false,
-    },
-    legend: {
-      show: false,
-    },
-    xaxis: {
-      labels: {
-        show: false, // Hide x-axis labels
-      },
-    },
-    yaxis: {
-      labels: {
-        show: false, // Hide y-axis labels
-      },
-    },
-  };
+const chartData = Array.from({ length: 10 }, (_, i) => ({
+  n: i + 1,
+  O1: 1,
+  OLogN: Math.log2(i + 1),
+  ON: i + 1,
+  ONLogN: (i + 1) * Math.log2(i + 1),
+  ON2: (i + 1) ** 2
+}));
 
-  const series = [
-    {
-      name: "O(1)",
-      data: O1,
-    },
-    {
-      name: "O(log n)",
-      data: OLogN,
-    },
-    {
-      name: "O(n)",
-      data: ON,
-    },
-    {
-      name: "O(n log n)",
-      data: ONLogN,
-    },
-    {
-      name: "O(n^2)",
-      data: ON2,
-    },
-  ];
+const chartConfig = {
+  O1: {
+    label: "O(1)",
+    color: "hsl(var(--chart-1))",
+  },
+  OLogN: {
+    label: "O(log n)",
+    color: "hsl(var(--chart-2))",
+  },
+  ON: {
+    label: "O(n)",
+    color: "hsl(var(--chart-3))",
+  },
+  ONLogN: {
+    label: "O(n log n)",
+    color: "hsl(var(--chart-4))",
+  },
+  ON2: {
+    label: "O(n^2)",
+    color: "hsl(var(--chart-5))",
+  },
+} satisfies ChartConfig;
 
+interface Props {
+  className?: string;
+}
+
+export function NotationsChart({ className }: Props) {
   return (
-    <div className="w-full h-full -mx-[15px] -mt-6">
-      <ReactApexChart
-        options={options}
-        series={series}
-        type="line"
-        height={175}
-      />
-    </div>
+    <ChartContainer config={chartConfig} className={`${className}`}>
+      <LineChart
+        accessibilityLayer
+        data={chartData}
+        margin={{
+          left: 12,
+          right: 12,
+        }}
+      >
+        <Line
+          dataKey="O1"
+          type="monotone"
+          stroke="var(--color-O1)"
+          strokeWidth={2}
+          dot={false}
+        />
+        <Line
+          dataKey="OLogN"
+          type="monotone"
+          stroke="var(--color-OLogN)"
+          strokeWidth={2}
+          dot={false}
+        />
+        <Line
+          dataKey="ON"
+          type="monotone"
+          stroke="var(--color-ON)"
+          strokeWidth={2}
+          dot={false}
+        />
+        <Line
+          dataKey="ONLogN"
+          type="monotone"
+          stroke="var(--color-ONLogN)"
+          strokeWidth={2}
+          dot={false}
+        />
+        <Line
+          dataKey="ON2"
+          type="monotone"
+          stroke="var(--color-ON2)"
+          strokeWidth={2}
+          dot={false}
+        />
+      </LineChart>
+    </ChartContainer>
   );
-};
-
-export default NotationsChart;
+}

@@ -9,6 +9,7 @@ import {
 } from "./ui/accordion";
 import { ScrollArea } from "./ui/scroll-area";
 import QuestionsTabs from "./QuestionsTabs";
+import ProblemStats from "./ProblemStats";
 
 const TableSection = ({
   heading,
@@ -82,6 +83,7 @@ const TableOfProblems = async () => {
   return (
     <ScrollArea className="h-full mt-2 pr-6 py-4 w-[225px]">
       <QuestionsTabs />
+      <ProblemStats />
     </ScrollArea>
   );
 };

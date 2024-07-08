@@ -1,5 +1,6 @@
 "use client";
 
+import { NotationsChart } from "@/components/NotationsChart";
 import getUser from "@/hooks/client/getUser";
 import getUserId from "@/hooks/client/getUserId";
 
@@ -10,8 +11,9 @@ const SettingsPage = () => {
   console.log(userId);
 
   return (
-    <div>
+    <div className="space-y-10 w-80">
       <p>{JSON.stringify(user)}</p>
+      <NotationsChart />
     </div>
   );
 };
