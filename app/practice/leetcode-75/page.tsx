@@ -4,8 +4,10 @@ import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { Poppins } from "next/font/google";
 import getUserId from "@/hooks/server/getUserId";
-import getProblems from "@/actions/problems/getProblems";
 import ProblemBar from "@/components/ProblemBar";
+import { MasteryLevel, QuestionDifficulty } from "@prisma/client";
+import getFilteredProblems from "@/actions/problems/getFilteredProblems";
+import { Filters } from "@/types/problems";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -16,24 +18,37 @@ type ProblemCategories = {
   [category: string]: number[];
 };
 
-const fetchProblemsByCategories = async (categories: ProblemCategories) => {
-  const problems: { [category: string]: any } = {};
-  for (const [category, ids] of Object.entries(categories)) {
-    try {
-      problems[category] = await getProblems(ids);
-
-      // Error handling
-    } catch (error) {
-      console.error(`Error fetching problems for category: ${category}`, error);
-      problems[category] = [];
-    }
-  }
-
-  return problems;
-};
-
-const LeetCode75Page = async () => {
+const LeetCode75Page = async ({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) => {
   const userId = await getUserId();
+
+  const parseFilters = (searchParams: {
+    [key: string]: string | string[] | undefined;
+  }): Filters => {
+    const completed = (
+      (searchParams.completed as string)?.split(",") || []
+    ).filter((c) => c === "complete" || c === "incomplete") as (
+      | "complete"
+      | "incomplete"
+    )[];
+
+    const difficulty = (
+      (searchParams.difficulty as string)?.split(",") || []
+    ).filter((d) =>
+      ["Easy", "Medium", "Hard"].includes(d)
+    ) as QuestionDifficulty[];
+
+    const status = ((searchParams.status as string)?.split(",") || []).filter(
+      (s) => ["Practicing", "Review", "Mastered", "Challenging"].includes(s)
+    ) as MasteryLevel[];
+
+    return { completed, difficulty, status };
+  };
+
+  const filters = parseFilters(searchParams);
 
   const categories = {
     "Array / String": [1, 2, 3, 4, 5, 6, 7, 8, 9],
@@ -60,7 +75,35 @@ const LeetCode75Page = async () => {
     "Monotonic Stacks": [74, 75],
   };
 
-  const problemsByCategory = await fetchProblemsByCategories(categories);
+  const fetchProblemsByCategories = async (
+    categories: ProblemCategories,
+    filters: Filters,
+    userId: string | undefined
+  ) => {
+    const problems: {
+      [category: string]: Awaited<ReturnType<typeof getFilteredProblems>>;
+    } = {};
+
+    for (const [category, ids] of Object.entries(categories)) {
+      try {
+        // Pass filters to getFilteredProblems for server-side filtering
+        problems[category] = await getFilteredProblems(ids, userId, filters);
+      } catch (error) {
+        console.error(
+          `Error fetching problems for category: ${category}`,
+          error
+        );
+        problems[category] = [];
+      }
+    }
+    return problems;
+  };
+
+  const problemsByCategory = await fetchProblemsByCategories(
+    categories,
+    filters,
+    userId
+  );
 
   return (
     <div className="">
