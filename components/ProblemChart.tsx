@@ -3,12 +3,18 @@
 import React, { useMemo } from "react";
 import {
   Label,
+  LabelList,
   PolarGrid,
   PolarRadiusAxis,
   RadialBar,
   RadialBarChart,
 } from "recharts";
-import { ChartConfig, ChartContainer } from "@/components/ui/chart";
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
 import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { useProblemCountStore } from "@/app/store/problemCount";
@@ -79,7 +85,7 @@ export function ProblemChart({
       ];
       const chartConfig: ChartConfig = {
         problems: {
-          label: "Problems",
+          label: `${difficulty}`,
         },
         [difficulty]: {
           label: difficulty,
@@ -96,11 +102,15 @@ export function ProblemChart({
     >
       <RadialBarChart
         data={chartData}
-        startAngle={0}
-        endAngle={endAngle}
+        startAngle={-90}
+        endAngle={endAngle - 90}
         innerRadius={80}
         outerRadius={110}
       >
+        <ChartTooltip
+          cursor={false}
+          content={<ChartTooltipContent className="scale-[1.75]" hideLabel />}
+        />
         <PolarGrid
           gridType="circle"
           radialLines={false}
@@ -108,7 +118,14 @@ export function ProblemChart({
           className="first:fill-muted last:fill-background"
           polarRadius={[86, 74]}
         />
-        <RadialBar dataKey="problems" background cornerRadius={10} />
+        <RadialBar dataKey="problems" background cornerRadius={10}>
+          <LabelList
+            position="insideStart"
+            dataKey="progress"
+            className="fill-background text-base font-semibold capitalize"
+            fontSize={10}
+          />
+        </RadialBar>
         <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
           <Label
             content={({ viewBox }) => {
@@ -132,4 +149,3 @@ export function ProblemChart({
     </ChartContainer>
   );
 }
-

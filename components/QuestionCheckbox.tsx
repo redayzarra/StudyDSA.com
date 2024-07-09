@@ -43,22 +43,18 @@ const QuestionCheckbox: React.FC<Props> = ({ className, userId, problemId, diffi
       toast("You need to be logged in to mark a problem");
       return;
     }
-
     const newIsComplete = !isComplete;
     setIsComplete(newIsComplete);
-
     if (newIsComplete) {
       incrementCompleted(currentSet, difficulty);
     } else {
       decrementCompleted(currentSet, difficulty);
     }
-
     try {
       await markProblem(userId, problemId, newIsComplete);
     } catch (error) {
       console.error("Failed to toggle problem completion:", error);
       setIsComplete(isComplete);
-
       if (newIsComplete) {
         decrementCompleted(currentSet, difficulty);
       } else {
@@ -80,5 +76,4 @@ const QuestionCheckbox: React.FC<Props> = ({ className, userId, problemId, diffi
   );
 };
 
-export default React.memo(QuestionCheckbox);
-
+export default QuestionCheckbox;
