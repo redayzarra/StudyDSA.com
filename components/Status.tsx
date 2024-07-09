@@ -62,10 +62,10 @@ export function Status({ userId, problemId }: Props) {
     switch (masteryLevel) {
       case "Practicing":
         return "bg-neutral-600/25 hover:bg-black/30 hover:text-white text-neutral-400";
-      case "Review":
-        return "bg-orange-400/50 hover:bg-orange-500/60 hover:text-white text-neutral-200";
       case "Mastered":
         return "bg-green-500/50 hover:bg-green-600/50 hover:text-white text-neutral-200";
+      case "Review":
+        return "bg-orange-400/50 hover:bg-orange-500/60 hover:text-white text-neutral-200";
       case "Challenging":
         return "bg-red-500/50 hover:bg-red-600/50 hover:text-white text-neutral-200";
       default:
@@ -95,11 +95,11 @@ export function Status({ userId, problemId }: Props) {
           <DropdownMenuRadioItem value="Practicing" disabled={!userId}>
             Practicing
           </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="Review" disabled={!userId}>
-            Review
-          </DropdownMenuRadioItem>
           <DropdownMenuRadioItem value="Mastered" disabled={!userId}>
             Mastered
+          </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="Review" disabled={!userId}>
+            Review
           </DropdownMenuRadioItem>
           <DropdownMenuRadioItem value="Challenging" disabled={!userId}>
             Challenging
