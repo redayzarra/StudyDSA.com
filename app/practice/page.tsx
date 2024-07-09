@@ -9,6 +9,7 @@ import { MasteryLevel, QuestionDifficulty } from "@prisma/client";
 import getFilteredProblems from "@/actions/problems/getFilteredProblems";
 import { Filters } from "@/types/problems";
 import dynamic from "next/dynamic";
+import { Metadata } from "next";
 
 // Use dynamic import for ProblemSetInitializer to reduce initial bundle size
 const ProblemSetInitializer = dynamic(() => import("@/components/ProblemSetInitializer"), { ssr: false });
@@ -144,6 +145,11 @@ const PracticePage = async ({
       </div>
     </div>
   );
+};
+
+export const metadata: Metadata = {
+  title: "NeetCode 150",
+  description: "",
 };
 
 export default PracticePage;

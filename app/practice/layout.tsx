@@ -1,5 +1,6 @@
 import NavBar from "@/components/NavBar";
 import TableOfProblems from "@/components/TableOfProblems";
+import { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import React from "react";
 
@@ -20,6 +21,16 @@ const PracticeLayout = ({ children }: { children: React.ReactNode }) => {
       </div>
     </div>
   );
+};
+
+
+export const metadata: Metadata = {
+  title: {
+    template: "%s | Practice",
+    default: "Practice",
+  },
+  description:
+    "Enhance your coding skills with our curated problem sets. Practice data structures and algorithms through interactive challenges designed for all skill levels.",
 };
 
 export default PracticeLayout;
