@@ -26,7 +26,7 @@ const PracticeLayout = ({ children }: { children: React.ReactNode }) => {
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Practice",
+    template: "%s",
     default: "Practice",
   },
   description:

@@ -1,6 +1,5 @@
 "use client";
-
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect } from 'react';
 import { useProblemCountStore } from '@/app/store/problemCount';
 
 type Difficulty = 'Easy' | 'Medium' | 'Hard';
@@ -13,16 +12,12 @@ interface Props {
 const ProblemSetInitializer: React.FC<Props> = ({ setName, counts }) => {
   const { initializeProblemSet, setCurrentSet } = useProblemCountStore();
 
-  // Memoize the counts object
-  const memoizedCounts = useMemo(() => counts, [counts]);
-
   useEffect(() => {
-    initializeProblemSet(setName, memoizedCounts);
+    initializeProblemSet(setName, counts);
     setCurrentSet(setName);
-  }, [setName, memoizedCounts, initializeProblemSet, setCurrentSet]);
+  }, [setName, counts, initializeProblemSet, setCurrentSet]);
 
   return null;
 };
 
-export default React.memo(ProblemSetInitializer);
-
+export default ProblemSetInitializer;
