@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
-
-import getProblemStatus from "@/actions/problems/getProblemStatus";
 import updateStatus from "@/actions/problems/updateStatus";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,41 +14,30 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { MasteryLevel } from "@prisma/client";
+import { ProblemWithProgress } from "@/types/problems";
 
 interface Props {
   userId: string | undefined;
-  problemId: number;
+  problem: ProblemWithProgress;
 }
 
-export function Status({ userId, problemId }: Props) {
-  const [masteryLevel, setMasteryLevel] = useState<string>("Practicing");
+export function Status({ userId, problem }: Props) {
+  const [masteryLevel, setMasteryLevel] = useState<MasteryLevel>("Practicing");
 
-  // Function to fetch initial status
-  const fetchInitialStatus = async (userId: string, problemId: number) => {
-    try {
-      const status = await getProblemStatus(userId, problemId);
-      setMasteryLevel(status || "Practicing");
-    } catch (error) {
-      console.error("Failed to fetch initial mastery level:", error);
-    }
-  };
-
-  // Fetch the initial status when the component mounts
   useEffect(() => {
-    if (userId) {
-      fetchInitialStatus(userId, problemId);
+    if (problem.progress) {
+      setMasteryLevel(problem.progress.masteryLevel);
     }
-  }, [userId, problemId]);
+  }, [problem.progress]);
 
-  // Function to handle status change
   const handleStatusChange = async (newStatus: string) => {
-    if (userId) {
+    if (userId && isMasteryLevel(newStatus)) {
       setMasteryLevel(newStatus);
       try {
         await updateStatus({
           userId,
-          problemId,
-          masteryLevel: newStatus as MasteryLevel,
+          problemId: problem.id,
+          masteryLevel: newStatus,
         });
       } catch (error) {
         console.error("Failed to update mastery level:", error);
@@ -58,7 +45,7 @@ export function Status({ userId, problemId }: Props) {
     }
   };
 
-  const getBackgroundColor = (masteryLevel: string) => {
+  const getBackgroundColor = (masteryLevel: MasteryLevel) => {
     switch (masteryLevel) {
       case "Practicing":
         return "bg-neutral-600/25 hover:bg-black/30 hover:text-white text-neutral-400";
@@ -107,5 +94,12 @@ export function Status({ userId, problemId }: Props) {
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>
+  );
+}
+
+// Type guard to check if a string is a valid MasteryLevel
+function isMasteryLevel(value: string): value is MasteryLevel {
+  return ["Practicing", "Mastered", "Review", "Challenging"].includes(
+    value as MasteryLevel
   );
 }

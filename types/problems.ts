@@ -1,4 +1,4 @@
-import { QuestionDifficulty, MasteryLevel } from "@prisma/client";
+import { QuestionDifficulty, MasteryLevel, LeetCodeProblem, ProblemProgress } from "@prisma/client";
 
 export type ProblemCategories = Record<string, number[]>;
 
@@ -10,3 +10,6 @@ export type Filters = {
 
 export type SearchParams = Record<string, string | string[] | undefined>;
 
+export type ProblemWithProgress = LeetCodeProblem & {
+  progress?: ProblemProgress | null;
+};

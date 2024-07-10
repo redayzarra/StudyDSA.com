@@ -1,42 +1,51 @@
 "use server";
+
 import db from "@/lib/db";
-import { LeetCodeProblem, ProblemProgress, Prisma } from "@prisma/client";
-
-type ProblemWithProgress = LeetCodeProblem & {
-  progress?: ProblemProgress;
-};
-
-type ProblemWithPossibleProgress = LeetCodeProblem & {
-  ProblemProgress?: ProblemProgress[];
-};
+import { ProblemWithProgress } from "@/types/problems";
 
 const getProblems = async (ids: number[], userId?: string): Promise<ProblemWithProgress[]> => {
   try {
+    // Fetch problems
     const problems = await db.leetCodeProblem.findMany({
       where: {
         id: {
-          in: ids,
-        },
+          in: ids
+        }
       },
-      orderBy: {
-        difficulty: 'asc', // Ascending order: Easy, Medium, Hard
-      },
-      include: userId ? {
-        ProblemProgress: {
-          where: {
-            userId: userId,
-          },
-        },
-      } : undefined,
-    }) as ProblemWithPossibleProgress[];
+      include: {
+        tags: true
+      }
+    });
 
-    return problems.map(problem => ({
-      ...problem,
-      progress: problem.ProblemProgress?.[0],
-      ProblemProgress: undefined, // Remove this property as we've extracted what we need
-    }));
+    // If userId is not provided, return problems without progress
+    if (!userId) {
+      return problems;
+    }
+
+    // Fetch progress for the user and problems
+    const progressList = await db.problemProgress.findMany({
+      where: {
+        userId: userId,
+        problemId: {
+          in: ids
+        }
+      }
+    });
+
+    // Merge problems with their progress
+    const problemsWithProgress: ProblemWithProgress[] = problems.map(problem => {
+      const progress = progressList.find(p => p.problemId === problem.id);
+      return {
+        ...problem,
+        progress: progress || null
+      };
+    });
+
+    return problemsWithProgress;
+
+    // Error handling
   } catch (error) {
-    console.error("Failed to fetch problems by ids:", error);
+    console.error("Failed to fetch problems:", error);
     throw error;
   }
 };

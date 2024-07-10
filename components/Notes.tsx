@@ -8,13 +8,14 @@ import {
 import { FaRegStickyNote } from "react-icons/fa";
 import { NotesInput } from "./NotesInput";
 import { Button } from "./ui/button";
+import { ProblemWithProgress } from "@/types/problems";
 
 interface Props {
   userId: string | undefined;
-  problemId: number;
+  problem: ProblemWithProgress;
 }
 
-export function Notes({ userId, problemId }: Props) {
+export function Notes({ userId, problem }: Props) {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -30,7 +31,7 @@ export function Notes({ userId, problemId }: Props) {
         <DialogHeader>
           <DialogTitle>Notes</DialogTitle>
         </DialogHeader>
-        <NotesInput userId={userId} problemId={problemId} />
+        <NotesInput userId={userId} problem={problem} />
       </DialogContent>
     </Dialog>
   );

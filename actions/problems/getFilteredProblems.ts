@@ -1,11 +1,6 @@
 "use server";
 import db from "@/lib/db";
-import { LeetCodeProblem, ProblemProgress } from "@prisma/client";
-import { Filters } from "@/types/problems";
-
-type ProblemWithProgress = LeetCodeProblem & {
-  progress?: ProblemProgress;
-};
+import { Filters, ProblemWithProgress } from "@/types/problems";
 
 const getFilteredProblems = async (
   ids: number[],

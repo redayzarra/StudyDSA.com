@@ -15,7 +15,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import updateNotes from "@/actions/problems/updateNotes";
-import getNotes from "@/actions/problems/getNotes"; // Assuming you have a function to fetch notes
+import { ProblemWithProgress } from "@/types/problems";
 
 const FormSchema = z.object({
   notes: z.string().max(1000, {
@@ -26,7 +26,7 @@ const FormSchema = z.object({
 
 interface Props {
   userId: string | undefined;
-  problemId: number;
+  problem: ProblemWithProgress;
 }
 
 const isEmptyContent = (content: string): boolean => {
@@ -34,9 +34,10 @@ const isEmptyContent = (content: string): boolean => {
   return plainText === "";
 };
 
-export function NotesInput({ userId, problemId }: Props) {
+export function NotesInput({ userId, problem }: Props) {
   const [loading, setLoading] = useState(false);
   const [savedNotes, setSavedNotes] = useState<string>("");
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -45,32 +46,21 @@ export function NotesInput({ userId, problemId }: Props) {
   });
 
   useEffect(() => {
-    async function fetchInitialData() {
-      if (!userId) {
-        return;
-      }
-      try {
-        const notes = await getNotes(userId, problemId);
-        const notesValue = notes ?? ""; // Ensure notes is a string
-        setSavedNotes(notesValue);
-        form.reset({ notes: notesValue }); // Set form's default value
-      } catch (error) {
-        toast("Failed to load notes. Please try again.");
-      }
+    if (problem.progress && problem.progress.notes) {
+      const notesValue = problem.progress.notes;
+      setSavedNotes(notesValue);
+      form.reset({ notes: notesValue });
     }
-
-    fetchInitialData();
-  }, [userId, problemId, form]);
+  }, [problem.progress, form]);
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     if (!userId) {
       toast("You need to be logged in to save personal notes.");
       return;
     }
-
     try {
       setLoading(true);
-      await updateNotes(userId, problemId, data.notes);
+      await updateNotes(userId, problem.id, data.notes);
       toast("Your personal notes for the problem are saved.");
       setSavedNotes(data.notes);
     } catch (error) {

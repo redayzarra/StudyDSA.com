@@ -1,67 +1,55 @@
 "use client";
 
-import React, { useEffect, useState, useCallback } from "react";
-import getProblemCompletion from "@/actions/problems/getProblemCompletion";
+import React, { useState, useEffect } from "react";
 import markProblem from "@/actions/problems/markProblem";
 import { toast } from "sonner";
 import { Checkbox } from "./ui/checkbox";
 import { useProblemCountStore } from "@/app/store/problemCount";
-
-type Difficulty = "Easy" | "Medium" | "Hard";
+import { ProblemWithProgress } from "@/types/problems";
 
 interface Props {
   className?: string;
   userId: string;
-  problemId: number;
-  difficulty: Difficulty;
+  problem: ProblemWithProgress;
 }
 
-const QuestionCheckbox: React.FC<Props> = ({ className, userId, problemId, difficulty }) => {
-  const [isComplete, setIsComplete] = useState(false);
+const QuestionCheckbox = ({ className, userId, problem }: Props) => {
+  const [isComplete, setIsComplete] = useState(problem.progress?.isComplete || false);
   const { currentSet, incrementCompleted, decrementCompleted } = useProblemCountStore();
 
   useEffect(() => {
-    const fetchCompletionStatus = async () => {
-      if (!userId) {
-        return;
-      }
-      try {
-        const completionStatus = await getProblemCompletion(userId, problemId);
-        setIsComplete(completionStatus);
-        if (completionStatus) {
-          incrementCompleted(currentSet, difficulty);
-        }
-      } catch (error) {
-        console.error("Failed to fetch problem completion status:", error);
-      }
-    };
-    fetchCompletionStatus();
-  }, [userId, problemId, difficulty, currentSet, incrementCompleted]);
+    if (isComplete) {
+      incrementCompleted(currentSet, problem.difficulty);
+    }
+  }, [isComplete, currentSet, problem.difficulty, incrementCompleted]);
 
-  const handleChange = useCallback(async () => {
+  const handleChange = async () => {
     if (!userId) {
       toast("You need to be logged in to mark a problem");
       return;
     }
     const newIsComplete = !isComplete;
     setIsComplete(newIsComplete);
+
     if (newIsComplete) {
-      incrementCompleted(currentSet, difficulty);
+      incrementCompleted(currentSet, problem.difficulty);
     } else {
-      decrementCompleted(currentSet, difficulty);
+      decrementCompleted(currentSet, problem.difficulty);
     }
+
     try {
-      await markProblem(userId, problemId, newIsComplete);
+      await markProblem(userId, problem.id, newIsComplete);
     } catch (error) {
       console.error("Failed to toggle problem completion:", error);
       setIsComplete(isComplete);
       if (newIsComplete) {
-        decrementCompleted(currentSet, difficulty);
+        decrementCompleted(currentSet, problem.difficulty);
       } else {
-        incrementCompleted(currentSet, difficulty);
+        incrementCompleted(currentSet, problem.difficulty);
       }
+      toast.error("Failed to update problem status");
     }
-  }, [userId, isComplete, currentSet, difficulty, incrementCompleted, decrementCompleted, problemId]);
+  };
 
   return (
     <Checkbox

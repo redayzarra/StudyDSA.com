@@ -21,7 +21,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
-import { LeetCodeProblem } from "@prisma/client";
 import { Poppins } from "next/font/google";
 import Link from "next/link";
 import { useState } from "react";
@@ -32,17 +31,12 @@ import { Solution } from "./Solution";
 import { Status } from "./Status";
 import { CaretSortIcon } from "@radix-ui/react-icons";
 import { Button } from "./ui/button";
+import { ProblemWithProgress } from "@/types/problems";
 
 const font = Poppins({
   subsets: ["latin"],
   weight: ["600"],
 });
-
-interface Props {
-  userId: string | undefined;
-  problems: LeetCodeProblem[];
-  title: string;
-}
 
 const difficultyOrder = {
   Easy: 1,
@@ -50,8 +44,14 @@ const difficultyOrder = {
   Hard: 3,
 };
 
+interface Props {
+  userId: string | undefined;
+  problems: ProblemWithProgress[];
+  title: string;
+}
+
 export function QuestionsTable({ userId, title, problems }: Props) {
-  const [data, setData] = useState<LeetCodeProblem[]>(problems);
+  const [data, setData] = useState<ProblemWithProgress[]>(problems);
   const [sorting, setSorting] = useState<SortingState>([
     { id: "difficulty", desc: false },
   ]);
@@ -59,7 +59,7 @@ export function QuestionsTable({ userId, title, problems }: Props) {
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = useState({});
 
-  const columns: ColumnDef<LeetCodeProblem>[] = [
+  const columns: ColumnDef<ProblemWithProgress>[] = [
     {
       id: "select",
       header: () => (
@@ -67,7 +67,7 @@ export function QuestionsTable({ userId, title, problems }: Props) {
       ),
       cell: ({ row }) => (
         <div className="flex items-center justify-center -ml-4">
-          <QuestionCheckbox userId={userId!} problemId={row.original.id} difficulty={row.original.difficulty} />
+          <QuestionCheckbox userId={userId!} problem={row.original} />
         </div>
       ),
       enableSorting: false,
@@ -121,7 +121,7 @@ export function QuestionsTable({ userId, title, problems }: Props) {
       ),
       cell: ({ row }) => (
         <div className="hidden md:flex w-[100px]">
-          <Status userId={userId} problemId={row.original.id} />
+          <Status userId={userId} problem={row.original} />
         </div>
       ),
     },
@@ -132,7 +132,7 @@ export function QuestionsTable({ userId, title, problems }: Props) {
       ),
       cell: ({ row }) => (
         <div className="flex items-center justify-center">
-          <Notes userId={userId} problemId={row.original.id} />
+          <Notes userId={userId} problem={row.original} />
         </div>
       ),
     },
