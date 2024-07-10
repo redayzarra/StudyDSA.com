@@ -8,14 +8,9 @@ import ProblemBar from "@/components/ProblemBar";
 import { QuestionDifficulty } from "@prisma/client";
 import getProblems from "@/actions/problems/getProblems";
 import { ProblemWithProgress } from "@/types/problems";
-import dynamic from "next/dynamic";
 import { Metadata } from "next";
-
-// Use dynamic import for ProblemSetInitializer to reduce initial bundle size
-const ProblemSetInitializer = dynamic(
-  () => import("@/components/ProblemSetInitializer"),
-  { ssr: false }
-);
+import ProblemSetInitializer from "@/components/ProblemSetInitializer";
+import { useProblemCountStore } from "../store/problemCount";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -51,16 +46,27 @@ const fetchProblemsByCategories = async (
 
 const calculateCounts = (
   problemsByCategory: Record<string, ProblemWithProgress[]>
-): Record<QuestionDifficulty, number> => {
-  return Object.values(problemsByCategory).reduce(
+): {
+  total: Record<QuestionDifficulty, number>;
+  completed: Record<QuestionDifficulty, number>;
+} => {
+  const counts = Object.values(problemsByCategory).reduce(
     (counts, problems) => {
       problems.forEach((problem) => {
-        counts[problem.difficulty]++;
+        counts.total[problem.difficulty]++;
+        if (problem.progress?.isComplete) {
+          counts.completed[problem.difficulty]++;
+        }
       });
       return counts;
     },
-    { Easy: 0, Medium: 0, Hard: 0 }
+    {
+      total: { Easy: 0, Medium: 0, Hard: 0 },
+      completed: { Easy: 0, Medium: 0, Hard: 0 },
+    }
   );
+  console.log("Final counts:", counts);
+  return counts;
 };
 
 const PracticePage = async () => {
@@ -93,13 +99,17 @@ const PracticePage = async () => {
     "Bit Manipulation": [143, 67, 68, 145, 146, 147, 212],
   };
 
-  const problemsByCategory = await fetchProblemsByCategories(categories, userId);
+  const problemsByCategory = await fetchProblemsByCategories(
+    categories,
+    userId
+  );
+
   const counts = calculateCounts(problemsByCategory);
+  console.log("Counts after calculation:", counts);
 
   return (
     <div>
       <ProblemSetInitializer setName="NeetCode150" counts={counts} />
-
       <div className="space-y-5 mt-4 md:mt-0">
         <h1 className={cn("text-4xl md:text-6xl font-bold", font.className)}>
           NeetCode 150 🚀
