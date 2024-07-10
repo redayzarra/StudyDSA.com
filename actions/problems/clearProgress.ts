@@ -15,12 +15,11 @@ const clearProgress = async (userId: string, problems: number[]) => {
       data: {
         isComplete: false,         // Reset completion status
         masteryLevel: "Practicing", // Reset mastery level to the default
-        notes: null,               // Clear any notes
       },
     });
-
     return { success: true, message: "User progress cleared successfully" };
 
+    // Error handling
   } catch (error) {
     console.error("Failed to clear user progress:", error);
     throw error;
