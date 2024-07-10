@@ -21,28 +21,24 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
+import { ProblemWithProgress } from "@/types/problems";
+import { MasteryLevel, QuestionDifficulty } from "@prisma/client";
+import { CaretSortIcon } from "@radix-ui/react-icons";
 import { Poppins } from "next/font/google";
 import Link from "next/link";
-import { useState } from "react";
+import { ReadonlyURLSearchParams, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import Difficulty from "./Difficulty";
 import { Notes } from "./Notes";
 import QuestionCheckbox from "./QuestionCheckbox";
 import { Solution } from "./Solution";
 import { Status } from "./Status";
-import { CaretSortIcon } from "@radix-ui/react-icons";
 import { Button } from "./ui/button";
-import { ProblemWithProgress } from "@/types/problems";
 
 const font = Poppins({
   subsets: ["latin"],
   weight: ["600"],
 });
-
-const difficultyOrder = {
-  Easy: 1,
-  Medium: 2,
-  Hard: 3,
-};
 
 interface Props {
   userId: string | undefined;
@@ -50,14 +46,49 @@ interface Props {
   title: string;
 }
 
+const difficultyOrder = {
+  Easy: 1,
+  Medium: 2,
+  Hard: 3,
+};
+
+const parseFilters = (
+  searchParams: ReadonlyURLSearchParams
+): ColumnFiltersState => {
+  const filters: [string, string][] = [
+    ["select", "completed"],
+    ["difficulty", "difficulty"],
+    ["masteryLevel", "status"],
+  ];
+
+  return filters.reduce<ColumnFiltersState>((acc, [id, param]) => {
+    const values = searchParams.get(param)?.split(",").filter(Boolean);
+    if (values?.length) {
+      acc.push({
+        id,
+        value: id === "select" ? values.includes("complete") : values,
+      });
+    }
+    return acc;
+  }, []);
+};
+
 export function QuestionsTable({ userId, title, problems }: Props) {
-  const [data, setData] = useState<ProblemWithProgress[]>(problems);
+  const searchParams = useSearchParams();
+
+  const [data] = useState<ProblemWithProgress[]>(problems);
   const [sorting, setSorting] = useState<SortingState>([
     { id: "difficulty", desc: false },
   ]);
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(() =>
+    parseFilters(searchParams)
+  );
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = useState({});
+
+  useEffect(() => {
+    setColumnFilters(parseFilters(searchParams));
+  }, [searchParams]);
 
   const columns: ColumnDef<ProblemWithProgress>[] = [
     {
@@ -72,6 +103,10 @@ export function QuestionsTable({ userId, title, problems }: Props) {
       ),
       enableSorting: false,
       enableHiding: false,
+      filterFn: (row, id, filterValue) => {
+        const isComplete = row.original.progress?.isComplete ?? false;
+        return filterValue === undefined || isComplete === filterValue;
+      },
     },
     {
       accessorKey: "title",
@@ -113,9 +148,13 @@ export function QuestionsTable({ userId, title, problems }: Props) {
       sortingFn: (a, b) =>
         difficultyOrder[a.original.difficulty] -
         difficultyOrder[b.original.difficulty],
+      filterFn: (row, columnId, filterValue: QuestionDifficulty[]) =>
+        filterValue.length === 0 ||
+        filterValue.includes(row.getValue(columnId)),
     },
     {
-      accessorKey: "status",
+      id: "masteryLevel",
+      accessorFn: (row) => row.progress?.masteryLevel,
       header: () => (
         <div className="hidden md:flex items-center justify-center">Status</div>
       ),
@@ -124,6 +163,13 @@ export function QuestionsTable({ userId, title, problems }: Props) {
           <Status userId={userId} problem={row.original} />
         </div>
       ),
+      filterFn: (row, columnId, filterValue: MasteryLevel[]): boolean => {
+        const masteryLevel = row.getValue(columnId) as MasteryLevel | undefined;
+        return (
+          filterValue.length === 0 ||
+          (masteryLevel !== undefined && filterValue.includes(masteryLevel))
+        );
+      },
     },
     {
       accessorKey: "notes",
@@ -167,11 +213,15 @@ export function QuestionsTable({ userId, title, problems }: Props) {
     },
   });
 
+  const hasVisibleRows = table.getFilteredRowModel().rows.length > 0;
+
+  if (!hasVisibleRows) {
+    return null;
+  }
+
   return (
     <div className="w-auto">
-      {/* Table */}
       <div className="w-full backdrop-blur-[15px] border-[1px] shadow-2xl shadow-black rounded-md bg-black/[.35] border-t-[1px] border-neutral-800/[.35]">
-        {/* Highlight */}
         <div className="absolute inset-x-0 h-[1px] mx-auto -top-px bg-gradient-to-r from-transparent via-stone-400 to-transparent" />
         <div
           className={cn(
@@ -184,7 +234,7 @@ export function QuestionsTable({ userId, title, problems }: Props) {
         <Table className="">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id} >
+              <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead key={header.id} className="h-[60px]">

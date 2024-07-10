@@ -5,14 +5,17 @@ import { cn } from "@/lib/utils";
 import { Poppins } from "next/font/google";
 import getUserId from "@/hooks/server/getUserId";
 import ProblemBar from "@/components/ProblemBar";
-import { MasteryLevel, QuestionDifficulty } from "@prisma/client";
-import getFilteredProblems from "@/actions/problems/getFilteredProblems";
-import { Filters } from "@/types/problems";
+import { QuestionDifficulty } from "@prisma/client";
+import getProblems from "@/actions/problems/getProblems";
+import { ProblemWithProgress } from "@/types/problems";
 import dynamic from "next/dynamic";
 import { Metadata } from "next";
 
 // Use dynamic import for ProblemSetInitializer to reduce initial bundle size
-const ProblemSetInitializer = dynamic(() => import("@/components/ProblemSetInitializer"), { ssr: false });
+const ProblemSetInitializer = dynamic(
+  () => import("@/components/ProblemSetInitializer"),
+  { ssr: false }
+);
 
 const font = Poppins({
   subsets: ["latin"],
@@ -21,40 +24,33 @@ const font = Poppins({
 
 type ProblemCategories = Record<string, number[]>;
 
-const parseFilters = (searchParams: { [key: string]: string | string[] | undefined }): Filters => {
-  const completed = ((searchParams.completed as string)?.split(",") || [])
-    .filter((c): c is "complete" | "incomplete" => c === "complete" || c === "incomplete");
-
-  const difficulty = ((searchParams.difficulty as string)?.split(",") || [])
-    .filter((d): d is QuestionDifficulty => ["Easy", "Medium", "Hard"].includes(d));
-
-  const status = ((searchParams.status as string)?.split(",") || [])
-    .filter((s): s is MasteryLevel => ["Practicing", "Review", "Mastered", "Challenging"].includes(s));
-
-  return { completed, difficulty, status };
-};
-
 const fetchProblemsByCategories = async (
   categories: ProblemCategories,
-  filters: Filters,
   userId: string | undefined
-): Promise<Record<string, Awaited<ReturnType<typeof getFilteredProblems>>>> => {
-  const problemPromises = Object.entries(categories).map(async ([category, ids]) => {
-    try {
-      const problems = await getFilteredProblems(ids, userId, filters);
-      return [category, problems] as const;
-    } catch (error) {
-      console.error(`Error fetching problems for category: ${category}`, error);
-      return [category, []] as const;
+): Promise<Record<string, ProblemWithProgress[]>> => {
+  const problemPromises = Object.entries(categories).map(
+    async ([category, ids]) => {
+      try {
+        const problems = await getProblems(ids, userId);
+        return [category, problems] as const;
+
+        // Error handling
+      } catch (error) {
+        console.error(
+          `Error fetching problems for category: ${category}`,
+          error
+        );
+        return [category, []] as const;
+      }
     }
-  });
+  );
 
   const problemEntries = await Promise.all(problemPromises);
   return Object.fromEntries(problemEntries);
 };
 
 const calculateCounts = (
-  problemsByCategory: Record<string, Awaited<ReturnType<typeof getFilteredProblems>>>
+  problemsByCategory: Record<string, ProblemWithProgress[]>
 ): Record<QuestionDifficulty, number> => {
   return Object.values(problemsByCategory).reduce(
     (counts, problems) => {
@@ -67,13 +63,8 @@ const calculateCounts = (
   );
 };
 
-const PracticePage = async ({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) => {
+const PracticePage = async () => {
   const userId = await getUserId();
-  const filters = parseFilters(searchParams);
 
   const categories: ProblemCategories = {
     "Array / String": [76, 77, 78, 79, 80, 81, 7, 148, 82],
@@ -102,7 +93,7 @@ const PracticePage = async ({
     "Bit Manipulation": [143, 67, 68, 145, 146, 147, 212],
   };
 
-  const problemsByCategory = await fetchProblemsByCategories(categories, filters, userId);
+  const problemsByCategory = await fetchProblemsByCategories(categories, userId);
   const counts = calculateCounts(problemsByCategory);
 
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import markProblem from "@/actions/problems/markProblem";
 import { toast } from "sonner";
 import { Checkbox } from "./ui/checkbox";
@@ -17,17 +17,12 @@ const QuestionCheckbox = ({ className, userId, problem }: Props) => {
   const [isComplete, setIsComplete] = useState(problem.progress?.isComplete || false);
   const { currentSet, incrementCompleted, decrementCompleted } = useProblemCountStore();
 
-  useEffect(() => {
-    if (isComplete) {
-      incrementCompleted(currentSet, problem.difficulty);
-    }
-  }, [isComplete, currentSet, problem.difficulty, incrementCompleted]);
-
   const handleChange = async () => {
     if (!userId) {
       toast("You need to be logged in to mark a problem");
       return;
     }
+
     const newIsComplete = !isComplete;
     setIsComplete(newIsComplete);
 
