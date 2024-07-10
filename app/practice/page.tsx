@@ -1,16 +1,15 @@
+import getProblems from "@/actions/problems/getProblems";
+import ProblemBar from "@/components/ProblemBar";
+import ProblemSetInitializer from "@/components/ProblemSetInitializer";
 import { QuestionsTable } from "@/components/QuestionsTable";
 import TextLink from "@/components/TextLink";
 import { Separator } from "@/components/ui/separator";
-import { cn } from "@/lib/utils";
-import { Poppins } from "next/font/google";
 import getUserId from "@/hooks/server/getUserId";
-import ProblemBar from "@/components/ProblemBar";
-import { QuestionDifficulty } from "@prisma/client";
-import getProblems from "@/actions/problems/getProblems";
+import { cn } from "@/lib/utils";
 import { ProblemWithProgress } from "@/types/problems";
+import { QuestionDifficulty } from "@prisma/client";
 import { Metadata } from "next";
-import ProblemSetInitializer from "@/components/ProblemSetInitializer";
-import { useProblemCountStore } from "../store/problemCount";
+import { Poppins } from "next/font/google";
 
 const font = Poppins({
   subsets: ["latin"],

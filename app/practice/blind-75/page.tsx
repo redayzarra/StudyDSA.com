@@ -1,18 +1,15 @@
+import getProblems from "@/actions/problems/getProblems";
+import ProblemBar from "@/components/ProblemBar";
+import ProblemSetInitializer from "@/components/ProblemSetInitializer";
 import { QuestionsTable } from "@/components/QuestionsTable";
 import TextLink from "@/components/TextLink";
 import { Separator } from "@/components/ui/separator";
-import { cn } from "@/lib/utils";
-import { Poppins } from "next/font/google";
 import getUserId from "@/hooks/server/getUserId";
-import ProblemBar from "@/components/ProblemBar";
-import { MasteryLevel, QuestionDifficulty } from "@prisma/client";
-import getFilteredProblems from "@/actions/problems/getFilteredProblems";
-import { Filters } from "@/types/problems";
-import dynamic from "next/dynamic";
+import { cn } from "@/lib/utils";
+import { ProblemWithProgress } from "@/types/problems";
+import { QuestionDifficulty } from "@prisma/client";
 import { Metadata } from "next";
-
-// Use dynamic import for ProblemSetInitializer to reduce initial bundle size
-const ProblemSetInitializer = dynamic(() => import("@/components/ProblemSetInitializer"), { ssr: false });
+import { Poppins } from "next/font/google";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -21,59 +18,55 @@ const font = Poppins({
 
 type ProblemCategories = Record<string, number[]>;
 
-const parseFilters = (searchParams: { [key: string]: string | string[] | undefined }): Filters => {
-  const completed = ((searchParams.completed as string)?.split(",") || [])
-    .filter((c): c is "complete" | "incomplete" => c === "complete" || c === "incomplete");
-
-  const difficulty = ((searchParams.difficulty as string)?.split(",") || [])
-    .filter((d): d is QuestionDifficulty => ["Easy", "Medium", "Hard"].includes(d));
-
-  const status = ((searchParams.status as string)?.split(",") || [])
-    .filter((s): s is MasteryLevel => ["Practicing", "Review", "Mastered", "Challenging"].includes(s));
-
-  return { completed, difficulty, status };
-};
-
 const fetchProblemsByCategories = async (
   categories: ProblemCategories,
-  filters: Filters,
   userId: string | undefined
-): Promise<Record<string, Awaited<ReturnType<typeof getFilteredProblems>>>> => {
-  const problemPromises = Object.entries(categories).map(async ([category, ids]) => {
-    try {
-      const problems = await getFilteredProblems(ids, userId, filters);
-      return [category, problems] as const;
-    } catch (error) {
-      console.error(`Error fetching problems for category: ${category}`, error);
-      return [category, []] as const;
+): Promise<Record<string, ProblemWithProgress[]>> => {
+  const problemPromises = Object.entries(categories).map(
+    async ([category, ids]) => {
+      try {
+        const problems = await getProblems(ids, userId);
+        return [category, problems] as const;
+      } catch (error) {
+        console.error(
+          `Error fetching problems for category: ${category}`,
+          error
+        );
+        return [category, []] as const;
+      }
     }
-  });
+  );
 
   const problemEntries = await Promise.all(problemPromises);
   return Object.fromEntries(problemEntries);
 };
 
 const calculateCounts = (
-  problemsByCategory: Record<string, Awaited<ReturnType<typeof getFilteredProblems>>>
-): Record<QuestionDifficulty, number> => {
-  return Object.values(problemsByCategory).reduce(
+  problemsByCategory: Record<string, ProblemWithProgress[]>
+): {
+  total: Record<QuestionDifficulty, number>;
+  completed: Record<QuestionDifficulty, number>;
+} => {
+  const counts = Object.values(problemsByCategory).reduce(
     (counts, problems) => {
       problems.forEach((problem) => {
-        counts[problem.difficulty]++;
+        counts.total[problem.difficulty]++;
+        if (problem.progress?.isComplete) {
+          counts.completed[problem.difficulty]++;
+        }
       });
       return counts;
     },
-    { Easy: 0, Medium: 0, Hard: 0 }
+    {
+      total: { Easy: 0, Medium: 0, Hard: 0 },
+      completed: { Easy: 0, Medium: 0, Hard: 0 },
+    }
   );
+  return counts;
 };
 
-const Blind75Page = async ({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) => {
+const Blind75Page = async () => {
   const userId = await getUserId();
-  const filters = parseFilters(searchParams);
 
   const categories: ProblemCategories = {
     "Array / String": [76, 77, 78, 79, 80, 81, 7, 82],
@@ -98,13 +91,12 @@ const Blind75Page = async ({
     "Bit Manipulation": [143, 67, 145, 146, 147],
   };
 
-  const problemsByCategory = await fetchProblemsByCategories(categories, filters, userId);
+  const problemsByCategory = await fetchProblemsByCategories(categories, userId);
   const counts = calculateCounts(problemsByCategory);
 
   return (
     <div>
       <ProblemSetInitializer setName="Blind75" counts={counts} />
-
       <div className="space-y-5 mt-4 md:mt-0">
         <h1 className={cn("text-4xl md:text-6xl font-bold", font.className)}>
           Blind 75 🛠️
