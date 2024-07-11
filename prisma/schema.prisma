@@ -172,12 +172,12 @@ model ProblemTag {
 
 model LeetCodeProblem {
   id         Int                @id @default(autoincrement())
-  title      String
+  title      String             @unique
   href       String
   difficulty QuestionDifficulty
   tags       ProblemTag[]
   videoURL   String?
-  solution   String?
+  solution   String?            @db.Text
 
   ProblemProgress ProblemProgress[]
 }
