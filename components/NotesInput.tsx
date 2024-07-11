@@ -54,15 +54,19 @@ export function NotesInput({ userId, problem }: Props) {
   }, [problem.progress, form]);
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
+    // If you aren't logged in, you can't save anything
     if (!userId) {
       toast("You need to be logged in to save personal notes.");
       return;
     }
+    
     try {
       setLoading(true);
       await updateNotes(userId, problem.id, data.notes);
       toast("Your personal notes for the problem are saved.");
       setSavedNotes(data.notes);
+
+      // Error handling
     } catch (error) {
       toast("Failed to save notes. Please try again.");
     } finally {
