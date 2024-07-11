@@ -4,7 +4,6 @@ import {
   DialogTrigger
 } from "@/components/ui/dialog";
 import { FaCode } from "react-icons/fa";
-import CodeBlock from "./CodeBlock";
 import { Button } from "./ui/button";
 import SolutionBlock from "./SolutionBlock";
 
@@ -21,7 +20,7 @@ export function Solution({ code }: { code?: string | undefined | null }) {
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-[425px] p-0 rounded-lg">
+      <DialogContent className="max-w-[700px] p-0 rounded-lg">
         <SolutionBlock
           code={code!}
           language="python"

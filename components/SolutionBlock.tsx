@@ -49,7 +49,7 @@ const SolutionBlock = ({
   } as CSSProperties;
 
   return (
-    <div className={`w-full spacing-y-px max-w-3xl mx-auto shadow-md bg-[#23272e] dark: dark:bg-stone-900/[0.3] border-t-2 dark:border-stone-700 rounded-lg overflow-hidden ${className}`}>
+    <div className={`w-full spacing-y-px mx-auto shadow-md bg-[#23272e] dark: dark:bg-stone-900/[0.3] border-t-2 dark:border-stone-700 rounded-lg overflow-hidden ${className}`}>
       <div className="grid grid-cols-3 items-center px-4 py-1 bg-[#17191d] dark:bg-black/70">
         <div className="flex justify-start items-center space-x-2">
           <FaCircle className="text-[#FF605C]" size={12} />
