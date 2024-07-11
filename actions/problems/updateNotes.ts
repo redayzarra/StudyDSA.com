@@ -4,6 +4,7 @@ import db from "@/lib/db";
 
 const updateNotes = async (userId: string, problemId: number, notes: string ) => {
   try {
+    console.log(`Updating notes for user ${userId}, problem ${problemId}`);
     const progress = await db.problemProgress.upsert({
       where: {
         userId_problemId: {
@@ -20,6 +21,9 @@ const updateNotes = async (userId: string, problemId: number, notes: string ) =>
         notes: notes,
       },
     });
+
+    console.log('Upsert result:', progress);
+
 
     return progress;
 

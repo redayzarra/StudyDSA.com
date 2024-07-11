@@ -64,7 +64,6 @@ const calculateCounts = (
       completed: { Easy: 0, Medium: 0, Hard: 0 },
     }
   );
-  console.log("Final counts:", counts);
   return counts;
 };
 
@@ -104,7 +103,6 @@ const PracticePage = async () => {
   );
 
   const counts = calculateCounts(problemsByCategory);
-  console.log("Counts after calculation:", counts);
 
   return (
     <div>

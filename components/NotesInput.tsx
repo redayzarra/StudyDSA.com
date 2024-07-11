@@ -14,13 +14,13 @@ import {
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import updateNotes from "@/actions/problems/updateNotes";
 import { ProblemWithProgress } from "@/types/problems";
+import updateNotes from "@/actions/problems/updateNotes";
 
 const FormSchema = z.object({
-  notes: z.string().max(1000, {
+  notes: z.string().max(2000, {
     message:
-      "To encourage writing short, simple, and concise notes, a 1000-character limit has been set.",
+      "To encourage writing short, simple, and concise notes, a 2000-character limit has been set.",
   }),
 });
 
@@ -29,46 +29,45 @@ interface Props {
   problem: ProblemWithProgress;
 }
 
-const isEmptyContent = (content: string): boolean => {
-  const plainText = content.replace(/<[^>]+>/g, "").trim();
-  return plainText === "";
-};
-
 export function NotesInput({ userId, problem }: Props) {
   const [loading, setLoading] = useState(false);
-  const [savedNotes, setSavedNotes] = useState<string>("");
+  const [savedNotes, setSavedNotes] = useState<string>(problem.progress?.notes || "");
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      notes: "",
+      notes: problem.progress?.notes || "",
     },
   });
 
   useEffect(() => {
-    if (problem.progress && problem.progress.notes) {
-      const notesValue = problem.progress.notes;
-      setSavedNotes(notesValue);
-      form.reset({ notes: notesValue });
+    if (problem.progress?.notes) {
+      setSavedNotes(problem.progress.notes);
+      form.reset({ notes: problem.progress.notes });
     }
-  }, [problem.progress, form]);
+  }, [problem, form]);
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    // If you aren't logged in, you can't save anything
     if (!userId) {
       toast("You need to be logged in to save personal notes.");
       return;
     }
-    
+
+    const previousNotes = savedNotes;
+    setSavedNotes(data.notes); // Optimistic update
+
     try {
       setLoading(true);
       await updateNotes(userId, problem.id, data.notes);
       toast("Your personal notes for the problem are saved.");
-      setSavedNotes(data.notes);
 
       // Error handling
     } catch (error) {
+      setSavedNotes(previousNotes); // Revert on error
+      form.reset({ notes: previousNotes });
       toast("Failed to save notes. Please try again.");
+
+      // After it's all said and done, turn the loading state off
     } finally {
       setLoading(false);
     }
@@ -94,7 +93,7 @@ export function NotesInput({ userId, problem }: Props) {
             )}
           />
           <div className="flex items-center justify-between">
-            <div></div>
+            <div className="text-sm text-muted-foreground font-semibold">{form.watch("notes").length}/2000 characters</div>
             <Button
               type="submit"
               size="sm"

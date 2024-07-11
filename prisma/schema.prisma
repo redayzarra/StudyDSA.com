@@ -74,7 +74,7 @@ model PasswordResetToken {
 
 // For tracking progress
 model Topic {
-  id          Int          @id @default(autoincrement())
+  id          Int             @id @default(autoincrement())
   title       String          @unique
   description String
   href        String
@@ -94,7 +94,7 @@ model TopicProgress {
 }
 
 model Chapter {
-  id          Int            @id @default(autoincrement())
+  id          Int               @id @default(autoincrement())
   title       String
   description String
   href        String
@@ -116,7 +116,7 @@ model ChapterProgress {
 }
 
 model Algorithm {
-  id          Int              @id @default(autoincrement())
+  id          Int                 @id @default(autoincrement())
   title       String
   description String
   href        String
@@ -137,7 +137,7 @@ model AlgorithmProgress {
 }
 
 model Bookmark {
-  id          String  @id @default(cuid())
+  id          String @id @default(cuid())
   userId      String
   chapterId   Int?
   algorithmId Int?
@@ -171,13 +171,13 @@ model ProblemTag {
 }
 
 model LeetCodeProblem {
-  id           Int             @id @default(autoincrement())
-  title        String
-  href         String
-  difficulty   QuestionDifficulty
-  tags         ProblemTag[]
-  videoURL     String?
-  solution     String?
+  id         Int                @id @default(autoincrement())
+  title      String
+  href       String
+  difficulty QuestionDifficulty
+  tags       ProblemTag[]
+  videoURL   String?
+  solution   String?
 
   ProblemProgress ProblemProgress[]
 }
@@ -188,7 +188,7 @@ model ProblemProgress {
   problemId    Int
   isComplete   Boolean         @default(false)
   masteryLevel MasteryLevel    @default(Practicing)
-  notes        String?
+  notes        String?         @db.Text
   user         User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   problem      LeetCodeProblem @relation(fields: [problemId], references: [id], onDelete: Cascade)
 
