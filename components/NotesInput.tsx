@@ -18,9 +18,9 @@ import { ProblemWithProgress } from "@/types/problems";
 import updateNotes from "@/actions/problems/updateNotes";
 
 const FormSchema = z.object({
-  notes: z.string().max(2000, {
+  notes: z.string().max(1000, {
     message:
-      "To encourage writing short, simple, and concise notes, a 2000-character limit has been set.",
+      "To encourage writing short, simple, and concise notes, a 1000-character limit has been set.",
   }),
 });
 
@@ -31,7 +31,9 @@ interface Props {
 
 export function NotesInput({ userId, problem }: Props) {
   const [loading, setLoading] = useState(false);
-  const [savedNotes, setSavedNotes] = useState<string>(problem.progress?.notes || "");
+  const [savedNotes, setSavedNotes] = useState<string>(
+    problem.progress?.notes || ""
+  );
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -59,6 +61,10 @@ export function NotesInput({ userId, problem }: Props) {
     try {
       setLoading(true);
       await updateNotes(userId, problem.id, data.notes);
+      // Update the stale problem data directly
+      if (problem.progress) {
+        problem.progress.notes = data.notes;
+      }
       toast("Your personal notes for the problem are saved.");
 
       // Error handling
@@ -86,6 +92,11 @@ export function NotesInput({ userId, problem }: Props) {
                   <Textarea
                     className="focus-visible:ring-neutral-600 min-h-[100px] ring-offset-transparent"
                     {...field}
+                    value={savedNotes}
+                    onChange={(e) => {
+                      setSavedNotes(e.target.value);
+                      field.onChange(e);
+                    }}
                   />
                 </FormControl>
                 <FormMessage />
@@ -93,7 +104,9 @@ export function NotesInput({ userId, problem }: Props) {
             )}
           />
           <div className="flex items-center justify-between">
-            <div className="text-sm text-muted-foreground font-semibold">{form.watch("notes").length}/2000 characters</div>
+            <div className="text-sm text-muted-foreground font-medium">
+              {form.watch("notes").length}/1000 characters
+            </div>
             <Button
               type="submit"
               size="sm"
