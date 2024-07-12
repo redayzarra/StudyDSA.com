@@ -14,8 +14,11 @@ interface Props {
 }
 
 const QuestionCheckbox = ({ className, userId, problem }: Props) => {
-  const [isComplete, setIsComplete] = useState(problem.progress?.isComplete || false);
-  const { currentSet, incrementCompleted, decrementCompleted } = useProblemCountStore();
+  const [isComplete, setIsComplete] = useState(
+    problem.progress?.isComplete || false
+  );
+  const { currentSet, incrementCompleted, decrementCompleted } =
+    useProblemCountStore();
 
   const handleChange = async () => {
     if (!userId) {
@@ -34,6 +37,11 @@ const QuestionCheckbox = ({ className, userId, problem }: Props) => {
 
     try {
       await markProblem(userId, problem.id, newIsComplete);
+      if (problem.progress) {
+        problem.progress.isComplete = newIsComplete;
+      }
+
+      // Error handling
     } catch (error) {
       console.error("Failed to toggle problem completion:", error);
       setIsComplete(isComplete);

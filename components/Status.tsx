@@ -34,11 +34,19 @@ export function Status({ userId, problem }: Props) {
     if (userId && isMasteryLevel(newStatus)) {
       setMasteryLevel(newStatus);
       try {
+        // Send api request to update the data in database
         await updateStatus({
           userId,
           problemId: problem.id,
           masteryLevel: newStatus,
         });
+
+        // Update the stale data so we can still work with it
+        if (problem.progress) {
+          problem.progress.masteryLevel = newStatus;
+        }
+
+        // Error handling
       } catch (error) {
         console.error("Failed to update mastery level:", error);
       }
