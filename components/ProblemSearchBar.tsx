@@ -2,16 +2,12 @@
 
 import { DialogProps } from "@radix-ui/react-alert-dialog";
 import { useRouter } from "next/navigation";
-import {
-  FaArrowUpRightDots,
-  FaQuestion,
-  FaTimeline,
-} from "react-icons/fa6";
+import { FaArrowUpRightDots, FaQuestion, FaTimeline } from "react-icons/fa6";
 import {
   GiAbstract089,
   GiArrowed,
   GiKneeling,
-  GiPayMoney
+  GiPayMoney,
 } from "react-icons/gi";
 import { GoSearch } from "react-icons/go";
 import { HiArrowsRightLeft } from "react-icons/hi2";
@@ -37,6 +33,7 @@ import {
 
 import { AiOutlineNodeIndex } from "react-icons/ai";
 import { TbArrowLoopLeft2, TbBinaryTree, TbBinaryTree2 } from "react-icons/tb";
+import Link from "next/link";
 
 type Category =
   | "Array / String"
@@ -99,17 +96,17 @@ const categoryIcons: Record<Category, JSX.Element> = {
   Math: <PiMathOperationsBold size={20} />,
 };
 
+// Function to format the title for the href
+const formatTitleForHref = (title: string): string => {
+  return title.toLowerCase().replace(/\s+/g, "-");
+};
+
 export function ProblemSearchBar({
   problems,
   ...props
 }: DialogProps & { problems: { [category: string]: LeetCodeProblem[] } }) {
-  const router = useRouter();
+  // State variables to manage opening
   const [open, setOpen] = useState(false);
-
-  const runCommand = useCallback((url: string) => {
-    setOpen(false);
-    window.open(url, "_blank");
-  }, []);
 
   return (
     <>
@@ -130,21 +127,26 @@ export function ProblemSearchBar({
           <CommandEmpty>No results found.</CommandEmpty>
           {Object.entries(problems).map(([category, problems]) => (
             <CommandGroup key={category} heading={category}>
-              {problems.map((problem) => (
-                <CommandItem
-                  className="cursor-pointer"
-                  key={problem.id}
-                  value={problem.title}
-                  onSelect={() => {
-                    runCommand(problem.href);
-                  }}
-                >
-                  {categoryIcons[category as Category] || (
-                    <FaQuestion size={20} />
-                  )}
-                  <span className="ml-2">{problem.title}</span>
-                </CommandItem>
-              ))}
+              {problems.map((problem) => {
+                const formattedTitle = formatTitleForHref(problem.title);
+                return (
+                  <Link
+                    href={`#${formattedTitle}`}
+                    className="flex items-center w-full"
+                  >
+                    <CommandItem
+                      className="cursor-pointer"
+                      key={problem.id}
+                      value={problem.title}
+                    >
+                      {categoryIcons[category as Category] || (
+                        <FaQuestion size={20} />
+                      )}
+                      <span className="ml-2">{problem.title}</span>
+                    </CommandItem>
+                  </Link>
+                );
+              })}
             </CommandGroup>
           ))}
         </CommandList>
