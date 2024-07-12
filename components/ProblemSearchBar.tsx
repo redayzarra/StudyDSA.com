@@ -1,7 +1,6 @@
 "use client";
 
 import { DialogProps } from "@radix-ui/react-alert-dialog";
-import { useRouter } from "next/navigation";
 import { FaArrowUpRightDots, FaQuestion, FaTimeline } from "react-icons/fa6";
 import {
   GiAbstract089,
@@ -16,7 +15,7 @@ import { PiStackPlus } from "react-icons/pi";
 
 import { cn } from "@/lib/utils";
 import { LeetCodeProblem } from "@prisma/client";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { MdDataArray, MdDataObject, MdLinearScale } from "react-icons/md";
 import { PiGraph, PiMathOperationsBold, PiStack } from "react-icons/pi";
@@ -31,9 +30,9 @@ import {
   CommandList,
 } from "./ui/command";
 
+import Link from "next/link";
 import { AiOutlineNodeIndex } from "react-icons/ai";
 import { TbArrowLoopLeft2, TbBinaryTree, TbBinaryTree2 } from "react-icons/tb";
-import Link from "next/link";
 
 type Category =
   | "Array / String"
