@@ -16,14 +16,6 @@ export const FlipWords = ({
   const [currentWord, setCurrentWord] = useState(words[0]);
   const intervalRef = useRef<any>();
 
-  useEffect(() => {
-    startAnimation();
-
-    return () => {
-      clearInterval(intervalRef.current);
-    };
-  }, []);
-
   const startAnimation = () => {
     let i = 0;
     intervalRef.current = setInterval(() => {
@@ -34,6 +26,14 @@ export const FlipWords = ({
       setCurrentWord(words[i]);
     }, duration);
   };
+
+  useEffect(() => {
+    startAnimation();
+
+    return () => {
+      clearInterval(intervalRef.current);
+    };
+  }, [startAnimation]);
 
   return (
     <AnimatePresence mode="wait">

@@ -48,7 +48,7 @@ export const TypeWriter = ({
         }
       );
     }
-  }, [isInView]);
+  }, [isInView, animate]);
 
   const renderWords = () => {
     return (

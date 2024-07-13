@@ -130,12 +130,12 @@ export function ProblemSearchBar({
                 const formattedTitle = formatTitleForHref(problem.title);
                 return (
                   <Link
+                    key={problem.id}
                     href={`#${formattedTitle}`}
                     className="flex items-center w-full"
                   >
                     <CommandItem
                       className="cursor-pointer"
-                      key={problem.id}
                       value={problem.title}
                     >
                       {categoryIcons[category as Category] || (
