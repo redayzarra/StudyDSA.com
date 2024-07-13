@@ -124,18 +124,21 @@ export function ProblemSearchBar({
         <CommandInput placeholder="Search all problems..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
-          {Object.entries(problems).map(([category, problems]) => (
+          {Object.entries(problems).map(([category, categoryProblems]) => (
             <CommandGroup key={category} heading={category}>
-              {problems.map((problem) => {
+              {categoryProblems.map((problem) => {
                 const formattedTitle = formatTitleForHref(problem.title);
                 return (
                   <Link
                     key={problem.id}
                     href={`#${formattedTitle}`}
                     className="flex items-center w-full"
+                    onClick={() => {
+                    setOpen(false);;
+                  }}
                   >
                     <CommandItem
-                      className="cursor-pointer"
+                      className="cursor-pointer w-full"
                       value={problem.title}
                     >
                       {categoryIcons[category as Category] || (
