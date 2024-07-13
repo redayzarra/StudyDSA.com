@@ -219,6 +219,11 @@ export function QuestionsTable({ userId, title, problems }: Props) {
     return null;
   }
 
+  // Function to format the title for the href
+  const formatTitleForHref = (title: string): string => {
+    return title.toLowerCase().replace(/\s+/g, "-");
+  };
+
   return (
     <div className="w-auto">
       <div className="w-full backdrop-blur-[15px] border-[1px] shadow-2xl shadow-black rounded-md bg-black/[.35] border-t-[1px] border-neutral-800/[.35]">
@@ -255,6 +260,7 @@ export function QuestionsTable({ userId, title, problems }: Props) {
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
+                  id={formatTitleForHref(row.original.title)}
                   data-state={row.getIsSelected() && "selected"}
                   className="h-[55px] px-4"
                 >

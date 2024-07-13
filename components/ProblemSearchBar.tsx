@@ -15,7 +15,7 @@ import { PiStackPlus } from "react-icons/pi";
 
 import { cn } from "@/lib/utils";
 import { LeetCodeProblem } from "@prisma/client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { MdDataArray, MdDataObject, MdLinearScale } from "react-icons/md";
 import { PiGraph, PiMathOperationsBold, PiStack } from "react-icons/pi";
@@ -30,9 +30,9 @@ import {
   CommandList,
 } from "./ui/command";
 
-import Link from "next/link";
 import { AiOutlineNodeIndex } from "react-icons/ai";
 import { TbArrowLoopLeft2, TbBinaryTree, TbBinaryTree2 } from "react-icons/tb";
+import { useRouter } from "next/navigation";
 
 type Category =
   | "Array / String"
@@ -104,21 +104,50 @@ export function ProblemSearchBar({
   problems,
   ...props
 }: DialogProps & { problems: { [category: string]: LeetCodeProblem[] } }) {
-  // State variables to manage opening
   const [open, setOpen] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if ((e.key === "m" && (e.metaKey || e.ctrlKey)) || e.key === "/") {
+        if (
+          (e.target instanceof HTMLElement && e.target.isContentEditable) ||
+          e.target instanceof HTMLInputElement ||
+          e.target instanceof HTMLTextAreaElement ||
+          e.target instanceof HTMLSelectElement
+        ) {
+          return;
+        }
+
+        e.preventDefault();
+        setOpen((open) => !open);
+      }
+    };
+
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, []);
+
+  const handleSelect = (href: string) => {
+    setOpen(false);
+    router.push(href);
+  };
 
   return (
     <>
       <Button
         variant="outline"
         className={cn(
-          "relative h-8 w-full justify-start rounded-[0.5rem] bg-black hover:bg-neutral-950 text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-44"
+          "relative h-8 w-full justify-start rounded-[0.5rem] bg-black hover:bg-neutral-950 text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-[212px]"
         )}
         onClick={() => setOpen(true)}
         {...props}
       >
         <FaSearch className="mr-2 absolute" />
         <span className="ml-6">Search problems...</span>
+        <kbd className="pointer-events-none absolute right-[0.3rem] top-[0.3rem] hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
+          <span className="text-xs">⌘</span>M
+        </kbd>
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Search all problems..." />
@@ -129,24 +158,17 @@ export function ProblemSearchBar({
               {categoryProblems.map((problem) => {
                 const formattedTitle = formatTitleForHref(problem.title);
                 return (
-                  <Link
+                  <CommandItem
                     key={problem.id}
-                    href={`#${formattedTitle}`}
-                    className="flex items-center w-full"
-                    onClick={() => {
-                    setOpen(false);;
-                  }}
+                    className="cursor-pointer w-full"
+                    value={problem.title}
+                    onSelect={() => handleSelect(`#${formattedTitle}`)}
                   >
-                    <CommandItem
-                      className="cursor-pointer w-full"
-                      value={problem.title}
-                    >
-                      {categoryIcons[category as Category] || (
-                        <FaQuestion size={20} />
-                      )}
-                      <span className="ml-2">{problem.title}</span>
-                    </CommandItem>
-                  </Link>
+                    {categoryIcons[category as Category] || (
+                      <FaQuestion size={20} />
+                    )}
+                    <span className="ml-2">{problem.title}</span>
+                  </CommandItem>
                 );
               })}
             </CommandGroup>
