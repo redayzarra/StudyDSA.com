@@ -9,10 +9,6 @@ body,
   scroll-behavior: smooth;
 }
 
-html {
-  scroll-padding: 95px;
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
