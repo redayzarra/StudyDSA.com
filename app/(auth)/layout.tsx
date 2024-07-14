@@ -16,7 +16,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
       interactive={false}
     >
       <div className="absolute h-screen w-full z-50 bg-transparent dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex items-center justify-center">
-        <div className="pt-[69px] h-[calc(100vh-69px)] flex items-center justify-center w-full">
+        <div className="h-[calc(100vh-60px)] flex items-center justify-center w-full">
           <NavBar />
           {children}
         </div>
