@@ -9,7 +9,7 @@ const QuickBookmark = async ({ userId }: { userId: string }) => {
     <div className="ml-0.5 flex items-center space-x-2">
       {bookmark ? (
         <>
-          <FaBookmark size={iconSize} className="mr-[2px]"/>
+          <FaBookmark size={iconSize} className="mr-[2px]" />
           <a href={bookmark.href} className="font-medium">
             Your bookmark is on:{" "}
             <span className="text-yellow-500 dark:text-primary font-bold underline">
@@ -20,8 +20,11 @@ const QuickBookmark = async ({ userId }: { userId: string }) => {
       ) : (
         <>
           <FaRegBookmark size={iconSize} />
-          <p className="text-muted-foreground font-medium">
+          <p className="hidden md:block text-muted-foreground font-medium">
             You haven&apos;t bookmarked anything
+          </p>
+          <p className="block md:hidden text-muted-foreground font-medium">
+            You have no bookmarks
           </p>
         </>
       )}
