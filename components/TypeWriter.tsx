@@ -1,14 +1,16 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion, stagger, useAnimate, useInView } from "framer-motion";
+import { motion, useAnimate, useInView } from "framer-motion";
 import { Source_Code_Pro } from "next/font/google";
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const font = Source_Code_Pro({
   subsets: ["latin"],
   weight: ["400"],
 });
+
+const CURSOR_OFFSET = 2; // Adjust this value as needed
 
 type WordType = {
   text: string;
@@ -27,26 +29,43 @@ export const TypeWriter = ({
   const wordsArray = Array.isArray(words) ? words : [words];
   const [scope, animate] = useAnimate();
   const isInView = useInView(scope);
+  const [currentPosition, setCurrentPosition] = useState({ top: 0, left: 0 });
+  const containerRef = useRef<HTMLPreElement>(null);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
-    if (isInView) {
-      animate(
-        "span.char",
-        {
-          opacity: 1,
-        },
-        {
-          duration: 0.3,
-          delay: stagger(0.05),
-          ease: "easeInOut",
-        }
-      );
-    }
-  }, [isInView, animate]);
+    if (isInView && !isAnimating) {
+      setIsAnimating(true);
+      const totalChars = wordsArray.reduce((acc, word) => acc + word.text.length, 0);
 
-  const renderWords = () => {
+      const animateChars = async () => {
+        for (let i = 0; i < totalChars; i++) {
+          const charElement = containerRef.current?.querySelector<HTMLSpanElement>(`.char-${i}`);
+          if (charElement) {
+            await animate(
+              charElement,
+              { opacity: 1 },
+              { duration: 0.05, ease: "easeInOut" }
+            );
+
+            const rect = charElement.getBoundingClientRect();
+            const containerRect = containerRef.current!.getBoundingClientRect();
+            setCurrentPosition({
+              top: rect.top - containerRect.top,
+              left: rect.right - containerRect.left + CURSOR_OFFSET,
+            });
+          }
+        }
+      };
+
+      animateChars();
+    }
+  }, [isInView, animate, wordsArray, isAnimating]);
+
+  const renderWords = (): React.ReactNode[] => {
     const lines: React.ReactNode[] = [];
     let currentLine: React.ReactNode[] = [];
+    let charIndex = 0;
 
     wordsArray.forEach((word, wordIdx) => {
       const parts = word.text.split('\n');
@@ -57,14 +76,17 @@ export const TypeWriter = ({
         }
         currentLine.push(
           <span key={`word-${wordIdx}-${partIdx}`} className={word.className}>
-            {part.split('').map((char, charIdx) => (
-              <motion.span
-                key={`char-${wordIdx}-${partIdx}-${charIdx}`}
-                className="char opacity-0"
-              >
-                {char === ' ' ? '\u00A0' : char}
-              </motion.span>
-            ))}
+            {part.split('').map((char, idx) => {
+              const currentCharIndex = charIndex++;
+              return (
+                <motion.span
+                  key={`char-${wordIdx}-${partIdx}-${idx}`}
+                  className={`char char-${currentCharIndex} opacity-0`}
+                >
+                  {char === ' ' ? '\u00A0' : char}
+                </motion.span>
+              );
+            })}
           </span>
         );
       });
@@ -79,31 +101,37 @@ export const TypeWriter = ({
 
   return (
     <pre
+      ref={containerRef}
       className={cn(
-        "text-[13px] tracking-tight text-left",
+        "text-[13px] tracking-tight text-left relative",
         className,
         font.className
       )}
     >
       <motion.div ref={scope} className="inline">
-        {renderWords().map((line, idx) => (
+        {renderWords().map((line, idx: number) => (
           <div key={`line-container-${idx}`} className="whitespace-pre-wrap">
             {line}
           </div>
         ))}
       </motion.div>
       <motion.span
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        initial={{ opacity: 0, top: 0, left: 0 }}
+        animate={{ 
+          opacity: 1, 
+          top: currentPosition.top,
+          left: currentPosition.left
+        }}
         transition={{
-          duration: 0.8,
-          repeat: Infinity,
-          repeatType: "reverse",
+          opacity: { duration: 0.8, repeat: Infinity, repeatType: "reverse" },
+          top: { duration: 0.05, ease: "linear" },
+          left: { duration: 0.05, ease: "linear" },
         }}
         className={cn(
-          "inline-block rounded-sm w-[2px] h-4 bg-neutral-500 -mb-1",
+          "absolute rounded-sm w-[2px] h-4 bg-neutral-500",
           cursorClassName
         )}
+        style={{ transform: `translateX(${CURSOR_OFFSET}px)` }}
       ></motion.span>
     </pre>
   );
