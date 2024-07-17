@@ -1,3 +1,6 @@
+import { NodeStyle } from "@/types/problems";
+import { MotionValue, useMotionValue } from "framer-motion";
+
 export const generatePolygonPositions = (
   count: number,
   containerWidth: number,
@@ -14,4 +17,20 @@ export const generatePolygonPositions = (
       y: centerY + radius * Math.sin(angle),
     };
   });
+};
+
+interface MotionValueObject {
+  x: MotionValue<number>;
+  y: MotionValue<number>;
+}
+
+export const useNodeMotionValues = (
+  nodeStyles: NodeStyle[],
+  size: number,
+  nodePosArray: { x: number; y: number }[]
+): MotionValueObject[] => {
+  return nodeStyles.map((_, index) => ({
+    x: useMotionValue(nodePosArray[index].x),
+    y: useMotionValue(nodePosArray[index].y),
+  }));
 };

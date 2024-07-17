@@ -1,12 +1,11 @@
 "use client";
 
 import React, { useRef, useState, useEffect, useCallback } from "react";
-import { useMotionValue } from "framer-motion";
 import { Edge, NodeStyle } from "@/types/problems";
 import { cn } from "@/lib/utils";
 import ConnectingLine from "./ConnectingLine";
 import GraphNode from "./GraphNode";
-import { generatePolygonPositions } from "@/utils/graphs";
+import { generatePolygonPositions, useNodeMotionValues } from "@/utils/graphs";
 
 interface GraphNodesProps {
   nodeStyles: NodeStyle[];
@@ -17,13 +16,6 @@ interface GraphNodesProps {
   width?: number;
   height?: number;
 }
-
-const useNodeMotionValues = (nodeStyles: NodeStyle[], size: number, nodePosArray: any) => {
-  return nodeStyles.map((_, index) => ({
-    x: useMotionValue(nodePosArray[index].x),
-    y: useMotionValue(nodePosArray[index].y),
-  }));
-};
 
 const GraphNodes: React.FC<GraphNodesProps> = ({
   nodeStyles,
@@ -105,7 +97,7 @@ const GraphNodes: React.FC<GraphNodesProps> = ({
       ),
     ]);
     return () => unsubscribes.flat().forEach((unsubscribe) => unsubscribe());
-  }, [nodeStyles, width, height, size]);
+  }, [nodeStyles, width, height, size, nodeMotionValues]);
 
   return (
     <div
