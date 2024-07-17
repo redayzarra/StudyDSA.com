@@ -1,13 +1,24 @@
 import { NodeStyle } from "@/types/problems";
 import { motion, MotionValue } from "framer-motion";
 
-const GraphNode: React.FC<{
+interface Props {
   style: NodeStyle;
   index: number;
   motionValue: { x: MotionValue<number>; y: MotionValue<number> };
   getNodeSize: (index: number) => number;
   constraintsRef: React.RefObject<HTMLDivElement>;
-}> = ({ style, index, motionValue, getNodeSize, constraintsRef }) => {
+}
+
+const GraphNode = ({
+  style,
+  index,
+  motionValue,
+  getNodeSize,
+  constraintsRef,
+}: Props) => {
+  const nodeSize = getNodeSize(index);
+  const fontSize = Math.max(10, nodeSize / 2);
+
   return (
     <motion.div
       drag
@@ -15,18 +26,14 @@ const GraphNode: React.FC<{
       whileHover={{ scale: 1.1 }}
       whileDrag={{ scale: 1.2 }}
       dragMomentum={false}
-      dragTransition={{
-        power: 0.2,
-        timeConstant: 300,
-        modifyTarget: (target: number) => Math.round(target / 25) * 25,
-      }}
       className={`${style.backgroundColorClass} absolute flex items-center justify-center rounded-full`}
       style={{
-        width: `${getNodeSize(index)}px`,
-        height: `${getNodeSize(index)}px`,
+        width: `${nodeSize}px`,
+        height: `${nodeSize}px`,
         x: motionValue.x,
         y: motionValue.y,
-        zIndex: 1,
+        fontSize: `${fontSize}px`,
+        transform: `translate(-50%, -50%)`, // Center the node on its position
       }}
     >
       <span className="text-white font-bold">{index + 1}</span>

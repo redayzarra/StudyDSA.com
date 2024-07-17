@@ -1,26 +1,42 @@
 import { Edge } from "@/types/problems";
 
-const ConnectingLine: React.FC<{
+interface Props {
   edge: Edge;
   nodePosArray: { x: number; y: number }[];
   getNodeSize: (index: number) => number;
   connectionColor?: string;
-}> = ({ edge, nodePosArray, getNodeSize, connectionColor }) => {
-  const nodeRadius = getNodeSize(edge.from) / 2;
-  const arrowPadding = 10;
-  const arrowSize = 10;
+}
 
-  const startX = nodePosArray[edge.from].x + nodeRadius;
-  const startY = nodePosArray[edge.from].y + nodeRadius;
-  const endX = nodePosArray[edge.to].x + nodeRadius;
-  const endY = nodePosArray[edge.to].y + nodeRadius;
+const ConnectingLine = ({
+  edge,
+  nodePosArray,
+  getNodeSize,
+  connectionColor,
+}: Props) => {
+  const startNodeSize = getNodeSize(edge.from);
+  const endNodeSize = getNodeSize(edge.to);
+  const startNodeRadius = startNodeSize / 2;
+  const endNodeRadius = endNodeSize / 2;
+  const arrowPadding = Math.max(
+    5,
+    Math.min(startNodeRadius, endNodeRadius) / 2
+  );
+  const arrowSize = Math.max(5, Math.min(startNodeRadius, endNodeRadius) / 2);
+
+  // Adjust start and end points to the center of the nodes
+  const startX = nodePosArray[edge.from].x + startNodeRadius;
+  const startY = nodePosArray[edge.from].y + startNodeRadius;
+  const endX = nodePosArray[edge.to].x + endNodeRadius;
+  const endY = nodePosArray[edge.to].y + endNodeRadius;
 
   const angle = Math.atan2(endY - startY, endX - startX);
 
-  const paddedStartX = startX + (nodeRadius + arrowPadding) * Math.cos(angle);
-  const paddedStartY = startY + (nodeRadius + arrowPadding) * Math.sin(angle);
-  const paddedEndX = endX - (nodeRadius + arrowPadding) * Math.cos(angle);
-  const paddedEndY = endY - (nodeRadius + arrowPadding) * Math.sin(angle);
+  const paddedStartX =
+    startX + (startNodeRadius + arrowPadding) * Math.cos(angle);
+  const paddedStartY =
+    startY + (startNodeRadius + arrowPadding) * Math.sin(angle);
+  const paddedEndX = endX - (endNodeRadius + arrowPadding) * Math.cos(angle);
+  const paddedEndY = endY - (endNodeRadius + arrowPadding) * Math.sin(angle);
 
   const createArrowhead = (
     x: number,

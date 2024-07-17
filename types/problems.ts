@@ -17,6 +17,7 @@ export type ProblemWithProgress = LeetCodeProblem & {
 export interface NodeStyle {
   backgroundColorClass: string;
   size?: number;
+  startPosition?: { x: number; y: number };
 }
 
 export interface Edge {

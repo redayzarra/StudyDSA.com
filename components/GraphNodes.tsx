@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { useMotionValue } from "framer-motion";
 import { Edge, NodeStyle } from "@/types/problems";
@@ -14,22 +13,40 @@ interface GraphNodesProps {
   size?: number;
   className?: string;
   connectionColor?: string;
+  width?: number;
+  height?: number;
 }
 
 const GraphNodes: React.FC<GraphNodesProps> = ({
   nodeStyles,
   edges,
-  size,
+  size = 15,
   className,
   connectionColor,
+  width = 150,
+  height = 150,
 }) => {
   const constraintsRef = useRef<HTMLDivElement>(null);
-  const containerWidth = 350;
-  const containerHeight = 350;
 
-  const [nodePosArray, setNodePosArray] = useState(() =>
-    generatePolygonPositions(nodeStyles.length, containerWidth, containerHeight)
-  );
+  const [nodePosArray, setNodePosArray] = useState(() => {
+    const defaultPositions = generatePolygonPositions(
+      nodeStyles.length,
+      width,
+      height
+    );
+    return nodeStyles.map((style, index) => {
+      if (style.startPosition) {
+        return {
+          x: style.startPosition.x - (style.size || size) / 2,
+          y: style.startPosition.y - (style.size || size) / 2,
+        };
+      }
+      return {
+        x: defaultPositions[index].x - (style.size || size) / 2,
+        y: defaultPositions[index].y - (style.size || size) / 2,
+      };
+    });
+  });
 
   const nodeMotionValues = useRef(
     nodeStyles.map((_, index) => ({
@@ -38,22 +55,30 @@ const GraphNodes: React.FC<GraphNodesProps> = ({
     }))
   ).current;
 
-  const getNodeSize = useCallback(
-    (index: number) => size || nodeStyles[index].size || 50,
-    [size, nodeStyles]
-  );
+  const getNodeSize = useCallback((index: number) => nodeStyles[index].size || size, [nodeStyles, size]);
 
   useEffect(() => {
-    const positions = generatePolygonPositions(
+    const defaultPositions = generatePolygonPositions(
       nodeStyles.length,
-      containerWidth,
-      containerHeight
+      width,
+      height
     );
-    setNodePosArray(positions);
-
+    const adjustedPositions = nodeStyles.map((style, index) => {
+      if (style.startPosition) {
+        return {
+          x: style.startPosition.x - (style.size || size) / 2,
+          y: style.startPosition.y - (style.size || size) / 2,
+        };
+      }
+      return {
+        x: defaultPositions[index].x - (style.size || size) / 2,
+        y: defaultPositions[index].y - (style.size || size) / 2,
+      };
+    });
+    setNodePosArray(adjustedPositions);
     nodeMotionValues.forEach((motionValue, index) => {
-      motionValue.x.set(positions[index].x);
-      motionValue.y.set(positions[index].y);
+      motionValue.x.set(adjustedPositions[index].x);
+      motionValue.y.set(adjustedPositions[index].y);
     });
 
     const unsubscribes = nodeMotionValues.map((motionValue, index) => [
@@ -74,10 +99,14 @@ const GraphNodes: React.FC<GraphNodesProps> = ({
     ]);
 
     return () => unsubscribes.flat().forEach((unsubscribe) => unsubscribe());
-  }, [nodeStyles.length, containerWidth, containerHeight]);
+  }, [nodeStyles, width, height, size]);
 
   return (
-    <div ref={constraintsRef} className={cn("h-[350px] w-[350px]", className)}>
+    <div
+      ref={constraintsRef}
+      className={cn("relative", className)}
+      style={{ width: `${width}px`, height: `${height}px` }}
+    >
       {edges.map((edge, index) => (
         <ConnectingLine
           key={index}
