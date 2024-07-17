@@ -26,7 +26,7 @@ const GraphNode = ({
       whileHover={{ scale: 1.1 }}
       whileDrag={{ scale: 1.2 }}
       dragMomentum={false}
-      className={`${style.backgroundColorClass} absolute flex items-center justify-center rounded-full`}
+      className={`${style.backgroundColorClass} cursor-pointer absolute flex items-center justify-center rounded-full`}
       style={{
         width: `${nodeSize}px`,
         height: `${nodeSize}px`,
