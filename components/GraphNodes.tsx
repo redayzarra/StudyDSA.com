@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { useMotionValue } from "framer-motion";
 import { Edge, NodeStyle } from "@/types/problems";
@@ -16,6 +17,13 @@ interface GraphNodesProps {
   width?: number;
   height?: number;
 }
+
+const useNodeMotionValues = (nodeStyles: NodeStyle[], size: number, nodePosArray: any) => {
+  return nodeStyles.map((_, index) => ({
+    x: useMotionValue(nodePosArray[index].x),
+    y: useMotionValue(nodePosArray[index].y),
+  }));
+};
 
 const GraphNodes: React.FC<GraphNodesProps> = ({
   nodeStyles,
@@ -49,11 +57,8 @@ const GraphNodes: React.FC<GraphNodesProps> = ({
     });
   });
 
-  // Create motion values
-  const nodeMotionValues = nodeStyles.map((_, index) => ({
-    x: useMotionValue(nodePosArray[index].x),
-    y: useMotionValue(nodePosArray[index].y),
-  }));
+  // Create motion values using the custom hook
+  const nodeMotionValues = useNodeMotionValues(nodeStyles, size, nodePosArray);
 
   const getNodeSize = useCallback(
     (index: number) => nodeStyles[index].size || size,
@@ -132,3 +137,4 @@ const GraphNodes: React.FC<GraphNodesProps> = ({
 };
 
 export default GraphNodes;
+
