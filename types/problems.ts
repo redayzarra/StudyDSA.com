@@ -13,3 +13,19 @@ export type SearchParams = Record<string, string | string[] | undefined>;
 export type ProblemWithProgress = LeetCodeProblem & {
   progress?: ProblemProgress | null;
 };
+
+export interface NodeStyle {
+  backgroundColorClass: string;
+  size?: number;
+}
+
+export interface Edge {
+  from: number;
+  to: number;
+  bidirectional: boolean;
+}
+
+export interface GraphNodesProps {
+  nodeStyles: NodeStyle[];
+  edges: Edge[];
+}
