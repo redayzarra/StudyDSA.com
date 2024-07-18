@@ -2,11 +2,12 @@
 
 <div align="center">
  
-  <img src="https://github.com/redayzarra/StudyDSA.com/assets/113388793/7faf37ca-1dd0-4c05-8258-949f30bf0b01" alt="StudyDSA.com homepage">
+  <img src="https://github.com/user-attachments/assets/af582564-32ac-4e89-8207-96398bc8ff6d" alt="StudyDSA.com homepage">
 
 </div>
 
 <div>
+
   <br />
 </div>
 
