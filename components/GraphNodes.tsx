@@ -55,7 +55,7 @@ const GraphNodes: React.FC<GraphNodesProps> = ({
   return (
     <div
       ref={constraintsRef}
-      className={cn("relative flex items-center justify-center", className)}
+      className={cn("relative overflow-hidden flex items-center justify-center", className)}
     >
       <div
         className="relative"
