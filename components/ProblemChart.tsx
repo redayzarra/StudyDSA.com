@@ -9,12 +9,7 @@ import {
   RadialBar,
   RadialBarChart,
 } from "recharts";
-import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/components/ui/chart";
+import { ChartConfig, ChartContainer } from "@/components/ui/chart";
 import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { useProblemCountStore } from "@/app/store/problemCount";
@@ -41,25 +36,54 @@ interface ChartLabelProps {
 }
 
 const ChartLabel: React.FC<ChartLabelProps> = React.memo(
-  ({ cx, cy, color, completedCount, totalCount }) => (
-    <text x={cx} y={cy} textAnchor="middle" dominantBaseline="middle">
-      <tspan
-        x={cx}
-        y={cy}
-        className={cn("fill-foreground text-4xl font-bold", font.className)}
-        fill={color}
+  ({ cx, cy, color, completedCount, totalCount }) => {
+    const [isHovered, setIsHovered] = React.useState(false);
+    const percentage = Math.round((completedCount / totalCount) * 100);
+
+    return (
+      <g
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
-        {completedCount}
-      </tspan>
-      <tspan
-        x={cx}
-        y={cy + 30}
-        className="fill-muted-foreground text-[20px] font-semibold"
-      >
-        / {totalCount.toLocaleString()}
-      </tspan>
-    </text>
-  )
+        <text x={cx} y={cy} textAnchor="middle" dominantBaseline="middle">
+          <tspan
+            x={cx}
+            y={cy}
+            className={cn(
+              "fill-foreground text-4xl font-bold transition-opacity duration-300",
+              font.className,
+              isHovered ? "opacity-0" : "opacity-100"
+            )}
+            fill={color}
+          >
+            {completedCount}
+          </tspan>
+          <tspan
+            x={cx}
+            y={cy + 5}
+            className={cn(
+              "fill-foreground text-4xl font-bold transition-opacity duration-300",
+              font.className,
+              isHovered ? "opacity-100" : "opacity-0"
+            )}
+            fill={color}
+          >
+            {percentage}%
+          </tspan>
+          <tspan
+            x={cx}
+            y={cy + 30}
+            className={cn(
+              "fill-muted-foreground text-[20px] font-semibold",
+              isHovered ? "opacity-0" : "opacity-100"
+            )}
+          >
+            / {totalCount.toLocaleString()}
+          </tspan>
+        </text>
+      </g>
+    );
+  }
 );
 
 ChartLabel.displayName = "ChartLabel";
@@ -107,10 +131,6 @@ export function ProblemChart({
         innerRadius={80}
         outerRadius={110}
       >
-        <ChartTooltip
-          cursor={false}
-          content={<ChartTooltipContent className="scale-[1.75]" hideLabel />}
-        />
         <PolarGrid
           gridType="circle"
           radialLines={false}

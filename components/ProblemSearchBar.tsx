@@ -138,13 +138,14 @@ export function ProblemSearchBar({
       <Button
         variant="outline"
         className={cn(
-          "relative h-8 w-full justify-start rounded-[0.5rem] bg-black hover:bg-neutral-950 text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-[212px]"
+          "relative h-8 justify-start rounded-[0.5rem] bg-black hover:bg-neutral-950 text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-[212px]"
         )}
         onClick={() => setOpen(true)}
         {...props}
       >
         <FaSearch className="mr-2 absolute" />
-        <span className="ml-6">Search problems...</span>
+        <span className="ml-6 hidden md:block">Search problems...</span>
+        <span className="ml-6 block md:hidden">Search...</span>
         <kbd className="pointer-events-none absolute right-[0.3rem] top-[0.3rem] hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
           <span className="text-xs">⌘</span>M
         </kbd>
