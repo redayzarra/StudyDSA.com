@@ -93,11 +93,11 @@ const SkeletonTwo = () => {
 
 const SkeletonThree = () => {
   const nodeStyles: NodeStyle[] = [
-    { backgroundColorClass: "bg-red-500", startPosition: { x: 108, y: 15 } },
-    { backgroundColorClass: "bg-blue-500", startPosition: { x: 200, y: 50 } },
+    { backgroundColorClass: "bg-rose-500", startPosition: { x: 108, y: 15 } },
+    { backgroundColorClass: "bg-blue-600", startPosition: { x: 200, y: 50 } },
     { backgroundColorClass: "bg-green-600", startPosition: { x: 165, y: 115 } },
-    { backgroundColorClass: "bg-orange-500", startPosition: { x: 50, y: 115 } },
-    { backgroundColorClass: "bg-purple-500", startPosition: { x: 15, y: 50 } },
+    { backgroundColorClass: "bg-orange-600", startPosition: { x: 50, y: 115 } },
+    { backgroundColorClass: "bg-purple-600", startPosition: { x: 15, y: 50 } },
     // { backgroundColorClass: "bg-pink-400" },
   ];
   const edges: Edge[] = [
@@ -110,7 +110,7 @@ const SkeletonThree = () => {
     // { from: 5, to: 0, bidirectional: true },
   ];
   return (
-    <div className="flex flex-1 w-full min-h-[200px] md:min-h-[0px]">
+    <div className="flex flex-1 w-full h-full">
       <GraphNodes
         nodeStyles={nodeStyles}
         connectionColor="bg-red-400"
@@ -118,7 +118,7 @@ const SkeletonThree = () => {
         edges={edges}
         width={220}
         height={128}
-        className="dark:bg-dot-white/[0.2] bg-dot-black/[0.2] h-32 w-full z-50"
+        className="min-h-[128px] flex items-center justify-center dark:bg-dot-white/[0.2] bg-dot-black/[0.2] h-full w-full z-50"
       />
     </div>
   );

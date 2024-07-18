@@ -27,7 +27,7 @@ const GraphNodes: React.FC<GraphNodesProps> = ({
   height = 150,
 }) => {
   const constraintsRef = useRef<HTMLDivElement>(null);
-  
+
   // Calculate node positions once
   const nodePosArray = nodeStyles.map((style, index) => {
     const defaultPositions = generatePolygonPositions(
@@ -48,35 +48,39 @@ const GraphNodes: React.FC<GraphNodesProps> = ({
 
   // Calculate offset positions for connecting lines
   const offsetNodePosArray = nodePosArray.map((pos, index) => ({
-    x: pos.x + getNodeSize(index) * 0 - 15,
-    y: pos.y + getNodeSize(index) * 0 - 15,
+    x: pos.x - size / 2,
+    y: pos.y - size / 2,
   }));
 
   return (
     <div
       ref={constraintsRef}
-      className={cn("relative", className)}
-      style={{ width: `${width}px`, height: `${height}px` }}
+      className={cn("relative flex items-center justify-center", className)}
     >
-      {edges.map((edge, index) => (
-        <ConnectingLine
-          key={index}
-          edge={edge}
-          nodePosArray={offsetNodePosArray}  // Use offset positions for lines
-          getNodeSize={getNodeSize}
-          connectionColor={connectionColor}
-        />
-      ))}
-      {nodeStyles.map((style, index) => (
-        <GraphNode
-          key={index}
-          style={style}
-          index={index}
-          position={nodePosArray[index]} 
-          getNodeSize={getNodeSize}
-          constraintsRef={constraintsRef}
-        />
-      ))}
+      <div
+        className="relative"
+        style={{ width: `${width}px`, height: `${height}px` }}
+      >
+        {edges.map((edge, index) => (
+          <ConnectingLine
+            key={index}
+            edge={edge}
+            nodePosArray={offsetNodePosArray}
+            getNodeSize={getNodeSize}
+            connectionColor={connectionColor}
+          />
+        ))}
+        {nodeStyles.map((style, index) => (
+          <GraphNode
+            key={index}
+            style={style}
+            index={index}
+            position={nodePosArray[index]}
+            getNodeSize={getNodeSize}
+            constraintsRef={constraintsRef}
+          />
+        ))}
+      </div>
     </div>
   );
 };
