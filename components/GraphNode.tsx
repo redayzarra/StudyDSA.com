@@ -26,6 +26,11 @@ const GraphNode = ({
       whileHover={{ scale: 1.1 }}
       whileDrag={{ scale: 1.2 }}
       dragMomentum={false}
+      dragTransition={{
+        power: 0.2,
+        timeConstant: 300,
+        modifyTarget: (target: number) => Math.round(target / 25) * 25,
+      }}
       className={`${style.backgroundColorClass} cursor-pointer absolute flex items-center justify-center rounded-full`}
       style={{
         width: `${nodeSize}px`,

@@ -1,11 +1,12 @@
 "use client";
 
 import React, { useRef, useState, useEffect, useCallback } from "react";
+import { useMotionValue } from "framer-motion";
 import { Edge, NodeStyle } from "@/types/problems";
 import { cn } from "@/lib/utils";
 import ConnectingLine from "./ConnectingLine";
 import GraphNode from "./GraphNode";
-import { generatePolygonPositions, useNodeMotionValues } from "@/utils/graphs";
+import { generatePolygonPositions } from "@/utils/graphs";
 
 interface GraphNodesProps {
   nodeStyles: NodeStyle[];
@@ -28,7 +29,6 @@ const GraphNodes: React.FC<GraphNodesProps> = ({
 }) => {
   const constraintsRef = useRef<HTMLDivElement>(null);
 
-  // Create initial node positions
   const [nodePosArray, setNodePosArray] = useState(() => {
     const defaultPositions = generatePolygonPositions(
       nodeStyles.length,
@@ -49,13 +49,14 @@ const GraphNodes: React.FC<GraphNodesProps> = ({
     });
   });
 
-  // Create motion values using the custom hook
-  const nodeMotionValues = useNodeMotionValues(nodeStyles, size, nodePosArray);
+  const nodeMotionValues = useRef(
+    nodeStyles.map((_, index) => ({
+      x: useMotionValue(nodePosArray[index].x),
+      y: useMotionValue(nodePosArray[index].y),
+    }))
+  ).current;
 
-  const getNodeSize = useCallback(
-    (index: number) => nodeStyles[index].size || size,
-    [nodeStyles, size]
-  );
+  const getNodeSize = useCallback((index: number) => nodeStyles[index].size || size, [nodeStyles, size]);
 
   useEffect(() => {
     const defaultPositions = generatePolygonPositions(
@@ -80,6 +81,7 @@ const GraphNodes: React.FC<GraphNodesProps> = ({
       motionValue.x.set(adjustedPositions[index].x);
       motionValue.y.set(adjustedPositions[index].y);
     });
+
     const unsubscribes = nodeMotionValues.map((motionValue, index) => [
       motionValue.x.onChange((x) =>
         setNodePosArray((prev) => {
@@ -96,8 +98,9 @@ const GraphNodes: React.FC<GraphNodesProps> = ({
         })
       ),
     ]);
+
     return () => unsubscribes.flat().forEach((unsubscribe) => unsubscribe());
-  }, [nodeStyles, width, height, size, nodeMotionValues]);
+  }, [nodeStyles, width, height, size]);
 
   return (
     <div
@@ -129,4 +132,3 @@ const GraphNodes: React.FC<GraphNodesProps> = ({
 };
 
 export default GraphNodes;
-
