@@ -29,8 +29,8 @@ const MasterDSA = () => {
       </h1>
       <p className="text-lg font-light text-muted-foreground text-left">
         <Balancer>
-          Let&apos;s make the tough stuff easy. Get straightforward, free
-          resources to tackle data structures and algorithms.
+          Let&apos;s make the tough stuff easy. Get free resources to tackle
+          data structures and algorithms.
         </Balancer>
       </p>
       <TextGenerateEffect

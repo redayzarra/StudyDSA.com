@@ -7,9 +7,8 @@ import { Meteors } from "./Meteors";
 import { NotationsChart } from "./NotationsChart";
 import { TypeWriter } from "./TypeWriter";
 import { BentoGrid, BentoGridItem } from "./ui/BentoGrid";
-import { AiOutlineNodeIndex } from "react-icons/ai";
-import { PiGraph } from "react-icons/pi";
-import { TbBinaryTree } from "react-icons/tb";
+import GraphNodes from "./GraphNodes";
+import { NodeStyle, Edge } from "@/types/problems";
 
 export function WelcomeGrid() {
   return (
@@ -93,71 +92,35 @@ const SkeletonTwo = () => {
 };
 
 const SkeletonThree = () => {
-  const variants = {
-    initial: {
-      x: 0,
-    },
-    animate: {
-      x: 10,
-      rotate: 5,
-      transition: {
-        duration: 0.2,
-      },
-    },
-  };
-  const variantsSecond = {
-    initial: {
-      x: 0,
-    },
-    animate: {
-      x: -10,
-      rotate: -5,
-      transition: {
-        duration: 0.2,
-      },
-    },
-  };
-
+  const nodeStyles: NodeStyle[] = [
+    { backgroundColorClass: "bg-red-500", startPosition: { x: 108, y: 15 } },
+    { backgroundColorClass: "bg-blue-500", startPosition: { x: 200, y: 50 } },
+    { backgroundColorClass: "bg-green-600", startPosition: { x: 165, y: 115 } },
+    { backgroundColorClass: "bg-orange-500", startPosition: { x: 50, y: 115 } },
+    { backgroundColorClass: "bg-purple-500", startPosition: { x: 15, y: 50 } },
+    // { backgroundColorClass: "bg-pink-400" },
+  ];
+  const edges: Edge[] = [
+    { from: 0, to: 1, bidirectional: false },
+    { from: 1, to: 3, bidirectional: false },
+    { from: 1, to: 4, bidirectional: true },
+    { from: 3, to: 4, bidirectional: true },
+    { from: 4, to: 2, bidirectional: true },
+    // { from: 4, to: 5, bidirectional: false },
+    // { from: 5, to: 0, bidirectional: true },
+  ];
   return (
-    <motion.div
-      initial="initial"
-      whileHover="animate"
-      className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2"
-    >
-      <motion.div
-        variants={variants}
-        className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2  items-center space-x-2 bg-black/75"
-      >
-        <div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0 flex items-center justify-center">
-          <AiOutlineNodeIndex size={24} />
-        </div>
-        <div className="w-full bg-gray-100 text-sm h-6 rounded-full pl-4 dark:bg-neutral-900 flex items-center line-clamp-1">
-          Review Linked Lists
-        </div>
-      </motion.div>
-      <motion.div
-        variants={variantsSecond}
-        className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2 items-center space-x-2 w-3/4 ml-auto bg-black/75"
-      >
-        <div className="w-full bg-gray-100 text-sm h-6 rounded-full pr-4 text-right justify-end dark:bg-neutral-900 flex items-center line-clamp-1">
-          Study Trees
-        </div>
-        <div className="h-6 w-6 rounded-full bg-gradient-to-r from-orange-500 to-amber-800 flex-shrink-0 flex items-center justify-center">
-          <TbBinaryTree size={18} />
-        </div>
-      </motion.div>
-      <motion.div
-        variants={variants}
-        className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2 items-center space-x-2 bg-black/75"
-      >
-        <div className="h-6 w-6 rounded-full bg-gradient-to-r from-lime-500 to-teal-700 flex-shrink-0 flex items-center justify-center">
-          <PiGraph size={22} />
-        </div>
-        <div className="w-full bg-gray-100 text-sm h-6 rounded-full pl-4 dark:bg-neutral-900 flex items-center line-clamp-1">
-          Learn Union Find
-        </div>
-      </motion.div>
-    </motion.div>
+    <div className="flex flex-1 w-full min-h-[200px] md:min-h-[0px]">
+      <GraphNodes
+        nodeStyles={nodeStyles}
+        connectionColor="bg-red-400"
+        size={30}
+        edges={edges}
+        width={220}
+        height={128}
+        className="dark:bg-dot-white/[0.2] bg-dot-black/[0.2] h-32 w-full z-50"
+      />
+    </div>
   );
 };
 

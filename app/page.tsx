@@ -19,7 +19,7 @@ export default async function Home() {
         <div className="grid grid-cols-1 md:grid-cols-[3fr_5fr] gap-x-3 w-full max-w-7xl px-4 py-8 md:py-12">
           <div>
             <MasterDSA />
-            <div className="-mt-6 mb-4">
+            <div className="-mt-8 mb-4">
               {user ? (
                 <Welcome user={user} userName={firstName!} />
               ) : (

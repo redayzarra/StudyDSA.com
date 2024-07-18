@@ -1,10 +1,10 @@
+import React from "react";
 import { NodeStyle } from "@/types/problems";
-import { motion, MotionValue } from "framer-motion";
 
 interface Props {
   style: NodeStyle;
   index: number;
-  motionValue: { x: MotionValue<number>; y: MotionValue<number> };
+  position: { x: number; y: number };
   getNodeSize: (index: number) => number;
   constraintsRef: React.RefObject<HTMLDivElement>;
 }
@@ -12,37 +12,26 @@ interface Props {
 const GraphNode = ({
   style,
   index,
-  motionValue,
+  position,
   getNodeSize,
-  constraintsRef,
 }: Props) => {
   const nodeSize = getNodeSize(index);
   const fontSize = Math.max(10, nodeSize / 2);
 
   return (
-    <motion.div
-      drag
-      dragConstraints={constraintsRef}
-      whileHover={{ scale: 1.1 }}
-      whileDrag={{ scale: 1.2 }}
-      dragMomentum={false}
-      dragTransition={{
-        power: 0.2,
-        timeConstant: 300,
-        modifyTarget: (target: number) => Math.round(target / 25) * 25,
-      }}
+    <div
       className={`${style.backgroundColorClass} cursor-pointer absolute flex items-center justify-center rounded-full`}
       style={{
         width: `${nodeSize}px`,
         height: `${nodeSize}px`,
-        x: motionValue.x,
-        y: motionValue.y,
+        left: `${position.x}px`,
+        top: `${position.y}px`,
         fontSize: `${fontSize}px`,
         transform: `translate(-50%, -50%)`, // Center the node on its position
       }}
     >
       <span className="text-white font-bold">{index + 1}</span>
-    </motion.div>
+    </div>
   );
 };
 

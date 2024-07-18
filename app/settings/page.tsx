@@ -2,8 +2,8 @@
 
 const SettingsPage = () => {
   return (
-    <div className="flex flex-1 w-full min-h-[200px] md:min-h-[0px]">
-      Settings page
+    <div className="flex items-center justify-center">
+      sEttings
     </div>
   );
 };
