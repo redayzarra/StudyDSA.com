@@ -52,6 +52,13 @@ model User {
   topicProgress     TopicProgress[]
   Bookmark          Bookmark?
   problemProgress   ProblemProgress[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  lastLogin         DateTime?
+  timeZone          String?
+  preferredLanguage String?
 }
 
 model VerificationToken {
