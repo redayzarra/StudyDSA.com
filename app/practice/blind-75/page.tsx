@@ -3,6 +3,7 @@ import ProblemBar from "@/components/ProblemBar";
 import ProblemSetInitializer from "@/components/ProblemSetInitializer";
 import { QuestionsTable } from "@/components/QuestionsTable";
 import TextLink from "@/components/TextLink";
+import { TotalProgressChart } from "@/components/TotalProgressChart";
 import { Separator } from "@/components/ui/separator";
 import getUserId from "@/hooks/server/getUserId";
 import { cn } from "@/lib/utils";
@@ -91,16 +92,23 @@ const Blind75Page = async () => {
     "Bit Manipulation": [143, 67, 145, 146, 147],
   };
 
-  const problemsByCategory = await fetchProblemsByCategories(categories, userId);
+  const problemsByCategory = await fetchProblemsByCategories(
+    categories,
+    userId
+  );
   const counts = calculateCounts(problemsByCategory);
 
   return (
     <div>
       <ProblemSetInitializer setName="Blind75" counts={counts} />
       <div className="space-y-5 mt-4 md:mt-0">
-        <h1 className={cn("text-4xl md:text-6xl font-bold", font.className)}>
-          Blind 75 🛠️
-        </h1>
+        <div className="flex items-center justify-between relative">
+          <h1 className={cn("text-4xl md:text-6xl font-bold", font.className)}>
+            Blind 75 🛠️
+          </h1>
+
+          <TotalProgressChart className="absolute -right-8 scale-[.40] hidden md:block" />
+        </div>
         <h2 className="dark:text-muted-foreground line-clamp-2">
           The infamous list of essential coding problems by a Meta tech lead on{" "}
           <TextLink

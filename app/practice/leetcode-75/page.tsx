@@ -3,6 +3,7 @@ import ProblemBar from "@/components/ProblemBar";
 import ProblemSetInitializer from "@/components/ProblemSetInitializer";
 import { QuestionsTable } from "@/components/QuestionsTable";
 import TextLink from "@/components/TextLink";
+import { TotalProgressChart } from "@/components/TotalProgressChart";
 import { Separator } from "@/components/ui/separator";
 import getUserId from "@/hooks/server/getUserId";
 import { cn } from "@/lib/utils";
@@ -93,22 +94,33 @@ const LeetCode75Page = async () => {
     "Monotonic Stacks": [74, 75],
   };
 
-  const problemsByCategory = await fetchProblemsByCategories(categories, userId);
+  const problemsByCategory = await fetchProblemsByCategories(
+    categories,
+    userId
+  );
   const counts = calculateCounts(problemsByCategory);
 
   return (
     <div>
       <ProblemSetInitializer setName="LeetCode75" counts={counts} />
       <div className="space-y-5 mt-4 md:mt-0">
-        <h1 className={cn("text-4xl md:text-6xl font-bold", font.className)}>
-          LeetCode 75 🎯
-        </h1>
+        <div className="flex items-center justify-between relative">
+          <h1 className={cn("text-4xl md:text-6xl font-bold", font.className)}>
+            LeetCode 75 🎯
+          </h1>
+
+          <TotalProgressChart className="absolute -right-8 scale-[.40] hidden md:block" />
+        </div>
         <h2 className="dark:text-muted-foreground line-clamp-2">
           A beginner-friendly list curated by{" "}
-          <TextLink href="https://leetcode.com/studyplan/leetcode-75/" external={true}>
+          <TextLink
+            href="https://leetcode.com/studyplan/leetcode-75/"
+            external={true}
+          >
             LeetCode
           </TextLink>
-          . This list is a great way to introduce yourself to the core concepts and get in the rhythm of problem-solving.
+          . This list is a great way to introduce yourself to the core concepts
+          and get in the rhythm of problem-solving.
         </h2>
       </div>
       <Separator className="my-4 self-stretch bg-border" />
