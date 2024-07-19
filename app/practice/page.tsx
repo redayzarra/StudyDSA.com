@@ -110,7 +110,7 @@ const PracticePage = async () => {
       <ProblemSetInitializer setName="NeetCode150" counts={counts} />
       <div className="space-y-5 mt-4 md:mt-0">
         <div className="flex items-center justify-between relative">
-          <h1 className={cn("text-4xl md:text-6xl font-bold", font.className)}>
+          <h1 className={cn("text-4xl md:text-6xl font-bold line-clamp-1", font.className)}>
             NeetCode 150 🚀
           </h1>
           <TotalProgressChart className="absolute -right-8 scale-[.40] hidden md:block" />

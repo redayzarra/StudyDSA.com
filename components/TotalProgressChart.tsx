@@ -124,14 +124,7 @@ export function TotalProgressChart({ className, color = "#73BF5E" }: Props) {
           className="first:fill-muted last:fill-background"
           polarRadius={[86, 74]}
         />
-        <RadialBar dataKey="problems" background cornerRadius={10}>
-          <LabelList
-            position="insideStart"
-            dataKey="progress"
-            className="fill-background text-base font-semibold capitalize"
-            fontSize={10}
-          />
-        </RadialBar>
+        <RadialBar dataKey="problems" background cornerRadius={10} />
         <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
           <Label
             content={({ viewBox }) => {
