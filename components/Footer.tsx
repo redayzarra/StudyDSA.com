@@ -1,9 +1,19 @@
 import React from "react";
 import SocialLinks from "./SocialLinks";
+import { cn } from "@/lib/utils";
 
-const Footer = () => {
+interface Props {
+  className?: string;
+}
+
+const Footer = ({ className }: Props) => {
   return (
-    <div className="h-[100px] mt-[1350px] md:mt-0 flex flex-col space-y-4 bg-transparent border-t border-1 items-center justify-center">
+    <div
+      className={cn(
+        "h-[100px] flex flex-col space-y-4 bg-transparent border-t border-1 items-center justify-center",
+        className
+      )}
+    >
       <SocialLinks size={26} className="mt-2" />
       <p className="text-neutral-500 text-[12px] font-normal">
         Copyright © StudyDSA. All rights reserved.
