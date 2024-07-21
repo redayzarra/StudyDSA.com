@@ -44,7 +44,7 @@ const QuestionsTabs = () => {
         type="single"
         className="w-full"
         collapsible
-        defaultValue="questions"
+        // defaultValue="questions"
       >
         <AccordionItem value="questions">
           <AccordionTrigger>Questions</AccordionTrigger>
