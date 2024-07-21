@@ -17,9 +17,12 @@ const getProblems = async (ids: number[], userId?: string): Promise<ProblemWithP
       }
     });
 
-    // If userId is not provided, return problems without progress
+    // Create a map of problems for faster lookup
+    const problemMap = new Map(problems.map(problem => [problem.id, problem]));
+
+    // If userId is not provided, return problems in the original order
     if (!userId) {
-      return problems;
+      return ids.map(id => problemMap.get(id)!);
     }
 
     // Fetch progress for the user and problems
@@ -28,16 +31,23 @@ const getProblems = async (ids: number[], userId?: string): Promise<ProblemWithP
         userId: userId,
         problemId: {
           in: ids
-        }
+        },
       }
     });
 
-    // Merge problems with their progress
-    const problemsWithProgress: ProblemWithProgress[] = problems.map(problem => {
-      const progress = progressList.find(p => p.problemId === problem.id);
+    // Create a map of progress for faster lookup
+    const progressMap = new Map(progressList.map(progress => [progress.problemId, progress]));
+
+    // Merge problems with their progress, maintaining the original order
+    const problemsWithProgress: ProblemWithProgress[] = ids.map(id => {
+      const problem = problemMap.get(id);
+      if (!problem) {
+        throw new Error(`Problem with id ${id} not found`);
+      }
+      const progress = progressMap.get(id) || null;
       return {
         ...problem,
-        progress: progress || null
+        progress
       };
     });
 
