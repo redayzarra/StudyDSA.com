@@ -10,13 +10,12 @@ import {
   Section,
   Text,
 } from "@react-email/components";
-import * as React from "react";
 
-interface VerificationEmailProps {
+interface Props {
   confirmLink: string;
 }
 
-export const VerificationEmail = ({ confirmLink }: VerificationEmailProps) => {
+const VerificationEmail = ({ confirmLink }: Props) => {
   return (
     <Html>
       <Head>
