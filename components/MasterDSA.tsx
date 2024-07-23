@@ -27,7 +27,7 @@ const MasterDSA = () => {
           Algorithms
         </Balancer>
       </h1>
-      <p className="text-lg font-light text-muted-foreground text-left">
+      <p className="text-lg text-muted-foreground text-left">
         <Balancer>
           Let&apos;s make the tough stuff easy. Get free resources to tackle
           data structures and algorithms.
