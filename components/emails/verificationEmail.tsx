@@ -56,9 +56,9 @@ export const VerificationEmail = ({ confirmLink }: VerificationEmailProps) => {
             </div>
             <Text style={heading}>Verify Your Email Address</Text>
             <Text style={paragraph}>
-              Welcome to StudyDSA! We're excited to have you on board. To get
-              started, please verify your email address by clicking the button
-              below:
+              Welcome to StudyDSA! We&apos;re excited to have you on board. To
+              get started, please verify your email address by clicking the
+              button below:
             </Text>
             <Section style={buttonContainer}>
               <Link href={confirmLink} style={button}>
@@ -66,8 +66,8 @@ export const VerificationEmail = ({ confirmLink }: VerificationEmailProps) => {
               </Link>
             </Section>
             <Text style={footer}>
-              If you didn't create an account with StudyDSA, please ignore this
-              email.
+              If you didn&apos;t create an account with StudyDSA, please ignore
+              this email.
             </Text>
           </Section>
         </Container>
@@ -78,7 +78,8 @@ export const VerificationEmail = ({ confirmLink }: VerificationEmailProps) => {
 
 export default VerificationEmail;
 
-const fontFamily = "Poppins, Arial, 'Helvetica Neue', Helvetica, sans-serif";
+const fontFamily =
+  "Poppins, Arial, &apos;Helvetica Neue&apos;, Helvetica, sans-serif";
 
 const main = {
   backgroundColor: "#0a0a0a",
