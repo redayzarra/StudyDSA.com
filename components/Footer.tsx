@@ -10,7 +10,7 @@ const Footer = ({ className }: Props) => {
   return (
     <div
       className={cn(
-        "h-[100px] flex flex-col space-y-4 bg-transparent border-t border-1 items-center justify-center",
+        "h-[100px] flex flex-col space-y-4 bg-transparent border border-t-[1px] items-center justify-center",
         className
       )}
     >
