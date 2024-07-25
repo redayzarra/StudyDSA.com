@@ -1,8 +1,9 @@
 import {
   Body,
   Container,
-  Font,
   Head,
+  Heading,
+  Hr,
   Html,
   Img,
   Link,
@@ -12,143 +13,157 @@ import {
 } from "@react-email/components";
 import * as React from "react";
 
-interface Props {
-  confirmLink: string;
+interface AWSVerifyEmailProps {
+  verificationCode?: string;
 }
 
-export default function VerificationEmail({ confirmLink }: Props) {
+export default function AWSVerifyEmail({
+  verificationCode = "596853",
+}: AWSVerifyEmailProps) {
   return (
     <Html>
-      <Head>
-        <Font
-          fontFamily="Poppins"
-          fallbackFontFamily="Arial"
-          webFont={{
-            url: "https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2",
-            format: "woff2",
-          }}
-          fontWeight={400}
-          fontStyle="normal"
-        />
-        <Font
-          fontFamily="Poppins"
-          fallbackFontFamily="Arial"
-          webFont={{
-            url: "https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLCz7Z1xlFd2JQEk.woff2",
-            format: "woff2",
-          }}
-          fontWeight={700}
-          fontStyle="normal"
-        />
-      </Head>
-      <Preview>Verify Your Email Address for StudyDSA</Preview>
+      <Head />
+      <Preview>AWS Email Verification</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Section style={backgroundImage}>
-            <div style={logoContainer}>
+          <Section style={coverSection}>
+            <Section style={imageSection}>
               <Img
                 src="/images/icon.png"
-                width={26}
-                height="auto"
-                alt="StudyDSA Logo"
+                width="75"
+                height="45"
+                alt="AWS's Logo"
               />
-              <Text style={logoText}>StudyDSA</Text>
-            </div>
-            <Text style={heading}>Verify Your Email Address</Text>
-            <Text style={paragraph}>
-              Welcome to StudyDSA! We&apos;re excited to have you on board. To
-              get started, please verify your email address by clicking the
-              button below:
-            </Text>
-            <Section style={buttonContainer}>
-              <Link href={confirmLink} style={button}>
-                Verify Email
-              </Link>
             </Section>
-            <Text style={footer}>
-              If you didn&apos;t create an account with StudyDSA, please ignore
-              this email.
-            </Text>
+            <Section style={upperSection}>
+              <Heading style={h1}>Verify your email address</Heading>
+              <Text style={mainText}>
+                Thanks for starting the new AWS account creation process. We
+                want to make sure it's really you. Please enter the following
+                verification code when prompted. If you don&apos;t want to
+                create an account, you can ignore this message.
+              </Text>
+              <Section style={verificationSection}>
+                <Text style={verifyText}>Verification code</Text>
+
+                <Text style={codeText}>{verificationCode}</Text>
+                <Text style={validityText}>
+                  (This code is valid for 10 minutes)
+                </Text>
+              </Section>
+            </Section>
+            <Hr />
+            <Section style={lowerSection}>
+              <Text style={cautionText}>
+                Amazon Web Services will never email you and ask you to disclose
+                or verify your password, credit card, or banking account number.
+              </Text>
+            </Section>
           </Section>
+          <Text style={footerText}>
+            This message was produced and distributed by Amazon Web Services,
+            Inc., 410 Terry Ave. North, Seattle, WA 98109. © 2022, Amazon Web
+            Services, Inc.. All rights reserved. AWS is a registered trademark
+            of{" "}
+            <Link href="https://amazon.com" target="_blank" style={link}>
+              Amazon.com
+            </Link>
+            , Inc. View our{" "}
+            <Link href="https://amazon.com" target="_blank" style={link}>
+              privacy policy
+            </Link>
+            .
+          </Text>
         </Container>
       </Body>
     </Html>
   );
 }
 
-const fontFamily =
-  "Poppins, Arial, &apos;Helvetica Neue&apos;, Helvetica, sans-serif";
-
 const main = {
-  backgroundColor: "#0a0a0a",
-  minHeight: "600px",
-  fontFamily,
+  backgroundColor: "#fff",
+  color: "#212121",
 };
 
 const container = {
-  maxWidth: "600px",
+  padding: "20px",
   margin: "0 auto",
+  backgroundColor: "#eee",
 };
 
-const backgroundImage = {
-  backgroundSize: "cover",
-  backgroundRepeat: "no-repeat",
-  backgroundPosition: "center",
+const h1 = {
+  color: "#333",
+  fontFamily:
+    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+  fontSize: "20px",
+  fontWeight: "bold",
+  marginBottom: "15px",
 };
 
-const logoContainer = {
+const link = {
+  color: "#2754C5",
+  fontFamily:
+    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+  fontSize: "14px",
+  textDecoration: "underline",
+};
+
+const text = {
+  color: "#333",
+  fontFamily:
+    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+  fontSize: "14px",
+  margin: "24px 0",
+};
+
+const imageSection = {
+  backgroundColor: "#252f3d",
   display: "flex",
+  padding: "20px 0",
   alignItems: "center",
-  marginTop: "100px",
-  marginBottom: "20px",
+  justifyContent: "center",
 };
 
-const logoText = {
-  fontSize: "28px",
-  fontWeight: 700,
-  color: "#ffffff",
-  marginLeft: "5px",
-  fontFamily,
+const coverSection = { backgroundColor: "#fff" };
+
+const upperSection = { padding: "25px 35px" };
+
+const lowerSection = { padding: "25px 35px" };
+
+const footerText = {
+  ...text,
+  fontSize: "12px",
+  padding: "0 20px",
 };
 
-const heading = {
-  fontSize: "24px",
-  fontWeight: 700,
-  marginTop: "20px",
-  marginBottom: "10px",
-  color: "#ffffff",
-  fontFamily,
-};
-
-const paragraph = {
-  fontSize: "16px",
-  lineHeight: 1.5,
-  marginBottom: "40px",
-  color: "#ffffff",
-  fontFamily,
-};
-
-const buttonContainer = {
+const verifyText = {
+  ...text,
+  margin: 0,
+  fontWeight: "bold",
   textAlign: "center" as const,
 };
 
-const button = {
-  backgroundColor: "#ffffff",
-  color: "#000000",
-  padding: "12px 24px",
-  borderRadius: "5px",
-  fontSize: "16px",
-  fontWeight: 700,
-  textDecoration: "none",
-  display: "inline-block",
-  fontFamily,
+const codeText = {
+  ...text,
+  fontWeight: "bold",
+  fontSize: "36px",
+  margin: "10px 0",
+  textAlign: "center" as const,
 };
 
-const footer = {
-  fontSize: "14px",
-  color: "#cccccc",
-  marginTop: "40px",
-  borderTop: "1px solid #555555",
-  paddingTop: "20px",
-  fontFamily,
+const validityText = {
+  ...text,
+  margin: "0px",
+  textAlign: "center" as const,
 };
+
+const verificationSection = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+};
+
+const mainText = { ...text, marginBottom: "14px" };
+
+const cautionText = { ...text, margin: "0px" };
+
