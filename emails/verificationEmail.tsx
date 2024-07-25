@@ -32,6 +32,7 @@ export default function VerificationEmail({ confirmLink }: Props) {
                 width="auto"
                 height="50"
                 alt="StudyDSA Logo"
+                style={logoImage}
               />
             </Section>
             <Section style={upperSection}>
@@ -87,6 +88,7 @@ const container: React.CSSProperties = {
   margin: "0 auto",
   padding: "20px 0 48px",
   marginBottom: "64px",
+  maxWidth: "600px",
 };
 
 const coverSection: React.CSSProperties = {
@@ -95,10 +97,15 @@ const coverSection: React.CSSProperties = {
 };
 
 const imageSection: React.CSSProperties = {
-  padding: "20px 0",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
+  padding: "5px 0",
+  textAlign: "center",
+  width: "100%",
+};
+
+const logoImage: React.CSSProperties = {
+  display: "inline-block",
+  width: "auto",
+  height: "50px",
 };
 
 const upperSection: React.CSSProperties = {
