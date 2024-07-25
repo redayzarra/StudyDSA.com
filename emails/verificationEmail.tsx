@@ -1,5 +1,6 @@
 import {
   Body,
+  Button,
   Container,
   Head,
   Heading,
@@ -13,63 +14,58 @@ import {
 } from "@react-email/components";
 import * as React from "react";
 
-interface AWSVerifyEmailProps {
-  verificationCode?: string;
+interface Props {
+  confirmLink: string;
 }
 
-export default function AWSVerifyEmail({
-  verificationCode = "596853",
-}: AWSVerifyEmailProps) {
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL
+  ? `https://${process.env.NEXT_PUBLIC_APP_URL}`
+  : "";
+
+export default function VerificationEmail({ confirmLink }: Props) {
   return (
     <Html>
       <Head />
-      <Preview>AWS Email Verification</Preview>
+      <Preview>StudyDSA Email Verification</Preview>
       <Body style={main}>
         <Container style={container}>
           <Section style={coverSection}>
             <Section style={imageSection}>
               <Img
-                src="/images/icon.png"
-                width="75"
-                height="45"
-                alt="AWS's Logo"
+                src={`${baseUrl}/images/icon.png`}
+                width="auto"
+                height="50"
+                alt="StudyDSA Logo"
               />
             </Section>
             <Section style={upperSection}>
               <Heading style={h1}>Verify your email address</Heading>
               <Text style={mainText}>
-                Thanks for starting the new AWS account creation process. We
-                want to make sure it's really you. Please enter the following
-                verification code when prompted. If you don&apos;t want to
-                create an account, you can ignore this message.
+                Thanks for signing up with StudyDSA! We're excited to have you
+                on board. Please click the button below to verify your email
+                address and complete your registration.
               </Text>
               <Section style={verificationSection}>
-                <Text style={verifyText}>Verification code</Text>
-
-                <Text style={codeText}>{verificationCode}</Text>
+                <Button href={confirmLink} style={verifyButton}>
+                  Verify Email
+                </Button>
                 <Text style={validityText}>
-                  (This code is valid for 10 minutes)
+                  (This link is valid for 24 hours)
                 </Text>
               </Section>
             </Section>
-            <Hr />
+            <Hr style={hrStyle} />
             <Section style={lowerSection}>
               <Text style={cautionText}>
-                Amazon Web Services will never email you and ask you to disclose
-                or verify your password, credit card, or banking account number.
+                If you didn't create an account with StudyDSA, please ignore
+                this email or contact our support team if you have concerns.
               </Text>
             </Section>
           </Section>
           <Text style={footerText}>
-            This message was produced and distributed by Amazon Web Services,
-            Inc., 410 Terry Ave. North, Seattle, WA 98109. © 2022, Amazon Web
-            Services, Inc.. All rights reserved. AWS is a registered trademark
-            of{" "}
-            <Link href="https://amazon.com" target="_blank" style={link}>
-              Amazon.com
-            </Link>
-            , Inc. View our{" "}
-            <Link href="https://amazon.com" target="_blank" style={link}>
+            This message was sent by StudyDSA. © 2024, StudyDSA. All rights
+            reserved. View our{" "}
+            <Link href={`${baseUrl}/privacy`} target="_blank" style={link}>
               privacy policy
             </Link>
             .
@@ -80,90 +76,105 @@ export default function AWSVerifyEmail({
   );
 }
 
-const main = {
-  backgroundColor: "#fff",
-  color: "#212121",
+const main: React.CSSProperties = {
+  backgroundColor: "#ffffff",
+  fontFamily:
+    '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif',
 };
 
-const container = {
-  padding: "20px",
+const container: React.CSSProperties = {
+  backgroundColor: "#0a0a0a",
   margin: "0 auto",
-  backgroundColor: "#eee",
+  padding: "20px 0 48px",
+  marginBottom: "64px",
 };
 
-const h1 = {
-  color: "#333",
-  fontFamily:
-    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-  fontSize: "20px",
-  fontWeight: "bold",
-  marginBottom: "15px",
+const coverSection: React.CSSProperties = {
+  backgroundColor: "#0a0a0a",
+  padding: "24px",
 };
 
-const link = {
-  color: "#2754C5",
-  fontFamily:
-    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-  fontSize: "14px",
-  textDecoration: "underline",
-};
-
-const text = {
-  color: "#333",
-  fontFamily:
-    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-  fontSize: "14px",
-  margin: "24px 0",
-};
-
-const imageSection = {
-  backgroundColor: "#252f3d",
-  display: "flex",
+const imageSection: React.CSSProperties = {
   padding: "20px 0",
-  alignItems: "center",
+  display: "flex",
   justifyContent: "center",
 };
 
-const coverSection = { backgroundColor: "#fff" };
+const upperSection: React.CSSProperties = {
+  padding: "25px 35px",
+  textAlign: "center",
+};
 
-const upperSection = { padding: "25px 35px" };
+const h1: React.CSSProperties = {
+  color: "#ffffff",
+  fontSize: "24px",
+  fontWeight: "bold",
+  margin: "30px 0",
+  padding: "0",
+  lineHeight: "42px",
+};
 
-const lowerSection = { padding: "25px 35px" };
+const mainText: React.CSSProperties = {
+  color: "#e0e0e0",
+  fontSize: "16px",
+  lineHeight: "24px",
+  margin: "16px 0 24px",
+};
 
-const footerText = {
-  ...text,
+const verificationSection: React.CSSProperties = {
+  padding: "32px",
+  textAlign: "center",
+};
+
+const verifyButton: React.CSSProperties = {
+  backgroundColor: "#5469d4",
+  borderRadius: "5px",
+  color: "#ffffff",
+  fontSize: "16px",
+  fontWeight: "bold",
+  textDecoration: "none",
+  textTransform: "uppercase",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  height: "50px",
+  width: "100%",
+  padding: "0 20px",
+  boxSizing: "border-box",
+};
+
+const validityText: React.CSSProperties = {
+  fontSize: "14px",
+  lineHeight: "24px",
+  margin: "16px 0 0",
+  color: "#b0b0b0",
+};
+
+const lowerSection: React.CSSProperties = {
+  padding: "25px 35px",
+  textAlign: "center",
+};
+
+const cautionText: React.CSSProperties = {
+  fontSize: "14px",
+  lineHeight: "24px",
+  color: "#b0b0b0",
+};
+
+const footerText: React.CSSProperties = {
   fontSize: "12px",
+  lineHeight: "16px",
+  color: "#909090",
+  textAlign: "center",
   padding: "0 20px",
 };
 
-const verifyText = {
-  ...text,
-  margin: 0,
-  fontWeight: "bold",
-  textAlign: "center" as const,
+const link: React.CSSProperties = {
+  color: "#7b8eff",
+  textDecoration: "underline",
 };
 
-const codeText = {
-  ...text,
-  fontWeight: "bold",
-  fontSize: "36px",
-  margin: "10px 0",
-  textAlign: "center" as const,
+const hrStyle: React.CSSProperties = {
+  borderColor: "#333333",
+  margin: "20px 0",
 };
-
-const validityText = {
-  ...text,
-  margin: "0px",
-  textAlign: "center" as const,
-};
-
-const verificationSection = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-};
-
-const mainText = { ...text, marginBottom: "14px" };
-
-const cautionText = { ...text, margin: "0px" };
-
