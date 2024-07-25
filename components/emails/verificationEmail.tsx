@@ -16,30 +16,9 @@ interface Props {
   confirmLink: string;
 }
 
-export const VerificationEmail: React.FC<Readonly<Props>> = ({ confirmLink }) => (
+const VerificationEmail: React.FC<Readonly<Props>> = ({ confirmLink }) => (
   <Html>
-    <Head>
-      <Font
-        fontFamily="Poppins"
-        fallbackFontFamily="Arial"
-        webFont={{
-          url: "https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2",
-          format: "woff2",
-        }}
-        fontWeight={400}
-        fontStyle="normal"
-      />
-      <Font
-        fontFamily="Poppins"
-        fallbackFontFamily="Arial"
-        webFont={{
-          url: "https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLCz7Z1xlFd2JQEk.woff2",
-          format: "woff2",
-        }}
-        fontWeight={700}
-        fontStyle="normal"
-      />
-    </Head>
+    <Head />
     <Preview>Verify Your Email Address for StudyDSA</Preview>
     <Body style={main}>
       <Container style={container}>
@@ -73,6 +52,8 @@ export const VerificationEmail: React.FC<Readonly<Props>> = ({ confirmLink }) =>
     </Body>
   </Html>
 );
+
+export default VerificationEmail;
 
 const fontFamily =
   "Poppins, Arial, &apos;Helvetica Neue&apos;, Helvetica, sans-serif";

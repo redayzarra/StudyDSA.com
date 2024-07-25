@@ -1,4 +1,4 @@
-import { VerificationEmail } from "@/components/emails/verificationEmail";
+import VerificationEmail from "@/components/emails/verificationEmail";
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
