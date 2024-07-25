@@ -18,10 +18,6 @@ interface Props {
   confirmLink: string;
 }
 
-const baseUrl = process.env.NEXT_PUBLIC_APP_URL
-  ? `https://${process.env.NEXT_PUBLIC_APP_URL}`
-  : "";
-
 export default function VerificationEmail({ confirmLink }: Props) {
   return (
     <Html>
@@ -32,7 +28,7 @@ export default function VerificationEmail({ confirmLink }: Props) {
           <Section style={coverSection}>
             <Section style={imageSection}>
               <Img
-                src={`${baseUrl}/images/icon.png`}
+                src={`https://studydsa.com/images/icon.png`}
                 width="auto"
                 height="50"
                 alt="StudyDSA Logo"
@@ -65,7 +61,11 @@ export default function VerificationEmail({ confirmLink }: Props) {
           <Text style={footerText}>
             This message was sent by StudyDSA. © 2024, StudyDSA. All rights
             reserved. View our{" "}
-            <Link href={`${baseUrl}/privacy`} target="_blank" style={link}>
+            <Link
+              href={`https://studydsa.com/privacy`}
+              target="_blank"
+              style={link}
+            >
               privacy policy
             </Link>
             .
@@ -98,6 +98,7 @@ const imageSection: React.CSSProperties = {
   padding: "20px 0",
   display: "flex",
   justifyContent: "center",
+  alignItems: "center",
 };
 
 const upperSection: React.CSSProperties = {
@@ -134,9 +135,9 @@ const verifyButton: React.CSSProperties = {
   fontWeight: "bold",
   textDecoration: "none",
   textTransform: "uppercase",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
+  display: "inline-block", // Changed from flex to inline-block
+  textAlign: "center", // Ensure text is centered
+  lineHeight: "50px", // Match the height for vertical centering
   height: "50px",
   width: "100%",
   padding: "0 20px",
