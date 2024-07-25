@@ -1,3 +1,4 @@
+import ResetEmail from "@/emails/resetEmail";
 import VerificationEmail from "@/emails/verificationEmail";
 import { Resend } from "resend";
 
@@ -20,6 +21,6 @@ export const sendPasswordResetEmail = async (email: string, token: string) => {
     from: "Reset@studydsa.com",
     to: email,
     subject: "StudyDSA: Reset Your Password",
-    html: `<p>Click <a href=${resetLink}>here</a> to reset your password.</p>`,
+    react: <ResetEmail resetLink={resetLink} />,
   });
 };
