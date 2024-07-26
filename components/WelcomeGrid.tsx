@@ -93,11 +93,11 @@ const SkeletonTwo = () => {
 
 const SkeletonThree = () => {
   const nodeStyles: NodeStyle[] = [
-    { backgroundColorClass: "bg-red-800", startPosition: { x: 108, y: 15 } },
-    { backgroundColorClass: "bg-yellow-700", startPosition: { x: 200, y: 50 } },
-    { backgroundColorClass: "bg-orange-800", startPosition: { x: 165, y: 115 } },
-    { backgroundColorClass: "bg-green-800", startPosition: { x: 50, y: 115 } },
-    { backgroundColorClass: "bg-teal-800", startPosition: { x: 15, y: 50 } },
+    { backgroundColorClass: "#a51717", startPosition: { x: 108, y: 15 } },
+    { backgroundColorClass: "#c67704", startPosition: { x: 200, y: 50 } },
+    { backgroundColorClass: "#a6330c", startPosition: { x: 165, y: 115 } },
+    { backgroundColorClass: "#147137", startPosition: { x: 50, y: 115 } },
+    { backgroundColorClass: "#0f6a65", startPosition: { x: 15, y: 50 } },
     // { backgroundColorClass: "bg-pink-400" },
   ];
   const edges: Edge[] = [
