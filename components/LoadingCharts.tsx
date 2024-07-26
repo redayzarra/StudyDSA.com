@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ProblemChart } from "./ProblemChart";
+import { LoadingProgressChart } from "./LoadingProgressChart";
 
 type Difficulty = "Easy" | "Medium" | "Hard";
 interface ChartConfig {
@@ -15,10 +15,10 @@ const CHART_CONFIGS: ChartConfig[] = [
   { difficulty: "Hard", color: "#F23C13" },
 ];
 
-const ProblemCharts: React.FC = () => (
+const LoadingCharts: React.FC = () => (
   <div className="-space-y-9 -mt-6 -mb-6 flex flex-col items-center justify-center">
     {CHART_CONFIGS.map(({ difficulty, color }) => (
-      <ProblemChart
+      <LoadingProgressChart
         key={difficulty}
         className="scale-[.65]"
         difficulty={difficulty}
@@ -28,4 +28,4 @@ const ProblemCharts: React.FC = () => (
   </div>
 );
 
-export default ProblemCharts;
+export default LoadingCharts;
