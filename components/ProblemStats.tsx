@@ -7,9 +7,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "./ui/accordion";
+import LoadingCharts from "./LoadingCharts";
 
 const DynamicProblemCharts = dynamic(() => import("./ProblemCharts"), {
-  loading: () => <p>Loading charts...</p>,
+  loading: () => <LoadingCharts />,
   ssr: false,
 });
 

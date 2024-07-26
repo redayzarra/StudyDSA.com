@@ -21,8 +21,6 @@ const LoadingCharts: React.FC = () => (
       <LoadingProgressChart
         key={difficulty}
         className="scale-[.65]"
-        difficulty={difficulty}
-        color={color}
       />
     ))}
   </div>
