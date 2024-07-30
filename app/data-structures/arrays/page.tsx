@@ -6,21 +6,23 @@ import ChapterHeading from "@/components/ChapterHeading";
 import CodeBlock from "@/components/CodeBlock";
 import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
+import ImageBlock from "@/components/ImageBlock";
 import Operations from "@/components/Operations";
 import TextLink from "@/components/TextLink";
 import { arrayOperations, stackOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import {
   amortizedTimeCode,
-  dynamicArraysCode,
   pointerCodeC,
   pointerCodePy,
   stackCode,
   staticArrayCode,
 } from "./arrayCode";
-import ImageBlock from "@/components/ImageBlock";
+import getUserId from "@/hooks/server/getUserId";
 
 const ArraysPage = async () => {
+  // Fetch the user (if there is one) and the current topic
+  const userId = await getUserId();
   const topic = await getTopicById(1);
 
   // I will have to change this later
@@ -49,6 +51,7 @@ const ArraysPage = async () => {
       <ChapterHeading
         id="definition"
         title="Definition"
+        userId={userId}
         chapterId={definitionChapter?.id}
       >
         <p>
@@ -63,6 +66,7 @@ const ArraysPage = async () => {
       <ChapterHeading
         id="operations"
         title="Operations"
+        userId={userId}
         chapterId={operationsChapter?.id}
       >
         <p>
@@ -77,6 +81,7 @@ const ArraysPage = async () => {
       <ChapterHeading
         id="pointers"
         title="Pointers"
+        userId={userId}
         chapter={pointersChapter}
         chapterId={pointersChapter?.id}
       >
@@ -119,6 +124,7 @@ const ArraysPage = async () => {
       <ChapterHeading
         id="staticArrays"
         title="Static Arrays"
+        userId={userId}
         chapter={staticChapter}
         chapterId={staticChapter?.id}
       >
@@ -149,6 +155,7 @@ const ArraysPage = async () => {
       <ChapterHeading
         id="amortizedTime"
         title="Amortized Time"
+        userId={userId}
         chapter={amortizedChapter}
         chapterId={amortizedChapter?.id}
       >
@@ -177,6 +184,7 @@ const ArraysPage = async () => {
       <ChapterHeading
         id="dynamicArrays"
         title="Dynamic Arrays"
+        userId={userId}
         chapter={dynamicChapter}
         chapterId={dynamicChapter?.id}
       >
@@ -203,6 +211,7 @@ const ArraysPage = async () => {
         id="stacks"
         title="Stacks"
         chapter={stacksChapter}
+        userId={userId}
         chapterId={stacksChapter?.id}
       >
         <p>
@@ -230,13 +239,14 @@ const ArraysPage = async () => {
         />
       </ChapterHeading>
 
-      <ChapterHeading id="algorithms" title="Algorithms">
+      <ChapterHeading id="algorithms" title="Algorithms" userId={userId}>
         <Algorithms items={arrayAlgorithms} />
       </ChapterHeading>
 
       <ChapterHeading
         id="bestPractices"
         title="Best Practices"
+        userId={userId}
         chapterId={bestPracticesChapter?.id}
       >
         <p>

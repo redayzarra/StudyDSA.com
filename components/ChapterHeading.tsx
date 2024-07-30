@@ -2,9 +2,9 @@ import React, { PropsWithChildren } from "react";
 import { Separator } from "./ui/separator";
 import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
-import { Chapter } from "@prisma/client";
 import Bookmark from "./Bookmark";
 import MarkCheckbox from "./MarkCheckbox";
+import { ChapterWithProgress } from "@/types/chapters";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -14,13 +14,15 @@ const font = Poppins({
 interface Props {
   id: string;
   title: string;
+  userId: string | undefined;
   chapterId?: number;
-  chapter?: Chapter;
+  chapter?: ChapterWithProgress;
 }
 
 const ChapterHeading = ({
   id,
   title,
+  userId,
   children,
   chapterId,
   chapter,
@@ -38,7 +40,11 @@ const ChapterHeading = ({
         <div className="flex items-center space-x-4">
           {chapter && <Bookmark chapter={chapter} />}
           {chapterId && (
-            <MarkCheckbox className="h-5 w-5 border-2" chapterId={chapterId} />
+            <MarkCheckbox
+              className="h-5 w-5 border-2"
+              userId={userId}
+              chapter={chapter!}
+            />
           )}
         </div>
       </div>
