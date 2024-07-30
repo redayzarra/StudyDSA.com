@@ -1,14 +1,14 @@
-import { Chapter } from "@prisma/client";
+import { ChapterWithProgress } from "@/types/chapters";
 
 interface TopicWithChapters {
   id: number;
   title: string;
   description: string;
   href: string;
-  chapters: Chapter[];
+  chapters: ChapterWithProgress[];
 }
 
-const findChapter = (topic: TopicWithChapters, name: string) => {
+const findChapter = (topic: TopicWithChapters, name: string): ChapterWithProgress | undefined => {
   return topic?.chapters.find((chapter) => chapter.title === name);
 };
 

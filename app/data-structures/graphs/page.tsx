@@ -54,6 +54,7 @@ const GraphsPage = async () => {
         userId={userId}
         id="definition"
         title="Definition"
+        chapter={definitionChapter}
       >
         <p>
           Graphs are composed of{" "}
@@ -72,6 +73,7 @@ const GraphsPage = async () => {
         userId={userId}
         id="operations"
         title="Operations"
+        chapter={operationsChapter}
       >
         <p>
           Graph operations encompass adding and removing vertices or edges,
@@ -95,6 +97,7 @@ const GraphsPage = async () => {
         userId={userId}
         title="Graph Terminology"
         chapter={terminologyChapter}
+        showBookmark
       >
         <p>
           Graphs are made up of vertices and edges.{" "}
@@ -154,6 +157,7 @@ const GraphsPage = async () => {
         title="Directionality"
         userId={userId}
         chapter={directionalityChapter}
+        showBookmark
       >
         <p>
           Graph directionality is when edges have a direction (
@@ -174,6 +178,7 @@ const GraphsPage = async () => {
         title="Adjacency List"
         userId={userId}
         chapter={adjacencyChapter}
+        showBookmark
       >
         <p>
           <strong>Adjacency lists are a way to represent graphs</strong>, where
@@ -211,6 +216,7 @@ const GraphsPage = async () => {
         userId={userId}
         id="matrix"
         title="Matrix"
+        showBookmark
       >
         <p>
           A <strong>matrix is a two-dimensional array</strong> that forms a
@@ -254,6 +260,7 @@ const GraphsPage = async () => {
         userId={userId}
         title="Graph Traversal"
         chapter={graphTraversalChapter}
+        showBookmark
       >
         <p>
           Graph traversal algorithms, such as{" "}
@@ -329,10 +336,6 @@ const GraphsPage = async () => {
           language="python"
           title="BFS_Matrix.py"
         />
-      </ChapterHeading>
-
-      <ChapterHeading id="algorithms" userId={userId} title="Algorithms">
-        <Algorithms items={graphAlgorithms} />
       </ChapterHeading>
       <ChapterHeading
         id="bestPractices"
@@ -415,6 +418,10 @@ const GraphsPage = async () => {
           </li>
           <br />
         </ul>
+      </ChapterHeading>
+
+      <ChapterHeading id="algorithms" userId={userId} title="Algorithms">
+        <Algorithms items={graphAlgorithms} />
       </ChapterHeading>
     </div>
   );

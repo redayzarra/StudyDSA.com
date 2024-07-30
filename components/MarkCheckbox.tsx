@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import getChapterStatus from "@/actions/chapters/getChapterStatus";
 import markChapter from "@/actions/chapters/markChapter";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Checkbox } from "./ui/checkbox";
 import { ChapterWithProgress } from "@/types/chapters";
@@ -14,27 +15,41 @@ interface Props {
 
 const MarkCheckbox = ({ className, userId, chapter }: Props) => {
   const [isComplete, setIsComplete] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const init = async () => {
+      if (!userId) {
+        setIsLoading(false);
+        return;
+      }
+      try {
+        const status = await getChapterStatus(userId, chapter.id);
+        setIsComplete(status);
+      } catch (error) {
+        console.error("Failed to fetch chapter completion status:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    init();
+  }, [userId, chapter.id]);
 
   const handleChange = async () => {
-    // If the user doesn't exist, tell them to go away
     if (!userId) {
       toast("You need to be logged in to mark a chapter");
       return;
     }
 
-
     const newIsComplete = !isComplete;
     setIsComplete(newIsComplete);
+
     try {
       await markChapter(userId, chapter.id, newIsComplete);
-      toast.success("Updated chapter status");
-      // Note: We're not modifying chapter.progress directly here
-
-      // Error handling
     } catch (error) {
       console.error("Failed to toggle chapter completion:", error);
-      setIsComplete(isComplete);
-      toast.error("Failed to update chapter status");
+      setIsComplete(!newIsComplete); // Revert state if update fails
     }
   };
 

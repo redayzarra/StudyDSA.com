@@ -22,8 +22,11 @@ import {
   setImplementationCode,
 } from "./hashmapCode";
 import ImageBlock from "@/components/ImageBlock";
+import getUserId from "@/hooks/server/getUserId";
 
 const HashmapPage = async () => {
+  // Fetch the userId and the topic
+  const userId = await getUserId();
   const topic = await getTopicById(3);
 
   // I will have to change this later
@@ -51,7 +54,8 @@ const HashmapPage = async () => {
       <ChapterHeading
         id="definition"
         title="Definition"
-        chapterId={definitionChapter?.id}
+        userId={userId}
+        chapter={definitionChapter}
       >
         <p>
           A hashmap, or a hash table, is a data structure that{" "}
@@ -68,7 +72,8 @@ const HashmapPage = async () => {
       <ChapterHeading
         id="operations"
         title="Operations"
-        chapterId={operationsChapter?.id}
+        userId={userId}
+        chapter={operationsChapter}
       >
         <p>
           Hashmaps are powerful because of their efficiency. They use a{" "}
@@ -94,7 +99,8 @@ const HashmapPage = async () => {
         id="hashFunction"
         title="Hash Function"
         chapter={hashingChapter}
-        chapterId={hashingChapter?.id}
+        userId={userId}
+        showBookmark
       >
         <p>
           Hashmaps are powered by{" "}
@@ -142,7 +148,7 @@ const HashmapPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="collisions" title="Collisions">
+      <ChapterHeading id="collisions" userId={userId} title="Collisions">
         <p>
           Collisions occur when two{" "}
           <span className="font-bold">
@@ -171,7 +177,8 @@ const HashmapPage = async () => {
         id="chaining"
         title="Chaining"
         chapter={chainingChapter}
-        chapterId={chainingChapter?.id}
+        userId={userId}
+        showBookmark
       >
         <p>
           When multiple keys hash to the same index in a hashmap, we face
@@ -244,8 +251,9 @@ const HashmapPage = async () => {
       <ChapterHeading
         id="openAddressing"
         title="Open Addressing"
+        userId={userId}
         chapter={openChapter}
-        chapterId={openChapter?.id}
+        showBookmark
       >
         <p>
           Open addressing handles collisions in a hashmap by{" "}
@@ -299,8 +307,8 @@ const HashmapPage = async () => {
       <ChapterHeading
         id="implementation"
         title="Implementation"
+        userId={userId}
         chapter={implementationChapter}
-        chapterId={implementationChapter?.id}
       >
         <p>
           To implement hashmaps, you need a solid understanding of collisions
@@ -348,8 +356,9 @@ const HashmapPage = async () => {
       <ChapterHeading
         id="sets"
         title="Sets"
+        userId={userId}
         chapter={setsChapter}
-        chapterId={setsChapter?.id}
+        showBookmark
       >
         <p>
           Sets, or hash sets, are a data structure that uses hashing to store
@@ -388,14 +397,15 @@ const HashmapPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="algorithms" title="Algorithms">
+      <ChapterHeading id="algorithms" title="Algorithms" userId={userId}>
         <Algorithms items={hashmapAlgorithms} />
       </ChapterHeading>
 
       <ChapterHeading
         id="bestPractices"
         title="Best Practices"
-        chapterId={bestPracticesChapter?.id}
+        userId={userId}
+        chapter={bestPracticesChapter}
       >
         <p>
           Hashmaps and sets are the most important data structures to learn if
