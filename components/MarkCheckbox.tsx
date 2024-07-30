@@ -13,24 +13,24 @@ interface Props {
 }
 
 const MarkCheckbox = ({ className, userId, chapter }: Props) => {
-  const [isComplete, setIsComplete] = useState(
-    chapter.progress?.isComplete || false
-  );
+  const [isComplete, setIsComplete] = useState(false);
 
   const handleChange = async () => {
+    // If the user doesn't exist, tell them to go away
     if (!userId) {
       toast("You need to be logged in to mark a chapter");
       return;
     }
 
+
     const newIsComplete = !isComplete;
     setIsComplete(newIsComplete);
-
     try {
       await markChapter(userId, chapter.id, newIsComplete);
-      if (chapter.progress) {
-        chapter.progress.isComplete = newIsComplete;
-      }
+      toast.success("Updated chapter status");
+      // Note: We're not modifying chapter.progress directly here
+
+      // Error handling
     } catch (error) {
       console.error("Failed to toggle chapter completion:", error);
       setIsComplete(isComplete);
@@ -40,11 +40,7 @@ const MarkCheckbox = ({ className, userId, chapter }: Props) => {
 
   return (
     <Checkbox
-      className={`rounded-full ${
-        isComplete
-          ? "data-[state=checked]:bg-green-600 data-[state=checked]:border-green-900 data-[state=checked]:text-green-950 border-2"
-          : "bg-gray-200/20 border-2 border-neutral-400"
-      } ${className}`}
+      className={`rounded-full h-5 w-5 ${className}`}
       checked={isComplete}
       onClick={handleChange}
     />

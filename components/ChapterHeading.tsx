@@ -15,7 +15,6 @@ interface Props {
   id: string;
   title: string;
   userId: string | undefined;
-  chapterId?: number;
   chapter?: ChapterWithProgress;
 }
 
@@ -24,7 +23,6 @@ const ChapterHeading = ({
   title,
   userId,
   children,
-  chapterId,
   chapter,
 }: PropsWithChildren<Props>) => {
   return (
@@ -39,7 +37,7 @@ const ChapterHeading = ({
         {title}
         <div className="flex items-center space-x-4">
           {chapter && <Bookmark chapter={chapter} />}
-          {chapterId && (
+          {chapter && (
             <MarkCheckbox
               className="h-5 w-5 border-2"
               userId={userId}

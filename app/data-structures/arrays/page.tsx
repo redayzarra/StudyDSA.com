@@ -41,8 +41,8 @@ const ArraysPage = async () => {
   const amortizedChapter = findChapter(topic, "Amortized Time");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
+  // Fetch the algorithms I want to fetch
   const fetchAlgorithms = [1, 3, 4, 5, 6, 7, 8, 9, 11];
-
   const arrayAlgorithms = await getAlgorithmsById(fetchAlgorithms);
 
   return (
@@ -52,7 +52,7 @@ const ArraysPage = async () => {
         id="definition"
         title="Definition"
         userId={userId}
-        chapterId={definitionChapter?.id}
+        chapter={definitionChapter}
       >
         <p>
           Arrays are a collection of items that are{" "}
@@ -66,8 +66,8 @@ const ArraysPage = async () => {
       <ChapterHeading
         id="operations"
         title="Operations"
+        chapter={operationsChapter}
         userId={userId}
-        chapterId={operationsChapter?.id}
       >
         <p>
           Let&apos;s take a closer look at what you can do with arrays. Arrays
@@ -83,7 +83,6 @@ const ArraysPage = async () => {
         title="Pointers"
         userId={userId}
         chapter={pointersChapter}
-        chapterId={pointersChapter?.id}
       >
         <p>
           Pointers are{" "}
@@ -126,7 +125,6 @@ const ArraysPage = async () => {
         title="Static Arrays"
         userId={userId}
         chapter={staticChapter}
-        chapterId={staticChapter?.id}
       >
         <p>
           Static arrays have a fixed size, which is determined at compile time.
@@ -157,7 +155,6 @@ const ArraysPage = async () => {
         title="Amortized Time"
         userId={userId}
         chapter={amortizedChapter}
-        chapterId={amortizedChapter?.id}
       >
         <p>
           Amortized time analysis gives us an{" "}
@@ -186,7 +183,6 @@ const ArraysPage = async () => {
         title="Dynamic Arrays"
         userId={userId}
         chapter={dynamicChapter}
-        chapterId={dynamicChapter?.id}
       >
         <p>
           Unlike static arrays,{" "}
@@ -212,7 +208,6 @@ const ArraysPage = async () => {
         title="Stacks"
         chapter={stacksChapter}
         userId={userId}
-        chapterId={stacksChapter?.id}
       >
         <p>
           Stacks are a type of data structure that operates on the{" "}
@@ -246,8 +241,8 @@ const ArraysPage = async () => {
       <ChapterHeading
         id="bestPractices"
         title="Best Practices"
+        chapter={bestPracticesChapter}
         userId={userId}
-        chapterId={bestPracticesChapter?.id}
       >
         <p>
           Mastering arrays and stacks is crucial for coding interviews. Here are

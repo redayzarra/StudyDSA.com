@@ -20,8 +20,11 @@ import {
 import ImageBlock from "@/components/ImageBlock";
 import TextLink from "@/components/TextLink";
 import getTopicById from "@/actions/topics/getTopicById";
+import getUserId from "@/hooks/server/getUserId";
 
 const GraphsPage = async () => {
+  // Get the current userId (if there is one) and the topic
+  const userId = await getUserId();
   const topic = await getTopicById(7);
 
   // I will have to change this later
@@ -30,6 +33,7 @@ const GraphsPage = async () => {
     return <div>Topic not found</div>;
   }
 
+  // Fetch the chapters 
   const definitionChapter = findChapter(topic, "Definition");
   const operationsChapter = findChapter(topic, "Operations");
   const terminologyChapter = findChapter(topic, "Terminology");
@@ -47,9 +51,9 @@ const GraphsPage = async () => {
     <div className="space-y-8">
       <Heading topic={topic!} />
       <ChapterHeading
+        userId={userId}
         id="definition"
         title="Definition"
-        chapterId={definitionChapter?.id}
       >
         <p>
           Graphs are composed of{" "}
@@ -65,9 +69,9 @@ const GraphsPage = async () => {
       </ChapterHeading>
 
       <ChapterHeading
+        userId={userId}
         id="operations"
         title="Operations"
-        chapterId={operationsChapter?.id}
       >
         <p>
           Graph operations encompass adding and removing vertices or edges,
@@ -88,9 +92,9 @@ const GraphsPage = async () => {
 
       <ChapterHeading
         id="terminology"
+        userId={userId}
         title="Graph Terminology"
         chapter={terminologyChapter}
-        chapterId={terminologyChapter?.id}
       >
         <p>
           Graphs are made up of vertices and edges.{" "}
@@ -148,8 +152,8 @@ const GraphsPage = async () => {
       <ChapterHeading
         id="directionality"
         title="Directionality"
+        userId={userId}
         chapter={directionalityChapter}
-        chapterId={directionalityChapter?.id}
       >
         <p>
           Graph directionality is when edges have a direction (
@@ -168,8 +172,8 @@ const GraphsPage = async () => {
       <ChapterHeading
         id="adjacencyList"
         title="Adjacency List"
+        userId={userId}
         chapter={adjacencyChapter}
-        chapterId={adjacencyChapter?.id}
       >
         <p>
           <strong>Adjacency lists are a way to represent graphs</strong>, where
@@ -204,9 +208,9 @@ const GraphsPage = async () => {
 
       <ChapterHeading
         chapter={matrixChapter}
+        userId={userId}
         id="matrix"
         title="Matrix"
-        chapterId={matrixChapter?.id}
       >
         <p>
           A <strong>matrix is a two-dimensional array</strong> that forms a
@@ -247,9 +251,9 @@ const GraphsPage = async () => {
 
       <ChapterHeading
         id="traversal"
+        userId={userId}
         title="Graph Traversal"
         chapter={graphTraversalChapter}
-        chapterId={graphTraversalChapter?.id}
       >
         <p>
           Graph traversal algorithms, such as{" "}
@@ -327,13 +331,13 @@ const GraphsPage = async () => {
         />
       </ChapterHeading>
 
-      <ChapterHeading id="algorithms" title="Algorithms">
+      <ChapterHeading id="algorithms" userId={userId} title="Algorithms">
         <Algorithms items={graphAlgorithms} />
       </ChapterHeading>
       <ChapterHeading
         id="bestPractices"
+        userId={userId}
         title="Best Practices"
-        chapterId={bestPracticesChapter?.id}
       >
         <p>
           Graphs are incredibly flexible data structures that can represent
