@@ -1,14 +1,22 @@
 import Link from "next/link";
 import MarkCheckbox from "./MarkCheckbox";
+import { ChapterWithProgress } from "@/types/chapters";
 
 interface Props {
   title: string;
   description: string;
   href: string;
-  chapterId: number;
+  userId: string | undefined;
+  chapter: ChapterWithProgress;
 }
 
-const SkillTreeCell = ({ title, href, description, chapterId }: Props) => {
+const SkillTreeCell = ({
+  title,
+  href,
+  description,
+  userId,
+  chapter,
+}: Props) => {
   return (
     <div className="relative">
       <Link href={href}>
@@ -27,7 +35,11 @@ const SkillTreeCell = ({ title, href, description, chapterId }: Props) => {
       </div> */}
 
       {/* Be able to mark outside of page */}
-      <MarkCheckbox chapterId={chapterId} className="rounded-[4px] absolute top-2 right-2 border-2" />
+      <MarkCheckbox
+        chapter={chapter}
+        userId={userId}
+        className="rounded-[4px] absolute top-2 right-2 border-2"
+      />
     </div>
   );
 };

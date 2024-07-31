@@ -23,8 +23,11 @@ import {
   treeMeasureCode,
   treeNodeCode,
 } from "./treeCode";
+import getUserId from "@/hooks/server/getUserId";
 
 const TreesPage = async () => {
+  // Fetch the userId and the topic
+  const userId = await getUserId();
   const topic = await getTopicById(5);
 
   // I will have to change this later
@@ -52,7 +55,8 @@ const TreesPage = async () => {
       <ChapterHeading
         id="definitionTree"
         title="Definition"
-        chapterId={definitionChapter?.id}
+        chapter={definitionChapter}
+        userId={userId}
       >
         <p>
           Trees are nodes connected in a hierarchy, where each node can point to
@@ -71,7 +75,8 @@ const TreesPage = async () => {
       <ChapterHeading
         id="operations"
         title="Operations"
-        chapterId={operationsChapter?.id}
+        chapter={operationsChapter}
+        userId={userId}
       >
         <p>
           Tree operations vary in complexity based on the tree&apos;s balance. A{" "}
@@ -101,7 +106,8 @@ const TreesPage = async () => {
         id="terminology"
         title="Terminology"
         chapter={terminologyChapter}
-        chapterId={terminologyChapter?.id}
+        showBookmark
+        userId={userId}
       >
         <p>
           At the heart of a trees is the <strong>node</strong>, an individual{" "}
@@ -170,7 +176,8 @@ const TreesPage = async () => {
         id="traversal"
         title="Tree Traversal"
         chapter={treeTraversalChapter}
-        chapterId={treeTraversalChapter?.id}
+        showBookmark
+        userId={userId}
       >
         <p>
           Traversing a tree involves visiting all the nodes of the tree and
@@ -255,7 +262,8 @@ const TreesPage = async () => {
         id="binary"
         title="Binary Tree"
         chapter={binaryTreeChapter}
-        chapterId={binaryTreeChapter?.id}
+        showBookmark
+        userId={userId}
       >
         <p>
           Before we jump into the implementation of a binary tree, let&apos;s
@@ -301,7 +309,8 @@ const TreesPage = async () => {
         id="binarySearch"
         title="Binary Search Tree"
         chapter={binarySearchTreeChapter}
-        chapterId={binarySearchTreeChapter?.id}
+        showBookmark
+        userId={userId}
       >
         <p>
           A Binary Search Tree (BST) is a special kind of binary tree that uses
@@ -345,7 +354,8 @@ const TreesPage = async () => {
         id="advanced"
         title="Advanced Trees"
         chapter={advancedChapter}
-        chapterId={advancedChapter?.id}
+        showBookmark
+        userId={userId}
       >
         <p>
           Advanced trees, such as AVL trees, Red-Black trees, and B-trees, are
@@ -402,14 +412,15 @@ const TreesPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="algorithms" title="Algorithms">
+      <ChapterHeading id="algorithms" userId={userId} title="Algorithms">
         <Algorithms items={treeAlgorithms} />
       </ChapterHeading>
 
       <ChapterHeading
         id="bestPractices"
         title="Best Practices"
-        chapterId={bestPracticesChapter?.id}
+        chapter={bestPracticesChapter}
+        userId={userId}
       >
         <p>
           Queues are the best data structure for managing data in a first-in,

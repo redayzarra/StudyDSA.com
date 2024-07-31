@@ -12,8 +12,11 @@ import TextLink from "@/components/TextLink";
 import { heapOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import { heapCode, heapifyCode, maxHeapCode } from "./heapsCode";
+import getUserId from "@/hooks/server/getUserId";
 
 const HeapsPage = async () => {
+  // Fetch the userId and the topic
+  const userId = await getUserId();
   const topic = await getTopicById(6);
 
   // I will have to change this later
@@ -41,7 +44,8 @@ const HeapsPage = async () => {
       <ChapterHeading
         id="definition"
         title="Definition"
-        chapterId={definitionChapter?.id}
+        userId={userId}
+        chapter={definitionChapter}
       >
         <p>
           Heaps are a type of binary tree where{" "}
@@ -58,10 +62,12 @@ const HeapsPage = async () => {
           operations.
         </p>
       </ChapterHeading>
+
       <ChapterHeading
         id="operations"
         title="Operations"
-        chapterId={operationsChapter?.id}
+        userId={userId}
+        chapter={operationsChapter}
       >
         <p>
           Heaps primarily support two key operations:{" "}
@@ -71,11 +77,13 @@ const HeapsPage = async () => {
         </p>
         <Operations items={heapOperations} />
       </ChapterHeading>
+
       <ChapterHeading
         id="structure"
         title="Structure Property"
         chapter={structureChapter}
-        chapterId={structureChapter?.id}
+        userId={userId}
+        showBookmark
       >
         <p>
           The structure property of heaps ensures that{" "}
@@ -103,7 +111,8 @@ const HeapsPage = async () => {
         id="property"
         title="Heap Property"
         chapter={heapPropertyChapter}
-        chapterId={heapPropertyChapter?.id}
+        userId={userId}
+        showBookmark
       >
         <p>
           The heap property states that each{" "}
@@ -125,7 +134,8 @@ const HeapsPage = async () => {
         id="heapify"
         title="Heapify"
         chapter={heapifyChapter}
-        chapterId={heapifyChapter?.id}
+        userId={userId}
+        showBookmark
       >
         <p>
           The heapify function is a fundamental operation for converting any
@@ -158,7 +168,8 @@ const HeapsPage = async () => {
         id="minMax"
         title="Min/Max Heaps"
         chapter={minMaxChapter}
-        chapterId={minMaxChapter?.id}
+        userId={userId}
+        showBookmark
       >
         <p>
           Heaps come in two primary forms:{" "}
@@ -220,7 +231,9 @@ const HeapsPage = async () => {
       <ChapterHeading
         id="implementation"
         title="Implementation"
-        chapterId={implementationChapter?.id}
+        chapter={implementationChapter}
+        userId={userId}
+        showBookmark
       >
         <p>
           Heaps efficiently organize data for priority-based access, with min
@@ -232,14 +245,11 @@ const HeapsPage = async () => {
         <CodeBlock code={heapCode} language="python" title="Heap.py" />
       </ChapterHeading>
 
-      <ChapterHeading id="algorithms" title="Algorithms">
-        <Algorithms items={heapsAlgorithms} />
-      </ChapterHeading>
-
       <ChapterHeading
         id="bestPractices"
         title="Best Practices"
-        chapterId={bestPracticesChapter?.id}
+        userId={userId}
+        chapter={bestPracticesChapter}
       >
         <p>
           Heaps should be your go-to data structure for keeping track of{" "}
@@ -311,6 +321,10 @@ const HeapsPage = async () => {
           </li>
           <br />
         </ul>
+      </ChapterHeading>
+
+      <ChapterHeading id="algorithms" userId={userId} title="Algorithms">
+        <Algorithms items={heapsAlgorithms} />
       </ChapterHeading>
     </div>
   );

@@ -17,8 +17,11 @@ import {
   unionByRankCode,
   unionFindImplementation,
 } from "./unionFindCode";
+import getUserId from "@/hooks/server/getUserId";
 
 const UnionFindPage = async () => {
+  // Fetch the userId and the topic
+  const userId = await getUserId();
   const topic = await getTopicById(9);
 
   // I will have to change this later
@@ -46,7 +49,9 @@ const UnionFindPage = async () => {
       <ChapterHeading
         id="definition"
         title="Definition"
-        chapterId={definitionChapter?.id}
+        chapter={definitionChapter}
+        userId={userId}
+        showBookmark
       >
         <p>
           Union-Find, also known as Disjoint Set Union (DSU), manages a
@@ -59,7 +64,9 @@ const UnionFindPage = async () => {
       <ChapterHeading
         id="operations"
         title="Operations"
-        chapterId={operationsChapter?.id}
+        chapter={operationsChapter}
+        userId={userId}
+        showBookmark
       >
         <p>
           Union-Find supports two fundamental operations: <strong>find</strong>,
@@ -83,7 +90,8 @@ const UnionFindPage = async () => {
         id="disjoint-sets"
         title="Disjoint Sets"
         chapter={disjointSetsChapter}
-        chapterId={disjointSetsChapter?.id}
+        userId={userId}
+        showBookmark
       >
         <p>
           A disjoint set, also known as a <strong>set of sets</strong>, is a
@@ -118,7 +126,8 @@ const UnionFindPage = async () => {
         id="connectivity"
         title="Network Connectivity"
         chapter={networkChapter}
-        chapterId={networkChapter?.id}
+        userId={userId}
+        showBookmark
       >
         <p>
           Network connectivity problems often ask us to{" "}
@@ -148,7 +157,8 @@ const UnionFindPage = async () => {
         id="path-compression"
         title="Path Compression"
         chapter={pathChapter}
-        chapterId={pathChapter?.id}
+        userId={userId}
+        showBookmark
       >
         <p>
           Path compression is an optimization technique which{" "}
@@ -219,7 +229,8 @@ const UnionFindPage = async () => {
         id="union-by-rank"
         title="Union by Rank"
         chapter={rankChapter}
-        chapterId={rankChapter?.id}
+        userId={userId}
+        showBookmark
       >
         <p>
           Union by Rank is an optimization technique that{" "}
@@ -269,7 +280,9 @@ const UnionFindPage = async () => {
       <ChapterHeading
         id="implementation"
         title="Implementation"
-        chapterId={implementationChapter?.id}
+        chapter={implementationChapter}
+        userId={userId}
+        showBookmark
       >
         <p>
           Implement Union-Find by{" "}
@@ -289,14 +302,16 @@ const UnionFindPage = async () => {
         />
       </ChapterHeading>
 
-      <ChapterHeading id="algorithms" title="Algorithms">
+      <ChapterHeading id="algorithms" userId={userId} title="Algorithms">
         <Algorithms items={unionFindAlgorithms} />
       </ChapterHeading>
 
       <ChapterHeading
         id="bestPractices"
         title="Best Practices"
-        chapterId={bestPracticesChapter?.id}
+        chapter={bestPracticesChapter}
+        userId={userId}
+        showBookmark
       >
         <p>
           Union-Find is a great tool for solving problems related to disjoint

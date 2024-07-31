@@ -18,8 +18,11 @@ import {
   trieCode,
   trieNodeCode,
 } from "./triesCode";
+import getUserId from "@/hooks/server/getUserId";
 
 const TriesPage = async () => {
+  // Fetch the userId and the topic
+  const userId = await getUserId();
   const topic = await getTopicById(8);
 
   // I will have to change this later
@@ -47,7 +50,8 @@ const TriesPage = async () => {
       <ChapterHeading
         id="definition"
         title="Definition"
-        chapterId={definitionChapter?.id}
+        chapter={definitionChapter}
+        userId={userId}
       >
         <p>
           Tries, also known as <strong>prefix trees</strong>, are a tree-like
@@ -60,7 +64,8 @@ const TriesPage = async () => {
       <ChapterHeading
         id="operations"
         title="Operations"
-        chapterId={operationsChapter?.id}
+        chapter={operationsChapter}
+        userId={userId}
       >
         <p>
           Trie operations include insertion, search, and deletion of words.
@@ -81,7 +86,8 @@ const TriesPage = async () => {
         id="nodes"
         title="Trie Nodes"
         chapter={trieNodesChapter}
-        chapterId={trieNodesChapter?.id}
+        userId={userId}
+        showBookmark
       >
         <p>
           Each node in a trie{" "}
@@ -98,7 +104,8 @@ const TriesPage = async () => {
         id="insertion"
         title="Insertion"
         chapter={insertionChapter}
-        chapterId={insertionChapter?.id}
+        userId={userId}
+        showBookmark
       >
         <p>
           Inserting a word into a trie means creating a new path of nodes for
@@ -123,7 +130,8 @@ const TriesPage = async () => {
         id="searching"
         title="Searching"
         chapter={searchingChapter}
-        chapterId={searchingChapter?.id}
+        userId={userId}
+        showBookmark
       >
         <p>
           Searching for a word in a trie{" "}
@@ -147,7 +155,8 @@ const TriesPage = async () => {
         id="findingPrefix"
         title="Finding Prefixes"
         chapter={prefixesChapter}
-        chapterId={prefixesChapter?.id}
+        userId={userId}
+        showBookmark
       >
         <p>
           Finding prefixes in a trie is similar to searching for a whole word
@@ -169,7 +178,8 @@ const TriesPage = async () => {
         id="implementation"
         title="Implementation"
         chapter={implementationChapter}
-        chapterId={implementationChapter?.id}
+        userId={userId}
+        showBookmark
       >
         <p>
           Implementing a trie involves{" "}
@@ -183,14 +193,15 @@ const TriesPage = async () => {
         <CodeBlock code={trieCode} language="python" title="Tries.py" />
       </ChapterHeading>
 
-      <ChapterHeading id="algorithms" title="Algorithms">
+      <ChapterHeading userId={userId} id="algorithms" title="Algorithms">
         <Algorithms items={graphAlgorithms} />
       </ChapterHeading>
 
       <ChapterHeading
         id="bestPractices"
         title="Best Practices"
-        chapterId={bestPracticesChapter?.id}
+        chapter={bestPracticesChapter}
+        userId={userId}
       >
         <p>
           Tries efficiently store and search words or sequences of strings. They

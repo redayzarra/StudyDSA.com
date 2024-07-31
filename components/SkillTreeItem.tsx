@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { Chapter } from "@prisma/client";
 import { Poppins } from "next/font/google";
 import { PropsWithChildren } from "react";
 import SkillTreeCell from "./SkillTreeCell";
@@ -8,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "./ui/accordion";
+import { ChapterWithProgress } from "@/types/chapters";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -17,7 +17,8 @@ const font = Poppins({
 interface Props {
   value: string;
   name: string;
-  items: Chapter[];
+  userId: string | undefined;
+  items: ChapterWithProgress[];
 }
 
 const SkillTreeItem = ({
@@ -25,6 +26,7 @@ const SkillTreeItem = ({
   value,
   name,
   items,
+  userId,
 }: PropsWithChildren<Props>) => {
   return (
     <AccordionItem id={value} value={value}>
@@ -44,8 +46,9 @@ const SkillTreeItem = ({
                 key={index}
                 title={item.title}
                 href={item.href}
+                userId={userId}
                 description={item.description}
-                chapterId={item.id}
+                chapter={item}
               />
             ))}
           </ul>

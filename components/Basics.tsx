@@ -5,8 +5,11 @@ import { MdDataArray, MdDataObject, MdLinearScale } from "react-icons/md";
 import SkillTreeContainer from "./SkillTreeContainer";
 import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeItem from "./SkillTreeItem";
+import getUserId from "@/hooks/server/getUserId";
 
 const Basics = async () => {
+  // Fetch the userId
+  const userId = await getUserId();
 
   // Fetch all chapters
   const arrayChapters = await getChaptersByTopic(1);
@@ -22,11 +25,17 @@ const Basics = async () => {
         {/* First Column */}
         <Accordion type="multiple">
           {/* Arrays */}
-          <SkillTreeItem items={arrayChapters} name="Arrays" value="arrays">
+          <SkillTreeItem
+            userId={userId}
+            items={arrayChapters}
+            name="Arrays"
+            value="arrays"
+          >
             <MdDataArray size={30} />
           </SkillTreeItem>
           {/* Linked Lists */}
           <SkillTreeItem
+            userId={userId}
             items={linkedListChapters}
             name="Linked Lists"
             value="linkedLists"
@@ -36,23 +45,29 @@ const Basics = async () => {
         </Accordion>
 
         {/* Second Column */}
-        <Accordion type="multiple" >
+        <Accordion type="multiple">
           {/* Hashmaps */}
           <SkillTreeItem
             name="Hashmaps & Sets"
             value="hashmaps"
+            userId={userId}
             items={hashmapChapters}
           >
             <MdDataObject size={30} />
           </SkillTreeItem>
-          <SkillTreeItem name="Queues" value="queues" items={queueChapters}>
+          <SkillTreeItem
+            name="Queues"
+            value="queues"
+            userId={userId}
+            items={queueChapters}
+          >
             <MdLinearScale size={35} />
           </SkillTreeItem>
         </Accordion>
       </div>
 
       {/* <h2 className="font-[650] mb-5 mt-10 text-[1.15rem]">Algorithms</h2>
-      <Algorithms items={basicAlgorithms || []} /> */}
+      <Algorithms userId={userId} items={basicAlgorithms || []} /> */}
     </SkillTreeContainer>
   );
 };

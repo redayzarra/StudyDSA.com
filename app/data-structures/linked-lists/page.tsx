@@ -19,8 +19,11 @@ import {
   singlyLinkedList,
 } from "./linkedListsCode";
 import ImageBlock from "@/components/ImageBlock";
+import getUserId from "@/hooks/server/getUserId";
 
 const LinkedListsPage = async () => {
+  // Fetch the userId and topic
+  const userId = await getUserId();
   const topic = await getTopicById(2);
 
   // I will have to change this later
@@ -48,7 +51,8 @@ const LinkedListsPage = async () => {
       <ChapterHeading
         id="definitionLinkedList"
         title="Definition"
-        chapterId={definitionChapter?.id}
+        userId={userId}
+        chapter={definitionChapter}
       >
         <p>
           A linked list is a linear collection of elements, called{" "}
@@ -64,7 +68,8 @@ const LinkedListsPage = async () => {
       <ChapterHeading
         id="operations"
         title="Operations"
-        chapterId={operationsChapter?.id}
+        userId={userId}
+        chapter={operationsChapter}
       >
         <p>
           Linked lists stand out for their efficient insertions and deletions.
@@ -82,9 +87,10 @@ const LinkedListsPage = async () => {
 
       <ChapterHeading
         id="pointers"
+        userId={userId}
         title="Pointers"
         chapter={pointersChapter}
-        chapterId={pointersChapter?.id}
+        showBookmark
       >
         <p>
           Pointers are crucial for constructing linked lists, allowing each node
@@ -117,8 +123,9 @@ const LinkedListsPage = async () => {
       <ChapterHeading
         id="listNodes"
         title="List Nodes"
+        userId={userId}
         chapter={listNodesChapter}
-        chapterId={listNodesChapter?.id}
+        showBookmark
       >
         <p>
           List Nodes are the building blocks for linked lists. They store both
@@ -153,7 +160,9 @@ const LinkedListsPage = async () => {
       <ChapterHeading
         id="sentinels"
         title="Sentinel Nodes"
-        chapterId={sentinelsChapter?.id}
+        userId={userId}
+        chapter={sentinelsChapter}
+        showBookmark
       >
         <p>
           Sentinel nodes, or dummy nodes, are a strategy for using linked lists
@@ -186,8 +195,9 @@ const LinkedListsPage = async () => {
       <ChapterHeading
         id="singly"
         title="Singly Linked List"
+        userId={userId}
         chapter={singlyChapter}
-        chapterId={singlyChapter?.id}
+        showBookmark
       >
         <p>
           Singly linked lists are built with list nodes, where each{" "}
@@ -214,15 +224,16 @@ const LinkedListsPage = async () => {
       <ChapterHeading
         id="doubly"
         title="Doubly Linked List"
+        userId={userId}
+        showBookmark
         chapter={doublyChapter}
-        chapterId={doublyChapter?.id}
       >
         <p>
           Doubly linked lists are an upgrade to singly linked lists because they
           store an additional pointer in each list node. This extra pointer
           links to the previous node, enabling traversal in both forward and
-          backwards. Each node in a <CodeText>ListNode</CodeText> stores data, a pointer to
-          the previous node, and a pointer to the next node:
+          backwards. Each node in a <CodeText>ListNode</CodeText> stores data, a
+          pointer to the previous node, and a pointer to the next node:
         </p>
         <CodeBlock
           code={doublyLinkedList}
@@ -241,14 +252,15 @@ const LinkedListsPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="algorithms" title="Algorithms">
+      <ChapterHeading id="algorithms" userId={userId} title="Algorithms">
         <Algorithms items={linkedListAlgorithms} />
       </ChapterHeading>
 
       <ChapterHeading
         id="bestPractices"
         title="Best Practices"
-        chapterId={bestPracticesChapter?.id}
+        userId={userId}
+        chapter={bestPracticesChapter}
       >
         <p>
           Linked lists are important to understand because they are the

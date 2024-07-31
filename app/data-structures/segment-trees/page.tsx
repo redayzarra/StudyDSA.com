@@ -18,8 +18,11 @@ import {
   segmentTreeCode,
   updatingCode,
 } from "./segmentCode";
+import getUserId from "@/hooks/server/getUserId";
 
 const SegmentTreesPage = async () => {
+  // Fetch the userId and the topic
+  const userId = await getUserId();
   const topic = await getTopicById(10);
 
   // I will have to change this later
@@ -47,7 +50,8 @@ const SegmentTreesPage = async () => {
       <ChapterHeading
         id="definition"
         title="Definition"
-        chapterId={definitionChapter?.id}
+        chapter={definitionChapter}
+        userId={userId}
       >
         <p>
           A Segment Tree is a{" "}
@@ -63,7 +67,8 @@ const SegmentTreesPage = async () => {
       <ChapterHeading
         id="operations"
         title="Operations"
-        chapterId={operationsChapter?.id}
+        chapter={operationsChapter}
+        userId={userId}
       >
         <p>
           The core operations of a Segment Tree include{" "}
@@ -79,7 +84,8 @@ const SegmentTreesPage = async () => {
         id="building"
         title="Building"
         chapter={buildingChapter}
-        chapterId={buildingChapter?.id}
+        showBookmark
+        userId={userId}
       >
         <p>
           Building a segment tree involves constructing a{" "}
@@ -111,7 +117,8 @@ const SegmentTreesPage = async () => {
         id="querying"
         title="Querying"
         chapter={queryingChapter}
-        chapterId={queryingChapter?.id}
+        showBookmark
+        userId={userId}
       >
         <p>
           Querying a segment tree efficiently retrieves the sum of a range
@@ -148,7 +155,8 @@ const SegmentTreesPage = async () => {
         id="updating"
         title="Updating"
         chapter={updatingChapter}
-        chapterId={updatingChapter?.id}
+        showBookmark
+        userId={userId}
       >
         <p>
           Update a segment tree by modifying an element of the{" "}
@@ -181,7 +189,9 @@ const SegmentTreesPage = async () => {
       <ChapterHeading
         id="implementation"
         title="Implementation"
-        chapterId={implementationChapter?.id}
+        chapter={implementationChapter}
+        showBookmark
+        userId={userId}
       >
         <p>
           Constructed from an{" "}
@@ -212,7 +222,8 @@ const SegmentTreesPage = async () => {
         id="lazy-propagation"
         title="Lazy Propagation"
         chapter={lazyChapter}
-        chapterId={lazyChapter?.id}
+        showBookmark
+        userId={userId}
       >
         <p>
           Lazy propagation is a technique used in segment trees to{" "}
@@ -244,14 +255,15 @@ const SegmentTreesPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="algorithms" title="Algorithms">
+      <ChapterHeading id="algorithms" title="Algorithms" userId={userId}>
         <Algorithms items={segmentTreesAlgorithms} />
       </ChapterHeading>
 
       <ChapterHeading
         id="bestPractices"
         title="Best Practices"
-        chapterId={bestPracticesChapter?.id}
+        chapter={bestPracticesChapter}
+        userId={userId}
       >
         <p>
           Segment trees should be your go-to tool for solving range query

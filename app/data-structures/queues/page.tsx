@@ -11,8 +11,11 @@ import TextLink from "@/components/TextLink";
 import { queueOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import { circularQueueCode, dequeCode, queueNodesCode } from "./queueCode";
+import getUserId from "@/hooks/server/getUserId";
 
 const QueuePage = async () => {
+  // Fetch the userId and the topic
+  const userId = await getUserId();
   const topic = await getTopicById(4);
 
   // I will have to change this later
@@ -40,7 +43,8 @@ const QueuePage = async () => {
       <ChapterHeading
         id="definitionQueue"
         title="Definition"
-        chapterId={definitionChapter?.id}
+        chapter={definitionChapter}
+        userId={userId}
       >
         <p>
           A queue is a linear data structure that follows a{" "}
@@ -55,7 +59,8 @@ const QueuePage = async () => {
       <ChapterHeading
         id="operationsQueue"
         title="Operations"
-        chapterId={operationsChapter?.id}
+        chapter={operationsChapter}
+        userId={userId}
       >
         <p>
           Queues support operations that allow them to be an efficient FIFO data
@@ -71,7 +76,8 @@ const QueuePage = async () => {
         id="nodes"
         title="Queue Nodes"
         chapter={queueNodesChapter}
-        chapterId={queueNodesChapter?.id}
+        userId={userId}
+        showBookmark
       >
         <p>
           Queues are best implemented by{" "}
@@ -102,7 +108,8 @@ const QueuePage = async () => {
         id="dynamic"
         title="Dynamic Queues"
         chapter={dynamicQueueChapter}
-        chapterId={dynamicQueueChapter?.id}
+        userId={userId}
+        showBookmark
       >
         <p>
           Dynamic queues are a type of{" "}
@@ -138,7 +145,8 @@ const QueuePage = async () => {
         id="circular"
         title="Circular Queue"
         chapter={circularQueueChapter}
-        chapterId={circularQueueChapter?.id}
+        userId={userId}
+        showBookmark
       >
         <p>
           Circular queues are a variant of fixed queues where the{" "}
@@ -169,7 +177,8 @@ const QueuePage = async () => {
         id="deque"
         title="Deque"
         chapter={dequeChapter}
-        chapterId={dequeChapter?.id}
+        userId={userId}
+        showBookmark
       >
         <p>
           Deques (<span className="font-bold">double-ended queues</span>) allow{" "}
@@ -195,7 +204,8 @@ const QueuePage = async () => {
         id="priority"
         title="Priority Queue"
         chapter={priorityQueueChapter}
-        chapterId={priorityQueueChapter?.id}
+        userId={userId}
+        showBookmark
       >
         <p>
           Priority queue{" "}
@@ -224,14 +234,15 @@ const QueuePage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="algorithms" title="Algorithms">
+      <ChapterHeading id="algorithms" title="Algorithms" userId={userId}>
         <Algorithms items={queueAlgorithms} />
       </ChapterHeading>
 
       <ChapterHeading
         id="bestPracticesQueue"
         title="Best Practices"
-        chapterId={bestPracticesChapter?.id}
+        chapter={bestPracticesChapter}
+        userId={userId}
       >
         <p>
           Queues are the best data structure for managing data in a first-in,
