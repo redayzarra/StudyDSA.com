@@ -668,8 +668,8 @@ const leetCodeProblems = [
   },
   {
     id: 58,
-    title: "Combination Sum III",
-    href: "https://leetcode.com/problems/combination-sum-iii/description",
+    title: "Combination Sum II",
+    href: "https://leetcode.com/problems/combination-sum-ii/description",
     difficulty: "Medium",
     videoURL: "",
     tags: [
@@ -1346,7 +1346,7 @@ const leetCodeProblems = [
   {
     id: 117,
     title: "Course Schedule",
-    href: "https://leetcode.com/problems/cource-schedule/description",
+    href: "https://leetcode.com/problems/course-schedule/description",
     difficulty: "Medium",
     videoURL: "",
     tags: [
