@@ -1,5 +1,4 @@
 "use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -27,9 +26,10 @@ const FormSchema = z.object({
 interface Props {
   userId: string | undefined;
   problem: ProblemWithProgress;
+  onNotesUpdate: (updatedNotes: string) => void; 
 }
 
-export function NotesInput({ userId, problem }: Props) {
+export function NotesInput({ userId, problem, onNotesUpdate }: Props) {
   const [loading, setLoading] = useState(false);
   const [savedNotes, setSavedNotes] = useState<string>(
     problem.progress?.notes || ""
@@ -61,19 +61,18 @@ export function NotesInput({ userId, problem }: Props) {
     try {
       setLoading(true);
       await updateNotes(userId, problem.id, data.notes);
+      
       // Update the stale problem data directly
       if (problem.progress) {
         problem.progress.notes = data.notes;
       }
+      
+      onNotesUpdate(data.notes); // Add this line to notify the parent component
       toast("Your personal notes for the problem are saved.");
-
-      // Error handling
     } catch (error) {
       setSavedNotes(previousNotes); // Revert on error
       form.reset({ notes: previousNotes });
       toast("Failed to save notes. Please try again.");
-
-      // After it's all said and done, turn the loading state off
     } finally {
       setLoading(false);
     }
