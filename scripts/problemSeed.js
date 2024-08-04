@@ -2087,7 +2087,7 @@ const leetCodeProblems = [
   {
     id: 186,
     title: "Min Cost to Connect All Points",
-    href: "https://leetcode.com/problems/min-costs-to-connect-all-points/description",
+    href: "https://leetcode.com/problems/min-cost-to-connect-all-points/description",
     difficulty: "Medium",
     videoURL: "",
     tags: [

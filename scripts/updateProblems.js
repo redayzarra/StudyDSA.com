@@ -3,10 +3,10 @@ const database = new PrismaClient();
 
 const updatedProblems = [
   {
-    id: 117,
-    newId: 117,
-    title: "Course Schedule",
-    href: "https://leetcode.com/problems/course-schedule/description",
+    id: 186,
+    newId: 186,
+    title: "Min Cost to Connect All Points",
+    href: "https://leetcode.com/problems/min-cost-to-connect-all-points/description",
   },
 ]
 
