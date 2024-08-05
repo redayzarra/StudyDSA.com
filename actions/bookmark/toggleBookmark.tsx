@@ -2,42 +2,25 @@
 
 import db from "@/lib/db";
 
-const toggleBookmark = async (userId: string, chapterId: number) => {
+const toggleBookmark = async (userId: string, href: string, title: string) => {
   try {
-    const existingBookmark = await db.bookmark.findFirst({
-      where: {
-        userId,
-      },
+    const existingBookmark = await db.bookmark.findUnique({
+      where: { userId },
     });
 
     if (existingBookmark) {
-      // If a bookmark exists but for a different chapter, update it, otherwise delete it
-      if (existingBookmark.chapterId !== chapterId) {
-        await db.bookmark.update({
-          where: { id: existingBookmark.id },
-          data: { chapterId: chapterId },
-        });
-        return { action: 'updated', chapterId };
-      } else {
-        await db.bookmark.delete({
-          where: { id: existingBookmark.id },
-        });
-        return { action: 'deleted' };
-      }
-    } else {
-      // Create a new bookmark if none exists
-      await db.bookmark.create({
-        data: {
-          userId,
-          chapterId,
-        },
+      await db.bookmark.delete({
+        where: { userId },
       });
-      return { action: 'created', chapterId };
+      return false;
+    } else {
+      await db.bookmark.create({
+        data: { userId, href, title },
+      });
+      return true;
     }
-
-    // Error handling
   } catch (error) {
-    console.error("Failed to toggle the bookmark:", error);
+    console.error("Failed to toggle bookmark:", error);
     throw error;
   }
 };

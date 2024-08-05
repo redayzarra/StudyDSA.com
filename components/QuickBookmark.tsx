@@ -1,4 +1,5 @@
 import getBookmark from "@/actions/bookmark/getBookmark";
+import Link from "next/link";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa6";
 
 const QuickBookmark = async ({ userId }: { userId: string }) => {
@@ -10,12 +11,12 @@ const QuickBookmark = async ({ userId }: { userId: string }) => {
       {bookmark ? (
         <>
           <FaBookmark size={iconSize} className="mr-[2px]" />
-          <a href={bookmark.href} className="font-medium">
+          <Link href={bookmark.href || "/"} className="font-medium">
             Your bookmark is on:{" "}
             <span className="text-yellow-500 dark:text-primary font-bold underline">
               {bookmark.title}
             </span>
-          </a>
+          </Link>
         </>
       ) : (
         <>

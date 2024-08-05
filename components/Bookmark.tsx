@@ -2,43 +2,47 @@
 
 import useBookmarkStore from "@/app/store/user";
 import getUserId from "@/hooks/client/getUserId";
-import { Chapter } from "@prisma/client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa6";
 import { toast } from "sonner";
 
 interface Props {
-  chapter: Chapter;
+  href: string;
+  title: string;
 }
 
-const Bookmark = ({ chapter }: Props) => {
+const Bookmark = ({ href = "/", title }: Props) => {
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"; // Fallback to localhost
+  const fullHref = `${baseUrl}${href}`;
   const userId = getUserId();
-  const { isBookmarked, toggleBookmark, fetchBookmarkStatus } =
-    useBookmarkStore();
+  const { isBookmarked, toggleBookmark, fetchBookmarkStatus } = useBookmarkStore();
+
+  const [bookmarked, setBookmarked] = useState(false);
 
   useEffect(() => {
-    if (userId && chapter.id) {
-      fetchBookmarkStatus(userId, chapter.id);
+    if (userId) {
+      fetchBookmarkStatus(userId).then((status) => setBookmarked(status));
     }
-  }, [userId, chapter.id, fetchBookmarkStatus]);
+  }, [userId, fetchBookmarkStatus]);
 
   const onClick = async () => {
     if (!userId) {
-      toast("You need to be logged in to bookmark a chapter");
+      toast("You need to be logged in to bookmark this page");
       return;
     }
 
     try {
-      await toggleBookmark(userId, chapter.id);
+      await toggleBookmark(userId, fullHref, title);
+      setBookmarked(!bookmarked);
     } catch (error) {
       console.error("Failed to toggle bookmark:", error);
-      toast("An error occurred while bookmarking the chapter.");
+      toast("An error occurred while bookmarking.");
     }
   };
 
   return (
     <button onClick={onClick}>
-      {isBookmarked(chapter.id) ? (
+      {bookmarked ? (
         <FaBookmark className="text-primary" />
       ) : (
         <FaRegBookmark className="text-primary" />
@@ -48,3 +52,4 @@ const Bookmark = ({ chapter }: Props) => {
 };
 
 export default Bookmark;
+

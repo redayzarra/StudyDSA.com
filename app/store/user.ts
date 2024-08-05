@@ -3,47 +3,46 @@ import toggleBookmark from '@/actions/bookmark/toggleBookmark';
 import { create } from 'zustand';
 
 interface BookmarkStoreState {
-  bookmarkedChapterId: number | null;
-  toggleBookmark: (userId: string, chapterId: number) => Promise<void>;
-  isBookmarked: (chapterId: number) => boolean;
-  fetchBookmarkStatus: (userId: string, chapterId: number) => Promise<void>;
+  bookmarkedHref: string | null;
+  toggleBookmark: (userId: string, href: string, title: string) => Promise<void>;
+  isBookmarked: (href: string) => boolean;
+  fetchBookmarkStatus: (userId: string) => Promise<boolean>;
 }
 
 const useBookmarkStore = create<BookmarkStoreState>((set, get) => ({
-  bookmarkedChapterId: null,
-  toggleBookmark: async (userId: string, chapterId: number) => {
+  bookmarkedHref: null,
+  
+  toggleBookmark: async (userId: string, href: string, title: string) => {
     try {
-      // Toggle bookmark in the backend
-      const success = await toggleBookmark(userId, chapterId); 
-      if(success) {
+      const success = await toggleBookmark(userId, href, title); 
+      if (success) {
         set(state => ({
-          bookmarkedChapterId: state.bookmarkedChapterId === chapterId ? null : chapterId,
+          bookmarkedHref: state.bookmarkedHref === href ? null : href,
         }));
       }
-
-      // Error handling
     } catch (error) {
       console.error("Error toggling bookmark in backend:", error);
       throw error; 
     }
   },
-  isBookmarked: (chapterId: number) => get().bookmarkedChapterId === chapterId,
 
-  fetchBookmarkStatus: async (userId: string, chapterId: number) => {
-  try {
-    const isBookmarked = await checkBookmark(userId, chapterId);
-    if (isBookmarked) {
-      set({ bookmarkedChapterId: chapterId });
-      return;
+  isBookmarked: (href: string) => get().bookmarkedHref === href,
+
+  fetchBookmarkStatus: async (userId: string) => {
+    try {
+      const bookmark = await checkBookmark(userId);
+      if (bookmark) {
+        set({ bookmarkedHref: bookmark.href });
+        return true;
+      } else {
+        set({ bookmarkedHref: null });
+        return false;
+      }
+    } catch (error) {
+      console.error("Failed to fetch bookmark status:", error);
+      throw error;
     }
-    console.log("Bookmark was set", chapterId)
-
-    // Error handling
-  } catch (error) {
-    console.error("Failed to fetch bookmark status:", error);
-    throw error;
-  }
-},
+  },
 }));
 
 export default useBookmarkStore;

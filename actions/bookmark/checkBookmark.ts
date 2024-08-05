@@ -2,20 +2,18 @@
 
 import db from "@/lib/db";
 
-const checkBookmark = async (userId: string, chapterId: number) => {
+const checkBookmark = async (userId: string) => {
   try {
-    // Simplified query without the explicit AND
-    const bookmark = await db.bookmark.findFirst({
+    // Query to find the bookmark by userId
+    const bookmark = await db.bookmark.findUnique({
       where: {
         userId,
-        chapterId,
       },
     });
 
-    // Return true if a bookmark exists, otherwise false
-    return !!bookmark;
+    // Return the bookmark if it exists
+    return bookmark;
 
-    // Error handling
   } catch (error) {
     console.error("Error:", error);
     throw error;
@@ -23,3 +21,4 @@ const checkBookmark = async (userId: string, chapterId: number) => {
 };
 
 export default checkBookmark;
+
