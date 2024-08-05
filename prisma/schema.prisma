@@ -50,7 +50,7 @@ model User {
   chapterProgress   ChapterProgress[]
   algorithmProgress AlgorithmProgress[]
   topicProgress     TopicProgress[]
-  Bookmark          Bookmark?
+  bookmarks         Bookmark[]
   problemProgress   ProblemProgress[]
 
   createdAt DateTime @default(now())
@@ -79,7 +79,6 @@ model PasswordResetToken {
   @@unique([email, token])
 }
 
-// For tracking progress
 model Topic {
   id          Int             @id @default(autoincrement())
   title       String          @unique
@@ -108,7 +107,6 @@ model Chapter {
   topicId     Int
   topic       Topic             @relation(fields: [topicId], references: [id], onDelete: Cascade)
   progress    ChapterProgress[]
-  Bookmark    Bookmark[]
 }
 
 model ChapterProgress {
@@ -129,7 +127,6 @@ model Algorithm {
   href        String
   difficulty  Difficulty
   progress    AlgorithmProgress[]
-  Bookmark    Bookmark[]
 }
 
 model AlgorithmProgress {
@@ -144,18 +141,14 @@ model AlgorithmProgress {
 }
 
 model Bookmark {
-  id          String @id @default(cuid())
-  userId      String
-  chapterId   Int?
-  algorithmId Int?
+  id     String @id @default(cuid())
+  userId String
+  url    String
+  title  String
 
-  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
-  chapter   Chapter?   @relation(fields: [chapterId], references: [id], onDelete: SetNull)
-  algorithm Algorithm? @relation(fields: [algorithmId], references: [id], onDelete: SetNull)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([userId])
-  @@index([chapterId], name: "idx_bookmark_chapter")
-  @@index([algorithmId], name: "idx_bookmark_algorithm")
+  @@unique([userId, url])
 }
 
 enum QuestionDifficulty {
