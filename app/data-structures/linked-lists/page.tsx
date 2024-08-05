@@ -90,7 +90,6 @@ const LinkedListsPage = async () => {
         userId={userId}
         title="Pointers"
         chapter={pointersChapter}
-        showBookmark
       >
         <p>
           Pointers are crucial for constructing linked lists, allowing each node
@@ -125,7 +124,6 @@ const LinkedListsPage = async () => {
         title="List Nodes"
         userId={userId}
         chapter={listNodesChapter}
-        showBookmark
       >
         <p>
           List Nodes are the building blocks for linked lists. They store both
@@ -162,7 +160,6 @@ const LinkedListsPage = async () => {
         title="Sentinel Nodes"
         userId={userId}
         chapter={sentinelsChapter}
-        showBookmark
       >
         <p>
           Sentinel nodes, or dummy nodes, are a strategy for using linked lists
@@ -197,7 +194,6 @@ const LinkedListsPage = async () => {
         title="Singly Linked List"
         userId={userId}
         chapter={singlyChapter}
-        showBookmark
       >
         <p>
           Singly linked lists are built with list nodes, where each{" "}
@@ -225,7 +221,6 @@ const LinkedListsPage = async () => {
         id="doubly"
         title="Doubly Linked List"
         userId={userId}
-        showBookmark
         chapter={doublyChapter}
       >
         <p>
@@ -250,10 +245,6 @@ const LinkedListsPage = async () => {
           linked lists, manage both <CodeText>next</CodeText> and{" "}
           <CodeText>prev</CodeText> pointers carefully to maintain the list.
         </p>
-      </ChapterHeading>
-
-      <ChapterHeading id="algorithms" userId={userId} title="Algorithms">
-        <Algorithms items={linkedListAlgorithms} />
       </ChapterHeading>
 
       <ChapterHeading
@@ -316,6 +307,10 @@ const LinkedListsPage = async () => {
           <br />
         </ul>
         <br />
+      </ChapterHeading>
+
+      <ChapterHeading id="algorithms" userId={userId} title="Algorithms" hideBookmark>
+        <Algorithms items={linkedListAlgorithms} />
       </ChapterHeading>
     </div>
   );

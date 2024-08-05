@@ -100,7 +100,6 @@ const HashmapPage = async () => {
         title="Hash Function"
         chapter={hashingChapter}
         userId={userId}
-        showBookmark
       >
         <p>
           Hashmaps are powered by{" "}
@@ -178,7 +177,6 @@ const HashmapPage = async () => {
         title="Chaining"
         chapter={chainingChapter}
         userId={userId}
-        showBookmark
       >
         <p>
           When multiple keys hash to the same index in a hashmap, we face
@@ -253,7 +251,6 @@ const HashmapPage = async () => {
         title="Open Addressing"
         userId={userId}
         chapter={openChapter}
-        showBookmark
       >
         <p>
           Open addressing handles collisions in a hashmap by{" "}
@@ -358,7 +355,6 @@ const HashmapPage = async () => {
         title="Sets"
         userId={userId}
         chapter={setsChapter}
-        showBookmark
       >
         <p>
           Sets, or hash sets, are a data structure that uses hashing to store
@@ -395,10 +391,6 @@ const HashmapPage = async () => {
           <CodeText>ListNode</CodeText> to simplify insertion and deletion
           operations.
         </p>
-      </ChapterHeading>
-
-      <ChapterHeading id="algorithms" title="Algorithms" userId={userId}>
-        <Algorithms items={hashmapAlgorithms} />
       </ChapterHeading>
 
       <ChapterHeading
@@ -462,6 +454,10 @@ const HashmapPage = async () => {
             <br />
           </li>
         </ul>
+      </ChapterHeading>
+
+      <ChapterHeading id="algorithms" title="Algorithms" userId={userId} hideBookmark>
+        <Algorithms items={hashmapAlgorithms} />
       </ChapterHeading>
     </div>
   );

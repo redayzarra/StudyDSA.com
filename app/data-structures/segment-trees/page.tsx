@@ -84,7 +84,6 @@ const SegmentTreesPage = async () => {
         id="building"
         title="Building"
         chapter={buildingChapter}
-        showBookmark
         userId={userId}
       >
         <p>
@@ -117,7 +116,6 @@ const SegmentTreesPage = async () => {
         id="querying"
         title="Querying"
         chapter={queryingChapter}
-        showBookmark
         userId={userId}
       >
         <p>
@@ -155,7 +153,6 @@ const SegmentTreesPage = async () => {
         id="updating"
         title="Updating"
         chapter={updatingChapter}
-        showBookmark
         userId={userId}
       >
         <p>
@@ -190,7 +187,6 @@ const SegmentTreesPage = async () => {
         id="implementation"
         title="Implementation"
         chapter={implementationChapter}
-        showBookmark
         userId={userId}
       >
         <p>
@@ -222,7 +218,6 @@ const SegmentTreesPage = async () => {
         id="lazy-propagation"
         title="Lazy Propagation"
         chapter={lazyChapter}
-        showBookmark
         userId={userId}
       >
         <p>
@@ -253,10 +248,6 @@ const SegmentTreesPage = async () => {
           </strong>
           . During future queries, these lazy updates are applied as needed.
         </p>
-      </ChapterHeading>
-
-      <ChapterHeading id="algorithms" title="Algorithms" userId={userId}>
-        <Algorithms items={segmentTreesAlgorithms} />
       </ChapterHeading>
 
       <ChapterHeading
@@ -300,6 +291,10 @@ const SegmentTreesPage = async () => {
           </li>
           <br />
         </ul>
+      </ChapterHeading>
+
+      <ChapterHeading id="algorithms" title="Algorithms" userId={userId} hideBookmark>
+        <Algorithms items={segmentTreesAlgorithms} />
       </ChapterHeading>
     </div>
   );

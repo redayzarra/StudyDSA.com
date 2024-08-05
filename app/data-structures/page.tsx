@@ -29,11 +29,12 @@ const DataStructuresPage = async () => {
 
       <MainChapter id="with-algorithms" title="With Algorithms">
         <p>
-          Data structures and <TextLink href="/algorithms">algorithms</TextLink> are like two sides of the same coin in
-          computer science. While data structures deal with the organization and
-          storage of data, algorithms are all about the steps and rules to
-          process that data efficiently. Here are the some examples of data
-          structures and algorithms that work well together:
+          Data structures and <TextLink href="/algorithms">algorithms</TextLink>{" "}
+          are like two sides of the same coin in computer science. While data
+          structures deal with the organization and storage of data, algorithms
+          are all about the steps and rules to process that data efficiently.
+          Here are the some examples of data structures and algorithms that work
+          well together:
         </p>
         <br />
         <ul className="ml-6">
@@ -67,9 +68,9 @@ const DataStructuresPage = async () => {
             <span className="font-bold">&bull; Graph Algorithms: </span>
             <TextLink href="/data-structures/graphs">Graphs</TextLink> are used
             in algorithms like{" "}
-            <TextLink href="/algorithms/dijkstras">Dijkstra&apos;s</TextLink> for
-            finding the shortest path, or algorithms for detecting cycles in a
-            network. These algorithms are tailored to navigate the nodes and
+            <TextLink href="/algorithms/dijkstras">Dijkstra&apos;s</TextLink>{" "}
+            for finding the shortest path, or algorithms for detecting cycles in
+            a network. These algorithms are tailored to navigate the nodes and
             edges of graphs efficiently.
           </li>
         </ul>

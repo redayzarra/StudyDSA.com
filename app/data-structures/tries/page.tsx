@@ -87,7 +87,6 @@ const TriesPage = async () => {
         title="Trie Nodes"
         chapter={trieNodesChapter}
         userId={userId}
-        showBookmark
       >
         <p>
           Each node in a trie{" "}
@@ -105,7 +104,6 @@ const TriesPage = async () => {
         title="Insertion"
         chapter={insertionChapter}
         userId={userId}
-        showBookmark
       >
         <p>
           Inserting a word into a trie means creating a new path of nodes for
@@ -131,7 +129,6 @@ const TriesPage = async () => {
         title="Searching"
         chapter={searchingChapter}
         userId={userId}
-        showBookmark
       >
         <p>
           Searching for a word in a trie{" "}
@@ -156,7 +153,6 @@ const TriesPage = async () => {
         title="Finding Prefixes"
         chapter={prefixesChapter}
         userId={userId}
-        showBookmark
       >
         <p>
           Finding prefixes in a trie is similar to searching for a whole word
@@ -179,7 +175,6 @@ const TriesPage = async () => {
         title="Implementation"
         chapter={implementationChapter}
         userId={userId}
-        showBookmark
       >
         <p>
           Implementing a trie involves{" "}
@@ -191,10 +186,6 @@ const TriesPage = async () => {
           character in the word.
         </p>
         <CodeBlock code={trieCode} language="python" title="Tries.py" />
-      </ChapterHeading>
-
-      <ChapterHeading userId={userId} id="algorithms" title="Algorithms">
-        <Algorithms items={graphAlgorithms} />
       </ChapterHeading>
 
       <ChapterHeading
@@ -239,6 +230,10 @@ const TriesPage = async () => {
           </li>
           <br />
         </ul>
+      </ChapterHeading>
+
+      <ChapterHeading userId={userId} id="algorithms" title="Algorithms" hideBookmark>
+        <Algorithms items={graphAlgorithms} />
       </ChapterHeading>
     </div>
   );

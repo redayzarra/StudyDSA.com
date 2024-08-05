@@ -77,7 +77,6 @@ const QueuePage = async () => {
         title="Queue Nodes"
         chapter={queueNodesChapter}
         userId={userId}
-        showBookmark
       >
         <p>
           Queues are best implemented by{" "}
@@ -109,7 +108,6 @@ const QueuePage = async () => {
         title="Dynamic Queues"
         chapter={dynamicQueueChapter}
         userId={userId}
-        showBookmark
       >
         <p>
           Dynamic queues are a type of{" "}
@@ -146,7 +144,6 @@ const QueuePage = async () => {
         title="Circular Queue"
         chapter={circularQueueChapter}
         userId={userId}
-        showBookmark
       >
         <p>
           Circular queues are a variant of fixed queues where the{" "}
@@ -178,7 +175,6 @@ const QueuePage = async () => {
         title="Deque"
         chapter={dequeChapter}
         userId={userId}
-        showBookmark
       >
         <p>
           Deques (<span className="font-bold">double-ended queues</span>) allow{" "}
@@ -205,7 +201,6 @@ const QueuePage = async () => {
         title="Priority Queue"
         chapter={priorityQueueChapter}
         userId={userId}
-        showBookmark
       >
         <p>
           Priority queue{" "}
@@ -232,10 +227,6 @@ const QueuePage = async () => {
           more a concept than actual queues. They are best implemented with
           heaps.
         </p>
-      </ChapterHeading>
-
-      <ChapterHeading id="algorithms" title="Algorithms" userId={userId}>
-        <Algorithms items={queueAlgorithms} />
       </ChapterHeading>
 
       <ChapterHeading
@@ -291,6 +282,10 @@ const QueuePage = async () => {
           </li>
           <br />
         </ul>
+      </ChapterHeading>
+
+      <ChapterHeading id="algorithms" title="Algorithms" userId={userId} hideBookmark>
+        <Algorithms items={queueAlgorithms} />
       </ChapterHeading>
     </div>
   );

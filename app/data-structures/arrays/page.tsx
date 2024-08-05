@@ -83,7 +83,6 @@ const ArraysPage = async () => {
         title="Pointers"
         userId={userId}
         chapter={pointersChapter}
-        showBookmark
       >
         <p>
           Pointers are{" "}
@@ -126,7 +125,6 @@ const ArraysPage = async () => {
         title="Static Arrays"
         userId={userId}
         chapter={staticChapter}
-        showBookmark
       >
         <p>
           Static arrays have a fixed size, which is determined at compile time.
@@ -157,7 +155,6 @@ const ArraysPage = async () => {
         title="Amortized Time"
         userId={userId}
         chapter={amortizedChapter}
-        showBookmark
       >
         <p>
           Amortized time analysis gives us an{" "}
@@ -186,7 +183,6 @@ const ArraysPage = async () => {
         title="Dynamic Arrays"
         userId={userId}
         chapter={dynamicChapter}
-        showBookmark
       >
         <p>
           Unlike static arrays,{" "}
@@ -212,7 +208,6 @@ const ArraysPage = async () => {
         title="Stacks"
         chapter={stacksChapter}
         userId={userId}
-        showBookmark
       >
         <p>
           Stacks are a type of data structure that operates on the{" "}
@@ -296,7 +291,7 @@ const ArraysPage = async () => {
         </ul>
       </ChapterHeading>
 
-      <ChapterHeading id="algorithms" title="Algorithms" userId={userId}>
+      <ChapterHeading id="algorithms" title="Algorithms" userId={userId} hideBookmark>
         <Algorithms items={arrayAlgorithms} />
       </ChapterHeading>
     </div>

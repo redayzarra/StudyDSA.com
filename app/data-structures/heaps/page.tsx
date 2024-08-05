@@ -83,7 +83,6 @@ const HeapsPage = async () => {
         title="Structure Property"
         chapter={structureChapter}
         userId={userId}
-        showBookmark
       >
         <p>
           The structure property of heaps ensures that{" "}
@@ -112,7 +111,6 @@ const HeapsPage = async () => {
         title="Heap Property"
         chapter={heapPropertyChapter}
         userId={userId}
-        showBookmark
       >
         <p>
           The heap property states that each{" "}
@@ -135,7 +133,6 @@ const HeapsPage = async () => {
         title="Heapify"
         chapter={heapifyChapter}
         userId={userId}
-        showBookmark
       >
         <p>
           The heapify function is a fundamental operation for converting any
@@ -169,7 +166,6 @@ const HeapsPage = async () => {
         title="Min/Max Heaps"
         chapter={minMaxChapter}
         userId={userId}
-        showBookmark
       >
         <p>
           Heaps come in two primary forms:{" "}
@@ -233,7 +229,6 @@ const HeapsPage = async () => {
         title="Implementation"
         chapter={implementationChapter}
         userId={userId}
-        showBookmark
       >
         <p>
           Heaps efficiently organize data for priority-based access, with min
@@ -323,7 +318,7 @@ const HeapsPage = async () => {
         </ul>
       </ChapterHeading>
 
-      <ChapterHeading id="algorithms" userId={userId} title="Algorithms">
+      <ChapterHeading id="algorithms" userId={userId} title="Algorithms" hideBookmark>
         <Algorithms items={heapsAlgorithms} />
       </ChapterHeading>
     </div>

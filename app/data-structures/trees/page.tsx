@@ -106,7 +106,6 @@ const TreesPage = async () => {
         id="terminology"
         title="Terminology"
         chapter={terminologyChapter}
-        showBookmark
         userId={userId}
       >
         <p>
@@ -176,7 +175,6 @@ const TreesPage = async () => {
         id="traversal"
         title="Tree Traversal"
         chapter={treeTraversalChapter}
-        showBookmark
         userId={userId}
       >
         <p>
@@ -262,7 +260,6 @@ const TreesPage = async () => {
         id="binary"
         title="Binary Tree"
         chapter={binaryTreeChapter}
-        showBookmark
         userId={userId}
       >
         <p>
@@ -309,7 +306,6 @@ const TreesPage = async () => {
         id="binarySearch"
         title="Binary Search Tree"
         chapter={binarySearchTreeChapter}
-        showBookmark
         userId={userId}
       >
         <p>
@@ -354,7 +350,6 @@ const TreesPage = async () => {
         id="advanced"
         title="Advanced Trees"
         chapter={advancedChapter}
-        showBookmark
         userId={userId}
       >
         <p>
@@ -410,10 +405,6 @@ const TreesPage = async () => {
           </strong>
           , allowing efficient insertion, deletion, and search operations.
         </p>
-      </ChapterHeading>
-
-      <ChapterHeading id="algorithms" userId={userId} title="Algorithms">
-        <Algorithms items={treeAlgorithms} />
       </ChapterHeading>
 
       <ChapterHeading
@@ -480,6 +471,10 @@ const TreesPage = async () => {
           </li>
           <br />
         </ul>
+      </ChapterHeading>
+
+      <ChapterHeading id="algorithms" userId={userId} title="Algorithms" hideBookmark>
+        <Algorithms items={treeAlgorithms} />
       </ChapterHeading>
     </div>
   );
