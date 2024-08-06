@@ -262,7 +262,7 @@ export function QuestionsTable({ userId, title, problems }: Props) {
                   key={row.id}
                   id={formatTitleForHref(row.original.title)}
                   data-state={row.getIsSelected() && "selected"}
-                  className="h-[55px] scroll-mt-80"
+                  className="h-[55px]"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>

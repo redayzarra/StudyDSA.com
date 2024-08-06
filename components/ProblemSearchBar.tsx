@@ -95,7 +95,6 @@ const categoryIcons: Record<Category, JSX.Element> = {
   Math: <PiMathOperationsBold size={20} />,
 };
 
-// Function to format the title for the href
 const formatTitleForHref = (title: string): string => {
   return title.toLowerCase().replace(/\s+/g, "-");
 };
@@ -164,6 +163,11 @@ export function ProblemSearchBar({
                     className="cursor-pointer w-full"
                     value={problem.title}
                     onSelect={() => handleSelect(`#${formattedTitle}`)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        handleSelect(`#${formattedTitle}`);
+                      }
+                    }}
                   >
                     {categoryIcons[category as Category] || (
                       <FaQuestion size={20} />

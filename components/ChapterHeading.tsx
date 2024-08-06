@@ -23,11 +23,11 @@ const ChapterHeading = ({
   href = "/",
   hideBookmark,
 }: PropsWithChildren<Props>) => {
-  // Build the href we want to bookmark
+  // Creating dynamic href using the chapter's id
   const addedHref = id === "definition" ? href : `${href}#${id}`;
 
   return (
-    <div className="">
+    <div>
       <div
         id={id}
         className={cn(
