@@ -1,5 +1,4 @@
 import getAlgorithmsById from "@/actions/algorithms/getAlgorithmsById";
-import findChapter from "@/actions/chapters/findChapter";
 import getTopicById from "@/actions/topics/getTopicById";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
@@ -18,11 +17,9 @@ import {
   stackCode,
   staticArrayCode,
 } from "./arrayCode";
-import getUserId from "@/hooks/server/getUserId";
 
 const ArraysPage = async () => {
   // Fetch the user (if there is one) and the current topic
-  const userId = await getUserId();
   const topic = await getTopicById(1);
 
   // I will have to change this later
@@ -30,16 +27,6 @@ const ArraysPage = async () => {
     console.error("Topic not found");
     return <div>Topic not found</div>;
   }
-
-  // Uses a simple hashmap so that's fine
-  const definitionChapter = findChapter(topic, "Definition");
-  const operationsChapter = findChapter(topic, "Operations");
-  const pointersChapter = findChapter(topic, "Pointers");
-  const staticChapter = findChapter(topic, "Static Arrays");
-  const dynamicChapter = findChapter(topic, "Dynamic Arrays");
-  const stacksChapter = findChapter(topic, "Stacks");
-  const amortizedChapter = findChapter(topic, "Amortized Time");
-  const bestPracticesChapter = findChapter(topic, "Best Practices");
 
   // Fetch the algorithms I want to fetch
   const fetchAlgorithms = [1, 3, 4, 5, 6, 7, 8, 9, 11];
@@ -51,13 +38,7 @@ const ArraysPage = async () => {
   return (
     <div className="space-y-8">
       <Heading topic={topic!} />
-      <ChapterHeading
-        id="definition"
-        title="Definition"
-        userId={userId}
-        chapter={definitionChapter}
-        href={href}
-      >
+      <ChapterHeading id="definition" title="Definition" href={href}>
         <p>
           Arrays are a collection of items that are{" "}
           <span className="font-bold">stored contiguously (together)</span> in
@@ -67,13 +48,7 @@ const ArraysPage = async () => {
           creation.
         </p>
       </ChapterHeading>
-      <ChapterHeading
-        id="operations"
-        title="Operations"
-        chapter={operationsChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="operations" title="Operations" href={href}>
         <p>
           Let&apos;s take a closer look at what you can do with arrays. Arrays
           are stored in memory together so inserting or deleting in the middle
@@ -83,13 +58,7 @@ const ArraysPage = async () => {
         <Operations items={arrayOperations} />
       </ChapterHeading>
 
-      <ChapterHeading
-        id="pointers"
-        title="Pointers"
-        userId={userId}
-        chapter={pointersChapter}
-        href={href}
-      >
+      <ChapterHeading id="pointers" title="Pointers" href={href}>
         <p>
           Pointers are{" "}
           <span className="font-bold">
@@ -126,13 +95,7 @@ const ArraysPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="staticArrays"
-        title="Static Arrays"
-        userId={userId}
-        chapter={staticChapter}
-        href={href}
-      >
+      <ChapterHeading id="staticArrays" title="Static Arrays" href={href}>
         <p>
           Static arrays have a fixed size, which is determined at compile time.
           This means the{" "}
@@ -157,13 +120,7 @@ const ArraysPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="amortizedTime"
-        title="Amortized Time"
-        userId={userId}
-        chapter={amortizedChapter}
-        href={href}
-      >
+      <ChapterHeading id="amortizedTime" title="Amortized Time" href={href}>
         <p>
           Amortized time analysis gives us an{" "}
           <span className="font-bold">average running time per operation</span>{" "}
@@ -186,13 +143,7 @@ const ArraysPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="dynamicArrays"
-        title="Dynamic Arrays"
-        userId={userId}
-        chapter={dynamicChapter}
-        href={href}
-      >
+      <ChapterHeading id="dynamicArrays" title="Dynamic Arrays" href={href}>
         <p>
           Unlike static arrays,{" "}
           <span className="font-bold">
@@ -212,13 +163,7 @@ const ArraysPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="stacks"
-        title="Stacks"
-        chapter={stacksChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="stacks" title="Stacks" href={href}>
         <p>
           Stacks are a type of data structure that operates on the{" "}
           <span className="font-bold">Last In, First Out (LIFO)</span>{" "}
@@ -244,13 +189,7 @@ const ArraysPage = async () => {
         />
       </ChapterHeading>
 
-      <ChapterHeading
-        id="bestPractices"
-        title="Best Practices"
-        chapter={bestPracticesChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="bestPractices" title="Best Practices" href={href}>
         <p>
           Mastering arrays and stacks is crucial for coding interviews. Here are
           some tips that I learned for using these data structures effectively:
@@ -302,12 +241,7 @@ const ArraysPage = async () => {
         </ul>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="algorithms"
-        title="Algorithms"
-        userId={userId}
-        hideBookmark
-      >
+      <ChapterHeading id="algorithms" title="Algorithms" hideBookmark>
         <Algorithms items={arrayAlgorithms} />
       </ChapterHeading>
     </div>

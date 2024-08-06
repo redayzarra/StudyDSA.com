@@ -1,16 +1,15 @@
 import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsById";
-import findChapter from "@/actions/chapters/findChapter";
 import getTopicById from "@/actions/topics/getTopicById";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
 import CodeBlock from "@/components/CodeBlock";
 import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
+import ImageBlock from "@/components/ImageBlock";
 import Operations from "@/components/Operations";
+import TextLink from "@/components/TextLink";
 import { trieOperations } from "@/data/operationsData";
 import { Metadata } from "next";
-import ImageBlock from "@/components/ImageBlock";
-import TextLink from "@/components/TextLink";
 import {
   insertionCode,
   prefixCode,
@@ -18,11 +17,8 @@ import {
   trieCode,
   trieNodeCode,
 } from "./triesCode";
-import getUserId from "@/hooks/server/getUserId";
 
 const TriesPage = async () => {
-  // Fetch the userId and the topic
-  const userId = await getUserId();
   const topic = await getTopicById(8);
 
   // I will have to change this later
@@ -30,15 +26,6 @@ const TriesPage = async () => {
     console.error("Topic not found");
     return <div>Topic not found</div>;
   }
-
-  const definitionChapter = findChapter(topic, "Definition");
-  const operationsChapter = findChapter(topic, "Operations");
-  const trieNodesChapter = findChapter(topic, "Trie Nodes");
-  const insertionChapter = findChapter(topic, "Insertion");
-  const searchingChapter = findChapter(topic, "Searching");
-  const prefixesChapter = findChapter(topic, "Finding Prefixes");
-  const implementationChapter = findChapter(topic, "Implementation");
-  const bestPracticesChapter = findChapter(topic, "Best Practices");
 
   // Fetch the algorithms for the graphs page
   const fetchAlgorithms = [6, 8, 13, 14];
@@ -53,9 +40,9 @@ const TriesPage = async () => {
       <ChapterHeading
         id="definition"
         title="Definition"
-        chapter={definitionChapter}
+        
         href={href}
-        userId={userId}
+        
       >
         <p>
           Tries, also known as <strong>prefix trees</strong>, are a tree-like
@@ -68,9 +55,9 @@ const TriesPage = async () => {
       <ChapterHeading
         id="operations"
         title="Operations"
-        chapter={operationsChapter}
+        
         href={href}
-        userId={userId}
+        
       >
         <p>
           Trie operations include insertion, search, and deletion of words.
@@ -90,9 +77,9 @@ const TriesPage = async () => {
       <ChapterHeading
         id="nodes"
         title="Trie Nodes"
-        chapter={trieNodesChapter}
+        
         href={href}
-        userId={userId}
+        
       >
         <p>
           Each node in a trie{" "}
@@ -108,9 +95,9 @@ const TriesPage = async () => {
       <ChapterHeading
         id="insertion"
         title="Insertion"
-        chapter={insertionChapter}
+        
         href={href}
-        userId={userId}
+        
       >
         <p>
           Inserting a word into a trie means creating a new path of nodes for
@@ -134,9 +121,9 @@ const TriesPage = async () => {
       <ChapterHeading
         id="searching"
         title="Searching"
-        chapter={searchingChapter}
+        
         href={href}
-        userId={userId}
+        
       >
         <p>
           Searching for a word in a trie{" "}
@@ -159,9 +146,9 @@ const TriesPage = async () => {
       <ChapterHeading
         id="findingPrefix"
         title="Finding Prefixes"
-        chapter={prefixesChapter}
+        
         href={href}
-        userId={userId}
+        
       >
         <p>
           Finding prefixes in a trie is similar to searching for a whole word
@@ -182,9 +169,9 @@ const TriesPage = async () => {
       <ChapterHeading
         id="implementation"
         title="Implementation"
-        chapter={implementationChapter}
+        
         href={href}
-        userId={userId}
+        
       >
         <p>
           Implementing a trie involves{" "}
@@ -201,9 +188,9 @@ const TriesPage = async () => {
       <ChapterHeading
         id="bestPractices"
         title="Best Practices"
-        chapter={bestPracticesChapter}
+        
         href={href}
-        userId={userId}
+        
       >
         <p>
           Tries efficiently store and search words or sequences of strings. They
@@ -244,7 +231,7 @@ const TriesPage = async () => {
       </ChapterHeading>
 
       <ChapterHeading
-        userId={userId}
+        
         id="algorithms"
         title="Algorithms"
         hideBookmark

@@ -1,5 +1,4 @@
 import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsById";
-import findChapter from "@/actions/chapters/findChapter";
 import getTopicById from "@/actions/topics/getTopicById";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
@@ -7,21 +6,17 @@ import CodeBlock from "@/components/CodeBlock";
 import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
+import TextLink from "@/components/TextLink";
 import { unionFindOperations } from "@/data/operationsData";
 import { Metadata } from "next";
-import ImageBlock from "@/components/ImageBlock";
-import TextLink from "@/components/TextLink";
 import {
   findOperationCode,
   pathCompressionCode,
   unionByRankCode,
   unionFindImplementation,
 } from "./unionFindCode";
-import getUserId from "@/hooks/server/getUserId";
 
 const UnionFindPage = async () => {
-  // Fetch the userId and the topic
-  const userId = await getUserId();
   const topic = await getTopicById(9);
 
   // I will have to change this later
@@ -29,15 +24,6 @@ const UnionFindPage = async () => {
     console.error("Topic not found");
     return <div>Topic not found</div>;
   }
-
-  const definitionChapter = findChapter(topic, "Definition");
-  const operationsChapter = findChapter(topic, "Operations");
-  const disjointSetsChapter = findChapter(topic, "Disjoint Sets");
-  const networkChapter = findChapter(topic, "Network Connectivity");
-  const pathChapter = findChapter(topic, "Path Compression");
-  const rankChapter = findChapter(topic, "Union by Rank");
-  const implementationChapter = findChapter(topic, "Implementation");
-  const bestPracticesChapter = findChapter(topic, "Best Practices");
 
   // Fetch the algorithms for union-find page
   const fetchAlgorithms = [13, 14, 21, 22];
@@ -49,13 +35,7 @@ const UnionFindPage = async () => {
   return (
     <div className="space-y-8">
       <Heading topic={topic!} />
-      <ChapterHeading
-        id="definition"
-        title="Definition"
-        chapter={definitionChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="definition" title="Definition" href={href}>
         <p>
           Union-Find, also known as Disjoint Set Union (DSU), manages a
           collection of <TextLink href="#disjointSets">disjoint sets</TextLink>,
@@ -64,13 +44,7 @@ const UnionFindPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="operations"
-        title="Operations"
-        chapter={operationsChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="operations" title="Operations" href={href}>
         <p>
           Union-Find supports two fundamental operations: <strong>find</strong>,
           which identifies the set an element belongs to, and{" "}
@@ -89,13 +63,7 @@ const UnionFindPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="disjoint-sets"
-        title="Disjoint Sets"
-        chapter={disjointSetsChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="disjoint-sets" title="Disjoint Sets" href={href}>
         <p>
           A disjoint set, also known as a <strong>set of sets</strong>, is a
           collection where{" "}
@@ -128,9 +96,7 @@ const UnionFindPage = async () => {
       <ChapterHeading
         id="connectivity"
         title="Network Connectivity"
-        chapter={networkChapter}
         href={href}
-        userId={userId}
       >
         <p>
           Network connectivity problems often ask us to{" "}
@@ -159,9 +125,7 @@ const UnionFindPage = async () => {
       <ChapterHeading
         id="path-compression"
         title="Path Compression"
-        chapter={pathChapter}
         href={href}
-        userId={userId}
       >
         <p>
           Path compression is an optimization technique which{" "}
@@ -228,13 +192,7 @@ const UnionFindPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="union-by-rank"
-        title="Union by Rank"
-        chapter={rankChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="union-by-rank" title="Union by Rank" href={href}>
         <p>
           Union by Rank is an optimization technique that{" "}
           <strong>maintains a balanced tree structure</strong> during union
@@ -280,13 +238,7 @@ const UnionFindPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="implementation"
-        title="Implementation"
-        chapter={implementationChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="implementation" title="Implementation" href={href}>
         <p>
           Implement Union-Find by{" "}
           <strong>creating an array to track parent relationships</strong>{" "}
@@ -305,13 +257,7 @@ const UnionFindPage = async () => {
         />
       </ChapterHeading>
 
-      <ChapterHeading
-        id="bestPractices"
-        title="Best Practices"
-        chapter={bestPracticesChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="bestPractices" title="Best Practices" href={href}>
         <p>
           Union-Find is a great tool for solving problems related to disjoint
           sets, connectivity, and clustering in coding interviews. To use
@@ -359,12 +305,7 @@ const UnionFindPage = async () => {
         </ul>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="algorithms"
-        userId={userId}
-        title="Algorithms"
-        hideBookmark
-      >
+      <ChapterHeading id="algorithms" title="Algorithms" hideBookmark>
         <Algorithms items={unionFindAlgorithms} />
       </ChapterHeading>
     </div>

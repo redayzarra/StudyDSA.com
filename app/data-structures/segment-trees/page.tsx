@@ -1,5 +1,4 @@
 import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsById";
-import findChapter from "@/actions/chapters/findChapter";
 import getTopicById from "@/actions/topics/getTopicById";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
@@ -7,22 +6,17 @@ import CodeBlock from "@/components/CodeBlock";
 import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
 import Operations from "@/components/Operations";
-import { segmentTreeOperations, trieOperations } from "@/data/operationsData";
-import { Metadata } from "next";
-import ImageBlock from "@/components/ImageBlock";
 import TextLink from "@/components/TextLink";
+import { segmentTreeOperations } from "@/data/operationsData";
+import { Metadata } from "next";
 import {
   buildingCode,
-  lazyCode,
   queryingCode,
   segmentTreeCode,
   updatingCode,
 } from "./segmentCode";
-import getUserId from "@/hooks/server/getUserId";
 
 const SegmentTreesPage = async () => {
-  // Fetch the userId and the topic
-  const userId = await getUserId();
   const topic = await getTopicById(10);
 
   // I will have to change this later
@@ -30,15 +24,6 @@ const SegmentTreesPage = async () => {
     console.error("Topic not found");
     return <div>Topic not found</div>;
   }
-
-  const definitionChapter = findChapter(topic, "Definition");
-  const operationsChapter = findChapter(topic, "Operations");
-  const buildingChapter = findChapter(topic, "Building");
-  const queryingChapter = findChapter(topic, "Querying");
-  const updatingChapter = findChapter(topic, "Updating");
-  const implementationChapter = findChapter(topic, "Implementation");
-  const lazyChapter = findChapter(topic, "Lazy Propagation");
-  const bestPracticesChapter = findChapter(topic, "Best Practices");
 
   // Fetch the algorithms for segment trees page
   const fetchAlgorithms = [9, 11, 13, 14];
@@ -50,13 +35,7 @@ const SegmentTreesPage = async () => {
   return (
     <div className="space-y-8">
       <Heading topic={topic!} />
-      <ChapterHeading
-        id="definition"
-        title="Definition"
-        chapter={definitionChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="definition" title="Definition" href={href}>
         <p>
           A Segment Tree is a{" "}
           <TextLink href="/data-structures/trees#binary">binary tree</TextLink>{" "}
@@ -68,13 +47,7 @@ const SegmentTreesPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="operations"
-        title="Operations"
-        chapter={operationsChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="operations" title="Operations" href={href}>
         <p>
           The core operations of a Segment Tree include{" "}
           <strong>building</strong> the tree from a given array,{" "}
@@ -85,13 +58,7 @@ const SegmentTreesPage = async () => {
         <Operations items={segmentTreeOperations} />
       </ChapterHeading>
 
-      <ChapterHeading
-        id="building"
-        title="Building"
-        chapter={buildingChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="building" title="Building" href={href}>
         <p>
           Building a segment tree involves constructing a{" "}
           <TextLink href="/data-structures/trees#binary">binary tree</TextLink>{" "}
@@ -118,13 +85,7 @@ const SegmentTreesPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="querying"
-        title="Querying"
-        chapter={queryingChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="querying" title="Querying" href={href}>
         <p>
           Querying a segment tree efficiently retrieves the sum of a range
           within an array. Simply put,{" "}
@@ -156,13 +117,7 @@ const SegmentTreesPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="updating"
-        title="Updating"
-        chapter={updatingChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="updating" title="Updating" href={href}>
         <p>
           Update a segment tree by modifying an element of the{" "}
           <TextLink href="/data-structures/arrays">array</TextLink> and
@@ -191,13 +146,7 @@ const SegmentTreesPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="implementation"
-        title="Implementation"
-        chapter={implementationChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="implementation" title="Implementation" href={href}>
         <p>
           Constructed from an{" "}
           <TextLink href="/data-structures/arrays">array</TextLink>, a segment
@@ -226,9 +175,7 @@ const SegmentTreesPage = async () => {
       <ChapterHeading
         id="lazy-propagation"
         title="Lazy Propagation"
-        chapter={lazyChapter}
         href={href}
-        userId={userId}
       >
         <p>
           Lazy propagation is a technique used in segment trees to{" "}
@@ -260,13 +207,7 @@ const SegmentTreesPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="bestPractices"
-        title="Best Practices"
-        chapter={bestPracticesChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="bestPractices" title="Best Practices" href={href}>
         <p>
           Segment trees should be your go-to tool for solving range query
           problems efficiently in coding interviews. They allow rapid updates
@@ -304,12 +245,7 @@ const SegmentTreesPage = async () => {
         </ul>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="algorithms"
-        title="Algorithms"
-        userId={userId}
-        hideBookmark
-      >
+      <ChapterHeading id="algorithms" title="Algorithms" hideBookmark>
         <Algorithms items={segmentTreesAlgorithms} />
       </ChapterHeading>
     </div>

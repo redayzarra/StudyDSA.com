@@ -1,11 +1,11 @@
 import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsById";
-import findChapter from "@/actions/chapters/findChapter";
 import getTopicById from "@/actions/topics/getTopicById";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
 import CodeBlock from "@/components/CodeBlock";
 import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
+import ImageBlock from "@/components/ImageBlock";
 import Operations from "@/components/Operations";
 import TextLink from "@/components/TextLink";
 import { hashmapOperations, setOperations } from "@/data/operationsData";
@@ -21,12 +21,8 @@ import {
   openAddressingHashmap,
   setImplementationCode,
 } from "./hashmapCode";
-import ImageBlock from "@/components/ImageBlock";
-import getUserId from "@/hooks/server/getUserId";
 
 const HashmapPage = async () => {
-  // Fetch the userId and the topic
-  const userId = await getUserId();
   const topic = await getTopicById(3);
 
   // I will have to change this later
@@ -34,15 +30,6 @@ const HashmapPage = async () => {
     console.error("Topic not found");
     return <div>Topic not found</div>;
   }
-
-  const definitionChapter = findChapter(topic, "Definition");
-  const operationsChapter = findChapter(topic, "Operations");
-  const hashingChapter = findChapter(topic, "Hash Function");
-  const chainingChapter = findChapter(topic, "Chaining");
-  const openChapter = findChapter(topic, "Open Addressing");
-  const implementationChapter = findChapter(topic, "Implementation");
-  const setsChapter = findChapter(topic, "Sets");
-  const bestPracticesChapter = findChapter(topic, "Best Practices");
 
   // Fetch the algorithms for the hashmaps page
   const fetchAlgorithms = [1, 3, 6, 9];
@@ -54,13 +41,7 @@ const HashmapPage = async () => {
   return (
     <div className="space-y-8">
       <Heading topic={topic!} />
-      <ChapterHeading
-        id="definition"
-        title="Definition"
-        userId={userId}
-        chapter={definitionChapter}
-        href={href}
-      >
+      <ChapterHeading id="definition" title="Definition" href={href}>
         <p>
           A hashmap, or a hash table, is a data structure that{" "}
           <span className="font-bold">stores data in key-value pairs</span>.
@@ -73,13 +54,7 @@ const HashmapPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="operations"
-        title="Operations"
-        userId={userId}
-        chapter={operationsChapter}
-        href={href}
-      >
+      <ChapterHeading id="operations" title="Operations" href={href}>
         <p>
           Hashmaps are powerful because of their efficiency. They use a{" "}
           <TextLink href="#hashFunction">hash function</TextLink> for fast data
@@ -100,13 +75,7 @@ const HashmapPage = async () => {
         <Operations items={hashmapOperations} />
       </ChapterHeading>
 
-      <ChapterHeading
-        id="hashFunction"
-        title="Hash Function"
-        chapter={hashingChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="hashFunction" title="Hash Function" href={href}>
         <p>
           Hashmaps are powered by{" "}
           <span className="font-bold">hash functions</span>, a special function
@@ -153,7 +122,7 @@ const HashmapPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="collisions" userId={userId} title="Collisions">
+      <ChapterHeading id="collisions" title="Collisions">
         <p>
           Collisions occur when two{" "}
           <span className="font-bold">
@@ -178,13 +147,7 @@ const HashmapPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="chaining"
-        title="Chaining"
-        chapter={chainingChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="chaining" title="Chaining" href={href}>
         <p>
           When multiple keys hash to the same index in a hashmap, we face
           collisions. Chaining is a popular and effective strategy to resolve
@@ -253,13 +216,7 @@ const HashmapPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="openAddressing"
-        title="Open Addressing"
-        userId={userId}
-        chapter={openChapter}
-        href={href}
-      >
+      <ChapterHeading id="openAddressing" title="Open Addressing" href={href}>
         <p>
           Open addressing handles collisions in a hashmap by{" "}
           <span className="font-bold">
@@ -309,13 +266,7 @@ const HashmapPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="implementation"
-        title="Implementation"
-        userId={userId}
-        chapter={implementationChapter}
-        href={href}
-      >
+      <ChapterHeading id="implementation" title="Implementation" href={href}>
         <p>
           To implement hashmaps, you need a solid understanding of collisions
           and different resolution strategies. The two primary strategies,
@@ -359,13 +310,7 @@ const HashmapPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="sets"
-        title="Sets"
-        userId={userId}
-        chapter={setsChapter}
-        href={href}
-      >
+      <ChapterHeading id="sets" title="Sets" href={href}>
         <p>
           Sets, or hash sets, are a data structure that uses hashing to store
           unique elements efficiently. Unlike hash maps, which store key-value
@@ -403,13 +348,7 @@ const HashmapPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="bestPractices"
-        title="Best Practices"
-        userId={userId}
-        chapter={bestPracticesChapter}
-        href={href}
-      >
+      <ChapterHeading id="bestPractices" title="Best Practices" href={href}>
         <p>
           Hashmaps and sets are the most important data structures to learn if
           you ever want to see an optimal solution. Here are some best practices
@@ -467,7 +406,7 @@ const HashmapPage = async () => {
         </ul>
       </ChapterHeading>
 
-      <ChapterHeading id="algorithms" title="Algorithms" userId={userId} hideBookmark>
+      <ChapterHeading id="algorithms" title="Algorithms" hideBookmark>
         <Algorithms items={hashmapAlgorithms} />
       </ChapterHeading>
     </div>

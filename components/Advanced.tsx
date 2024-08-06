@@ -5,12 +5,8 @@ import { TbBinaryTree } from "react-icons/tb";
 import SkillTreeContainer from "./SkillTreeContainer";
 import SkillTreeHeading from "./SkillTreeHeading";
 import SkillTreeItem from "./SkillTreeItem";
-import getUserId from "@/hooks/server/getUserId";
 
 const Advanced = async () => {
-  // Fetch the userId
-  const userId = await getUserId();
-
   // Fetch chapters
   const unionFindChapters = await getChaptersByTopic(9);
   const segmentChapters = await getChaptersByTopic(10);
@@ -26,7 +22,6 @@ const Advanced = async () => {
             name="Union Find"
             value="unionFind"
             items={unionFindChapters}
-            userId={userId}
           >
             <PiGraph size={30} />
           </SkillTreeItem>
@@ -36,7 +31,6 @@ const Advanced = async () => {
         <Accordion type="multiple">
           <SkillTreeItem
             items={segmentChapters}
-            userId={userId}
             name="Segment Trees"
             value="segmentTrees"
           >
@@ -44,8 +38,6 @@ const Advanced = async () => {
           </SkillTreeItem>
         </Accordion>
       </div>
-      {/* <h2 className="font-[650] mb-5 mt-10 text-[1.15rem]">Algorithms</h2>
-      <Algorithms items={advancedAlgorithms} /> */}
     </SkillTreeContainer>
   );
 };

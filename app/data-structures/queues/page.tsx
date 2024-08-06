@@ -1,5 +1,4 @@
 import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsById";
-import findChapter from "@/actions/chapters/findChapter";
 import getTopicById from "@/actions/topics/getTopicById";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
@@ -11,11 +10,8 @@ import TextLink from "@/components/TextLink";
 import { queueOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import { circularQueueCode, dequeCode, queueNodesCode } from "./queueCode";
-import getUserId from "@/hooks/server/getUserId";
 
 const QueuePage = async () => {
-  // Fetch the userId and the topic
-  const userId = await getUserId();
   const topic = await getTopicById(4);
 
   // I will have to change this later
@@ -23,15 +19,6 @@ const QueuePage = async () => {
     console.error("Topic not found");
     return <div>Topic not found</div>;
   }
-
-  const definitionChapter = findChapter(topic, "Definition");
-  const operationsChapter = findChapter(topic, "Operations");
-  const queueNodesChapter = findChapter(topic, "Queue Nodes");
-  const dynamicQueueChapter = findChapter(topic, "Dynamic Queues");
-  const circularQueueChapter = findChapter(topic, "Circular Queues");
-  const dequeChapter = findChapter(topic, "Deques");
-  const priorityQueueChapter = findChapter(topic, "Priority Queues");
-  const bestPracticesChapter = findChapter(topic, "Best Practices");
 
   // Fetch the algorithms for queue page
   const fetchAlgorithms = [1, 3, 6, 8, 13, 14, 17, 23];
@@ -43,13 +30,7 @@ const QueuePage = async () => {
   return (
     <div className="space-y-8">
       <Heading topic={topic!} />
-      <ChapterHeading
-        id="definitionQueue"
-        title="Definition"
-        chapter={definitionChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="definitionQueue" title="Definition" href={href}>
         <p>
           A queue is a linear data structure that follows a{" "}
           <span className="font-bold">First In, First Out (FIFO)</span>{" "}
@@ -60,13 +41,7 @@ const QueuePage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="operationsQueue"
-        title="Operations"
-        chapter={operationsChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="operationsQueue" title="Operations" href={href}>
         <p>
           Queues support operations that allow them to be an efficient FIFO data
           structure. The primary operations include:{" "}
@@ -77,13 +52,7 @@ const QueuePage = async () => {
         <Operations items={queueOperations} />
       </ChapterHeading>
 
-      <ChapterHeading
-        id="nodes"
-        title="Queue Nodes"
-        chapter={queueNodesChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="nodes" title="Queue Nodes" href={href}>
         <p>
           Queues are best implemented by{" "}
           <TextLink href="/data-structures/linked-lists">linked lists</TextLink>
@@ -109,13 +78,7 @@ const QueuePage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="dynamic"
-        title="Dynamic Queues"
-        chapter={dynamicQueueChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="dynamic" title="Dynamic Queues" href={href}>
         <p>
           Dynamic queues are a type of{" "}
           <span className="font-bold">queue that can grow and shrink</span>,
@@ -146,13 +109,7 @@ const QueuePage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="circular"
-        title="Circular Queue"
-        chapter={circularQueueChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="circular" title="Circular Queue" href={href}>
         <p>
           Circular queues are a variant of fixed queues where the{" "}
           <span className="font-bold">
@@ -178,13 +135,7 @@ const QueuePage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="deque"
-        title="Deque"
-        chapter={dequeChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="deque" title="Deque" href={href}>
         <p>
           Deques (<span className="font-bold">double-ended queues</span>) allow{" "}
           <span className="font-bold">
@@ -205,13 +156,7 @@ const QueuePage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="priority"
-        title="Priority Queue"
-        chapter={priorityQueueChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="priority" title="Priority Queue" href={href}>
         <p>
           Priority queue{" "}
           <span className="font-bold">is an abstract data type</span> where each
@@ -242,9 +187,7 @@ const QueuePage = async () => {
       <ChapterHeading
         id="bestPracticesQueue"
         title="Best Practices"
-        chapter={bestPracticesChapter}
         href={href}
-        userId={userId}
       >
         <p>
           Queues are the best data structure for managing data in a first-in,
@@ -295,12 +238,7 @@ const QueuePage = async () => {
         </ul>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="algorithms"
-        title="Algorithms"
-        userId={userId}
-        hideBookmark
-      >
+      <ChapterHeading id="algorithms" title="Algorithms" hideBookmark>
         <Algorithms items={queueAlgorithms} />
       </ChapterHeading>
     </div>

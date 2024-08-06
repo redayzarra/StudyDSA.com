@@ -17,7 +17,6 @@ const font = Poppins({
 interface Props {
   value: string;
   name: string;
-  userId: string | undefined;
   items: ChapterWithProgress[];
 }
 
@@ -26,7 +25,6 @@ const SkillTreeItem = ({
   value,
   name,
   items,
-  userId,
 }: PropsWithChildren<Props>) => {
   return (
     <AccordionItem id={value} value={value}>
@@ -46,9 +44,7 @@ const SkillTreeItem = ({
                 key={index}
                 title={item.title}
                 href={item.href}
-                userId={userId}
                 description={item.description}
-                chapter={item}
               />
             ))}
           </ul>

@@ -15,7 +15,6 @@ const Algorithms = ({ items }: Props) => {
           title={item.title}
           description={item.description}
           href={item.href}
-          algorithmId={item.id}
         />
       ))}
     </div>

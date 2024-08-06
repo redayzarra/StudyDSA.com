@@ -1,5 +1,4 @@
 import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsById";
-import findChapter from "@/actions/chapters/findChapter";
 import getTopicById from "@/actions/topics/getTopicById";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
@@ -23,11 +22,8 @@ import {
   treeMeasureCode,
   treeNodeCode,
 } from "./treeCode";
-import getUserId from "@/hooks/server/getUserId";
 
 const TreesPage = async () => {
-  // Fetch the userId and the topic
-  const userId = await getUserId();
   const topic = await getTopicById(5);
 
   // I will have to change this later
@@ -35,15 +31,6 @@ const TreesPage = async () => {
     console.error("Topic not found");
     return <div>Topic not found</div>;
   }
-
-  const definitionChapter = findChapter(topic, "Definition");
-  const operationsChapter = findChapter(topic, "Operations");
-  const terminologyChapter = findChapter(topic, "Terminology");
-  const treeTraversalChapter = findChapter(topic, "Tree Traversal");
-  const binaryTreeChapter = findChapter(topic, "Binary Tree");
-  const binarySearchTreeChapter = findChapter(topic, "Binary Search Tree");
-  const advancedChapter = findChapter(topic, "Advanced Trees");
-  const bestPracticesChapter = findChapter(topic, "Best Practices");
 
   // Fetch the algorithms for trees page
   const fetchAlgorithms = [6, 8, 13, 14, 17, 21, 22];
@@ -55,13 +42,7 @@ const TreesPage = async () => {
   return (
     <div className="space-y-8">
       <Heading topic={topic!} />
-      <ChapterHeading
-        id="definitionTree"
-        title="Definition"
-        chapter={definitionChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="definitionTree" title="Definition" href={href}>
         <p>
           Trees are nodes connected in a hierarchy, where each node can point to
           one or more nodes below it, starting from a single{" "}
@@ -76,13 +57,7 @@ const TreesPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="operations"
-        title="Operations"
-        chapter={operationsChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="operations" title="Operations" href={href}>
         <p>
           Tree operations vary in complexity based on the tree&apos;s balance. A{" "}
           <strong>balanced tree, where nodes are evenly distributed</strong>,
@@ -107,13 +82,7 @@ const TreesPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="terminology"
-        title="Terminology"
-        chapter={terminologyChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="terminology" title="Terminology" href={href}>
         <p>
           At the heart of a trees is the <strong>node</strong>, an individual{" "}
           <strong>
@@ -177,13 +146,7 @@ const TreesPage = async () => {
         <CodeBlock code={subTreeCode} language="python" title="Subtree.py" />
       </ChapterHeading>
 
-      <ChapterHeading
-        id="traversal"
-        title="Tree Traversal"
-        chapter={treeTraversalChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="traversal" title="Tree Traversal" href={href}>
         <p>
           Traversing a tree involves visiting all the nodes of the tree and
           performing an operation (like printing the node). The major tree
@@ -263,13 +226,7 @@ const TreesPage = async () => {
         />
       </ChapterHeading>
 
-      <ChapterHeading
-        id="binary"
-        title="Binary Tree"
-        chapter={binaryTreeChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="binary" title="Binary Tree" href={href}>
         <p>
           Before we jump into the implementation of a binary tree, let&apos;s
           summarize what we have gone over. A binary tree is a tree data
@@ -310,13 +267,7 @@ const TreesPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="binarySearch"
-        title="Binary Search Tree"
-        chapter={binarySearchTreeChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="binarySearch" title="Binary Search Tree" href={href}>
         <p>
           A Binary Search Tree (BST) is a special kind of binary tree that uses
           a <strong>sorted arrangement of nodes</strong>. Every node on the left
@@ -355,13 +306,7 @@ const TreesPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="advanced"
-        title="Advanced Trees"
-        chapter={advancedChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="advanced" title="Advanced Trees" href={href}>
         <p>
           Advanced trees, such as AVL trees, Red-Black trees, and B-trees, are
           designed to provide efficient search, insert, and delete operations by
@@ -417,13 +362,7 @@ const TreesPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="bestPractices"
-        title="Best Practices"
-        chapter={bestPracticesChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="bestPractices" title="Best Practices" href={href}>
         <p>
           Queues are the best data structure for managing data in a first-in,
           first-out (FIFO) manner. They are useful for maintaining order and are
@@ -484,12 +423,7 @@ const TreesPage = async () => {
         </ul>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="algorithms"
-        userId={userId}
-        title="Algorithms"
-        hideBookmark
-      >
+      <ChapterHeading id="algorithms" title="Algorithms" hideBookmark>
         <Algorithms items={treeAlgorithms} />
       </ChapterHeading>
     </div>

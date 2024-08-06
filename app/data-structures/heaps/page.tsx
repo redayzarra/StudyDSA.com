@@ -1,5 +1,4 @@
 import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsById";
-import findChapter from "@/actions/chapters/findChapter";
 import getTopicById from "@/actions/topics/getTopicById";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
@@ -12,11 +11,8 @@ import TextLink from "@/components/TextLink";
 import { heapOperations } from "@/data/operationsData";
 import { Metadata } from "next";
 import { heapCode, heapifyCode, maxHeapCode } from "./heapsCode";
-import getUserId from "@/hooks/server/getUserId";
 
 const HeapsPage = async () => {
-  // Fetch the userId and the topic
-  const userId = await getUserId();
   const topic = await getTopicById(6);
 
   // I will have to change this later
@@ -24,15 +20,6 @@ const HeapsPage = async () => {
     console.error("Topic not found");
     return <div>Topic not found</div>;
   }
-
-  const definitionChapter = findChapter(topic, "Definition");
-  const operationsChapter = findChapter(topic, "Operations");
-  const structureChapter = findChapter(topic, "Structure Property");
-  const heapPropertyChapter = findChapter(topic, "Heap Property");
-  const heapifyChapter = findChapter(topic, "Heapify");
-  const minMaxChapter = findChapter(topic, "Min/Max Heaps");
-  const implementationChapter = findChapter(topic, "Implementation");
-  const bestPracticesChapter = findChapter(topic, "Best Practices");
 
   // Fetch the algorithms for the heaps page
   const fetchAlgorithms = [7, 16, 17, 21];
@@ -44,13 +31,7 @@ const HeapsPage = async () => {
   return (
     <div className="space-y-8">
       <Heading topic={topic!} />
-      <ChapterHeading
-        id="definition"
-        title="Definition"
-        userId={userId}
-        chapter={definitionChapter}
-        href={href}
-      >
+      <ChapterHeading id="definition" title="Definition" href={href}>
         <p>
           Heaps are a type of binary tree where{" "}
           <strong>
@@ -67,13 +48,7 @@ const HeapsPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="operations"
-        title="Operations"
-        userId={userId}
-        chapter={operationsChapter}
-        href={href}
-      >
+      <ChapterHeading id="operations" title="Operations" href={href}>
         <p>
           Heaps primarily support two key operations:{" "}
           <strong>inserting a new element and removing the top element</strong>.
@@ -83,13 +58,7 @@ const HeapsPage = async () => {
         <Operations items={heapOperations} />
       </ChapterHeading>
 
-      <ChapterHeading
-        id="structure"
-        title="Structure Property"
-        chapter={structureChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="structure" title="Structure Property" href={href}>
         <p>
           The structure property of heaps ensures that{" "}
           <strong>they are always complete binary trees</strong>. This means
@@ -112,13 +81,7 @@ const HeapsPage = async () => {
           allowing heaps to be efficiently implemented using arrays.
         </p>
       </ChapterHeading>
-      <ChapterHeading
-        id="property"
-        title="Heap Property"
-        chapter={heapPropertyChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="property" title="Heap Property" href={href}>
         <p>
           The heap property states that each{" "}
           <strong>
@@ -135,13 +98,7 @@ const HeapsPage = async () => {
         </p>
         <ImageBlock src="/images/heaps/HeapProperty.jpg" alt="Heap Property" />
       </ChapterHeading>
-      <ChapterHeading
-        id="heapify"
-        title="Heapify"
-        chapter={heapifyChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="heapify" title="Heapify" href={href}>
         <p>
           The heapify function is a fundamental operation for converting any
           array into a heap structure. This process{" "}
@@ -169,13 +126,7 @@ const HeapsPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="minMax"
-        title="Min/Max Heaps"
-        chapter={minMaxChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="minMax" title="Min/Max Heaps" href={href}>
         <p>
           Heaps come in two primary forms:{" "}
           <span className="font-bold">min heaps</span>, where the parent node is
@@ -233,13 +184,7 @@ const HeapsPage = async () => {
         <CodeBlock code={maxHeapCode} language="python" title="MaxHeap.py" />
       </ChapterHeading>
 
-      <ChapterHeading
-        id="implementation"
-        title="Implementation"
-        chapter={implementationChapter}
-        href={href}
-        userId={userId}
-      >
+      <ChapterHeading id="implementation" title="Implementation" href={href}>
         <p>
           Heaps efficiently organize data for priority-based access, with min
           heaps accessing the smallest element and max heaps the largest. Now
@@ -250,13 +195,7 @@ const HeapsPage = async () => {
         <CodeBlock code={heapCode} language="python" title="Heap.py" />
       </ChapterHeading>
 
-      <ChapterHeading
-        id="bestPractices"
-        title="Best Practices"
-        userId={userId}
-        chapter={bestPracticesChapter}
-        href={href}
-      >
+      <ChapterHeading id="bestPractices" title="Best Practices" href={href}>
         <p>
           Heaps should be your go-to data structure for keeping track of{" "}
           <CodeText>k</CodeText> smallest (or largest) elements, and supporting
@@ -329,12 +268,7 @@ const HeapsPage = async () => {
         </ul>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="algorithms"
-        userId={userId}
-        title="Algorithms"
-        hideBookmark
-      >
+      <ChapterHeading id="algorithms" title="Algorithms" hideBookmark>
         <Algorithms items={heapsAlgorithms} />
       </ChapterHeading>
     </div>

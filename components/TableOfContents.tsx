@@ -12,16 +12,18 @@ import { ScrollArea } from "./ui/scroll-area";
 const TableSection = ({
   heading,
   children,
+  hide,
 }: {
   heading: string;
   children: React.ReactNode;
+  hide?: boolean;
 }) => {
   return (
     <Accordion
       type="single"
       className="mr-4"
       collapsible
-      defaultValue={heading}
+      defaultValue={hide ? undefined : heading}
     >
       <AccordionItem value={heading}>
         <AccordionTrigger>{heading}</AccordionTrigger>
@@ -88,7 +90,7 @@ const TableOfContents = async () => {
         <TableItems items={topics} />
       </TableSection>
 
-      <TableSection heading="Algorithms">
+      <TableSection heading="Algorithms" hide>
         <TableItems items={algorithms} />
       </TableSection>
     </ScrollArea>

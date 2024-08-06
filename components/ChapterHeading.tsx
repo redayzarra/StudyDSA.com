@@ -3,8 +3,6 @@ import { Separator } from "./ui/separator";
 import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Bookmark from "./Bookmark";
-import MarkCheckbox from "./MarkCheckbox";
-import { ChapterWithProgress } from "@/types/chapters";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -14,8 +12,6 @@ const font = Poppins({
 interface Props {
   id: string;
   title: string;
-  userId: string | undefined;
-  chapter?: ChapterWithProgress;
   href?: string;
   hideBookmark?: boolean;
 }
@@ -23,9 +19,7 @@ interface Props {
 const ChapterHeading = ({
   id,
   title,
-  userId,
   children,
-  chapter,
   href = "/",
   hideBookmark,
 }: PropsWithChildren<Props>) => {
@@ -44,13 +38,6 @@ const ChapterHeading = ({
         {title}
         <div className="flex items-center space-x-4">
           {!hideBookmark && <Bookmark href={addedHref} title={title} />}
-          {chapter && (
-            <MarkCheckbox
-              className="h-5 w-5 border-2"
-              userId={userId}
-              chapter={chapter}
-            />
-          )}
         </div>
       </div>
       <Separator className="my-2" />

@@ -1,5 +1,4 @@
 import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsById";
-import findChapter from "@/actions/chapters/findChapter";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
 import CodeBlock from "@/components/CodeBlock";
@@ -20,11 +19,8 @@ import {
 import ImageBlock from "@/components/ImageBlock";
 import TextLink from "@/components/TextLink";
 import getTopicById from "@/actions/topics/getTopicById";
-import getUserId from "@/hooks/server/getUserId";
 
 const GraphsPage = async () => {
-  // Get the current userId (if there is one) and the topic
-  const userId = await getUserId();
   const topic = await getTopicById(7);
 
   // I will have to change this later
@@ -32,16 +28,6 @@ const GraphsPage = async () => {
     console.error("Topic not found");
     return <div>Topic not found</div>;
   }
-
-  // Fetch the chapters
-  const definitionChapter = findChapter(topic, "Definition");
-  const operationsChapter = findChapter(topic, "Operations");
-  const terminologyChapter = findChapter(topic, "Terminology");
-  const directionalityChapter = findChapter(topic, "Directionality");
-  const adjacencyChapter = findChapter(topic, "Adjacency List");
-  const matrixChapter = findChapter(topic, "Matrix");
-  const graphTraversalChapter = findChapter(topic, "Graph Traversal");
-  const bestPracticesChapter = findChapter(topic, "Best Practices");
 
   // Fetch the algorithms for graphs page
   const fetchAlgorithms = [6, 8, 13, 14, 17, 19, 20, 21, 22, 23, 24];
@@ -53,13 +39,7 @@ const GraphsPage = async () => {
   return (
     <div className="space-y-8">
       <Heading topic={topic!} />
-      <ChapterHeading
-        userId={userId}
-        id="definition"
-        title="Definition"
-        chapter={definitionChapter}
-        href={href}
-      >
+      <ChapterHeading id="definition" title="Definition" href={href}>
         <p>
           Graphs are composed of{" "}
           <strong>vertices (or nodes) connected by edges</strong>. Unlike trees,{" "}
@@ -73,13 +53,7 @@ const GraphsPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        userId={userId}
-        id="operations"
-        title="Operations"
-        chapter={operationsChapter}
-        href={href}
-      >
+      <ChapterHeading id="operations" title="Operations" href={href}>
         <p>
           Graph operations encompass adding and removing vertices or edges,
           checking for connectivity, and finding paths or cycles. Here&apos;s
@@ -97,13 +71,7 @@ const GraphsPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="terminology"
-        userId={userId}
-        title="Graph Terminology"
-        chapter={terminologyChapter}
-        href={href}
-      >
+      <ChapterHeading id="terminology" title="Graph Terminology" href={href}>
         <p>
           Graphs are made up of vertices and edges.{" "}
           <strong>Vertices represent nodes in a graph</strong>, each can
@@ -157,13 +125,7 @@ const GraphsPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="directionality"
-        title="Directionality"
-        userId={userId}
-        chapter={directionalityChapter}
-        href={href}
-      >
+      <ChapterHeading id="directionality" title="Directionality" href={href}>
         <p>
           Graph directionality is when edges have a direction (
           <strong>directed graphs</strong>) or not (undirected graphs). In
@@ -178,13 +140,7 @@ const GraphsPage = async () => {
         />
       </ChapterHeading>
 
-      <ChapterHeading
-        id="adjacencyList"
-        title="Adjacency List"
-        userId={userId}
-        chapter={adjacencyChapter}
-        href={href}
-      >
+      <ChapterHeading id="adjacencyList" title="Adjacency List" href={href}>
         <p>
           <strong>Adjacency lists are a way to represent graphs</strong>, where
           each vertex stores a list of other vertices directly connected by
@@ -216,13 +172,7 @@ const GraphsPage = async () => {
         />
       </ChapterHeading>
 
-      <ChapterHeading
-        chapter={matrixChapter}
-        href={href}
-        userId={userId}
-        id="matrix"
-        title="Matrix"
-      >
+      <ChapterHeading href={href} id="matrix" title="Matrix">
         <p>
           A <strong>matrix is a two-dimensional array</strong> that forms a
           rectangle of cells, organized into <strong>rows and columns</strong>.
@@ -260,13 +210,7 @@ const GraphsPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="traversal"
-        userId={userId}
-        title="Graph Traversal"
-        chapter={graphTraversalChapter}
-        href={href}
-      >
+      <ChapterHeading id="traversal" title="Graph Traversal" href={href}>
         <p>
           Graph traversal algorithms, such as{" "}
           <TextLink href="/algorithms/depth-first-search">
@@ -342,7 +286,7 @@ const GraphsPage = async () => {
           title="BFS_Matrix.py"
         />
       </ChapterHeading>
-      <ChapterHeading id="bestPractices" userId={userId} title="Best Practices">
+      <ChapterHeading id="bestPractices" title="Best Practices">
         <p>
           Graphs are incredibly flexible data structures that can represent
           complex relationships which is why they are popular in coding
@@ -421,12 +365,7 @@ const GraphsPage = async () => {
         </ul>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="algorithms"
-        userId={userId}
-        title="Algorithms"
-        hideBookmark
-      >
+      <ChapterHeading id="algorithms" title="Algorithms" hideBookmark>
         <Algorithms items={graphAlgorithms} />
       </ChapterHeading>
     </div>

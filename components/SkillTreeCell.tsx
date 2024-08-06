@@ -1,22 +1,12 @@
 import Link from "next/link";
-import MarkCheckbox from "./MarkCheckbox";
-import { ChapterWithProgress } from "@/types/chapters";
 
 interface Props {
   title: string;
   description: string;
   href: string;
-  userId: string | undefined;
-  chapter: ChapterWithProgress;
 }
 
-const SkillTreeCell = ({
-  title,
-  href,
-  description,
-  userId,
-  chapter,
-}: Props) => {
+const SkillTreeCell = ({ title, href, description }: Props) => {
   return (
     <div className="relative">
       <Link href={href}>
@@ -25,21 +15,6 @@ const SkillTreeCell = ({
           <h2 className="line-clamp-2 text-muted-foreground">{description}</h2>
         </div>
       </Link>
-      {/* Removing the ability to mark outside of page */}
-      {/* <div className="absolute top-2 right-2 text-primary">
-        {isChecked ? (
-          <FaCheckCircle size={15} />
-        ) : (
-          <FaRegCircle size={15} />
-        )}
-      </div> */}
-
-      {/* Be able to mark outside of page */}
-      <MarkCheckbox
-        chapter={chapter}
-        userId={userId}
-        className="rounded-[4px] absolute top-2 right-2 border-2"
-      />
     </div>
   );
 };

@@ -1,11 +1,11 @@
 import getAlgorithmsByName from "@/actions/algorithms/getAlgorithmsById";
-import findChapter from "@/actions/chapters/findChapter";
 import getTopicById from "@/actions/topics/getTopicById";
 import Algorithms from "@/components/Algorithms";
 import ChapterHeading from "@/components/ChapterHeading";
 import CodeBlock from "@/components/CodeBlock";
 import { CodeText } from "@/components/CodeText";
 import Heading from "@/components/Heading";
+import ImageBlock from "@/components/ImageBlock";
 import Operations from "@/components/Operations";
 import TextLink from "@/components/TextLink";
 import { linkedListOperations } from "@/data/operationsData";
@@ -18,12 +18,8 @@ import {
   singleNodeCode,
   singlyLinkedList,
 } from "./linkedListsCode";
-import ImageBlock from "@/components/ImageBlock";
-import getUserId from "@/hooks/server/getUserId";
 
 const LinkedListsPage = async () => {
-  // Fetch the userId and topic
-  const userId = await getUserId();
   const topic = await getTopicById(2);
 
   // I will have to change this later
@@ -31,15 +27,6 @@ const LinkedListsPage = async () => {
     console.error("Topic not found");
     return <div>Topic not found</div>;
   }
-
-  const definitionChapter = findChapter(topic, "Definition");
-  const operationsChapter = findChapter(topic, "Operations");
-  const pointersChapter = findChapter(topic, "Pointers");
-  const listNodesChapter = findChapter(topic, "List Nodes");
-  const sentinelsChapter = findChapter(topic, "Sentinel Nodes");
-  const singlyChapter = findChapter(topic, "Singly Linked List");
-  const doublyChapter = findChapter(topic, "Doubly Linked List");
-  const bestPracticesChapter = findChapter(topic, "Best Practices");
 
   // Fetch the algorithms for the linked lists page
   const fetchAlgorithms = [1, 2, 3, 6];
@@ -54,8 +41,8 @@ const LinkedListsPage = async () => {
       <ChapterHeading
         id="definitionLinkedList"
         title="Definition"
-        userId={userId}
-        chapter={definitionChapter}
+        
+        
         href={href}
       >
         <p>
@@ -72,8 +59,8 @@ const LinkedListsPage = async () => {
       <ChapterHeading
         id="operations"
         title="Operations"
-        userId={userId}
-        chapter={operationsChapter}
+        
+        
         href={href}
       >
         <p>
@@ -92,9 +79,9 @@ const LinkedListsPage = async () => {
 
       <ChapterHeading
         id="pointers"
-        userId={userId}
+        
         title="Pointers"
-        chapter={pointersChapter}
+        
         href={href}
       >
         <p>
@@ -128,8 +115,8 @@ const LinkedListsPage = async () => {
       <ChapterHeading
         id="listNodes"
         title="List Nodes"
-        userId={userId}
-        chapter={listNodesChapter}
+        
+        
         href={href}
       >
         <p>
@@ -165,8 +152,8 @@ const LinkedListsPage = async () => {
       <ChapterHeading
         id="sentinels"
         title="Sentinel Nodes"
-        userId={userId}
-        chapter={sentinelsChapter}
+        
+        
         href={href}
       >
         <p>
@@ -200,8 +187,8 @@ const LinkedListsPage = async () => {
       <ChapterHeading
         id="singly"
         title="Singly Linked List"
-        userId={userId}
-        chapter={singlyChapter}
+        
+        
         href={href}
       >
         <p>
@@ -229,8 +216,8 @@ const LinkedListsPage = async () => {
       <ChapterHeading
         id="doubly"
         title="Doubly Linked List"
-        userId={userId}
-        chapter={doublyChapter}
+        
+        
         href={href}
       >
         <p>
@@ -260,8 +247,8 @@ const LinkedListsPage = async () => {
       <ChapterHeading
         id="bestPractices"
         title="Best Practices"
-        userId={userId}
-        chapter={bestPracticesChapter}
+        
+        
         href={href}
       >
         <p>
@@ -320,7 +307,7 @@ const LinkedListsPage = async () => {
         <br />
       </ChapterHeading>
 
-      <ChapterHeading id="algorithms" userId={userId} title="Algorithms" hideBookmark>
+      <ChapterHeading id="algorithms"  title="Algorithms" hideBookmark>
         <Algorithms items={linkedListAlgorithms} />
       </ChapterHeading>
     </div>
