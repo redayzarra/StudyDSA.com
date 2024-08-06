@@ -29,6 +29,9 @@ const ChapterHeading = ({
   href = "/",
   hideBookmark,
 }: PropsWithChildren<Props>) => {
+  // Build the href we want to bookmark
+  const addedHref = id === "definition" ? href : `${href}#${id}`;
+
   return (
     <div className="">
       <div
@@ -40,7 +43,7 @@ const ChapterHeading = ({
       >
         {title}
         <div className="flex items-center space-x-4">
-          {!hideBookmark && <Bookmark href={href} title={title} />}
+          {!hideBookmark && <Bookmark href={addedHref} title={title} />}
           {chapter && (
             <MarkCheckbox
               className="h-5 w-5 border-2"

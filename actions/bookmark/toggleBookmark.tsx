@@ -8,14 +8,16 @@ const toggleBookmark = async (userId: string, href: string, title: string) => {
       where: { userId },
     });
 
-    if (existingBookmark) {
+    if (existingBookmark && existingBookmark.href === href) {
       await db.bookmark.delete({
         where: { userId },
       });
       return false;
     } else {
-      await db.bookmark.create({
-        data: { userId, href, title },
+      await db.bookmark.upsert({
+        where: { userId },
+        update: { href, title },
+        create: { userId, href, title },
       });
       return true;
     }
@@ -26,3 +28,4 @@ const toggleBookmark = async (userId: string, href: string, title: string) => {
 };
 
 export default toggleBookmark;
+

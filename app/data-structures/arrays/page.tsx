@@ -45,6 +45,9 @@ const ArraysPage = async () => {
   const fetchAlgorithms = [1, 3, 4, 5, 6, 7, 8, 9, 11];
   const arrayAlgorithms = await getAlgorithmsById(fetchAlgorithms);
 
+  // Define the href we will use for this page
+  const href = "/data-structures/arrays";
+
   return (
     <div className="space-y-8">
       <Heading topic={topic!} />
@@ -53,6 +56,7 @@ const ArraysPage = async () => {
         title="Definition"
         userId={userId}
         chapter={definitionChapter}
+        href={href}
       >
         <p>
           Arrays are a collection of items that are{" "}
@@ -67,6 +71,7 @@ const ArraysPage = async () => {
         id="operations"
         title="Operations"
         chapter={operationsChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -83,6 +88,7 @@ const ArraysPage = async () => {
         title="Pointers"
         userId={userId}
         chapter={pointersChapter}
+        href={href}
       >
         <p>
           Pointers are{" "}
@@ -125,6 +131,7 @@ const ArraysPage = async () => {
         title="Static Arrays"
         userId={userId}
         chapter={staticChapter}
+        href={href}
       >
         <p>
           Static arrays have a fixed size, which is determined at compile time.
@@ -155,6 +162,7 @@ const ArraysPage = async () => {
         title="Amortized Time"
         userId={userId}
         chapter={amortizedChapter}
+        href={href}
       >
         <p>
           Amortized time analysis gives us an{" "}
@@ -183,6 +191,7 @@ const ArraysPage = async () => {
         title="Dynamic Arrays"
         userId={userId}
         chapter={dynamicChapter}
+        href={href}
       >
         <p>
           Unlike static arrays,{" "}
@@ -207,6 +216,7 @@ const ArraysPage = async () => {
         id="stacks"
         title="Stacks"
         chapter={stacksChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -238,6 +248,7 @@ const ArraysPage = async () => {
         id="bestPractices"
         title="Best Practices"
         chapter={bestPracticesChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -291,7 +302,12 @@ const ArraysPage = async () => {
         </ul>
       </ChapterHeading>
 
-      <ChapterHeading id="algorithms" title="Algorithms" userId={userId} hideBookmark>
+      <ChapterHeading
+        id="algorithms"
+        title="Algorithms"
+        userId={userId}
+        hideBookmark
+      >
         <Algorithms items={arrayAlgorithms} />
       </ChapterHeading>
     </div>
