@@ -40,9 +40,12 @@ const SegmentTreesPage = async () => {
   const lazyChapter = findChapter(topic, "Lazy Propagation");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
+  // Fetch the algorithms for segment trees page
   const fetchAlgorithms = [9, 11, 13, 14];
-
   const segmentTreesAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
+
+  // Define the href we will use for this page
+  const href = "/data-structures/segment-trees";
 
   return (
     <div className="space-y-8">
@@ -51,6 +54,7 @@ const SegmentTreesPage = async () => {
         id="definition"
         title="Definition"
         chapter={definitionChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -68,6 +72,7 @@ const SegmentTreesPage = async () => {
         id="operations"
         title="Operations"
         chapter={operationsChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -84,6 +89,7 @@ const SegmentTreesPage = async () => {
         id="building"
         title="Building"
         chapter={buildingChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -116,6 +122,7 @@ const SegmentTreesPage = async () => {
         id="querying"
         title="Querying"
         chapter={queryingChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -153,6 +160,7 @@ const SegmentTreesPage = async () => {
         id="updating"
         title="Updating"
         chapter={updatingChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -187,6 +195,7 @@ const SegmentTreesPage = async () => {
         id="implementation"
         title="Implementation"
         chapter={implementationChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -218,6 +227,7 @@ const SegmentTreesPage = async () => {
         id="lazy-propagation"
         title="Lazy Propagation"
         chapter={lazyChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -254,6 +264,7 @@ const SegmentTreesPage = async () => {
         id="bestPractices"
         title="Best Practices"
         chapter={bestPracticesChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -293,7 +304,12 @@ const SegmentTreesPage = async () => {
         </ul>
       </ChapterHeading>
 
-      <ChapterHeading id="algorithms" title="Algorithms" userId={userId} hideBookmark>
+      <ChapterHeading
+        id="algorithms"
+        title="Algorithms"
+        userId={userId}
+        hideBookmark
+      >
         <Algorithms items={segmentTreesAlgorithms} />
       </ChapterHeading>
     </div>

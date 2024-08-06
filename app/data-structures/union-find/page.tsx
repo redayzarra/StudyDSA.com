@@ -39,9 +39,12 @@ const UnionFindPage = async () => {
   const implementationChapter = findChapter(topic, "Implementation");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
+  // Fetch the algorithms for union-find page
   const fetchAlgorithms = [13, 14, 21, 22];
-
   const unionFindAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
+
+  // Define the href we will use for this page
+  const href = "/data-structures/union-find";
 
   return (
     <div className="space-y-8">
@@ -50,6 +53,7 @@ const UnionFindPage = async () => {
         id="definition"
         title="Definition"
         chapter={definitionChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -64,6 +68,7 @@ const UnionFindPage = async () => {
         id="operations"
         title="Operations"
         chapter={operationsChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -88,6 +93,7 @@ const UnionFindPage = async () => {
         id="disjoint-sets"
         title="Disjoint Sets"
         chapter={disjointSetsChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -123,6 +129,7 @@ const UnionFindPage = async () => {
         id="connectivity"
         title="Network Connectivity"
         chapter={networkChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -153,6 +160,7 @@ const UnionFindPage = async () => {
         id="path-compression"
         title="Path Compression"
         chapter={pathChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -224,6 +232,7 @@ const UnionFindPage = async () => {
         id="union-by-rank"
         title="Union by Rank"
         chapter={rankChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -275,6 +284,7 @@ const UnionFindPage = async () => {
         id="implementation"
         title="Implementation"
         chapter={implementationChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -299,6 +309,7 @@ const UnionFindPage = async () => {
         id="bestPractices"
         title="Best Practices"
         chapter={bestPracticesChapter}
+        href={href}
         userId={userId}
       >
         <p>

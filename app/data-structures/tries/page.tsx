@@ -40,9 +40,12 @@ const TriesPage = async () => {
   const implementationChapter = findChapter(topic, "Implementation");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
+  // Fetch the algorithms for the graphs page
   const fetchAlgorithms = [6, 8, 13, 14];
-
   const graphAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
+
+  // Define the href we will use for this page
+  const href = "/data-structures/tries";
 
   return (
     <div className="space-y-8">
@@ -51,6 +54,7 @@ const TriesPage = async () => {
         id="definition"
         title="Definition"
         chapter={definitionChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -65,6 +69,7 @@ const TriesPage = async () => {
         id="operations"
         title="Operations"
         chapter={operationsChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -86,6 +91,7 @@ const TriesPage = async () => {
         id="nodes"
         title="Trie Nodes"
         chapter={trieNodesChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -103,6 +109,7 @@ const TriesPage = async () => {
         id="insertion"
         title="Insertion"
         chapter={insertionChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -128,6 +135,7 @@ const TriesPage = async () => {
         id="searching"
         title="Searching"
         chapter={searchingChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -152,6 +160,7 @@ const TriesPage = async () => {
         id="findingPrefix"
         title="Finding Prefixes"
         chapter={prefixesChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -174,6 +183,7 @@ const TriesPage = async () => {
         id="implementation"
         title="Implementation"
         chapter={implementationChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -192,6 +202,7 @@ const TriesPage = async () => {
         id="bestPractices"
         title="Best Practices"
         chapter={bestPracticesChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -232,7 +243,12 @@ const TriesPage = async () => {
         </ul>
       </ChapterHeading>
 
-      <ChapterHeading userId={userId} id="algorithms" title="Algorithms" hideBookmark>
+      <ChapterHeading
+        userId={userId}
+        id="algorithms"
+        title="Algorithms"
+        hideBookmark
+      >
         <Algorithms items={graphAlgorithms} />
       </ChapterHeading>
     </div>

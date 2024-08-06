@@ -45,9 +45,12 @@ const TreesPage = async () => {
   const advancedChapter = findChapter(topic, "Advanced Trees");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
+  // Fetch the algorithms for trees page
   const fetchAlgorithms = [6, 8, 13, 14, 17, 21, 22];
-
   const treeAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
+
+  // Define the href we will use for this page
+  const href = "/data-structures/trees";
 
   return (
     <div className="space-y-8">
@@ -56,6 +59,7 @@ const TreesPage = async () => {
         id="definitionTree"
         title="Definition"
         chapter={definitionChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -76,6 +80,7 @@ const TreesPage = async () => {
         id="operations"
         title="Operations"
         chapter={operationsChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -106,6 +111,7 @@ const TreesPage = async () => {
         id="terminology"
         title="Terminology"
         chapter={terminologyChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -175,6 +181,7 @@ const TreesPage = async () => {
         id="traversal"
         title="Tree Traversal"
         chapter={treeTraversalChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -260,6 +267,7 @@ const TreesPage = async () => {
         id="binary"
         title="Binary Tree"
         chapter={binaryTreeChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -306,6 +314,7 @@ const TreesPage = async () => {
         id="binarySearch"
         title="Binary Search Tree"
         chapter={binarySearchTreeChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -350,6 +359,7 @@ const TreesPage = async () => {
         id="advanced"
         title="Advanced Trees"
         chapter={advancedChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -411,6 +421,7 @@ const TreesPage = async () => {
         id="bestPractices"
         title="Best Practices"
         chapter={bestPracticesChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -473,7 +484,12 @@ const TreesPage = async () => {
         </ul>
       </ChapterHeading>
 
-      <ChapterHeading id="algorithms" userId={userId} title="Algorithms" hideBookmark>
+      <ChapterHeading
+        id="algorithms"
+        userId={userId}
+        title="Algorithms"
+        hideBookmark
+      >
         <Algorithms items={treeAlgorithms} />
       </ChapterHeading>
     </div>

@@ -43,9 +43,12 @@ const GraphsPage = async () => {
   const graphTraversalChapter = findChapter(topic, "Graph Traversal");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
+  // Fetch the algorithms for graphs page
   const fetchAlgorithms = [6, 8, 13, 14, 17, 19, 20, 21, 22, 23, 24];
-
   const graphAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
+
+  // Define the href we will use for this page
+  const href = "/data-structures/graphs";
 
   return (
     <div className="space-y-8">
@@ -55,6 +58,7 @@ const GraphsPage = async () => {
         id="definition"
         title="Definition"
         chapter={definitionChapter}
+        href={href}
       >
         <p>
           Graphs are composed of{" "}
@@ -74,6 +78,7 @@ const GraphsPage = async () => {
         id="operations"
         title="Operations"
         chapter={operationsChapter}
+        href={href}
       >
         <p>
           Graph operations encompass adding and removing vertices or edges,
@@ -97,6 +102,7 @@ const GraphsPage = async () => {
         userId={userId}
         title="Graph Terminology"
         chapter={terminologyChapter}
+        href={href}
       >
         <p>
           Graphs are made up of vertices and edges.{" "}
@@ -156,6 +162,7 @@ const GraphsPage = async () => {
         title="Directionality"
         userId={userId}
         chapter={directionalityChapter}
+        href={href}
       >
         <p>
           Graph directionality is when edges have a direction (
@@ -176,6 +183,7 @@ const GraphsPage = async () => {
         title="Adjacency List"
         userId={userId}
         chapter={adjacencyChapter}
+        href={href}
       >
         <p>
           <strong>Adjacency lists are a way to represent graphs</strong>, where
@@ -210,6 +218,7 @@ const GraphsPage = async () => {
 
       <ChapterHeading
         chapter={matrixChapter}
+        href={href}
         userId={userId}
         id="matrix"
         title="Matrix"
@@ -256,6 +265,7 @@ const GraphsPage = async () => {
         userId={userId}
         title="Graph Traversal"
         chapter={graphTraversalChapter}
+        href={href}
       >
         <p>
           Graph traversal algorithms, such as{" "}
@@ -411,7 +421,12 @@ const GraphsPage = async () => {
         </ul>
       </ChapterHeading>
 
-      <ChapterHeading id="algorithms" userId={userId} title="Algorithms" hideBookmark>
+      <ChapterHeading
+        id="algorithms"
+        userId={userId}
+        title="Algorithms"
+        hideBookmark
+      >
         <Algorithms items={graphAlgorithms} />
       </ChapterHeading>
     </div>

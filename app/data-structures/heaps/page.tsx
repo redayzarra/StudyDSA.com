@@ -34,9 +34,12 @@ const HeapsPage = async () => {
   const implementationChapter = findChapter(topic, "Implementation");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
+  // Fetch the algorithms for the heaps page
   const fetchAlgorithms = [7, 16, 17, 21];
-
   const heapsAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
+
+  // Define the href we will use for this page
+  const href = "/data-structures/heaps";
 
   return (
     <div className="space-y-8">
@@ -46,6 +49,7 @@ const HeapsPage = async () => {
         title="Definition"
         userId={userId}
         chapter={definitionChapter}
+        href={href}
       >
         <p>
           Heaps are a type of binary tree where{" "}
@@ -68,6 +72,7 @@ const HeapsPage = async () => {
         title="Operations"
         userId={userId}
         chapter={operationsChapter}
+        href={href}
       >
         <p>
           Heaps primarily support two key operations:{" "}
@@ -82,6 +87,7 @@ const HeapsPage = async () => {
         id="structure"
         title="Structure Property"
         chapter={structureChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -110,6 +116,7 @@ const HeapsPage = async () => {
         id="property"
         title="Heap Property"
         chapter={heapPropertyChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -132,6 +139,7 @@ const HeapsPage = async () => {
         id="heapify"
         title="Heapify"
         chapter={heapifyChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -165,6 +173,7 @@ const HeapsPage = async () => {
         id="minMax"
         title="Min/Max Heaps"
         chapter={minMaxChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -228,6 +237,7 @@ const HeapsPage = async () => {
         id="implementation"
         title="Implementation"
         chapter={implementationChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -245,6 +255,7 @@ const HeapsPage = async () => {
         title="Best Practices"
         userId={userId}
         chapter={bestPracticesChapter}
+        href={href}
       >
         <p>
           Heaps should be your go-to data structure for keeping track of{" "}
@@ -318,7 +329,12 @@ const HeapsPage = async () => {
         </ul>
       </ChapterHeading>
 
-      <ChapterHeading id="algorithms" userId={userId} title="Algorithms" hideBookmark>
+      <ChapterHeading
+        id="algorithms"
+        userId={userId}
+        title="Algorithms"
+        hideBookmark
+      >
         <Algorithms items={heapsAlgorithms} />
       </ChapterHeading>
     </div>

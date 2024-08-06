@@ -33,9 +33,12 @@ const QueuePage = async () => {
   const priorityQueueChapter = findChapter(topic, "Priority Queues");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
+  // Fetch the algorithms for queue page
   const fetchAlgorithms = [1, 3, 6, 8, 13, 14, 17, 23];
-
   const queueAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
+
+  // Define the href we will use for this page
+  const href = "/data-structures/queues";
 
   return (
     <div className="space-y-8">
@@ -44,6 +47,7 @@ const QueuePage = async () => {
         id="definitionQueue"
         title="Definition"
         chapter={definitionChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -60,6 +64,7 @@ const QueuePage = async () => {
         id="operationsQueue"
         title="Operations"
         chapter={operationsChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -76,6 +81,7 @@ const QueuePage = async () => {
         id="nodes"
         title="Queue Nodes"
         chapter={queueNodesChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -107,6 +113,7 @@ const QueuePage = async () => {
         id="dynamic"
         title="Dynamic Queues"
         chapter={dynamicQueueChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -143,6 +150,7 @@ const QueuePage = async () => {
         id="circular"
         title="Circular Queue"
         chapter={circularQueueChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -174,6 +182,7 @@ const QueuePage = async () => {
         id="deque"
         title="Deque"
         chapter={dequeChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -200,6 +209,7 @@ const QueuePage = async () => {
         id="priority"
         title="Priority Queue"
         chapter={priorityQueueChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -233,6 +243,7 @@ const QueuePage = async () => {
         id="bestPracticesQueue"
         title="Best Practices"
         chapter={bestPracticesChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -284,7 +295,12 @@ const QueuePage = async () => {
         </ul>
       </ChapterHeading>
 
-      <ChapterHeading id="algorithms" title="Algorithms" userId={userId} hideBookmark>
+      <ChapterHeading
+        id="algorithms"
+        title="Algorithms"
+        userId={userId}
+        hideBookmark
+      >
         <Algorithms items={queueAlgorithms} />
       </ChapterHeading>
     </div>

@@ -44,9 +44,12 @@ const HashmapPage = async () => {
   const setsChapter = findChapter(topic, "Sets");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
+  // Fetch the algorithms for the hashmaps page
   const fetchAlgorithms = [1, 3, 6, 9];
-
   const hashmapAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
+
+  // Define the href we will use for this page
+  const href = "/data-structures/hashmaps";
 
   return (
     <div className="space-y-8">
@@ -56,6 +59,7 @@ const HashmapPage = async () => {
         title="Definition"
         userId={userId}
         chapter={definitionChapter}
+        href={href}
       >
         <p>
           A hashmap, or a hash table, is a data structure that{" "}
@@ -74,6 +78,7 @@ const HashmapPage = async () => {
         title="Operations"
         userId={userId}
         chapter={operationsChapter}
+        href={href}
       >
         <p>
           Hashmaps are powerful because of their efficiency. They use a{" "}
@@ -99,6 +104,7 @@ const HashmapPage = async () => {
         id="hashFunction"
         title="Hash Function"
         chapter={hashingChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -176,6 +182,7 @@ const HashmapPage = async () => {
         id="chaining"
         title="Chaining"
         chapter={chainingChapter}
+        href={href}
         userId={userId}
       >
         <p>
@@ -251,6 +258,7 @@ const HashmapPage = async () => {
         title="Open Addressing"
         userId={userId}
         chapter={openChapter}
+        href={href}
       >
         <p>
           Open addressing handles collisions in a hashmap by{" "}
@@ -306,6 +314,7 @@ const HashmapPage = async () => {
         title="Implementation"
         userId={userId}
         chapter={implementationChapter}
+        href={href}
       >
         <p>
           To implement hashmaps, you need a solid understanding of collisions
@@ -355,6 +364,7 @@ const HashmapPage = async () => {
         title="Sets"
         userId={userId}
         chapter={setsChapter}
+        href={href}
       >
         <p>
           Sets, or hash sets, are a data structure that uses hashing to store
@@ -398,6 +408,7 @@ const HashmapPage = async () => {
         title="Best Practices"
         userId={userId}
         chapter={bestPracticesChapter}
+        href={href}
       >
         <p>
           Hashmaps and sets are the most important data structures to learn if

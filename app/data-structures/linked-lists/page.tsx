@@ -41,9 +41,12 @@ const LinkedListsPage = async () => {
   const doublyChapter = findChapter(topic, "Doubly Linked List");
   const bestPracticesChapter = findChapter(topic, "Best Practices");
 
+  // Fetch the algorithms for the linked lists page
   const fetchAlgorithms = [1, 2, 3, 6];
-
   const linkedListAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
+
+    // Define the href we will use for this page
+  const href = "/data-structures/linked-lists";
 
   return (
     <div className="space-y-8">
@@ -53,6 +56,7 @@ const LinkedListsPage = async () => {
         title="Definition"
         userId={userId}
         chapter={definitionChapter}
+        href={href}
       >
         <p>
           A linked list is a linear collection of elements, called{" "}
@@ -70,6 +74,7 @@ const LinkedListsPage = async () => {
         title="Operations"
         userId={userId}
         chapter={operationsChapter}
+        href={href}
       >
         <p>
           Linked lists stand out for their efficient insertions and deletions.
@@ -90,6 +95,7 @@ const LinkedListsPage = async () => {
         userId={userId}
         title="Pointers"
         chapter={pointersChapter}
+        href={href}
       >
         <p>
           Pointers are crucial for constructing linked lists, allowing each node
@@ -124,6 +130,7 @@ const LinkedListsPage = async () => {
         title="List Nodes"
         userId={userId}
         chapter={listNodesChapter}
+        href={href}
       >
         <p>
           List Nodes are the building blocks for linked lists. They store both
@@ -160,6 +167,7 @@ const LinkedListsPage = async () => {
         title="Sentinel Nodes"
         userId={userId}
         chapter={sentinelsChapter}
+        href={href}
       >
         <p>
           Sentinel nodes, or dummy nodes, are a strategy for using linked lists
@@ -194,6 +202,7 @@ const LinkedListsPage = async () => {
         title="Singly Linked List"
         userId={userId}
         chapter={singlyChapter}
+        href={href}
       >
         <p>
           Singly linked lists are built with list nodes, where each{" "}
@@ -222,6 +231,7 @@ const LinkedListsPage = async () => {
         title="Doubly Linked List"
         userId={userId}
         chapter={doublyChapter}
+        href={href}
       >
         <p>
           Doubly linked lists are an upgrade to singly linked lists because they
@@ -252,6 +262,7 @@ const LinkedListsPage = async () => {
         title="Best Practices"
         userId={userId}
         chapter={bestPracticesChapter}
+        href={href}
       >
         <p>
           Linked lists are important to understand because they are the
