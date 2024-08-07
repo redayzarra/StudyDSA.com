@@ -10,7 +10,7 @@ body,
 }
 
 html {
-  scroll-padding: 95px;
+  scroll-padding: 90px;
 }
 
 @layer base {

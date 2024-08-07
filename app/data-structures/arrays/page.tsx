@@ -58,7 +58,7 @@ const ArraysPage = async () => {
         <Operations items={arrayOperations} />
       </ChapterHeading>
 
-      <ChapterHeading id="pointers" title="Pointers" href={href}>
+      <ChapterHeading id="pointers" title="Array Pointers" href={href}>
         <p>
           Pointers are{" "}
           <span className="font-bold">

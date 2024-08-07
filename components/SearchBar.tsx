@@ -9,6 +9,16 @@ import {
   dataStructurePages,
   introPages,
   problemPages,
+  arrayPages,
+  linkedListPages,
+  hashmapPages,
+  queuePages,
+  treePages,
+  graphPages,
+  heapPages,
+  triePages,
+  unionFindPages,
+  segmentTreePages,
 } from "@/data/constants";
 import { cn } from "@/lib/utils";
 import { useCallback, useEffect, useState } from "react";
@@ -23,6 +33,28 @@ import {
   CommandItem,
   CommandList,
 } from "./ui/command";
+
+interface DetailedPage {
+  title: string;
+  href: string;
+}
+
+const detailedPagesMap: { [key: string]: DetailedPage[] } = {
+  Arrays: arrayPages,
+  "Linked Lists": linkedListPages,
+  "Hashmaps & Sets": hashmapPages,
+  Queues: queuePages,
+  Trees: treePages,
+  Graphs: graphPages,
+  Heaps: heapPages,
+  Tries: triePages,
+  "Union-Find": unionFindPages,
+  "Segment Trees": segmentTreePages,
+};
+
+const getDetailedPages = (dataStructureTitle: string): DetailedPage[] => {
+  return detailedPagesMap[dataStructureTitle] || [];
+};
 
 export function SearchBar({ ...props }: DialogProps) {
   const router = useRouter();
@@ -74,6 +106,7 @@ export function SearchBar({ ...props }: DialogProps) {
         <CommandInput placeholder="Search documentation..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
+
           <CommandGroup heading="Links">
             {introPages.map((doc) => (
               <CommandItem
@@ -89,6 +122,7 @@ export function SearchBar({ ...props }: DialogProps) {
               </CommandItem>
             ))}
           </CommandGroup>
+
           <CommandGroup heading="Data Structures">
             {dataStructurePages.map((dataStructure) => (
               <CommandItem
@@ -104,6 +138,7 @@ export function SearchBar({ ...props }: DialogProps) {
               </CommandItem>
             ))}
           </CommandGroup>
+
           <CommandGroup heading="Algorithms">
             {algorithmPages.map((algorithm) => (
               <CommandItem
@@ -119,6 +154,7 @@ export function SearchBar({ ...props }: DialogProps) {
               </CommandItem>
             ))}
           </CommandGroup>
+
           <CommandGroup heading="Practice">
             {problemPages.map((problem) => (
               <CommandItem
@@ -134,6 +170,30 @@ export function SearchBar({ ...props }: DialogProps) {
               </CommandItem>
             ))}
           </CommandGroup>
+
+          {dataStructurePages.map((dataStructure) => {
+            const detailedPages = getDetailedPages(dataStructure.title);
+            return (
+              <CommandGroup
+                key={dataStructure.title}
+                heading={dataStructure.title}
+              >
+                {detailedPages.map((page) => (
+                  <CommandItem
+                    className="cursor-pointer"
+                    key={page.href}
+                    value={page.title}
+                    onSelect={() => {
+                      runCommand(() => router.push(page.href));
+                    }}
+                  >
+                    {dataStructure.icon}
+                    <span className="ml-2">{page.title}</span>
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            );
+          })}
         </CommandList>
       </CommandDialog>
     </>

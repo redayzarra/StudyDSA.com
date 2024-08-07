@@ -1,8 +1,18 @@
-  import { AiOutlineNodeIndex, AiOutlineFunction } from 'react-icons/ai';
-import { MdOutlineMoreTime, MdDataArray, MdDataObject, MdLinearScale } from 'react-icons/md';
-import { TbTargetArrow, TbBinaryTree, TbVector, TbBinaryTree2 } from 'react-icons/tb';
-import { FaArrowUpRightDots } from 'react-icons/fa6';
-import { PiGraph } from 'react-icons/pi';
+import { AiOutlineNodeIndex, AiOutlineFunction } from "react-icons/ai";
+import {
+  MdOutlineMoreTime,
+  MdDataArray,
+  MdDataObject,
+  MdLinearScale,
+} from "react-icons/md";
+import {
+  TbTargetArrow,
+  TbBinaryTree,
+  TbVector,
+  TbBinaryTree2,
+} from "react-icons/tb";
+import { FaArrowUpRightDots } from "react-icons/fa6";
+import { PiGraph } from "react-icons/pi";
 
 // Exporting all the constants
 export const introPages = [
@@ -201,4 +211,234 @@ export const problemPages = [
   //   title: "Top Interview 150",
   //   href: "/practice/top-interview-150",
   // },
+];
+
+export const arrayPages = [
+  {
+    title: "Array Pointers",
+    href: "/data-structures/arrays#pointers",
+  },
+  {
+    title: "Static Arrays",
+    href: "/data-structures/arrays#staticArrays",
+  },
+  {
+    title: "Amortized Time",
+    href: "/data-structures/arrays#amortizedTime",
+  },
+  {
+    title: "Dynamic Arrays",
+    href: "/data-structures/arrays#dynamicArrays",
+  },
+  {
+    title: "Stacks",
+    href: "/data-structures/arrays#stacks",
+  },
+];
+
+export const linkedListPages = [
+  {
+    title: "Array Pointers",
+    href: "/data-structures/arrays#pointers",
+  },
+  {
+    title: "Static Arrays",
+    href: "/data-structures/arrays#staticArrays",
+  },
+  {
+    title: "Amortized Time",
+    href: "/data-structures/arrays#amortizedTime",
+  },
+  {
+    title: "Dynamic Arrays",
+    href: "/data-structures/arrays#dynamicArrays",
+  },
+  {
+    title: "Stacks",
+    href: "/data-structures/arrays#stacks",
+  },
+];
+
+export const hashmapPages = [
+  {
+    title: "Array Pointers",
+    href: "/data-structures/arrays#pointers",
+  },
+  {
+    title: "Static Arrays",
+    href: "/data-structures/arrays#staticArrays",
+  },
+  {
+    title: "Amortized Time",
+    href: "/data-structures/arrays#amortizedTime",
+  },
+  {
+    title: "Dynamic Arrays",
+    href: "/data-structures/arrays#dynamicArrays",
+  },
+  {
+    title: "Stacks",
+    href: "/data-structures/arrays#stacks",
+  },
+];
+
+export const queuePages = [
+  {
+    title: "Array Pointers",
+    href: "/data-structures/arrays#pointers",
+  },
+  {
+    title: "Static Arrays",
+    href: "/data-structures/arrays#staticArrays",
+  },
+  {
+    title: "Amortized Time",
+    href: "/data-structures/arrays#amortizedTime",
+  },
+  {
+    title: "Dynamic Arrays",
+    href: "/data-structures/arrays#dynamicArrays",
+  },
+  {
+    title: "Stacks",
+    href: "/data-structures/arrays#stacks",
+  },
+];
+
+export const treePages = [
+  {
+    title: "Array Pointers",
+    href: "/data-structures/arrays#pointers",
+  },
+  {
+    title: "Static Arrays",
+    href: "/data-structures/arrays#staticArrays",
+  },
+  {
+    title: "Amortized Time",
+    href: "/data-structures/arrays#amortizedTime",
+  },
+  {
+    title: "Dynamic Arrays",
+    href: "/data-structures/arrays#dynamicArrays",
+  },
+  {
+    title: "Stacks",
+    href: "/data-structures/arrays#stacks",
+  },
+];
+
+export const graphPages = [
+  {
+    title: "Array Pointers",
+    href: "/data-structures/arrays#pointers",
+  },
+  {
+    title: "Static Arrays",
+    href: "/data-structures/arrays#staticArrays",
+  },
+  {
+    title: "Amortized Time",
+    href: "/data-structures/arrays#amortizedTime",
+  },
+  {
+    title: "Dynamic Arrays",
+    href: "/data-structures/arrays#dynamicArrays",
+  },
+  {
+    title: "Stacks",
+    href: "/data-structures/arrays#stacks",
+  },
+];
+
+export const heapPages = [
+  {
+    title: "Array Pointers",
+    href: "/data-structures/arrays#pointers",
+  },
+  {
+    title: "Static Arrays",
+    href: "/data-structures/arrays#staticArrays",
+  },
+  {
+    title: "Amortized Time",
+    href: "/data-structures/arrays#amortizedTime",
+  },
+  {
+    title: "Dynamic Arrays",
+    href: "/data-structures/arrays#dynamicArrays",
+  },
+  {
+    title: "Stacks",
+    href: "/data-structures/arrays#stacks",
+  },
+];
+
+export const triePages = [
+  {
+    title: "Array Pointers",
+    href: "/data-structures/arrays#pointers",
+  },
+  {
+    title: "Static Arrays",
+    href: "/data-structures/arrays#staticArrays",
+  },
+  {
+    title: "Amortized Time",
+    href: "/data-structures/arrays#amortizedTime",
+  },
+  {
+    title: "Dynamic Arrays",
+    href: "/data-structures/arrays#dynamicArrays",
+  },
+  {
+    title: "Stacks",
+    href: "/data-structures/arrays#stacks",
+  },
+];
+
+export const unionFindPages = [
+  {
+    title: "Array Pointers",
+    href: "/data-structures/arrays#pointers",
+  },
+  {
+    title: "Static Arrays",
+    href: "/data-structures/arrays#staticArrays",
+  },
+  {
+    title: "Amortized Time",
+    href: "/data-structures/arrays#amortizedTime",
+  },
+  {
+    title: "Dynamic Arrays",
+    href: "/data-structures/arrays#dynamicArrays",
+  },
+  {
+    title: "Stacks",
+    href: "/data-structures/arrays#stacks",
+  },
+];
+
+export const segmentTreePages = [
+  {
+    title: "Array Pointers",
+    href: "/data-structures/arrays#pointers",
+  },
+  {
+    title: "Static Arrays",
+    href: "/data-structures/arrays#staticArrays",
+  },
+  {
+    title: "Amortized Time",
+    href: "/data-structures/arrays#amortizedTime",
+  },
+  {
+    title: "Dynamic Arrays",
+    href: "/data-structures/arrays#dynamicArrays",
+  },
+  {
+    title: "Stacks",
+    href: "/data-structures/arrays#stacks",
+  },
 ];
