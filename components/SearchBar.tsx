@@ -42,7 +42,7 @@ interface DetailedPage {
 const detailedPagesMap: { [key: string]: DetailedPage[] } = {
   Arrays: arrayPages,
   "Linked Lists": linkedListPages,
-  "Hashmaps & Sets": hashmapPages,
+  "Hashmaps": hashmapPages,
   Queues: queuePages,
   Trees: treePages,
   Graphs: graphPages,

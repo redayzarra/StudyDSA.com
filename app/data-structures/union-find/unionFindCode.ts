@@ -23,7 +23,7 @@ export const pathCompressionCode =
             node = par[node]
         return node`;
 
-export const unionByRankCode = 
+export const unionBySizeCode = 
 `def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
     # Setup Union-Find - 'size' keeps track of node's size
     size = [1] * (len(edges) + 1)

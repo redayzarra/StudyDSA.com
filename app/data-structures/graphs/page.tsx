@@ -125,7 +125,7 @@ const GraphsPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="directionality" title="Directionality" href={href}>
+      <ChapterHeading id="directionality" title="Graph Directionality" href={href}>
         <p>
           Graph directionality is when edges have a direction (
           <strong>directed graphs</strong>) or not (undirected graphs). In
@@ -286,7 +286,7 @@ const GraphsPage = async () => {
           title="BFS_Matrix.py"
         />
       </ChapterHeading>
-      <ChapterHeading id="bestPractices" title="Best Practices">
+      <ChapterHeading id="bestPractices" title="Best Practices for Graphs">
         <p>
           Graphs are incredibly flexible data structures that can represent
           complex relationships which is why they are popular in coding

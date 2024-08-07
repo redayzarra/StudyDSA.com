@@ -58,7 +58,11 @@ const HeapsPage = async () => {
         <Operations items={heapOperations} />
       </ChapterHeading>
 
-      <ChapterHeading id="structure" title="Structure Property" href={href}>
+      <ChapterHeading
+        id="structure"
+        title="Heap Structure Property"
+        href={href}
+      >
         <p>
           The structure property of heaps ensures that{" "}
           <strong>they are always complete binary trees</strong>. This means
@@ -81,7 +85,7 @@ const HeapsPage = async () => {
           allowing heaps to be efficiently implemented using arrays.
         </p>
       </ChapterHeading>
-      <ChapterHeading id="property" title="Heap Property" href={href}>
+      <ChapterHeading id="property" title="Heap Order Property" href={href}>
         <p>
           The heap property states that each{" "}
           <strong>
@@ -184,7 +188,11 @@ const HeapsPage = async () => {
         <CodeBlock code={maxHeapCode} language="python" title="MaxHeap.py" />
       </ChapterHeading>
 
-      <ChapterHeading id="implementation" title="Implementation" href={href}>
+      <ChapterHeading
+        id="implementation"
+        title="Heap Implementation"
+        href={href}
+      >
         <p>
           Heaps efficiently organize data for priority-based access, with min
           heaps accessing the smallest element and max heaps the largest. Now
@@ -195,7 +203,11 @@ const HeapsPage = async () => {
         <CodeBlock code={heapCode} language="python" title="Heap.py" />
       </ChapterHeading>
 
-      <ChapterHeading id="bestPractices" title="Best Practices" href={href}>
+      <ChapterHeading
+        id="bestPractices"
+        title="Best Practices for Heaps"
+        href={href}
+      >
         <p>
           Heaps should be your go-to data structure for keeping track of{" "}
           <CodeText>k</CodeText> smallest (or largest) elements, and supporting

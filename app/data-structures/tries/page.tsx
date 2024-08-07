@@ -37,13 +37,7 @@ const TriesPage = async () => {
   return (
     <div className="space-y-8">
       <Heading topic={topic!} />
-      <ChapterHeading
-        id="definition"
-        title="Definition"
-        
-        href={href}
-        
-      >
+      <ChapterHeading id="definition" title="Definition" href={href}>
         <p>
           Tries, also known as <strong>prefix trees</strong>, are a tree-like
           data structure that allow for efficient lookup times for strings. They{" "}
@@ -52,13 +46,7 @@ const TriesPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="operations"
-        title="Operations"
-        
-        href={href}
-        
-      >
+      <ChapterHeading id="operations" title="Operations" href={href}>
         <p>
           Trie operations include insertion, search, and deletion of words.
           These operations allow tries to efficiently manage words or other
@@ -74,13 +62,7 @@ const TriesPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="nodes"
-        title="Trie Nodes"
-        
-        href={href}
-        
-      >
+      <ChapterHeading id="nodes" title="Trie Nodes" href={href}>
         <p>
           Each node in a trie{" "}
           <strong>represents a single character from a string</strong> and has
@@ -92,13 +74,7 @@ const TriesPage = async () => {
         <CodeBlock code={trieNodeCode} language="python" title="TrieNodes.py" />
       </ChapterHeading>
 
-      <ChapterHeading
-        id="insertion"
-        title="Insertion"
-        
-        href={href}
-        
-      >
+      <ChapterHeading id="insertion" title="Inserting in Tries" href={href}>
         <p>
           Inserting a word into a trie means creating a new path of nodes for
           each character in the word, if that path does not already exist.{" "}
@@ -118,13 +94,7 @@ const TriesPage = async () => {
         />
       </ChapterHeading>
 
-      <ChapterHeading
-        id="searching"
-        title="Searching"
-        
-        href={href}
-        
-      >
+      <ChapterHeading id="searching" title="Searching in Tries" href={href}>
         <p>
           Searching for a word in a trie{" "}
           <strong>checks each character of the word against the nodes</strong>,
@@ -143,13 +113,7 @@ const TriesPage = async () => {
         />
       </ChapterHeading>
 
-      <ChapterHeading
-        id="findingPrefix"
-        title="Finding Prefixes"
-        
-        href={href}
-        
-      >
+      <ChapterHeading id="prefixSearch" title="Prefix Search" href={href}>
         <p>
           Finding prefixes in a trie is similar to searching for a whole word
           but we stop at the end of the prefix. If we{" "}
@@ -168,10 +132,8 @@ const TriesPage = async () => {
 
       <ChapterHeading
         id="implementation"
-        title="Implementation"
-        
+        title="Trie Implementation"
         href={href}
-        
       >
         <p>
           Implementing a trie involves{" "}
@@ -187,10 +149,8 @@ const TriesPage = async () => {
 
       <ChapterHeading
         id="bestPractices"
-        title="Best Practices"
-        
+        title="Best Practices for Tries"
         href={href}
-        
       >
         <p>
           Tries efficiently store and search words or sequences of strings. They
@@ -230,12 +190,7 @@ const TriesPage = async () => {
         </ul>
       </ChapterHeading>
 
-      <ChapterHeading
-        
-        id="algorithms"
-        title="Algorithms"
-        hideBookmark
-      >
+      <ChapterHeading id="algorithms" title="Algorithms" hideBookmark>
         <Algorithms items={graphAlgorithms} />
       </ChapterHeading>
     </div>

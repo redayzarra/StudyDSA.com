@@ -32,19 +32,13 @@ const LinkedListsPage = async () => {
   const fetchAlgorithms = [1, 2, 3, 6];
   const linkedListAlgorithms = await getAlgorithmsByName(fetchAlgorithms);
 
-    // Define the href we will use for this page
+  // Define the href we will use for this page
   const href = "/data-structures/linked-lists";
 
   return (
     <div className="space-y-8">
       <Heading topic={topic!} />
-      <ChapterHeading
-        id="definitionLinkedList"
-        title="Definition"
-        
-        
-        href={href}
-      >
+      <ChapterHeading id="definitionLinkedList" title="Definition" href={href}>
         <p>
           A linked list is a linear collection of elements, called{" "}
           <TextLink href="#listNodes">list nodes</TextLink>, each pointing to
@@ -56,13 +50,7 @@ const LinkedListsPage = async () => {
           reallocating or reorganizing the entire data structure.
         </p>
       </ChapterHeading>
-      <ChapterHeading
-        id="operations"
-        title="Operations"
-        
-        
-        href={href}
-      >
+      <ChapterHeading id="operations" title="Operations" href={href}>
         <p>
           Linked lists stand out for their efficient insertions and deletions.
           They can easily expand without the need for reallocation or copying
@@ -77,13 +65,7 @@ const LinkedListsPage = async () => {
         <Operations items={linkedListOperations} />
       </ChapterHeading>
 
-      <ChapterHeading
-        id="pointers"
-        
-        title="Pointers"
-        
-        href={href}
-      >
+      <ChapterHeading id="pointers" title="Linked List Pointers" href={href}>
         <p>
           Pointers are crucial for constructing linked lists, allowing each node
           to connect to the next. Linked lists efficiently perform insertions
@@ -112,13 +94,7 @@ const LinkedListsPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="listNodes"
-        title="List Nodes"
-        
-        
-        href={href}
-      >
+      <ChapterHeading id="listNodes" title="Linked List Nodes" href={href}>
         <p>
           List Nodes are the building blocks for linked lists. They store both
           the data (value) and the pointer to the next node. In singly linked
@@ -149,13 +125,7 @@ const LinkedListsPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="sentinels"
-        title="Sentinel Nodes"
-        
-        
-        href={href}
-      >
+      <ChapterHeading id="sentinelNodes" title="Sentinel Nodes" href={href}>
         <p>
           Sentinel nodes, or dummy nodes, are a strategy for using linked lists
           conveniently. These{" "}
@@ -184,13 +154,7 @@ const LinkedListsPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="singly"
-        title="Singly Linked List"
-        
-        
-        href={href}
-      >
+      <ChapterHeading id="singlyLinked" title="Singly Linked List" href={href}>
         <p>
           Singly linked lists are built with list nodes, where each{" "}
           <CodeText>ListNode</CodeText> stores data and a pointer to the next
@@ -213,13 +177,7 @@ const LinkedListsPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading
-        id="doubly"
-        title="Doubly Linked List"
-        
-        
-        href={href}
-      >
+      <ChapterHeading id="doublyLinked" title="Doubly Linked List" href={href}>
         <p>
           Doubly linked lists are an upgrade to singly linked lists because they
           store an additional pointer in each list node. This extra pointer
@@ -246,9 +204,7 @@ const LinkedListsPage = async () => {
 
       <ChapterHeading
         id="bestPractices"
-        title="Best Practices"
-        
-        
+        title="Best Practices for Linked Lists"
         href={href}
       >
         <p>
@@ -307,7 +263,7 @@ const LinkedListsPage = async () => {
         <br />
       </ChapterHeading>
 
-      <ChapterHeading id="algorithms"  title="Algorithms" hideBookmark>
+      <ChapterHeading id="algorithms" title="Algorithms" hideBookmark>
         <Algorithms items={linkedListAlgorithms} />
       </ChapterHeading>
     </div>

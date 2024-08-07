@@ -82,7 +82,7 @@ const TreesPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="terminology" title="Terminology" href={href}>
+      <ChapterHeading id="terminology" title="Tree Terminology" href={href}>
         <p>
           At the heart of a trees is the <strong>node</strong>, an individual{" "}
           <strong>

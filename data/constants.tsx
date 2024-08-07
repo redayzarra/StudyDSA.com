@@ -50,7 +50,7 @@ export const dataStructurePages = [
     icon: <AiOutlineNodeIndex size={20} />,
   },
   {
-    title: "Hashmaps & Sets",
+    title: "Hashmaps",
     href: "/data-structures/hashmaps",
     icon: <MdDataObject size={20} />,
   },
@@ -238,207 +238,207 @@ export const arrayPages = [
 
 export const linkedListPages = [
   {
-    title: "Array Pointers",
-    href: "/data-structures/arrays#pointers",
+    title: "Linked List Pointers",
+    href: "/data-structures/linked-lists#pointers",
   },
   {
-    title: "Static Arrays",
-    href: "/data-structures/arrays#staticArrays",
+    title: "Linked List Nodes",
+    href: "/data-structures/linked-lists#listNodes",
   },
   {
-    title: "Amortized Time",
-    href: "/data-structures/arrays#amortizedTime",
+    title: "Sentinel Nodes",
+    href: "/data-structures/linked-lists#sentinelNodes",
   },
   {
-    title: "Dynamic Arrays",
-    href: "/data-structures/arrays#dynamicArrays",
+    title: "Singly Linked List",
+    href: "/data-structures/linked-lists#singlyLinked",
   },
   {
-    title: "Stacks",
-    href: "/data-structures/arrays#stacks",
+    title: "Doubly Linked List",
+    href: "/data-structures/linked-lists#doublyLinked",
   },
 ];
 
 export const hashmapPages = [
   {
-    title: "Array Pointers",
-    href: "/data-structures/arrays#pointers",
+    title: "Hash Function",
+    href: "/data-structures/hashmaps#hashFunction",
   },
   {
-    title: "Static Arrays",
-    href: "/data-structures/arrays#staticArrays",
+    title: "Hashmap Collisions",
+    href: "/data-structures/hashmaps#collisions",
   },
   {
-    title: "Amortized Time",
-    href: "/data-structures/arrays#amortizedTime",
+    title: "Hashmap Chaining",
+    href: "/data-structures/hashmaps#chaining",
   },
   {
-    title: "Dynamic Arrays",
-    href: "/data-structures/arrays#dynamicArrays",
+    title: "Open Addressing",
+    href: "/data-structures/hashmaps#openAddressing",
   },
   {
-    title: "Stacks",
-    href: "/data-structures/arrays#stacks",
+    title: "Hashmap Implementation",
+    href: "/data-structures/hashmaps#implementation",
+  },
+  {
+    title: "Sets",
+    href: "/data-structures/hashmaps#sets",
   },
 ];
 
 export const queuePages = [
   {
-    title: "Array Pointers",
-    href: "/data-structures/arrays#pointers",
+    title: "Queue Nodes",
+    href: "/data-structures/queues#nodes",
   },
   {
-    title: "Static Arrays",
-    href: "/data-structures/arrays#staticArrays",
+    title: "Dynamic Queues",
+    href: "/data-structures/queues#dynamic",
   },
   {
-    title: "Amortized Time",
-    href: "/data-structures/arrays#amortizedTime",
+    title: "Circular Queues",
+    href: "/data-structures/queues#circular",
   },
   {
-    title: "Dynamic Arrays",
-    href: "/data-structures/arrays#dynamicArrays",
-  },
-  {
-    title: "Stacks",
-    href: "/data-structures/arrays#stacks",
+    title: "Deque",
+    href: "/data-structures/queues#deque",
   },
 ];
 
 export const treePages = [
   {
-    title: "Array Pointers",
-    href: "/data-structures/arrays#pointers",
+    title: "Tree Terminology",
+    href: "/data-structures/trees#terminology",
   },
   {
-    title: "Static Arrays",
-    href: "/data-structures/arrays#staticArrays",
+    title: "Tree Traversal",
+    href: "/data-structures/trees#traversal",
   },
   {
-    title: "Amortized Time",
-    href: "/data-structures/arrays#amortizedTime",
+    title: "Binary Tree",
+    href: "/data-structures/trees#binary",
   },
   {
-    title: "Dynamic Arrays",
-    href: "/data-structures/arrays#dynamicArrays",
+    title: "Binary Search Tree",
+    href: "/data-structures/trees#binarySearch",
   },
   {
-    title: "Stacks",
-    href: "/data-structures/arrays#stacks",
+    title: "Advanced Trees",
+    href: "/data-structures/trees#advanced",
   },
 ];
 
 export const graphPages = [
   {
-    title: "Array Pointers",
-    href: "/data-structures/arrays#pointers",
+    title: "Graph Terminology",
+    href: "/data-structures/graphs#terminology",
   },
   {
-    title: "Static Arrays",
-    href: "/data-structures/arrays#staticArrays",
+    title: "Graph Directionality",
+    href: "/data-structures/graphs#directionality",
   },
   {
-    title: "Amortized Time",
-    href: "/data-structures/arrays#amortizedTime",
+    title: "Adjacency List",
+    href: "/data-structures/graphs#adjacencyList",
   },
   {
-    title: "Dynamic Arrays",
-    href: "/data-structures/arrays#dynamicArrays",
+    title: "Matrix",
+    href: "/data-structures/graphs#matrix",
   },
   {
-    title: "Stacks",
-    href: "/data-structures/arrays#stacks",
+    title: "Graph Traversal",
+    href: "/data-structures/graphs#traversal",
   },
 ];
 
 export const heapPages = [
   {
-    title: "Array Pointers",
-    href: "/data-structures/arrays#pointers",
+    title: "Heap Structure Property",
+    href: "/data-structures/heaps#structure",
   },
   {
-    title: "Static Arrays",
-    href: "/data-structures/arrays#staticArrays",
+    title: "Heaps Order Property",
+    href: "/data-structures/heaps#property",
   },
   {
-    title: "Amortized Time",
-    href: "/data-structures/arrays#amortizedTime",
+    title: "Heapify",
+    href: "/data-structures/heaps#heapify",
   },
   {
-    title: "Dynamic Arrays",
-    href: "/data-structures/arrays#dynamicArrays",
+    title: "Min/Max Heaps",
+    href: "/data-structures/heaps#minMax",
   },
   {
-    title: "Stacks",
-    href: "/data-structures/arrays#stacks",
+    title: "Heap Implementation",
+    href: "/data-structures/heaps#implementation",
   },
 ];
 
 export const triePages = [
   {
-    title: "Array Pointers",
-    href: "/data-structures/arrays#pointers",
+    title: "Trie Nodes",
+    href: "/data-structures/tries#nodes",
   },
   {
-    title: "Static Arrays",
-    href: "/data-structures/arrays#staticArrays",
+    title: "Inserting in Tries",
+    href: "/data-structures/tries#insertion",
   },
   {
-    title: "Amortized Time",
-    href: "/data-structures/arrays#amortizedTime",
+    title: "Searching in Tries",
+    href: "/data-structures/tries#searching",
   },
   {
-    title: "Dynamic Arrays",
-    href: "/data-structures/arrays#dynamicArrays",
+    title: "Prefix Search",
+    href: "/data-structures/tries#prefixSearch",
   },
   {
-    title: "Stacks",
-    href: "/data-structures/arrays#stacks",
+    title: "Trie Implementation",
+    href: "/data-structures/tries#implementation",
   },
 ];
 
 export const unionFindPages = [
   {
-    title: "Array Pointers",
-    href: "/data-structures/arrays#pointers",
+    title: "Disjoint Sets",
+    href: "/data-structures/union-find#disjointSets",
   },
   {
-    title: "Static Arrays",
-    href: "/data-structures/arrays#staticArrays",
+    title: "Network Connectivity",
+    href: "/data-structures/union-find#connectivity",
   },
   {
-    title: "Amortized Time",
-    href: "/data-structures/arrays#amortizedTime",
+    title: "Path Compression",
+    href: "/data-structures/union-find#pathCompression",
   },
   {
-    title: "Dynamic Arrays",
-    href: "/data-structures/arrays#dynamicArrays",
+    title: "Union by Size",
+    href: "/data-structures/union-find#unionSize",
   },
   {
-    title: "Stacks",
-    href: "/data-structures/arrays#stacks",
+    title: "Union-Find Implementation",
+    href: "/data-structures/union-find#implementation",
   },
 ];
 
 export const segmentTreePages = [
   {
-    title: "Array Pointers",
-    href: "/data-structures/arrays#pointers",
+    title: "Building Segment Trees",
+    href: "/data-structures/segment-trees#building",
   },
   {
-    title: "Static Arrays",
-    href: "/data-structures/arrays#staticArrays",
+    title: "Querying Segment Trees",
+    href: "/data-structures/segment-trees#querying",
   },
   {
-    title: "Amortized Time",
-    href: "/data-structures/arrays#amortizedTime",
+    title: "Updating Segment Trees",
+    href: "/data-structures/segment-trees#updating",
   },
   {
-    title: "Dynamic Arrays",
-    href: "/data-structures/arrays#dynamicArrays",
+    title: "Segment Tree Implementation",
+    href: "/data-structures/segment-trees#implementation",
   },
   {
-    title: "Stacks",
-    href: "/data-structures/arrays#stacks",
+    title: "Lazy Propagation",
+    href: "/data-structures/segment-trees#lazyPropagation",
   },
 ];

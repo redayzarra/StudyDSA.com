@@ -58,7 +58,7 @@ const SegmentTreesPage = async () => {
         <Operations items={segmentTreeOperations} />
       </ChapterHeading>
 
-      <ChapterHeading id="building" title="Building" href={href}>
+      <ChapterHeading id="building" title="Building Segment Trees" href={href}>
         <p>
           Building a segment tree involves constructing a{" "}
           <TextLink href="/data-structures/trees#binary">binary tree</TextLink>{" "}
@@ -85,7 +85,7 @@ const SegmentTreesPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="querying" title="Querying" href={href}>
+      <ChapterHeading id="querying" title="Querying Segment Trees" href={href}>
         <p>
           Querying a segment tree efficiently retrieves the sum of a range
           within an array. Simply put,{" "}
@@ -117,7 +117,7 @@ const SegmentTreesPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="updating" title="Updating" href={href}>
+      <ChapterHeading id="updating" title="Updating Segment Trees" href={href}>
         <p>
           Update a segment tree by modifying an element of the{" "}
           <TextLink href="/data-structures/arrays">array</TextLink> and
@@ -146,7 +146,11 @@ const SegmentTreesPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="implementation" title="Implementation" href={href}>
+      <ChapterHeading
+        id="implementation"
+        title="Segment Tree Implementation"
+        href={href}
+      >
         <p>
           Constructed from an{" "}
           <TextLink href="/data-structures/arrays">array</TextLink>, a segment
@@ -172,11 +176,7 @@ const SegmentTreesPage = async () => {
         <br />
       </ChapterHeading>
 
-      <ChapterHeading
-        id="lazy-propagation"
-        title="Lazy Propagation"
-        href={href}
-      >
+      <ChapterHeading id="lazyPropagation" title="Lazy Propagation" href={href}>
         <p>
           Lazy propagation is a technique used in segment trees to{" "}
           <strong>
@@ -207,7 +207,11 @@ const SegmentTreesPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="bestPractices" title="Best Practices" href={href}>
+      <ChapterHeading
+        id="bestPractices"
+        title="Best Practices for Segment Trees"
+        href={href}
+      >
         <p>
           Segment trees should be your go-to tool for solving range query
           problems efficiently in coding interviews. They allow rapid updates

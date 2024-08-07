@@ -156,34 +156,6 @@ const QueuePage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="priority" title="Priority Queue" href={href}>
-        <p>
-          Priority queue{" "}
-          <span className="font-bold">is an abstract data type</span> where each
-          element has a priority assigned to it. Elements are accessed according
-          to their priority rather than their order in the data structure.
-        </p>
-        <br />
-        <p>
-          While it&apos;s possible to implement a priority queue using simple
-          queues, they can often fall short in terms of efficiency, particularly
-          for operations such as insertion and removal of elements based on
-          priority. A{" "}
-          <TextLink href="/data-structures/heaps">binary heap</TextLink>, on the
-          other hand,{" "}
-          <span className="font-bold">
-            is the best data structure for this purpose
-          </span>
-          .
-        </p>
-        <br />
-        <p>
-          I am adding this section to simply clarify that: Priority queues are
-          more a concept than actual queues. They are best implemented with
-          heaps.
-        </p>
-      </ChapterHeading>
-
       <ChapterHeading
         id="bestPracticesQueue"
         title="Best Practices"

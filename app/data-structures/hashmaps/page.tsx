@@ -122,7 +122,7 @@ const HashmapPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="collisions" title="Collisions">
+      <ChapterHeading id="collisions" title="Hashmap Collisions" href={href}>
         <p>
           Collisions occur when two{" "}
           <span className="font-bold">
@@ -147,7 +147,7 @@ const HashmapPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="chaining" title="Chaining" href={href}>
+      <ChapterHeading id="chaining" title="Hashmap Chaining" href={href}>
         <p>
           When multiple keys hash to the same index in a hashmap, we face
           collisions. Chaining is a popular and effective strategy to resolve
@@ -266,7 +266,7 @@ const HashmapPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="implementation" title="Implementation" href={href}>
+      <ChapterHeading id="implementation" title="Hashmap Implementation" href={href}>
         <p>
           To implement hashmaps, you need a solid understanding of collisions
           and different resolution strategies. The two primary strategies,
@@ -348,7 +348,7 @@ const HashmapPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="bestPractices" title="Best Practices" href={href}>
+      <ChapterHeading id="bestPractices" title="Best Practices for Hashmaps" href={href}>
         <p>
           Hashmaps and sets are the most important data structures to learn if
           you ever want to see an optimal solution. Here are some best practices

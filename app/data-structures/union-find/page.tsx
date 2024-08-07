@@ -12,7 +12,7 @@ import { Metadata } from "next";
 import {
   findOperationCode,
   pathCompressionCode,
-  unionByRankCode,
+  unionBySizeCode,
   unionFindImplementation,
 } from "./unionFindCode";
 
@@ -63,7 +63,7 @@ const UnionFindPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="disjoint-sets" title="Disjoint Sets" href={href}>
+      <ChapterHeading id="disjointSets" title="Disjoint Sets" href={href}>
         <p>
           A disjoint set, also known as a <strong>set of sets</strong>, is a
           collection where{" "}
@@ -82,14 +82,13 @@ const UnionFindPage = async () => {
         <br />
         <p>
           Union-Find, with optimizations such as{" "}
-          <TextLink href="#path-compression">path compression</TextLink> and{" "}
-          <TextLink href="#union-by-rank">union by rank</TextLink>,
-          significantly improves the efficiency of these operations. Path
-          compression flattens the structure of the sets, making future find
-          operations faster by directly connecting nodes to their root. Union by
-          rank ensures that the smaller set is always merged into the larger
-          one, preventing the formation of long chains that can slow down find
-          operations.
+          <TextLink href="#pathCompression">path compression</TextLink> and{" "}
+          <TextLink href="#unionSize">union by size</TextLink>, significantly
+          improves the efficiency of these operations. Path compression flattens
+          the structure of the sets, making future find operations faster by
+          directly connecting nodes to their root. Union by size ensures that
+          the smaller set is always merged into the larger one, preventing the
+          formation of long chains that can slow down find operations.
         </p>
       </ChapterHeading>
 
@@ -123,7 +122,7 @@ const UnionFindPage = async () => {
       </ChapterHeading>
 
       <ChapterHeading
-        id="path-compression"
+        id="pathCompression"
         title="Path Compression"
         href={href}
       >
@@ -192,26 +191,26 @@ const UnionFindPage = async () => {
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="union-by-rank" title="Union by Rank" href={href}>
+      <ChapterHeading id="unionSize" title="Union by Size" href={href}>
         <p>
-          Union by Rank is an optimization technique that{" "}
+          Union by Size is an optimization technique that{" "}
           <strong>maintains a balanced tree structure</strong> during union
           operations. This ensures that the tree&apos;s height is minimized for
-          future find operations. The <CodeText>rank</CodeText> in this context{" "}
+          future find operations. The <CodeText>size</CodeText> in this context{" "}
           <strong>represents the tree&apos;s height</strong>, and during a union
           operation, the{" "}
           <strong>
-            tree with the lower rank is merged into the tree with the higher
-            rank
+            tree with the smaller size is merged into the tree with the larger
+            size
           </strong>
           .
         </p>
         <br />
         <p>
-          Union by Rank can be adapted to use a{" "}
+          Union by Size can be adapted to use a{" "}
           <strong>
             <CodeText>size</CodeText> array for tracking each set&apos;s size
-            instead of rank
+            instead of size
           </strong>
           . Initially, every element forms a set of size one. During a union
           operation,{" "}
@@ -224,21 +223,25 @@ const UnionFindPage = async () => {
           the total of both:
         </p>
         <CodeBlock
-          code={unionByRankCode}
+          code={unionBySizeCode}
           language="python"
-          title="UnionByRank.py"
+          title="UnionBySize.py"
         />
         <br />
         <p>
           {" "}
-          This size-based approach, a variant of the traditional rank method,
+          This size-based approach, a variant of the traditional size method,
           ensures the Union-Find&apos;s efficiency, returning{" "}
           <CodeText>True</CodeText> for merging separate sets and{" "}
           <CodeText>False</CodeText> if already connected.
         </p>
       </ChapterHeading>
 
-      <ChapterHeading id="implementation" title="Implementation" href={href}>
+      <ChapterHeading
+        id="implementation"
+        title="Union-Find Implementation"
+        href={href}
+      >
         <p>
           Implement Union-Find by{" "}
           <strong>creating an array to track parent relationships</strong>{" "}
@@ -257,7 +260,11 @@ const UnionFindPage = async () => {
         />
       </ChapterHeading>
 
-      <ChapterHeading id="bestPractices" title="Best Practices" href={href}>
+      <ChapterHeading
+        id="bestPractices"
+        title="Best Practices for Union-Find"
+        href={href}
+      >
         <p>
           Union-Find is a great tool for solving problems related to disjoint
           sets, connectivity, and clustering in coding interviews. To use
@@ -287,8 +294,8 @@ const UnionFindPage = async () => {
           </li>
           <br />
           <li>
-            <span className="font-bold">&bull; Use Union by Size or Rank:</span>{" "}
-            Use union by rank (size) to keep the data structure&apos;s trees as
+            <span className="font-bold">&bull; Use Union by Size or Size:</span>{" "}
+            Use union by size (size) to keep the data structure&apos;s trees as
             flat as possible. This strategy minimizes the depth of trees and
             optimizes find operations.
           </li>

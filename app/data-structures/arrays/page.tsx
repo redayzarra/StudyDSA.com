@@ -189,7 +189,7 @@ const ArraysPage = async () => {
         />
       </ChapterHeading>
 
-      <ChapterHeading id="bestPractices" title="Best Practices" href={href}>
+      <ChapterHeading id="bestPractices" title="Best Practices for Arrays" href={href}>
         <p>
           Mastering arrays and stacks is crucial for coding interviews. Here are
           some tips that I learned for using these data structures effectively:
