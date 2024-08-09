@@ -37,9 +37,11 @@ const QuickBookmark = ({ userId }: { userId: string }) => {
 
   if (isLoading) {
     return (
-      <div className="flex items-center space-x-2">
-        <FaBookmark size={18} className="mr-[2px]" aria-hidden="true" />
-        <Skeleton className="h-5 w-40" />
+      <div className="ml-0.5 flex items-center space-x-2 mt-[2px] mb-[4px]">
+        <>
+          <FaBookmark size={iconSize} className="mr-[2px]" aria-hidden="true" />
+          <Skeleton className="h-[18px] w-64 pt-1" />
+        </>
       </div>
     );
   }
