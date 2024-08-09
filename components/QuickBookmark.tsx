@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa6";
 import getBookmark from "@/actions/bookmark/getBookmark";
+import { Skeleton } from "./ui/skeleton";
 
 // Define a custom type for the bookmark data returned by getBookmark
 type BookmarkData = {
@@ -35,7 +36,12 @@ const QuickBookmark = ({ userId }: { userId: string }) => {
   const iconSize = 18;
 
   if (isLoading) {
-    return <div>Loading bookmark...</div>;
+    return (
+      <div className="flex items-center space-x-2">
+        <FaBookmark size={18} className="mr-[2px]" aria-hidden="true" />
+        <Skeleton className="h-5 w-40" />
+      </div>
+    );
   }
 
   return (

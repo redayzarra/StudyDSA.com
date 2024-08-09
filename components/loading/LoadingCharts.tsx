@@ -18,10 +18,7 @@ const CHART_CONFIGS: ChartConfig[] = [
 const LoadingCharts: React.FC = () => (
   <div className="-space-y-9 -mt-6 -mb-6 flex flex-col items-center justify-center">
     {CHART_CONFIGS.map(({ difficulty, color }) => (
-      <LoadingProgressChart
-        key={difficulty}
-        className="scale-[.65]"
-      />
+      <LoadingProgressChart key={difficulty} className="scale-[.65]" />
     ))}
   </div>
 );
